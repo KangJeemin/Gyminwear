@@ -1,6 +1,26 @@
-.header{
+.category{
     width:100vw;
     height:10vh;
     background-color:white;
 
+}
+
+.flexRow {
+    display:flex;
+}
+.flex-column{
+    display:flex;
+    flex-direction: column;
+}
+.logoBox {
+    width: 33%;
+    height: 100%;
+}
+.centerBox {
+    width: 34%;
+    height: 100%;
+}
+.menuBox {
+    width: 33%;
+    height: 100%;
 }

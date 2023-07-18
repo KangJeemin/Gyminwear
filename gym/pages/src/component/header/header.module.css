@@ -1,14 +1,22 @@
-.category{
+.header{
     width:100vw;
     height:10vh;
     background-color:white;
+}
 
+.category{
+    width:100vw;
+    height:5vh;
+}
+.announcement{
+    width:100vw;
+    height: 5vh;
 }
 
 .flexRow {
     display:flex;
 }
-.flex-column{
+.flexColumn{
     display:flex;
     flex-direction: column;
 }
@@ -17,10 +25,10 @@
     height: 100%;
 }
 .centerBox {
-    width: 34%;
+    width: 28%;
     height: 100%;
 }
 .menuBox {
-    width: 33%;
+    width: 40%;
     height: 100%;
 }

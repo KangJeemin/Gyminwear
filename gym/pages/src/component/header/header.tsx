@@ -8,12 +8,6 @@ const header = ()=>{
                 <div id="logoBox" className={styles.logoBox}></div>
                 <div id="centerBox" className={styles.centerBox}></div>
                 <div id="menuBox" className={styles.menuBox}>
-                    <Image
-                        src="./search.png"
-                        alt='등록되지 않은 이미지'
-                        width={100}
-                        height={100}
-                    />
                 </div>
             </div>
             <div id ='announcement' className={styles.announcement}>

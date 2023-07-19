@@ -9,7 +9,7 @@
 }
 #middle_topComponent{
     width: 100vw;
-    height: 60vh;
+    height: 30vh;
 }
 
 .flex_row{
@@ -19,9 +19,9 @@
     display:flex;
     flex-direction: column;
 }
-.grid_4x4{
+.grid_2x2{
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
 }
 .padding_1{

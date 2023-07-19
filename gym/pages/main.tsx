@@ -7,9 +7,6 @@ const main = ()=>{
     return(
         <div>
             <Header/>
-            <Link href={"/"}>
-                <a>메인 페이지</a>  
-            </Link>
             <Middle/>
             <Footer/>
             

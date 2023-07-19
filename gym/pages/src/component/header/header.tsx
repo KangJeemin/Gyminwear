@@ -11,7 +11,11 @@ const header = ()=>{
                 </div>
             </div>
             <div id ='announcement' className={styles.announcement}>
-                <p>오늘의 공지사항!</p>
+                <p style={
+                    {
+                        color:'red',
+                    }
+                }>오늘의 공지사항!</p>
             </div>
         </div>
     )

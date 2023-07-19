@@ -1,10 +1,10 @@
 import React from 'react'
-import styles from './middle.module.css'
-const middle = ()=>{
+import styles from './bestAll.module.css'
+const bestAll = ()=>{
     return(
-        <div id={styles.middle}> 
-            <div id={styles.middle_topText}></div>
-            <div id={styles.middle_topComponent} className={styles.grid_2x2}>
+        <div id={styles.bestAll}> 
+            <div id={styles.bestAll_topText}></div>
+            <div id={styles.bestAll_topComponent} className={styles.grid_2x2}>
                 <span className={`${styles.padding_1} ${styles.flex_column}`}>
                     <span className={styles.item_imageSize}></span>
                     <span className={`${styles.item_textBoxSize} ${styles.flex_row}`}>
@@ -19,9 +19,6 @@ const middle = ()=>{
                         <span className={styles.item_textBrandNameBox}></span>
                     </span>
                 </span>
-            </div>
-            <div id={styles.middle_topText}></div>
-            <div id={styles.middle_topComponent} className={styles.grid_2x2}>
                 <span className={`${styles.padding_1} ${styles.flex_column}`}>
                     <span className={styles.item_imageSize}></span>
                     <span className={`${styles.item_textBoxSize} ${styles.flex_row}`}>
@@ -42,4 +39,4 @@ const middle = ()=>{
     )
 }
 
-export default middle;
+export default bestAll;

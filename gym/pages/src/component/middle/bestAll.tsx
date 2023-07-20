@@ -8,31 +8,11 @@ const bestAll = ()=>{
             </div>
             <div id={styles.bestAll_topComponent} className={styles.grid_2x2}>
                 <span className={`${styles.padding_1} ${styles.flex_column}`}>
-                    <span className={styles.item_imageSize}></span>
-                    <span className={`${styles.item_textBoxSize} ${styles.flex_row}`}>
-                        <span className={styles.item_textLikeBox}></span>
-                        <span className={styles.item_textBrandNameBox}></span>
-                    </span>
-                </span>
-                <span className={`${styles.padding_1} ${styles.flex_column}`}>
-                    <span className={styles.item_imageSize}></span>
-                    <span className={`${styles.item_textBoxSize} ${styles.flex_row}`}>
-                        <span className={styles.item_textLikeBox}></span>
-                        <span className={styles.item_textBrandNameBox}></span>
-                    </span>
-                </span>
-                <span className={`${styles.padding_1} ${styles.flex_column}`}>
-                    <span className={styles.item_imageSize}></span>
-                    <span className={`${styles.item_textBoxSize} ${styles.flex_row}`}>
-                        <span className={styles.item_textLikeBox}></span>
-                        <span className={styles.item_textBrandNameBox}></span>
-                    </span>
-                </span>
-                <span className={`${styles.padding_1} ${styles.flex_column}`}>
-                    <span className={styles.item_imageSize}></span>
-                    <span className={`${styles.item_textBoxSize} ${styles.flex_row}`}>
-                        <span className={styles.item_textLikeBox}></span>
-                        <span className={styles.item_textBrandNameBox}></span>
+                    <span id={styles.item_imageSize}></span>
+                    <span id={styles.item_textBoxSize} className={`${styles.flex_column}`}>
+                        <span id={styles.item_itemBrandName}>borntowin</span>
+                        <span id={styles.item_itemName}>헤리코든 오버핏</span>
+                        <span id={styles.item_itemPrice}>44,000원</span>
                     </span>
                 </span>
             </div>

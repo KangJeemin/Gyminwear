@@ -10,7 +10,6 @@ const main = ()=>{
             <Header/>
             <BestAll/>
             <BestTop/>
-            <Footer/>
         </div>
     )
 }

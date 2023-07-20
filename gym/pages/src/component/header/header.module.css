@@ -25,8 +25,18 @@
 #menuBox {
     width: 30%;
     height: 100%;
+    display: flex;
 }
 #searchBox{
+    flex: 1;
+    position: relative;   
+}
+#shoppingBox{
+    flex: 1;
+    position: relative;   
+}
+#hambergerBox{
+    flex: 1;
     position: relative;   
 }
 .flexRow {

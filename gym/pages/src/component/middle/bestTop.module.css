@@ -5,11 +5,15 @@
 #bestTop_topText{
     width: 100vw;
     height: 10%;
-    background-color: orange;
+    background-color: black;
 }
 #bestTop_topComponent{
     width: 100vw;
     height: 90%;
+    background-color: black;
+}
+#bestTop_text{
+    color: white;
 }
 
 .flex_row{

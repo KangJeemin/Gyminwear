@@ -11,8 +11,6 @@ const main = ()=>{
             <BestAll/>
             <BestTop/>
             <Footer/>
-            
-            
         </div>
     )
 }

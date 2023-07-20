@@ -4,22 +4,20 @@ import Image from 'next/image'
 import a from '../../../../public/image/search.png'
 const header = ()=>{
     return(
-        <div id='header' className={`${styles.header} ${styles.flexColumn}`}>
-            <div id='categorybox'className={`${styles.category} ${styles.flexRow}`}>
-                <div id="logoBox" className={styles.logoBox}>
+        <div id={styles.header} className={`${styles.flexColumn}`}>
+            <div id={styles.categoryBox} className={`${styles.flexRow}`}>
+                <div id={styles.logoBox}>
                     <Image
                         src={a}
-                        alt= "이미지를 표시 할 수 없습니다."
-                        width={100}
-                        height={100}
-
+                        alt="로고화면"
+                        layout='fill'
                     />
                 </div>
-                <div id="centerBox" className={styles.centerBox}></div>
-                <div id="menuBox" className={styles.menuBox}>
+                <div id={styles.centerBox}></div>
+                <div id={styles.menuBox}>
                 </div>
             </div>
-            <div id ='announcement' className={styles.announcement}>
+            <div id={styles.announcement}>
                 <p style={
                     {
                         color:'red',

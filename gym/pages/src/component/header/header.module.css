@@ -1,18 +1,31 @@
-.header{
+#header{
     width:100vw;
     height:10vh;
     background-color:white;
 }
 
-.category{
+#categoryBox{
     width:100vw;
     height:5vh;
 }
-.announcement{
+#logoBox {
+    width: 33%;
+    height: 100%;
+    position: relative;
+}
+#announcement{
     width:100vw;
     height: 5vh;
+    background-color: gray;
 }
-
+#centerBox {
+    width:38%;
+    height: 100%;
+}
+#menuBox {
+    width: 30%;
+    height: 100%;
+}
 .flexRow {
     display:flex;
 }
@@ -20,15 +33,4 @@
     display:flex;
     flex-direction: column;
 }
-.logoBox {
-    width: 33%;
-    height: 100%;
-}
-.centerBox {
-    width:38%;
-    height: 100%;
-}
-.menuBox {
-    width: 30%;
-    height: 100%;
-}
+

@@ -5,6 +5,11 @@ import styles from './bestAll.module.css'
 
 const BestAll:React.FC = () =>{
  const [itemfor, setItemfor] = useState<string[]>([])
+ const items:string[] =[
+    {
+
+    }
+ ]
  
  
     return(
@@ -14,8 +19,8 @@ const BestAll:React.FC = () =>{
             </div>
             <div id={styles.flex_nowrap}>
                 <div id={styles.bestAll_topComponent} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
-                    for (let index = 0; index< 4; index++) {
-                        <span className={`${styles.padding_1} ${styles.flex_column}`}>
+            
+                   <span className={`${styles.padding_1} ${styles.flex_column}`}>
                         <span id={styles.item_imageSize}></span>
                         <span id={styles.item_textBoxSize} className={`${styles.flex_column}`}>
                             <span id={styles.item_itemBrandName}><h1>borntowin</h1></span>
@@ -24,8 +29,6 @@ const BestAll:React.FC = () =>{
                         </span>
                     </span>    
                         
-                    } 
-                   
                     
 
                 </div>

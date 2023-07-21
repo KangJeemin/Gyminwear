@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './bestAll.module.css'
-const bestAll = ()=>{
+
+
+
+const BestAll:React.FC = () =>{
+ const [itemfor, setItemfor] = useState<number>(3)
+
+    
     return(
         <div id={styles.bestAll}> 
             <div id={styles.bestAll_topText}>
@@ -8,6 +14,10 @@ const bestAll = ()=>{
             </div>
             <div id={styles.flex_nowrap}>
                 <div id={styles.bestAll_topComponent} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
+                    
+                    {itemfor.map(function(){
+
+                    })}
                     <span className={`${styles.padding_1} ${styles.flex_column}`}>
                         <span id={styles.item_imageSize}></span>
                         <span id={styles.item_textBoxSize} className={`${styles.flex_column}`}>
@@ -16,10 +26,11 @@ const bestAll = ()=>{
                             <span id={styles.item_itemPrice}><h3>44,000원</h3></span>
                         </span>
                     </span>
+
                 </div>
             </div>
         </div>
     )
 }
 
-export default bestAll;
+export default BestAll;

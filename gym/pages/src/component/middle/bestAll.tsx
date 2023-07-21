@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from './bestAll.module.css'
+import getArrayLength from '../../module/arrayLength'
 
 interface Item {
     brandName:string
@@ -30,7 +31,7 @@ const BestAll:React.FC = () =>{
         itemPrice:44000+'원'
     }
  ]
- 
+
  
     return(
         <div id={styles.bestAll}> 

@@ -38,7 +38,7 @@
     display:flex;
     justify-content: center;
     color:black;
-    font-weight :bold;  
+    /* font-weight :bold;   */
 }
 #item_itemName{
     flex: 1;

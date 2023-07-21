@@ -7,17 +7,20 @@
     height: 10%;
     background-color:white;
 }
-#flex_nowrap{
+/* #flex_nowrap{
     width: 100vw;
     height: 90%;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-}
+} */
 #bestAll_topComponent{
     width: 100%;
-    height: 100%;
+    height: 90%;
     background-color: white;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
 #bestAll_text{
     color: black;

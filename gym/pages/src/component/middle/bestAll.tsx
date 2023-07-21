@@ -49,9 +49,9 @@ const BestAll:React.FC = () =>{
                 <h1 id={styles.bestAll_text}>이번 주 인기 상품</h1>
             </div>
             <div id={styles.flex_nowrap}>
-                <div id={styles.bestAll_topComponent} className={`${styles.grid_2x2}`}>
+                <div id={styles.bestAll_topComponent} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
                     {items.map((item, index) => (
-                        <span key={index} className={`${styles.padding_1} ${styles.flex_column} ${styles.flex_scrollSet}`}>
+                        <span key={index} className={`${styles.padding_1} ${styles.flex_column}`}>
                           <span id={styles.item_imageSize}></span>
                           <span id={styles.item_textBoxSize} className={`${styles.flex_column}`}>
                             <span id={styles.item_itemBrandName}><h1>{item.brandName}</h1></span>

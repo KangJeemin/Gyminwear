@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import styles from './bestAll.module.css'
 
-
+interface Item {
+    brandName:string
+    itemName:string
+    itemPrice:number|string
+}
 
 const BestAll:React.FC = () =>{
- const items:object[] =[
+ const items:Item[] =[
     {
         brandName:"brontowin",
         itemName:"헤리코든 오버핏",

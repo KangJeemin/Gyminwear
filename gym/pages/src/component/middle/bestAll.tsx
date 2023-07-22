@@ -8,13 +8,13 @@ interface Item {
     itemPrice:number|string;
 }
 
-interface ItemFrom4{
-    itemFrom4:Item[]
-    itemFrom5:Item[]
+interface ItemFrom{
+    itemFrom4?:Item[]
+    itemFrom5?:Item[]
 }
 
 const BestAll:React.FC = () =>{
- const items:ItemFrom4[] =[
+ const items:ItemFrom[] =[
     {
         itemFrom4:[
         {
@@ -37,30 +37,32 @@ const BestAll:React.FC = () =>{
             itemName:"헤리코든 오버핏",
             itemPrice:44000+'원'
         },
-    ],
-    itemFrom5:[
-        {
-            brandName:"brontowin",
-            itemName:"헤리코든 오버핏",
-            itemPrice:44000+'원'
-        },
-        {
-            brandName:"brontowin",
-            itemName:"헤리코든 오버핏",
-            itemPrice:44000+'원'
-        },
-        {
-            brandName:"brontowin",
-            itemName:"헤리코든 오버핏",
-            itemPrice:44000+'원'
-        },
-        {
-            brandName:"brontowin",
-            itemName:"헤리코든 오버핏",
-            itemPrice:44000+'원'
-        },
     ]
     },
+    {
+        itemFrom5:[
+            {
+                brandName:"brontowin",
+                itemName:"헤리코든 오버핏",
+                itemPrice:44000+'원'
+            },
+            {
+                brandName:"brontowin",
+                itemName:"헤리코든 오버핏",
+                itemPrice:44000+'원'
+            },
+            {
+                brandName:"brontowin",
+                itemName:"헤리코든 오버핏",
+                itemPrice:44000+'원'
+            },
+            {
+                brandName:"brontowin",
+                itemName:"헤리코든 오버핏",
+                itemPrice:44000+'원'
+            },
+        ]
+    }
 
  ]
     return(
@@ -69,7 +71,6 @@ const BestAll:React.FC = () =>{
                 <h1 id={styles.bestAll_text}>이번 주 인기 상품</h1>
             </div>
             <div id={styles.flex_nowrap}>
-                
                 {items.map((item, index) => {
                      return (
                         <div key={index} id={styles.bestAll_topComponent} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`} >
@@ -85,7 +86,6 @@ const BestAll:React.FC = () =>{
                                     </span>
                                 );
                             })}
-                            
                         </div>
                     );
                 })}

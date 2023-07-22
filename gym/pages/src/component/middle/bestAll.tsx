@@ -49,9 +49,9 @@ const BestAll:React.FC = () =>{
             </div>
             <div id={styles.flex_nowrap}>
                 <div id={styles.bestAll_topComponent} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
-                    {items.forEach((item, index)=>{
+                    {items.map((item, index)=>{
                         <div key={index}>
-                            {item.itemFrom4.forEach((innerItem,index)=>{
+                            {item.itemFrom4.map((innerItem,index)=>{
                                  <span key={index} className={`${styles.padding_1} ${styles.flex_column}`}>
                                  <span id={styles.item_imageSize}></span>
                                  <span id={styles.item_textBoxSize} className={`${styles.flex_column}`}>

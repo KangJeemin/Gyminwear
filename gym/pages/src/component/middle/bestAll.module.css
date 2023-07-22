@@ -19,6 +19,10 @@
     height: 100%;
     background-color: white;
 }
+#bestAll_topComponent_1{
+    width: 50%;
+    height: 50%;
+}
 #bestAll_text{
     color: black;
     

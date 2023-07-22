@@ -1,9 +1,9 @@
 #bestAll{
-    width: 100vw;
+    width: 300vw;
     height: 60vh;
 }
 #bestAll_topText{
-    width: 100vw;
+    width: 100%;
     height: 10%;
     background-color:white;
 }
@@ -11,7 +11,7 @@
     width: 100vw;
     height: 90%;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     overflow-x: auto;
 }
 #bestAll_topComponent{

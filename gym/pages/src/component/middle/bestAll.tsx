@@ -69,10 +69,10 @@ const BestAll:React.FC = () =>{
                 <h1 id={styles.bestAll_text}>이번 주 인기 상품</h1>
             </div>
             <div id={styles.flex_nowrap}>
-                <div id={styles.bestAll_topComponent} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`} >
+                
                 {items.map((item, index) => {
                      return (
-                        <div key={index}  >
+                        <div key={index} id={styles.bestAll_topComponent} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`} >
                             {item.itemFrom4.map((innerItem, innerIndex) => {
                                 return (
                                     <span id={styles.bestAll_topComponent_1} key={innerIndex} className={`${styles.padding_1} ${styles.flex_column}`}>
@@ -91,7 +91,7 @@ const BestAll:React.FC = () =>{
                 })}
                 </div>
             </div>
-        </div>
+        
     )
 }
 

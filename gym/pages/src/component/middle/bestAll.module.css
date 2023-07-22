@@ -11,7 +11,7 @@
     width: 100vw;
     height: 90%;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     overflow-x: auto;
 }
 #bestAll_topComponent{

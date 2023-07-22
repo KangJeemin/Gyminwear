@@ -44,17 +44,17 @@ const BestAll:React.FC = () =>{
             {
                 brandName:"brontowin",
                 itemName:"헤리코든 오버핏",
-                itemPrice:44000+'원'
+                itemPrice:44000+'원이'
             },
             {
                 brandName:"brontowin",
                 itemName:"헤리코든 오버핏",
-                itemPrice:44000+'원'
+                itemPrice:44000+'원이'
             },
             {
                 brandName:"brontowin",
                 itemName:"헤리코든 오버핏",
-                itemPrice:44000+'원'
+                itemPrice:44000+'원이'
             },
             {
                 brandName:"brontowin",
@@ -86,6 +86,19 @@ const BestAll:React.FC = () =>{
                                     </span>
                                 );
                             })}
+                            {item.itemFrom5 && item.itemFrom5.map((innerItem, innerIndex) => {
+                                return (
+                                    <span id={styles.bestAll_topComponent_1} key={innerIndex} className={`${styles.padding_1} ${styles.flex_column}`}>
+                                        <span id={styles.item_imageSize}></span>
+                                        <span id={styles.item_textBoxSize} className={`${styles.flex_column}`}>
+                                            <span id={styles.item_itemBrandName}><h1>{innerItem.brandName}</h1></span>
+                                            <span id={styles.item_itemName}><h2>{innerItem.itemName}</h2></span>
+                                            <span id={styles.item_itemPrice}><h3>{innerItem.itemPrice}</h3></span>
+                                        </span>
+                                    </span>
+                                );
+                            })}
+                            
                         </div>
                     );
                 })}

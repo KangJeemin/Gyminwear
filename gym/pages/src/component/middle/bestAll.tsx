@@ -3,34 +3,42 @@ import styles from './bestAll.module.css'
 import getArrayLength from '../../module/arrayLength'
 
 interface Item {
-    brandName:string
-    itemName:string
-    itemPrice:number|string
+    brandName:string;
+    itemName:string;
+    itemPrice:number|string;
+}
+
+interface ItemFrom4{
+    itemFrom4:Item[]
 }
 
 const BestAll:React.FC = () =>{
- const items:Item[] =[
+ const items:ItemFrom4[] =[
     {
-        brandName:"brontowin",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
+        itemFrom4:[
+        {
+            brandName:"brontowin",
+            itemName:"헤리코든 오버핏",
+            itemPrice:44000+'원'
+        },
+        {
+            brandName:"brontowin",
+            itemName:"헤리코든 오버핏",
+            itemPrice:44000+'원'
+        },
+        {
+            brandName:"brontowin",
+            itemName:"헤리코든 오버핏",
+            itemPrice:44000+'원'
+        },
+        {
+            brandName:"brontowin",
+            itemName:"헤리코든 오버핏",
+            itemPrice:44000+'원'
+        },
+    ]
     },
-    {
-        brandName:"brontowin",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    
+
  ]
 
  

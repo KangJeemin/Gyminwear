@@ -74,7 +74,7 @@ const BestAll:React.FC = () =>{
                 {items.map((item, index) => {
                      return (
                         <div key={index} id={styles.bestAll_topComponent} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`} >
-                            {item.itemFrom4.map((innerItem, innerIndex) => {
+                            {item.itemFrom4 && item.itemFrom4.map((innerItem, innerIndex) => {
                                 return (
                                     <span id={styles.bestAll_topComponent_1} key={innerIndex} className={`${styles.padding_1} ${styles.flex_column}`}>
                                         <span id={styles.item_imageSize}></span>

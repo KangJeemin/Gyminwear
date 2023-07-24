@@ -8,12 +8,10 @@
     background-color:white;
 }
 #flex_nowrap{
-    width: 100vw;
     height: 90%;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    flex-basis: 100%;
 }
 #bestAll_topComponent{
     width: 100%;

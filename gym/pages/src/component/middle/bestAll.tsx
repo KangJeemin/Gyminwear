@@ -29,6 +29,7 @@ const BestAll:React.FC = () =>{
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
     }
+    
  ]
  
  
@@ -62,7 +63,7 @@ const BestAll:React.FC = () =>{
                         </span>
                     ))}
                 </div>
-              
+                
             </div>
         </div>
     )

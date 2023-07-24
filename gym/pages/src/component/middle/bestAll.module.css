@@ -70,8 +70,8 @@
 }
 .grid_2x2{
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 70% 70%;
+    grid-template-columns: 50% 50%;
 }
 .padding_1{
     padding: 5%;

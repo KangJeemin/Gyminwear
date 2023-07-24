@@ -8,7 +8,7 @@
     background-color:white;
 }
 #flex_nowrap{
-    height: 90%;
+    height: 100%;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -25,6 +25,10 @@
 #bestAll_text{
     color: black;
     
+}
+#item_itemComponent{
+    width: 100%;
+    height: 100%;
 }
 #item_imageSize{
     width: 100%;
@@ -73,6 +77,5 @@
     padding: 5%;
 }
 .flex_scrollset{
-    flex-basis: 200%; 
     flex-shrink: 0;
 }

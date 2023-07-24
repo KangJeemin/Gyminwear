@@ -13,6 +13,7 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
+    flex-basis: 100%;
 }
 #bestAll_topComponent{
     width: 100%;
@@ -74,6 +75,6 @@
     padding: 5%;
 }
 .flex_scrollset{
-    flex-basis: 200%;
+    flex-basis: 200%; 
     flex-shrink: 0;
 }

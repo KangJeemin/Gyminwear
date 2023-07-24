@@ -11,13 +11,14 @@
     width: 100%;
     height: 100%;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     overflow-x: scroll;
 }
 #bestAll_topComponent{
     width: 100%;
     height: 100%;
     background-color: white;
+    flex-shrink: 0;
 }
 #bestAll_topComponent_1{
     width: 50%;

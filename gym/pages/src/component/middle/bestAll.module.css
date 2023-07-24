@@ -8,10 +8,11 @@
     background-color:white;
 }
 #flex_nowrap{
+    width: 100%;
     height: 100%;
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    flex-flow: row nowrap;
+    overflow-x: scroll;
 }
 #bestAll_topComponent{
     width: 100%;
@@ -70,8 +71,8 @@
 }
 .grid_2x2{
     display: grid;
-    grid-template-rows: 70% 70%;
-    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 70% 70%;
 }
 .padding_1{
     padding: 5%;

@@ -86,7 +86,7 @@ const BestAll:React.FC = () =>{
                                     </span>
                                 );
                             })}
-                            {item.itemFrom5 && item.itemFrom5.map((innerItem, innerIndex) => {
+                            {/* {item.itemFrom5 && item.itemFrom5.map((innerItem, innerIndex) => {
                                 return (
                                     <span id={styles.bestAll_topComponent_1} key={innerIndex} className={`${styles.padding_1} ${styles.flex_column}`}>
                                         <span id={styles.item_imageSize}></span>
@@ -97,7 +97,7 @@ const BestAll:React.FC = () =>{
                                         </span>
                                     </span>
                                 );
-                            })}
+                            })} */}
                             
                         </div>
                     );

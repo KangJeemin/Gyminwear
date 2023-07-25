@@ -1,15 +1,15 @@
 #bestAll{
     width: 100vw;
-    height: 60vh;
+    height: 70vh;
 }
 #bestAll_topText{
     width: 100%;
-    height: 10%;
+    height: 7%;
     background-color:white;
 }
 #flex_nowrap{
     width: 100%;
-    height: 100%;
+    height: 93%;
     display: flex;
     flex-flow: row nowrap;
     overflow-x: scroll;

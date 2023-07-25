@@ -7,14 +7,14 @@
     height: 7%;
     background-color:white;
 }
-#flex_nowrap{
+#bestAll_itemContainer_flexNowrap{
     width: 100%;
     height: 93%;
     display: flex;
     flex-flow: row nowrap;
     overflow-x: scroll;
 }
-#bestAll_topComponent{
+#bestAll_itemContainer{
     width: 100%;
     height: 100%;
     background-color: white;
@@ -28,34 +28,34 @@
     color: black;
     
 }
-#item_itemComponent{
+#bestAll_item_itemComponent{
     width: 100%;
     height: 100%;
 }
-#item_imageSize{
+#bestAll_item_imageSize{
     width: 100%;
     height: 80%;
     background-color: red;
 }
-#item_textBoxSize{
+#bestAll_item_textBoxSize{
     width: 100%;
     height: 30%;
     background-color: white;
 }
-#item_itemBrandName{
+#bestAll_item_itemBrandName{
     flex: 1;
     display:flex;
     justify-content: center;
     color:black;
     font-weight :bold;  
 }
-#item_itemName{
+#bestAll_item_itemName{
     flex: 1;
     display:flex;
     justify-content: center;
     color: gray;
 }
-#item_itemPrice{
+#bestAll_item_itemPrice{
     flex: 1;
     display:flex;
     justify-content: center;

@@ -11,21 +11,21 @@ const header = ()=>{
                 <div id={styles.logoBox}></div>
                 <div id={styles.centerBox}></div>
                 <div id={styles.menuBox}>
-                    <div id ={styles.searchBox}>
+                    <div id ={styles.searchBox} className={styles.menuBoxMargin}>
                         <Image
                             src={searchIcon}
                             alt="검색아이콘"
                             layout='fill'
                         />
                     </div>
-                    <div id ={styles.shoppingBox}>
+                    <div id ={styles.shoppingBox} className={styles.menuBoxMargin}>
                         <Image
                             src={shoppingIcon}
                             alt="쇼핑백아이콘"
                             layout='fill'
                         />
                     </div>
-                    <div id ={styles.hambergerBox}>
+                    <div id ={styles.hambergerBox} className={styles.menuBoxMargin}>
                         <Image
                             src={hambergerIcon}
                             alt="햄버거아이콘"

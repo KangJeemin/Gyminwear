@@ -4,7 +4,7 @@ const index = ()=>{
     return(
         <div>
             <Link href={"/main"}>
-                <a>강지민 페이지</a>  
+                <p>강지민 페이지</p>
             </Link>
             
         </div>

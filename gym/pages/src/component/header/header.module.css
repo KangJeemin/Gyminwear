@@ -1,0 +1,49 @@
+#header{
+    width:100vw;
+    height:10vh;
+    background-color:white;
+}
+
+#categoryBox{
+    width:100vw;
+    height:5vh;
+}
+#logoBox {
+    width: 33%;
+    height: 100%;
+    position: relative;
+}
+#announcement{
+    width:100vw;
+    height: 5vh;
+    background-color: gray;
+}
+#centerBox {
+    width:38%;
+    height: 100%;
+}
+#menuBox {
+    width: 30%;
+    height: 100%;
+    display: flex;
+}
+#searchBox{
+    flex: 1;
+    position: relative;   
+}
+#shoppingBox{
+    flex: 1;
+    position: relative;   
+}
+#hambergerBox{
+    flex: 1;
+    position: relative;   
+}
+.flexRow {
+    display:flex;
+}
+.flexColumn{
+    display:flex;
+    flex-direction: column;
+}
+

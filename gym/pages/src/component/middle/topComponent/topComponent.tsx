@@ -8,7 +8,10 @@ interface Item {
 }
 
 const TopPage:React.FC = () =>{
- const items:Item[] =[
+    const scrollableRef = useRef<HTMLDivElement | null>(null);
+    const [showNewDiv, setShowNewDiv] = useState(false);
+   
+    const items:Item[] =[
     {
         brandName:"brontowin",
         itemName:"헤리코든 오버핏",
@@ -31,8 +34,6 @@ const TopPage:React.FC = () =>{
     }
     
  ]
- const scrollableRef = useRef<HTMLDivElement | null>(null);
- const [showNewDiv, setShowNewDiv] = useState(false);
 
  const handleScroll = () => {
    const element = scrollableRef.current;
@@ -65,11 +66,11 @@ const TopPage:React.FC = () =>{
                     </span>
                 ))} */}
     return(
-        <div id={styles.topComponent}> 
+        <div ref ={scrollableRef} id={styles.topComponent}> 
             <div id={styles.topComponent_topText}>
                 <h1 id={styles.topComponent_text}>상의</h1>
             </div>
-            <div ref ={scrollableRef} id={styles.topComponent_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
+            <div id={styles.topComponent_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
                <span>a</span>
                <span>a</span>
                <span>a</span>

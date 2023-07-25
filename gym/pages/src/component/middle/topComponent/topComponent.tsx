@@ -38,7 +38,7 @@ const TopPage:React.FC = () =>{
  const handleScroll = () => {
    const element = scrollableRef.current;
    if (element) {
-     const isAtBottom = element.scrollHeight - element.scrollTop - element.clientHeight < 1;
+     const isAtBottom = element.scrollHeight - element.scrollTop - element.clientHeight < 10;
      setShowNewDiv(isAtBottom); // 스크롤이 최하단에 도달하면 showNewDiv 값을 true로 변경
    }
  };
@@ -66,11 +66,11 @@ const TopPage:React.FC = () =>{
                     </span>
                 ))} */}
     return(
-        <div ref ={scrollableRef} id={styles.topComponent}> 
+        <div id={styles.topComponent}> 
             <div id={styles.topComponent_topText}>
                 <h1 id={styles.topComponent_text}>상의</h1>
             </div>
-            <div id={styles.topComponent_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
+            <div id={styles.topComponent_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`} ref ={scrollableRef}>
                <span>a</span>
                <span>a</span>
                <span>a</span>

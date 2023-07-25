@@ -19,11 +19,11 @@
     background-color: gray;
 }
 #centerBox {
-    width:38%;
+    width:30%;
     height: 100%;
 }
 #menuBox {
-    width: 30%;
+    width: 38%;
     height: 100%;
     display: flex;
 }

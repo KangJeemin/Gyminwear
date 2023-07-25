@@ -1,32 +1,19 @@
 #topComponent{
     width: 100vw;
-    height: 300vh;
+    height: 150vh;
 }
 #topComponent_topText{
     width: 100%;
     height: 7%;
     background-color:white;
+    color: black;
 }
-#topComponent_itemContainer_flexNowrap{
-    width: 100%;
-    height: 93%;
-    display: flex;
-    flex-flow: row nowrap;
-    overflow-x: scroll;
-}
+
 #topComponent_itemContainer{
     width: 100%;
-    height: 100%;
+    height: 93%;
     background-color: white;
     flex-shrink: 0;
-}
-#topComponent_topComponent_1{
-    width: 50%;
-    height: 50%;
-}
-#topComponent_text{
-    color: black;
-    
 }
 #topComponent_item_itemComponent{
     width: 100%;

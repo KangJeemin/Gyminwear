@@ -11,34 +11,34 @@ const TopPage:React.FC = () =>{
     const scrollableRef = useRef<HTMLDivElement | null>(null);
     const [showNewDiv, setShowNewDiv] = useState(false);
    
-    const items:Item[] =[
-    {
-        brandName:"brontowin",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    }
+//     const items:Item[] =[
+//     {
+//         brandName:"brontowin",
+//         itemName:"헤리코든 오버핏",
+//         itemPrice:44000+'원'
+//     },
+//     {
+//         brandName:"brontowin",
+//         itemName:"헤리코든 오버핏",
+//         itemPrice:44000+'원'
+//     },
+//     {
+//         brandName:"brontowin",
+//         itemName:"헤리코든 오버핏",
+//         itemPrice:44000+'원'
+//     },
+//     {
+//         brandName:"brontowin",
+//         itemName:"헤리코든 오버핏",
+//         itemPrice:44000+'원'
+//     }
     
- ]
+//  ]
 
  const handleScroll = () => {
    const element = scrollableRef.current;
    if (element) {
-     const isAtBottom = element.scrollHeight - element.scrollTop === element.clientHeight;
+     const isAtBottom = element.scrollHeight - element.scrollTop - element.clientHeight < 1;
      setShowNewDiv(isAtBottom); // 스크롤이 최하단에 도달하면 showNewDiv 값을 true로 변경
    }
  };

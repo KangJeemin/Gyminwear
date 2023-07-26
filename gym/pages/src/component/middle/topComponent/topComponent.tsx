@@ -7,14 +7,14 @@ interface Item {
     itemPrice:number|string
 }
 
-const TopPage:React.FC = () =>{
+const TopComponent:React.FC = () =>{
   const target = useRef<HTMLDivElement | null>(null);
   const [showNewDiv, setShowNewDiv] = useState(false);
    
 //     const items:Item[] =[
 //     {
 //         brandName:"brontowin",
-//         itemName:"헤리코든 오버핏",
+//         itemName:"헤리코든  오버핏",
 //         itemPrice:44000+'원'
 //     },
 //     {
@@ -54,7 +54,6 @@ useEffect(() => {
   if (target.current) {
     observer.observe(target.current);
   }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 
 
@@ -95,4 +94,4 @@ useEffect(() => {
     )
 }
 
-export default TopPage;
+export default TopComponent;

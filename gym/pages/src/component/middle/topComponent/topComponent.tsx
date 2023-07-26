@@ -8,7 +8,7 @@ interface Item {
 }
 
 const TopPage:React.FC = () =>{
-  // const scrollableRef = useRef<HTMLDivElement | null>(null);
+  const target = useRef<HTMLDivElement | null>(null);
   const [showNewDiv, setShowNewDiv] = useState(false);
    
 //     const items:Item[] =[
@@ -36,21 +36,34 @@ const TopPage:React.FC = () =>{
 //  ]
 
 
-const target = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    observer.observe(target.current);
-  }, []);
 
-  const options = {
-    threshold: 1.0,
-  };
+const options = {
+  threshold: 1.0,
+};
 
-  const callback = () => {
+const callback = () => {
+  if (target.current) {
     target.current.innerText += "관측되었습니다";
-  };
+  }
+};
 
-  const observer = new IntersectionObserver(callback, options);
+const observer = new IntersectionObserver(callback, options);
+
+useEffect(() => {
+  if (target.current) {
+    observer.observe(target.current);
+  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
+
+
+
+
+
+
+
+
   {/* {items.map((item, index) => (
                     <span key={index} id={styles.topComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                         <span id={styles.topComponent_item_imageSize}></span>

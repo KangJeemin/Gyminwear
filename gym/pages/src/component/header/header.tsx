@@ -92,6 +92,14 @@ const [state, setState] = React.useState({
                             alt="햄버거아이콘"
                             layout='fill'
                         />
+                        <SwipeableDrawer
+            anchor={'top'}
+            open={state['top']}
+            onClose={toggleDrawer('top', false)}
+            onOpen={toggleDrawer('top', true)}
+          >
+            {list('top')}
+          </SwipeableDrawer>
                     </div>
                 </div>
             </div>

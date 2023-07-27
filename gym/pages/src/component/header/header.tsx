@@ -50,9 +50,17 @@ const [state, setState] = React.useState({
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
+
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {['Top', 'Bottom', ].map((text, index) => (
+          <ListItem key={text} disablePadding
+          onClick={() => {
+            if (text === 'Top') {
+              console.log('ㅁ');
+            }
+            toggleDrawer('top', false); // 항목을 클릭한 후 드로어를 닫습니다.
+          }}
+          >
             <ListItemButton>
               <ListItemIcon>
               </ListItemIcon>
@@ -92,14 +100,20 @@ const [state, setState] = React.useState({
                             alt="햄버거아이콘"
                             layout='fill'
                         />
+                        
                         <SwipeableDrawer
-            anchor={'top'}
-            open={state['top']}
-            onClose={toggleDrawer('top', false)}
-            onOpen={toggleDrawer('top', true)}
-          >
-            {list('top')}
-          </SwipeableDrawer>
+                          anchor={'top'}
+                          open={state['top']}
+                          onClose={toggleDrawer('top', false)}
+                          onOpen={toggleDrawer('top', true)}
+                        >
+                          {/* anchor: 드로어가 열릴 위치를 지정합니다. 이 경우에는 'top'으로 설정되어 있으므로, 드로어가 화면의 위쪽에서 열립니다.
+                              open: 드로어의 열림 상태를 나타냅니다. state['top'] 변수의 값을 사용하여 열림 상태를 결정합니다.
+                              onClose: 드로어를 닫을 때 실행되는 함수를 지정합니다. toggleDrawer('top', false) 함수가 호출됩니다. toggleDrawer 함수를 통해 state 객체의 'top' 속성을 false로 변경하여 드로어를 닫습니다.
+                              onOpen: 드로어를 열 때 실행되는 함수를 지정합니다. toggleDrawer('top', true) 함수가 호출됩니다. toggleDrawer 함수를 통해 state 객체의 'top' 속성을 true로 변경하여 드로어를 엽니다.
+                           */}
+                          {list('top')}
+                         </SwipeableDrawer>
                     </div>
                 </div>
             </div>

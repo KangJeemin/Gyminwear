@@ -14,10 +14,11 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
-
-const header = ()=>{
-
 type Anchor = 'top'
+
+export default function header () {
+
+
 
 const [state, setState] = React.useState({
     top: false,
@@ -105,4 +106,3 @@ const [state, setState] = React.useState({
     )
 }
 
-export default header;

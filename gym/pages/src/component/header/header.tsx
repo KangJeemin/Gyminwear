@@ -45,7 +45,7 @@ const [state, setState] = React.useState({
   const list = (anchor: Anchor) => (
     
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      sx={{ height:500 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -106,6 +106,13 @@ const [state, setState] = React.useState({
                           open={state['top']}
                           onClose={toggleDrawer('top', false)}
                           onOpen={toggleDrawer('top', true)}
+                          sx={{
+                            '& .MuiDrawer-paper': {
+                              width: '100%',
+                              maxWidth: '100%',
+                            },
+                          }}
+                          // "& .MuiDrawer-paper"은 SwipeableDrawer 내부의 .MuiDrawer-paper 클래스를 선택합니다
                         >
                           {/* anchor: 드로어가 열릴 위치를 지정합니다. 이 경우에는 'top'으로 설정되어 있으므로, 드로어가 화면의 위쪽에서 열립니다.
                               open: 드로어의 열림 상태를 나타냅니다. state['top'] 변수의 값을 사용하여 열림 상태를 결정합니다.

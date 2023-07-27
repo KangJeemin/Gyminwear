@@ -9,7 +9,7 @@ interface Item {
 
 const TopComponent: React.FC = () => {
   const target = useRef<HTMLDivElement | null>(null);
-  const target1 = useRef<HTMLDivElement | null>(null);
+  const target2 = useRef<HTMLDivElement | null>(null);
   const [showNewDiv, setShowNewDiv] = useState(false);
   const [showNewDiv2, setShowNewDiv2] = useState(false);
 
@@ -23,7 +23,7 @@ const TopComponent: React.FC = () => {
     }
   };
   const callback2 = () => {
-    if (target.current) {
+    if (target2.current) {
       setShowNewDiv2(true)
     }
   };
@@ -39,8 +39,8 @@ const TopComponent: React.FC = () => {
     
     const observer2 = new IntersectionObserver(callback2, options);
 
-    if (target1.current) {
-      observer2.observe(target1.current); //관찰 대상 등록
+    if (target2.current) {
+      observer2.observe(target2.current); //관찰 대상 등록
     }
 
     // Clean up the observer when the component unmounts
@@ -49,7 +49,7 @@ const TopComponent: React.FC = () => {
       observer2.disconnect();
     };
   }, [options.threshold]);
-
+  
   return (
     <div id={styles.topComponent}>
       <div id={styles.topComponent_topText}>
@@ -60,17 +60,17 @@ const TopComponent: React.FC = () => {
         <span>a</span>
         <span>a</span>
         <span>a</span>
-        {showNewDiv && (
-          <div style={{ backgroundColor: 'lightblue', padding: '10px', margin: '10px' }} ref={target1}>
-            새로운 div 컴포넌트가 생성되었습니다!
-          </div>
-        )}
-        {showNewDiv2 && (
-          <div style={{ backgroundColor: 'green', padding: '10px', margin: '10px' }}>
+      </div>
+      {showNewDiv && (
+          <div style={{ backgroundColor: 'blue', padding: '10px', margin: '10px' }} ref={target2}>
             새로운 div 컴포넌트가 생성되었습니다!2
           </div>
         )}
-      </div>
+        {showNewDiv2 && (
+          <div style={{ backgroundColor: 'green', padding: '10px', margin: '10px',height: 60 }}>
+            새로운 div 컴포넌트가 생성되었습니다!2
+          </div>
+        )}
     </div>
   );
 };

@@ -10,7 +10,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
 
-type Anchor = 'top' | 'left' | 'bottom' | 'right';
+type Anchor = 'top'
 
 export default function SwipeableTemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -54,12 +54,13 @@ export default function SwipeableTemporaryDrawer() {
         ))}
       </List>
       <Divider />
+      
     </Box>
   );
 
   return (
     <div>
-      {(['left', 'right', 'top', 'bottom'] as const).map((anchor) => (
+      {(['top',] as const).map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
           <SwipeableDrawer

@@ -13,6 +13,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import CloseIcon from '@mui/icons-material/Close';
+import IconButton from '@mui/material/IconButton';
 
 type Anchor = 'top'
 
@@ -120,6 +122,11 @@ const [state, setState] = React.useState({
                               onClose: 드로어를 닫을 때 실행되는 함수를 지정합니다. toggleDrawer('top', false) 함수가 호출됩니다. toggleDrawer 함수를 통해 state 객체의 'top' 속성을 false로 변경하여 드로어를 닫습니다.
                               onOpen: 드로어를 열 때 실행되는 함수를 지정합니다. toggleDrawer('top', true) 함수가 호출됩니다. toggleDrawer 함수를 통해 state 객체의 'top' 속성을 true로 변경하여 드로어를 엽니다.
                            */}
+                            <div style={{ textAlign: 'right', paddingRight: '10px' }}>
+                              <IconButton onClick={toggleDrawer('top', false)}>
+                                <CloseIcon />
+                              </IconButton>
+                            </div>
                           {list('top')}
                          </SwipeableDrawer>
                     </div>

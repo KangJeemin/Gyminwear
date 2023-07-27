@@ -43,14 +43,15 @@ const [state, setState] = React.useState({
     };
 
   const list = (anchor: Anchor) => (
-    
     <Box
-      sx={{ height:500 }}
+      sx={{ 
+        height:500,
+      }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-
+     
       <List>
         {['Top', 'Bottom', ].map((text, index) => (
           <ListItem key={text} disablePadding
@@ -69,7 +70,7 @@ const [state, setState] = React.useState({
           </ListItem>
         ))}
       </List>
-      <Divider />
+      {/* <Divider /> */}
       
     </Box>
   );

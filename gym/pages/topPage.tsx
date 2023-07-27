@@ -6,7 +6,6 @@ import SwipeableTemporaryDrawer from './src/component/header/drawer'
 const topPage = () => {
     return (
         <div>
-        <SwipeableTemporaryDrawer/>
         <Header/>
         <TopComponent/>
         </div>

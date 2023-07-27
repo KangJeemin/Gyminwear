@@ -16,7 +16,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 type Anchor = 'top'
 
-export default function header () {
+export default function Header () {
 
 
 
@@ -87,7 +87,7 @@ const [state, setState] = React.useState({
                         />
                     </div>
                     <div id ={styles.hambergerBox} className={styles.menuBoxMargin}>
-                        <Image
+                        <Image onClick={toggleDrawer('top', true)}
                             src={hambergerIcon}
                             alt="햄버거아이콘"
                             layout='fill'
@@ -96,6 +96,7 @@ const [state, setState] = React.useState({
                 </div>
             </div>
             <div id={styles.announcement}>
+                
                 <p style={
                     {
                         color:'red',

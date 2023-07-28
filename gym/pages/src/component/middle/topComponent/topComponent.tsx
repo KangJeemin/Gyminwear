@@ -14,6 +14,7 @@ const TopComponent: React.FC = () => {
   const [showNewDiv2, setShowNewDiv2] = useState(false);
 
   const options = {
+    //타겟의 요소가 50% 가시성이 확인 되었을때
     threshold: 0.5,
   };
 

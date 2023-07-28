@@ -29,26 +29,20 @@ const TopComponent: React.FC = () => {
   };
 
   useEffect(() => {
-    const observer1 = new IntersectionObserver(callback1, options);
+    const io = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        
+        if (entry.isIntersecting) {
+          
+          setShowNewDiv(true)
+          
+          observer.unobserve(entry.target);
+        }
+      })
+    }, options)
 
-    if (target.current) {
-      observer1.observe(target.current); //관찰 대상 등록
-    }
-
-    // Clean up the observer when the component unmounts
     
-    const observer2 = new IntersectionObserver(callback2, options);
-
-    if (target2.current) {
-      observer2.observe(target2.current); //관찰 대상 등록
-    }
-
-    // Clean up the observer when the component unmounts
-    return () => {
-      observer1.disconnect();
-      observer2.disconnect();
-    };
-  }, [options.threshold]);
+  }, []);
   
   return (
     <div id={styles.topComponent}>

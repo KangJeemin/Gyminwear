@@ -29,28 +29,8 @@ const TopComponent: React.FC = () => {
         }
     });
 }
-const encoder = new TextEncoder();
-    let url ='https://openapi.naver.com/v1/search/blog?/query=rbw'
-    // let url ='https://openapi.naver.com/v1/search/shop?query='
-    let ClientID='vqhMSE8joE5v7eeLQaHt'
-    let ClientSecret='EMjd5sI8k9'
-
-    let AppName=encodeURIComponent('rbw')
-    console.log(AppName)
-    let URL =url + AppName
-    console.log(URL)
-    let returnData=[{}]
-    
 
   useEffect(() => {
-    fetch(URL,{
-      method:'GET',
-      headers:
-        {'X-Naver-Client-Id':ClientID, 'X-Naver-Client-Secret': ClientSecret}
-    
-      }
-    ).then((response) => response.json()).then(data=>{console.log(data)})
-    
     const observer1 = new IntersectionObserver(callback, options);
 
     if (target.current) {

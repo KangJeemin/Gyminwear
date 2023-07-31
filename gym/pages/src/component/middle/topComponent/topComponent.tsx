@@ -16,15 +16,19 @@ const TopComponent: React.FC = () => {
   
   return (
     <div id={styles.topComponent}>
-      <div id={styles.topComponent_topText}>
-        <h1 id={styles.topComponent_text}>상의</h1>
-      </div>
-      <div id={styles.topComponent_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`} ref={target}>
-        <span>a</span>
-        <span>a</span>
-        <span>a</span>
-        <span>a</span>
-      </div>
+      {showComponent === 1 ? (
+      <>
+        <div id={styles.topComponent_topText}>
+          <h1 id={styles.topComponent_text}>상의</h1>
+        </div>
+        <div id={styles.topComponent_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
+          <span>a</span>
+          <span>a</span>
+          <span>a</span>
+          <span>a</span>
+        </div>
+      </>
+): null}
     </div>
   );
 };

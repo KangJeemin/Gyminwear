@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import styles from './topComponent.module.css';
-import { AuthContext } from '@/pages/src/context/context';
+import Link from 'next/link'
 interface Item {
   brandName: string;
   itemName: string;
@@ -8,7 +8,7 @@ interface Item {
 }
 
 const TopComponent1: React.FC = () => { 
-  const {currentPage, setCurrentPage} = useContext(AuthContext)
+  
   const items:Item[] =[
     {
         brandName:"brontowin",
@@ -93,7 +93,6 @@ const TopComponent1: React.FC = () => {
  ]
  
     const handlePage = () =>{
-        setCurrentPage(currentPage+1)
     }
     
   return (
@@ -117,7 +116,10 @@ const TopComponent1: React.FC = () => {
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>1/3</span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={handlePage}>&#62;</span>
+                        
+            <Link href={"/topPage2"}>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#62;</span>
+            </Link>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#187;</span>
         </div>
     </div>

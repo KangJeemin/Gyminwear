@@ -16,79 +16,81 @@ const TopComponent1: React.FC = () => {
         itemPrice:44000+'원'
     },
     {
-        brandName:"brontowin",
+        brandName:"brontowin1",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
     },
     {
-        brandName:"brontowin",
+        brandName:"brontowin2",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
     },
     {
-        brandName:"brontowin",
+        brandName:"brontowin3",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
     },
     {
-        brandName:"brontowin",
+        brandName:"brontowin4",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
     },
     {
-        brandName:"brontowin",
+        brandName:"brontowin5",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
     },
     {
-        brandName:"brontowin",
+        brandName:"brontowin6",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
     },
     {
-        brandName:"brontowin",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },{
-        brandName:"brontowin",
+        brandName:"brontowin7",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
     },
     {
-        brandName:"brontowin",
+        brandName:"brontowin8",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
     },
     {
-        brandName:"brontowin",
+        brandName:"brontowin9",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
     },
     {
-        brandName:"brontowin",
+        brandName:"brontowin10",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
     },
     {
-        brandName:"brontowin",
+        brandName:"brontowin11",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
     },
     {
-        brandName:"brontowin",
+        brandName:"brontowin12",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
     },
     {
-        brandName:"brontowin",
+        brandName:"brontowin13",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
     },
     {
-        brandName:"brontowin",
+        brandName:"brontowin14",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
-    }
+    },
+    {
+        brandName:"brontowin15",
+        itemName:"헤리코든 오버핏",
+        itemPrice:44000+'원'
+    },
+
     
  ]
  

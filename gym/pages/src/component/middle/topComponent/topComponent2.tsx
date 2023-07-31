@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './topComponent.module.css';
 
@@ -8,7 +9,7 @@ interface Item {
 }
 
 const TopComponent2: React.FC = () => {
-
+    const router = useRouter();
   const items:Item[] =[
     {
         brandName:"brontowin",
@@ -114,9 +115,13 @@ const TopComponent2: React.FC = () => {
         </div>
         <div id ={styles.topComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`}>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#171;</span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#60;</span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`}>1/3</span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#62;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{
+                    router.push("/topPage")
+                }}>&#60;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}>2/3</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{
+                    router.push("/topPage2")
+                }}>&#62;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#187;</span>
         </div>
     </div>

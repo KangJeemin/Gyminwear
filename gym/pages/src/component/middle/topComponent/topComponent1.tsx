@@ -117,7 +117,7 @@ const TopComponent1: React.FC = () => {
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>1/3</span>
                         
                 <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{
-                    router.push("/topPage2")
+                    router.push("/topPage1")
                 }}>&#62;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#187;</span>
         </div>

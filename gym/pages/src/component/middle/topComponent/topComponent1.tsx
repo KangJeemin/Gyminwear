@@ -1,6 +1,7 @@
+import { useRouter } from 'next/router';
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import styles from './topComponent.module.css';
-import Link from 'next/link'
+
 interface Item {
   brandName: string;
   itemName: string;
@@ -8,6 +9,7 @@ interface Item {
 }
 
 const TopComponent1: React.FC = () => { 
+    const router = useRouter();
   
   const items:Item[] =[
     {
@@ -92,9 +94,6 @@ const TopComponent1: React.FC = () => {
     },    
  ]
  
-    const handlePage = () =>{
-    }
-    
   return (
     <div id={styles.topComponent}>
         <div id={styles.topComponent_topText}>
@@ -117,9 +116,9 @@ const TopComponent1: React.FC = () => {
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>1/3</span>
                         
-            <Link href={"/topPage2"}>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#62;</span>
-            </Link>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{
+                    router.push("/topPage2")
+                }}>&#62;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#187;</span>
         </div>
     </div>

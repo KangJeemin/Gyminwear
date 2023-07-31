@@ -58,6 +58,9 @@
 .flex_row{
     display: flex;
 }
+.justify_content_center{
+    justify-content: center;
+}
 .text_set_center{
     display:flex;
     justify-content: center;

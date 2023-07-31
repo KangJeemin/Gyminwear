@@ -113,11 +113,11 @@ const TopComponent1: React.FC = () => {
                 ))}
         </div>
         <div id ={styles.topComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`}>
-                <span className={`${styles.width_15per} ${styles.flex_row} ${styles.justify_content_center}`}>&#171;</span>
-                <span className={`${styles.width_15per} ${styles.flex_row} ${styles.justify_content_center}`}>&#60;</span>
-                <span className={`${styles.width_15per} ${styles.flex_row} ${styles.justify_content_center}`}>1/3</span>
-                <span className={`${styles.width_15per} ${styles.flex_row} ${styles.justify_content_center}`}>&#62;</span>
-                <span className={`${styles.width_15per} ${styles.flex_row} ${styles.justify_content_center}`}>&#187;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#171;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#60;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}>1/3</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#62;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#187;</span>
         </div>
     </div>
   );

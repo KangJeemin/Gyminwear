@@ -58,8 +58,10 @@
 .flex_row{
     display: flex;
 }
-.justify_content_center{
+.text_set_center{
+    display:flex;
     justify-content: center;
+    align-items: center;
 }
 .flex_column{
     display:flex;

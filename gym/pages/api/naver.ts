@@ -2,10 +2,10 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default (req: NextApiRequest, res: NextApiResponse)=>{
     const encoder = new TextEncoder();
-    const ClientID=process.env.NEXT_PUBLIC_NAVER_ClientId
+    
     // let url ='https://openapi.naver.com/v1/search/blog?/query=rbw'
     let url ='https://openapi.naver.com/v1/search/shop?query='
-    // let ClientID='vqhMSE8joE5v7eeLQaHt'
+    let ClientID='vqhMSE8joE5v7eeLQaHt'
     let ClientSecret='EMjd5sI8k9'
 
     let AppName=encodeURIComponent('rbw')
@@ -17,7 +17,7 @@ export default (req: NextApiRequest, res: NextApiResponse)=>{
     fetch(URL,{
       method:'GET',
       headers:
-        {'X-Naver-Client-Id':ClientID, 'X-Naver-Client-Secret': ClientSecret}
+        {'X-Naver-Client-Id':process.env.NEXT_PUBLIC_API_URL, 'X-Naver-Client-Secret': ClientSecret}
     
       }
     ).then((response) => response.json()).then(data=>{console.log(data)})

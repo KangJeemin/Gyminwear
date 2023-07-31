@@ -1,14 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import styles from './topComponent.module.css';
-
+import { AuthContext } from '@/pages/src/context/context';
 interface Item {
   brandName: string;
   itemName: string;
   itemPrice: number | string;
 }
 
-const TopComponent1: React.FC = () => {
-
+const TopComponent1: React.FC = () => { 
+  const {currentPage, setCurrentPage} = useContext(AuthContext)
   const items:Item[] =[
     {
         brandName:"brontowin",
@@ -89,11 +89,12 @@ const TopComponent1: React.FC = () => {
         brandName:"brontowin15",
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'원'
-    },
-
-    
+    },    
  ]
  
+    const handlePage = () =>{
+        setCurrentPage(currentPage+1)
+    }
     
   return (
     <div id={styles.topComponent}>
@@ -116,7 +117,7 @@ const TopComponent1: React.FC = () => {
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>1/3</span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#62;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={handlePage}>&#62;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#187;</span>
         </div>
     </div>

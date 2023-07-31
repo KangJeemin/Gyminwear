@@ -49,10 +49,17 @@
     justify-content: center;
     color:black;
 }
-
+#topComponent_navigateContainer{
+    background-color: blue;
+    width: 100%;
+    height: 10%;
+}
 
 .flex_row{
     display: flex;
+}
+.justify_content_center{
+    justify-content: center;
 }
 .flex_column{
     display:flex;
@@ -68,4 +75,7 @@
 }
 .flex_scrollSet{
     flex-shrink: 0;
+}
+.width_15per{
+    width: 15%;
 }

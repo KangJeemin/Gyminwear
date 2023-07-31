@@ -1,6 +1,6 @@
 #topComponent{
     width: 100vw;
-    height: 100vh;
+    height: 75vh;
     overflow-y: scroll;
 }
 #topComponent_topText{
@@ -12,7 +12,7 @@
 
 #topComponent_itemContainer{
     width: 100%;
-    height: 110%;
+    height: 400%;
     background-color: white;
     overflow-y: scroll;
 }
@@ -58,9 +58,9 @@
     display:flex;
     flex-direction: column;
 }
-.grid_2x2{
+.grid_8x2{
     display: grid;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% ;
     grid-template-columns: 50% 50%;
 }
 .padding_1{

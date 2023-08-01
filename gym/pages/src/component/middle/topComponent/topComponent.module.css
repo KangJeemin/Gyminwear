@@ -1,10 +1,6 @@
 #topComponent{
     width: 100vw;
-<<<<<<< HEAD
     height: 75vh;
-=======
-    height: 150vh;
->>>>>>> KangJeemin/issue5
     overflow-y: scroll;
 }
 #topComponent_topText{

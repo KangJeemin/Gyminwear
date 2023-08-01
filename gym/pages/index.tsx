@@ -1,12 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
+import Hamberger from './src/component/header/hamberger'
 const index = ()=>{
     return(
         <div>
-            <Link href={"/topPage"}>
-                <p>강지민 페이지</p>
-            </Link>
-            
+            <Hamberger/>
         </div>
     )
 }

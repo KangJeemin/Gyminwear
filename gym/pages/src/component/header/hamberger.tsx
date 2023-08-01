@@ -15,13 +15,31 @@ const Hamberger = () => {
     }}>
     <motion.div
         style={{
-            width:"10px",
-            height:"30px",
+            width:"30px",
+            height:"5px",
             backgroundColor:"blue"
         }}
         animate={{
             scale:[1,1],
             rotate:[0,45]
+        }}
+        transition={{
+            duration: 1,
+            ease: "liner",
+            times: [0, 0.5],
+            repeat: Infinity,
+            repeatDelay: 1
+          }}
+    />
+    <motion.div
+        style={{
+            width:"30px",
+            height:"5px",
+            backgroundColor:"blue"
+        }}
+        animate={{
+            scale:[1,1],
+            rotate:[0,-45]
         }}
         transition={{
             duration: 1,

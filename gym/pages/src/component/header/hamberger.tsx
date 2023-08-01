@@ -5,15 +5,21 @@ import Image from 'next/image'
 import searchIcon from '../../../../public/image/search.png'
 import shoppingIcon from '../../../../public/image/shopingBag.png'
 import hambergerIcon from '../../../../public/image/hamberger.png'
+import Modal from './modal';
 
 
 
 const Hamberger = () => {
 const [state,setState] = React.useState(false)
 
+const handle = ()=> {
+    setState(true)
+}
+
     
     return (
         <div id={styles.header} className={`${styles.flexColumn}`}>
+            {state && <Modal />}
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox}></div>
                 <div id={styles.centerBox}></div>
@@ -37,6 +43,7 @@ const [state,setState] = React.useState(false)
                             src={hambergerIcon}
                             alt="햄버거아이콘"
                             layout='fill'
+                            onClick={handle}
                         />
                     </div>
                 </div>

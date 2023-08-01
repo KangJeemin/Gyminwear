@@ -15,11 +15,9 @@ const [state,setState] = React.useState(false)
 const handle = ()=> {
     setState(true)
 }
-
-    
     return (
         <div id={styles.header} className={`${styles.flexColumn}`}>
-            {state && <Modal />}
+            
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox}></div>
                 <div id={styles.centerBox}></div>
@@ -55,6 +53,7 @@ const handle = ()=> {
                     }
                 }>오늘의 공지사항!</p>
             </div>
+            {state && <Modal />}
         </div>
     
     // <div

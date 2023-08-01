@@ -11,7 +11,7 @@ import hambergerIcon from '../../../../public/image/hamberger.png'
 const Hamberger = () => {
 const [state,setState] = React.useState(false)
 
-    if(!state){
+    
     return (
         <div id={styles.header} className={`${styles.flexColumn}`}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
@@ -101,7 +101,6 @@ const [state,setState] = React.useState(false)
     // />
     // </div>
    )
-            }
 }
 
 export default Hamberger

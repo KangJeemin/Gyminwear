@@ -1,6 +1,10 @@
 #topComponent{
     width: 100vw;
+<<<<<<< HEAD
+    height: 75vh;
+=======
     height: 150vh;
+>>>>>>> KangJeemin/issue5
     overflow-y: scroll;
 }
 #topComponent_topText{
@@ -12,7 +16,7 @@
 
 #topComponent_itemContainer{
     width: 100%;
-    height: 110%;
+    height: 400%;
     background-color: white;
     overflow-y: scroll;
 }
@@ -49,18 +53,30 @@
     justify-content: center;
     color:black;
 }
-
+#topComponent_navigateContainer{
+    background-color: blue;
+    width: 100%;
+    height: 10%;
+}
 
 .flex_row{
     display: flex;
+}
+.justify_content_center{
+    justify-content: center;
+}
+.text_set_center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 .flex_column{
     display:flex;
     flex-direction: column;
 }
-.grid_2x2{
+.grid_8x2{
     display: grid;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% ;
     grid-template-columns: 50% 50%;
 }
 .padding_1{
@@ -68,4 +84,7 @@
 }
 .flex_scrollSet{
     flex-shrink: 0;
+}
+.width_15per{
+    width: 15%;
 }

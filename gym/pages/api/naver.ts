@@ -13,11 +13,12 @@ export default (req: NextApiRequest, res: NextApiResponse)=>{
     let URL =url + AppName
     console.log(URL)
     let returnData=[{}]
+    console.log(process.env.NEXT_PUBLIC_API_URL, "서버")
     
     fetch(URL,{
       method:'GET',
       headers:
-        {'X-Naver-Client-Id':process.env.NEXT_PUBLIC_API_URL, 'X-Naver-Client-Secret': ClientSecret}
+        {'X-Naver-Client-Id':ClientID, 'X-Naver-Client-Secret': ClientSecret}
     
       }
     ).then((response) => response.json()).then(data=>{console.log(data)})

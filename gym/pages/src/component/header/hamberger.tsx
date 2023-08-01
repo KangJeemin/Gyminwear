@@ -3,37 +3,36 @@ import { motion } from 'framer-motion';
 
 
 const Hamberger = () => {
-    const blockVariants = {
-        initial: {
-          y: -50,
-        },
-        target: {
-          y: 100,
-        },
-      };
-    
-      return (
-        <motion.div
-          style={{
-            background: "linear-gradient(90deg,#ffa0ae 0%,#aacaef 75%)",
-            height: "100px",
-            width: "100px",
-            borderRadius: "50%",
+   return (
+    <div
+    style={{
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        width:"100px",
+        height:"100px",
+        
+    }}>
+    <motion.div
+        style={{
+            width:"10px",
+            height:"30px",
+            backgroundColor:"blue"
+        }}
+        animate={{
+            scale:[1,1],
+            rotate:[0,45]
+        }}
+        transition={{
+            duration: 1,
+            ease: "liner",
+            times: [0, 0.5],
+            repeat: Infinity,
+            repeatDelay: 1
           }}
-          variants={blockVariants}
-          initial="initial"
-          animate="target"
-          transition={{
-            ease: "easeInOut",
-            duration: 0.7, // 애니메이션이 총 걸리는 시간
-            delay: 2, // 처음 애니메이션 delay
-            repeat: 3, // 3번 반복
-            // repeat: Infinity,
-            repeatType: "loop", //   "loop" | "reverse" | "mirror";
-            repeatDelay: 1, // 반복 될 때 delay
-          }}
-        />
-      );
+    />
+    </div>
+   )
 }
 
 export default Hamberger

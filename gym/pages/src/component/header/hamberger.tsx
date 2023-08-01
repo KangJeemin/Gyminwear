@@ -18,7 +18,8 @@ const Hamberger = () => {
         style={{
             width:"30px",
             height:"5px",
-            backgroundColor:"blue"
+            backgroundColor:"blue",
+            marginTop:"2.5px"
         }}
         animate={{
             scale:[1,1],
@@ -36,7 +37,8 @@ const Hamberger = () => {
         style={{
             width:"30px",
             height:"5px",
-            backgroundColor:"blue"
+            backgroundColor:"blue",
+            marginBottom:"2.5px"
         }}
         animate={{
             scale:[1,1],

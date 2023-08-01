@@ -44,7 +44,6 @@ const Modal = () => {
             duration: 1,
             ease: "liner",
             times: [0, 0.5],
-            repeat: 1,
             
           }}
     />
@@ -63,7 +62,6 @@ const Modal = () => {
             duration: 1,
             ease: "liner",
             times: [0, 0.5],
-            repeat: 1,
 
           }}
     />

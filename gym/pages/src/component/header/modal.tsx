@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 
 const Modal = () => {
   return (
-    <div
-      style={{
+    <motion.div
+    style={{
         position: 'fixed',
-        top: 0,
+        top: '-100%', // Initial position above the viewport
         left: 0,
         width: '100vw',
         height: '100vh',
@@ -13,6 +13,13 @@ const Modal = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+      }}
+      animate={{
+        top: 0, // Final position at the top of the viewport
+      }}
+      transition={{
+        duration: 0.25,
+        ease: 'linear',
       }}
     >
       {/* 모달 내용 */}
@@ -41,9 +48,9 @@ const Modal = () => {
             rotate:[0,45]
         }}
         transition={{
-            duration: 1,
+            duration: 2,
             ease: "liner",
-            times: [0, 0.5],
+            times: [0, 1],
             
           }}
     />
@@ -59,16 +66,16 @@ const Modal = () => {
             rotate:[0,-45]
         }}
         transition={{
-            duration: 1,
+            duration: 2,
             ease: "liner",
-            times: [0, 0.5],
+            times: [0, 1],
 
           }}
     />
     </div>
       
 
-    </div>
+    </motion.div>
   );
 };
 

@@ -6,14 +6,17 @@ import searchIcon from '../../../../public/image/search.png'
 import shoppingIcon from '../../../../public/image/shopingBag.png'
 import hambergerIcon from '../../../../public/image/hamberger.png'
 import Modal from './modal';
-
+import { useRef } from 'react'
 
 
 const Hamberger = () => {
-const [state,setState] = React.useState(false)
+const [state,setState] = React.useState(false);
 
+const targetRef = useRef(null);
 const handle = ()=> {
-    setState(true)
+    if(targetRef.current){
+        targetRef.current.style.backgroundColor = 'blue'
+    }
 }
     return (
         <div id={styles.header} className={`${styles.flexColumn}`}>
@@ -22,7 +25,7 @@ const handle = ()=> {
                 <div id={styles.logoBox}></div>
                 <div id={styles.centerBox}></div>
                 <div id={styles.menuBox}>
-                    <div id ={styles.searchBox} className={styles.menuBoxMargin}>
+                    <div id ={styles.searchBox} className={styles.menuBoxMargin} ref={handle}>
                         <Image
                             src={searchIcon}
                             alt="검색아이콘"

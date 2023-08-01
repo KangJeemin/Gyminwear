@@ -14,39 +14,33 @@ const TopComponent: React.FC = () => {
   const [showNewDiv2, setShowNewDiv2] = useState(false);
 
   const options = {
-    threshold: 1.0,
+    //타겟의 요소가 50% 가시성이 확인 되었을때
+    threshold: 0.5,
   };
 
-  const callback1 = () => {
-    if (target.current) {
-      setShowNewDiv(true)
-    }
-  };
-  const callback2 = () => {
-    if (target2.current) {
-      setShowNewDiv2(true)
-    }
-  };
+  const callback:IntersectionObserverCallback= (entries, observer) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            observer.unobserve(entry.target);
+            setShowNewDiv(true)
+            console.log('화면에서 노출됨');
+        } else {
+            console.log('화면에서 제외됨');
+        }
+    });
+}
 
   useEffect(() => {
-    const observer1 = new IntersectionObserver(callback1, options);
+    const observer1 = new IntersectionObserver(callback, options);
 
     if (target.current) {
       observer1.observe(target.current); //관찰 대상 등록
     }
 
     // Clean up the observer when the component unmounts
-    
-    const observer2 = new IntersectionObserver(callback2, options);
-
-    if (target2.current) {
-      observer2.observe(target2.current); //관찰 대상 등록
-    }
-
-    // Clean up the observer when the component unmounts
     return () => {
       observer1.disconnect();
-      observer2.disconnect();
+      
     };
   }, [options.threshold]);
   

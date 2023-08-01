@@ -1,6 +1,6 @@
 #topComponent{
     width: 100vw;
-    height: 100vh;
+    height: 150vh;
     overflow-y: scroll;
 }
 #topComponent_topText{

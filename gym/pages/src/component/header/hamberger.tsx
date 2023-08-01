@@ -15,7 +15,7 @@ const [state,setState] = React.useState(false);
 const targetRef = useRef(null);
 const handle = ()=> {
     if(targetRef.current){
-        targetRef.current.style.backgroundColor = 'blue'
+        targetRef.current.style.display = "none"
     }
 }
     return (
@@ -25,7 +25,7 @@ const handle = ()=> {
                 <div id={styles.logoBox}></div>
                 <div id={styles.centerBox}></div>
                 <div id={styles.menuBox}>
-                    <div id ={styles.searchBox} className={styles.menuBoxMargin} ref={handle}>
+                    <div id ={styles.searchBox} className={styles.menuBoxMargin} ref={targetRef}>
                         <Image
                             src={searchIcon}
                             alt="검색아이콘"

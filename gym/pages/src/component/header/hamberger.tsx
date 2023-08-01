@@ -12,6 +12,7 @@ const Hamberger = () => {
         alignItems:'center',
         width:"100px",
         height:"100px",
+        position: 'relative'
         
     }}>
     <motion.div
@@ -19,7 +20,7 @@ const Hamberger = () => {
             width:"30px",
             height:"5px",
             backgroundColor:"blue",
-            marginTop:"2.5px"
+            position: 'absolute'
         }}
         animate={{
             scale:[1,1],
@@ -38,7 +39,7 @@ const Hamberger = () => {
             width:"30px",
             height:"5px",
             backgroundColor:"blue",
-            marginBottom:"2.5px"
+            position: 'absolute'
         }}
         animate={{
             scale:[1,1],

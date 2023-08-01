@@ -7,6 +7,7 @@ const Hamberger = () => {
     <div
     style={{
         display:'flex',
+        flexDirection:'column',
         justifyContent:'center',
         alignItems:'center',
         width:"100px",
@@ -27,8 +28,8 @@ const Hamberger = () => {
             duration: 1,
             ease: "liner",
             times: [0, 0.5],
-            repeat: Infinity,
-            repeatDelay: 1
+            repeat: 1,
+            
           }}
     />
     <motion.div
@@ -45,8 +46,8 @@ const Hamberger = () => {
             duration: 1,
             ease: "liner",
             times: [0, 0.5],
-            repeat: Infinity,
-            repeatDelay: 1
+            repeat: 1,
+
           }}
     />
     </div>

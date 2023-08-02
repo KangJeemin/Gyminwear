@@ -33,9 +33,14 @@ const SearchModal = () => {
                 <input id={styles.searchBoxInput}type="text" />
                 <div id= {styles.searchBoxDelete}></div>
             </div>
-            <div id={styles.searchRecentBox}>최근 검색어1</div>
+            <div id={styles.searchRecentTextBox}>최근 검색어</div>
+            <div id={styles.searchRecentLogContainer}>
+                <div id={styles.searchRecentLogBox}>
+                    <div id={styles.searchRecentLogs}></div>
+                    <div id={styles.searchRecentLogDelete}></div>
+                </div>
+            </div>
         </div>
-        
         <div id={styles.searchBoxRight}></div>
     </div>
         

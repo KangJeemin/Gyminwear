@@ -36,7 +36,8 @@
     position: relative;   
 }
 #hambergerBox{
-    flex: 1;
+    width: 25px;
+    height: 25px;
     position: relative;   
 }
 .flexRow {

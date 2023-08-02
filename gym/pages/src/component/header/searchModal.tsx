@@ -5,10 +5,9 @@ const SearchModal = () => {
     <motion.div
     style={{
         position: 'fixed',
-        top: '-50vh', // Initial position above the viewport
+        top: '5vh',
         left: 0,
         width: '100vw',
-        height: '100vh',
         backgroundColor: 'white',
         display: 'flex',
         justifyContent: 'center',
@@ -16,12 +15,12 @@ const SearchModal = () => {
         opacity:0,
       }}
       animate={{
-        top: '5vh', // Final position at the top of the viewport
-        opacity:[0 ,0.25, 1],
+        height:['0vh', '95vh'],
+        opacity:[0 ,1],
       }}
       transition={{
-        duration: 1,
-        times:[0, 0.5, 1],
+        duration: 0.5,
+        times:[0, 1],
         
         ease: 'easeOut',
       }}

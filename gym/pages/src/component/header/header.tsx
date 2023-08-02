@@ -6,11 +6,13 @@ import searchIcon from '../../../../public/image/search.png'
 import shoppingIcon from '../../../../public/image/shopingBag.png'
 import hambergerIcon from '../../../../public/image/hamberger.png'
 import HambergerModal from './hambergerModal';
+import SearchModal from './searchModal'
 import { useRef } from 'react'
 
 
-const Hamberger = () => {
+const Header = () => {
 const [state,setState] = React.useState(false);
+const [searchState, setSearchState] = React.useState(false);
 
 const searchBoxRef = useRef<HTMLDivElement | null>(null);
 const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
@@ -115,11 +117,11 @@ const handle = ()=> {
                     }
                 }>오늘의 공지사항!</p>
             </div>
-            {state && <HambergerModal />}
+            {state && <SearchModal/>}
         </div>
     
     
    )
 }
 
-export default Hamberger
+export default Header

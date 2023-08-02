@@ -12,7 +12,7 @@ import { useRef } from 'react'
 const Hamberger = () => {
 const [state,setState] = React.useState(false);
 
-const targetRef = useRef(null);
+const targetRef = useRef<HTMLDivElement | null>(null);
 const handle = ()=> {
     if(targetRef.current){
         targetRef.current.style.display = "none"
@@ -20,7 +20,6 @@ const handle = ()=> {
 }
     return (
         <div id={styles.header} className={`${styles.flexColumn}`}>
-            
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox}></div>
                 <div id={styles.centerBox}></div>

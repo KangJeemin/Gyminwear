@@ -31,6 +31,8 @@
 #searchBoxInput{
     width: 70%;
     height: 100%;
+    color: black;
+    background-color: white;
 }
 #searchBoxDelete{
     width: 15%;

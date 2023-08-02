@@ -72,7 +72,7 @@ const handle = ()=> {
                             style={{
                                 width:"30px",
                                 height:"5px",
-                                marginBottom:state? "2px":"0px",
+                                marginBottom:state? "0px":"4px",
                                 backgroundColor:"black",
                                 position: state?'absolute' :"relative", 
                             }}

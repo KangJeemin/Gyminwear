@@ -42,7 +42,7 @@ const handle = ()=> {
                             layout='fill'
                         />
                     </div>
-                    <div id ={styles.hambergerBox} className={styles.menuBoxMargin}>
+                    <div id ={styles.hambergerBox} className={styles.menuBoxMargin} onClick={handle}>
                         <div
                         style={{
                             display:'flex',
@@ -58,7 +58,7 @@ const handle = ()=> {
                             style={{
                                 width:"30px",
                                 height:"5px",
-                                backgroundColor:"blue",
+                                backgroundColor:"black",
                                 position: 'absolute'
                             }}
                             animate={{
@@ -76,7 +76,7 @@ const handle = ()=> {
                             style={{
                                 width:"30px",
                                 height:"5px",
-                                backgroundColor:"blue",
+                                backgroundColor:"black",
                                 position: 'absolute'
                             }}
                             animate={{

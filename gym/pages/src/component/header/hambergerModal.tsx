@@ -16,13 +16,12 @@ const HambergerModal = () => {
         opacity:0,
       }}
       animate={{
-        
         opacity:[0 , 1],
         height: ['0vh', '95vh']
       }}
       transition={{
         duration: 0.5,
-        times:[0, 0.5],
+        times:[0, 1],
         
         ease: 'easeOut',
       }}

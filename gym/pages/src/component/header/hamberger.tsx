@@ -43,12 +43,54 @@ const handle = ()=> {
                         />
                     </div>
                     <div id ={styles.hambergerBox} className={styles.menuBoxMargin}>
-                        <Image
-                            src={hambergerIcon}
-                            alt="햄버거아이콘"
-                            layout='fill'
-                            onClick={handle}
+                        <div
+                        style={{
+                            display:'flex',
+                            flexDirection:'column',
+                            justifyContent:'center',
+                            alignItems:'center',
+                            width:"100%",
+                            height:"100%",
+                            position: 'relative'
+
+                        }}>
+                        <motion.div
+                            style={{
+                                width:"30px",
+                                height:"5px",
+                                backgroundColor:"blue",
+                                position: 'absolute'
+                            }}
+                            animate={{
+                                scale:[1,1],
+                                rotate:[0,45]
+                            }}
+                            transition={{
+                                duration: 1,
+                                ease: "liner",
+                                times: [0, 0.5],
+
+                              }}
                         />
+                        <motion.div
+                            style={{
+                                width:"30px",
+                                height:"5px",
+                                backgroundColor:"blue",
+                                position: 'absolute'
+                            }}
+                            animate={{
+                                scale:[1,1],
+                                rotate:[0,-45]
+                            }}
+                            transition={{
+                                duration: 1,
+                                ease: "liner",
+                                times: [0, 0.5],
+                            
+                              }}
+                        />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,56 +104,7 @@ const handle = ()=> {
             {state && <Modal />}
         </div>
     
-    // <div
-    // style={{
-    //     display:'flex',
-    //     flexDirection:'column',
-    //     justifyContent:'center',
-    //     alignItems:'center',
-    //     width:"100px",
-    //     height:"100px",
-    //     position: 'relative'
-        
-    // }}>
-    // <motion.div
-    //     style={{
-    //         width:"30px",
-    //         height:"5px",
-    //         backgroundColor:"blue",
-    //         position: 'absolute'
-    //     }}
-    //     animate={{
-    //         scale:[1,1],
-    //         rotate:[0,45]
-    //     }}
-    //     transition={{
-    //         duration: 1,
-    //         ease: "liner",
-    //         times: [0, 0.5],
-    //         repeat: 1,
-            
-    //       }}
-    // />
-    // <motion.div
-    //     style={{
-    //         width:"30px",
-    //         height:"5px",
-    //         backgroundColor:"blue",
-    //         position: 'absolute'
-    //     }}
-    //     animate={{
-    //         scale:[1,1],
-    //         rotate:[0,-45]
-    //     }}
-    //     transition={{
-    //         duration: 1,
-    //         ease: "liner",
-    //         times: [0, 0.5],
-    //         repeat: 1,
-
-    //       }}
-    // />
-    // </div>
+    
    )
 }
 

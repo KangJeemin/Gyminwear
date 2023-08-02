@@ -3,10 +3,7 @@ import Link from 'next/link'
 const index = ()=>{
     return(
         <div>
-            <Link href={"/topPage"}>
-                <p>강지민 페이지</p>
-            </Link>
-            
+            메인페이지
         </div>
     )
 }

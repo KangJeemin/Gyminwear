@@ -36,8 +36,8 @@ const SearchModal = () => {
             <div id={styles.searchRecentTextBox}>최근 검색어</div>
             <div id={styles.searchRecentLogContainer}>
                 <div id={styles.searchRecentLogBox}>
-                    <div id={styles.searchRecentLogs}></div>
-                    <div id={styles.searchRecentLogDelete}></div>
+                    <div id={styles.searchRecentLogs}>덤브스트럭</div>
+                    <div id={styles.searchRecentLogDelete}>x</div>
                 </div>
             </div>
         </div>

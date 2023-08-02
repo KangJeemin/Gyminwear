@@ -30,11 +30,10 @@ const SearchModal = () => {
         <div id={styles.searchBox}>
             <div id= {styles.searchBoxIcon}></div>
             <input id={styles.searchBoxInput}type="text" />
+            <div id= {styles.searchBoxDelete}></div>
         </div>
         <div id={styles.searchBoxRight}></div>
     </div>
-    <div></div>
-    <div></div>
         
      
     </motion.div>

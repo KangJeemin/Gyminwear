@@ -1,6 +1,6 @@
 #searchContainer{
     width: 100%;
-    height: 5%;
+    height: 100%;
     display: flex;
 }
 #searchBoxLeft{
@@ -18,10 +18,13 @@
 }
 #searchBoxIcon{
     width: 15%;
+    height: 5%;
 }
 #searchBoxInput{
     width: 70%;
+    height: 5%;
 }
 #searchBoxDelete{
     width: 15%;
+    height: 5%;
 }

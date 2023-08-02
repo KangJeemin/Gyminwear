@@ -16,10 +16,10 @@ const searchBoxRef = useRef<HTMLDivElement | null>(null);
 const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
 const handle = ()=> {
     if(searchBoxRef.current){
-        searchBoxRef.current.style.display = "none"
+        searchBoxRef.current.style.visibility = "hidden"
     }
     if(shoppingBoxRef.current){
-        shoppingBoxRef.current.style.display = "none"
+        shoppingBoxRef.current.style.visibility = "hidden"
     }
 }
     return (

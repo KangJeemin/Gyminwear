@@ -4,11 +4,14 @@
     display: flex;
 }
 #searchBoxLeft{
-
+    flex: 1;
+    background-color: red;
 }
 #searchBox{
-    
+    flex: 5;
+    background-color: blue;
 }
 #searchBoxRight{
-    
+    flex: 1;
+    background-color:green;
 }

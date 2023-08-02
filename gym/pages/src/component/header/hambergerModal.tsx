@@ -5,7 +5,7 @@ const HambergerModal = () => {
     <motion.div
     style={{
         position: 'fixed',
-        top: '0vh', // Initial position above the viewport
+        top: '-50vh', // Initial position above the viewport
         left: 0,
         width: '100vw',
         height: '100vh',
@@ -17,12 +17,13 @@ const HambergerModal = () => {
       }}
       animate={{
         top: '5vh', // Final position at the top of the viewport
-        opacity:1,
+        opacity:[0 ,0.25, 1],
       }}
       transition={{
-        duration: 0.5,
+        duration: 1,
+        times:[0, 0.5, 1],
         
-        ease: 'linear',
+        ease: 'easeOut',
       }}
     >
       {/* 모달 내용 */}

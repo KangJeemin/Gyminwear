@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const Modal = () => {
+const HambergerModal = () => {
   return (
     <motion.div
     style={{
@@ -44,4 +44,4 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default HambergerModal;

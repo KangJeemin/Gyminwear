@@ -1,10 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
-import Hamberger from './src/component/header/hamberger'
 const index = ()=>{
     return(
         <div>
-            <Hamberger/>
+            메인페이지
         </div>
     )
 }

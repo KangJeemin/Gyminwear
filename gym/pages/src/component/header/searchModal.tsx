@@ -1,5 +1,6 @@
+import { style } from '@mui/system';
 import { motion } from 'framer-motion';
-
+import styles from './searchModal.module.css'
 const SearchModal = () => {
   return (
     <motion.div
@@ -21,25 +22,21 @@ const SearchModal = () => {
       transition={{
         duration: 0.5,
         times:[0, 1],
-        
         ease: 'easeOut',
       }}
     >
-      {/* 모달 내용 */}
-      {/* 모달 내에 표시할 내용이나 컴포넌트를 추가할 수 있습니다 */}
-      <p>이것은 모달입니다!</p>
-      <div
-    style={{
-        display:'flex',
-        flexDirection:'column',
-        justifyContent:'center',
-        alignItems:'center',
-        width:"100px",
-        height:"100px",
-        position: 'relative'
-        
-    }}>
+    <div id={styles.searchContainer}>
+        <div id={styles.searchBoxLeft}></div>
+        <div id={styles.searchBox}>
+            <div id= {styles.searchBoxIcon}></div>
+            <input id={styles.searchBoxInput}type="text" />
+        </div>
+        <div id={styles.searchBoxRight}></div>
     </div>
+    <div></div>
+    <div></div>
+        
+     
     </motion.div>
   );
 };

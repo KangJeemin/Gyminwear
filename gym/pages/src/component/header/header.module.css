@@ -1,12 +1,12 @@
 #header{
     width:100vw;
-    height:10vh;
+    height:85px;
     background-color:white;
 }
 
 #categoryBox{
     width:100vw;
-    height:5vh;
+    height:40px;
 }
 #logoBox {
     width: 33%;
@@ -15,7 +15,7 @@
 }
 #announcement{
     width:100vw;
-    height: 5vh;
+    height: 45px;
     background-color: gray;
 }
 #centerBox {

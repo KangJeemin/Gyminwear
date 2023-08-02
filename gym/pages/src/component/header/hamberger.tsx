@@ -15,17 +15,25 @@ const [state,setState] = React.useState(false);
 const searchBoxRef = useRef<HTMLDivElement | null>(null);
 const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
 const handle = ()=> {
-    if(searchBoxRef.current){
-        searchBoxRef.current.style.visibility = "hidden"
-    }
-    if(shoppingBoxRef.current){
-        shoppingBoxRef.current.style.visibility = "hidden"
-    }
     if(state){
         setState(false)
+        if(searchBoxRef.current){
+            searchBoxRef.current.style.visibility = "visible"
+        }
+        if(shoppingBoxRef.current){
+            shoppingBoxRef.current.style.visibility = "visible"
+        }
     }
     else{
         setState(true)
+        if(searchBoxRef.current){
+            searchBoxRef.current.style.visibility = "hidden"
+        }
+        if(shoppingBoxRef.current){
+            shoppingBoxRef.current.style.visibility = "hidden"
+        }
+        
+        
     }
 }
     return (
@@ -64,8 +72,9 @@ const handle = ()=> {
                             style={{
                                 width:"30px",
                                 height:"5px",
+                                marginBottom:state? "2px":"0px",
                                 backgroundColor:"black",
-                                position: 'absolute'
+                                position: state?'absolute' :"relative", 
                             }}
 
                             animate={{
@@ -83,7 +92,7 @@ const handle = ()=> {
                                 width:"30px",
                                 height:"5px",
                                 backgroundColor:"black",
-                                position: 'absolute'
+                                position: state?'absolute' :"relative", 
                             }}
                             animate={{
                                 scale: state ? [1, 1] : [1, 1],

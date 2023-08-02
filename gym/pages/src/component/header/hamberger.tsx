@@ -12,10 +12,14 @@ import { useRef } from 'react'
 const Hamberger = () => {
 const [state,setState] = React.useState(false);
 
-const targetRef = useRef<HTMLDivElement | null>(null);
+const searchBoxRef = useRef<HTMLDivElement | null>(null);
+const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
 const handle = ()=> {
-    if(targetRef.current){
-        targetRef.current.style.display = "none"
+    if(searchBoxRef.current){
+        searchBoxRef.current.style.display = "none"
+    }
+    if(shoppingBoxRef.current){
+        shoppingBoxRef.current.style.display = "none"
     }
 }
     return (
@@ -24,14 +28,14 @@ const handle = ()=> {
                 <div id={styles.logoBox}></div>
                 <div id={styles.centerBox}></div>
                 <div id={styles.menuBox}>
-                    <div id ={styles.searchBox} className={styles.menuBoxMargin} ref={targetRef}>
+                    <div id ={styles.searchBox} className={styles.menuBoxMargin} ref={searchBoxRef}>
                         <Image
                             src={searchIcon}
                             alt="검색아이콘"
                             layout='fill'
                         />
                     </div>
-                    <div id ={styles.shoppingBox} className={styles.menuBoxMargin}>
+                    <div id ={styles.shoppingBox} className={styles.menuBoxMargin} ref={shoppingBoxRef}>
                         <Image
                             src={shoppingIcon}
                             alt="쇼핑백아이콘"

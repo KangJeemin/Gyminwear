@@ -5,7 +5,7 @@ const HambergerModal = () => {
     <motion.div
     style={{
         position: 'fixed',
-        top: '-100vh', // Initial position above the viewport
+        top: '0vh', // Initial position above the viewport
         left: 0,
         width: '100vw',
         height: '100vh',

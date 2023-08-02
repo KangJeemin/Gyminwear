@@ -21,8 +21,8 @@ const HambergerModal = () => {
         height: ['0vh', '95vh']
       }}
       transition={{
-        duration: 1,
-        times:[0, 1],
+        duration: 0.5,
+        times:[0, 0.5],
         
         ease: 'easeOut',
       }}

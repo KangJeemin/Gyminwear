@@ -79,12 +79,12 @@ const handle = ()=> {
 
                             animate={{
                                 scale: state ? [1, 1] : [1, 1],
-                                rotate: state ? [0, 45] : [0, 0],
+                                rotate: state ? [0, 45] : [45, 0],
                             }}
                             transition={{
-                                duration: state? 1 : 0,
+                                duration: state? 1 : 1,
                                 ease: "liner",
-                                times: state? [0, 0.5] : [0,0 ],
+                                times: state? [0, 0.5] : [0,0.5],
                               }}
                         />
                         <motion.div
@@ -96,12 +96,12 @@ const handle = ()=> {
                             }}
                             animate={{
                                 scale: state ? [1, 1] : [1, 1],
-                                rotate: state ? [0, -45] : [0, 0],
+                                rotate: state ? [0, -45] : [-45, 0],
                             }}
                             transition={{
-                                duration: state? 1 : 0,
+                                duration: state? 1 : 1,
                                 ease: "liner",
-                                times: state? [0, 0.5] : [0,0 ],
+                                times: state? [0, 0.5] : [0,0.5],
                               }}
                         />
                         </div>
@@ -115,7 +115,7 @@ const handle = ()=> {
                     }
                 }>오늘의 공지사항!</p>
             </div>
-            {/* {state && <Modal />} */}
+            {state && <Modal />}
         </div>
     
     

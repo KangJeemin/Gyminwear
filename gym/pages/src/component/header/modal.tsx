@@ -5,7 +5,7 @@ const Modal = () => {
     <motion.div
     style={{
         position: 'fixed',
-        top: '-100%', // Initial position above the viewport
+        top: '-100vh', // Initial position above the viewport
         left: 0,
         width: '100vw',
         height: '100vh',
@@ -15,10 +15,10 @@ const Modal = () => {
         alignItems: 'center',
       }}
       animate={{
-        top: 0, // Final position at the top of the viewport
+        top: '5vh', // Final position at the top of the viewport
       }}
       transition={{
-        duration: 0.25,
+        duration: 0.1,
         ease: 'linear',
       }}
     >
@@ -36,45 +36,7 @@ const Modal = () => {
         position: 'relative'
         
     }}>
-    <motion.div
-        style={{
-            width:"30px",
-            height:"5px",
-            backgroundColor:"blue",
-            position: 'absolute'
-        }}
-        animate={{
-            scale:[1,1],
-            rotate:[0,45]
-        }}
-        transition={{
-            duration: 2,
-            ease: "liner",
-            times: [0, 1],
-            
-          }}
-    />
-    <motion.div
-        style={{
-            width:"30px",
-            height:"5px",
-            backgroundColor:"blue",
-            position: 'absolute'
-        }}
-        animate={{
-            scale:[1,1],
-            rotate:[0,-45]
-        }}
-        transition={{
-            duration: 2,
-            ease: "liner",
-            times: [0, 1],
-
-          }}
-    />
     </div>
-      
-
     </motion.div>
   );
 };

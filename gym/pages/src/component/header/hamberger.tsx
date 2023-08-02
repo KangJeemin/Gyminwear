@@ -82,7 +82,7 @@ const handle = ()=> {
                                 rotate: state ? [0, 45] : [45, 0],
                             }}
                             transition={{
-                                duration: state? 1 : 1,
+                                duration: state? 0.5 : 0.5,
                                 ease: "liner",
                                 times: state? [0, 0.5] : [0,0.5],
                               }}
@@ -99,7 +99,7 @@ const handle = ()=> {
                                 rotate: state ? [0, -45] : [-45, 0],
                             }}
                             transition={{
-                                duration: state? 1 : 1,
+                                duration: state? 0.5 : 0.5,
                                 ease: "liner",
                                 times: state? [0, 0.5] : [0,0.5],
                               }}

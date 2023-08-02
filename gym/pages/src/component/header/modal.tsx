@@ -13,12 +13,15 @@ const Modal = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        opacity:0,
       }}
       animate={{
         top: '5vh', // Final position at the top of the viewport
+        opacity:1,
       }}
       transition={{
-        duration: 0.1,
+        duration: 0.5,
+        
         ease: 'linear',
       }}
     >

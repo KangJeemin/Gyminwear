@@ -21,6 +21,12 @@ const handle = ()=> {
     if(shoppingBoxRef.current){
         shoppingBoxRef.current.style.visibility = "hidden"
     }
+    if(state){
+        setState(false)
+    }
+    else{
+        setState(true)
+    }
 }
     return (
         <div id={styles.header} className={`${styles.flexColumn}`}>
@@ -61,15 +67,15 @@ const handle = ()=> {
                                 backgroundColor:"black",
                                 position: 'absolute'
                             }}
+
                             animate={{
-                                scale:[1,1],
-                                rotate:[0,45]
+                                scale: state ? [1, 1] : [1, 1],
+                                rotate: state ? [0, 45] : [0, 0],
                             }}
                             transition={{
-                                duration: 1,
+                                duration: state? 1 : 0,
                                 ease: "liner",
-                                times: [0, 0.5],
-
+                                times: state? [0, 0.5] : [0,0 ],
                               }}
                         />
                         <motion.div
@@ -80,14 +86,13 @@ const handle = ()=> {
                                 position: 'absolute'
                             }}
                             animate={{
-                                scale:[1,1],
-                                rotate:[0,-45]
+                                scale: state ? [1, 1] : [1, 1],
+                                rotate: state ? [0, -45] : [0, 0],
                             }}
                             transition={{
-                                duration: 1,
+                                duration: state? 1 : 0,
                                 ease: "liner",
-                                times: [0, 0.5],
-                            
+                                times: state? [0, 0.5] : [0,0 ],
                               }}
                         />
                         </div>
@@ -101,7 +106,7 @@ const handle = ()=> {
                     }
                 }>오늘의 공지사항!</p>
             </div>
-            {state && <Modal />}
+            {/* {state && <Modal />} */}
         </div>
     
     

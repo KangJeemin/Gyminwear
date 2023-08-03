@@ -8,17 +8,30 @@ import hambergerIcon from '../../../../public/image/hamberger.png'
 import HambergerModal from './hambergerModal';
 import SearchModal from './searchModal'
 import { useRef } from 'react'
+import { AuthContext } from '../../../../public/context/authcontext';
+
 
 
 const Header = () => {
-const [state,setState] = React.useState(false);
 const [searchState, setSearchState] = React.useState(false);
+const {state,setState, setHambergerState}= React.useContext(AuthContext)
 
 const searchBoxRef = useRef<HTMLDivElement | null>(null);
 const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
 const handle = ()=> {
-    if(state){
-        setState(false)
+    if(state ===0){
+        setState(1)
+        setHambergerState(1)
+        if(searchBoxRef.current){
+            searchBoxRef.current.style.visibility = "hidden"
+        }
+        if(shoppingBoxRef.current){
+            shoppingBoxRef.current.style.visibility = "hidden"
+        }
+    }
+    else if(state===1){
+        setState(2)
+        setHambergerState(2)
         if(searchBoxRef.current){
             searchBoxRef.current.style.visibility = "visible"
         }
@@ -26,16 +39,25 @@ const handle = ()=> {
             shoppingBoxRef.current.style.visibility = "visible"
         }
     }
-    else{
-        setState(true)
+    else if (state ===2){
+        setState(1)
+        setHambergerState(1)
         if(searchBoxRef.current){
             searchBoxRef.current.style.visibility = "hidden"
         }
         if(shoppingBoxRef.current){
             shoppingBoxRef.current.style.visibility = "hidden"
         }
-        
-        
+    }
+    else{
+        setState(2)
+        setHambergerState(2)
+        if(searchBoxRef.current){
+            searchBoxRef.current.style.visibility = "visible"
+        }
+        if(shoppingBoxRef.current){
+            shoppingBoxRef.current.style.visibility = "visible"
+        }
     }
 }
     return (
@@ -72,38 +94,38 @@ const handle = ()=> {
                         }}>
                         <motion.div
                             style={{
-                                width:"30px",
-                                height:"5px",
-                                marginBottom:state? "0px":"4px",
+                                width:"25px",
+                                height:"2px",
+                                marginBottom:state ===1? "0px":"4px",
                                 backgroundColor:"black",
-                                position: state?'absolute' :"relative", 
+                                position: state ===1 ?'absolute' :"relative", 
                             }}
 
                             animate={{
-                                scale: state ? [1, 1] : [1, 1],
-                                rotate: state ? [0, 45] : [45, 0],
+                                scale: state ===1 ? [1, 1] : [1, 1],
+                                rotate: state ===1 ? [0, 45] : [45, 0],
                             }}
                             transition={{
-                                duration: state? 0.5 : 0.5,
+                                duration: state ===0 ? 0 : state===1 ? 0.5 : 0.5,
                                 ease: "liner",
-                                times: state? [0, 0.5] : [0,0.5],
+                                times: state ===1 ? [0, 0.5] : [0,0.5],
                               }}
                         />
                         <motion.div
                             style={{
-                                width:"30px",
-                                height:"5px",
+                                width:"25px",
+                                height:"2px",
                                 backgroundColor:"black",
-                                position: state?'absolute' :"relative", 
+                                position: state ===1 ?'absolute' :"relative", 
                             }}
                             animate={{
-                                scale: state ? [1, 1] : [1, 1],
-                                rotate: state ? [0, -45] : [-45, 0],
+                                scale: state ===1 ? [1, 1] : [1, 1],
+                                rotate: state ===1 ? [0, -45] : [-45, 0],
                             }}
                             transition={{
-                                duration: state? 0.5 : 0.5,
+                                duration: state ===0 ? 0 : state===1 ? 0.5 : 0.5,
                                 ease: "liner",
-                                times: state? [0, 0.5] : [0,0.5],
+                                times: state ===1? [0, 0.5] : [0,0.5],
                               }}
                         />
                         </div>
@@ -117,7 +139,7 @@ const handle = ()=> {
                     }
                 }>오늘의 공지사항!</p>
             </div>
-            {state && <SearchModal/>}
+            <HambergerModal/>
         </div>
     
     

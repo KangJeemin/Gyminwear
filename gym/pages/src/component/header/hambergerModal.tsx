@@ -22,12 +22,12 @@ const HambergerModal = () => {
         visibility: hambergerState ? "visible":"hidden"
       }}
       animate={{
-        opacity:[0 , 1],
-        height: ['0vh', hambergerState ? '95vh' : "0vh"]
+        opacity:[hambergerState? 0 : 1 ,hambergerState ?  1 : 0],
+        height: [hambergerState? '0vh':'95vh', hambergerState ? '95vh' : "0vh"]
       }}
       transition={{
         duration: 0.5,
-        times:[0, hambergerState? 1: 0],
+        times:[0, 1],
         ease: 'easeOut',
       }}
     >

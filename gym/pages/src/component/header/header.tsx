@@ -13,12 +13,11 @@ import { AuthContext } from '../../../../public/context/authcontext';
 
 
 const Header = () => {
-const [searchState, setSearchState] = React.useState(false);
-const {state,setState, setHambergerState}= React.useContext(AuthContext)
+const {state,setState, hambergerState, setHambergerState,searchState, setSearchState}= React.useContext(AuthContext)
 
 const searchBoxRef = useRef<HTMLDivElement | null>(null);
 const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
-const handle = ()=> {
+const clickHamberger = ()=> {
     if(state ===0){
         setState(1)
         setHambergerState(1)
@@ -32,6 +31,7 @@ const handle = ()=> {
     else if(state===1){
         setState(2)
         setHambergerState(2)
+        setSearchState(2)
         if(searchBoxRef.current){
             searchBoxRef.current.style.visibility = "visible"
         }
@@ -60,13 +60,56 @@ const handle = ()=> {
         }
     }
 }
+const clickSearch = () => {
+    if(state ===0){
+        setState(1)
+        setSearchState(1)
+        if(searchBoxRef.current){
+            searchBoxRef.current.style.visibility = "hidden"
+        }
+        if(shoppingBoxRef.current){
+            shoppingBoxRef.current.style.visibility = "hidden"
+        }
+    }
+    else if(state===1){
+        setState(2)
+        setHambergerState(2)
+        setSearchState(2)
+        if(searchBoxRef.current){
+            searchBoxRef.current.style.visibility = "visible"
+        }
+        if(shoppingBoxRef.current){
+            shoppingBoxRef.current.style.visibility = "visible"
+        }
+    }
+    else if (state ===2){
+        setState(1)
+        setSearchState(1)
+        if(searchBoxRef.current){
+            searchBoxRef.current.style.visibility = "hidden"
+        }
+        if(shoppingBoxRef.current){
+            shoppingBoxRef.current.style.visibility = "hidden"
+        }
+    }
+    else{
+        setState(2)
+        setSearchState(2)
+        if(searchBoxRef.current){
+            searchBoxRef.current.style.visibility = "visible"
+        }
+        if(shoppingBoxRef.current){
+            shoppingBoxRef.current.style.visibility = "visible"
+        }
+    }
+}
     return (
         <div id={styles.header} className={`${styles.flexColumn}`}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox}></div>
                 <div id={styles.centerBox}></div>
                 <div id={styles.menuBox}>
-                    <div id ={styles.searchBox} className={styles.menuBoxMargin} ref={searchBoxRef}>
+                    <div id ={styles.searchBox} className={styles.menuBoxMargin} ref={searchBoxRef} onClick={clickSearch}>
                         <Image
                             src={searchIcon}
                             alt="검색아이콘"
@@ -80,7 +123,7 @@ const handle = ()=> {
                             layout='fill'
                         />
                     </div>
-                    <div id ={styles.hambergerBox} className={styles.menuBoxMargin} onClick={handle}>
+                    <div id ={styles.hambergerBox} className={styles.menuBoxMargin} onClick={clickHamberger}>
                         <div
                         style={{
                             display:'flex',
@@ -140,6 +183,7 @@ const handle = ()=> {
                 }>오늘의 공지사항!</p>
             </div>
             <HambergerModal/>
+            <SearchModal/>
         </div>
     
     

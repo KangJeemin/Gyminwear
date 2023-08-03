@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
 import styles from './searchModal.module.css'
+import { AuthContext } from '../../../../public/context/authcontext';
+import { useContext } from 'react';
+
 const SearchModal = () => {
+  const {searchState} = useContext(AuthContext)
   return (
     <motion.div
     style={{

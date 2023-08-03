@@ -22,6 +22,17 @@ const searchBoxRef = useRef<HTMLDivElement | null>(null);
 const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
 const handle = ()=> {
     if(state ===0){
+        setState(1)
+        setHambergerState(true)
+        if(searchBoxRef.current){
+            searchBoxRef.current.style.visibility = "hidden"
+        }
+        if(shoppingBoxRef.current){
+            shoppingBoxRef.current.style.visibility = "hidden"
+        }
+    }
+    else if(state===1){
+        setState(2)
         setHambergerState(false)
         if(searchBoxRef.current){
             searchBoxRef.current.style.visibility = "visible"
@@ -30,7 +41,8 @@ const handle = ()=> {
             shoppingBoxRef.current.style.visibility = "visible"
         }
     }
-    else if(state===1){
+    else if (state ===2){
+        setState(1)
         setHambergerState(true)
         if(searchBoxRef.current){
             searchBoxRef.current.style.visibility = "hidden"
@@ -40,6 +52,7 @@ const handle = ()=> {
         }
     }
     else{
+        setState(2)
         setHambergerState(false)
         if(searchBoxRef.current){
             searchBoxRef.current.style.visibility = "visible"
@@ -95,7 +108,7 @@ const handle = ()=> {
                                 rotate: state ===1 ? [0, 45] : [45, 0],
                             }}
                             transition={{
-                                duration: state ===1 ? 0.5 : 0.5,
+                                duration: state ===0 ? 0 : state===1 ? 0.5 : 0.5,
                                 ease: "liner",
                                 times: state ===1 ? [0, 0.5] : [0,0.5],
                               }}
@@ -112,7 +125,7 @@ const handle = ()=> {
                                 rotate: state ===1 ? [0, -45] : [-45, 0],
                             }}
                             transition={{
-                                duration: state ===1 ? 0.5 : 0.5,
+                                duration: state ===0 ? 0 : state===1 ? 0.5 : 0.5,
                                 ease: "liner",
                                 times: state ===1? [0, 0.5] : [0,0.5],
                               }}

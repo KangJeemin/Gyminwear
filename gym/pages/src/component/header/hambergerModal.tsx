@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import styles from './hambergerModal.module.css'
-
+import { useRouter } from 'next/router';
+import { Router } from 'react-router-dom';
 const HambergerModal = () => {
+  const router = useRouter();
   return (
     <motion.div
     style={{
@@ -28,8 +30,12 @@ const HambergerModal = () => {
         <div id={styles.hambergerBoxLeft}></div>
         <div id={styles.hambergerBoxCenter}>
           <div className={styles.hambergerNavigate}></div>
-          <div className={styles.hambergerNavigate}>Top</div>
-          <div className={styles.hambergerNavigate}>Bottom</div>
+          <div className={styles.hambergerNavigate} onClick={()=>{
+            router.push("/topPage")
+          }}>Top</div>
+          <div className={styles.hambergerNavigate} onClick={()=>{
+            router.push("/bottomPage")
+          }}>Bottom</div>
         </div>
         <div id={styles.hambergerBoxRight}></div>
       </div>

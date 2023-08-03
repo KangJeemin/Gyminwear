@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../../public/context/authcontext';
 
 const HambergerModal = () => {
-  const {hambergerState,setHambergerState} = useContext(AuthContext)
+  const {hambergerState,setState,setHambergerState} = useContext(AuthContext)
   const router = useRouter();
   return (
     <motion.div
@@ -38,10 +38,12 @@ const HambergerModal = () => {
           <div className={styles.hambergerNavigate} onClick={()=>{
             router.push("/topPage")
             setHambergerState(0)
+            setState(0)
           }}>Top</div>
           <div className={styles.hambergerNavigate} onClick={()=>{
             router.push("/bottomPage")
             setHambergerState(0)
+            setState(0)
           }}>Bottom</div>
         </div>
         <div id={styles.hambergerBoxRight}></div>

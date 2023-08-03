@@ -13,9 +13,8 @@ import { AuthContext } from '../../../../public/context/authcontext';
 
 
 const Header = () => {
-const [state,setState] = React.useState(0);
 const [searchState, setSearchState] = React.useState(false);
-const {hambergerState, setHambergerState}= React.useContext(AuthContext)
+const {state,setState, setHambergerState}= React.useContext(AuthContext)
 
 const searchBoxRef = useRef<HTMLDivElement | null>(null);
 const shoppingBoxRef = useRef<HTMLDivElement | null>(null);

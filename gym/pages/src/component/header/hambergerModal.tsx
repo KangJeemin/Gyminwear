@@ -2,11 +2,11 @@ import { motion } from 'framer-motion';
 import styles from './hambergerModal.module.css'
 import { useRouter } from 'next/router';
 import { Router } from 'react-router-dom';
-import { useUser }  from '../context/authcontext';
 import { useContext } from 'react';
+import { AuthContext } from '../context/authcontext';
 
 const HambergerModal = () => {
-  const {state, setState} = useUser();
+  const {state , setState} = useContext(AuthContext)
   const router = useRouter();
   return (
     <motion.div

@@ -16,10 +16,10 @@ const HambergerModal = () => {
         left: 0,
         width: '100vw',
         backgroundColor: 'white',
-        display: 'flex',
+        display: hambergerState ? 'flex' : 'none',
         justifyContent: 'center',
         alignItems: 'center',
-        visibility: hambergerState ? "visible":"hidden"
+        
       }}
       animate={{
         opacity:[hambergerState? 0 : 1 ,hambergerState ?  1 : 0],

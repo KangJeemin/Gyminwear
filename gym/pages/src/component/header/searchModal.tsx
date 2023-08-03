@@ -1,4 +1,3 @@
-import { style } from '@mui/system';
 import { motion } from 'framer-motion';
 import styles from './searchModal.module.css'
 const SearchModal = () => {

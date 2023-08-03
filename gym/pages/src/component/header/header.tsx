@@ -94,8 +94,8 @@ const handle = ()=> {
                         }}>
                         <motion.div
                             style={{
-                                width:"30px",
-                                height:"5px",
+                                width:"25px",
+                                height:"2px",
                                 marginBottom:state ===1? "0px":"4px",
                                 backgroundColor:"black",
                                 position: state ===1 ?'absolute' :"relative", 
@@ -113,8 +113,8 @@ const handle = ()=> {
                         />
                         <motion.div
                             style={{
-                                width:"30px",
-                                height:"5px",
+                                width:"25px",
+                                height:"2px",
                                 backgroundColor:"black",
                                 position: state ===1 ?'absolute' :"relative", 
                             }}

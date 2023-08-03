@@ -23,7 +23,7 @@ const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
 const handle = ()=> {
     if(state ===0){
         setState(1)
-        setHambergerState(true)
+        setHambergerState(1)
         if(searchBoxRef.current){
             searchBoxRef.current.style.visibility = "hidden"
         }
@@ -33,7 +33,7 @@ const handle = ()=> {
     }
     else if(state===1){
         setState(2)
-        setHambergerState(false)
+        setHambergerState(2)
         if(searchBoxRef.current){
             searchBoxRef.current.style.visibility = "visible"
         }
@@ -43,7 +43,7 @@ const handle = ()=> {
     }
     else if (state ===2){
         setState(1)
-        setHambergerState(true)
+        setHambergerState(1)
         if(searchBoxRef.current){
             searchBoxRef.current.style.visibility = "hidden"
         }
@@ -53,7 +53,7 @@ const handle = ()=> {
     }
     else{
         setState(2)
-        setHambergerState(false)
+        setHambergerState(2)
         if(searchBoxRef.current){
             searchBoxRef.current.style.visibility = "visible"
         }

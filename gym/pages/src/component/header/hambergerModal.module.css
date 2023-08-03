@@ -1,0 +1,22 @@
+#hambergerContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+#hambergerBoxLeft{
+    width: 8%;
+}
+#hambergerBoxCenter{
+    width: 82%;
+    display: flex;
+    flex-direction: column;
+}
+#hambergerBoxRight{
+    width: 10%;
+}
+.hambergerNavigate{
+    width: 100%;
+    height: 5%;
+    color: black;
+    font-weight: bold;
+}

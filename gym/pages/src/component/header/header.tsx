@@ -117,7 +117,7 @@ const handle = ()=> {
                     }
                 }>오늘의 공지사항!</p>
             </div>
-            {state && <SearchModal/>}
+            {state && <HambergerModal/>}
         </div>
     
     

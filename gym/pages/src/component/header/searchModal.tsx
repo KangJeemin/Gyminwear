@@ -19,12 +19,12 @@ const SearchModal = () => {
         opacity:0,
       }}
       animate={{
-        height:['0vh', '95vh'],
-        opacity:[0 ,1],
+        opacity:searchState===0 ? [0,0] : searchState=== 1 ? [0,1] : [1,0],
+        height: searchState===0 ? ['0vh','0vh'] : searchState=== 1 ? ['0vh','95vh'] : ['95vh','0vh']
       }}
       transition={{
-        duration: 0.5,
-        times:[0, 1],
+        duration: searchState===0 ? 0 : searchState===1 ? 0.5 : 0.5, 
+        times:searchState===0 ? [0,0] : searchState===1 ? [0,1] : [0,1],
         ease: 'easeOut',
       }}
     >

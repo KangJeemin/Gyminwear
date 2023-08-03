@@ -14,15 +14,14 @@ import { flatten } from '@nestjs/common';
 
 
 const Header = () => {
-const [state,setState] = React.useState(false);
+const [state,setState] = React.useState(0);
 const [searchState, setSearchState] = React.useState(false);
 const {hambergerState, setHambergerState}= React.useContext(AuthContext)
 
 const searchBoxRef = useRef<HTMLDivElement | null>(null);
 const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
 const handle = ()=> {
-    if(state){
-        setState(false)
+    if(state ===0){
         setHambergerState(false)
         if(searchBoxRef.current){
             searchBoxRef.current.style.visibility = "visible"
@@ -31,8 +30,7 @@ const handle = ()=> {
             shoppingBoxRef.current.style.visibility = "visible"
         }
     }
-    else{
-        setState(true)
+    else if(state===1){
         setHambergerState(true)
         if(searchBoxRef.current){
             searchBoxRef.current.style.visibility = "hidden"
@@ -40,8 +38,15 @@ const handle = ()=> {
         if(shoppingBoxRef.current){
             shoppingBoxRef.current.style.visibility = "hidden"
         }
-        
-        
+    }
+    else{
+        setHambergerState(false)
+        if(searchBoxRef.current){
+            searchBoxRef.current.style.visibility = "visible"
+        }
+        if(shoppingBoxRef.current){
+            shoppingBoxRef.current.style.visibility = "visible"
+        }
     }
 }
     return (
@@ -80,19 +85,19 @@ const handle = ()=> {
                             style={{
                                 width:"30px",
                                 height:"5px",
-                                marginBottom:state? "0px":"4px",
+                                marginBottom:state ===1? "0px":"4px",
                                 backgroundColor:"black",
-                                position: state?'absolute' :"relative", 
+                                position: state ===1 ?'absolute' :"relative", 
                             }}
 
                             animate={{
-                                scale: state ? [1, 1] : [1, 1],
-                                rotate: state ? [0, 45] : [45, 0],
+                                scale: state ===1 ? [1, 1] : [1, 1],
+                                rotate: state ===1 ? [0, 45] : [45, 0],
                             }}
                             transition={{
-                                duration: state? 0.5 : 0.5,
+                                duration: state ===1 ? 0.5 : 0.5,
                                 ease: "liner",
-                                times: state? [0, 0.5] : [0,0.5],
+                                times: state ===1 ? [0, 0.5] : [0,0.5],
                               }}
                         />
                         <motion.div
@@ -100,16 +105,16 @@ const handle = ()=> {
                                 width:"30px",
                                 height:"5px",
                                 backgroundColor:"black",
-                                position: state?'absolute' :"relative", 
+                                position: state ===1 ?'absolute' :"relative", 
                             }}
                             animate={{
-                                scale: state ? [1, 1] : [1, 1],
-                                rotate: state ? [0, -45] : [-45, 0],
+                                scale: state ===1 ? [1, 1] : [1, 1],
+                                rotate: state ===1 ? [0, -45] : [-45, 0],
                             }}
                             transition={{
-                                duration: state? 0.5 : 0.5,
+                                duration: state ===1 ? 0.5 : 0.5,
                                 ease: "liner",
-                                times: state? [0, 0.5] : [0,0.5],
+                                times: state ===1? [0, 0.5] : [0,0.5],
                               }}
                         />
                         </div>

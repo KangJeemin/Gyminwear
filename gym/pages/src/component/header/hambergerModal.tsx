@@ -16,7 +16,7 @@ const HambergerModal = () => {
         left: 0,
         width: '100vw',
         backgroundColor: 'white',
-        display: hambergerState ? 'flex' : 'none',
+        display : 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         
@@ -27,7 +27,7 @@ const HambergerModal = () => {
       }}
       transition={{
         duration: 0.5,
-        times:[0, 1],
+        times:[0,1],
         ease: 'easeOut',
       }}
     >

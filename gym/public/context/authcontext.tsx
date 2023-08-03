@@ -1,16 +1,16 @@
 import React, { useState, createContext } from "react";
 
 interface AuthContextProps {
-  hambergerState: number;
-  setHambergerState: (state:number) => void;
-  searchState: number;
-  setSearchState: (state:number) => void;
+  hambergerState: boolean;
+  setHambergerState: (state:boolean) => void;
+  searchState: boolean;
+  setSearchState: (state:boolean) => void;
 }
 
 export const AuthContext = createContext<AuthContextProps>({
-  hambergerState: 0,
+  hambergerState: false,
   setHambergerState: () => {},
-  searchState:0,
+  searchState:false,
   setSearchState: () => {},
 
 });
@@ -18,8 +18,8 @@ export const AuthContext = createContext<AuthContextProps>({
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [hambergerState, setHambergerState] = useState(0);
-  const [searchState, setSearchState] = useState(0);
+  const [hambergerState, setHambergerState] = useState(false);
+  const [searchState, setSearchState] = useState(false);
   return (
     <AuthContext.Provider
       value={{

@@ -3,7 +3,7 @@ import styles from './hambergerModal.module.css'
 import { useRouter } from 'next/router';
 import { Router } from 'react-router-dom';
 import { useContext } from 'react';
-import { AuthContext } from '../context/authcontext';
+import { AuthContext } from '../../../../public/context/authcontext';
 
 const HambergerModal = () => {
   const {state , setState} = useContext(AuthContext)

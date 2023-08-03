@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../../public/context/authcontext';
 
 const HambergerModal = () => {
-  const {state , setState} = useContext(AuthContext)
+  const {hambergerState} = useContext(AuthContext)
   const router = useRouter();
   return (
     <motion.div
@@ -22,11 +22,11 @@ const HambergerModal = () => {
       }}
       animate={{
         opacity:[0 , 1],
-        height: ['0vh', '95vh']
+        height: ['0vh', hambergerState ? '95vh' : "0vh"]
       }}
       transition={{
         duration: 0.5,
-        times:[0, 1],
+        times:[0, hambergerState? 1: 0],
         ease: 'easeOut',
       }}
     >

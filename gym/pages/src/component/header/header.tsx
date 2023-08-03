@@ -8,17 +8,22 @@ import hambergerIcon from '../../../../public/image/hamberger.png'
 import HambergerModal from './hambergerModal';
 import SearchModal from './searchModal'
 import { useRef } from 'react'
+import { AuthContext } from '../../../../public/context/authcontext';
+import { flatten } from '@nestjs/common';
+
 
 
 const Header = () => {
 const [state,setState] = React.useState(false);
 const [searchState, setSearchState] = React.useState(false);
+const {hambergerState, setHambergerState}= React.useContext(AuthContext)
 
 const searchBoxRef = useRef<HTMLDivElement | null>(null);
 const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
 const handle = ()=> {
     if(state){
         setState(false)
+        setHambergerState(false)
         if(searchBoxRef.current){
             searchBoxRef.current.style.visibility = "visible"
         }
@@ -28,6 +33,7 @@ const handle = ()=> {
     }
     else{
         setState(true)
+        setHambergerState(true)
         if(searchBoxRef.current){
             searchBoxRef.current.style.visibility = "hidden"
         }
@@ -117,7 +123,7 @@ const handle = ()=> {
                     }
                 }>오늘의 공지사항!</p>
             </div>
-            {state && <HambergerModal/>}
+            <HambergerModal/>
         </div>
     
     

@@ -6,16 +6,16 @@ interface AuthContextProps {
   
 }
 
-export const AuthContext = createContext<AuthContextProps>({
+const AuthContext = createContext<AuthContextProps>({
   state: 0,
   setState: () => {},
 });
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [state, setState] = useState(0);
+export const useUser = () => React.useContext(AuthContext);
 
+const AuthProvider = ({children}:any)=>{
+
+  const [state, setState] = useState(0);
   return (
     <AuthContext.Provider
       value={{
@@ -26,4 +26,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       {children}
     </AuthContext.Provider>
   );
-};
+}
+
+export default AuthProvider

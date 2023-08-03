@@ -19,6 +19,7 @@ const HambergerModal = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        visibility: hambergerState ? "visible":"hidden"
       }}
       animate={{
         opacity:[0 , 1],

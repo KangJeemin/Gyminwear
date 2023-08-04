@@ -8,9 +8,10 @@
     height: 7%;
     background-color:white;
     color: black;
+    font-size: 20%
 }
 #searchResultComponent_text{
-    font-size: 10%;
+    
 }
 
 #searchResultComponent_itemContainer{

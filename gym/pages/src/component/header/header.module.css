@@ -29,7 +29,6 @@
 #menuBox {
     width: 38%;
     height: 100%;
-    display: flex;
 }
 #searchBox{
     width: 33%;

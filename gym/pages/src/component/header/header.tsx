@@ -9,6 +9,8 @@ import HambergerModal from './hambergerModal';
 import SearchModal from './searchModal'
 import { useRef } from 'react'
 import { AuthContext } from '../../../../public/context/authcontext';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -110,11 +112,7 @@ const clickSearch = () => {
                 <div id={styles.centerBox}></div>
                 <div id={styles.menuBox}>
                     <div id ={styles.searchBox} className={styles.menuBoxMargin} ref={searchBoxRef} onClick={clickSearch}>
-                        <Image
-                            src={searchIcon}
-                            alt="검색아이콘"
-                            layout='fill'
-                        />
+                        <FontAwesomeIcon icon={faBars} style={{fontSize:"10em",color:"black"}}/>
                     </div>
                     <div id ={styles.shoppingBox} className={styles.menuBoxMargin} ref={shoppingBoxRef}>
                         <Image

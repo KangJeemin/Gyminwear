@@ -23,6 +23,8 @@
     width:30%;
     height: 100%;
     color: black;
+    display: flex;
+    justify-content: flex-end;
 }
 #menuBox {
     width: 38%;
@@ -30,15 +32,15 @@
     display: flex;
 }
 #searchBox{
-    flex: 1;
+    width: 33%;
     position: relative;   
 }
 #shoppingBox{
-    flex: 1;
+    width: 33%;
     position: relative;   
 }
 #hambergerBox{
-    flex:1;
+    width: 33%;
     position: relative;   
 }
 .flexRow {

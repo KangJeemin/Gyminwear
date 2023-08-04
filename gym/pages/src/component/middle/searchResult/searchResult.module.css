@@ -1,0 +1,86 @@
+#searchComponent{
+    width: 100vw;
+    height: 75vh;
+    overflow-y: scroll;
+}
+#searchComponent_topText{
+    width: 100%;
+    height: 7%;
+    background-color:white;
+    color: black;
+}
+
+#searchComponent_itemContainer{
+    width: 100%;
+    height: 400%;
+    background-color: white;
+    overflow-y: scroll;
+}
+#searchComponent_item_itemComponent{
+    width: 100%;
+    height: 100%;
+}
+#searchComponent_item_imageSize{
+    width: 100%;
+    height: 80%;
+    background-color: red;
+}
+#searchComponent_item_textBoxSize{
+    width: 100%;
+    height: 30%;
+    background-color: white;
+}
+#searchComponent_item_itemBrandName{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    color:black;
+    font-weight :bold;  
+}
+#searchComponent_item_itemName{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    color: gray;
+}
+#searchComponent_item_itemPrice{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    color:black;
+}
+#searchComponent_navigateContainer{
+    background-color: blue;
+    width: 100%;
+    height: 10%;
+}
+
+.flex_row{
+    display: flex;
+}
+.justify_content_center{
+    justify-content: center;
+}
+.text_set_center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex_column{
+    display:flex;
+    flex-direction: column;
+}
+.grid_8x2{
+    display: grid;
+    grid-template-rows: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% ;
+    grid-template-columns: 50% 50%;
+}
+.padding_1{
+    padding: 5%;
+}
+.flex_scrollSet{
+    flex-shrink: 0;
+}
+.width_15per{
+    width: 15%;
+}

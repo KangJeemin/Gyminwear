@@ -8,7 +8,9 @@
     height: 7%;
     background-color:white;
     color: black;
-    font-size: 1em
+    display: flex;
+    align-items: center;
+    font-size: 0.4em
 }
 #searchResultComponent_text{
     

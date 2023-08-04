@@ -9,9 +9,10 @@
     height:5vh;
 }
 #logoBox {
-    width: 33%;
+    width: 32%;
     height: 100%;
-    position: relative;
+    color: black;
+
 }
 #announcement{
     width:100vw;
@@ -21,6 +22,9 @@
 #centerBox {
     width:30%;
     height: 100%;
+    color: black;
+    display: flex;
+    justify-content: flex-end;
 }
 #menuBox {
     width: 38%;
@@ -28,15 +32,18 @@
     display: flex;
 }
 #searchBox{
-    flex: 1;
+    width: 33%;
+    height: 100%;
     position: relative;   
 }
 #shoppingBox{
-    flex: 1;
+    width: 33%;
+    height: 100%;
     position: relative;   
 }
 #hambergerBox{
-    flex:1;
+    width: 33%;
+    height: 100%;
     position: relative;   
 }
 .flexRow {
@@ -47,6 +54,6 @@
     flex-direction: column;
 }
 .menuBoxMargin{
-    margin: 7%;
+    /* margin: 7%; */
 }
 

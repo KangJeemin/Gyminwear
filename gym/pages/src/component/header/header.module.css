@@ -9,9 +9,9 @@
     height:5vh;
 }
 #logoBox {
-    width: 33%;
+    width: 32%;
     height: 100%;
-    position: relative;
+
 }
 #announcement{
     width:100vw;
@@ -21,6 +21,7 @@
 #centerBox {
     width:30%;
     height: 100%;
+    color: black;
 }
 #menuBox {
     width: 38%;

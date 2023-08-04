@@ -106,8 +106,8 @@ const clickSearch = () => {
     return (
         <div id={styles.header} className={`${styles.flexColumn}`}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
-                <div id={styles.logoBox}>a</div>
-                <div id={styles.centerBox}>a</div>
+                <div id={styles.logoBox}></div>
+                <div id={styles.centerBox}></div>
                 <div id={styles.menuBox}>
                     <div id ={styles.searchBox} className={styles.menuBoxMargin} ref={searchBoxRef} onClick={clickSearch}>
                         <Image

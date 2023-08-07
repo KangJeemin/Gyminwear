@@ -1,12 +1,17 @@
 import { motion } from 'framer-motion';
 import styles from './searchModal.module.css'
 import { AuthContext } from '../../../../public/context/authcontext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 const SearchModal = () => {
   const {searchState} = useContext(AuthContext)
+  const [inputState, setInputState] = useState<string>("")
+
+  const setInputText = (e:object) => {
+    setInputState(e.tartget.value);
+  }
   return (
     <motion.div
     style={{
@@ -37,7 +42,7 @@ const SearchModal = () => {
                 <div id= {styles.searchBoxIcon}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray"}}/>
                 </div>
-                <input id={styles.searchBoxInput}type="text" />
+                <input id={styles.searchBoxInput} type="text" onChange={} />
                 <div id= {styles.searchBoxDelete}>
                 <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray"}}/>
                 </div>

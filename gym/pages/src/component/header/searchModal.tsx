@@ -11,6 +11,11 @@ const SearchModal = () => {
 
   const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
     setInputState(e.target.value);
+    console.log(inputState)
+  }
+
+  const initializeSearchText = () => {
+    setInputState("")
   }
   return (
     <motion.div
@@ -42,9 +47,9 @@ const SearchModal = () => {
                 <div id= {styles.searchBoxIcon}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray"}}/>
                 </div>
-                <input id={styles.searchBoxInput} type="text" onChange={setInputState} />
+                <input id={styles.searchBoxInput} type="text" onChange={setInputText} value={inputState} />
                 <div id= {styles.searchBoxDelete}>
-                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray"}}/>
+                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray"}} onClick={initializeSearchText}/>
                 </div>
             </div>
             <div id={styles.searchRecentTextBox}>최근 검색어</div>

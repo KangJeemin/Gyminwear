@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import styles from './searchModal.module.css'
 import { AuthContext } from '../../../../public/context/authcontext';
 import { useContext } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 const SearchModal = () => {
   const {searchState} = useContext(AuthContext)
@@ -34,7 +36,9 @@ const SearchModal = () => {
             <div id={styles.searchBox}>
                 <div id= {styles.searchBoxIcon}></div>
                 <input id={styles.searchBoxInput}type="text" />
-                <div id= {styles.searchBoxDelete}></div>
+                <div id= {styles.searchBoxDelete}>
+                <FontAwesomeIcon icon={faCircleXmark} />
+                </div>
             </div>
             <div id={styles.searchRecentTextBox}>최근 검색어</div>
             <div id={styles.searchRecentLogContainer}>

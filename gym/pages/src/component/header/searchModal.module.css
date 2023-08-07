@@ -24,6 +24,9 @@
 #searchBoxIcon{
     width: 15%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #searchBoxInput{
     width: 70%;
@@ -34,6 +37,9 @@
 #searchBoxDelete{
     width: 15%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #searchRecentTextBox{
     width: 100%;

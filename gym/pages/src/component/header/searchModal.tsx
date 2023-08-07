@@ -35,11 +35,11 @@ const SearchModal = () => {
         <div id={styles.searchBoxCenter}>
             <div id={styles.searchBox}>
                 <div id= {styles.searchBoxIcon}>
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray"}}/>
                 </div>
                 <input id={styles.searchBoxInput}type="text" />
                 <div id= {styles.searchBoxDelete}>
-                <FontAwesomeIcon icon={faCircleXmark} />
+                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray"}}/>
                 </div>
             </div>
             <div id={styles.searchRecentTextBox}>최근 검색어</div>

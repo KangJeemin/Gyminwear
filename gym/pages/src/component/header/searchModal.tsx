@@ -3,7 +3,7 @@ import styles from './searchModal.module.css'
 import { AuthContext } from '../../../../public/context/authcontext';
 import { useContext } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 const SearchModal = () => {
   const {searchState} = useContext(AuthContext)
@@ -34,7 +34,9 @@ const SearchModal = () => {
         <div id={styles.searchBoxLeft}></div>
         <div id={styles.searchBoxCenter}>
             <div id={styles.searchBox}>
-                <div id= {styles.searchBoxIcon}></div>
+                <div id= {styles.searchBoxIcon}>
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                </div>
                 <input id={styles.searchBoxInput}type="text" />
                 <div id= {styles.searchBoxDelete}>
                 <FontAwesomeIcon icon={faCircleXmark} />

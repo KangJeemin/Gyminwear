@@ -1,10 +1,22 @@
 import { motion } from 'framer-motion';
 import styles from './searchModal.module.css'
 import { AuthContext } from '../../../../public/context/authcontext';
-import { useContext } from 'react';
+import { useContext, useState, ChangeEvent } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 const SearchModal = () => {
   const {searchState} = useContext(AuthContext)
+  const [inputState, setInputState] = useState<string>("")
+
+  const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
+    setInputState(e.target.value);
+    console.log(inputState)
+  }
+
+  const initializeSearchText = () => {
+    setInputState("")
+  }
   return (
     <motion.div
     style={{
@@ -32,9 +44,13 @@ const SearchModal = () => {
         <div id={styles.searchBoxLeft}></div>
         <div id={styles.searchBoxCenter}>
             <div id={styles.searchBox}>
-                <div id= {styles.searchBoxIcon}></div>
-                <input id={styles.searchBoxInput}type="text" />
-                <div id= {styles.searchBoxDelete}></div>
+                <div id= {styles.searchBoxIcon}>
+                <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray"}}/>
+                </div>
+                <input id={styles.searchBoxInput} type="text" onChange={setInputText} value={inputState} />
+                <div id= {styles.searchBoxDelete}>
+                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
+                </div>
             </div>
             <div id={styles.searchRecentTextBox}>최근 검색어</div>
             <div id={styles.searchRecentLogContainer}>

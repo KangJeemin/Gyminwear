@@ -6,7 +6,11 @@ import Footer from './src/component/footer/footer'
 import BestTop from './src/component/middle/bestTop/bestTop'
 import BestBottom from './src/component/middle/bestBottom/bestBottom'
 import HeaderMargin from './src/component/header/headerMargin'
-const main = ()=>{
+import { useRef } from 'react'
+
+const Main = ()=>{
+
+    const target = useRef<HTMLDivElement | null>(null);
     return(
         <div>
             <Header/>
@@ -18,4 +22,4 @@ const main = ()=>{
     )
 }
 
-export default main;
+export default Main;

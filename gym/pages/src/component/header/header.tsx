@@ -112,7 +112,6 @@ React.useEffect(()=>{
     const root = document.createElement('div');
     root.style.width = '100vw';
     root.style.height = '5vh';
-    root.style.overflow = 'scroll';
     // const headerElement = document.getElementById(styles.header);
     //     if (headerElement) {
     //         headerElement.appendChild(root);

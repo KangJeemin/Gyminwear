@@ -21,6 +21,10 @@ const searchBoxRef = useRef<HTMLDivElement | null>(null);
 const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
 const target = useRef<HTMLDivElement | null>(null);
 
+const test = () => {
+    console.log("a")
+}
+
 const clickHamberger = ()=> {
     if(state ===0){
         setState(1)
@@ -132,7 +136,7 @@ React.useEffect(()=>{
       
 })
     return (
-        <div id={styles.header} className={`${styles.flexColumn}`}>
+        <div id={styles.header} className={`${styles.flexColumn}`} onScroll={test}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox}></div>
                 <div id={styles.centerBox}></div>

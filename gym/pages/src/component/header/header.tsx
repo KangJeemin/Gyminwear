@@ -12,18 +12,16 @@ import { AuthContext } from '../../../../public/context/authcontext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { targetModulesByContainer } from '@nestjs/core/router/router-module';
-
+import { useScrollPosition, useScrollXPosition, useScrollYPosition } from 'react-use-scroll-position';
 
 
 const Header = () => {
 const {state,setState, hambergerState, setHambergerState,searchState, setSearchState,announceState,setAnnounceState}= React.useContext(AuthContext)
 const searchBoxRef = useRef<HTMLDivElement | null>(null);
 const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
-const target = useRef<HTMLDivElement | null>(null);
-
-const test = () => {
-    console.log("a")
-}
+const target = useRef<HTMLDivElement | null>(null); 
+const scrollX = useScrollXPosition();
+const scrollY = useScrollYPosition();
 
 const clickHamberger = ()=> {
     if(state ===0){
@@ -113,6 +111,9 @@ const clickSearch = () => {
 }
 
 React.useEffect(()=>{
+    console.log('x=', scrollX)
+    console.log('y=', scrollY)
+    
     const root = document.createElement('div');
     root.style.width = '100vw';
     root.style.height = '5vh';
@@ -136,7 +137,7 @@ React.useEffect(()=>{
       
 })
     return (
-        <div id={styles.header} className={`${styles.flexColumn}`} onScroll={test}>
+        <div id={styles.header} className={`${styles.flexColumn}`} >
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox}></div>
                 <div id={styles.centerBox}></div>

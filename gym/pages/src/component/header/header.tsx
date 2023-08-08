@@ -113,6 +113,7 @@ React.useEffect(()=>{
     root.style.width = '100vw';
     root.style.height = '5vh';
     root.style.overflow = 'scroll';
+    document.body.appendChild(root);
     const observerOptions = {
         root: root,
         rootMargin: '0px',

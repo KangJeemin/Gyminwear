@@ -111,7 +111,6 @@ const clickSearch = () => {
 }
 
 React.useEffect(()=>{
-    console.log('x=', scrollX)
     console.log('y=', scrollY)
     
     const root = document.createElement('div');

@@ -113,11 +113,14 @@ React.useEffect(()=>{
     root.style.width = '100vw';
     root.style.height = '5vh';
     root.style.overflow = 'scroll';
-    document.body.appendChild(root);
+    // const headerElement = document.getElementById(styles.header);
+    //     if (headerElement) {
+    //         headerElement.appendChild(root);
+    //     }
     const observerOptions = {
         root: root,
         rootMargin: '0px',
-        threshold: 0.2 // Adjust this threshold as needed
+        threshold: 1 // Adjust this threshold as needed
       };
     const intersectionCallback = ()=>{
         console.log("a")

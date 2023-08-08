@@ -22,6 +22,8 @@ const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
 const target = useRef<HTMLDivElement | null>(null); 
 const scrollX = useScrollXPosition();
 const scrollY = useScrollYPosition();
+const [announcementOpacity, setAnnouncementOpacity] = React.useState(1);
+const [headerHeight, setHeaderHeight] = React.useState(5);
 
 const clickHamberger = ()=> {
     if(state ===0){
@@ -111,6 +113,23 @@ const clickSearch = () => {
 }
 
 React.useEffect(()=>{
+    const handleScroll = () => {
+        const scrollPosition = scrollY; // Get the current scroll position
+        const maxScroll = 50; // You can adjust this value
+  
+        // Calculate the opacity based on scroll position
+        const opacity = 1 - Math.min(scrollPosition / maxScroll, 1);
+        setAnnouncementOpacity(opacity);
+        const calculatedHeight = Math.max(0, 5 - (scrollPosition / maxScroll) * 5); // Limit between 0 and 5
+        setHeaderHeight(calculatedHeight);
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      // Clean up the event listener on unmount
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
       
 })
     return (
@@ -181,12 +200,17 @@ React.useEffect(()=>{
                     </div>
                 </div>
             </div>
-            <div id={styles.announcement}>
-                <p style={
-                    {
-                        color:'red',
-                    }
-                }>오늘의 공지사항!</p>
+            <div id={styles.announcement} style={{
+                                            color: 'red',
+                                            opacity: announcementOpacity, // Apply the calculated opacity
+                                            height: `${headerHeight}vh`, // Apply the calculated header height
+                                            transition: 'opacity 0.5s,height 0.5s',
+               
+            }}>
+                <p style={{
+                    color: 'red',
+                   
+                 }}>오늘의 공지사항!</p>
             </div>
             <HambergerModal/>
             <SearchModal/>

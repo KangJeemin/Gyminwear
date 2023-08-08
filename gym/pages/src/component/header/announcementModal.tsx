@@ -19,15 +19,15 @@ const AnnouncementModal = () => {
         alignItems: 'center',
         
       }}
-      animate={{
-        opacity:===0 ? [0,0] : === 1 ? [0,1] : [1,0],
-        height: ===0 ? ['0vh','0vh'] : === 1 ? ['0vh','95vh'] : ['95vh','0vh']
-      }}
-      transition={{
-        duration: ===0 ? 0 : ===1 ? 0.5 : 0.5, 
-        times:===0 ? [0,0] : ===1 ? [0,1] : [0,1],
-        ease: 'easeOut',
-      }}
+    //   animate={{
+    //     opacity:===0 ? [0,0] : === 1 ? [0,1] : [1,0],
+    //     height: ===0 ? ['0vh','0vh'] : === 1 ? ['0vh','95vh'] : ['95vh','0vh']
+    //   }}
+    //   transition={{
+    //     duration: ===0 ? 0 : ===1 ? 0.5 : 0.5, 
+    //     times:===0 ? [0,0] : ===1 ? [0,1] : [0,1],
+    //     ease: 'easeOut',
+    //   }}
     >
       
     </motion.div>

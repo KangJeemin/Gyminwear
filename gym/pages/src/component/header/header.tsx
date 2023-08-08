@@ -11,14 +11,16 @@ import { useRef } from 'react'
 import { AuthContext } from '../../../../public/context/authcontext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { targetModulesByContainer } from '@nestjs/core/router/router-module';
 
 
 
 const Header = () => {
-const {state,setState, hambergerState, setHambergerState,searchState, setSearchState}= React.useContext(AuthContext)
-
+const {state,setState, hambergerState, setHambergerState,searchState, setSearchState,announceState,setAnnounceState}= React.useContext(AuthContext)
 const searchBoxRef = useRef<HTMLDivElement | null>(null);
 const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
+const target = useRef<HTMLDivElement | null>(null);
+
 const clickHamberger = ()=> {
     if(state ===0){
         setState(1)
@@ -105,6 +107,33 @@ const clickSearch = () => {
         }
     }
 }
+
+React.useEffect(()=>{
+    const root = document.createElement('div');
+    root.style.width = '100vw';
+    root.style.height = '50vh';
+    root.style.overflow = 'scroll';
+    const observerOptions = {
+        root: root,
+        rootMargin: '0px',
+        threshold: 0.2 // Adjust this threshold as needed
+      };
+    const intersectionCallback = (entries, observer) => {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            
+        } else {
+            
+        }
+        });
+    };
+  
+      const observer = new IntersectionObserver(intersectionCallback, observerOptions);
+      if(target.current){
+        observer.observe(target.current);
+      }
+      
+})
     return (
         <div id={styles.header} className={`${styles.flexColumn}`}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
@@ -178,7 +207,7 @@ const clickSearch = () => {
                     {
                         color:'red',
                     }
-                }>오늘의 공지사항!</p>
+                } ref={target }>오늘의 공지사항!</p>
             </div>
             <HambergerModal/>
             <SearchModal/>

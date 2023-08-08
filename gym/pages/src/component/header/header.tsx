@@ -111,28 +111,6 @@ const clickSearch = () => {
 }
 
 React.useEffect(()=>{
-    console.log('y=', scrollY)
-    
-    const root = document.createElement('div');
-    root.style.width = '100vw';
-    root.style.height = '5vh';
-    // const headerElement = document.getElementById(styles.header);
-    //     if (headerElement) {
-    //         headerElement.appendChild(root);
-    //     }
-    const observerOptions = {
-        root: root,
-        rootMargin: '0px',
-        threshold: 1 // Adjust this threshold as needed
-      };
-    const intersectionCallback = ()=>{
-        console.log("a")
-    }
-  
-      const observer = new IntersectionObserver(intersectionCallback, observerOptions);
-      if(target.current){
-        observer.observe(target.current);
-      }
       
 })
     return (
@@ -208,7 +186,7 @@ React.useEffect(()=>{
                     {
                         color:'red',
                     }
-                } ref={target }>오늘의 공지사항!</p>
+                }>오늘의 공지사항!</p>
             </div>
             <HambergerModal/>
             <SearchModal/>

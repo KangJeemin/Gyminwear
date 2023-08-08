@@ -111,22 +111,16 @@ const clickSearch = () => {
 React.useEffect(()=>{
     const root = document.createElement('div');
     root.style.width = '100vw';
-    root.style.height = '50vh';
+    root.style.height = '5vh';
     root.style.overflow = 'scroll';
     const observerOptions = {
         root: root,
         rootMargin: '0px',
         threshold: 0.2 // Adjust this threshold as needed
       };
-    const intersectionCallback = (entries, observer) => {
-        entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            
-        } else {
-            
-        }
-        });
-    };
+    const intersectionCallback = ()=>{
+        console.log("a")
+    }
   
       const observer = new IntersectionObserver(intersectionCallback, observerOptions);
       if(target.current){

@@ -1,6 +1,6 @@
 #header{
     width:100vw;
-    height:10vh;
+    height:5vh;
     background-color:white;
     position: fixed;
     top: 0;
@@ -16,11 +16,6 @@
     height: 100%;
     color: black;
 
-}
-#announcement{
-    width:100vw;
-    height: 5vh;
-    background-color: gray;
 }
 #centerBox {
     width:30%;

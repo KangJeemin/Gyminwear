@@ -5,7 +5,7 @@ import { Router } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../../../public/context/authcontext';
 
-const AnnouncementModal = () => {
+const Announcement = () => {
   const {announceState,setAnnounceState} = useContext(AuthContext)
   const router = useRouter();
   return (
@@ -34,4 +34,5 @@ const AnnouncementModal = () => {
   );
 };
 
-export default AnnouncementModal;
+
+export default Announcement;

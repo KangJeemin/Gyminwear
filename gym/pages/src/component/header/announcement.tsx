@@ -11,7 +11,6 @@ const Announcement = () => {
   const scrollX = useScrollXPosition();
   const scrollY = useScrollYPosition();
   const [announcementOpacity, setAnnouncementOpacity] = useState(1);
-  const [headerHeight, setHeaderHeight] = useState(5);
   const {announceState,setAnnounceState} = useContext(AuthContext)
   const router = useRouter();
 
@@ -24,8 +23,6 @@ const Announcement = () => {
         // Calculate the opacity based on scroll position
         const opacity = 1 - Math.min(scrollPosition / maxScroll, 1);
         setAnnouncementOpacity(opacity);
-        const calculatedHeight = Math.max(0, 5 - (scrollPosition / maxScroll) * 5); // Limit between 0 and 5
-        setHeaderHeight(calculatedHeight);
       };
   
       window.addEventListener('scroll', handleScroll);
@@ -46,7 +43,7 @@ const Announcement = () => {
         justifyContent: 'center',
         alignItems: 'center',
         opacity: announcementOpacity, // Apply the calculated opacity
-        transition: 'opacity 0.5s,height 0.5s',
+        transition: 'opacity 0.5s'
                
       }}
     >

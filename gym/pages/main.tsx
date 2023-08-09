@@ -12,7 +12,7 @@ const main = ()=>{
     return(
         <div>
             <Header/>
-            {/* <HeaderMargin/> */}
+            <HeaderMargin/>
             <BestAll/>
             <BestTop/>
             <BestBottom/>

@@ -200,7 +200,7 @@ React.useEffect(()=>{
                     </div>
                 </div>
             </div>
-            <div id={styles.announcement} style={{
+            {/* <div id={styles.announcement} style={{
                                             color: 'red',
                                             opacity: announcementOpacity, // Apply the calculated opacity
                                             height: `${headerHeight}vh`, // Apply the calculated header height
@@ -211,7 +211,7 @@ React.useEffect(()=>{
                     color: 'red',
                    
                  }}>오늘의 공지사항!</p>
-            </div>
+            </div> */}
             <HambergerModal/>
             <SearchModal/>
         </div>

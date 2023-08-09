@@ -7,6 +7,8 @@ interface AuthContextProps {
   setHambergerState: (state:number) => void;
   searchState: number;
   setSearchState: (state:number) => void;
+  announceState:number;
+  setAnnounceState:(announceState:number) => void;
 }
 
 export const AuthContext = createContext<AuthContextProps>({
@@ -16,6 +18,9 @@ export const AuthContext = createContext<AuthContextProps>({
   setHambergerState: () => {},
   searchState:0,
   setSearchState: () => {},
+  announceState:0,
+  setAnnounceState: () => {}
+
 
 });
 
@@ -25,6 +30,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [state, setState] = useState(0);
   const [hambergerState, setHambergerState] = useState(0);
   const [searchState, setSearchState] = useState(0);
+  const [announceState, setAnnounceState] = useState(0);
+
   return (
     <AuthContext.Provider
       value={{
@@ -33,7 +40,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         hambergerState,
         setHambergerState,
         searchState,
-        setSearchState
+        setSearchState,
+        announceState,
+        setAnnounceState
       }}
     >
       {children}

@@ -11,14 +11,20 @@ import { useRef } from 'react'
 import { AuthContext } from '../../../../public/context/authcontext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-
+import { targetModulesByContainer } from '@nestjs/core/router/router-module';
+import { useScrollPosition, useScrollXPosition, useScrollYPosition } from 'react-use-scroll-position';
 
 
 const Header = () => {
-const {state,setState, hambergerState, setHambergerState,searchState, setSearchState}= React.useContext(AuthContext)
-
+const {state,setState, hambergerState, setHambergerState,searchState, setSearchState,announceState,setAnnounceState}= React.useContext(AuthContext)
 const searchBoxRef = useRef<HTMLDivElement | null>(null);
 const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
+const target = useRef<HTMLDivElement | null>(null); 
+const scrollX = useScrollXPosition();
+const scrollY = useScrollYPosition();
+const [announcementOpacity, setAnnouncementOpacity] = React.useState(1);
+const [headerHeight, setHeaderHeight] = React.useState(5);
+
 const clickHamberger = ()=> {
     if(state ===0){
         setState(1)
@@ -105,8 +111,29 @@ const clickSearch = () => {
         }
     }
 }
+
+React.useEffect(()=>{
+    const handleScroll = () => {
+        const scrollPosition = scrollY; // Get the current scroll position
+        const maxScroll = 50; // You can adjust this value
+  
+        // Calculate the opacity based on scroll position
+        const opacity = 1 - Math.min(scrollPosition / maxScroll, 1);
+        setAnnouncementOpacity(opacity);
+        const calculatedHeight = Math.max(0, 5 - (scrollPosition / maxScroll) * 5); // Limit between 0 and 5
+        setHeaderHeight(calculatedHeight);
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      // Clean up the event listener on unmount
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+      
+})
     return (
-        <div id={styles.header} className={`${styles.flexColumn}`}>
+        <div id={styles.header} className={`${styles.flexColumn}`} >
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox}></div>
                 <div id={styles.centerBox}></div>
@@ -173,13 +200,18 @@ const clickSearch = () => {
                     </div>
                 </div>
             </div>
-            <div id={styles.announcement}>
-                <p style={
-                    {
-                        color:'red',
-                    }
-                }>오늘의 공지사항!</p>
-            </div>
+            {/* <div id={styles.announcement} style={{
+                                            color: 'red',
+                                            opacity: announcementOpacity, // Apply the calculated opacity
+                                            height: `${headerHeight}vh`, // Apply the calculated header height
+                                            transition: 'opacity 0.5s,height 0.5s',
+               
+            }}>
+                <p style={{
+                    color: 'red',
+                   
+                 }}>오늘의 공지사항!</p>
+            </div> */}
             <HambergerModal/>
             <SearchModal/>
         </div>

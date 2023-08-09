@@ -18,10 +18,10 @@ const Announcement = () => {
     console.log(scrollY)
     const handleScroll = () => {
         const scrollPosition = scrollY; // Get the current scroll position
-        const maxScroll = 100; // You can adjust this value
+        const maxScroll = 20; // You can adjust this value
   
         // Calculate the opacity based on scroll position
-        const opacity = 1 - Math.min(scrollPosition / maxScroll, 1);
+        const opacity = scrollPosition===0? 1 : 1 - Math.min(scrollPosition / maxScroll, 1);
         setAnnouncementOpacity(opacity);
       };
   

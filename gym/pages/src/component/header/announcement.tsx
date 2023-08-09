@@ -16,6 +16,7 @@ const Announcement = () => {
   const router = useRouter();
 
   useEffect(()=>{
+    console.log(scrollY)
     const handleScroll = () => {
         const scrollPosition = scrollY; // Get the current scroll position
         const maxScroll = 50; // You can adjust this value
@@ -40,7 +41,7 @@ const Announcement = () => {
     style={{
         width: '100vw',
         height: `${headerHeight}vh`, // Apply the calculated header height
-        backgroundColor: 'white',
+        backgroundColor: 'red',
         display : 'flex',
         justifyContent: 'center',
         alignItems: 'center',

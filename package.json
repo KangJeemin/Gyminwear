@@ -1,0 +1,25 @@
+{
+  "name": "gyminwear",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KangJeemin/Gyminwear.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KangJeemin/Gyminwear/issues"
+  },
+  "homepage": "https://github.com/KangJeemin/Gyminwear#readme",
+  "dependencies": {
+    "@nestjs/common": "^10.0.5",
+    "@nestjs/core": "^10.0.5",
+    "@nestjs/platform-express": "^10.0.5",
+    "react-router-dom": "^6.14.1"
+  }
+}

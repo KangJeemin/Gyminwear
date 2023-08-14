@@ -81,3 +81,8 @@
 .flex_scrollset{
     flex-shrink: 0;
 }
+.setTextCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

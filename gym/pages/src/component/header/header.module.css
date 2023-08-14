@@ -1,6 +1,6 @@
 #header{
     width:100vw;
-    height:5vh;
+    height:10vh;
     background-color:white;
     position: fixed;
     top: 0;
@@ -32,17 +32,14 @@
 #searchBox{
     width: 33%;
     height: 100%;
-    position: relative;   
 }
 #shoppingBox{
     width: 33%;
     height: 100%;
-    position: relative;   
 }
 #hambergerBox{
     width: 33%;
     height: 100%;
-    position: relative;   
 }
 .flexRow {
     display:flex;
@@ -54,4 +51,8 @@
 .menuBoxMargin{
     /* margin: 7%; */
 }
-
+.setTextCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

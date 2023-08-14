@@ -1,17 +1,13 @@
 import { motion } from 'framer-motion';
 import * as React from 'react';
 import styles from './header.module.css'
-import Image from 'next/image'
-import searchIcon from '../../../../public/image/search.png'
-import shoppingIcon from '../../../../public/image/shopingBag.png'
-import hambergerIcon from '../../../../public/image/hamberger.png'
 import HambergerModal from './hambergerModal';
 import SearchModal from './searchModal'
+import Announcement from './announcement'
 import { useRef } from 'react'
 import { AuthContext } from '../../../../public/context/authcontext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { targetModulesByContainer } from '@nestjs/core/router/router-module';
 import { useScrollPosition, useScrollXPosition, useScrollYPosition } from 'react-use-scroll-position';
 
 
@@ -119,7 +115,7 @@ React.useEffect(()=>{
   
         // Calculate the opacity based on scroll position
         const opacity = 1 - Math.min(scrollPosition / maxScroll, 1);
-        setAnnouncementOpacity(opacity);
+        // setAnnouncementOpacity(opacity);
         const calculatedHeight = Math.max(0, 5 - (scrollPosition / maxScroll) * 5); // Limit between 0 and 5
         setHeaderHeight(calculatedHeight);
       };
@@ -133,22 +129,22 @@ React.useEffect(()=>{
       
 })
     return (
-        <div id={styles.header} className={`${styles.flexColumn}`} >
+        <motion.div id={styles.header} className={`${styles.flexColumn}`} style={{
+            height: announceState ? '10vh' :'5vh', 
+            transition: 'height 0.5s',
+        }}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox}></div>
                 <div id={styles.centerBox}></div>
                 <div id={styles.menuBox}>
-                    <div id ={styles.searchBox} className={styles.menuBoxMargin} ref={searchBoxRef} onClick={clickSearch}>
-                        <FontAwesomeIcon icon={faSearch} style={{fontSize:"3em",color:"black"}}/>
-                    </div>
                     <div id ={styles.shoppingBox} className={styles.menuBoxMargin} ref={shoppingBoxRef}>
-                        <Image
-                            src={shoppingIcon}
-                            alt="쇼핑백아이콘"
-                            layout='fill'
-                        />
+                    {/* 장바구니 기능 생기면 추가 */}
                     </div>
-                    <div id ={styles.hambergerBox} className={styles.menuBoxMargin} onClick={clickHamberger}>
+                    <div id ={styles.searchBox} className={`${styles.menuBoxMargin} ${styles.setTextCenter}`} ref={searchBoxRef} onClick={clickSearch}>
+                        <FontAwesomeIcon icon={faSearch} style={{fontSize:"2em",color:"black"}}/>
+                    </div>
+                    
+                    <div id ={styles.hambergerBox} className={`${styles.menuBoxMargin} ${styles.setTextCenter}`} onClick={clickHamberger}>
                         <div
                         style={{
                             display:'flex',
@@ -212,9 +208,10 @@ React.useEffect(()=>{
                    
                  }}>오늘의 공지사항!</p>
             </div> */}
+            <Announcement/>
             <HambergerModal/>
             <SearchModal/>
-        </div>
+        </motion.div>
     
     
    )

@@ -141,13 +141,7 @@ React.useEffect(()=>{
                     <div id ={styles.searchBox} className={styles.menuBoxMargin} ref={searchBoxRef} onClick={clickSearch}>
                         <FontAwesomeIcon icon={faSearch} style={{fontSize:"3em",color:"black"}}/>
                     </div>
-                    <div id ={styles.shoppingBox} className={styles.menuBoxMargin} ref={shoppingBoxRef}>
-                        <Image
-                            src={shoppingIcon}
-                            alt="쇼핑백아이콘"
-                            layout='fill'
-                        />
-                    </div>
+                    
                     <div id ={styles.hambergerBox} className={styles.menuBoxMargin} onClick={clickHamberger}>
                         <div
                         style={{

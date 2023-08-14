@@ -61,6 +61,11 @@
     justify-content: center;
     color:black;
 }
+.setTextCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 .flex_row{

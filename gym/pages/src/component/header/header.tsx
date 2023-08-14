@@ -1,17 +1,12 @@
 import { motion } from 'framer-motion';
 import * as React from 'react';
 import styles from './header.module.css'
-import Image from 'next/image'
-import searchIcon from '../../../../public/image/search.png'
-import shoppingIcon from '../../../../public/image/shopingBag.png'
-import hambergerIcon from '../../../../public/image/hamberger.png'
 import HambergerModal from './hambergerModal';
 import SearchModal from './searchModal'
 import { useRef } from 'react'
 import { AuthContext } from '../../../../public/context/authcontext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { targetModulesByContainer } from '@nestjs/core/router/router-module';
 import { useScrollPosition, useScrollXPosition, useScrollYPosition } from 'react-use-scroll-position';
 
 

@@ -38,7 +38,7 @@ const Announcement = () => {
     style={{
         width: '100vw',
         height: `5vh`, // Apply the calculated header height
-        backgroundColor: 'red',
+        backgroundColor: 'gray',
         display : 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -47,7 +47,7 @@ const Announcement = () => {
                
       }}
     >
-      <h1>하이</h1>
+      <h1>공지사항</h1>
     </motion.div>
   );
 };

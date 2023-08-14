@@ -142,7 +142,7 @@ React.useEffect(()=>{
                     {/* 장바구니 기능 생기면 추가 */}
                     </div>
                     <div id ={styles.searchBox} className={styles.menuBoxMargin} ref={searchBoxRef} onClick={clickSearch}>
-                        <FontAwesomeIcon icon={faSearch} style={{fontSize:"3em",color:"black"}}/>
+                        <FontAwesomeIcon icon={faSearch} style={{fontSize:"2.5em",color:"black"}}/>
                     </div>
                     
                     <div id ={styles.hambergerBox} className={styles.menuBoxMargin} onClick={clickHamberger}>

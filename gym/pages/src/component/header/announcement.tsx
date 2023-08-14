@@ -43,8 +43,9 @@ const Announcement = () => {
         justifyContent: 'center',
         alignItems: 'center',
         opacity: announcementOpacity, // Apply the calculated opacity
-        transition: 'opacity 0.5s'
-               
+        transition: 'opacity 0.5s',
+        fontSize:'0.5em'
+        
       }}
     >
       <h1>공지사항</h1>

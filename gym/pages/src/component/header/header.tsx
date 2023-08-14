@@ -3,6 +3,7 @@ import * as React from 'react';
 import styles from './header.module.css'
 import HambergerModal from './hambergerModal';
 import SearchModal from './searchModal'
+import Announcement from './announcement'
 import { useRef } from 'react'
 import { AuthContext } from '../../../../public/context/authcontext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -204,6 +205,7 @@ React.useEffect(()=>{
                    
                  }}>오늘의 공지사항!</p>
             </div> */}
+            <Announcement/>
             <HambergerModal/>
             <SearchModal/>
         </div>

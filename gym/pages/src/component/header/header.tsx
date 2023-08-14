@@ -114,7 +114,7 @@ React.useEffect(()=>{
   
         // Calculate the opacity based on scroll position
         const opacity = 1 - Math.min(scrollPosition / maxScroll, 1);
-        setAnnouncementOpacity(opacity);
+        // setAnnouncementOpacity(opacity);
         const calculatedHeight = Math.max(0, 5 - (scrollPosition / maxScroll) * 5); // Limit between 0 and 5
         setHeaderHeight(calculatedHeight);
       };

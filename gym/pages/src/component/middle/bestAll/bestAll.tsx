@@ -11,7 +11,7 @@ const BestAll:React.FC = () =>{
  const items:Item[] =[
     {
         brandName:"brontowin",
-        itemName:"헤리코든 오버핏",
+        itemName:"헤리코든 오버핏ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ",
         itemPrice:44000+'₩'
     },
     {

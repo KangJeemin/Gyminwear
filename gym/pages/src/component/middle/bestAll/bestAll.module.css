@@ -12,7 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-color: white;
+
 }
 #bestAll_itemContainer_flexNowrap{
     width: 100%;
@@ -40,8 +40,7 @@
 #bestAll_text{
     color: black;
     font-size: 1em;
-    font-weight: 1000;
-    
+
 }
 #bestAll_item_itemComponent{
     width: 100%;

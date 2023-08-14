@@ -129,7 +129,10 @@ React.useEffect(()=>{
       
 })
     return (
-        <div id={styles.header} className={`${styles.flexColumn}`} >
+        <motion.div id={styles.header} className={`${styles.flexColumn}`} style={{
+            height: announceState ? '10vh' :'5vh', 
+            transition: 'height 0.5s',
+        }}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox}></div>
                 <div id={styles.centerBox}></div>
@@ -208,7 +211,7 @@ React.useEffect(()=>{
             <Announcement/>
             <HambergerModal/>
             <SearchModal/>
-        </div>
+        </motion.div>
     
     
    )

@@ -12,22 +12,22 @@ const BestAll:React.FC = () =>{
     {
         brandName:"brontowin",
         itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
+        itemPrice:44000+'₩'
     },
     {
         brandName:"brontowin",
         itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
+        itemPrice:44000+'₩'
     },
     {
         brandName:"brontowin",
         itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
+        itemPrice:44000+'₩'
     },
     {
         brandName:"brontowin",
         itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
+        itemPrice:44000+'₩'
     }
     
  ]
@@ -44,9 +44,9 @@ const BestAll:React.FC = () =>{
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                           <span id={styles.bestAll_item_imageSize}></span>
                           <span id={styles.bestAll_item_textBoxSize} className={`${styles.flex_column}`}>
-                            <span id={styles.bestAll_item_itemBrandName}><h1>{item.brandName}</h1></span>
-                            <span id={styles.bestAll_item_itemName}><h2>{item.itemName}</h2></span>
-                            <span id={styles.bestAll_item_itemPrice}><h3>{item.itemPrice}</h3></span>
+                            <span id={styles.bestAll_item_itemBrandName}><h3>{item.brandName}</h3></span>
+                            <span id={styles.bestAll_item_itemName}><h4>{item.itemName}</h4></span>
+                            <span id={styles.bestAll_item_itemPrice}><h4>{item.itemPrice}</h4></span>
                           </span>
                         </span>
                     ))}
@@ -56,9 +56,9 @@ const BestAll:React.FC = () =>{
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                           <span id={styles.bestAll_item_imageSize}></span>
                           <span id={styles.bestAll_item_textBoxSize} className={`${styles.flex_column}`}>
-                            <span id={styles.bestAll_item_itemBrandName}><h1>{item.brandName}</h1></span>
-                            <span id={styles.bestAll_item_itemName}><h2>{item.itemName}</h2></span>
-                            <span id={styles.bestAll_item_itemPrice}><h3>{item.itemPrice}</h3></span>
+                            <span id={styles.bestAll_item_itemBrandName}><h3>{item.brandName}</h3></span>
+                            <span id={styles.bestAll_item_itemName}><h4>{item.itemName}</h4></span>
+                            <span id={styles.bestAll_item_itemPrice}><h4>{item.itemPrice}</h4></span>
                           </span>
                         </span>
                     ))}
@@ -68,9 +68,9 @@ const BestAll:React.FC = () =>{
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                           <span id={styles.bestAll_item_imageSize}></span>
                           <span id={styles.bestAll_item_textBoxSize} className={`${styles.flex_column}`}>
-                            <span id={styles.bestAll_item_itemBrandName}><h1>{item.brandName}</h1></span>
-                            <span id={styles.bestAll_item_itemName}><h2>{item.itemName}</h2></span>
-                            <span id={styles.bestAll_item_itemPrice}><h3>{item.itemPrice}</h3></span>
+                            <span id={styles.bestAll_item_itemBrandName}><h3>{item.brandName}</h3></span>
+                            <span id={styles.bestAll_item_itemName}><h4>{item.itemName}</h4></span>
+                            <span id={styles.bestAll_item_itemPrice}><h4>{item.itemPrice}</h4></span>
                           </span>
                         </span>
                     ))}

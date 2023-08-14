@@ -6,6 +6,9 @@
     width: 100%;
     height: 7%;
     background-color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #bestAll_itemContainer_flexNowrap{
     width: 100%;

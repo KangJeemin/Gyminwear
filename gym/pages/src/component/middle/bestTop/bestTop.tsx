@@ -36,7 +36,7 @@ const BestTop:React.FC = () =>{
     return(
         <div id={styles.bestTop}> 
             <div id={styles.bestTop_topText} className={styles.setTextCenter}>
-                <h1 id={styles.bestTop_text} >이번 주 인기 상의</h1>
+                <h3 id={styles.bestTop_text} >이번 주 인기 상의</h3>
             </div>
             <div id={styles.bestTop_itemContainer_flexNowrap}>
                 <div id={styles.bestTop_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>

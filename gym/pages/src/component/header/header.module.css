@@ -32,7 +32,6 @@
 #searchBox{
     width: 33%;
     height: 100%;
-    position: relative;   
 }
 #shoppingBox{
     width: 33%;
@@ -42,7 +41,6 @@
 #hambergerBox{
     width: 33%;
     height: 100%;
-    position: relative;   
 }
 .flexRow {
     display:flex;

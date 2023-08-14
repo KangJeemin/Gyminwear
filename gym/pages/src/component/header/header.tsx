@@ -138,6 +138,9 @@ React.useEffect(()=>{
                 <div id={styles.logoBox}></div>
                 <div id={styles.centerBox}></div>
                 <div id={styles.menuBox}>
+                    <div id ={styles.shoppingBox} className={styles.menuBoxMargin} ref={shoppingBoxRef}>
+                    {/* 장바구니 기능 생기면 추가 */}
+                    </div>
                     <div id ={styles.searchBox} className={styles.menuBoxMargin} ref={searchBoxRef} onClick={clickSearch}>
                         <FontAwesomeIcon icon={faSearch} style={{fontSize:"3em",color:"black"}}/>
                     </div>

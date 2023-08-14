@@ -1,6 +1,8 @@
 #bestTop{
     width: 100vw;
     height: 75vh;
+    border-color: white;
+
 }
 #bestTop_topText{
     width: 100%;

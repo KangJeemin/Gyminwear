@@ -51,9 +51,12 @@ const Announcement = () => {
 },[setAnnounceState])
   return (
     <motion.div
-      initial={{ translateY: announceState ? '-100vh' : '0vh' }}
-      animate={{ translateY: announceState ? '0vh' : '-100vh' }}
-      transition={{ duration: 1 }}
+      initial={{ translateY: '0vh' }}
+      animate={{ translateY: announceState ? '0vh' : '-10vh' }}
+      transition={{ 
+        duration: 1,
+        ease:"easeOut",  
+      }}
       style={{
         width: '100vw',
         height: '5vh',

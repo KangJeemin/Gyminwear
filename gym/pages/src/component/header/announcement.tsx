@@ -51,12 +51,6 @@ const Announcement = () => {
 })
   return (
     <motion.div
-    animate={{ height: announceState ? '5vh' : '0vh' }}
-    transition={{ 
-      duration: 0.5,
-      ease: "easeOut",
-      times: [0, 0.5],
-    }}
     style={{
         width: '100vw',
         backgroundColor: 'gray',
@@ -65,14 +59,6 @@ const Announcement = () => {
         alignItems: 'center',
         fontSize:'0.5em'
         
-      }}
-      onAnimationComplete={() => {
-        if (!announceState) {
-          setAnnouncementVisible(false);
-        }
-        else{
-          setAnnouncementVisible(true);
-        }
       }}
     >
       <h1>공지사항</h1>

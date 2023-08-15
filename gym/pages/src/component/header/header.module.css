@@ -10,6 +10,7 @@
 #categoryBox{
     width:100vw;
     height:5vh;
+    position: "relative";
 }
 #logoBox {
     width: 32%;

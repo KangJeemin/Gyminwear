@@ -51,11 +51,10 @@ const Announcement = () => {
 })
   return (
     <motion.div
-    initial={{ height: announceState ? '5vh' : '0vh' }}
     animate={{ height: announceState ? '5vh' : '0vh' }}
     transition={{ 
       duration: 1,
-      ease: "liner",
+      ease: "linear",
       times: [0, 0.5],
     }}
     style={{
@@ -64,7 +63,6 @@ const Announcement = () => {
         display: announcementVisible ? 'flex' : 'none',
         justifyContent: 'center',
         alignItems: 'center',
-        transition: 'height 0.5s',
         fontSize:'0.5em'
         
       }}

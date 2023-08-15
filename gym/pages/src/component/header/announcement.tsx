@@ -54,7 +54,7 @@ const Announcement = () => {
       initial={{ translateY: '0vh' }}
       animate={{ translateY: announceState ? '0vh' : '-10vh' }}
       transition={{ 
-        duration: 1,
+        duration: 0.5,
         ease:"easeOut",  
       }}
       style={{

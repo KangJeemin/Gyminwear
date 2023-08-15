@@ -48,10 +48,13 @@ const Announcement = () => {
         window.removeEventListener('scroll', handleScroll);
       };
       
-})
+},[setAnnounceState])
   return (
     <motion.div
-    style={{
+      initial={{ translateY: announceState ? '-100vh' : '0vh' }}
+      animate={{ translateY: announceState ? '0vh' : '-100vh' }}
+      transition={{ duration: 0.5 }}
+      style={{
         width: '100vw',
         backgroundColor: 'gray',
         display: announcementVisible ? 'flex' : 'none',

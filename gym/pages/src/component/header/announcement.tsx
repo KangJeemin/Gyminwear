@@ -53,9 +53,10 @@ const Announcement = () => {
     <motion.div
       initial={{ translateY: announceState ? '-100vh' : '0vh' }}
       animate={{ translateY: announceState ? '0vh' : '-100vh' }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 1 }}
       style={{
         width: '100vw',
+        height: '5vh',
         backgroundColor: 'gray',
         display: announcementVisible ? 'flex' : 'none',
         justifyContent: 'center',

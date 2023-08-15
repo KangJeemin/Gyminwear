@@ -12,6 +12,7 @@ const Announcement = () => {
   const scrollY = useScrollYPosition();
   const [announcementOpacity, setAnnouncementOpacity] = useState(true);
   const {announceState,setAnnounceState} = useContext(AuthContext)
+  const [announcementVisible, setAnnouncementVisible] = useState(true);
   const router = useRouter();
   let lastScrollTop = 0;
 
@@ -50,16 +51,26 @@ const Announcement = () => {
 })
   return (
     <motion.div
+    initial={{ height: announceState ? '5vh' : '0vh' }}
+    animate={{ height: announceState ? '5vh' : '0vh' }}
+    transition={{ duration: 0.5 }}
     style={{
         width: '100vw',
-        height: announceState ? '5vh' :'0vh', 
         backgroundColor: 'gray',
-        display : 'flex',
+        display: announcementVisible ? 'flex' : 'none',
         justifyContent: 'center',
         alignItems: 'center',
         transition: 'height 0.5s',
         fontSize:'0.5em'
         
+      }}
+      onAnimationComplete={() => {
+        if (!announceState) {
+          setAnnouncementVisible(false);
+        }
+        else{
+          setAnnouncementVisible(true);
+        }
       }}
     >
       <h1>공지사항</h1>

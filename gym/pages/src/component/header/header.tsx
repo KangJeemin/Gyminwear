@@ -134,7 +134,9 @@ React.useEffect(()=>{
             transition: 'height 0.5s',
         }}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
-                <div id={styles.logoBox}></div>
+                <div id={styles.logoBox}>
+                    <img src="../../public/image/짐인웨어 로고" alt="이미지 표시할 수 없음" />
+                </div>
                 <div id={styles.centerBox}></div>
                 <div id={styles.menuBox}>
                     <div id ={styles.shoppingBox} className={styles.menuBoxMargin} ref={shoppingBoxRef}>

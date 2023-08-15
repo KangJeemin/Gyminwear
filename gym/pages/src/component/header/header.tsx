@@ -9,6 +9,8 @@ import { AuthContext } from '../../../../public/context/authcontext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useScrollPosition, useScrollXPosition, useScrollYPosition } from 'react-use-scroll-position';
+import Image from 'next/image';
+
 
 
 const Header = () => {
@@ -135,7 +137,8 @@ React.useEffect(()=>{
         }}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox}>
-                    <img src="../../public/image/짐인웨어 로고" alt="이미지 표시할 수 없음" />
+                   <Image src='../../../../public/image' alt='이미지 표시 불가'layout='fill'/>
+
                 </div>
                 <div id={styles.centerBox}></div>
                 <div id={styles.menuBox}>

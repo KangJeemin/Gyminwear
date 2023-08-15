@@ -11,7 +11,11 @@ const main = ()=>{
 
     
     return(
-        <div>
+        <div
+        style={{
+            overscrollBehavior:"none"
+        }}
+        >
             <Header/>
             <HeaderMargin/>
             <BestAll/>

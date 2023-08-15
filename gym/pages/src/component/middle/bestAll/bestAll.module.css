@@ -20,8 +20,10 @@
     display: flex;
     flex-flow: row nowrap;
     overflow-x: scroll;
-    overflow: hidden;
     border-color: white;
+}
+#bestAll_itemContainer_flexNowrap::-webkit-scrollbar{
+    display: none;
 
 }
 #bestAll_itemContainer{

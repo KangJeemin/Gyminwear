@@ -48,31 +48,24 @@ const Announcement = () => {
         window.removeEventListener('scroll', handleScroll);
       };
       
-})
+},[setAnnounceState])
   return (
     <motion.div
-    animate={{ height: announceState ? '5vh' : '0vh' }}
-    transition={{ 
-      duration: 0.5,
-      ease: "easeOut",
-      times: [0, 0.5],
-    }}
-    style={{
+      initial={{ translateY: '0vh' }}
+      animate={{ translateY: announceState ? '0vh' : '-10vh' }}
+      transition={{ 
+        duration: 0.5,
+        ease:"easeOut",  
+      }}
+      style={{
         width: '100vw',
+        height: '5vh',
         backgroundColor: 'gray',
         display: announcementVisible ? 'flex' : 'none',
         justifyContent: 'center',
         alignItems: 'center',
         fontSize:'0.5em'
         
-      }}
-      onAnimationComplete={() => {
-        if (!announceState) {
-          setAnnouncementVisible(false);
-        }
-        else{
-          setAnnouncementVisible(true);
-        }
       }}
     >
       <h1>공지사항</h1>

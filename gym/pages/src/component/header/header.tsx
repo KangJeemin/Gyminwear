@@ -138,8 +138,13 @@ React.useEffect(()=>{
         }}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox}>
-                   <Image src={Logo} alt='이미지 표시 불가'layout='fill'/>
-
+                   <Image 
+                        src={Logo} 
+                        alt='이미지 표시 불가'
+                        layout='fixed'
+                        width={80}
+                        height={50}
+                        />
                 </div>
                 <div id={styles.centerBox}></div>
                 <div id={styles.menuBox}>

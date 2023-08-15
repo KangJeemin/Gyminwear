@@ -1,7 +1,7 @@
 #bestAll{
     width: 100vw;
     height: 75vh;
-    border-color: white;
+    border-color: red;
 
 
 }
@@ -20,7 +20,7 @@
     display: flex;
     flex-flow: row nowrap;
     overflow-x: scroll;
-    border-color: white;
+    border: 1px solid white
 }
 #bestAll_itemContainer_flexNowrap::-webkit-scrollbar{
     display: none;

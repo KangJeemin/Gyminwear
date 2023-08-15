@@ -53,8 +53,8 @@ const Announcement = () => {
     <motion.div
     animate={{ height: announceState ? '5vh' : '0vh' }}
     transition={{ 
-      duration: 1,
-      ease: "linear",
+      duration: 0.5,
+      ease: "easeOut",
       times: [0, 0.5],
     }}
     style={{

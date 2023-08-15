@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useScrollPosition, useScrollXPosition, useScrollYPosition } from 'react-use-scroll-position';
 import Image from 'next/image';
+import Logo from '../../../../public/image/gyminwearLogo.png'
 
 
 
@@ -137,7 +138,7 @@ React.useEffect(()=>{
         }}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox}>
-                   <Image src='../../../../public/image' alt='이미지 표시 불가'layout='fill'/>
+                   <Image src={Logo} alt='이미지 표시 불가'layout='fill'/>
 
                 </div>
                 <div id={styles.centerBox}></div>

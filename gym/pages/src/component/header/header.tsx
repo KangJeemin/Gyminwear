@@ -18,6 +18,7 @@ const Header = () => {
 const {state,setState, hambergerState, setHambergerState,searchState, setSearchState,announceState,setAnnounceState}= React.useContext(AuthContext)
 const searchBoxRef = useRef<HTMLDivElement | null>(null);
 const shoppingBoxRef = useRef<HTMLDivElement | null>(null);
+const LogoBoxRef = useRef<HTMLDivElement | null>(null);
 const target = useRef<HTMLDivElement | null>(null); 
 const scrollX = useScrollXPosition();
 const scrollY = useScrollYPosition();
@@ -34,6 +35,9 @@ const clickHamberger = ()=> {
         if(shoppingBoxRef.current){
             shoppingBoxRef.current.style.visibility = "hidden"
         }
+        if(LogoBoxRef.current){
+            LogoBoxRef.current.style.visibility = "hidden"
+        }
     }
     else if(state===1){
         setState(2)
@@ -45,6 +49,9 @@ const clickHamberger = ()=> {
         if(shoppingBoxRef.current){
             shoppingBoxRef.current.style.visibility = "visible"
         }
+        if(LogoBoxRef.current){
+            LogoBoxRef.current.style.visibility = "visible"
+        }
     }
     else if (state ===2){
         setState(1)
@@ -55,6 +62,9 @@ const clickHamberger = ()=> {
         if(shoppingBoxRef.current){
             shoppingBoxRef.current.style.visibility = "hidden"
         }
+        if(LogoBoxRef.current){
+            LogoBoxRef.current.style.visibility = "hidden"
+        }
     }
     else{
         setState(2)
@@ -64,6 +74,9 @@ const clickHamberger = ()=> {
         }
         if(shoppingBoxRef.current){
             shoppingBoxRef.current.style.visibility = "visible"
+        }
+        if(LogoBoxRef.current){
+            LogoBoxRef.current.style.visibility = "visible"
         }
     }
 }
@@ -77,6 +90,9 @@ const clickSearch = () => {
         if(shoppingBoxRef.current){
             shoppingBoxRef.current.style.visibility = "hidden"
         }
+        if(LogoBoxRef.current){
+            LogoBoxRef.current.style.visibility = "hidden"
+        }
     }
     else if(state===1){
         setState(2)
@@ -88,6 +104,9 @@ const clickSearch = () => {
         if(shoppingBoxRef.current){
             shoppingBoxRef.current.style.visibility = "visible"
         }
+        if(LogoBoxRef.current){
+            LogoBoxRef.current.style.visibility = "visible"
+        }
     }
     else if (state ===2){
         setState(1)
@@ -98,6 +117,9 @@ const clickSearch = () => {
         if(shoppingBoxRef.current){
             shoppingBoxRef.current.style.visibility = "hidden"
         }
+        if(LogoBoxRef.current){
+            LogoBoxRef.current.style.visibility = "hidden"
+        }
     }
     else{
         setState(2)
@@ -107,6 +129,9 @@ const clickSearch = () => {
         }
         if(shoppingBoxRef.current){
             shoppingBoxRef.current.style.visibility = "visible"
+        }
+        if(LogoBoxRef.current){
+            LogoBoxRef.current.style.visibility = "visible"
         }
     }
 }
@@ -137,7 +162,7 @@ React.useEffect(()=>{
             transition: 'height 0.5s',
         }}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
-                <div id={styles.logoBox}>
+                <div id={styles.logoBox} ref={LogoBoxRef}>
                    <Image 
                         src={Logo} 
                         alt='이미지 표시 불가'

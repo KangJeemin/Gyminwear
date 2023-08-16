@@ -47,12 +47,12 @@ const SearchModal = () => {
                 <div id= {styles.searchBoxIcon}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray"}}/>
                 </div>
-                <input id={styles.searchBoxInput} type="text" onChange={setInputText} value={inputState} />
+                <input id={styles.searchBoxInput} type="text" onChange={setInputText} value={inputState} placeholder="검색" />
                 <div id= {styles.searchBoxDelete}>
-                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
+                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"1.5em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
                 </div>
             </div>
-            <div id={styles.searchRecentTextBox}>최근 검색어</div>
+            <h1 id={styles.searchRecentTextBox}>최근 검색어</h1>
             <div id={styles.searchRecentLogContainer}>
                 <div id={styles.searchRecentLogBox}>
                     <div id={styles.searchRecentLogs}>덤브스트럭</div>

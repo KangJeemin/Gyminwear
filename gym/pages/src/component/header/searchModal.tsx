@@ -49,7 +49,7 @@ const SearchModal = () => {
                 </div>
                 <input id={styles.searchBoxInput} type="text" onChange={setInputText} value={inputState} placeholder="검색" />
                 <div id= {styles.searchBoxDelete}>
-                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
+                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"1.5em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
                 </div>
             </div>
             <div id={styles.searchRecentTextBox}>최근 검색어</div>

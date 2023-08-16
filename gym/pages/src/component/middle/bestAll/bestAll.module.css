@@ -24,6 +24,7 @@
 }
 #bestAll_itemContainer_flexNowrap::-webkit-scrollbar{
     display: none;
+    border: none;
 
 }
 #bestAll_itemContainer{

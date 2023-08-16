@@ -53,6 +53,7 @@
     color: black;
     font-size: 1rem;
     font-weight: bold;
+    padding-bottom: 3rem;
 }
 #searchRecentLogContainer{
     width: 100%;

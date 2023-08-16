@@ -35,6 +35,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     border: none;
+    outline: none;
 }
 #searchBoxDelete{
     width: 15%;

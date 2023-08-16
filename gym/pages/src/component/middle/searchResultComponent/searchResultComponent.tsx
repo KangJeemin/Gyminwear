@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import styles from './searchResultComponent.module.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 interface Item {
   brandName: string;
@@ -97,6 +99,7 @@ const SearchResult: React.FC = () => {
   return (
     <div id={styles.searchResultComponent}>
         <div id={styles.searchResultComponent_searchContainer}>
+            <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray"}}/>
             <input id={styles.searchResultComponent_search} type="search" />
         </div>
         <div id={styles.searchResultComponent_topText}>

@@ -9,6 +9,13 @@
     display: flex;
     justify-content: center;
     background-color: white;
+    position: relative;
+}
+#searchResultComponent_searchIconContainer{
+    position:absolute;
+    left: 17%;
+    top:13%
+    
 }
 #searchResultComponent_search{
     width: 70%;

@@ -99,7 +99,9 @@ const SearchResult: React.FC = () => {
   return (
     <div id={styles.searchResultComponent}>
         <div id={styles.searchResultComponent_searchContainer}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray"}}/>
+            <div id={styles.searchResultComponent_searchIconContainer}>
+                <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray",}}/>
+            </div>
             <input id={styles.searchResultComponent_search} type="search" />
         </div>
         <div id={styles.searchResultComponent_topText}>

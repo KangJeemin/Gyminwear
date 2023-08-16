@@ -17,6 +17,7 @@
     background-color: white;
     font-size: 1.5rem;
     font-weight: bold;
+    border-radius: 10px;
 }
 #searchResultComponent_topText{
     width: 100%;

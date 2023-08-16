@@ -47,7 +47,7 @@ const SearchModal = () => {
                 <div id= {styles.searchBoxIcon}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray"}}/>
                 </div>
-                <input id={styles.searchBoxInput} type="text" onChange={setInputText} value={inputState} />
+                <input id={styles.searchBoxInput} type="text" onChange={setInputText} value={inputState} placeholder="검색" />
                 <div id= {styles.searchBoxDelete}>
                 <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
                 </div>

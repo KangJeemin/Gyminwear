@@ -20,6 +20,7 @@
     height: 5%;
     display: flex;
     
+    
 }
 #searchBoxIcon{
     width: 15%;
@@ -53,6 +54,7 @@
     color: black;
     font-size: 1.5rem;
     font-weight: bolder;
+    margin-top: 2rem;
     padding-bottom: 3rem;
 }
 #searchRecentLogContainer{

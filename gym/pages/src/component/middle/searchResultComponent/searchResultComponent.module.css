@@ -15,7 +15,11 @@
     position:absolute;
     left: 17%;
     top:13%
-    
+}
+#searchResultComponent_deleteIconContainer{
+    position:absolute;
+    left: 75%;
+    top:13%
 }
 #searchResultComponent_search{
     width: 70%;

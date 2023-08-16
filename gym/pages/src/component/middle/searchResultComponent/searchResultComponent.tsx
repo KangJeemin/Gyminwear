@@ -96,6 +96,9 @@ const SearchResult: React.FC = () => {
  
   return (
     <div id={styles.searchResultComponent}>
+        <div id={styles.searchResultComponent_searchContainer}>
+            <input id={styles.searchResultComponent_search} type="text" />
+        </div>
         <div id={styles.searchResultComponent_topText}>
           <h1 id={styles.searchResultComponent_text}>	&#39;	&#39;에 대한 00개의 검색 결과를 발견했습니다.</h1>
         </div>

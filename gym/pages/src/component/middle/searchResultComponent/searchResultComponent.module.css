@@ -3,6 +3,21 @@
     height: 100vh;
     overflow-y: scroll;
 }
+#searchResultComponent_searchContainer{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+#searchResultComponent_search{
+    width: 70%;
+    height: 100%;
+    color: black;
+    background-color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
 #searchResultComponent_topText{
     width: 100%;
     height: 15%;

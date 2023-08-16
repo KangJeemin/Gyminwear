@@ -10,12 +10,13 @@
 #categoryBox{
     width:100vw;
     height:5vh;
+    position: "relative";
+
 }
 #logoBox {
     width: 32%;
     height: 100%;
     color: black;
-
 }
 #centerBox {
     width:30%;

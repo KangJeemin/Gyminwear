@@ -9,6 +9,9 @@ import { AuthContext } from '../../../../public/context/authcontext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useScrollPosition, useScrollXPosition, useScrollYPosition } from 'react-use-scroll-position';
+import Image from 'next/image';
+import Logo from '../../../../public/image/gyminwearLogo.png'
+
 
 
 const Header = () => {
@@ -134,7 +137,15 @@ React.useEffect(()=>{
             transition: 'height 0.5s',
         }}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
-                <div id={styles.logoBox}></div>
+                <div id={styles.logoBox}>
+                   <Image 
+                        src={Logo} 
+                        alt='이미지 표시 불가'
+                        layout='fixed'
+                        width={80}
+                        height={45}
+                        />
+                </div>
                 <div id={styles.centerBox}></div>
                 <div id={styles.menuBox}>
                     <div id ={styles.shoppingBox} className={styles.menuBoxMargin} ref={shoppingBoxRef}>

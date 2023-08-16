@@ -1,7 +1,6 @@
 #bestTop{
     width: 100vw;
     height: 75vh;
-    border-color: green;
 
 }
 #bestTop_topText{
@@ -14,7 +13,9 @@
     height: 93%;
     display: flex;
     flex-flow: row nowrap;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
+    /* border: 1px solid white */
+
 }
 #bestTop_itemContainer_flexNowrap::-webkit-scrollbar{
     display: none;

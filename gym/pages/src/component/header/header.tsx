@@ -244,7 +244,7 @@ React.useEffect(()=>{
                    
                  }}>오늘의 공지사항!</p>
             </div> */}
-            <Announcement/>
+            {/* <Announcement/> */}
             <HambergerModal/>
             <SearchModal/>
         </motion.div>

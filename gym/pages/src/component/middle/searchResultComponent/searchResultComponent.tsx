@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useRef, useEffect, useContext, ChangeEvent } from 'react';
 import styles from './searchResultComponent.module.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 interface Item {
   brandName: string;
@@ -9,6 +11,15 @@ interface Item {
 }
 
 const SearchResult: React.FC = () => { 
+    const [inputState, setInputState] = useState<string>("")
+    const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
+      setInputState(e.target.value);
+      console.log(inputState)
+    }
+  
+    const initializeSearchText = () => {
+      setInputState("")
+    }
     const router = useRouter();
   
   const items:Item[] =[
@@ -96,6 +107,15 @@ const SearchResult: React.FC = () => {
  
   return (
     <div id={styles.searchResultComponent}>
+        <div id={styles.searchResultComponent_searchContainer}>
+            <div id={styles.searchResultComponent_searchIconContainer}>
+                <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray",}}/>
+            </div>
+            <div id= {styles.searchResultComponent_deleteIconContainer}>
+                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
+            </div>
+            <input id={styles.searchResultComponent_search} onChange={setInputText} value={inputState} type="search" />
+        </div>
         <div id={styles.searchResultComponent_topText}>
           <h1 id={styles.searchResultComponent_text}>	&#39;	&#39;에 대한 00개의 검색 결과를 발견했습니다.</h1>
         </div>

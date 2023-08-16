@@ -32,6 +32,8 @@
     height: 100%;
     color: black;
     background-color: white;
+    font-size: 2rem;
+    font-weight: bold;
 }
 #searchBoxDelete{
     width: 15%;

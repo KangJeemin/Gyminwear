@@ -143,7 +143,7 @@ React.useEffect(()=>{
                         alt='이미지 표시 불가'
                         layout='fixed'
                         width={80}
-                        height={50}
+                        height={45}
                         />
                 </div>
                 <div id={styles.centerBox}></div>

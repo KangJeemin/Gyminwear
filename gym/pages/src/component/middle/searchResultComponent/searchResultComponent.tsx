@@ -11,6 +11,7 @@ interface Item {
 }
 
 const SearchResult: React.FC = () => { 
+    const target = useRef<HTMLDivElement | null>(null);
     const [inputState, setInputState] = useState<string>("")
     const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
       setInputState(e.target.value);
@@ -21,7 +22,11 @@ const SearchResult: React.FC = () => {
       setInputState("")
     }
     const router = useRouter();
-  
+    const setViewBlurry = () => {
+        if(target.current){
+            target.current.style.opacity='0.1'
+        }
+    }
   const items:Item[] =[
     {
         brandName:"brontowin",
@@ -114,12 +119,12 @@ const SearchResult: React.FC = () => {
             <div id= {styles.searchResultComponent_deleteIconContainer}>
                 <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
             </div>
-            <input id={styles.searchResultComponent_search} onChange={setInputText} value={inputState} type="search" />
+            <input id={styles.searchResultComponent_search} onChange={setInputText} value={inputState} type="search" onClick={setViewBlurry}/>
         </div>
-        <div id={styles.searchResultComponent_topText}>
+        <div id={styles.searchResultComponent_topText} ref={target}>
           <h1 id={styles.searchResultComponent_text}>	&#39;	&#39;에 대한 00개의 검색 결과를 발견했습니다.</h1>
         </div>
-            <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_8x2} ${styles.flex_scrollSet}`}>
+            <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_8x2} ${styles.flex_scrollSet}`} ref={target}>
             {items.map((item, index) => (
                 <span key={index} id={styles.searchResultComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                 <span id={styles.searchResultComponent_item_imageSize}></span>
@@ -131,7 +136,7 @@ const SearchResult: React.FC = () => {
                 </span>
                 ))}
         </div>
-        <div id ={styles.searchResultComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`}>
+        <div id ={styles.searchResultComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`} ref={target}>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>1/3</span>

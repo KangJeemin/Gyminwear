@@ -157,10 +157,7 @@ React.useEffect(()=>{
       
 })
     return (
-        <motion.div id={styles.header} className={`${styles.flexColumn}`} style={{
-            height: announceState ? '10vh' :'5vh', 
-            transition: 'height 0.5s',
-        }}>
+        <motion.div id={styles.header} className={`${styles.flexColumn}`}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox} ref={LogoBoxRef}>
                    <Image 
@@ -232,19 +229,6 @@ React.useEffect(()=>{
                     </div>
                 </div>
             </div>
-            {/* <div id={styles.announcement} style={{
-                                            color: 'red',
-                                            opacity: announcementOpacity, // Apply the calculated opacity
-                                            height: `${headerHeight}vh`, // Apply the calculated header height
-                                            transition: 'opacity 0.5s,height 0.5s',
-               
-            }}>
-                <p style={{
-                    color: 'red',
-                   
-                 }}>오늘의 공지사항!</p>
-            </div> */}
-            {/* <Announcement/> */}
             <HambergerModal/>
             <SearchModal/>
         </motion.div>

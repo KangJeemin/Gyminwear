@@ -6,6 +6,7 @@ import Footer from './src/component/footer/footer'
 import BestTop from './src/component/middle/bestTop/bestTop'
 import BestBottom from './src/component/middle/bestBottom/bestBottom'
 import HeaderMargin from './src/component/header/headerMargin'
+import Announcement from './src/component/header/announcement'
 const index = ()=>{
     return(
         <div
@@ -14,6 +15,7 @@ const index = ()=>{
         }}>
             <Header/>
             <HeaderMargin/>
+            <Announcement/>
             <BestAll/>
             <BestTop/>
             <BestBottom/>

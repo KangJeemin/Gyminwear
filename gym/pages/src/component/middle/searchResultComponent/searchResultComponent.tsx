@@ -133,12 +133,12 @@ const SearchResult: React.FC = () => {
             </div>
             <input id={styles.searchResultComponent_search} onChange={setInputText} value={inputState} type="search" onFocus={setViewBlurry}/>
         </div>
-        <div id={styles.searchResultComponent_topText} ref={target}>
+        <div id={styles.searchResultComponent_topText}>
           <h1 id={styles.searchResultComponent_text} ref={target}>	&#39;	&#39;에 대한 00개의 검색 결과를 발견했습니다.</h1>
         </div>
-            <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_8x2} ${styles.flex_scrollSet}`} ref={target}>
+            <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_8x2} ${styles.flex_scrollSet}`}>
             {items.map((item, index) => (
-                <span key={index} id={styles.searchResultComponent_item_itemComponent} ref={target} className={`${styles.padding_1} ${styles.flex_column}` }>
+                <span key={index} id={styles.searchResultComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}` }>
                 <span id={styles.searchResultComponent_item_imageSize}></span>
                 <span id={styles.searchResultComponent_item_textBoxSize} className={`${styles.flex_column}`}>
                     <span id={styles.searchResultComponent_item_itemBrandName}><h1>{item.brandName}</h1></span>

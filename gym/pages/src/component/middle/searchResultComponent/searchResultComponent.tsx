@@ -27,7 +27,7 @@ const SearchResult: React.FC = () => {
     
         if(viewState===false){
             if(target.current){
-                target.current.style.opacity='0.1'
+                target.current.style.filter='blur(5px)'
                 setViewState(true)
             }
         }
@@ -131,7 +131,7 @@ const SearchResult: React.FC = () => {
             <div id= {styles.searchResultComponent_deleteIconContainer}>
                 <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
             </div>
-            <input id={styles.searchResultComponent_search} onChange={setInputText} value={inputState} type="search" onClick={setViewBlurry}/>
+            <input id={styles.searchResultComponent_search} onChange={setInputText} value={inputState} type="search" onFocus={setViewBlurry}/>
         </div>
         <div id={styles.searchResultComponent_topText} ref={target}>
           <h1 id={styles.searchResultComponent_text} ref={target}>	&#39;	&#39;에 대한 00개의 검색 결과를 발견했습니다.</h1>

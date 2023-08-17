@@ -2,8 +2,6 @@
     width: 100vw;
     height: 100vh;
     overflow-y: scroll;
-    position: absolute;
-    z-index: 0;
 }
 #searchResultComponent_searchContainer{
     width: 100%;

@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { Router } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../../../public/context/authcontext';
+import { positions } from '@mui/system';
 
 const HambergerModal = () => {
   const {hambergerState,setState,setHambergerState} = useContext(AuthContext)
@@ -19,11 +20,13 @@ const HambergerModal = () => {
         display : 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        zIndex:2
+        
         
       }}
       animate={{
         opacity:hambergerState===0 ? [0,0] : hambergerState=== 1 ? [0,1] : [1,0],
-        height: hambergerState===0 ? ['0vh','0vh'] : hambergerState=== 1 ? ['0vh','95vh'] : ['95vh','0vh']
+        height: hambergerState===0 ? ['0vh','0vh'] : hambergerState=== 1 ? ['0vh','95vh'] : ['95vh','0vh'],
       }}
       transition={{
         duration: hambergerState===0 ? 0 : hambergerState===1 ? 0.5 : 0.5, 

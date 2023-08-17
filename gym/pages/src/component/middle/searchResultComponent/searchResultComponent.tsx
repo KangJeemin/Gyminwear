@@ -12,6 +12,8 @@ interface Item {
 
 const SearchResult: React.FC = () => { 
     const target = useRef<HTMLDivElement | null>(null);
+    const target1 = useRef<HTMLDivElement | null>(null);
+
     const [viewState,setViewState]=useState<boolean>(false)
     const [inputState, setInputState] = useState<string>("")
     const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
@@ -28,6 +30,10 @@ const SearchResult: React.FC = () => {
         if(viewState===false){
             if(target.current){
                 target.current.style.filter='blur(5px)'
+                setViewState(true)
+            }
+            if(target1.current){
+                target1.current.style.filter='blur(5px)'
                 setViewState(true)
             }
         }
@@ -134,7 +140,7 @@ const SearchResult: React.FC = () => {
             <input id={styles.searchResultComponent_search} onChange={setInputText} value={inputState} type="search" onFocus={setViewBlurry}/>
         </div>
         <div id={styles.searchResultComponent_topText}>
-          <h1 id={styles.searchResultComponent_text} ref={target}>	&#39;	&#39;에 대한 00개의 검색 결과를 발견했습니다.</h1>
+          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;	&#39;에 대한 00개의 검색 결과를 발견했습니다.</h1>
         </div>
             <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_8x2} ${styles.flex_scrollSet}`}>
             {items.map((item, index) => (

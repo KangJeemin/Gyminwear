@@ -12,6 +12,7 @@ interface Item {
 
 const SearchResult: React.FC = () => { 
     const target = useRef<HTMLDivElement | null>(null);
+    const [viewState,setViewState]=useState<boolean>(false)
     const [inputState, setInputState] = useState<string>("")
     const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
       setInputState(e.target.value);
@@ -23,9 +24,20 @@ const SearchResult: React.FC = () => {
     }
     const router = useRouter();
     const setViewBlurry = () => {
-        if(target.current){
-            target.current.style.opacity='0.1'
+    
+        if(viewState===false){
+            if(target.current){
+                target.current.style.opacity='0.1'
+                setViewState(true)
+            }
         }
+        else{
+            if(target.current){
+                target.current.style.opacity='1'
+                setViewState(false)
+            }
+        }
+        
     }
   const items:Item[] =[
     {

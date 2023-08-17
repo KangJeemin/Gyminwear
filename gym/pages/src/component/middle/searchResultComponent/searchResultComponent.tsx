@@ -13,6 +13,7 @@ interface Item {
 const SearchResult: React.FC = () => { 
     const target = useRef<HTMLDivElement | null>(null);
     const target1 = useRef<HTMLDivElement | null>(null);
+    const target2 = useRef<HTMLDivElement | null>(null);
 
     const [viewState,setViewState]=useState<boolean>(false)
     const [inputState, setInputState] = useState<string>("")
@@ -30,20 +31,29 @@ const SearchResult: React.FC = () => {
         if(viewState===false){
             if(target.current){
                 target.current.style.filter='blur(5px)'
-                setViewState(true)
             }
             if(target1.current){
                 target1.current.style.filter='blur(5px)'
-                setViewState(true)
             }
+            if(target2.current){
+                target2.current.style.filter='blur(5px)'
+            }
+            setViewState(true)
         }
-        else{
+    }
+    const setViewBlurryOut = () => {
+        if(viewState===true){
             if(target.current){
-                target.current.style.opacity='1'
-                setViewState(false)
+                target.current.style.filter='none'
             }
+            if(target1.current){
+                target1.current.style.filter='none'
+            }
+            if(target2.current){
+                target2.current.style.filter='none'
+            }
+            setViewState(false)
         }
-        
     }
   const items:Item[] =[
     {
@@ -137,12 +147,12 @@ const SearchResult: React.FC = () => {
             <div id= {styles.searchResultComponent_deleteIconContainer}>
                 <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
             </div>
-            <input id={styles.searchResultComponent_search} onChange={setInputText} value={inputState} type="search" onFocus={setViewBlurry}/>
+            <input id={styles.searchResultComponent_search} onChange={setInputText} value={inputState} type="search" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
         </div>
         <div id={styles.searchResultComponent_topText}>
           <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;	&#39;에 대한 00개의 검색 결과를 발견했습니다.</h1>
         </div>
-            <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_8x2} ${styles.flex_scrollSet}`}>
+            <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_8x2} ${styles.flex_scrollSet}`} ref={target2}>
             {items.map((item, index) => (
                 <span key={index} id={styles.searchResultComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}` }>
                 <span id={styles.searchResultComponent_item_imageSize}></span>

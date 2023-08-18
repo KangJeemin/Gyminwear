@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-const db = require('../src/db/db');
+import db from '../src/db/db'
 
 export default function test(req : NextApiRequest, res : NextApiResponse) {
     db.connect((err:any)=>{

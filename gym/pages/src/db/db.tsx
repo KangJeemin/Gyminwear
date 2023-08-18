@@ -1,4 +1,4 @@
-const mysql =() => {
+
 
     const mysql = require("mysql2"); // Use the promise version of mysql2
     const db = mysql.createConnection({
@@ -10,7 +10,6 @@ const mysql =() => {
         connectionLimit: 10, // Adjust this value based on your needs
     });
 
-    return(db)
-}
 
-export default mysql
+
+export default db

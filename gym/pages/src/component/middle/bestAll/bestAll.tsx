@@ -9,12 +9,7 @@ interface Item {
 
 const BestAll:React.FC = () =>{
     let array
-    fetch('127.0.0.1/api/test',{
-        method:'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
+    fetch('http://localhost:3000/api/test')
     .then(res=>res.json())
     .then(data=>{
         array=data

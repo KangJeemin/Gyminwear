@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-const db = require('../../db/db')
+const db = require('../../src/db/db')
 
 export default function test(req : NextApiRequest, res : NextApiResponse) {
 

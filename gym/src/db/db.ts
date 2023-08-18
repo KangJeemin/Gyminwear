@@ -18,7 +18,7 @@ const mysqlModule =() => {
         }
     return db
     }
-module.exports=mysqlModule
+module.exports= mysqlModule()
     
     
 

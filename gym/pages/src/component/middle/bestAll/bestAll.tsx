@@ -9,12 +9,19 @@ interface Item {
 
 const BestAll:React.FC = () =>{
     let array
-     function mysqlAPI ()  {
-        var xmlHttp = new XMLHttpRequest();       // XMLHttpRequest 객체를 생성함.
-        xmlHttp.open("GET", "/localhost:3000/api/test", true);
-        xmlHttp.send();
-
-
+     async function mysqlAPI ()  {
+        try {
+            const res = await fetch(
+                `https://localhost:300/api/test`,
+                {
+                    method: 'GET',
+                }
+            );
+            const data = await res.json();
+            console.log(data);
+        } catch (err) {
+            console.log(err);
+        }
     }
     mysqlAPI()
     

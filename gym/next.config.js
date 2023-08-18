@@ -14,11 +14,6 @@ const nextConfig = {
 			},
 		];
 	},
-  env:{
-    NEXT_PUBLIC_NAVER_ClientId:'vqhMSE8joE5v7eeLQaHt',
-    NEXT_PUBLIC_NAVER_ClientSecret:'EMjd5sI8k9',
-
-  }
 }
 
 module.exports = nextConfig

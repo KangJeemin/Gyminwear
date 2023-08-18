@@ -31,7 +31,7 @@ const HambergerModal = () => {
       transition={{
         duration: hambergerState===0 ? 0 : hambergerState===1 ? 0.5 : 0.5, 
         times:hambergerState===0 ? [0,0] : hambergerState===1 ? [0,1] : [0,1],
-        ease: 'easeOut',
+        ease: 'linear',
       }}
     >
       <div id={styles.hambergerContainer}>

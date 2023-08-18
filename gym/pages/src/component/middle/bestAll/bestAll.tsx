@@ -9,13 +9,14 @@ interface Item {
 
 const BestAll:React.FC = () =>{
     let array
-    fetch('http://localhost:3000/api/test')
-    .then(res=>res.json())
-    .then(data=>{
-        array=data
-        console.log(data,' =data')
-
-    })
+    async function mysqlAPI ()  {
+        const res = await fetch('http://localhost:3000/api/test')
+        const data = await res.json()
+        array= data
+        console.log(array)   
+    }
+    mysqlAPI()
+    
     
  const items:Item[] =[
     {

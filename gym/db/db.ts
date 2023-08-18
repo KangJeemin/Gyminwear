@@ -3,11 +3,11 @@
     let db
     try{
          db = mysql.createConnection({
-            user: 'root',
-            password: 'dD1354268!', // Fix typo here
+            user: process.env.NEXT_PUBLIC_DATABASE_USERNAME,
+            password: process.env.NEXT_PUBLIC_DATABASE_PASSWAOD,
             host: 'localhost',
-            port: 3306,
-            database: 'gymwear',
+            port: process.env.NEXT_PUBLIC_DATABASE_PORT,
+            database: process.env.NEXT_PUBLIC_DATABASE_DATABASE,
             connectionLimit: 10, // Adjust this value based on your needs
         });
     }
@@ -17,3 +17,4 @@
     
 
     module.exports = db
+

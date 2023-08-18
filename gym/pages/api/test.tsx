@@ -1,15 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import db from '../src/db/db'
+const db = require('../src/db/db')
 
 export default function test(req : NextApiRequest, res : NextApiResponse) {
-    db.connect((err:any)=>{
-        if(err){
-          console.log("DB와 연결중에 에러가 발생했습니다.");
-        }
-        else
-        console.log("DB와 연결 완료");
-      });
-    db.query("SELECT * FROM brand",
+
+    db.query("SELECT * FROM Brand",
     function (err: any, result: any) {
         if(err) {
             console.log(err)

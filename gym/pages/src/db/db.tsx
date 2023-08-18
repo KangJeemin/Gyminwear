@@ -1,15 +1,19 @@
-
-
+    export{}
     const mysql = require("mysql2"); // Use the promise version of mysql2
-    const db = mysql.createConnection({
-        user: process.env.NEXT_PUBLIC_DATABASE_USER,
-        password: process.env.NEXT_PUBLIC_DATABASE_PASSWARD, // Fix typo here
-        host: 'localhost',
-        port: process.env.NEXT_PUBLIC_DATABASE_PORT,
-        database: process.env.NEXT_PUBLIC_DATABASE_DATABASE,
-        connectionLimit: 10, // Adjust this value based on your needs
-    });
+    let db
+    try{
+         db = mysql.createConnection({
+            user: 'root',
+            password: 'dD1354268!', // Fix typo here
+            host: 'localhost',
+            port: 3306,
+            database: 'gymwear',
+            connectionLimit: 10, // Adjust this value based on your needs
+        });
+    }
+    catch (err){
+        console.log(err)
+    }
+    
 
-
-
-export default db
+    module.exports = db

@@ -16,7 +16,7 @@ const BestAll:React.FC = () =>{
     let array
     const getDatabaseData = async () => {
         try{
-            const res = await axios.get("http//:localhost:3000/api/test");
+            const res = await axios.get("/api/test");
             console.log('hey')
             console.log(res,'res 결과 ')
             

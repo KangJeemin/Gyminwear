@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 import styles from './bestAll.module.css'
+import axios from 'axios'
 
 interface Item {
     brandName:string
@@ -9,23 +10,18 @@ interface Item {
 
 const BestAll:React.FC = () =>{
     let array
-     async function mysqlAPI ()  {
-        try {
-            const res = await fetch(
-                `https://localhost:300/api/test`,
-                {
-                    method: 'GET',
-                }
-            );
-            const data = await res.json();
-            console.log(data);
-        } catch (err) {
-            console.log(err);
+     const getDatabaseData = async () => {
+        try{
+            const res = await axios.get("http//:localhost:3000/api/test");
+            console.log(res,'res 결과 ')
+            
         }
-    }
-    mysqlAPI()
-    
-    
+ catch(e){
+            console.log(e)
+        }
+     }
+    getDatabaseData()
+
  const items:Item[] =[
     {
         brandName:"brontowin",

@@ -9,18 +9,22 @@ interface Item {
 }
 
 const BestAll:React.FC = () =>{
+    useEffect(()=>{
+        getDatabaseData()
+
+    },[])
     let array
-     const getDatabaseData = async () => {
+    const getDatabaseData = async () => {
         try{
             const res = await axios.get("http//:localhost:3000/api/test");
+            console.log('hey')
             console.log(res,'res 결과 ')
             
         }
- catch(e){
+        catch(e){
             console.log(e)
         }
      }
-    getDatabaseData()
 
  const items:Item[] =[
     {

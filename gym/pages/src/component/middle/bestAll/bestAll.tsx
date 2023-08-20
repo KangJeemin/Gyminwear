@@ -12,13 +12,13 @@ const BestAll:React.FC = () =>{
     useEffect(()=>{
         getDatabaseData()
 
-    },[])
+    })
     let array
     const getDatabaseData = async () => {
         try{
             const res = await axios.get("/api/test");
-            console.log('hey')
-            console.log(res,'res 결과 ')
+            array=res
+            console.log(res.data,'res 결과 ')
             
         }
         catch(e){
@@ -28,7 +28,7 @@ const BestAll:React.FC = () =>{
 
  const items:Item[] =[
     {
-        brandName:"brontowin",
+        brandName:array[0],
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'₩'
     },

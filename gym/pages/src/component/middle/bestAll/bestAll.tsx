@@ -16,7 +16,7 @@ const BestAll:React.FC = () =>{
             try {
                 const response = await axios.get("/api/test");
                 const data = await response.data; // Extract the data property from the response
-                setItem(data[0]); // Update the state with the fetched data
+                setItem(data); // Update the state with the fetched data
             } catch (error) {
                 console.error(error);
             }
@@ -32,7 +32,7 @@ const BestAll:React.FC = () =>{
     
  const items:Item[] =[
     {
-        brandName:Object.values(getitem),
+        brandName:Object.values(getitem[0]),
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'₩',
 

@@ -6,6 +6,7 @@ interface Item {
     brandName:any
     itemName:string
     itemPrice:number|string
+    brandname:any|null
 }
 
 const BestAll:React.FC = () =>{
@@ -27,29 +28,34 @@ const BestAll:React.FC = () =>{
     }, []); // Empty dependency array means this effect runs only once after the initial render
 
     useEffect(()=>{
-        console.log(getitem)
+        console.log(getitem[0].brandname)
     },[getitem])
     
  const items:Item[] =[
     {
         brandName:'본투윈',
         itemName:"헤리코든 오버핏",
-        itemPrice:44000+'₩'
+        itemPrice:44000+'₩',
+        brandname:null
+
     },
     {
         brandName:'본투윈',
         itemName:"헤리코든 오버핏",
-        itemPrice:44000+'₩'
+        itemPrice:44000+'₩',
+        brandname:null
     },
     {
         brandName:'본투윈',
         itemName:"헤리코든 오버핏",
-        itemPrice:44000+'₩'
+        itemPrice:44000+'₩',
+        brandname:null
     },
     {
         brandName:'본투윈',
         itemName:"헤리코든 오버핏",
-        itemPrice:44000+'₩'
+        itemPrice:44000+'₩',
+        brandname:null
     }
     
  ]

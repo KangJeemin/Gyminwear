@@ -9,7 +9,7 @@ interface Item {
 }
 
 const BestAll:React.FC = () =>{
-    const [getitem,setItem] = useState<Item[]>([]);
+    const [getitem,setItem] = useState([]);
     useEffect(() => {
         // Define an async function within the useEffect to fetch data
         async function fetchData() {

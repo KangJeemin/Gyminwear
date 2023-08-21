@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect, useContext, ChangeEvent } from 'rea
 import styles from './searchResultComponent.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-
+import { AuthContext } from '@/public/context/authcontext';
 interface Item {
   brandName: string;
   itemName: string;
@@ -17,6 +17,7 @@ const SearchResult: React.FC = () => {
 
     const [viewState,setViewState]=useState<boolean>(false)
     const [inputState, setInputState] = useState<string>("")
+    const {hambergerState,searchState} = useContext(AuthContext)
     const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
       setInputState(e.target.value);
       console.log(inputState)
@@ -140,7 +141,10 @@ const SearchResult: React.FC = () => {
  
   return (
     <div id={styles.searchResultComponent}>
-        <div id={styles.searchResultComponent_searchContainer}>
+        <div id={styles.searchResultComponent_searchContainer}
+         style={{
+            zIndex:hambergerState === 1 ? -1 : searchState === 1 ? -1 : 0,
+        }}>
             <div id={styles.searchResultComponent_searchIconContainer}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray",}}/>
             </div>

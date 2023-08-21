@@ -10,7 +10,6 @@
     justify-content: center;
     background-color: white;
     position: relative;
-    z-index: -1;
 }
 #searchResultComponent_searchIconContainer{
     position:absolute;

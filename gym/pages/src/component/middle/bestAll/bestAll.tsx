@@ -9,25 +9,24 @@ interface Item {
 }
 
 const BestAll:React.FC = () =>{
-    const [item,setItem] = useState([])
+    const [item,setItem] = useState<Item[]>([]);
     useEffect(()=>{
         getDatabaseData()
 
-    },)
-    let array
+    },[])
     const getDatabaseData = async () => {
         try{
                 const res = await axios.get("/api/test");
+                console.log(res.data)
                 setItem(res.data)
         }
         catch(e){
             console.log(e)
         }
      }
-
  const items:Item[] =[
     {
-        brandName:item[0],
+        brandName:item[0].brandName,
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'₩'
     },

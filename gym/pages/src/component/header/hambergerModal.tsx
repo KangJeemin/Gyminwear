@@ -20,7 +20,6 @@ const HambergerModal = () => {
         display : 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        zIndex:2
         
         
       }}

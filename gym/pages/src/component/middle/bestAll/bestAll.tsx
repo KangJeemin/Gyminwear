@@ -16,8 +16,7 @@ const BestAll:React.FC = () =>{
             try {
                 const response = await axios.get("/api/test");
                 const data = await response.data; // Extract the data property from the response
-                await setItem(data); // Update the state with the fetched data
-                console.log(getitem)
+                setItem(data); // Update the state with the fetched data
             } catch (error) {
                 console.error(error);
             }
@@ -26,6 +25,10 @@ const BestAll:React.FC = () =>{
         // Call the async function to fetch data
         fetchData();
     }, []); // Empty dependency array means this effect runs only once after the initial render
+
+    useEffect(()=>{
+        console.log(getitem)
+    },[getitem])
     
  const items:Item[] =[
     {

@@ -6,7 +6,6 @@ interface Item {
     brandName:any
     itemName:string
     itemPrice:number|string
-    brandname:any|null
 }
 
 const BestAll:React.FC = () =>{
@@ -17,7 +16,7 @@ const BestAll:React.FC = () =>{
             try {
                 const response = await axios.get("/api/test");
                 const data = await response.data; // Extract the data property from the response
-                setItem(data); // Update the state with the fetched data
+                setItem(data[0].brandname); // Update the state with the fetched data
             } catch (error) {
                 console.error(error);
             }
@@ -28,34 +27,30 @@ const BestAll:React.FC = () =>{
     }, []); // Empty dependency array means this effect runs only once after the initial render
 
     useEffect(()=>{
-        console.log(getitem[0].brandname)
+        console.log(getitem)
     },[getitem])
     
  const items:Item[] =[
     {
-        brandName:'본투윈',
+        brandName:getitem,
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'₩',
-        brandname:null
 
     },
     {
         brandName:'본투윈',
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'₩',
-        brandname:null
     },
     {
         brandName:'본투윈',
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'₩',
-        brandname:null
     },
     {
         brandName:'본투윈',
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'₩',
-        brandname:null
     }
     
  ]

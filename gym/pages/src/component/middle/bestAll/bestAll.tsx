@@ -19,7 +19,7 @@ const BestAll:React.FC = () =>{
                 const res = await axios.get("/api/test");
                 console.log(res.data)
                 setItem(res.data)
-                console.log(getitem[0])
+                await console.log(getitem[0])
         }
         catch(e){
             console.log(e)

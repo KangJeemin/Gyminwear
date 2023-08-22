@@ -4,22 +4,22 @@ import axios from 'axios'
 
 const BestAll:React.FC = () =>{
     const [getitem,setItem] = useState([]);
-    useEffect(() => {
-        // Define an async function within the useEffect to fetch data
-        async function fetchData() {
-            try {
-                const response = await axios.get("/api/test");
-                const data = response.data; // Extract the data property from the response
-                setItem(data); // Update the state with the fetched data
-                console.log(getitem)
-            } catch (error) {
-                console.error(error);
-            }
+    async function fetchData() {
+        try {
+            const response = await axios.get("/api/test");
+            const data = response.data; // Extract the data property from the response
+            setItem(data); // Update the state with the fetched data
+            console.log(getitem)
+        } catch (error) {
+            console.error(error);
         }
-
-        // Call the async function to fetch data
+    }
+    useEffect(() => {
         fetchData();
-    }, [getitem]); // Empty dependency array means this effect runs only once after the initial render)
+    }, ); 
+    useEffect(() => {
+
+    }, [getitem]);
  
     return(
         <div id={styles.bestAll}> 

@@ -2,12 +2,6 @@ import React, { useState , useEffect} from 'react'
 import styles from './bestAll.module.css'
 import axios from 'axios'
 
-interface Item {
-    brandName:any
-    itemName:string
-    itemPrice:number|string
-}
-
 const BestAll:React.FC = () =>{
     const [getitem,setItem] = useState([]);
     useEffect(() => {
@@ -29,32 +23,6 @@ const BestAll:React.FC = () =>{
     useEffect(()=>{
         
     },[getitem])
-    
- const items:Item[] =[
-    {
-        brandName:'본투윈',
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'₩',
-
-    },
-    {
-        brandName:'본투윈',
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'₩',
-    },
-    {
-        brandName:'본투윈',
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'₩',
-    },
-    {
-        brandName:'본투윈',
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'₩',
-    }
-    
- ]
- 
  
     return(
         <div id={styles.bestAll}> 

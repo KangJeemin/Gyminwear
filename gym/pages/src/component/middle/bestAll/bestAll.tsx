@@ -15,7 +15,7 @@ const BestAll:React.FC = () =>{
         async function fetchData() {
             try {
                 const response = await axios.get("/api/test");
-                const data = await response.data; // Extract the data property from the response
+                const data = response.data; // Extract the data property from the response
                 setItem(data); // Update the state with the fetched data
             } catch (error) {
                 console.error(error);
@@ -27,12 +27,12 @@ const BestAll:React.FC = () =>{
     }, []); // Empty dependency array means this effect runs only once after the initial render
 
     useEffect(()=>{
-        console.log(getitem)
+        
     },[getitem])
     
  const items:Item[] =[
     {
-        brandName:Object.values(getitem[0]),
+        brandName:'본투윈',
         itemName:"헤리코든 오버핏",
         itemPrice:44000+'₩',
 
@@ -63,16 +63,14 @@ const BestAll:React.FC = () =>{
             </div>
             <div id={styles.bestAll_itemContainer_flexNowrap}>
                 <div id={styles.bestAll_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
-                    {items.map((item, index) => (
-                        <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
+                        <span  id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                           <span id={styles.bestAll_item_imageSize}></span>
                           <span id={styles.bestAll_item_textBoxSize} className={`${styles.flex_column}`}>
-                            <span id={styles.bestAll_item_itemBrandName}><h4>{item.brandName}</h4></span>
-                            <span id={styles.bestAll_item_itemName}><h5>{item.itemName}</h5></span>
-                            <span id={styles.bestAll_item_itemPrice}><h5>{item.itemPrice}</h5></span>
+                            <span id={styles.bestAll_item_itemBrandName}><h4>{getitem[0]}</h4></span>
+                            <span id={styles.bestAll_item_itemName}><h5>itemName</h5></span>
+                            <span id={styles.bestAll_item_itemPrice}><h5>itemPrice</h5></span>
                           </span>
                         </span>
-                    ))}
                 </div>
                 <div id={styles.bestAll_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
                     {items.map((item, index) => (

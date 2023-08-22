@@ -31,7 +31,7 @@ const BestAll:React.FC = () =>{
                     <span  id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                         <span id={styles.bestAll_item_imageSize}></span>
                         <span id={styles.bestAll_item_textBoxSize} className={`${styles.flex_column}`}>
-                        <span id={styles.bestAll_item_itemBrandName}><h4>{getDatabase.length > 0 ? getDatabase : ""}</h4></span>
+                        <span id={styles.bestAll_item_itemBrandName}><h4>{JSON.stringify(getDatabase)}</h4></span>
                         <span id={styles.bestAll_item_itemName}><h5>itemName</h5></span>
                         <span id={styles.bestAll_item_itemPrice}><h5>itemPrice</h5></span>
                         </span>

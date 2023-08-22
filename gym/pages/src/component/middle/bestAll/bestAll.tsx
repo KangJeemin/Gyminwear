@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styles from './bestAll.module.css';
 import Image from 'next/image';
 import axios from 'axios';
-import arder from '../../../../../public/image/arder.png'
+import arder from 'public/image/arder.png'
+
 
 interface Item {
     brandname: string;
@@ -37,7 +38,7 @@ const BestAll: React.FC = () => {
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestAll_item_imageSize}>
                                 <Image
-                                    src="/public/image/arder.png"
+                                    src={arder}
                                     alt='이미지 표시 불가'
                                     layout='fixed'
                                     width={80}

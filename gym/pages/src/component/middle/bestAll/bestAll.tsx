@@ -3,13 +3,13 @@ import styles from './bestAll.module.css'
 import axios from 'axios'
 
 const BestAll:React.FC = () =>{
-    const [getitem,setItem] = useState([]);
+    const [getDatabase,setGetDatabase] = useState([]);
     async function fetchData() {
         try {
             const response = await axios.get("/api/test");
             const data = response.data; // Extract the data property from the response
-            setItem(data); // Update the state with the fetched data
-            console.log(getitem)
+            setGetDatabase(data); // Update the state with the fetched data
+            
         } catch (error) {
             console.error(error);
         }
@@ -19,7 +19,7 @@ const BestAll:React.FC = () =>{
     }, ); 
     useEffect(() => {
 
-    }, [getitem]);
+    }, [getDatabase]);
  
     return(
         <div id={styles.bestAll}> 
@@ -31,7 +31,7 @@ const BestAll:React.FC = () =>{
                     <span  id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                         <span id={styles.bestAll_item_imageSize}></span>
                         <span id={styles.bestAll_item_textBoxSize} className={`${styles.flex_column}`}>
-                        <span id={styles.bestAll_item_itemBrandName}><h4>{getitem.length > 0 ? getitem : ""}</h4></span>
+                        <span id={styles.bestAll_item_itemBrandName}><h4>{getDatabase.length > 0 ? getDatabase : ""}</h4></span>
                         <span id={styles.bestAll_item_itemName}><h5>itemName</h5></span>
                         <span id={styles.bestAll_item_itemPrice}><h5>itemPrice</h5></span>
                         </span>

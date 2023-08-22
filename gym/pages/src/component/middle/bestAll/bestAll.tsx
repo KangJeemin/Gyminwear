@@ -31,14 +31,14 @@ const BestAll:React.FC = () =>{
             </div>
             <div id={styles.bestAll_itemContainer_flexNowrap}>
                 <div id={styles.bestAll_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
-                        <span  id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
-                          <span id={styles.bestAll_item_imageSize}></span>
-                          <span id={styles.bestAll_item_textBoxSize} className={`${styles.flex_column}`}>
-                            <span id={styles.bestAll_item_itemBrandName}><h4>{getitem[0]}</h4></span>
-                            <span id={styles.bestAll_item_itemName}><h5>itemName</h5></span>
-                            <span id={styles.bestAll_item_itemPrice}><h5>itemPrice</h5></span>
-                          </span>
+                    <span  id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
+                        <span id={styles.bestAll_item_imageSize}></span>
+                        <span id={styles.bestAll_item_textBoxSize} className={`${styles.flex_column}`}>
+                        <span id={styles.bestAll_item_itemBrandName}><h4>{getitem.length > 0 ? getitem[0] : ""}</h4></span>
+                        <span id={styles.bestAll_item_itemName}><h5>itemName</h5></span>
+                        <span id={styles.bestAll_item_itemPrice}><h5>itemPrice</h5></span>
                         </span>
+                    </span>
                 </div>
             </div>
         </div>

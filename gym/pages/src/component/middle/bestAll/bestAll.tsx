@@ -38,7 +38,7 @@ const BestAll: React.FC = () => {
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestAll_item_imageSize}>
                                 <Image
-                                    src={arder}
+                                    src={require('public/image/arder.png')}
                                     alt='이미지 표시 불가'
                                     layout='fixed'
                                     width={80}

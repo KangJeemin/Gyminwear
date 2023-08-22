@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './bestAll.module.css';
+import Image from 'next/image';
 import axios from 'axios';
 
 interface Item {
@@ -33,7 +34,14 @@ const BestAll: React.FC = () => {
                 <div id={styles.bestAll_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
                     {getDatabase.map((object, index) => (
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
-                            <span id={styles.bestAll_item_imageSize}></span>
+                            <span id={styles.bestAll_item_imageSize}>
+                                <Image
+                                    src='../../../../../public/image/arder.png' 
+                                    alt='이미지 표시 불가'
+                                    layout='fixed'
+                                    width={80}
+                                    height={45}/>
+                            </span>
                             <span id={styles.bestAll_item_textBoxSize} className={`${styles.flex_column}`}>
                                 <span id={styles.bestAll_item_itemBrandName}><h4>{object.brandname}</h4></span>
                                 <span id={styles.bestAll_item_itemName}><h5>itemName</h5></span>

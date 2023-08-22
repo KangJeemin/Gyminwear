@@ -47,7 +47,7 @@ const BestAll: React.FC = () => {
                                     width={80}
                                     height={45}
                                     onClick={()=>{
-                                        moveurl('www.naver.com')
+                                        moveurl('musclearmed.com/product/gymzip-t-shirt/1104/category/403/display/1/')
                                     }}
                                     />
                             </span>

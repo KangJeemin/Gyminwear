@@ -11,12 +11,16 @@ const SearchModal = () => {
 
   const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
     setInputState(e.target.value);
-    console.log(inputState)
   }
-
+  const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
+    if(e.keyCode=13){
+      console.log("a")
+    }
+  }
   const initializeSearchText = () => {
     setInputState("")
   }
+
   return (
     <motion.div
     style={{
@@ -49,7 +53,7 @@ const SearchModal = () => {
                 <div id= {styles.searchBoxIcon}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray"}}/>
                 </div>
-                <input id={styles.searchBoxInput} type="text" onChange={setInputText} value={inputState} placeholder="검색" />
+                <input id={styles.searchBoxInput} type="text" onChange={setInputText} onKeyDown={keydown} value={inputState} placeholder="검색" />
                 <div id= {styles.searchBoxDelete}>
                 <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"1.5em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
                 </div>

@@ -8,7 +8,6 @@ export default function test(req : NextApiRequest, res : NextApiResponse) {
         if(err) {
             console.log(err)
         } else {
-            console.log(result);
             res.json(result);
         }
     });

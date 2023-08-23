@@ -15,7 +15,7 @@ const SearchModal = () => {
   }
   const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
     if(e.keyCode===13){
-      searchDataAPI
+      searchDataAPI()
     }
   }
   const initializeSearchText = () => {

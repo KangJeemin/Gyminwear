@@ -13,7 +13,7 @@ const SearchModal = () => {
     setInputState(e.target.value);
   }
   const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
-    if(e.keyCode=13){
+    if(e.keyCode===13){
       console.log("a")
     }
   }

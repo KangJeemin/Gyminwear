@@ -21,7 +21,7 @@ const BestAll: React.FC = () => {
     const [getDatabase, setGetDatabase] = useState<Item[]>([]);
     const router = useRouter();
     function moveurl(url:string) {
-        router.push(`http://${url}`)
+        router.push(`${url}`)
     }
     async function fetchData() {
         try {
@@ -49,20 +49,20 @@ const BestAll: React.FC = () => {
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestAll_item_imageSize}>
                                 <Image
-                                    src={require('public/image/머슬암드 레드.png')}
+                                    src={require(`${object.image}`)}
                                     alt='이미지 표시 불가'
                                     layout='fixed'
                                     width={80}
                                     height={45}
                                     onClick={()=>{
-                                        moveurl('musclearmed.com/product/gymzip-t-shirt/1104/category/403/display/1/')
+                                        moveurl(`${object.url}`)
                                     }}
                                     />
                             </span>
                             <span id={styles.bestAll_item_textBoxSize} className={`${styles.flex_column}`}>
                                 <span id={styles.bestAll_item_itemBrandName}><h4>{object.brandname}</h4></span>
-                                <span id={styles.bestAll_item_itemName}><h5>itemName</h5></span>
-                                <span id={styles.bestAll_item_itemPrice}><h5>itemPrice</h5></span>
+                                <span id={styles.bestAll_item_itemName}><h5>{object.productname}</h5></span>
+                                <span id={styles.bestAll_item_itemPrice}><h5>{object.price}</h5></span>
                             </span>
                         </span>
                     ))}

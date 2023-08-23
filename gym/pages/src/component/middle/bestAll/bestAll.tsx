@@ -46,7 +46,7 @@ const BestAll: React.FC = () => {
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestAll_item_imageSize}>
                                 <Image
-                                    src={require('public/image/physicalcrown/매쉬 럭비져지.jpeg')}
+                                    src={require('`${object.image}`')}
                                     alt='이미지 표시 불가'
                                     layout='fixed'
                                     width={80}

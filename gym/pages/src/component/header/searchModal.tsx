@@ -5,6 +5,7 @@ import { useContext, useState, ChangeEvent } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
+
 const SearchModal = () => {
   const {searchState} = useContext(AuthContext)
   const [inputState, setInputState] = useState<string>("")
@@ -14,11 +15,20 @@ const SearchModal = () => {
   }
   const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
     if(e.keyCode===13){
-      console.log("a")
+      searchDataAPI
     }
   }
   const initializeSearchText = () => {
     setInputState("")
+  }
+  const searchDataAPI = () =>{
+    fetch('/api/search',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', // 데이터 타입을 JSON으로 지정
+      },
+      body: JSON.stringify('a'), // JSON 형식으로 데이터 전송
+    })
   }
 
   return (
@@ -73,5 +83,4 @@ const SearchModal = () => {
     </motion.div>
   );
 };
-
 export default SearchModal;

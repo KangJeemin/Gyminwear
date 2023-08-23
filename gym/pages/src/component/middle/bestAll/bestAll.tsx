@@ -51,9 +51,7 @@ const BestAll: React.FC = () => {
                                 <Image
                                     src={object.image}
                                     alt='이미지 표시 불가'
-                                    layout='fixed'
-                                    width={80}
-                                    height={45}
+                                    layout='fill'
                                     onClick={()=>{
                                         router.push(`${object.url}`)
                                     }}

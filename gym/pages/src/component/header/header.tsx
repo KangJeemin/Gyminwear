@@ -11,7 +11,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useScrollPosition, useScrollXPosition, useScrollYPosition } from 'react-use-scroll-position';
 import Image from 'next/image';
 import Logo from '../../../../public/image/gyminwearLogo.png'
-
+import { useRouter } from 'next/router';
 
 
 const Header = () => {
@@ -22,6 +22,7 @@ const LogoBoxRef = useRef<HTMLDivElement | null>(null);
 const target = useRef<HTMLDivElement | null>(null); 
 const scrollX = useScrollXPosition();
 const scrollY = useScrollYPosition();
+const router = useRouter();
 const [announcementOpacity, setAnnouncementOpacity] = React.useState(1);
 const [headerHeight, setHeaderHeight] = React.useState(5);
 
@@ -159,7 +160,9 @@ React.useEffect(()=>{
     return (
         <motion.div id={styles.header} className={`${styles.flexColumn}`}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
-                <div id={styles.logoBox} ref={LogoBoxRef}>
+                <div id={styles.logoBox} ref={LogoBoxRef} onClick={()=>{
+                    router.push("/")
+                }}>
                    <Image 
                         src={Logo} 
                         alt='이미지 표시 불가'

@@ -36,7 +36,11 @@ const BestAll: React.FC = () => {
     }, []);
 
     return (
-        <div id={styles.bestAll}>
+        <div id={styles.bestAll}
+        style={{
+            zIndex:hambergerState === 1 ? -1 : searchState === 1 ? -1 : 0 
+        }}
+        >
             <div id={styles.bestAll_topText}>
                 <h3 id={styles.bestAll_text}>이번 주 인기 상품</h3>
             </div>
@@ -44,7 +48,12 @@ const BestAll: React.FC = () => {
                 <div id={styles.bestAll_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
                     {getDatabase.map((object, index) => (
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
-                            <span id={styles.bestAll_item_imageSize}>
+                            <span id={styles.bestAll_item_imageSize}
+                                style={{
+                                    position: hambergerState === 1 ? 'absolute' : searchState === 1 ? 'absolute' : 'relative',
+                    
+                                }}
+                                >
                                 <Image
                                     src={object.image}
                                     alt='이미지 표시 불가'

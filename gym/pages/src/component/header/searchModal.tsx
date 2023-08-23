@@ -7,7 +7,7 @@ import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-ico
 
 
 const SearchModal = () => {
-  const {searchState} = useContext(AuthContext)
+  const {searchState,setSearchWord} = useContext(AuthContext)
   const [inputState, setInputState] = useState<string>("")
 
   const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +15,7 @@ const SearchModal = () => {
   }
   const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
     if(e.keyCode===13){
-      searchDataAPI()
+      setSearchWord(inputState)
     }
   }
   const initializeSearchText = () => {

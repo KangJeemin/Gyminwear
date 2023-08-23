@@ -21,7 +21,7 @@ const BestAll: React.FC = () => {
     const [getDatabase, setGetDatabase] = useState<Item[]>([]);
     const router = useRouter();
     function moveurl(url:string) {
-        router.push(`${url}`)
+        router.push(`http://${url}`)
     }
     async function fetchData() {
         try {
@@ -49,13 +49,13 @@ const BestAll: React.FC = () => {
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestAll_item_imageSize}>
                                 <Image
-                                    src={require(`${object.image}`)}
+                                    src={require('public/image/머슬암드 레드.png')}
                                     alt='이미지 표시 불가'
                                     layout='fixed'
                                     width={80}
                                     height={45}
                                     onClick={()=>{
-                                        moveurl(`${object.url}`)
+                                        moveurl('musclearmed.com/product/gymzip-t-shirt/1104/category/403/display/1/')
                                     }}
                                     />
                             </span>

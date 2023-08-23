@@ -21,7 +21,6 @@ const BestAll: React.FC = () => {
     const {hambergerState,searchState} = useContext(AuthContext)
     const [getDatabase, setGetDatabase] = useState<Item[]>([]);
     const router = useRouter();
-
     async function fetchData() {
         try {
             const response = await axios.get("/api/test");
@@ -31,15 +30,11 @@ const BestAll: React.FC = () => {
             console.error(error);
         }
     }
-
     useEffect(() => {
         fetchData();
         console.log(getDatabase)
     }, []);
-    useEffect(() => {
-        
-        console.log(getDatabase)
-    }, [getDatabase]);
+
     return (
         <div id={styles.bestAll}
            style={{
@@ -56,6 +51,9 @@ const BestAll: React.FC = () => {
                             <span id={styles.bestAll_item_imageSize}>
                                 <Image
                                     src={object.image}
+                                    style={{
+                                        zIndex:hambergerState === 1 ? -1 : searchState === 1 ? -1 : 0,
+                                   }}
                                     alt='이미지 표시 불가'
                                     layout='fill'
                                     onClick={()=>{

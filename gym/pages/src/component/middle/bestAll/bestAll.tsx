@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './bestAll.module.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import axios from 'axios';
+import { AuthContext } from '@/public/context/authcontext';
 
 
 interface Item {
@@ -17,6 +18,7 @@ interface Item {
 }
 
 const BestAll: React.FC = () => {
+    const {hambergerState,searchState} = useContext(AuthContext)
     const [getDatabase, setGetDatabase] = useState<Item[]>([]);
     const router = useRouter();
 
@@ -39,7 +41,11 @@ const BestAll: React.FC = () => {
         console.log(getDatabase)
     }, [getDatabase]);
     return (
-        <div id={styles.bestAll}>
+        <div id={styles.bestAll}
+           style={{
+                 zIndex:hambergerState === 1 ? -1 : searchState === 1 ? -1 : 0,
+            }}
+        >
             <div id={styles.bestAll_topText}>
                 <h3 id={styles.bestAll_text}>이번 주 인기 상품</h3>
             </div>

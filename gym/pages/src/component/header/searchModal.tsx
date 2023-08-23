@@ -4,11 +4,13 @@ import { AuthContext } from '../../../../public/context/authcontext';
 import { useContext, useState, ChangeEvent } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from 'next/router';
 
 
 const SearchModal = () => {
   const {searchState,setSearchWord} = useContext(AuthContext)
   const [inputState, setInputState] = useState<string>("")
+  const router = useRouter();
 
   const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
     setInputState(e.target.value);
@@ -16,6 +18,7 @@ const SearchModal = () => {
   const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
     if(e.keyCode===13){
       setSearchWord(inputState)
+      router.push("/searchResult")
     }
   }
   const initializeSearchText = () => {

@@ -47,13 +47,11 @@ const BestAll: React.FC = () => {
                 <div id={styles.bestAll_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
                     {getDatabase.map((object, index) => (
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
-                            <span id={styles.bestAll_item_imageSize}
-                                style={{
-                                    position: hambergerState === 1 ? 'unset' : searchState === 1 ? 'unset' : 'relative',
-                    
-                                }}
-                                >
+                            <span id={styles.bestAll_item_imageSize}>
                                 <Image
+                                    style={{
+                                        display:hambergerState !=1 && searchState !=1 ? '' : 'none'
+                                    }}
                                     src={object.image}
                                     alt='이미지 표시 불가'
                                     layout='fill'

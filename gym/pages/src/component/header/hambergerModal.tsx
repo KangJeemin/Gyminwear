@@ -1,10 +1,8 @@
 import { motion } from 'framer-motion';
 import styles from './hambergerModal.module.css'
 import { useRouter } from 'next/router';
-import { Router } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../../../public/context/authcontext';
-import { positions } from '@mui/system';
 
 const HambergerModal = () => {
   const {hambergerState,setState,setHambergerState} = useContext(AuthContext)
@@ -20,7 +18,7 @@ const HambergerModal = () => {
         display : 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        
+        zIndex:hambergerState === 1 ? 2 : 0,
         
       }}
       animate={{

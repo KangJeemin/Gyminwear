@@ -36,11 +36,7 @@ const BestAll: React.FC = () => {
     }, []);
 
     return (
-        <div id={styles.bestAll}
-           style={{
-                 zIndex:hambergerState === 1 ? -1 : searchState === 1 ? -1 : 0,
-            }}
-        >
+        <div id={styles.bestAll}>
             <div id={styles.bestAll_topText}>
                 <h3 id={styles.bestAll_text}>이번 주 인기 상품</h3>
             </div>
@@ -51,9 +47,6 @@ const BestAll: React.FC = () => {
                             <span id={styles.bestAll_item_imageSize}>
                                 <Image
                                     src={object.image}
-                                    style={{
-                                        zIndex:hambergerState === 1 ? -1 : searchState === 1 ? -1 : 0,
-                                   }}
                                     alt='이미지 표시 불가'
                                     layout='fill'
                                     onClick={()=>{

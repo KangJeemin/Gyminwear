@@ -29,6 +29,8 @@ const SearchModal = () => {
         justifyContent: 'center',
         alignItems: 'center',
         opacity:0,
+        zIndex:searchState === 1 ? 2 : 0,
+
       }}
       animate={{
         opacity:searchState===0 ? [0,0] : searchState=== 1 ? [0,1] : [1,0],

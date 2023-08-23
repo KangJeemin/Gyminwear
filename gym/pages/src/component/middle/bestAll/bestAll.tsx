@@ -49,7 +49,7 @@ const BestAll: React.FC = () => {
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestAll_item_imageSize}>
                                 <Image
-                                    src={object.image}
+                                    src='/image/physicalcrown/매쉬_럭비져지.jpeg'
                                     alt='이미지 표시 불가'
                                     layout='fixed'
                                     width={80}

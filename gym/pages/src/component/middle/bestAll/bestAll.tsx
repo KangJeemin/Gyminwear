@@ -3,10 +3,17 @@ import styles from './bestAll.module.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import axios from 'axios';
+import { NumericLiteral } from 'typescript';
 
 
 interface Item {
     brandname: string;
+    image: string;
+    productname: string;
+    price: number;
+    url: string;
+    likecount: number;
+
     // Add other properties here if needed
 }
 
@@ -28,6 +35,7 @@ const BestAll: React.FC = () => {
 
     useEffect(() => {
         fetchData();
+        console.log(getDatabase)
     }, []);
 
     return (

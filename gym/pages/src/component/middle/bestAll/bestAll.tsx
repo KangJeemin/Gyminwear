@@ -3,7 +3,6 @@ import styles from './bestAll.module.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import axios from 'axios';
-import { NumericLiteral } from 'typescript';
 
 
 interface Item {
@@ -20,9 +19,7 @@ interface Item {
 const BestAll: React.FC = () => {
     const [getDatabase, setGetDatabase] = useState<Item[]>([]);
     const router = useRouter();
-    function moveurl(url:string) {
-        router.push(`http://${url}`)
-    }
+
     async function fetchData() {
         try {
             const response = await axios.get("/api/test");
@@ -49,13 +46,13 @@ const BestAll: React.FC = () => {
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestAll_item_imageSize}>
                                 <Image
-                                    src={require(`${object.image}`)}
+                                    src={require('public/image/physicalcrown/매쉬 럭비져지.jpeg')}
                                     alt='이미지 표시 불가'
                                     layout='fixed'
                                     width={80}
                                     height={45}
                                     onClick={()=>{
-                                        moveurl('musclearmed.com/product/gymzip-t-shirt/1104/category/403/display/1/')
+                                        router.push(`${object.url}`)
                                     }}
                                     />
                             </span>

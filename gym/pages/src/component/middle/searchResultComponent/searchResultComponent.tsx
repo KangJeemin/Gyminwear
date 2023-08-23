@@ -17,7 +17,9 @@ const SearchResult: React.FC = () => {
 
     const [viewState,setViewState]=useState<boolean>(false)
     const [inputState, setInputState] = useState<string>("")
-    const {hambergerState,searchState} = useContext(AuthContext)
+    const {hambergerState,searchState,searchWord} = useContext(AuthContext)
+
+
     const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
       setInputState(e.target.value);
       console.log(inputState)
@@ -56,6 +58,15 @@ const SearchResult: React.FC = () => {
             setViewState(false)
         }
     }
+    const searchDataAPI = () =>{
+        fetch('/api/search',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json', // 데이터 타입을 JSON으로 지정
+          },
+          body: JSON.stringify(searchWord), // JSON 형식으로 데이터 전송
+        })
+      }
   const items:Item[] =[
     {
         brandName:"brontowin",
@@ -138,7 +149,10 @@ const SearchResult: React.FC = () => {
         itemPrice:44000+'원'
     },    
  ]
- 
+    useEffect(()=>{
+        searchDataAPI()
+
+    },[searchWord])
   return (
     <div id={styles.searchResultComponent}>
         <div id={styles.searchResultComponent_searchContainer}

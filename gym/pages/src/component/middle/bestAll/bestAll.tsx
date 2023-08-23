@@ -38,7 +38,6 @@ const BestAll: React.FC = () => {
     return (
         <div id={styles.bestAll}
         style={{
-            zIndex:hambergerState === 1 ? -1 : searchState === 1 ? -1 : 0 
         }}
         >
             <div id={styles.bestAll_topText}>
@@ -50,7 +49,7 @@ const BestAll: React.FC = () => {
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestAll_item_imageSize}
                                 style={{
-                                    position: hambergerState === 1 ? 'absolute' : searchState === 1 ? 'absolute' : 'relative',
+                                    position: hambergerState === 1 ? 'unset' : searchState === 1 ? 'unset' : 'relative',
                     
                                 }}
                                 >

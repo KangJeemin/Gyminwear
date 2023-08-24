@@ -59,8 +59,8 @@ const SearchResult: React.FC = () => {
         }
     }
     const searchDataAPI = async() =>{
-        const response= await fetch(`/api/search?result=${searchWord}}`)
-        console.log(response)
+        const response= await fetch(`/api/search?result=${searchWord}}`).then(res=>console.log(res))
+        
       }
   const items:Item[] =[
     {

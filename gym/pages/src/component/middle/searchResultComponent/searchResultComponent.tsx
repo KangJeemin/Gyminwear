@@ -60,7 +60,7 @@ const SearchResult: React.FC = () => {
         }
     }
     const searchDataAPI = () =>{
-        const response = axios.get(`/api/search?result=${searchWord}}`)
+        const response = axios.get(`/api/search?result=${searchWord}`)
         console.log(response)
         
         // fetch(`/api/search?result=${searchWord}}`).then(res=>{return res.json()}).then(data=>{console.log(data,'뭐고')})

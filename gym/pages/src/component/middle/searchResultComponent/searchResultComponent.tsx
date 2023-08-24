@@ -59,13 +59,7 @@ const SearchResult: React.FC = () => {
         }
     }
     const searchDataAPI = () =>{
-        fetch('/api/search/',{
-          method: "GET",
-          headers: {
-            'Content-Type': 'application/json', // 데이터 타입을 JSON으로 지정
-          },
-          body: JSON.stringify(searchWord), // JSON 형식으로 데이터 전송
-        })
+        fetch('/api/search?sort=name')
       }
   const items:Item[] =[
     {

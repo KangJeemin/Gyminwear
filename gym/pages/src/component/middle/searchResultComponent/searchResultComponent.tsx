@@ -59,8 +59,8 @@ const SearchResult: React.FC = () => {
         }
     }
     const searchDataAPI = () =>{
-        fetch('/api/search',{
-          method: 'POST',
+        fetch('/api/search/',{
+          method: "GET",
           headers: {
             'Content-Type': 'application/json', // 데이터 타입을 JSON으로 지정
           },
@@ -151,7 +151,6 @@ const SearchResult: React.FC = () => {
  ]
     useEffect(()=>{
         searchDataAPI()
-
     },[searchWord])
   return (
     <div id={styles.searchResultComponent}>

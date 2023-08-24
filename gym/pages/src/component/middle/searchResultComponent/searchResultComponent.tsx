@@ -59,11 +59,11 @@ const SearchResult: React.FC = () => {
             setViewState(false)
         }
     }
-    const searchDataAPI = () =>{
-        const response = axios.get(`/api/search?result=${searchWord}`)
-        console.log(response)
+    const searchDataAPI = async () =>{
+        // const response = axios.get(`/api/search?result=${searchWord}`)
+        // console.log(response)
         
-        // fetch(`/api/search?result=${searchWord}}`).then(res=>{return res.json()}).then(data=>{console.log(data,'뭐고')})
+         await fetch(`/api/search?result=${searchWord}`).then(res=> res.json()).then(data=>console.log(data,'뭐고'))
         
       }
   const items:Item[] =[

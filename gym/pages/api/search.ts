@@ -16,8 +16,8 @@ export default function Search(req : NextApiRequest, res : NextApiResponse) {
             if(counterr) {
                res.status(500).json({ error: 'An error occurred in counterr' });
             } else {
-                console.log('result1=',result)
-                console.log('result2=',countresult)
+                // console.log('result1=',result)
+                // console.log('result2=',countresult)
             }
             });                
         }

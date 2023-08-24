@@ -58,8 +58,8 @@ const SearchResult: React.FC = () => {
             setViewState(false)
         }
     }
-    const searchDataAPI = () =>{
-        fetch(`/api/search?result=${searchWord}}`)
+    const searchDataAPI = async() =>{
+        await fetch(`/api/search?result=${searchWord}}`).then(res=>res).then(data=>console.log(data))
       }
   const items:Item[] =[
     {

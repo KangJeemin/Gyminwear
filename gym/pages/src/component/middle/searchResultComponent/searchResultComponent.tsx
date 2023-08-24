@@ -59,7 +59,7 @@ const SearchResult: React.FC = () => {
         }
     }
     const searchDataAPI = () =>{
-        fetch('/api/search?sort=name')
+        fetch(`/api/search?result=${searchWord}}`)
       }
   const items:Item[] =[
     {

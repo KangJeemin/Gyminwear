@@ -1,6 +1,5 @@
 import { count } from 'console';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { useSearchParams } from 'react-router-dom';
 const db = require('../../src/db/db')
 
 
@@ -27,7 +26,7 @@ export default function Search(req : NextApiRequest, res : NextApiResponse) {
         if(err) {
             console.log(err)
         } else {
-            res.json(result);
+            res.json('a');
             console.log(result)
         }
     });

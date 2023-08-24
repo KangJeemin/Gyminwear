@@ -3,9 +3,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 const db = require('../../src/db/db')
 
 
-export default function Search(req : NextApiRequest, res : NextApiResponse) {
-    let searchstring = req.query.result
-    let searchText = req.body
+export default async function Search(req : NextApiRequest, res : NextApiResponse) {
+    let searchstring = await req.query.result
     // db.query(`SELECT * FROM Top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%'`,
     // function (err: any, result: any) {
     //     if(err) {
@@ -26,7 +25,7 @@ export default function Search(req : NextApiRequest, res : NextApiResponse) {
         if(err) {
             console.log(err)
         } else {
-            res.json('a');
+            res.json(result);
             console.log(result)
         }
     });

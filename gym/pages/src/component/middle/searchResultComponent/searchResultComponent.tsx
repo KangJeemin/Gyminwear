@@ -19,6 +19,7 @@ const SearchResult: React.FC = () => {
     const [viewState,setViewState]=useState<boolean>(false)
     const [inputState, setInputState] = useState<string>("")
     const {hambergerState,searchState,searchWord} = useContext(AuthContext)
+    const [searchResultCount, setSearchResultCount]= useState();
 
 
     const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
@@ -63,7 +64,11 @@ const SearchResult: React.FC = () => {
         // const response = axios.get(`/api/search?result=${searchWord}`)
         // console.log(response)
         
-         await fetch(`/api/search?result=${searchWord}`).then(res=> res.json()).then(data=>console.log(data,'뭐고'))
+         await fetch(`/api/search?result=${searchWord}`)
+                .then(res=> res.json())
+                .then(data=>
+                    console.log(data)
+                )
         
       }
   const items:Item[] =[

@@ -11,7 +11,7 @@ export default function Search(req : NextApiRequest, res : NextApiResponse) {
         if(err) {
             res.status(500).json({ error: 'An error occurred in err' });
         } else {
-            db.query(`SELECT COUNT(*) FROM Top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%'`,
+            db.query(`SELECT COUNT(*) AS C FROM Top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%'`,
             function (counterr: any, countresult: any) {
             if(counterr) {
                res.status(500).json({ error: 'An error occurred in counterr' });

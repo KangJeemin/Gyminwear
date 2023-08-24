@@ -12,7 +12,16 @@ export default function Search(req : NextApiRequest, res : NextApiResponse) {
             console.log(err)
         } else {
             res.json(result);
-            
+            console.log(result,'result1')
+        }
+    });
+    db.query(`SELECT COUNT(*) FROM Top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%'`,
+    function (err: any, result: any) {
+        if(err) {
+            console.log(err)
+        } else {
+            res.json(result);
+            console.log(result,'result2')
         }
     });
 }

@@ -20,7 +20,7 @@ export default async function Search(req : NextApiRequest, res : NextApiResponse
     //         });                
     //     }
     // });
-    db.query(`SELECT * FROM Top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%'`,
+    db.query(`SELECT * FROM Top WHERE brandname LIKE '%피%' OR productname LIKE '%피%'`,
     function (err: any, result: any) {
         if(err) {
             console.log(err)

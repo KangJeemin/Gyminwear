@@ -4,6 +4,7 @@ import styles from './searchResultComponent.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from '@/public/context/authcontext';
+import axios from 'axios';
 interface Item {
   brandName: string;
   itemName: string;
@@ -59,7 +60,10 @@ const SearchResult: React.FC = () => {
         }
     }
     const searchDataAPI = () =>{
-        fetch(`/api/search?result=${searchWord}}`).then(res=>{return res.json()}).then(data=>{console.log(data,'뭐고')})
+        const response = axios.get(`/api/search?result=${searchWord}}`)
+        console.log(response)
+        
+        // fetch(`/api/search?result=${searchWord}}`).then(res=>{return res.json()}).then(data=>{console.log(data,'뭐고')})
         
       }
   const items:Item[] =[

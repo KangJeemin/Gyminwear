@@ -4,7 +4,10 @@ const db = require('../../src/db/db')
 
 
 export default function Search(req : NextApiRequest, res : NextApiResponse) {
+    
     const searchstring = req.query.result
+    console.log(searchstring)
+    console.log('req.query=',req.query)
     // db.query(`SELECT * FROM Top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%'`,
     // function (err: any, result: any) {
     //     if(err) {

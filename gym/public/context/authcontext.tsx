@@ -1,4 +1,15 @@
 import React, { useState, createContext } from "react";
+interface SearchResultItem {
+  // Define the properties of each item in the search result data
+  topid: number;
+  brandname: string;
+  image:string;
+  productname:string;
+  price:number;
+  url:string;
+  likecount:number;
+  // ... other properties
+}
 
 interface AuthContextProps {
   state:number;
@@ -11,8 +22,8 @@ interface AuthContextProps {
   setAnnounceState:(announceState:boolean) => void;
   searchWord:string;
   setSearchWord:(searchWord:string)=> void;
-  searchResultData:string;
-  setSearchResultData:(searchResultData:string)=> void;
+  searchResultData:SearchResultItem[];
+  setSearchResultData:(searchResultData:SearchResultItem[])=> void;
 }
 
 export const AuthContext = createContext<AuthContextProps>({
@@ -26,7 +37,7 @@ export const AuthContext = createContext<AuthContextProps>({
   setAnnounceState: () => {},
   searchWord:'',
   setSearchWord:()=>{},
-  searchResultData:'',
+  searchResultData:[],
   setSearchResultData:()=>{}
 
 
@@ -40,7 +51,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [searchState, setSearchState] = useState(0);
   const [announceState, setAnnounceState] = useState(true);
   const [searchWord, setSearchWord] = useState('');
-  const [searchResultData, setSearchResultData]= useState('');
+  const [searchResultData, setSearchResultData]= useState<SearchResultItem[]>([]);
 
   return (
     <AuthContext.Provider

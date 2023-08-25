@@ -9,6 +9,8 @@ interface AuthContextProps {
   setSearchState: (state:number) => void;
   announceState:boolean;
   setAnnounceState:(announceState:boolean) => void;
+  searchWord:string;
+  setSearchWord:(state:string)=> void;
 }
 
 export const AuthContext = createContext<AuthContextProps>({
@@ -19,7 +21,9 @@ export const AuthContext = createContext<AuthContextProps>({
   searchState:0,
   setSearchState: () => {},
   announceState:true,
-  setAnnounceState: () => {}
+  setAnnounceState: () => {},
+  searchWord:'',
+  setSearchWord:()=>{}
 
 
 });
@@ -31,6 +35,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [hambergerState, setHambergerState] = useState(0);
   const [searchState, setSearchState] = useState(0);
   const [announceState, setAnnounceState] = useState(true);
+  const [searchWord, setSearchWord] = useState('');
 
   return (
     <AuthContext.Provider
@@ -42,7 +47,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         searchState,
         setSearchState,
         announceState,
-        setAnnounceState
+        setAnnounceState,
+        searchWord,
+        setSearchWord
       }}
     >
       {children}

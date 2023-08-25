@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import styles from './bestAll.module.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import axios from 'axios';
+import { AuthContext } from '@/public/context/authcontext';
 
 
 interface Item {
@@ -17,9 +18,9 @@ interface Item {
 }
 
 const BestAll: React.FC = () => {
+    const {hambergerState,searchState} = useContext(AuthContext)
     const [getDatabase, setGetDatabase] = useState<Item[]>([]);
     const router = useRouter();
-
     async function fetchData() {
         try {
             const response = await axios.get("/api/test");
@@ -29,17 +30,16 @@ const BestAll: React.FC = () => {
             console.error(error);
         }
     }
-
     useEffect(() => {
         fetchData();
         console.log(getDatabase)
     }, []);
-    useEffect(() => {
-        
-        console.log(getDatabase)
-    }, [getDatabase]);
+
     return (
-        <div id={styles.bestAll}>
+        <div id={styles.bestAll}
+        style={{
+        }}
+        >
             <div id={styles.bestAll_topText}>
                 <h3 id={styles.bestAll_text}>이번 주 인기 상품</h3>
             </div>
@@ -49,6 +49,9 @@ const BestAll: React.FC = () => {
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestAll_item_imageSize}>
                                 <Image
+                                    style={{
+                                        display:hambergerState !=1 && searchState !=1 ? '' : 'none'
+                                    }}
                                     src={object.image}
                                     alt='이미지 표시 불가'
                                     layout='fill'

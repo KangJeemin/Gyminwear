@@ -4,19 +4,36 @@ import { AuthContext } from '../../../../public/context/authcontext';
 import { useContext, useState, ChangeEvent } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { useRouter } from 'next/router';
+
 
 const SearchModal = () => {
-  const {searchState} = useContext(AuthContext)
+  const {searchState,setSearchWord} = useContext(AuthContext)
   const [inputState, setInputState] = useState<string>("")
+  const router = useRouter();
 
   const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
     setInputState(e.target.value);
-    console.log(inputState)
   }
-
+  const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
+    if(e.keyCode===13){
+      setSearchWord(inputState)
+      router.push("/searchResult")
+    }
+  }
   const initializeSearchText = () => {
     setInputState("")
   }
+  const searchDataAPI = () =>{
+    fetch('/api/search',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', // 데이터 타입을 JSON으로 지정
+      },
+      body: JSON.stringify(inputState), // JSON 형식으로 데이터 전송
+    })
+  }
+
   return (
     <motion.div
     style={{
@@ -29,6 +46,8 @@ const SearchModal = () => {
         justifyContent: 'center',
         alignItems: 'center',
         opacity:0,
+        zIndex:searchState === 1 ? 2 : 0,
+
       }}
       animate={{
         opacity:searchState===0 ? [0,0] : searchState=== 1 ? [0,1] : [1,0],
@@ -47,7 +66,7 @@ const SearchModal = () => {
                 <div id= {styles.searchBoxIcon}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray"}}/>
                 </div>
-                <input id={styles.searchBoxInput} type="text" onChange={setInputText} value={inputState} placeholder="검색" />
+                <input id={styles.searchBoxInput} type="text" onChange={setInputText} onKeyDown={keydown} value={inputState} placeholder="검색" />
                 <div id= {styles.searchBoxDelete}>
                 <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"1.5em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
                 </div>
@@ -67,5 +86,4 @@ const SearchModal = () => {
     </motion.div>
   );
 };
-
 export default SearchModal;

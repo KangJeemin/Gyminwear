@@ -63,9 +63,11 @@ const SearchResult: React.FC = () => {
          await fetch(`/api/search?result=${searchWord}`)
                 .then(res=> res.json())
                 .then(data=>{
+                    const dataArray= data.splice(0,3)
+                    console.log('dataArray=',dataArray)
                     setSearchResultData(data.result)
                     setSearchResultCount(data.result.length)
-                    console.log(data.result.length)
+                    console.log(data)
                 })
             }
 
@@ -114,16 +116,12 @@ const SearchResult: React.FC = () => {
                         </span>
                     ))}
         </div>
-        {searchResultCount > 20 ? (
+        {searchResultCount < 20 ? (
             <div id ={styles.searchResultComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`} ref={target}>
-            <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
-            <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
-            <span className={`${styles.width_15per} ${styles.text_set_center}`}>1/3</span>
-                    
-            <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{
-            }}>&#62;</span>
-            <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#187;</span>
-    </div>
+               <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#60;</span>
+               <span className={`${styles.width_15per} ${styles.text_set_center}`}>1</span>
+               <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{}}>&#62;</span>
+            </div>
         ): null}
     </div>
   );

@@ -68,7 +68,7 @@ const SearchResult: React.FC = () => {
          await fetch(`/api/search?result=${searchWord}`)
                 .then(res=> res.json())
                 .then(data=>{
-                    console.log('data=',data.result.length)
+                    setSearchResultData(data.result)
                     setSearchResultCount(data.countresult[0].C)
                 })
             }

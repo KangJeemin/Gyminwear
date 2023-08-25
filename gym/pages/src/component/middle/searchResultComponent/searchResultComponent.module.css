@@ -109,7 +109,7 @@
 }
 .grid_8x2{
     display: grid;
-    grid-template-rows: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% ;
+    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     grid-template-columns: 50% 50%;
 }
 .padding_1{

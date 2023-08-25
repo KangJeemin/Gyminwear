@@ -137,26 +137,26 @@ const clickSearch = () => {
     }
 }
 
-React.useEffect(()=>{
-    const handleScroll = () => {
-        const scrollPosition = scrollY; // Get the current scroll position
-        const maxScroll = 50; // You can adjust this value
+// React.useEffect(()=>{
+//     const handleScroll = () => {
+//         const scrollPosition = scrollY; // Get the current scroll position
+//         const maxScroll = 50; // You can adjust this value
   
-        // Calculate the opacity based on scroll position
-        const opacity = 1 - Math.min(scrollPosition / maxScroll, 1);
-        // setAnnouncementOpacity(opacity);
-        const calculatedHeight = Math.max(0, 5 - (scrollPosition / maxScroll) * 5); // Limit between 0 and 5
-        setHeaderHeight(calculatedHeight);
-      };
+//         // Calculate the opacity based on scroll position
+//         const opacity = 1 - Math.min(scrollPosition / maxScroll, 1);
+//         // setAnnouncementOpacity(opacity);
+//         const calculatedHeight = Math.max(0, 5 - (scrollPosition / maxScroll) * 5); // Limit between 0 and 5
+//         setHeaderHeight(calculatedHeight);
+//       };
   
-      window.addEventListener('scroll', handleScroll);
+//       window.addEventListener('scroll', handleScroll);
   
-      // Clean up the event listener on unmount
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
+//       // Clean up the event listener on unmount
+//       return () => {
+//         window.removeEventListener('scroll', handleScroll);
+//       };
       
-})
+// })
     return (
         <motion.div id={styles.header} className={`${styles.flexColumn}`}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>

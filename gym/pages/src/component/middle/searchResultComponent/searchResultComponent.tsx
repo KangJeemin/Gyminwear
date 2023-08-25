@@ -177,7 +177,7 @@ const SearchResult: React.FC = () => {
         </div>
             <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_8x2} ${styles.flex_scrollSet}`}>
                      {searchResultData.map((object, index) => (
-                        <span key={index} id={styles.searchResultComponent_item_itemComponentt} className={`${styles.padding_1} ${styles.flex_column}`}>
+                        <span key={index} id={styles.searchResultComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.searchResultComponent_item_imageSize}>
                                 <Image
                                     style={{

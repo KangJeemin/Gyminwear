@@ -63,11 +63,11 @@ const SearchResult: React.FC = () => {
          await fetch(`/api/search?result=${searchWord}`)
                 .then(res=> res.json())
                 .then(data=>{
-                    const dataArray= data.splice(0,3)
-                    console.log('dataArray=',dataArray)
+                    const dataArray= data.result
+                    const sortDataArray = dataArray.splice(0,2)
+                    console.log('dataArray=',sortDataArray)
                     setSearchResultData(data.result)
                     setSearchResultCount(data.result.length)
-                    console.log(data)
                 })
             }
 

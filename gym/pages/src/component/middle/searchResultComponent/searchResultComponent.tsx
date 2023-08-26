@@ -13,10 +13,15 @@ const SearchResult: React.FC = () => {
 
     const [viewState,setViewState]=useState<boolean>(false)
     const [inputState, setInputState] = useState<string>("")
-    const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData} = useContext(AuthContext)
+    const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData,setSearchWord} = useContext(AuthContext)
     const [searchResultCount, setSearchResultCount]= useState<number>(0);
     const [searchResultSort20,setSearchResultSort20]= useState<string[][]>([]);
-    
+    const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
+        if(e.keyCode===13){
+          setSearchWord(inputState)
+          setViewBlurryOut()
+        }
+      }
     function splitIntoChunk(arr:string[], chunk:number) {
         const result = [];
         
@@ -99,7 +104,7 @@ const SearchResult: React.FC = () => {
             <div id= {styles.searchResultComponent_deleteIconContainer}>
                 <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
             </div>
-            <input id={styles.searchResultComponent_search} onChange={setInputText} value={inputState} type="text" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
+            <input id={styles.searchResultComponent_search} onChange={setInputText} onKeyDown={keydown} value={inputState} type="search" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
         </div>
         <div id={styles.searchResultComponent_topText}>
           <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {searchResultCount}개의 검색 결과를 발견했습니다.</h1>

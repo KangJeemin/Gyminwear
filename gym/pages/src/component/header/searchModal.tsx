@@ -20,6 +20,7 @@ const SearchModal = () => {
       setSearchWord(inputState)
       router.push("/searchResult")
       setState(0)
+      setSearchState(0)
     }
   }
   const initializeSearchText = () => {

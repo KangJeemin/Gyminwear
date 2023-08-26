@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 
 const SearchModal = () => {
-  const {searchState,setSearchWord} = useContext(AuthContext)
+  const {searchState,setSearchWord,setSearchState,setHambergerState} = useContext(AuthContext)
   const [inputState, setInputState] = useState<string>("")
   const router = useRouter();
 
@@ -19,6 +19,8 @@ const SearchModal = () => {
     if(e.keyCode===13){
       setSearchWord(inputState)
       router.push("/searchResult")
+      setSearchState(0)
+      setHambergerState(0)
     }
   }
   const initializeSearchText = () => {

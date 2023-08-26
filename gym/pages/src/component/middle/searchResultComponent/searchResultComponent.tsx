@@ -15,7 +15,7 @@ const SearchResult: React.FC = () => {
     const [inputState, setInputState] = useState<string>("")
     const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData} = useContext(AuthContext)
     const [searchResultCount, setSearchResultCount]= useState<number>(0);
-    const [test,setTest]= useState<string[][]>([]);
+    const [searchResultSort20,setSearchResultSort20]= useState<string[][]>([]);
     
     function splitIntoChunk(arr:string[], chunk:number) {
         const result = [];
@@ -77,7 +77,7 @@ const SearchResult: React.FC = () => {
                 .then(res=> res.json())
                 .then(data=>{
                     const dataArray= splitIntoChunk(data.result,3)
-                    setTest(dataArray);
+                    setSearchResultSort20(dataArray);
                     setSearchResultData(data.result)
                     setSearchResultCount(data.result.length)
                 })
@@ -88,14 +88,11 @@ const SearchResult: React.FC = () => {
     },[searchWord])
 
     useEffect(()=>{
-        console.log('test=',test)
-    },[test])
+        console.log('test=',searchResultSort20)
+    },[searchResultSort20])
   return (
     <div id={styles.searchResultComponent}>
-        <div id={styles.searchResultComponent_searchContainer}
-         style={{
-            zIndex:hambergerState === 1 ? -1 : searchState === 1 ? -1 : 0,
-        }}>
+        <div id={styles.searchResultComponent_searchContainer}>
             <div id={styles.searchResultComponent_searchIconContainer}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray",}}/>
             </div>

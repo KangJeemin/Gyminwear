@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image'
-import { autocompleteClasses } from '@mui/material';
 
 const SearchResult: React.FC = () => { 
     const target = useRef<HTMLDivElement | null>(null);
@@ -102,7 +101,7 @@ const SearchResult: React.FC = () => {
 
     }}>
         <div id={styles.searchResultComponent_searchContainer}
-            style={{zIndex:hambergerState !=1 && searchState !=1 ? -1:'auto'}}
+            style={{display:hambergerState !=1 && searchState !=1 ? '' : 'none'}}
         >
             <div id={styles.searchResultComponent_searchIconContainer}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray",}}/>
@@ -115,7 +114,9 @@ const SearchResult: React.FC = () => {
         <div id={styles.searchResultComponent_topText}>
           <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {searchResultCount}개의 검색 결과를 발견했습니다.</h1>
         </div>
-            <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_8x2} ${styles.flex_scrollSet}`} ref={target2}>
+            <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_8x2} ${styles.flex_scrollSet}`} ref={target2}
+            style={{display:hambergerState !=1 && searchState !=1 ? '' : 'none'}}
+            >
                      {searchResultData.map((object, index) => (
                         <span key={index} id={styles.searchResultComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.searchResultComponent_item_imageSize}>

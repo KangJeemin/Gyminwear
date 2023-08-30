@@ -4,12 +4,7 @@ import styles from './searchResultComponent.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from '@/public/context/authcontext';
-import axios from 'axios';
-interface Item {
-  brandName: string;
-  itemName: string;
-  itemPrice: number | string;
-}
+import Image from 'next/image'
 
 const SearchResult: React.FC = () => { 
     const target = useRef<HTMLDivElement | null>(null);
@@ -18,9 +13,28 @@ const SearchResult: React.FC = () => {
 
     const [viewState,setViewState]=useState<boolean>(false)
     const [inputState, setInputState] = useState<string>("")
-    const {hambergerState,searchState,searchWord} = useContext(AuthContext)
+    const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData,setSearchWord} = useContext(AuthContext)
     const [searchResultCount, setSearchResultCount]= useState<number>(0);
-
+    const [searchResultSort20,setSearchResultSort20]= useState<string[][]>([]);
+    const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
+        if(e.keyCode===13){
+          setSearchWord(inputState)
+          setViewBlurryOut()
+        }
+      }
+    function splitIntoChunk(arr:string[], chunk:number) {
+        const result = [];
+        
+        for (let index=0; index < arr.length; index += chunk) {
+          let tempArray;
+          // slice() 메서드를 사용하여 특정 길이만큼 배열을 분리함
+          tempArray = arr.slice(index, index + chunk);
+          // 빈 배열에 특정 길이만큼 분리된 배열을 추가
+          result.push(tempArray);
+        }
+        
+        return result;
+      }
 
     const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
       setInputState(e.target.value);
@@ -67,133 +81,72 @@ const SearchResult: React.FC = () => {
          await fetch(`/api/search?result=${searchWord}`)
                 .then(res=> res.json())
                 .then(data=>{
-                    setSearchResultCount(data.countresult[0].C)
+                    const dataArray= splitIntoChunk(data.result,3)
+                    setSearchResultSort20(dataArray);
+                    setSearchResultData(data.result)
+                    setSearchResultCount(data.result.length)
                 })
             }
-        const items:Item[] =[
-          {
-              brandName:"brontowin",
-                
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin1",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin2",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin3",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin4",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin5",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin6",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin7",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin8",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin9",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin10",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin11",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin12",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin13",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin14",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin15",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },    
- ]
+
     useEffect(()=>{
         searchDataAPI()
     },[searchWord])
+
+    useEffect(()=>{
+        console.log('test=',searchResultSort20)
+    },[searchResultSort20])
   return (
-    <div id={styles.searchResultComponent}>
+    <div id={styles.searchResultComponent}
+    style={{
+
+    }}>
         <div id={styles.searchResultComponent_searchContainer}
-         style={{
-            zIndex:hambergerState === 1 ? -1 : searchState === 1 ? -1 : 0,
-        }}>
+            style={{display:hambergerState !=1 && searchState !=1 ? '' : 'none'}}
+        >
             <div id={styles.searchResultComponent_searchIconContainer}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray",}}/>
             </div>
             <div id= {styles.searchResultComponent_deleteIconContainer}>
                 <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
             </div>
-            <input id={styles.searchResultComponent_search} onChange={setInputText} value={inputState} type="text" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
+            <input id={styles.searchResultComponent_search} onChange={setInputText} onKeyDown={keydown} value={inputState} type="search" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
         </div>
         <div id={styles.searchResultComponent_topText}>
           <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {searchResultCount}개의 검색 결과를 발견했습니다.</h1>
         </div>
-            <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_8x2} ${styles.flex_scrollSet}`} ref={target2}>
-            {items.map((item, index) => (
-                <span key={index} id={styles.searchResultComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}` }>
-                <span id={styles.searchResultComponent_item_imageSize}></span>
-                <span id={styles.searchResultComponent_item_textBoxSize} className={`${styles.flex_column}`}>
-                    <span id={styles.searchResultComponent_item_itemBrandName}><h1>{item.brandName}</h1></span>
-                    <span id={styles.searchResultComponent_item_itemName}><h2>{item.itemName}</h2></span>
-                    <span id={styles.searchResultComponent_item_itemPrice}><h3>{item.itemPrice}</h3></span>
-                </span>
-                </span>
-                ))}
+            <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_8x2} ${styles.flex_scrollSet}`} ref={target2}
+            style={{display:hambergerState !=1 && searchState !=1 ? '' : 'none'}}
+            >
+                     {searchResultData.map((object, index) => (
+                        <span key={index} id={styles.searchResultComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
+                            <span id={styles.searchResultComponent_item_imageSize}>
+                                <Image
+                                    style={{
+                                        display:hambergerState !=1 && searchState !=1 ? '' : 'none'
+                                    }}
+                                    src={object.image}
+                                    alt='이미지 표시 불가'
+                                    layout='fill'
+                                    onClick={()=>{
+                                        router.push(`${object.url}`)
+                                    }}
+                                    />
+                            </span>
+                            <span id={styles.searchResultComponent_item_textBoxSize} className={`${styles.flex_column}`}>
+                                <span id={styles.searchResultComponent_item_itemBrandName}><h4>{object.brandname}</h4></span>
+                                <span id={styles.searchResultComponent_item_itemName}><h5>{object.productname}</h5></span>
+                                <span id={styles.searchResultComponent_item_itemPrice}><h5>{object.price}</h5></span>
+                            </span>
+                        </span>
+                    ))}
         </div>
-        <div id ={styles.searchResultComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`} ref={target}>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`}>1/3</span>
-                        
-                <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{
-                }}>&#62;</span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#187;</span>
-        </div>
+        {searchResultCount < 20 ? (
+            <div id ={styles.searchResultComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`} ref={target}>
+               <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#60;</span>
+               <span className={`${styles.width_15per} ${styles.text_set_center}`}>1</span>
+               <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{}}>&#62;</span>
+            </div>
+        ): null}
     </div>
   );
 };

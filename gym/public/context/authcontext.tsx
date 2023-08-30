@@ -1,16 +1,29 @@
 import React, { useState, createContext } from "react";
+interface SearchResultItem {
+  // Define the properties of each item in the search result data
+  topid: number;
+  brandname: string;
+  image:string;
+  productname:string;
+  price:number;
+  url:string;
+  likecount:number;
+  // ... other properties
+}
 
 interface AuthContextProps {
   state:number;
   setState:(state:number) => void;
   hambergerState: number;
-  setHambergerState: (state:number) => void;
+  setHambergerState: (hambergerState:number) => void;
   searchState: number;
-  setSearchState: (state:number) => void;
+  setSearchState: (searchState:number) => void;
   announceState:boolean;
   setAnnounceState:(announceState:boolean) => void;
   searchWord:string;
-  setSearchWord:(state:string)=> void;
+  setSearchWord:(searchWord:string)=> void;
+  searchResultData:SearchResultItem[];
+  setSearchResultData:(searchResultData:SearchResultItem[])=> void;
 }
 
 export const AuthContext = createContext<AuthContextProps>({
@@ -23,7 +36,9 @@ export const AuthContext = createContext<AuthContextProps>({
   announceState:true,
   setAnnounceState: () => {},
   searchWord:'',
-  setSearchWord:()=>{}
+  setSearchWord:()=>{},
+  searchResultData:[],
+  setSearchResultData:()=>{}
 
 
 });
@@ -36,6 +51,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [searchState, setSearchState] = useState(0);
   const [announceState, setAnnounceState] = useState(true);
   const [searchWord, setSearchWord] = useState('');
+  const [searchResultData, setSearchResultData]= useState<SearchResultItem[]>([]);
 
   return (
     <AuthContext.Provider
@@ -49,7 +65,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         announceState,
         setAnnounceState,
         searchWord,
-        setSearchWord
+        setSearchWord,
+        searchResultData,
+        setSearchResultData,
       }}
     >
       {children}

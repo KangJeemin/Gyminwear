@@ -96,8 +96,13 @@ const SearchResult: React.FC = () => {
         console.log('test=',searchResultSort20)
     },[searchResultSort20])
   return (
-    <div id={styles.searchResultComponent}>
-        <div id={styles.searchResultComponent_searchContainer}>
+    <div id={styles.searchResultComponent}
+    style={{
+
+    }}>
+        <div id={styles.searchResultComponent_searchContainer}
+            style={{display:hambergerState !=1 && searchState !=1 ? '' : 'none'}}
+        >
             <div id={styles.searchResultComponent_searchIconContainer}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray",}}/>
             </div>

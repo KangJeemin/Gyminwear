@@ -7,7 +7,7 @@ const mysqlModule =() => {
              db = mysql.createConnection({
              user: process.env.NEXT_PUBLIC_DATABASE_USERNAME,
              password: process.env.NEXT_PUBLIC_DATABASE_PASSWAOD,
-             host: 'localhost',
+             host: process.env.NEXT_PUBLIC_DATABASE_HOST,
              port: process.env.NEXT_PUBLIC_DATABASE_PORT,
              database: process.env.NEXT_PUBLIC_DATABASE_DATABASE,
              connectionLimit: 10, // Adjust this value based on your needs

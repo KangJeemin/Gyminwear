@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image'
+import { autocompleteClasses } from '@mui/material';
 
 const SearchResult: React.FC = () => { 
     const target = useRef<HTMLDivElement | null>(null);
@@ -101,7 +102,7 @@ const SearchResult: React.FC = () => {
 
     }}>
         <div id={styles.searchResultComponent_searchContainer}
-            style={{display:hambergerState !=1 && searchState !=1 ? '' : 'none'}}
+            style={{zIndex:hambergerState !=1 && searchState !=1 ? -1:'auto'}}
         >
             <div id={styles.searchResultComponent_searchIconContainer}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray",}}/>

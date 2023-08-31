@@ -8,6 +8,14 @@ const TopComponent1: React.FC = () => {
     
     const router = useRouter();
     const {hambergerState,searchState,topData,setTopData} = useContext(AuthContext)
+    const topItemDataAPI = async () =>{
+         await fetch(`/api/search?result=1`)
+                .then(res=> res.json())
+                .then(data=>console.log(data))
+            }
+    useEffect(()=>{
+        topItemDataAPI()
+    })
  
   return (
     <div id={styles.topComponent}>

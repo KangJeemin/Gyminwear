@@ -23,6 +23,7 @@
 #topComponent_item_imageSize{
     width: 100%;
     height: 80%;
+    position: relative;
     background-color: red;
 }
 #topComponent_item_textBoxSize{

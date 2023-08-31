@@ -12,7 +12,7 @@
 
 #topComponent_itemContainer{
     width: 100%;
-    height: 400%;
+    height: auto;
     background-color: white;
     overflow-y: scroll;
 }
@@ -70,9 +70,8 @@
     display:flex;
     flex-direction: column;
 }
-.grid_8x2{
+.grid_1x2{
     display: grid;
-    grid-template-rows: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% ;
     grid-template-columns: 50% 50%;
 }
 .padding_1{

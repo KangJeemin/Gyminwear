@@ -7,7 +7,7 @@ import Image from 'next/image';
 const TopComponent1: React.FC = () => { 
     
     const router = useRouter();
-    const {hambergerState,searchState,searchResultData,} = useContext(AuthContext)
+    const {hambergerState,searchState,topData,setTopData} = useContext(AuthContext)
  
   return (
     <div id={styles.topComponent}>
@@ -26,10 +26,10 @@ const TopComponent1: React.FC = () => {
                 </span>
                 ))}
             </div> */}
-             <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
-                     {searchResultData.map((object, index) => (
-                        <span key={index} id={styles.searchResultComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
-                            <span id={styles.searchResultComponent_item_imageSize}>
+             <div id={styles.topComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
+                     {topData.map((object, index) => (
+                        <span key={index} id={styles.topComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
+                            <span id={styles.topComponent_item_imageSize}>
                                 <Image
                                     src={object.image}
                                     alt='이미지 표시 불가'
@@ -39,10 +39,10 @@ const TopComponent1: React.FC = () => {
                                     }}
                                     />
                             </span>
-                            <span id={styles.searchResultComponent_item_textBoxSize} className={`${styles.flex_column}`}>
-                                <span id={styles.searchResultComponent_item_itemBrandName}><h4>{object.brandname}</h4></span>
-                                <span id={styles.searchResultComponent_item_itemName}><h5>{object.productname}</h5></span>
-                                <span id={styles.searchResultComponent_item_itemPrice}><h5>{object.price}</h5></span>
+                            <span id={styles.topComponent_item_textBoxSize} className={`${styles.flex_column}`}>
+                                <span id={styles.topComponent_item_itemBrandName}><h4>{object.brandname}</h4></span>
+                                <span id={styles.topComponent_item_itemName}><h5>{object.productname}</h5></span>
+                                <span id={styles.topComponent_item_itemPrice}><h5>{object.price}</h5></span>
                             </span>
                         </span>
                     ))}

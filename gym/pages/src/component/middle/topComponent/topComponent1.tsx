@@ -13,6 +13,7 @@ const TopComponent1: React.FC = () => {
          await fetch(`/api/toppage?page=${page}`)
                 .then(res=> res.json())
                 .then(data=>setTopData(data))
+        window.scrollTo(0, 0);
             }
     useEffect(()=>{
         topItemDataAPI(1)

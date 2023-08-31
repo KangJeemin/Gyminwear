@@ -17,7 +17,7 @@ const TopComponent1: React.FC = () => {
             }
     useEffect(()=>{
         topItemDataAPI(1)
-    })
+    },[])
     useEffect(()=>{
         
     },[topData])

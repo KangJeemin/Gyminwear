@@ -158,7 +158,7 @@ const clickSearch = () => {
       
 // })
     return (
-        <motion.div id={styles.header} className={`${styles.flexColumn}`}>
+        <motion.div id={styles.header} className={`${styles.flexColumn}`} style={{zIndex:1}}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox} ref={LogoBoxRef} onClick={()=>{
                     router.push("/")

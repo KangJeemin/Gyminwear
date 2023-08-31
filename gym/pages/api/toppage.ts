@@ -14,7 +14,7 @@ export default function test(req : NextApiRequest, res : NextApiResponse) {
         });
     }
     else if(pageNumber==='2'){
-        db.query("SELECT * FROM top ORDER BY day LIMIT 20,40",
+        db.query("SELECT * FROM top ORDER BY day LIMIT 20,20",
         function (err: any, result: any) {
         if(err) {
             console.log(err)

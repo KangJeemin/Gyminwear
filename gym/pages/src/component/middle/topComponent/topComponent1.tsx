@@ -8,13 +8,14 @@ const TopComponent1: React.FC = () => {
     
     const router = useRouter();
     const {hambergerState,searchState,topData,setTopData} = useContext(AuthContext)
-    const topItemDataAPI = async () =>{
-         await fetch(`/api/toppage?page=1`)
+    const [pageState,setPageState] = useState<number>(0)
+    const topItemDataAPI = async (page:number) =>{
+         await fetch(`/api/toppage?page=${page}`)
                 .then(res=> res.json())
                 .then(data=>setTopData(data))
             }
     useEffect(()=>{
-        topItemDataAPI()
+        topItemDataAPI(1)
     })
  
   return (
@@ -43,7 +44,8 @@ const TopComponent1: React.FC = () => {
                         </span>
                     ))}
         </div>
-        <div id ={styles.topComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`}>
+        {pageState===0 ? (
+            <div id ={styles.topComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`}>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
                 <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`}>&#60;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>
@@ -51,10 +53,41 @@ const TopComponent1: React.FC = () => {
                     <span className={styles.color_black}>/3</span>
                 </span>
                 <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
-                    router.push("/topPage1")
-                }}>&#62;</span>
+                    setPageState(1)
+                    topItemDataAPI(2)
+                    }}>&#62;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
-        </div>
+            </div>   
+        ) : pageState===1 ? (
+            <div id ={styles.topComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`}>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
+                <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`}>&#60;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}>
+                    <span className={styles.color_blue}>2</span>
+                    <span className={styles.color_black}>/3</span>
+                </span>
+                <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
+                    setPageState(1)
+                    topItemDataAPI(2)
+                    }}>&#62;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
+            </div>   
+        ) : pageState===2 ? (
+            <div id ={styles.topComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`}>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
+                <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`}>&#60;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}>
+                    <span className={styles.color_blue}>3</span>
+                    <span className={styles.color_black}>/3</span>
+                </span>
+                <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
+                    setPageState(1)
+                    topItemDataAPI(2)
+                    }}>&#62;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
+            </div>   
+        ) : null}
+        
     </div>
   );
 };

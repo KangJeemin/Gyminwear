@@ -49,9 +49,6 @@ const BestAll: React.FC = () => {
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestAll_item_imageSize}>
                                 <Image
-                                    style={{
-                                        display:hambergerState !=1 && searchState !=1 ? '' : 'none'
-                                    }}
                                     src={object.image}
                                     alt='이미지 표시 불가'
                                     layout='fill'

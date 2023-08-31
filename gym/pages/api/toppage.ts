@@ -2,9 +2,19 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 const db = require('../../src/db/db')
 
 export default function test(req : NextApiRequest, res : NextApiResponse) {
-    const pageNumber= req.query.result
+    const pageNumber= req.query.page
     if(pageNumber==='1'){
-        db.query("SELECT * FROM top WHERE topid < 6",
+        db.query("SELECT * FROM top WHERE topid < 20",
+        function (err: any, result: any) {
+        if(err) {
+            console.log(err)
+        } else {
+            res.json(result);
+        }
+        });
+    }
+    else if(pageNumber==='2'){
+        db.query("SELECT * FROM top WHERE topid >20 AND topid < 40 ",
         function (err: any, result: any) {
         if(err) {
             console.log(err)

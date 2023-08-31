@@ -100,9 +100,7 @@ const SearchResult: React.FC = () => {
     style={{
 
     }}>
-        <div id={styles.searchResultComponent_searchContainer}
-            style={{display:hambergerState !=1 && searchState !=1 ? '' : 'none'}}
-        >
+        <div id={styles.searchResultComponent_searchContainer}>
             <div id={styles.searchResultComponent_searchIconContainer}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray",}}/>
             </div>
@@ -114,9 +112,7 @@ const SearchResult: React.FC = () => {
         <div id={styles.searchResultComponent_topText}>
           <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {searchResultCount}개의 검색 결과를 발견했습니다.</h1>
         </div>
-            <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`} ref={target2}
-            style={{display:hambergerState !=1 && searchState !=1 ? '' : 'none'}}
-            >
+            <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`} ref={target2}>
                      {searchResultData.map((object, index) => (
                         <span key={index} id={styles.searchResultComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.searchResultComponent_item_imageSize}>

@@ -45,13 +45,15 @@ const TopComponent1: React.FC = () => {
         </div>
         <div id ={styles.topComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`}>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`}>1/3</span>
-                        
-                <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{
+                <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`}>&#60;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}>
+                    <span className={styles.color_blue}>1</span>
+                    <span className={styles.color_black}>/3</span>
+                </span>
+                <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
                     router.push("/topPage1")
                 }}>&#62;</span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#187;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
         </div>
     </div>
   );

@@ -4,7 +4,7 @@ const db = require('../../src/db/db')
 export default function test(req : NextApiRequest, res : NextApiResponse) {
     const pageNumber= req.query.page
     if(pageNumber==='1'){
-        db.query("SELECT * FROM top WHERE topid < 20",
+        db.query("SELECT * FROM top ORDER BY day LIMIT 0,20",
         function (err: any, result: any) {
         if(err) {
             console.log(err)
@@ -14,7 +14,7 @@ export default function test(req : NextApiRequest, res : NextApiResponse) {
         });
     }
     else if(pageNumber==='2'){
-        db.query("SELECT * FROM top WHERE topid >20 AND topid < 40 ",
+        db.query("SELECT * FROM top ORDER BY day LIMIT 20,40",
         function (err: any, result: any) {
         if(err) {
             console.log(err)

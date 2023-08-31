@@ -11,7 +11,7 @@ const TopComponent1: React.FC = () => {
     const topItemDataAPI = async () =>{
          await fetch(`/api/toppage?page=1`)
                 .then(res=> res.json())
-                .then(data=>console.log(data))
+                .then(data=>setTopData(data))
             }
     useEffect(()=>{
         topItemDataAPI()

@@ -21,11 +21,12 @@ const Announcement = () => {
       style={{
         width: '100vw',
         height: '5vh',
-        backgroundColor: 'gray',
+        backgroundColor: '#D9D9D9',
         display:'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        fontSize:'0.5em'
+        fontSize:'0.5em',
+        color:'black'
         
       }}
     >

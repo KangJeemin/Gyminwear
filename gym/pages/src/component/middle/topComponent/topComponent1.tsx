@@ -9,7 +9,7 @@ const TopComponent1: React.FC = () => {
     const router = useRouter();
     const {hambergerState,searchState,topData,setTopData} = useContext(AuthContext)
     const topItemDataAPI = async () =>{
-         await fetch(`/api/search?result=1`)
+         await fetch(`/api/toppage?page=1`)
                 .then(res=> res.json())
                 .then(data=>console.log(data))
             }

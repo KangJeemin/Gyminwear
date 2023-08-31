@@ -13,7 +13,7 @@ const TopComponent1: React.FC = () => {
          await fetch(`/api/toppage?page=${page}`)
                 .then(res=> res.json())
                 .then(data=>setTopData(data))
-        window.scrollTo(0, 0);
+        
             }
     useEffect(()=>{
         topItemDataAPI(1)
@@ -41,9 +41,9 @@ const TopComponent1: React.FC = () => {
                                     />
                             </span>
                             <span id={styles.topComponent_item_textBoxSize} className={`${styles.flex_column}`}>
-                                <span id={styles.topComponent_item_itemBrandName}><h4>{object.brandname}</h4></span>
-                                <span id={styles.topComponent_item_itemName}><h5>{object.productname}</h5></span>
-                                <span id={styles.topComponent_item_itemPrice}><h5>{object.price}</h5></span>
+                                <span id={styles.topComponent_item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
+                                <span id={styles.topComponent_item_itemName} className={styles.text_set_center}><h5>{object.productname}</h5></span>
+                                <span id={styles.topComponent_item_itemPrice} className={styles.text_set_center}><h5>{object.price} ₩</h5></span>
                             </span>
                         </span>
                     ))}
@@ -59,6 +59,7 @@ const TopComponent1: React.FC = () => {
                 <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
                     setPageState(1)
                     topItemDataAPI(2)
+                    window.scrollTo(0, 0);
                     }}>&#62;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
             </div>   
@@ -68,6 +69,7 @@ const TopComponent1: React.FC = () => {
                 <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
                     setPageState(0)
                     topItemDataAPI(1)
+                    window.scrollTo(0, 0);
                 }}>&#60;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>
                     <span className={styles.color_blue}>2</span>

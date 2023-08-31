@@ -1,105 +1,20 @@
 import { useRouter } from 'next/router';
 import React, { useState, useRef, useEffect, useContext } from 'react';
+import { AuthContext } from '@/public/context/authcontext';
 import styles from './topComponent.module.css';
-
-interface Item {
-  brandName: string;
-  itemName: string;
-  itemPrice: number | string;
-}
+import Image from 'next/image';
 
 const TopComponent1: React.FC = () => { 
+    
     const router = useRouter();
-  
-  const items:Item[] =[
-    {
-        brandName:"brontowin",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin1",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin2",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin3",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin4",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin5",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin6",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin7",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin8",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin9",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin10",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin11",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin12",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin13",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin14",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },
-    {
-        brandName:"brontowin15",
-        itemName:"헤리코든 오버핏",
-        itemPrice:44000+'원'
-    },    
- ]
+    const {hambergerState,searchState,searchResultData,} = useContext(AuthContext)
  
   return (
     <div id={styles.topComponent}>
         <div id={styles.topComponent_topText}>
           <h1 id={styles.topComponent_text}>상의</h1>
         </div>
-            <div id={styles.topComponent_itemContainer} className={`${styles.grid_8x2} ${styles.flex_scrollSet}`}>
+            {/* <div id={styles.topComponent_itemContainer} className={`${styles.grid_8x2} ${styles.flex_scrollSet}`}>
             {items.map((item, index) => (
                 <span key={index} id={styles.topComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                 <span id={styles.topComponent_item_imageSize}></span>
@@ -110,6 +25,27 @@ const TopComponent1: React.FC = () => {
                 </span>
                 </span>
                 ))}
+            </div> */}
+             <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
+                     {searchResultData.map((object, index) => (
+                        <span key={index} id={styles.searchResultComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
+                            <span id={styles.searchResultComponent_item_imageSize}>
+                                <Image
+                                    src={object.image}
+                                    alt='이미지 표시 불가'
+                                    layout='fill'
+                                    onClick={()=>{
+                                        router.push(`${object.url}`)
+                                    }}
+                                    />
+                            </span>
+                            <span id={styles.searchResultComponent_item_textBoxSize} className={`${styles.flex_column}`}>
+                                <span id={styles.searchResultComponent_item_itemBrandName}><h4>{object.brandname}</h4></span>
+                                <span id={styles.searchResultComponent_item_itemName}><h5>{object.productname}</h5></span>
+                                <span id={styles.searchResultComponent_item_itemPrice}><h5>{object.price}</h5></span>
+                            </span>
+                        </span>
+                    ))}
         </div>
         <div id ={styles.topComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`}>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>

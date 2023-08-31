@@ -107,7 +107,7 @@
     display:flex;
     flex-direction: column;
 }
-.grid_8x2{
+.grid_1x2{
     display: grid;
     grid-template-columns: 50% 50%;
 }

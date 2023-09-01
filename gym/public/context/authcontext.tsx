@@ -1,7 +1,6 @@
 import React, { useState, createContext } from "react";
 interface gymWearItem {
   // Define the properties of each item in the search result data
-  topid: number;
   brandname: string;
   image:string;
   productname:string;

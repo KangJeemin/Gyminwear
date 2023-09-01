@@ -10,7 +10,7 @@ const BottomComponent: React.FC = () => {
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
     const [pageState,setPageState] = useState<number>(0)
     const bottomItemDataAPI = async (page:number) =>{
-         await fetch(`/api/bottom?page=${page}`)
+         await fetch(`/api/bottompage?page=${page}`)
                 .then(res=> res.json())
                 .then(data=>setTopAndBottomData(data))
         

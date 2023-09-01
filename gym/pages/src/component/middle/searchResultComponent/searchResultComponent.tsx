@@ -87,7 +87,6 @@ const SearchResult: React.FC = () => {
                     setSearchResultCount(data.result.length)
                 })
             }
-
     useEffect(()=>{
         searchDataAPI()
     },[searchWord])

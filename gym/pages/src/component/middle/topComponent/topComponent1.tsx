@@ -7,12 +7,12 @@ import Image from 'next/image';
 const TopComponent1: React.FC = () => { 
     
     const router = useRouter();
-    const {hambergerState,searchState,topData,setTopData} = useContext(AuthContext)
+    const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
     const [pageState,setPageState] = useState<number>(0)
     const topItemDataAPI = async (page:number) =>{
          await fetch(`/api/toppage?page=${page}`)
                 .then(res=> res.json())
-                .then(data=>setTopData(data))
+                .then(data=>setTopAndBottomData(data))
         
             }
     useEffect(()=>{
@@ -20,7 +20,7 @@ const TopComponent1: React.FC = () => {
     },[])
     useEffect(()=>{
         
-    },[topData])
+    },[topAndBottomData])
  
   return (
     <div id={styles.topComponent}>
@@ -28,7 +28,7 @@ const TopComponent1: React.FC = () => {
           <h3 id={styles.topComponent_text}>Top</h3>
         </div>
              <div id={styles.topComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
-                     {topData.map((object, index) => (
+                     {topAndBottomData.map((object, index) => (
                         <span key={index} id={styles.topComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.topComponent_item_imageSize}>
                                 <Image

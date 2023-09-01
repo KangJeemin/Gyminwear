@@ -24,8 +24,8 @@ interface AuthContextProps {
   setSearchWord:(searchWord:string)=> void;
   searchResultData:gymWearItem[];
   setSearchResultData:(searchResultData:gymWearItem[])=> void;
-  topData:gymWearItem[];
-  setTopData:(topData:gymWearItem[])=>void;
+  topAndBottomData:gymWearItem[];
+  setTopAndBottomData:(topData:gymWearItem[])=>void;
 }
 
 export const AuthContext = createContext<AuthContextProps>({
@@ -41,8 +41,8 @@ export const AuthContext = createContext<AuthContextProps>({
   setSearchWord:()=>{},
   searchResultData:[],
   setSearchResultData:()=>{},
-  topData:[],
-  setTopData:()=>{}
+  topAndBottomData:[],
+  setTopAndBottomData:()=>{}
 
 
 });
@@ -56,7 +56,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [announceState, setAnnounceState] = useState(true);
   const [searchWord, setSearchWord] = useState('');
   const [searchResultData, setSearchResultData]= useState<gymWearItem[]>([]);
-  const [topData, setTopData]= useState<gymWearItem[]>([]);
+  const [topAndBottomData, setTopAndBottomData]= useState<gymWearItem[]>([]);
 
   return (
     <AuthContext.Provider
@@ -73,8 +73,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         setSearchWord,
         searchResultData,
         setSearchResultData,
-        topData,
-        setTopData
+        topAndBottomData,
+        setTopAndBottomData
       }}
     >
       {children}

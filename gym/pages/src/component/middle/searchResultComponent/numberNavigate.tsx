@@ -17,6 +17,9 @@ function NumberNavigate(props:NumberNavigateProps) {
             </div>
         )
     }
+    else{
+        return(null)
+    }
 }
 
 export default NumberNavigate;

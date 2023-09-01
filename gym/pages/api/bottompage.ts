@@ -4,7 +4,7 @@ const db = require('../../src/db/db')
 export default function test(req : NextApiRequest, res : NextApiResponse) {
     const pageNumber= req.query.page
     if(pageNumber==='1'){
-        db.query("SELECT * FROM bottom ORDER BY day LIMIT 0,20",
+        db.query("SELECT * FROM bottom LIMIT 0,20",
         function (err: any, result: any) {
         if(err) {
             console.log(err)

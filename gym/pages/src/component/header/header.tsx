@@ -158,7 +158,7 @@ const clickSearch = () => {
       
 // })
     return (
-        <motion.div id={styles.header} className={`${styles.flexColumn}`}>
+        <motion.div id={styles.header} className={`${styles.flexColumn}`} style={{zIndex:1}}>
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox} ref={LogoBoxRef} onClick={()=>{
                     router.push("/")
@@ -168,7 +168,7 @@ const clickSearch = () => {
                         alt='이미지 표시 불가'
                         layout='fixed'
                         width={80}
-                        height={45}
+                        height={40}
                         />
                 </div>
                 <div id={styles.centerBox}></div>

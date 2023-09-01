@@ -2,17 +2,17 @@ import React from 'react'
 import Link from 'next/link'
 import Header from './src/component/header/header'
 import HeaderMargin from './src/component/header/headerMargin'
-import TopComponent1 from './src/component/middle/topComponent/topComponent1'
-const topPage = () => {
+import BottomComponent from './src/component/middle/bottomComponent/bottomComponent'
+const bottomPage = () => {
     return (
         
         <div>
         <Header/>
         <HeaderMargin/>
-        <TopComponent1/>
+        <BottomComponent/>
         </div>
     )
 
 }
 
-export default topPage;
+export default bottomPage;

@@ -99,3 +99,8 @@
 .flex_scrollset{
     flex-shrink: 0;
 }
+.text_set_center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}

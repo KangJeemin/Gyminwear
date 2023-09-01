@@ -73,13 +73,13 @@ const SearchModal = () => {
                 <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"1.5em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
                 </div>
             </div>
-            <h1 id={styles.searchRecentTextBox}>최근 검색어</h1>
+            {/* <h1 id={styles.searchRecentTextBox}>최근 검색어</h1>
             <div id={styles.searchRecentLogContainer}>
                 <div id={styles.searchRecentLogBox}>
                     <div id={styles.searchRecentLogs}>덤브스트럭</div>
                     <div id={styles.searchRecentLogDelete}>x</div>
                 </div>
-            </div>
+            </div> */}
         </div>
         <div id={styles.searchBoxRight}></div>
     </div>

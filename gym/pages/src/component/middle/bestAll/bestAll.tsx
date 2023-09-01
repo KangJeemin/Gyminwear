@@ -41,7 +41,7 @@ const BestAll: React.FC = () => {
         }}
         >
             <div id={styles.bestAll_topText}>
-                <h3 id={styles.bestAll_text}>이번 주 인기 상품</h3>
+                <h3 id={styles.bestAll_text}>이번 주 인기 짐웨어</h3>
             </div>
             <div id={styles.bestAll_itemContainer_flexNowrap}>
                 <div id={styles.bestAll_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
@@ -49,9 +49,6 @@ const BestAll: React.FC = () => {
                         <span key={index} id={styles.bestAll_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestAll_item_imageSize}>
                                 <Image
-                                    style={{
-                                        display:hambergerState !=1 && searchState !=1 ? '' : 'none'
-                                    }}
                                     src={object.image}
                                     alt='이미지 표시 불가'
                                     layout='fill'
@@ -61,9 +58,9 @@ const BestAll: React.FC = () => {
                                     />
                             </span>
                             <span id={styles.bestAll_item_textBoxSize} className={`${styles.flex_column}`}>
-                                <span id={styles.bestAll_item_itemBrandName}><h4>{object.brandname}</h4></span>
-                                <span id={styles.bestAll_item_itemName}><h5>{object.productname}</h5></span>
-                                <span id={styles.bestAll_item_itemPrice}><h5>{object.price}</h5></span>
+                                <span id={styles.bestAll_item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
+                                <span id={styles.bestAll_item_itemName} className={styles.text_set_center}><h5>{object.productname}</h5></span>
+                                <span id={styles.bestAll_item_itemPrice} className={styles.text_set_center}><h5>{object.price} ₩</h5></span>
                             </span>
                         </span>
                     ))}

@@ -18,7 +18,9 @@ function NumberNavigate(props:NumberNavigateProps) {
         )
     }
     else{
-        return(null)
+        return(
+            null
+        )
     }
 }
 

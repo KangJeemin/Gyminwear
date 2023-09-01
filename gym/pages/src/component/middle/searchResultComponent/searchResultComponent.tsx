@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image'
+import NumberNavigate from './numberNavigate';
 
 const SearchResult: React.FC = () => { 
     const target = useRef<HTMLDivElement | null>(null);
@@ -87,17 +88,7 @@ const SearchResult: React.FC = () => {
                     setSearchResultCount(data.result.length)
                 })
             }
-    function numberNavigate(){
-        if(searchResultCount<20){
-            return(
-            <div id ={styles.searchResultComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`} ref={target}>
-               <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#60;</span>
-               <span className={`${styles.width_15per} ${styles.text_set_center}`}>1</span>
-               <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{}}>&#62;</span>
-            </div>
-            )
-        }
-    }
+
     useEffect(()=>{
         searchDataAPI()
     },[searchWord])
@@ -143,15 +134,7 @@ const SearchResult: React.FC = () => {
                         </span>
                     ))}
         </div>
-
-        
-        {searchResultCount < 20 ? null : (
-            <div id ={styles.searchResultComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`} ref={target}>
-               <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#60;</span>
-               <span className={`${styles.width_15per} ${styles.text_set_center}`}>1</span>
-               <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{}}>&#62;</span>
-            </div>
-        )}
+        <NumberNavigate/>
     </div>
   );
 };

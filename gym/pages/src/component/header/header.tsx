@@ -168,7 +168,7 @@ const clickSearch = () => {
                         alt='이미지 표시 불가'
                         layout='fixed'
                         width={80}
-                        height={30}
+                        height={35}
                         />
                 </div>
                 <div id={styles.centerBox}></div>

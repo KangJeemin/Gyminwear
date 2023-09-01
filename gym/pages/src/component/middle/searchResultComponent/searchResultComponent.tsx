@@ -134,7 +134,7 @@ const SearchResult: React.FC = () => {
                         </span>
                     ))}
         </div>
-        <NumberNavigate/>
+        <NumberNavigate number={searchResultCount}/>
     </div>
   );
 };

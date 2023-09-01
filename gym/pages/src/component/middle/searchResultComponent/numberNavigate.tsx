@@ -1,7 +1,7 @@
 
-import { PropaneSharp } from "@mui/icons-material";
 import React from "react";
-import styles from './topComponent.module.css';
+import styles from './searchResultComponent.module.css';
+
 interface NumberNavigateProps {
     number: number; // 숫자 타입으로 정의
 }

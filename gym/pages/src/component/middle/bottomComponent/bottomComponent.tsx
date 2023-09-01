@@ -9,14 +9,14 @@ const BottomComponent: React.FC = () => {
     const router = useRouter();
     const {hambergerState,searchState,topData,setTopData} = useContext(AuthContext)
     const [pageState,setPageState] = useState<number>(0)
-    const topItemDataAPI = async (page:number) =>{
-         await fetch(`/api/toppage?page=${page}`)
+    const bottomItemDataAPI = async (page:number) =>{
+         await fetch(`/api/bottom?page=${page}`)
                 .then(res=> res.json())
                 .then(data=>setTopData(data))
         
             }
     useEffect(()=>{
-        topItemDataAPI(1)
+        bottomItemDataAPI(1)
     },[])
     useEffect(()=>{
         
@@ -25,7 +25,7 @@ const BottomComponent: React.FC = () => {
   return (
     <div id={styles.bottomComponent}>
         <div id={styles.bottomComponent_topText}  className={styles.text_set_center}>
-          <h3 id={styles.bottomComponent_text}>Top</h3>
+          <h3 id={styles.bottomComponent_text}>Bottom</h3>
         </div>
              <div id={styles.bottomComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
                      {topData.map((object, index) => (
@@ -58,7 +58,7 @@ const BottomComponent: React.FC = () => {
                 </span>
                 <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
                     setPageState(1)
-                    topItemDataAPI(2)
+                    bottomItemDataAPI(2)
                     window.scrollTo(0, 0);
                     }}>&#62;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
@@ -68,7 +68,7 @@ const BottomComponent: React.FC = () => {
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
                 <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
                     setPageState(0)
-                    topItemDataAPI(1)
+                    bottomItemDataAPI(1)
                     window.scrollTo(0, 0);
                 }}>&#60;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>

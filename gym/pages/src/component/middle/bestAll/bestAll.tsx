@@ -41,7 +41,7 @@ const BestAll: React.FC = () => {
         }}
         >
             <div id={styles.bestAll_topText}>
-                <h3 id={styles.bestAll_text}>이번 주 인기 상품</h3>
+                <h3 id={styles.bestAll_text}>이번 주 인기 짐웨어</h3>
             </div>
             <div id={styles.bestAll_itemContainer_flexNowrap}>
                 <div id={styles.bestAll_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>

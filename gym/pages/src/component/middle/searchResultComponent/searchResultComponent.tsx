@@ -92,7 +92,7 @@ const SearchResult: React.FC = () => {
     
 
     useEffect(()=>{
-    },[searchResultDataSort20],[searchResultCount])
+    },[searchResultDataSort20,searchResultCount])
   return (
     <div id={styles.searchResultComponent}
     style={{

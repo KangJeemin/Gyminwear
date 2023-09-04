@@ -80,13 +80,14 @@ const SearchResult: React.FC = () => {
          await fetch(`/api/search?search=${searchWord}&page=${page}`)
                 .then(res=> res.json())
                 .then(data=>{
-                    setSearchResultDataSort20(data)
+                    setSearchResultDataSort20(data.result)
                     setSearchResultCount(data.countresult.c)
                     console.log(data)
                 })
             }
 
     useEffect(()=>{
+        searchDataAPI(1)
     },[searchWord])
     
 

@@ -15,30 +15,30 @@ function NumberNavigate(props:NumberNavigateProps) {
     }
     else if(20<props.number &&props.number <40){
         return(
-            pageState==0? (
+            pageState==1? (
             <div id ={styles.searchResultComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`}>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#60;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`}>&#60;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>
                     <span className={styles.color_blue}>1</span>
                     <span className={styles.color_black}>/2</span>
                 </span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{
+                <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
                     setPageState(2)
                 }}>&#62;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
             </div>) :
-             pageState==1? (
+             pageState==2? (
              <div id ={styles.searchResultComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`}>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{
+                <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
                     setPageState(1)
                 }}>&#60;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>
                     <span className={styles.color_blue}>2</span>
                     <span className={styles.color_black}>/2</span>
                 </span>
-                <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{}}>&#62;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`}>&#62;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
             </div>) : null
         )

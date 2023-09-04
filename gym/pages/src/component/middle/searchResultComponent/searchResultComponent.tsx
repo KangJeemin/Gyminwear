@@ -77,16 +77,19 @@ const SearchResult: React.FC = () => {
         // const response = axios.get(`/api/search?result=${searchWord}`)
         // console.log(response)
         
-         await fetch(`/api/search?result=${searchWord}&page=${page}`)
+         await fetch(`/api/search?search=${searchWord}&page=${page}`)
                 .then(res=> res.json())
                 .then(data=>{
                     setSearchResultDataSort20(data)
+                    setSearchResultCount(data.countresult.c)
+                    console.log(data)
                 })
             }
 
     useEffect(()=>{
         searchDataAPI(1)
     },[searchWord])
+    
 
     useEffect(()=>{
     },[searchResultDataSort20])
@@ -108,7 +111,7 @@ const SearchResult: React.FC = () => {
           <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {searchResultCount}개의 검색 결과를 발견했습니다.</h1>
         </div>
             <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`} ref={target2}>
-                     {searchResultData.map((object, index) => (
+                     {searchResultDataSort20.map((object, index) => (
                         <span key={index} id={styles.searchResultComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.searchResultComponent_item_imageSize}>
                                 <Image

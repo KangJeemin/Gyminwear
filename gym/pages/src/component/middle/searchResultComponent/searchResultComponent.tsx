@@ -74,9 +74,6 @@ const SearchResult: React.FC = () => {
         }
     }
     const searchDataAPI = async (page:number) =>{
-        // const response = axios.get(`/api/search?result=${searchWord}`)
-        // console.log(response)
-        
          await fetch(`/api/search?search=${searchWord}&page=${page}`)
                 .then(res=> res.json())
                 .then(data=>{
@@ -87,7 +84,7 @@ const SearchResult: React.FC = () => {
 
     useEffect(()=>{
         searchDataAPI(1)
-    },[searchWord])
+    },[])
     
 
     useEffect(()=>{

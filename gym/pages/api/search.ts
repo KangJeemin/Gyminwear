@@ -58,6 +58,6 @@ export default function Search(req : NextApiRequest, res : NextApiResponse) {
         });
     }
     else{
-        null
+        console.log("오류 발생")
     }
 }

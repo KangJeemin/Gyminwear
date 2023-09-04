@@ -2,8 +2,8 @@ import React,{useState} from "react";
 import styles from './searchResultComponent.module.css';
 
 interface NumberNavigateProps {
-    number: number; // 숫자 타입으로 정의
-    // function: Function;
+    number: number;
+    pageMove: Function;
 }
 
 
@@ -25,6 +25,7 @@ function NumberNavigate(props:NumberNavigateProps) {
                     <span className={styles.color_black}>/2</span>
                 </span>
                 <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
+                    props.pageMove(2)
                     setPageState(2)
                     window.scrollTo(0, 0)
                 }}>&#62;</span>
@@ -35,6 +36,7 @@ function NumberNavigate(props:NumberNavigateProps) {
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
                 <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
                     setPageState(1)
+                    props.pageMove(1)
                     window.scrollTo(0, 0);
                 }}>&#60;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>

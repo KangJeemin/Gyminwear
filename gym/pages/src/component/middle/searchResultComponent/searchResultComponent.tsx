@@ -82,7 +82,6 @@ const SearchResult: React.FC = () => {
                 .then(data=>{
                     setSearchResultDataSort20(data.result)
                     setSearchResultCount(data.countresult[0].C)
-                    console.log(data)
                 })
             }
 
@@ -132,7 +131,7 @@ const SearchResult: React.FC = () => {
                         </span>
                     ))}
         </div>
-        <NumberNavigate number={searchResultCount}/>
+        <NumberNavigate number={searchResultCount} pageMove={searchDataAPI}/>
     </div>
   );
 };

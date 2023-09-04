@@ -23,10 +23,24 @@ function NumberNavigate(props:NumberNavigateProps) {
                     <span className={styles.color_blue}>1</span>
                     <span className={styles.color_black}>/2</span>
                 </span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{
+                    setPageState(2)
+                }}>&#62;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
+            </div>) :
+             pageState==1? (
+             <div id ={styles.searchResultComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`}>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{
+                    setPageState(1)
+                }}>&#60;</span>
+                <span className={`${styles.width_15per} ${styles.text_set_center}`}>
+                    <span className={styles.color_blue}>2</span>
+                    <span className={styles.color_black}>/2</span>
+                </span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{}}>&#62;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
-            </div>) :null 
-            
+            </div>) : null
         )
     }
     else if(40<props.number && props.number <60){

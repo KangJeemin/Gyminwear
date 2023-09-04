@@ -14,9 +14,8 @@ const SearchResult: React.FC = () => {
 
     const [viewState,setViewState]=useState<boolean>(false)
     const [inputState, setInputState] = useState<string>("")
-    const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData,setSearchWord} = useContext(AuthContext)
+    const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData,setSearchWord,searchResultDataSort20,setSearchResultDataSort20} = useContext(AuthContext)
     const [searchResultCount, setSearchResultCount]= useState<number>(0);
-    const [searchResultSort20,setSearchResultSort20]= useState<{}[]>([{}]);
     const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
         if(e.keyCode===13){
           setSearchWord(inputState)
@@ -25,7 +24,6 @@ const SearchResult: React.FC = () => {
       }
     function splitIntoChunk(arr:string[], chunk:number) {
         const result = [];
-        
         for (let index=0; index < arr.length; index += chunk) {
           let tempArray;
           // slice() 메서드를 사용하여 특정 길이만큼 배열을 분리함
@@ -75,28 +73,23 @@ const SearchResult: React.FC = () => {
             setViewState(false)
         }
     }
-    const searchDataAPI = async () =>{
+    const searchDataAPI = async (page:number) =>{
         // const response = axios.get(`/api/search?result=${searchWord}`)
         // console.log(response)
         
-         await fetch(`/api/search?result=${searchWord}`)
+         await fetch(`/api/search?result=${searchWord}?page=${page}`)
                 .then(res=> res.json())
                 .then(data=>{
-                    const dataArray= splitIntoChunk(data.result,20)
-                    setSearchResultSort20(dataArray);   
-                    console.log(data.result)
-                    console.log(dataArray[0])
-                    setSearchResultCount(data.result.length)
+                    setSearchResultDataSort20(data)
                 })
             }
 
     useEffect(()=>{
-        searchDataAPI()
+        searchDataAPI(1)
     },[searchWord])
 
     useEffect(()=>{
-        setSearchResultData(searchResultSort20[0])
-    },[searchResultSort20])
+    },[searchResultDataSort20])
   return (
     <div id={styles.searchResultComponent}
     style={{

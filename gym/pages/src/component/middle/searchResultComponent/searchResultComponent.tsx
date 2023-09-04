@@ -82,7 +82,6 @@ const SearchResult: React.FC = () => {
                 .then(data=>{
                     setSearchResultDataSort20(data.result)
                     setSearchResultCount(data.countresult[0].c)
-                    console.log(data)
                 })
             }
 
@@ -92,6 +91,8 @@ const SearchResult: React.FC = () => {
     
 
     useEffect(()=>{
+        console.log('searchResultCount=',searchResultCount)
+
     },[searchResultDataSort20,searchResultCount])
   return (
     <div id={styles.searchResultComponent}

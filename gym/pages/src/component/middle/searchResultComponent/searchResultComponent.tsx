@@ -16,7 +16,7 @@ const SearchResult: React.FC = () => {
     const [inputState, setInputState] = useState<string>("")
     const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData,setSearchWord} = useContext(AuthContext)
     const [searchResultCount, setSearchResultCount]= useState<number>(0);
-    const [searchResultSort20,setSearchResultSort20]= useState<string[][]>([]);
+    const [searchResultSort20,setSearchResultSort20]= useState<{}[]>([{}]);
     const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
         if(e.keyCode===13){
           setSearchWord(inputState)
@@ -83,7 +83,9 @@ const SearchResult: React.FC = () => {
                 .then(res=> res.json())
                 .then(data=>{
                     const dataArray= splitIntoChunk(data.result,20)
-                    setSearchResultSort20(dataArray);
+                    setSearchResultSort20(dataArray);   
+                    console.log(data.result)
+                    console.log(dataArray[0])
                     setSearchResultCount(data.result.length)
                 })
             }
@@ -93,7 +95,7 @@ const SearchResult: React.FC = () => {
     },[searchWord])
 
     useEffect(()=>{
-        console.log(searchResultSort20[0])
+        setSearchResultData(searchResultSort20[0])
     },[searchResultSort20])
   return (
     <div id={styles.searchResultComponent}

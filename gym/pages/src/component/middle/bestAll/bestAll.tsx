@@ -23,7 +23,7 @@ const BestAll: React.FC = () => {
     const router = useRouter();
     async function fetchData() {
         try {
-            const response = await axios.get("/api/test");
+            const response = await axios.get("/api/bestall");
             const data: Item[] = response.data; // Assuming response.data is an array of items
             setGetDatabase(data);
         } catch (error) {

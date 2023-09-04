@@ -1,6 +1,7 @@
 import React, { useState, createContext } from "react";
 interface gymWearItem {
   // Define the properties of each item in the search result data
+  topid:number;
   brandname: string;
   image:string;
   productname:string;
@@ -23,6 +24,8 @@ interface AuthContextProps {
   setSearchWord:(searchWord:string)=> void;
   searchResultData:gymWearItem[];
   setSearchResultData:(searchResultData:gymWearItem[])=> void;
+  searchResultDataSort20:gymWearItem[];
+  setSearchResultDataSort20:(searchResultData:gymWearItem[])=> void;
   topAndBottomData:gymWearItem[];
   setTopAndBottomData:(topData:gymWearItem[])=>void;
 }
@@ -40,6 +43,8 @@ export const AuthContext = createContext<AuthContextProps>({
   setSearchWord:()=>{},
   searchResultData:[],
   setSearchResultData:()=>{},
+  searchResultDataSort20:[],
+  setSearchResultDataSort20:()=>{},
   topAndBottomData:[],
   setTopAndBottomData:()=>{}
 
@@ -55,6 +60,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [announceState, setAnnounceState] = useState(true);
   const [searchWord, setSearchWord] = useState('');
   const [searchResultData, setSearchResultData]= useState<gymWearItem[]>([]);
+  const [searchResultDataSort20, setSearchResultDataSort20]= useState<gymWearItem[]>([]);
   const [topAndBottomData, setTopAndBottomData]= useState<gymWearItem[]>([]);
 
   return (
@@ -72,6 +78,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         setSearchWord,
         searchResultData,
         setSearchResultData,
+        searchResultDataSort20,
+        setSearchResultDataSort20,
         topAndBottomData,
         setTopAndBottomData
       }}

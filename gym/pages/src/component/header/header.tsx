@@ -136,7 +136,9 @@ const clickSearch = () => {
         }
     }
 }
-
+React.useEffect(()=>{
+    setState(0)
+},[])
 // React.useEffect(()=>{
 //     const handleScroll = () => {
 //         const scrollPosition = scrollY; // Get the current scroll position

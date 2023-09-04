@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image'
+import NumberNavigate from './numberNavigate';
 
 const SearchResult: React.FC = () => { 
     const target = useRef<HTMLDivElement | null>(null);
@@ -13,9 +14,8 @@ const SearchResult: React.FC = () => {
 
     const [viewState,setViewState]=useState<boolean>(false)
     const [inputState, setInputState] = useState<string>("")
-    const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData,setSearchWord} = useContext(AuthContext)
+    const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData,setSearchWord,searchResultDataSort20,setSearchResultDataSort20} = useContext(AuthContext)
     const [searchResultCount, setSearchResultCount]= useState<number>(0);
-    const [searchResultSort20,setSearchResultSort20]= useState<string[][]>([]);
     const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
         if(e.keyCode===13){
           setSearchWord(inputState)
@@ -24,7 +24,6 @@ const SearchResult: React.FC = () => {
       }
     function splitIntoChunk(arr:string[], chunk:number) {
         const result = [];
-        
         for (let index=0; index < arr.length; index += chunk) {
           let tempArray;
           // slice() 메서드를 사용하여 특정 길이만큼 배열을 분리함
@@ -74,26 +73,26 @@ const SearchResult: React.FC = () => {
             setViewState(false)
         }
     }
-    const searchDataAPI = async () =>{
+    const searchDataAPI = async (page:number) =>{
         // const response = axios.get(`/api/search?result=${searchWord}`)
         // console.log(response)
         
-         await fetch(`/api/search?result=${searchWord}`)
+         await fetch(`/api/search?search=${searchWord}&page=${page}`)
                 .then(res=> res.json())
                 .then(data=>{
-                    const dataArray= splitIntoChunk(data.result,3)
-                    setSearchResultSort20(dataArray);
-                    setSearchResultData(data.result)
-                    setSearchResultCount(data.result.length)
+                    setSearchResultDataSort20(data.result)
+                    setSearchResultCount(data.countresult[0].C)
                 })
             }
-    useEffect(()=>{
-        searchDataAPI()
-    },[searchWord])
 
     useEffect(()=>{
-        console.log('test=',searchResultSort20)
-    },[searchResultSort20])
+        searchDataAPI(1)
+    },[searchWord])
+    
+
+    useEffect(()=>{
+
+    },[searchResultDataSort20,searchResultCount])
   return (
     <div id={styles.searchResultComponent}
     style={{
@@ -112,7 +111,7 @@ const SearchResult: React.FC = () => {
           <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {searchResultCount}개의 검색 결과를 발견했습니다.</h1>
         </div>
             <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`} ref={target2}>
-                     {searchResultData.map((object, index) => (
+                     {searchResultDataSort20.map((object, index) => (
                         <span key={index} id={styles.searchResultComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.searchResultComponent_item_imageSize}>
                                 <Image
@@ -125,20 +124,14 @@ const SearchResult: React.FC = () => {
                                     />
                             </span>
                             <span id={styles.searchResultComponent_item_textBoxSize} className={`${styles.flex_column}`}>
-                                <span id={styles.searchResultComponent_item_itemBrandName}><h4>{object.brandname}</h4></span>
-                                <span id={styles.searchResultComponent_item_itemName}><h5>{object.productname}</h5></span>
-                                <span id={styles.searchResultComponent_item_itemPrice}><h5>{object.price}</h5></span>
+                                <span id={styles.searchResultComponent_item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
+                                <span id={styles.searchResultComponent_item_itemName} className={styles.text_set_center}><h5>{object.productname}</h5></span>
+                                <span id={styles.searchResultComponent_item_itemPrice} className={styles.text_set_center}><h5>{object.price} ₩</h5></span>
                             </span>
                         </span>
                     ))}
         </div>
-        {searchResultCount < 20 ? (
-            <div id ={styles.searchResultComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`} ref={target}>
-               <span className={`${styles.width_15per} ${styles.text_set_center}`}>&#60;</span>
-               <span className={`${styles.width_15per} ${styles.text_set_center}`}>1</span>
-               <span className={`${styles.width_15per} ${styles.text_set_center}`} onClick={()=>{}}>&#62;</span>
-            </div>
-        ): null}
+        <NumberNavigate number={searchResultCount} pageMove={searchDataAPI}/>
     </div>
   );
 };

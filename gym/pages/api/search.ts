@@ -34,7 +34,7 @@ export default function Search(req : NextApiRequest, res : NextApiResponse) {
                 if(counterr) {
                    res.status(500).json({ error: 'An error occurred in counterr' });
                 } else {
-                        res.json({result,countresult})
+                        res.json({result,countresult})//
                 }
                 });                
             }

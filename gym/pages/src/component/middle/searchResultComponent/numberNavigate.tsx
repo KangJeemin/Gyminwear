@@ -3,6 +3,7 @@ import styles from './searchResultComponent.module.css';
 
 interface NumberNavigateProps {
     number: number; // 숫자 타입으로 정의
+    // function: Function;
 }
 
 
@@ -25,6 +26,7 @@ function NumberNavigate(props:NumberNavigateProps) {
                 </span>
                 <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
                     setPageState(2)
+                    window.scrollTo(0, 0)
                 }}>&#62;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
             </div>) :
@@ -33,6 +35,7 @@ function NumberNavigate(props:NumberNavigateProps) {
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
                 <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
                     setPageState(1)
+                    window.scrollTo(0, 0);
                 }}>&#60;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>
                     <span className={styles.color_blue}>2</span>

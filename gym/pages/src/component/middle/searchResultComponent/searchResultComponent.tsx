@@ -82,9 +82,8 @@ const SearchResult: React.FC = () => {
          await fetch(`/api/search?result=${searchWord}`)
                 .then(res=> res.json())
                 .then(data=>{
-                    const dataArray= splitIntoChunk(data.result,3)
+                    const dataArray= splitIntoChunk(data.result,20)
                     setSearchResultSort20(dataArray);
-                    setSearchResultData(data.result)
                     setSearchResultCount(data.result.length)
                 })
             }
@@ -94,7 +93,7 @@ const SearchResult: React.FC = () => {
     },[searchWord])
 
     useEffect(()=>{
-        console.log('test=',searchResultSort20)
+        console.log(searchResultSort20[0])
     },[searchResultSort20])
   return (
     <div id={styles.searchResultComponent}

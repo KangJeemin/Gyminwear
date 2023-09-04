@@ -87,7 +87,6 @@ const SearchResult: React.FC = () => {
             }
 
     useEffect(()=>{
-        searchDataAPI(1)
     },[searchWord])
     
 

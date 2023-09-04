@@ -4,7 +4,7 @@ const db = require('../../src/db/db')
 
 
 export default function Search(req : NextApiRequest, res : NextApiResponse) {
-    
+    console.log(req.query)
     const searchstring = req.query.result
     db.query(`SELECT * FROM Top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%'`,
     function (err: any, result: any) {
@@ -23,13 +23,4 @@ export default function Search(req : NextApiRequest, res : NextApiResponse) {
             });                
         }
     });
-    // db.query(`SELECT * FROM Top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%'`,
-    // function (err: any, result: any) {
-    //     if(err) {
-    //         console.log(err)
-    //     } else {
-    //         res.json(result);
-    //         console.log(result)
-    //     }
-    // });
 }

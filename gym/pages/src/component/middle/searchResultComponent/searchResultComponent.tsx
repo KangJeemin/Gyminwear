@@ -77,7 +77,7 @@ const SearchResult: React.FC = () => {
         // const response = axios.get(`/api/search?result=${searchWord}`)
         // console.log(response)
         
-         await fetch(`/api/search?result=${searchWord}?page=${page}`)
+         await fetch(`/api/search?result=${searchWord}&page=${page}`)
                 .then(res=> res.json())
                 .then(data=>{
                     setSearchResultDataSort20(data)

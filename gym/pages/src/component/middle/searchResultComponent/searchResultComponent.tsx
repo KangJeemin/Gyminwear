@@ -81,14 +81,14 @@ const SearchResult: React.FC = () => {
                 })
             }
 
-    // useEffect(()=>{
-    //     searchDataAPI(1)
-    // },[])
+    useEffect(()=>{
+        searchDataAPI(1)
+    },[])
     
 
-    useEffect(()=>{
+    // useEffect(()=>{
 
-    },[searchResultDataSort20,searchResultCount])
+    // },[searchResultDataSort20,searchResultCount])
   return (
     <div id={styles.searchResultComponent}
     style={{

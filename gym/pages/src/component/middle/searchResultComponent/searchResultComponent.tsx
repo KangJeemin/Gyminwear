@@ -78,23 +78,17 @@ const SearchResult: React.FC = () => {
                 .then(res=> res.json())
                 .then(data=>{
                     setSearchResultDataSort20(data.result)
+                    console.log(searchResultDataSort20)
                     setSearchResultCount(data.countresult[0].C)
                 })
             }
 
     useEffect(()=>{
         searchDataAPI(1)
-    },[searchWord])
-    
+    },)
 
-    useEffect(()=>{
-
-    },[searchResultDataSort20])
   return (
-    <div id={styles.searchResultComponent}
-    style={{
-
-    }}>
+    <div id={styles.searchResultComponent}>
         <div id={styles.searchResultComponent_searchContainer}>
             <div id={styles.searchResultComponent_searchIconContainer}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray",}}/>

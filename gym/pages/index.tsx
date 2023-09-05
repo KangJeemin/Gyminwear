@@ -19,6 +19,7 @@ const index = ()=>{
             <BestAll/>
             <BestTop/>
             <BestBottom/>
+            <Footer/>
         </div>
     )
 }

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import axios from 'axios';
 import { AuthContext } from '@/public/context/authcontext';
-
+import convertWon from '@/pages/src/module/convertWon';
 
 interface Item {
     brandname: string;
@@ -60,7 +60,7 @@ const BestAll: React.FC = () => {
                             <span id={styles.bestAll_item_textBoxSize} className={`${styles.flex_column}`}>
                                 <span id={styles.bestAll_item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
                                 <span id={styles.bestAll_item_itemName} className={styles.text_set_center}><h5>{object.productname}</h5></span>
-                                <span id={styles.bestAll_item_itemPrice} className={styles.text_set_center}><h5>{object.price} ₩</h5></span>
+                                <span id={styles.bestAll_item_itemPrice} className={styles.text_set_center}><h5>{convertWon(object.price)} ₩</h5></span>
                             </span>
                         </span>
                     ))}

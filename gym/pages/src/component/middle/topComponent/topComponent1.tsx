@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import { AuthContext } from '@/public/context/authcontext';
 import styles from './topComponent.module.css';
 import Image from 'next/image';
+import convertWon from '@/pages/src/module/convertWon';
 
 const TopComponent1: React.FC = () => { 
     
@@ -43,7 +44,7 @@ const TopComponent1: React.FC = () => {
                             <span id={styles.topComponent_item_textBoxSize} className={`${styles.flex_column}`}>
                                 <span id={styles.topComponent_item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
                                 <span id={styles.topComponent_item_itemName} className={styles.text_set_center}><h5>{object.productname}</h5></span>
-                                <span id={styles.topComponent_item_itemPrice} className={styles.text_set_center}><h5>{object.price} ₩</h5></span>
+                                <span id={styles.topComponent_item_itemPrice} className={styles.text_set_center}><h5>{convertWon(object.price)} ₩</h5></span>
                             </span>
                         </span>
                     ))}

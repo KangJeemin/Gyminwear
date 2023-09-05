@@ -6,6 +6,7 @@ import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-ico
 import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image'
 import NumberNavigate from './numberNavigate';
+import convertWon from '@/pages/src/module/convertWon';
 
 const SearchResult: React.FC = () => { 
     const target = useRef<HTMLDivElement | null>(null);
@@ -122,7 +123,7 @@ const SearchResult: React.FC = () => {
                             <span id={styles.searchResultComponent_item_textBoxSize} className={`${styles.flex_column}`}>
                                 <span id={styles.searchResultComponent_item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
                                 <span id={styles.searchResultComponent_item_itemName} className={styles.text_set_center}><h5>{object.productname}</h5></span>
-                                <span id={styles.searchResultComponent_item_itemPrice} className={styles.text_set_center}><h5>{object.price} ₩</h5></span>
+                                <span id={styles.searchResultComponent_item_itemPrice} className={styles.text_set_center}><h5>{convertWon(object.price)} ₩</h5></span>
                             </span>
                         </span>
                     ))}

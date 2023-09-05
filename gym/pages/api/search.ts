@@ -4,7 +4,7 @@ const db = require('../../src/db/db')
 
 
 export default function Search(req : NextApiRequest, res : NextApiResponse) {
-    const searchstring = req.query.result;
+    const searchstring = req.query.search;
     const pageNumber = req.query.page;
     if(pageNumber==='1'){
         db.query(`SELECT * FROM Top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%' LIMIT 0,20`,

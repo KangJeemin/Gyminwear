@@ -73,7 +73,7 @@ const SearchResult: React.FC = () => {
         }
     }
     const searchDataAPI = async (page:number) =>{
-         await fetch(`/api/search?result=${searchWord}&page=${page}`)
+         await fetch(`/api/search?search=${searchWord}&page=${page}`)
                 .then(res=> res.json())
                 .then(data=>{
                     setSearchResultDataSort20(data.result)
@@ -88,7 +88,7 @@ const SearchResult: React.FC = () => {
 
     useEffect(()=>{
 
-    },[searchResultDataSort20,searchResultCount])
+    },[searchResultDataSort20])
   return (
     <div id={styles.searchResultComponent}
     style={{

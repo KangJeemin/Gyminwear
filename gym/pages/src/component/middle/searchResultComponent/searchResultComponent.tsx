@@ -11,7 +11,7 @@ const SearchResult: React.FC = () => {
     const target = useRef<HTMLDivElement | null>(null);
     const target1 = useRef<HTMLDivElement | null>(null);
     const target2 = useRef<HTMLDivElement | null>(null);
-
+    const router = useRouter();
     const [viewState,setViewState]=useState<boolean>(false)
     const [inputState, setInputState] = useState<string>("")
     const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData,setSearchWord,searchResultDataSort20,setSearchResultDataSort20} = useContext(AuthContext)
@@ -31,7 +31,6 @@ const SearchResult: React.FC = () => {
           // 빈 배열에 특정 길이만큼 분리된 배열을 추가
           result.push(tempArray);
         }
-        
         return result;
       }
 
@@ -43,7 +42,7 @@ const SearchResult: React.FC = () => {
     const initializeSearchText = () => {
       setInputState("")
     }
-    const router = useRouter();
+    
     const setViewBlurry = () => {
     
         if(viewState===false){
@@ -82,9 +81,9 @@ const SearchResult: React.FC = () => {
                 })
             }
 
-    useEffect(()=>{
-        searchDataAPI(1)
-    },[])
+    // useEffect(()=>{
+    //     searchDataAPI(1)
+    // },[])
     
 
     useEffect(()=>{

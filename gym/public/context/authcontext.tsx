@@ -25,9 +25,9 @@ interface AuthContextProps {
   searchResultData:gymWearItem[];
   setSearchResultData:(searchResultData:gymWearItem[])=> void;
   searchResultDataSort20:gymWearItem[];
-  setSearchResultDataSort20:(searchResultData:gymWearItem[])=> void;
+  setSearchResultDataSort20:(searchResultDataSort20:gymWearItem[])=> void;
   topAndBottomData:gymWearItem[];
-  setTopAndBottomData:(topData:gymWearItem[])=>void;
+  setTopAndBottomData:(topAndBottomData:gymWearItem[])=>void;
 }
 
 export const AuthContext = createContext<AuthContextProps>({

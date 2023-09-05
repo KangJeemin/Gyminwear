@@ -83,12 +83,12 @@ const SearchResult: React.FC = () => {
 
     useEffect(()=>{
         searchDataAPI(1)
-    },[])
+    },[searchWord])
     
 
-    // useEffect(()=>{
+    useEffect(()=>{
 
-    // },[searchResultDataSort20,searchResultCount])
+    },[searchResultDataSort20,searchResultCount])
   return (
     <div id={styles.searchResultComponent}
     style={{

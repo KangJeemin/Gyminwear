@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 const db = require('../../src/db/db')
 
 
-export default function Search(req : NextApiRequest, res : NextApiResponse) {
+export default function search(req : NextApiRequest, res : NextApiResponse) {
     const searchstring = req.query.search;
     const pageNumber = req.query.page;
     if(pageNumber==='1'){

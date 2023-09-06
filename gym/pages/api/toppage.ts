@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 const db = require('../../src/db/db')
 
-export default function test(req : NextApiRequest, res : NextApiResponse) {
+export default function toppage(req : NextApiRequest, res : NextApiResponse) {
     const pageNumber= req.query.page
     if(pageNumber==='1'){
         db.query("SELECT * FROM top ORDER BY date LIMIT 0,20",

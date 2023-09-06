@@ -40,7 +40,7 @@ const BestBottom: React.FC = () => {
         }}
         >
             <div id={styles.bestBottom_topText}>
-                <h3 id={styles.bestBottom_text}>이번 주 인기 짐웨어 하의</h3>
+                <h3 id={styles.bestBottom_text}>최신 짐웨어 하의</h3>
             </div>
             <div id={styles.bestBottom_itemContainer_flexNowrap}>
                 <div id={styles.bestBottom_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>

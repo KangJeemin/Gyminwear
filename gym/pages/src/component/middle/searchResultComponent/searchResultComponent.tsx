@@ -84,7 +84,7 @@ const SearchResult: React.FC = () => {
             }
 
     useEffect(()=>{
-        searchDataAPI(1)
+        // searchDataAPI(1)
     },)
 
   return (
@@ -122,7 +122,7 @@ const SearchResult: React.FC = () => {
                         </span>
                     ))}
         </div>
-        {/* <NumberNavigate number={searchResultCount} pageMove={searchDataAPI}/> */}
+        <NumberNavigate number={searchResultCount} pageMove={searchDataAPI}/>
     </div>
   );
 };

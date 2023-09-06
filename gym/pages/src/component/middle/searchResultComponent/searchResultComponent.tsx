@@ -74,29 +74,28 @@ const SearchResult: React.FC = () => {
             setViewState(false)
         }
     }
-    const searchDataAPI = async () =>{
-        
+    const searchDataAPI = async (page:number) =>{
+        //  await axios.get(`/api/search?search=${searchWord}&page=${page}`)
+        //         .then(res=> res.json())
+        //         .then(data=>{
+        //             setSearchResultDataSort20(data.result)
+        //             console.log(searchResultDataSort20)
+        //             setSearchResultCount(data.countresult[0].C)
+        //         })
         try {
-            await fetch(`/api/search?search=${searchWord}&page=1`)
-            .then(res=> res.json())
-            .then(data=>{
-                setSearchResultDataSort20(data.result)
-                console.log(searchResultDataSort20)
-                setSearchResultCount(data.countresult[0].C)
-            })
-            // const response = await axios.get(`/api/search?search=${searchWord}&page=1`);
-            // const data = response.data; // 이 부분을 수정
-            // setSearchResultDataSort20(data.result);
-            // console.log(searchResultDataSort20);
-            // setSearchResultCount(data.countresult[0].C);
+            const response = await axios.get(`/api/search?search=${searchWord}&page=${page}`);
+            const data = response.data; // 이 부분을 수정
+            setSearchResultDataSort20(data.result);
+            console.log(searchResultDataSort20);
+            setSearchResultCount(data.countresult[0].C);
           } catch (error) {
             console.error("API 요청 중 오류가 발생했습니다:", error);
           }
             }
 
     useEffect(()=>{
-        searchDataAPI()
-    },)
+        searchDataAPI(1)
+    },[searchWord])
 
   return (
     <div id={styles.searchResultComponent}>

@@ -3,6 +3,7 @@ import styles from './bestTop.module.css'
 import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import convertWon from '@/pages/src/module/convertWon';
 
 interface Item {
     brandname: string;
@@ -21,8 +22,8 @@ const BestTop:React.FC = () =>{
     const router = useRouter();
     async function fetchData() {
         try {
-            const response = await fetch("/api/bestTop");
-            const data: Item[] = response.data; // Assuming response.data is an array of items
+            const response = await fetch("/api/besttop");
+            const data: Item[] = response.data;
             setGetDatabase(data);
         } catch (error) {
             console.error(error);

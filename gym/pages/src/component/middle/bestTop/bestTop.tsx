@@ -4,6 +4,7 @@ import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import convertWon from '@/pages/src/module/convertWon';
+import axios from 'axios';
 
 interface Item {
     brandname: string;
@@ -22,7 +23,7 @@ const BestTop:React.FC = () =>{
     const router = useRouter();
     async function fetchData() {
         try {
-            const response = await fetch("/api/besttop");
+            const response = await axios.get("/api/besttop");
             const data: Item[] = response.data;
             setGetDatabase(data);
         } catch (error) {

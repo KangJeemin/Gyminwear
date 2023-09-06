@@ -7,6 +7,7 @@ import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image'
 import NumberNavigate from './numberNavigate';
 import convertWon from '@/pages/src/module/convertWon';
+import axios from 'axios';
 
 const SearchResult: React.FC = () => { 
     const target = useRef<HTMLDivElement | null>(null);
@@ -73,18 +74,27 @@ const SearchResult: React.FC = () => {
             setViewState(false)
         }
     }
-    const searchDataAPI = async (page:number) =>{
-         await fetch(`/api/search?search=${searchWord}&page=${page}`)
-                .then(res=> res.json())
-                .then(data=>{
-                    setSearchResultDataSort20(data.result)
-                    console.log(searchResultDataSort20)
-                    setSearchResultCount(data.countresult[0].C)
-                })
+    const searchDataAPI = async () =>{
+        //  await axios.get(`/api/search?search=${searchWord}&page=${page}`)
+        //         .then(res=> res.json())
+        //         .then(data=>{
+        //             setSearchResultDataSort20(data.result)
+        //             console.log(searchResultDataSort20)
+        //             setSearchResultCount(data.countresult[0].C)
+        //         })
+        try {
+            const response = await axios.get(`/api/search?search=${searchWord}&page=1`);
+            const data = response.data; // 이 부분을 수정
+            setSearchResultDataSort20(data.result);
+            console.log(searchResultDataSort20);
+            setSearchResultCount(data.countresult[0].C);
+          } catch (error) {
+            console.error("API 요청 중 오류가 발생했습니다:", error);
+          }
             }
 
     useEffect(()=>{
-        // searchDataAPI(1)
+        searchDataAPI()
     },)
 
   return (

@@ -139,11 +139,10 @@ const SearchResult: React.FC = () => {
     </div>
   );
 };
-// export async function getServerSideProps(context: GetServerSidePropsContext) {
-//     console.log('context=',context)
-//     const res = await fetch('/api/search')
-//     const data = await res.json()
-   
-//     return { props: { data } }
-//   }
+export async function getServerSideProps(searchWord:string,) {
+    const res = await fetch(`/api/search?search=${searchWord}&page=1`)
+    const data = await res.json()
+    console.log(data)
+    return { props: { data } }
+  }
 export default SearchResult;

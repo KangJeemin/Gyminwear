@@ -140,7 +140,7 @@ const SearchResult: React.FC = () => {
   );
 };
 export async function getServerSideProps(searchWord:string,) {
-    const res = await fetch(`/api/search?search=${searchWord}&page=1`)
+    const res = await fetch(`/search?search=피지컬&page=1`)
     const data = await res.json()
     console.log(data)
     return { props: { data } }

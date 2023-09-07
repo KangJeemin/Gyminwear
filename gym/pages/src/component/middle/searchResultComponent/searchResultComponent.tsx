@@ -15,6 +15,7 @@ const SearchResult: React.FC = () => {
     const target1 = useRef<HTMLDivElement | null>(null);
     const target2 = useRef<HTMLDivElement | null>(null);
     const router = useRouter();
+    const pid = router.query
     const [viewState,setViewState]=useState<boolean>(false)
     const [inputState, setInputState] = useState<string>("")
     const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData,setSearchWord,searchResultDataSort20,setSearchResultDataSort20} = useContext(AuthContext)
@@ -97,7 +98,9 @@ const SearchResult: React.FC = () => {
     // useEffect(()=>{
     //     searchDataAPI(1)
     // },[searchWord])
-
+    useEffect(()=>{
+        console.log(pid)
+    })
   return (
     <div id={styles.searchResultComponent}>
         <div id={styles.searchResultComponent_searchContainer}>
@@ -139,7 +142,7 @@ const SearchResult: React.FC = () => {
 };
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     console.log('context=',context)
-    const res = await fetch('')
+    const res = await fetch('/api/search')
     const data = await res.json()
    
     return { props: { data } }

@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 
 const SearchModal = () => {
-  const {searchState,setSearchWord,setSearchState,setState} = useContext(AuthContext)
+  const {searchState,setSearchWord,setSearchState,setState,searchWord} = useContext(AuthContext)
   const [inputState, setInputState] = useState<string>("")
   const router = useRouter();
 
@@ -18,7 +18,7 @@ const SearchModal = () => {
   const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
     if(e.keyCode===13){
       setSearchWord(inputState)
-      router.push("/searchResult/a?page=1")
+      router.push(`/searchresult/${searchWord}`)
       setState(0)
       setSearchState(0)
     }

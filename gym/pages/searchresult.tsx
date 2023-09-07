@@ -155,8 +155,8 @@ const SearchResult: React.FC = () => {
     </div>
   );
 };
-export async function getServerSideProps(searchWord:string,) {
-    const res = await fetch(`/api/search?search=${searchWord}&page=1`)
+export async function getServerSideProps() {
+    const res = await fetch(`/api/search?search=피지컬&page=1`)
     const data = await res.json()
     console.log(data)
     return { props: { data } }

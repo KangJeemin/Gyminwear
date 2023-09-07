@@ -99,7 +99,7 @@ const SearchResult: React.FC = () => {
     //     searchDataAPI(1)
     // },[searchWord])
     useEffect(()=>{
-        console.log(pid)
+        
     })
   return (
     <div id={styles.searchResultComponent}>

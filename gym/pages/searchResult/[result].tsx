@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
 import React, { useState, useRef, useEffect, useContext, ChangeEvent } from 'react';
-import styles from './searchResultComponent.module.css';
+import styles from '../src/component/middle/searchResultComponent/searchResultComponent.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image'
-import NumberNavigate from './numberNavigate';
+import NumberNavigate from '../src/component/middle/searchResultComponent/numberNavigate';
 import convertWon from '@/pages/src/module/convertWon';
 import axios from 'axios';
 import { GetServerSideProps,GetServerSidePropsContext } from 'next';

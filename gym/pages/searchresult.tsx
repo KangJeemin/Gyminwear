@@ -156,8 +156,10 @@ const SearchResult: React.FC = () => {
   );
 };
 export async function getServerSideProps() {
-    const res = await fetch(`http://localhost:3000/api/search/`)
+    console.log('serverside ok')
+    const res = await fetch(`http://localhost:3000/api/search?search=피지컬&page=1`)
     const data = await res.json()
+    
     console.log(data)
     return { props: { data } }
   }

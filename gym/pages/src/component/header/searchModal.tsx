@@ -18,7 +18,7 @@ const SearchModal = () => {
   const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
     if(e.keyCode===13){
       setSearchWord(inputState)
-      router.push(`/searchresult/${searchWord}`)
+      router.push(`/searchresult?page=1`)
       setState(0)
       setSearchState(0)
     }

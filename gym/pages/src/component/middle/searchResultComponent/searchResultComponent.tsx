@@ -8,6 +8,7 @@ import Image from 'next/image'
 import NumberNavigate from './numberNavigate';
 import convertWon from '@/pages/src/module/convertWon';
 import axios from 'axios';
+import { GetServerSideProps,GetServerSidePropsContext } from 'next';
 
 const SearchResult: React.FC = () => { 
     const target = useRef<HTMLDivElement | null>(null);
@@ -93,9 +94,9 @@ const SearchResult: React.FC = () => {
           }
             }
 
-    useEffect(()=>{
-        searchDataAPI(1)
-    },[searchWord])
+    // useEffect(()=>{
+    //     searchDataAPI(1)
+    // },[searchWord])
 
   return (
     <div id={styles.searchResultComponent}>
@@ -136,8 +137,9 @@ const SearchResult: React.FC = () => {
     </div>
   );
 };
-export async function getServerSideProps() {
-    const res = await fetch()
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    console.log('context=',context)
+    const res = await fetch('')
     const data = await res.json()
    
     return { props: { data } }

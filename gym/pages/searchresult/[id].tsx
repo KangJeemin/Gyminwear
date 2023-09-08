@@ -18,7 +18,7 @@
 // export default searchResult
 import { useRouter } from 'next/router';
 import React, { useState, useRef, useEffect, useContext, ChangeEvent } from 'react';
-import styles from './src/component/middle/searchResultComponent/searchResultComponent.module.css';
+import styles from '../src/component/middle/searchResultComponent/searchResultComponent.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from '@/public/context/authcontext';

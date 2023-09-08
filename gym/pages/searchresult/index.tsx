@@ -8,7 +8,7 @@ import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image'
 import convertWon from '@/pages/src/module/convertWon';
 import axios from 'axios';
-import type { gymWearItem } from '../type/gymwear';
+import type { gymWearItem } from '../../src/type/gymwear';
 import { GetServerSideProps,GetServerSidePropsContext } from 'next';
 import { ConsoleLogger } from '@nestjs/common';
 
@@ -138,7 +138,7 @@ const Index = ({data}:gymwear) => {
   );
 };
 export async function getServerSideProps(searchWord:string, pageNum:string) {
-    const res = await fetch(`http://localhost:3000/api/search?search=${searchWord}&page=1`)
+    const res = await fetch(`http://localhost:3000/api/search?search=피지컬&page=1`)
     const data = await res.json()
     return { props: { data } }
   }

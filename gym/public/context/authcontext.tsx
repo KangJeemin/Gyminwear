@@ -1,5 +1,5 @@
 import React, { useState, createContext } from "react";
-import type { gymWearItem } from "@/pages/type/gymwear";
+import type { gymWearItem } from "@/src/type/gymwear";
 
 interface AuthContextProps {
   state:number;

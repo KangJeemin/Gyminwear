@@ -122,7 +122,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const data = await res.json();
     return { props: { 
         item:data.result,
-        count:data.countresult,
+        count:data.countresult[0].C,
      } };
   }
   

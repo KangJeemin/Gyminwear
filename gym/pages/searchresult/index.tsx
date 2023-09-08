@@ -117,8 +117,8 @@ const Index = ({data}:any) => {
   );
 };
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const { searchWord, pageNum } = context.query;
-    const res = await fetch(`http://localhost:3000/api/search?search=${searchWord}&page=${pageNum}`);
+    const { search, page } = context.query;
+    const res = await fetch(`http://localhost:3000/api/search?search=${search}&page=${page}`);
     const data = await res.json();
     return { props: { data } };
   }

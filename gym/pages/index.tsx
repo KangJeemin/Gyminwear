@@ -13,7 +13,7 @@ const index = ()=>{
         style={{
             overscrollBehavior:"none"
         }}>
-            <Header/>
+            {/* <Header/> */}
             <HeaderMargin/>
             <Announcement/>
             <BestAll/>

@@ -16,7 +16,7 @@ interface gymwear{
     data:gymWearItem;
 }
 
-const Index = ({data}:gymwear) => { 
+const Index = ({data}:any) => { 
     
     const target = useRef<HTMLDivElement | null>(null);
     const target1 = useRef<HTMLDivElement | null>(null);
@@ -73,33 +73,11 @@ const Index = ({data}:gymwear) => {
             setViewState(false)
         }
     }
-    const searchDataAPI = async (page:number) =>{
-        //  await axios.get(`/api/search?search=${searchWord}&page=${page}`)
-        //         .then(res=> res.json())
-        //         .then(data=>{
-        //             setSearchResultDataSort20(data.result)
-        //             console.log(searchResultDataSort20)
-        //             setSearchResultCount(data.countresult[0].C)
-        //         })
-        // try {
-        //     const response = await axios.get(`/api/search?search=${searchWord}&page=${page}`);
-        //     const data = response.data; // 이 부분을 수정
-        //     setSearchResultDataSort20(data.result);
-        //     console.log(searchResultDataSort20);
-        //     setSearchResultCount(data.countresult[0].C);
-        //   } catch (error) {
-        //     console.error("API 요청 중 오류가 발생했습니다:", error);
-        //   }
-        //     }
-
-    // useEffect(()=>{
-    //     searchDataAPI(1)
-    // },[searchWord])
     useEffect(()=>{
         console.log('data=',data)
-        searchResultDataSort20(data.result)
+        setSearchResultDataSort20(data.result)
         setSearchResultCount(data.countresult[0].C);
-    },[])
+    },[data])
   return (
     <div id={styles.searchResultComponent}>
         <div id={styles.searchResultComponent_searchContainer}>
@@ -138,10 +116,13 @@ const Index = ({data}:gymwear) => {
     </div>
   );
 };
-export async function getServerSideProps(searchWord:string, pageNum:string) {
-    const res = await fetch(`http://localhost:3000/api/search?search=피지컬&page=1`)
-    const data = await res.json()
-    return { props: { data } }
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const { searchWord, pageNum } = context.query;
+    const res = await fetch(`http://localhost:3000/api/search?search=${searchWord}&page=${pageNum}`);
+    const data = await res.json();
+    return { props: { data } };
   }
+  
+
 export default Index;
 

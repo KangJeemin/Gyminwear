@@ -7,10 +7,7 @@ const bottomPage = () => {
     return (
         
         <div>
-        <Header/>
-        <HeaderMargin/>
         <BottomComponent/>
-        <Footer/>
         </div>
     )
 

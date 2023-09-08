@@ -7,10 +7,7 @@ const topPage = () => {
     return (
         
         <div>
-        <Header/>
-        <HeaderMargin/>
         <TopComponent/>
-        <Footer/>
         </div>
     )
 

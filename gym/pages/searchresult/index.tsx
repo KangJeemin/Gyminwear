@@ -8,9 +8,11 @@ import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image'
 import convertWon from '@/pages/src/module/convertWon';
 import axios from 'axios';
+import type { gymWearItem } from '../type/gymwear';
 import { GetServerSideProps,GetServerSidePropsContext } from 'next';
 
-const Index: React.FC = () => { 
+const Index: React.FC = ({data}:gymWearItem) => { 
+    
     const target = useRef<HTMLDivElement | null>(null);
     const target1 = useRef<HTMLDivElement | null>(null);
     const target2 = useRef<HTMLDivElement | null>(null);

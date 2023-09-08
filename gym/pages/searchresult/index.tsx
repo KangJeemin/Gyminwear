@@ -10,13 +10,12 @@ import convertWon from '@/pages/src/module/convertWon';
 import axios from 'axios';
 import type { gymWearItem } from '../../src/type/gymwear';
 import { GetServerSideProps,GetServerSidePropsContext } from 'next';
-import { ConsoleLogger } from '@nestjs/common';
 
 interface gymwear{
     data:gymWearItem;
 }
 
-const Index = ({data}:any) => { 
+const Index = ({item}:any,{count}:any) => { 
     
     const target = useRef<HTMLDivElement | null>(null);
     const target1 = useRef<HTMLDivElement | null>(null);
@@ -74,10 +73,11 @@ const Index = ({data}:any) => {
         }
     }
     useEffect(()=>{
-        console.log('data=',data)
-        setSearchResultDataSort20(data.result)
-        setSearchResultCount(data.countresult[0].C);
-    },[data])
+        console.log('item=',item)
+        console.log('count',count)
+        // setSearchResultDataSort20(data.result)
+        // setSearchResultCount(data.countresult[0].C);
+    },[item])
   return (
     <div id={styles.searchResultComponent}>
         <div id={styles.searchResultComponent_searchContainer}>
@@ -120,7 +120,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { search, page } = context.query;
     const res = await fetch(`http://localhost:3000/api/search?search=${search}&page=${page}`);
     const data = await res.json();
-    return { props: { data } };
+    return { props: { 
+        item:data.result,
+        count:data.countresult,
+     } };
   }
   
 

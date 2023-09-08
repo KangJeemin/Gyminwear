@@ -10,6 +10,7 @@ import convertWon from '@/pages/src/module/convertWon';
 import axios from 'axios';
 import type { gymWearItem } from '../type/gymwear';
 import { GetServerSideProps,GetServerSidePropsContext } from 'next';
+import { ConsoleLogger } from '@nestjs/common';
 
 interface gymwear{
     data:gymWearItem;
@@ -27,6 +28,7 @@ const Index = ({data}:gymwear) => {
     const [inputState, setInputState] = useState<string>("")
     const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData,setSearchWord,searchResultDataSort20,setSearchResultDataSort20} = useContext(AuthContext)
     const [searchResultCount, setSearchResultCount]= useState<number>(0);
+    
     const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
         if(e.keyCode===13){
           setSearchWord(inputState)
@@ -94,7 +96,8 @@ const Index = ({data}:gymwear) => {
     //     searchDataAPI(1)
     // },[searchWord])
     useEffect(()=>{
-        console.log('router=',router.query)
+        console.log('data=',data)
+        
     })
   return (
     <div id={styles.searchResultComponent}>

@@ -15,7 +15,7 @@ interface gymwear{
     data:gymWearItem;
 }
 
-const Index: React.FC = ({data}:gymwear) => { 
+const Index = ({data}:gymwear) => { 
     
     const target = useRef<HTMLDivElement | null>(null);
     const target1 = useRef<HTMLDivElement | null>(null);

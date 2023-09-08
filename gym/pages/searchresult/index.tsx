@@ -81,24 +81,25 @@ const Index = ({data}:gymwear) => {
         //             console.log(searchResultDataSort20)
         //             setSearchResultCount(data.countresult[0].C)
         //         })
-        try {
-            const response = await axios.get(`/api/search?search=${searchWord}&page=${page}`);
-            const data = response.data; // 이 부분을 수정
-            setSearchResultDataSort20(data.result);
-            console.log(searchResultDataSort20);
-            setSearchResultCount(data.countresult[0].C);
-          } catch (error) {
-            console.error("API 요청 중 오류가 발생했습니다:", error);
-          }
-            }
+        // try {
+        //     const response = await axios.get(`/api/search?search=${searchWord}&page=${page}`);
+        //     const data = response.data; // 이 부분을 수정
+        //     setSearchResultDataSort20(data.result);
+        //     console.log(searchResultDataSort20);
+        //     setSearchResultCount(data.countresult[0].C);
+        //   } catch (error) {
+        //     console.error("API 요청 중 오류가 발생했습니다:", error);
+        //   }
+        //     }
 
     // useEffect(()=>{
     //     searchDataAPI(1)
     // },[searchWord])
     useEffect(()=>{
         console.log('data=',data)
-        
-    })
+        searchResultDataSort20(data.result)
+        setSearchResultCount(data.countresult[0].C);
+    },[])
   return (
     <div id={styles.searchResultComponent}>
         <div id={styles.searchResultComponent_searchContainer}>

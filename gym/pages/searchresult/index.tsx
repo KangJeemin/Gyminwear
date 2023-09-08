@@ -100,7 +100,7 @@ const Index: React.FC = () => {
     //     searchDataAPI(1)
     // },[searchWord])
     useEffect(()=>{
-        console.log('router=',idx)
+        console.log('router=',router.query)
     })
   return (
     <div id={styles.searchResultComponent}>

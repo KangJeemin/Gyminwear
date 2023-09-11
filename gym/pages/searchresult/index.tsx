@@ -88,7 +88,7 @@ const Index = ({item}:any,{count}:any) => {
             <input id={styles.searchResultComponent_search} onChange={setInputText} onKeyDown={keydown} value={inputState} type="test" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
         </div>
         <div id={styles.searchResultComponent_topText}>
-          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 개의 검색 결과를 발견했습니다.</h1>
+          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {count.map((object:any,index:number)=>{<span key={index}>{object.C}</span>})}개의 검색 결과를 발견했습니다.</h1>
         </div>
             <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`} ref={target2}>
                      {item.map((object:gymWearItem, index:number) => (

@@ -111,7 +111,7 @@ const Index = ({item}:any,{count}:any) => {
                         </span>
                     ))}
         </div>
-        <NumberNavigate number={searchResultCount} pageMove={searchDataAPI}/>
+        <NumberNavigate number={21} pageMove={searchDataAPI}/>
     </div>
     
   );

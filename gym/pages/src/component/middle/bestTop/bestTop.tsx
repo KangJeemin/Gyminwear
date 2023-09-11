@@ -31,7 +31,7 @@ const BestTop= ({item}:any) =>{
         }
     }
     useEffect(() => {
-        fetchData();
+        
     }, []);
  
  

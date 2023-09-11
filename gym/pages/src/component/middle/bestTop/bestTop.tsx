@@ -14,10 +14,9 @@ interface Item {
     url: string;
     likecount: number;
 
-    // Add other properties here if needed
 }
 
-const BestTop:React.FC = () =>{
+const BestTop= ({item:Item}) =>{
     const {hambergerState,searchState} = useContext(AuthContext)
     const [getDatabase, setGetDatabase] = useState<Item[]>([]);
     const router = useRouter();
@@ -111,10 +110,10 @@ const BestTop:React.FC = () =>{
 }
 export async function getStaticProps() {
     const res = await fetch('https://.../posts')
-    const posts = await res.json()
+    const data = await res.json()
     return {
       props: {
-        posts,
+        item:data.result,
       },
     }
   }

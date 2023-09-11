@@ -34,12 +34,13 @@ const Index = ({item,count}:any) => {
     }
     const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
         if(e.keyCode===13){
-          setSearchWord(inputState)
+        router.push(`/searchresult?search=${searchWord}&page=1`)
           setViewBlurryOut()
+          setSearchWord("")
         }
       }
     const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
-      setInputState(e.target.value);
+      setSearchWord(e.target.value);
       console.log(inputState)
     }
   
@@ -87,7 +88,7 @@ const Index = ({item,count}:any) => {
             <div id= {styles.searchResultComponent_deleteIconContainer}>
                 <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
             </div>
-            <input id={styles.searchResultComponent_search} onChange={setInputText} onKeyDown={keydown} value={inputState} type="test" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
+            <input id={styles.searchResultComponent_search} onChange={setInputText} onKeyDown={keydown} value={searchWord} type="test" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
         </div>
         <div id={styles.searchResultComponent_topText}>
           <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {count}개의 검색 결과를 발견했습니다.</h1>

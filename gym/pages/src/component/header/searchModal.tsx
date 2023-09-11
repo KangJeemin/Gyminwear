@@ -23,6 +23,7 @@ const SearchModal = () => {
       router.push(`/searchresult?search=${searchWord}&page=1`)
       setState(0)
       setSearchState(0)
+      setSearchWord("")
     }
   }
   const initializeSearchText = () => {

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import convertWon from '@/pages/src/module/convertWon';
 import axios from 'axios';
+import type { gymWearItem } from '@/src/type/gymwear';
 
 interface Item {
     brandname: string;
@@ -41,7 +42,7 @@ const BestTop= ({item}:any) =>{
             </div>
             <div id={styles.bestTop_itemContainer_flexNowrap}>
                 <div id={styles.bestTop_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
-                    {item.map((object:Item, index:number) => (
+                    {item.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.bestTop_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestTop_item_imageSize}>
                                 <Image

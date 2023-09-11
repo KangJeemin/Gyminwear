@@ -9,12 +9,12 @@ import Link from 'next/link';
 
 
 const SearchModal = () => {
-  const {searchState,setSearchWord,setSearchState,setState,searchWord,setHambergerState} = useContext(AuthContext)
+  const {searchState,setSearchWord,setSearchState,setState,searchWord,setHambergerState,setSearchResultText} = useContext(AuthContext)
   const [inputState, setInputState] = useState<string>("")
   const router = useRouter();
 
   const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
-    setInputState(e.target.value);
+    // setInputState(e.target.value);
     setSearchWord(e.target.value)
   }
   const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
@@ -23,7 +23,8 @@ const SearchModal = () => {
       router.push(`/searchresult?search=${searchWord}&page=1`)
       setState(0)
       setSearchState(0)
-      setSearchWord("")
+      setSearchResultText(searchWord)
+      
     }
   }
   const initializeSearchText = () => {

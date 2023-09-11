@@ -113,7 +113,7 @@ const Index = ({item,count}:any) => {
                         </span>
                     ))}
         </div>
-        <NumberNavigate number={21} pageMove={searchDataAPI}/>
+        <NumberNavigate number={count} pageMove={searchDataAPI}/>
     </div>
     
   );
@@ -122,8 +122,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { search, page } = context.query;
     const res = await fetch(`http://localhost:3000/api/search?search=${search}&page=${page}`);
     const data = await res.json();
-    console.log(data)
-    console.log(data.countresult[0].C)
     return { props: { 
         item:data.result,
         count:data.countresult[0].C

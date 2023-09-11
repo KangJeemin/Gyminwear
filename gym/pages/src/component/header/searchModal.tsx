@@ -21,7 +21,8 @@ const SearchModal = () => {
     if(e.keyCode===13){
       // setSearchWord(inputState)
       router.push(`/searchresult?search=${searchWord}&page=1`)
-      setState(1)
+      setState(0)
+      setSearchState(0)
     }
   }
   const initializeSearchText = () => {

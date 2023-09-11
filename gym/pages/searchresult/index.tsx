@@ -25,8 +25,7 @@ const Index = ({item,count}:any) => {
     const idx = router.query.id
     
     const [viewState,setViewState]=useState<boolean>(false)
-    const [inputState, setInputState] = useState<string>("")
-    const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData,setSearchWord,searchResultDataSort20,setSearchResultDataSort20} = useContext(AuthContext)
+    const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData,setSearchWord,searchResultDataSort20,setSearchResultDataSort20,searchResultText,setSearchResultText} = useContext(AuthContext)
     const [searchResultCount, setSearchResultCount]= useState();
     
     const searchDataAPI = (pagenumber:number) => {
@@ -34,17 +33,18 @@ const Index = ({item,count}:any) => {
     }
     const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
         if(e.keyCode===13){
-          setSearchWord(inputState)
+        router.push(`/searchresult?search=${searchWord}&page=1`)
           setViewBlurryOut()
+          setSearchResultText(searchWord)
         }
       }
     const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
-      setInputState(e.target.value);
-      console.log(inputState)
+      setSearchWord(e.target.value);
+      
     }
   
     const initializeSearchText = () => {
-      setInputState("")
+      setSearchWord("")
     }
     const setViewBlurry = () => {
     
@@ -85,12 +85,12 @@ const Index = ({item,count}:any) => {
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray",}}/>
             </div>
             <div id= {styles.searchResultComponent_deleteIconContainer}>
-                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
+                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray",visibility:searchWord===""? "hidden":"visible"}} onClick={initializeSearchText}/>
             </div>
-            <input id={styles.searchResultComponent_search} onChange={setInputText} onKeyDown={keydown} value={inputState} type="test" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
+            <input id={styles.searchResultComponent_search} onChange={setInputText} onKeyDown={keydown} value={searchWord} type="test" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
         </div>
         <div id={styles.searchResultComponent_topText}>
-          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {count}개의 검색 결과를 발견했습니다.</h1>
+          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchResultText}&#39;에 대한 {count}개의 검색 결과를 발견했습니다.</h1>
         </div>
             <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`} ref={target2}>
                      {item.map((object:gymWearItem, index:number) => (

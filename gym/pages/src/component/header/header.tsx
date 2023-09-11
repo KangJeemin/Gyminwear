@@ -25,7 +25,17 @@ const scrollY = useScrollYPosition();
 const router = useRouter();
 const [announcementOpacity, setAnnouncementOpacity] = React.useState(1);
 const [headerHeight, setHeaderHeight] = React.useState(5);
-
+if(state ===0){
+    if(searchBoxRef.current){
+        searchBoxRef.current.style.visibility = "visible"
+    }
+    if(shoppingBoxRef.current){
+        shoppingBoxRef.current.style.visibility = "visible"
+    }
+    if(LogoBoxRef.current){
+        LogoBoxRef.current.style.visibility = "visible"
+    }
+}
 const clickHamberger = ()=> {
     if(state ===0){
         setState(1)
@@ -138,6 +148,7 @@ const clickSearch = () => {
 }
 React.useEffect(()=>{
     setState(0)
+
 },[])
 // React.useEffect(()=>{
 //     const handleScroll = () => {
@@ -164,9 +175,6 @@ React.useEffect(()=>{
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox} ref={LogoBoxRef} onClick={()=>{
                     router.push("/")
-                    setSearchState(0)
-                    setHambergerState(0)
-                    setState(0)
                 }}>
                    <Image 
                         src={Logo} 

@@ -9,12 +9,12 @@ import Link from 'next/link';
 
 
 const SearchModal = () => {
-  const {searchState,setSearchWord,setSearchState,setState,searchWord} = useContext(AuthContext)
+  const {searchState,setSearchWord,setSearchState,setState,searchWord,setHambergerState,setSearchResultText} = useContext(AuthContext)
   const [inputState, setInputState] = useState<string>("")
   const router = useRouter();
 
   const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
-    setInputState(e.target.value);
+    // setInputState(e.target.value);
     setSearchWord(e.target.value)
   }
   const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
@@ -23,10 +23,12 @@ const SearchModal = () => {
       router.push(`/searchresult?search=${searchWord}&page=1`)
       setState(0)
       setSearchState(0)
+      setSearchResultText(searchWord)
+      
     }
   }
   const initializeSearchText = () => {
-    setInputState("")
+    setSearchWord("")
   }
   const searchDataAPI = () =>{
     fetch('/api/search',{
@@ -72,7 +74,7 @@ const SearchModal = () => {
                 </div>
                 <input id={styles.searchBoxInput} type="text" onChange={setInputText} onKeyDown={keydown} value={searchWord} placeholder="검색" />
                 <div id= {styles.searchBoxDelete}>
-                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"1.5em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
+                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"1.5em",color:"gray",visibility:searchWord===""? "hidden":"visible"}} onClick={initializeSearchText}/>
                 </div>
             </div>
             {/* <h1 id={styles.searchRecentTextBox}>최근 검색어</h1>

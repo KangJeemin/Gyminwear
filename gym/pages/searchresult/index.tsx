@@ -73,11 +73,7 @@ const Index = ({item}:any,{count}:any) => {
         }
     }
     useEffect(()=>{
-        console.log('item=',item)
-        console.log('count',count)
-        // setSearchResultDataSort20(data.result)
-        // setSearchResultCount(data.countresult[0].C);
-    },[item])
+    },[item,count])
   return (
     <div id={styles.searchResultComponent}>
         <div id={styles.searchResultComponent_searchContainer}>
@@ -123,7 +119,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     console.log(data)
     return { props: { 
         item:data.result,
-        count:data.countresult[0].C,
+        count:data.result.length
      } };
   }
   

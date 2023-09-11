@@ -27,7 +27,8 @@ const Index = ({item,count}:any) => {
     const [viewState,setViewState]=useState<boolean>(false)
     const [inputState, setInputState] = useState<string>("")
     const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData,setSearchWord,searchResultDataSort20,setSearchResultDataSort20} = useContext(AuthContext)
-    const [searchResultCount, setSearchResultCount]= useState<number>(0);
+    const [searchResultCount, setSearchResultCount]= useState();
+    
     const searchDataAPI = (pagenumber:number) => {
         router.push(`/searchresult?search=${searchWord}&page=${pagenumber}`)
     }
@@ -75,6 +76,7 @@ const Index = ({item,count}:any) => {
         }
     }
     useEffect(()=>{
+    
     },[item,count])
   return (
     <div id={styles.searchResultComponent}>
@@ -88,7 +90,7 @@ const Index = ({item,count}:any) => {
             <input id={styles.searchResultComponent_search} onChange={setInputText} onKeyDown={keydown} value={inputState} type="test" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
         </div>
         <div id={styles.searchResultComponent_topText}>
-          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {count.C}개의 검색 결과를 발견했습니다.</h1>
+          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {count.map((object:any,index:number)=>{<span key={index}>{object.C}</span>})}개의 검색 결과를 발견했습니다.</h1>
         </div>
             <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`} ref={target2}>
                      {item.map((object:gymWearItem, index:number) => (
@@ -121,9 +123,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const res = await fetch(`http://localhost:3000/api/search?search=${search}&page=${page}`);
     const data = await res.json();
     console.log(data)
+    console.log(data.countresult[0].C)
     return { props: { 
         item:data.result,
-        count:data.countresult
+        count:data.countresult[0].C
      } };
   }
   

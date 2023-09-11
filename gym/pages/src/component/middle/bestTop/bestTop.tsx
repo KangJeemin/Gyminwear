@@ -16,7 +16,7 @@ interface Item {
 
 }
 
-const BestTop= ({item:Item}) =>{
+const BestTop= ({item}:any) =>{
     const {hambergerState,searchState} = useContext(AuthContext)
     const [getDatabase, setGetDatabase] = useState<Item[]>([]);
     const router = useRouter();
@@ -41,7 +41,7 @@ const BestTop= ({item:Item}) =>{
             </div>
             <div id={styles.bestTop_itemContainer_flexNowrap}>
                 <div id={styles.bestTop_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
-                    {getDatabase.map((object, index) => (
+                    {item.map((object:Item, index:number) => (
                         <span key={index} id={styles.bestTop_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestTop_item_imageSize}>
                                 <Image
@@ -109,7 +109,7 @@ const BestTop= ({item:Item}) =>{
     )
 }
 export async function getStaticProps() {
-    const res = await fetch('https://.../posts')
+    const res = await fetch(`http://localhost:3000/api/besttop`)
     const data = await res.json()
     return {
       props: {

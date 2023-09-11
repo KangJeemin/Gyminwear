@@ -25,56 +25,7 @@ const scrollY = useScrollYPosition();
 const router = useRouter();
 const [announcementOpacity, setAnnouncementOpacity] = React.useState(1);
 const [headerHeight, setHeaderHeight] = React.useState(5);
-if(state ===0){
-    setSearchState(1) 
-    setHambergerState(1)
-    if(searchBoxRef.current){
-        searchBoxRef.current.style.visibility = "hidden"
-    }
-    if(shoppingBoxRef.current){
-        shoppingBoxRef.current.style.visibility = "hidden"
-    }
-    if(LogoBoxRef.current){
-        LogoBoxRef.current.style.visibility = "hidden"
-    }
-}
-else if(state===1){
-    setHambergerState(2)
-    setSearchState(2)
-    if(searchBoxRef.current){
-        searchBoxRef.current.style.visibility = "visible"
-    }
-    if(shoppingBoxRef.current){
-        shoppingBoxRef.current.style.visibility = "visible"
-    }
-    if(LogoBoxRef.current){
-        LogoBoxRef.current.style.visibility = "visible"
-    }
-}
-else if (state ===2){
-    setHambergerState(1)
-    if(searchBoxRef.current){
-        searchBoxRef.current.style.visibility = "hidden"
-    }
-    if(shoppingBoxRef.current){
-        shoppingBoxRef.current.style.visibility = "hidden"
-    }
-    if(LogoBoxRef.current){
-        LogoBoxRef.current.style.visibility = "hidden"
-    }
-}
-else{
-    setHambergerState(2)
-    if(searchBoxRef.current){
-        searchBoxRef.current.style.visibility = "visible"
-    }
-    if(shoppingBoxRef.current){
-        shoppingBoxRef.current.style.visibility = "visible"
-    }
-    if(LogoBoxRef.current){
-        LogoBoxRef.current.style.visibility = "visible"
-    }
-}
+
 const clickHamberger = ()=> {
     if(state ===0){
         setState(1)
@@ -213,9 +164,6 @@ React.useEffect(()=>{
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox} ref={LogoBoxRef} onClick={()=>{
                     router.push("/")
-                    setSearchState(0)
-                    setHambergerState(0)
-                    setState(0)
                 }}>
                    <Image 
                         src={Logo} 

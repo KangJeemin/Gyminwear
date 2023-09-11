@@ -26,7 +26,7 @@ const SearchModal = () => {
     }
   }
   const initializeSearchText = () => {
-    setInputState("")
+    setSearchWord("")
   }
   const searchDataAPI = () =>{
     fetch('/api/search',{
@@ -72,7 +72,7 @@ const SearchModal = () => {
                 </div>
                 <input id={styles.searchBoxInput} type="text" onChange={setInputText} onKeyDown={keydown} value={searchWord} placeholder="검색" />
                 <div id= {styles.searchBoxDelete}>
-                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"1.5em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
+                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"1.5em",color:"gray",visibility:searchWord===""? "hidden":"visible"}} onClick={initializeSearchText}/>
                 </div>
             </div>
             {/* <h1 id={styles.searchRecentTextBox}>최근 검색어</h1>

@@ -16,7 +16,7 @@ interface gymwear{
     data:gymWearItem;
 }
 
-const Index = ({item}:any,{count}:any) => { 
+const Index = ({item,count}:any) => { 
     
     const target = useRef<HTMLDivElement | null>(null);
     const target1 = useRef<HTMLDivElement | null>(null);

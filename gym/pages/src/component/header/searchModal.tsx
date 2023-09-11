@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 
 const SearchModal = () => {
-  const {searchState,setSearchWord,setSearchState,setState,searchWord} = useContext(AuthContext)
+  const {searchState,setSearchWord,setSearchState,setState,searchWord,setHambergerState} = useContext(AuthContext)
   const [inputState, setInputState] = useState<string>("")
   const router = useRouter();
 
@@ -21,8 +21,9 @@ const SearchModal = () => {
     if(e.keyCode===13){
       // setSearchWord(inputState)
       router.push(`/searchresult?search=${searchWord}&page=1`)
-      setState(0)
-      setSearchState(0)
+      setState(1)
+      setSearchState(1)
+      setHambergerState(1)
     }
   }
   const initializeSearchText = () => {

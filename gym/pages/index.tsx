@@ -13,13 +13,11 @@ const index = ()=>{
         style={{
             overscrollBehavior:"none"
         }}>
-            <Header/>
-            <HeaderMargin/>
+            
             <Announcement/>
             <BestAll/>
             <BestTop/>
             <BestBottom/>
-            <Footer/>
         </div>
     )
 }

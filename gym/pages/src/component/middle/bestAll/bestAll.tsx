@@ -32,7 +32,7 @@ const BestAll: React.FC = () => {
     }
     useEffect(() => {
         fetchData();
-        console.log(getDatabase)
+        console.log('router',router.query)
     }, []);
 
     return (

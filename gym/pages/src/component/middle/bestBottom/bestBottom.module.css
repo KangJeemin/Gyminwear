@@ -1,11 +1,18 @@
 #bestBottom{
     width: 100vw;
     height: 75vh;
+    border-color: red;
+
+
 }
-#bestBottom_BottomText{
+#bestBottom_topText{
     width: 100%;
     height: 7%;
     background-color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 #bestBottom_itemContainer_flexNowrap{
     width: 100%;
@@ -13,32 +20,40 @@
     display: flex;
     flex-flow: row nowrap;
     overflow-x: scroll;
+    border: 1px solid white
 }
 #bestBottom_itemContainer_flexNowrap::-webkit-scrollbar{
     display: none;
+    border: none;
+
 }
 #bestBottom_itemContainer{
     width: 100%;
     height: 100%;
     background-color: white;
     flex-shrink: 0;
+    border-color: white;
+
 }
-#bestBottomComponent_1{
+#bestBottom_topComponent_1{
     width: 50%;
     height: 50%;
+
 }
 #bestBottom_text{
     color: black;
-    
+
 }
 #bestBottom_item_itemComponent{
     width: 100%;
     height: 100%;
+    border-color: white;
+
 }
 #bestBottom_item_imageSize{
     width: 100%;
     height: 80%;
-    background-color: red;
+    position: relative;
 }
 #bestBottom_item_textBoxSize{
     width: 100%;
@@ -84,8 +99,8 @@
 .flex_scrollset{
     flex-shrink: 0;
 }
-.setTextCenter{
-    display: flex;
+.text_set_center{
+    display:flex;
     justify-content: center;
     align-items: center;
 }

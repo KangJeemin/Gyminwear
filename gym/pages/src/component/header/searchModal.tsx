@@ -5,20 +5,22 @@ import { useContext, useState, ChangeEvent } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 
 const SearchModal = () => {
-  const {searchState,setSearchWord,setSearchState,setState} = useContext(AuthContext)
+  const {searchState,setSearchWord,setSearchState,setState,searchWord} = useContext(AuthContext)
   const [inputState, setInputState] = useState<string>("")
   const router = useRouter();
 
   const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
     setInputState(e.target.value);
+    setSearchWord(e.target.value)
   }
   const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
     if(e.keyCode===13){
-      setSearchWord(inputState)
-      router.push("/searchResult")
+      // setSearchWord(inputState)
+      router.push(`/searchresult?search=${searchWord}&page=1`)
       setState(0)
       setSearchState(0)
     }
@@ -68,7 +70,7 @@ const SearchModal = () => {
                 <div id= {styles.searchBoxIcon}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray"}}/>
                 </div>
-                <input id={styles.searchBoxInput} type="text" onChange={setInputText} onKeyDown={keydown} value={inputState} placeholder="검색" />
+                <input id={styles.searchBoxInput} type="text" onChange={setInputText} onKeyDown={keydown} value={searchWord} placeholder="검색" />
                 <div id= {styles.searchBoxDelete}>
                 <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"1.5em",color:"gray",visibility:inputState===""? "hidden":"visible"}} onClick={initializeSearchText}/>
                 </div>

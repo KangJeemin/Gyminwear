@@ -164,6 +164,9 @@ React.useEffect(()=>{
             <div id={styles.categoryBox} className={`${styles.flexRow}`}>
                 <div id={styles.logoBox} ref={LogoBoxRef} onClick={()=>{
                     router.push("/")
+                    setSearchState(0)
+                    setHambergerState(0)
+                    setState(0)
                 }}>
                    <Image 
                         src={Logo} 

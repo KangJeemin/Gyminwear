@@ -1,42 +1,43 @@
+
 import { useRouter } from 'next/router';
 import React, { useState, useRef, useEffect, useContext, ChangeEvent } from 'react';
-import styles from './searchResultComponent.module.css';
+import styles from '../src/component/middle/searchResultComponent/searchResultComponent.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image'
-import NumberNavigate from './numberNavigate';
 import convertWon from '@/pages/src/module/convertWon';
 import axios from 'axios';
+import type { gymWearItem } from '../../src/type/gymwear';
 import { GetServerSideProps,GetServerSidePropsContext } from 'next';
+import NumberNavigate from '../src/component/middle/searchResultComponent/numberNavigate';
 
-const SearchResult: React.FC = () => { 
+interface gymwear{
+    data:gymWearItem;
+}
+
+const Index = ({item,count}:any) => { 
+    
     const target = useRef<HTMLDivElement | null>(null);
     const target1 = useRef<HTMLDivElement | null>(null);
     const target2 = useRef<HTMLDivElement | null>(null);
     const router = useRouter();
+    const idx = router.query.id
+    
     const [viewState,setViewState]=useState<boolean>(false)
     const [inputState, setInputState] = useState<string>("")
     const {hambergerState,searchState,searchWord,searchResultData,setSearchResultData,setSearchWord,searchResultDataSort20,setSearchResultDataSort20} = useContext(AuthContext)
-    const [searchResultCount, setSearchResultCount]= useState<number>(0);
+    const [searchResultCount, setSearchResultCount]= useState();
+    
+    const searchDataAPI = (pagenumber:number) => {
+        router.push(`/searchresult?search=${searchWord}&page=${pagenumber}`)
+    }
     const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
         if(e.keyCode===13){
           setSearchWord(inputState)
           setViewBlurryOut()
         }
       }
-    function splitIntoChunk(arr:string[], chunk:number) {
-        const result = [];
-        for (let index=0; index < arr.length; index += chunk) {
-          let tempArray;
-          // slice() 메서드를 사용하여 특정 길이만큼 배열을 분리함
-          tempArray = arr.slice(index, index + chunk);
-          // 빈 배열에 특정 길이만큼 분리된 배열을 추가
-          result.push(tempArray);
-        }
-        return result;
-      }
-
     const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
       setInputState(e.target.value);
       console.log(inputState)
@@ -45,7 +46,6 @@ const SearchResult: React.FC = () => {
     const initializeSearchText = () => {
       setInputState("")
     }
-    
     const setViewBlurry = () => {
     
         if(viewState===false){
@@ -75,31 +75,9 @@ const SearchResult: React.FC = () => {
             setViewState(false)
         }
     }
-    const searchDataAPI = async (page:number) =>{
-        //  await axios.get(`/api/search?search=${searchWord}&page=${page}`)
-        //         .then(res=> res.json())
-        //         .then(data=>{
-        //             setSearchResultDataSort20(data.result)
-        //             console.log(searchResultDataSort20)
-        //             setSearchResultCount(data.countresult[0].C)
-        //         })
-        try {
-            const response = await axios.get(`/api/search?search=${searchWord}&page=${page}`);
-            const data = response.data; // 이 부분을 수정
-            setSearchResultDataSort20(data.result);
-            console.log(searchResultDataSort20);
-            setSearchResultCount(data.countresult[0].C);
-          } catch (error) {
-            console.error("API 요청 중 오류가 발생했습니다:", error);
-          }
-            }
-
-    // useEffect(()=>{
-    //     searchDataAPI(1)
-    // },[searchWord])
     useEffect(()=>{
-        console.log('router',router.query)
-    })
+    
+    },[item,count])
   return (
     <div id={styles.searchResultComponent}>
         <div id={styles.searchResultComponent_searchContainer}>
@@ -112,10 +90,10 @@ const SearchResult: React.FC = () => {
             <input id={styles.searchResultComponent_search} onChange={setInputText} onKeyDown={keydown} value={inputState} type="test" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
         </div>
         <div id={styles.searchResultComponent_topText}>
-          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {searchResultCount}개의 검색 결과를 발견했습니다.</h1>
+          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {count}개의 검색 결과를 발견했습니다.</h1>
         </div>
             <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`} ref={target2}>
-                     {searchResultDataSort20.map((object, index) => (
+                     {item.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.searchResultComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.searchResultComponent_item_imageSize}>
                                 <Image
@@ -135,14 +113,21 @@ const SearchResult: React.FC = () => {
                         </span>
                     ))}
         </div>
-        <NumberNavigate number={searchResultCount} pageMove={searchDataAPI}/>
+        <NumberNavigate number={count} pageMove={searchDataAPI}/>
     </div>
+    
   );
 };
-export async function getServerSideProps(searchWord:string,) {
-    const res = await fetch(`/search?search=피지컬&page=1`)
-    const data = await res.json()
-    console.log(data)
-    return { props: { data } }
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const { search, page } = context.query;
+    const res = await fetch(`http://localhost:3000/api/search?search=${search}&page=${page}`);
+    const data = await res.json();
+    return { props: { 
+        item:data.result,
+        count:data.countresult[0].C
+     } };
   }
-export default SearchResult;
+  
+
+export default Index;
+

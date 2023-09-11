@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 const db = require('../../src/db/db')
 
-export default function test(req : NextApiRequest, res : NextApiResponse) {
+export default function bottompage(req : NextApiRequest, res : NextApiResponse) {
     const pageNumber= req.query.page
     if(pageNumber==='1'){
         db.query("SELECT * FROM bottom LIMIT 0,20",

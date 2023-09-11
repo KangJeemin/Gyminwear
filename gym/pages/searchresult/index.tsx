@@ -90,7 +90,7 @@ const Index = ({item}:any,{count}:any) => {
             <input id={styles.searchResultComponent_search} onChange={setInputText} onKeyDown={keydown} value={inputState} type="test" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
         </div>
         <div id={styles.searchResultComponent_topText}>
-          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {searchResultCount}개의 검색 결과를 발견했습니다.</h1>
+          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchWord}&#39;에 대한 {count}개의 검색 결과를 발견했습니다.</h1>
         </div>
             <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`} ref={target2}>
                      {item.map((object:gymWearItem, index:number) => (
@@ -120,6 +120,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { search, page } = context.query;
     const res = await fetch(`http://localhost:3000/api/search?search=${search}&page=${page}`);
     const data = await res.json();
+    console.log(data)
     return { props: { 
         item:data.result,
         count:data.countresult[0].C,

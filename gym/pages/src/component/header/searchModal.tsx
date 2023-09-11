@@ -22,8 +22,6 @@ const SearchModal = () => {
       // setSearchWord(inputState)
       router.push(`/searchresult?search=${searchWord}&page=1`)
       setState(1)
-      setSearchState(1)
-      setHambergerState(1)
     }
   }
   const initializeSearchText = () => {

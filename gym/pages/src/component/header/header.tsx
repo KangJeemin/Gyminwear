@@ -26,7 +26,7 @@ const router = useRouter();
 const [announcementOpacity, setAnnouncementOpacity] = React.useState(1);
 const [headerHeight, setHeaderHeight] = React.useState(5);
 if(state ===0){
-    setState(1)
+    setSearchState(1) 
     setHambergerState(1)
     if(searchBoxRef.current){
         searchBoxRef.current.style.visibility = "hidden"
@@ -39,7 +39,6 @@ if(state ===0){
     }
 }
 else if(state===1){
-    setState(2)
     setHambergerState(2)
     setSearchState(2)
     if(searchBoxRef.current){
@@ -53,7 +52,6 @@ else if(state===1){
     }
 }
 else if (state ===2){
-    setState(1)
     setHambergerState(1)
     if(searchBoxRef.current){
         searchBoxRef.current.style.visibility = "hidden"
@@ -66,7 +64,6 @@ else if (state ===2){
     }
 }
 else{
-    setState(2)
     setHambergerState(2)
     if(searchBoxRef.current){
         searchBoxRef.current.style.visibility = "visible"

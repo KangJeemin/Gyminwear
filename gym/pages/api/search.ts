@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { gymWearItem } from '@/src/type/gymwear';
+import type { searchResultCount } from '@/src/type/searchResultCount';
 const db = require('../../src/db/db')
 
 
@@ -15,7 +16,7 @@ export default function search(req : NextApiRequest, res : NextApiResponse) {
                 res.status(500).json({ error: 'An error occurred in err' });
             } else {
                 db.query(`SELECT COUNT(*) AS C FROM top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%'`,
-                function (counterr: any, countresult: any) {
+                function (counterr: any, countresult: searchResultCount) {
                 if(counterr) {
                    res.status(500).json({ error: 'An error occurred in counterr' });
                 } else {

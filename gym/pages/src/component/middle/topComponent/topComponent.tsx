@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import { AuthContext } from '@/public/context/authcontext';
 import styles from './topComponent.module.css';
 import Image from 'next/image';
+import type { gymWearItem } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 
 const TopComponent: React.FC = () => { 
@@ -29,7 +30,7 @@ const TopComponent: React.FC = () => {
           <h3 id={styles.topComponent_text}>Top</h3>
         </div>
              <div id={styles.topComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
-                     {topAndBottomData.map((object, index) => (
+                     {topAndBottomData.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.topComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.topComponent_item_imageSize}>
                                 <Image

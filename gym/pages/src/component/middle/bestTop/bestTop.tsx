@@ -8,24 +8,14 @@ import axios from 'axios';
 import type { gymWearItem } from '@/src/type/gymwear';
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 
-interface Item {
-    brandname: string;
-    image: string;
-    productname: string;
-    price: number;
-    url: string;
-    likecount: number;
-
-}
-
 const BestTop = () =>{
     const {hambergerState,searchState} = useContext(AuthContext)
-    const [getDatabase, setGetDatabase] = useState<Item[]>([]);
+    const [getDatabase, setGetDatabase] = useState<gymWearItem[]>([]);
     const router = useRouter();
     async function fetchData() {
         try {
             const response = await axios.get("/api/besttop");
-            const data: Item[] = response.data;
+            const data: gymWearItem[] = response.data;
             setGetDatabase(data);
         } catch (error) {
             console.error(error);

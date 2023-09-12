@@ -1,11 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import type { gymWearItem } from '@/src/type/gymwear';
 const db = require('../../src/db/db')
 
 export default function bottompage(req : NextApiRequest, res : NextApiResponse) {
     const pageNumber= req.query.page
     if(pageNumber==='1'){
         db.query("SELECT * FROM bottom LIMIT 0,20",
-        function (err: any, result: any) {
+        function (err: any, result: gymWearItem) {
         if(err) {
             console.log(err)
         } else {
@@ -15,7 +16,7 @@ export default function bottompage(req : NextApiRequest, res : NextApiResponse) 
     }
     else if(pageNumber==='2'){
         db.query("SELECT * FROM bottom LIMIT 20,20",
-        function (err: any, result: any) {
+        function (err: any, result: gymWearItem) {
         if(err) {
             console.log(err)
         } else {

@@ -5,7 +5,7 @@ import styles from './topComponent.module.css';
 import Image from 'next/image';
 import convertWon from '@/pages/src/module/convertWon';
 
-const TopComponent1: React.FC = () => { 
+const TopComponent: React.FC = () => { 
     
     const router = useRouter();
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
@@ -103,4 +103,4 @@ const TopComponent1: React.FC = () => {
   );
 };
 
-export default TopComponent1;
+export default TopComponent;

@@ -18,7 +18,7 @@ interface Item {
 
 }
 
-const BestTop= () =>{
+const BestTopTest= ({res}:any) =>{
     const {hambergerState,searchState} = useContext(AuthContext)
     const [getDatabase, setGetDatabase] = useState<Item[]>([]);
     const router = useRouter();
@@ -33,6 +33,7 @@ const BestTop= () =>{
     }
     useEffect(() => {
         fetchData()
+        console.log(res)
     }, []);
  
  
@@ -75,4 +76,4 @@ export const getStaticProps = (async (context:any) =>{
     res: Item
   }>
 
-export default BestTop;
+export default BestTopTest;

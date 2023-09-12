@@ -18,7 +18,7 @@ interface Item {
 
 }
 
-const BestTop= ({res}: InferGetStaticPropsType<typeof getStaticProps>) =>{
+const BestTop= (props:any) =>{
     const {hambergerState,searchState} = useContext(AuthContext)
     const [getDatabase, setGetDatabase] = useState<Item[]>([]);
     const router = useRouter();
@@ -33,7 +33,7 @@ const BestTop= ({res}: InferGetStaticPropsType<typeof getStaticProps>) =>{
     }
     useEffect(() => {
         fetchData()
-        console.log(res)
+        console.log(props)
     }, []);
  
  

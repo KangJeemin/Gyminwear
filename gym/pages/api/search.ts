@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { gymWearItem } from '@/src/type/gymwear';
-import type { searchResultCount } from '@/src/type/searchResultCount';
+import type { searchResultCount } from '@/src/type/gymwear';
 const db = require('../../src/db/db')
 
 

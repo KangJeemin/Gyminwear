@@ -6,6 +6,8 @@ type gymWearItem = {
     url:string;
     likecount:number;
   }
-
-
+type searchResultCount = {
+    C:number
+  }
+export type {searchResultCount}
 export type {gymWearItem}

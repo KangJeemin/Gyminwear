@@ -68,10 +68,16 @@ const Index= ({res}:any) =>{
         </div>
     )
 }
-export const getStaticProps = (async (context:any) =>{
-    const response = await fetch(`http://localhost:3000/api/besttop`)
-    const res =await response.json()
-    return {  props: { res }}
-})
+export const getStaticProps = async (context: any) => {
+    try {
+        const response = await fetch(`http://localhost:3000/api/besttop`);
+        const res = await response.json();
+        return { props: { res } };
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        return { props: { res: [] } }; // 혹은 빈 배열 등의 기본값으로 처리
+    }
+};
+
 
 export default Index;

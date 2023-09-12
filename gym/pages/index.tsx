@@ -17,7 +17,7 @@ const index = ()=>{
             
             <Announcement/>
             <BestAll/>
-            <BestTopTest/>
+            <BestTop/>
             <BestBottom/>
         </div>
     )

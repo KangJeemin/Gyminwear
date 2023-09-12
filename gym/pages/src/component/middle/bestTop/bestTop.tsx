@@ -18,22 +18,22 @@ interface Item {
 
 }
 
-const BestTop= () =>{
+const BestTop= ({res}:any) =>{
     const {hambergerState,searchState} = useContext(AuthContext)
     const [getDatabase, setGetDatabase] = useState<Item[]>([]);
     const router = useRouter();
-    async function fetchData() {
-        try {
-            const response = await axios.get("/api/besttop");
-            const data: Item[] = response.data;
-            setGetDatabase(data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-    useEffect(() => {
-        fetchData()
-    }, []);
+    // async function fetchData() {
+    //     try {
+    //         const response = await axios.get("/api/besttop");
+    //         const data: Item[] = response.data;
+    //         setGetDatabase(data);
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
+    // useEffect(() => {
+    //     fetchData()
+    // }, []);
  
  
     return(
@@ -43,7 +43,7 @@ const BestTop= () =>{
             </div>
             <div id={styles.bestTop_itemContainer_flexNowrap}>
                 <div id={styles.bestTop_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
-                    {getDatabase.map((object, index:number) => (
+                    {res.map((object:any, index:number) => (
                         <span key={index} id={styles.bestTop_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestTop_item_imageSize}>
                                 <Image
@@ -67,12 +67,10 @@ const BestTop= () =>{
         </div>
     )
 }
-// export const getStaticProps = (async (context:any) =>{
-//     const response = await fetch(`http://localhost:3000/api/besttop`)
-//     const res =await response.json()
-//     return {  props: { res }}
-// }) satisfies GetStaticProps<{
-//     res: Item
-//   }>
+export const getStaticProps = (async (context:any) =>{
+    const response = await fetch(`http://localhost:3000/api/besttop`)
+    const res =await response.json()
+    return {  props: { res }}
+})
 
 export default BestTop;

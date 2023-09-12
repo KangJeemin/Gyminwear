@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import convertWon from '@/pages/src/module/convertWon';
 import axios from 'axios';
 import type { gymWearItem } from '@/src/type/gymwear';
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
 
 interface Item {
     brandname: string;
@@ -17,19 +18,19 @@ interface Item {
 
 }
 
-const BestTop= ({item}:any) =>{
+const BestTop= ({data}:any) =>{
     const {hambergerState,searchState} = useContext(AuthContext)
     const [getDatabase, setGetDatabase] = useState<Item[]>([]);
     const router = useRouter();
-    async function fetchData() {
-        try {
-            const response = await axios.get("/api/besttop");
-            const data: Item[] = response.data;
-            setGetDatabase(data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
+    // async function fetchData() {
+    //     try {
+    //         const response = await axios.get("/api/besttop");
+    //         const data: Item[] = response.data;
+    //         setGetDatabase(data);
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
     useEffect(() => {
         
     }, []);
@@ -42,7 +43,7 @@ const BestTop= ({item}:any) =>{
             </div>
             <div id={styles.bestTop_itemContainer_flexNowrap}>
                 <div id={styles.bestTop_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
-                    {item.map((object:gymWearItem, index:number) => (
+                    {data.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.bestTop_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestTop_item_imageSize}>
                                 <Image
@@ -110,11 +111,11 @@ const BestTop= ({item}:any) =>{
     )
 }
 export async function getStaticProps() {
-    const res = await fetch(`http://localhost:3000/api/besttop`)
-    const data = await res.json()
+    const response = await fetch(`http://localhost:3000/api/besttop`)
+    const data:Item =await response.json()
     return {
       props: {
-        item:data.result,
+        data
       },
     }
   }

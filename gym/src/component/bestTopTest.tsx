@@ -1,5 +1,5 @@
 import React, { useState,useContext,useEffect } from 'react'
-import styles from './bestTop.module.css'
+import styles from '../../pages/src/component/middle/bestTop/bestTop.module.css'
 import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -67,12 +67,12 @@ const BestTop= () =>{
         </div>
     )
 }
-// export const getStaticProps = (async (context:any) =>{
-//     const response = await fetch(`http://localhost:3000/api/besttop`)
-//     const res =await response.json()
-//     return {  props: { res }}
-// }) satisfies GetStaticProps<{
-//     res: Item
-//   }>
+export const getStaticProps = (async (context:any) =>{
+    const response = await fetch(`http://localhost:3000/api/besttop`)
+    const res =await response.json()
+    return {  props: { res }}
+}) satisfies GetStaticProps<{
+    res: Item
+  }>
 
 export default BestTop;

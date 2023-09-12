@@ -44,7 +44,7 @@ const BestTopTest= ({res}:any) =>{
             </div>
             <div id={styles.bestTop_itemContainer_flexNowrap}>
                 <div id={styles.bestTop_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
-                    {getDatabase.map((object, index:number) => (
+                    {res.map((object:any, index:number) => (
                         <span key={index} id={styles.bestTop_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestTop_item_imageSize}>
                                 <Image

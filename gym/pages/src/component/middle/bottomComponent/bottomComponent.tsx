@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import { AuthContext } from '@/public/context/authcontext';
 import styles from './bottomComponent.module.css';
 import Image from 'next/image';
+import type { gymWearItem } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 
 const BottomComponent: React.FC = () => { 
@@ -29,7 +30,7 @@ const BottomComponent: React.FC = () => {
           <h3 id={styles.bottomComponent_text}>Bottom</h3>
         </div>
              <div id={styles.bottomComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
-                     {topAndBottomData.map((object, index) => (
+                     {topAndBottomData.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.bottomComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bottomComponent_item_imageSize}>
                                 <Image

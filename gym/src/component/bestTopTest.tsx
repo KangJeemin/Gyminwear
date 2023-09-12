@@ -22,19 +22,19 @@ const BestTopTest= ({res}:any) =>{
     const {hambergerState,searchState} = useContext(AuthContext)
     const [getDatabase, setGetDatabase] = useState<Item[]>([]);
     const router = useRouter();
-    async function fetchData() {
-        try {
-            const response = await axios.get("/api/besttop");
-            const data: Item[] = response.data;
-            setGetDatabase(data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-    useEffect(() => {
-        fetchData()
-        console.log(res)
-    }, []);
+    // async function fetchData() {
+    //     try {
+    //         const response = await axios.get("/api/besttop");
+    //         const data: Item[] = response.data;
+    //         setGetDatabase(data);
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
+    // useEffect(() => {
+    //     fetchData()
+        
+    // }, []);
  
  
     return(
@@ -72,8 +72,6 @@ export const getStaticProps = (async (context:any) =>{
     const response = await fetch(`http://localhost:3000/api/besttop`)
     const res =await response.json()
     return {  props: { res }}
-}) satisfies GetStaticProps<{
-    res: Item
-  }>
+})
 
 export default BestTopTest;

@@ -28,12 +28,12 @@ export default function search(req : NextApiRequest, res : NextApiResponse) {
     }
     else if(pageNumber==='2'){
         db.query(`SELECT * FROM top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%' LIMIT 20,20`,
-        function (err: any, result: any) {
+        function (err: any, result: gymWearItem) {
             if(err) {
                 res.status(500).json({ error: 'An error occurred in err' });
             } else {
                 db.query(`SELECT COUNT(*) AS C FROM top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%'`,
-                function (counterr: any, countresult: any) {
+                function (counterr: any, countresult: searchResultCount) {
                 if(counterr) {
                    res.status(500).json({ error: 'An error occurred in counterr' });
                 } else {
@@ -45,12 +45,12 @@ export default function search(req : NextApiRequest, res : NextApiResponse) {
     }
     else if(pageNumber==='3'){
         db.query(`SELECT * FROM top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%' LIMIT 40,20`,
-        function (err: any, result: any) {
+        function (err: any, result: gymWearItem) {
             if(err) {
                 res.status(500).json({ error: 'An error occurred in err' });
             } else {
                 db.query(`SELECT COUNT(*) AS C FROM top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%'`,
-                function (counterr: any, countresult: any) {
+                function (counterr: any, countresult: searchResultCount) {
                 if(counterr) {
                    res.status(500).json({ error: 'An error occurred in counterr' });
                 } else {

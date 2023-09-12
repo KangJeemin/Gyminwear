@@ -1,5 +1,4 @@
 type gymWearItem = {
-    topid:number;
     brandname: string;
     image:string;
     productname:string;

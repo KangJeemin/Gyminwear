@@ -18,7 +18,7 @@ interface Item {
 
 }
 
-const BestTop= (props:any) =>{
+const BestTop = () =>{
     const {hambergerState,searchState} = useContext(AuthContext)
     const [getDatabase, setGetDatabase] = useState<Item[]>([]);
     const router = useRouter();
@@ -33,7 +33,6 @@ const BestTop= (props:any) =>{
     }
     useEffect(() => {
         fetchData()
-        console.log(props)
     }, []);
  
  
@@ -111,12 +110,12 @@ const BestTop= (props:any) =>{
         // </div>
     )
 }
-export const getStaticProps = (async (context:any) =>{
-    const response = await fetch(`http://localhost:3000/api/besttop`)
-    const res =await response.json()
-    return {  props: { res }}
-}) satisfies GetStaticProps<{
-    res: Item
-  }>
+// export const getStaticProps = (async (context:any) =>{
+//     const response = await fetch(`http://localhost:3000/api/besttop`)
+//     const res =await response.json()
+//     return {  props: { res }}
+// }) satisfies GetStaticProps<{
+//     res: Item
+//   }>
 
 export default BestTop;

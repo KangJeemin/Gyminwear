@@ -10,7 +10,6 @@ const index = ({gymitem}:any)=>{
         style={{
             overscrollBehavior:"none"
         }}>
-            
             <Announcement/>
             <BestAll/>
             <BestTop gymitem={gymitem}/>

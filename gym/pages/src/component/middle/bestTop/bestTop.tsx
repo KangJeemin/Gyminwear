@@ -4,15 +4,13 @@ import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import convertWon from '@/pages/src/module/convertWon';
-import axios from 'axios';
+import axios from 'axios'; 
 import type { gymWearItem } from '@/src/type/gymwear';
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 
 interface GymItemProps {
-    gymitem: any;
-    
+    gymitem: any;   
 }
-
 const BestTop= (props:GymItemProps) =>{
     const {hambergerState,searchState} = useContext(AuthContext)
     const router = useRouter();

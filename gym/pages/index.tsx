@@ -2,7 +2,7 @@ import React from 'react'
 import BestAll from './src/component/middle/bestAll/bestAll'
 import BestTop from './src/component/middle/bestTop/bestTop'
 import BestBottom from './src/component/middle/bestBottom/bestBottom'
-import Announcement from './src/component/header/announcement'
+import Announcement from './src/component/header/announceMent/announcement'
 
 const index = ({gymitem}:any)=>{
     return(

@@ -5,17 +5,19 @@ import BestBottom from './src/component/middle/bestBottom/bestBottom'
 import Announcement from './src/component/header/announceMent/announcement'
 import { gymWearItem } from '@/src/type/gymwear'
 
-interface returnAPIType {
-    gymitem:gymWearItem
-}
-
 export const getStaticProps = async (context: any) => {
     try {
-        const response = await fetch(`http://localhost:3000/api/besttop`);
-        const res = await response.json();
+        const response1 = await fetch(`http://localhost:3000/api/besttop`);
+        const resBestTop = await response1.json();
+        const response2 = await fetch(`http://localhost:3000/api/bestall`);
+        const resBestAll = await response2.json();
+        const response3 = await fetch(`http://localhost:3000/api/bestbottom`);
+        const resBestBottom = await response3.json();
         return { 
             props: { 
-                gymitem:res
+                bestTopItem:resBestTop,
+                bestAllItem:resBestAll,
+                bestBottomItem:resBestBottom,
                  } 
             };
     } catch (error) {
@@ -23,7 +25,7 @@ export const getStaticProps = async (context: any) => {
         return { props: { res: [] } }; // 혹은 빈 배열 등의 기본값으로 처리
     }
 };
-const index = ({gymitem}:any)=>{
+const index = ({bestTopItem,bestAllItem,bestBottomItem}:any)=>{
     return(
         <div
         style={{
@@ -31,7 +33,7 @@ const index = ({gymitem}:any)=>{
         }}>
             <Announcement/>
             <BestAll/>
-            <BestTop gymitem={gymitem}/>
+            <BestTop gymitem={bestTopItem}/>
             <BestBottom/>
         </div>
     )

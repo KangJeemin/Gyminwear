@@ -5,6 +5,7 @@ import styles from './index.module.css';
 import Image from 'next/image';
 import type { gymWearItem } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
+import Footer from '../src/component/footer/footer'
 
 const Index: React.FC = () => { 
     
@@ -27,7 +28,7 @@ const Index: React.FC = () => {
   return (
     <div id={styles.topComponent}
     style={{
-        overscrollBehavior:"contain"
+        overscrollBehavior:"auto"
     }}>
         <div id={styles.topComponent_topText}  className={styles.text_set_center}>
           <h3 id={styles.topComponent_text}>Top</h3>
@@ -102,8 +103,9 @@ const Index: React.FC = () => {
         //     </div>   
         // ) 
         : null}
-        
+    <Footer/>    
     </div>
+    
   );
 };
 

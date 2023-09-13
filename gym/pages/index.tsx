@@ -5,7 +5,12 @@ import BestBottom from './src/component/middle/bestBottom/bestBottom'
 import Announcement from './src/component/header/announceMent/announcement'
 import { gymWearItem } from '@/src/type/gymwear'
 
-export const getStaticProps = async (context: any) => {
+interface mainPageItemPropsType {
+    bestTopItem:gymWearItem
+    bestAllItem:gymWearItem
+    bestBottomItem:gymWearItem
+}
+export const getStaticProps = async () => {
     try {
         const response1 = await fetch(`http://localhost:3000/api/besttop`);
         const resBestTop = await response1.json();
@@ -25,7 +30,7 @@ export const getStaticProps = async (context: any) => {
         return { props: { res: [] } }; // 혹은 빈 배열 등의 기본값으로 처리
     }
 };
-const index = ({bestTopItem,bestAllItem,bestBottomItem}:any)=>{
+const index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>{
     return(
         <div
         style={{

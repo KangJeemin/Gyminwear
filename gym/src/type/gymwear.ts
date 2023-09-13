@@ -9,5 +9,9 @@ type gymWearItem = {
 type searchResultCount = {
     C:number
   }
+type GymItemProps = {
+  gymitem:[]
+}
 export type {searchResultCount}
 export type {gymWearItem}
+export type {GymItemProps}

@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router';
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { AuthContext } from '@/public/context/authcontext';
-import styles from './topComponent.module.css';
+import styles from './index.module.css';
 import Image from 'next/image';
 import type { gymWearItem } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 
-const TopComponent: React.FC = () => { 
+const Index: React.FC = () => { 
     
     const router = useRouter();
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
@@ -104,4 +104,4 @@ const TopComponent: React.FC = () => {
   );
 };
 
-export default TopComponent;
+export default Index

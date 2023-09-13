@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useScrollPosition, useScrollXPosition, useScrollYPosition } from 'react-use-scroll-position';
 import Image from 'next/image';
-import Logo from '../../../../public/image/gyminwearLogo.png'
+import Logo from '../../../../../public/image/gyminwearLogo.png'
 import { useRouter } from 'next/router';
 
 

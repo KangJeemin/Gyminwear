@@ -10,7 +10,7 @@ import convertWon from '@/pages/src/module/convertWon';
 import axios from 'axios';
 import type { gymWearItem } from '../../src/type/gymwear';
 import { GetServerSideProps,GetServerSidePropsContext } from 'next';
-import NumberNavigate from '../src/component/middle/searchResultComponent/numberNavigate';
+import NumberNavigate from '../src/component/middle/numberNavigate/numberNavigate';
 
 interface gymwear{
     data:gymWearItem;

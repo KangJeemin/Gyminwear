@@ -9,7 +9,7 @@ import type { gymWearItem } from '@/src/type/gymwear';
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 
 interface GymItemProps {
-    gymitem: any;   
+    gymitem: [];   
 }
 const BestTop= (props:GymItemProps) =>{
     const {hambergerState,searchState} = useContext(AuthContext)

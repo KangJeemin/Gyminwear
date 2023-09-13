@@ -13,10 +13,9 @@ export const getStaticProps = async (context: any) => {
     try {
         const response = await fetch(`http://localhost:3000/api/besttop`);
         const res = await response.json();
-        await console.log(res) 
         return { 
             props: { 
-                gymitem:res.result[0]
+                gymitem:res
                  } 
             };
     } catch (error) {

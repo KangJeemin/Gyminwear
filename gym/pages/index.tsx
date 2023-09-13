@@ -1,35 +1,28 @@
 import React from 'react'
-import Link from 'next/link'
-import Header from './src/component/header/header'
 import BestAll from './src/component/middle/bestAll/bestAll'
-import Footer from './src/component/footer/footer'
 import BestTop from './src/component/middle/bestTop/bestTop'
 import BestBottom from './src/component/middle/bestBottom/bestBottom'
-import HeaderMargin from './src/component/header/headerMargin'
+import Announcement from './src/component/header/announceMent/announcement'
+import { gymWearItem } from '@/src/type/gymwear'
 
-import Announcement from './src/component/header/announcement'
-const index = ({gymitem}:any)=>{
-    return(
-        <div
-        style={{
-            overscrollBehavior:"none"
-        }}>
-            
-            <Announcement/>
-            <BestAll/>
-            <BestTop gymitem={gymitem}/>
-            <BestBottom/>
-        </div>
-    )
+interface mainPageItemPropsType {
+    bestTopItem:[]
+    bestAllItem:[]
+    bestBottomItem:[]
 }
-export const getStaticProps = async (context: any) => {
+export const getStaticProps = async () => {
     try {
-        const response = await fetch(`http://localhost:3000/api/besttop`);
-        const res = await response.json();
-        await console.log(res) 
+        const response1 = await fetch("http://localhost:3000/api/besttop");
+        const resBestTop = await response1.json();
+        const response2 = await fetch("http://localhost:3000/api/bestall");
+        const resBestAll = await response2.json();
+        const response3 = await fetch("http://localhost:3000/api/bestbottom");
+        const resBestBottom = await response3.json();
         return { 
             props: { 
-                gymitem:res.result
+                bestTopItem:resBestTop,
+                bestAllItem:resBestAll,
+                bestBottomItem:resBestBottom,
                  } 
             };
     } catch (error) {
@@ -37,6 +30,20 @@ export const getStaticProps = async (context: any) => {
         return { props: { res: [] } }; // 혹은 빈 배열 등의 기본값으로 처리
     }
 };
+const index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>{
+    return(
+        <div
+        style={{
+            overscrollBehavior:"none"
+        }}>
+            <Announcement/>
+            <BestAll gymitem={bestAllItem}/>
+            <BestTop gymitem={bestTopItem}/>
+            <BestBottom gymitem={bestBottomItem}/>
+        </div>
+    )
+}
+
 
 
 export default index;

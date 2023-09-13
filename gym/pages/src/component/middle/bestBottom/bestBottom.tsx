@@ -5,46 +5,19 @@ import Image from 'next/image';
 import axios from 'axios';
 import { AuthContext } from '@/public/context/authcontext';
 import convertWon from '@/pages/src/module/convertWon';
+import type { GymItemProps,gymWearItem } from '@/src/type/gymwear';
 
-interface Item {
-    brandname: string;
-    image: string;
-    productname: string;
-    price: number;
-    url: string;
-    likecount: number;
-
-    // Add other properties here if needed
-}
-
-const BestBottom: React.FC = () => {
-    const {hambergerState,searchState} = useContext(AuthContext)
-    const [getDatabase, setGetDatabase] = useState<Item[]>([]);
+const BestBottom = (props:GymItemProps) => {
     const router = useRouter();
-    async function fetchData() {
-        try {
-            const response = await axios.get("/api/bestbottom");
-            const data: Item[] = response.data; // Assuming response.data is an array of items
-            setGetDatabase(data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-    useEffect(() => {
-        fetchData();
-    }, []);
 
     return (
-        <div id={styles.bestBottom}
-        style={{
-        }}
-        >
+        <div id={styles.bestBottom}>
             <div id={styles.bestBottom_topText}>
                 <h3 id={styles.bestBottom_text}>최신 짐웨어 하의</h3>
             </div>
             <div id={styles.bestBottom_itemContainer_flexNowrap}>
                 <div id={styles.bestBottom_itemContainer} className={`${styles.grid_2x2} ${styles.flex_scrollSet}`}>
-                    {getDatabase.map((object, index) => (
+                    {props.gymitem?(props.gymitem.map((object:gymWearItem, index) => (
                         <span key={index} id={styles.bestBottom_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestBottom_item_imageSize}>
                                 <Image
@@ -62,7 +35,7 @@ const BestBottom: React.FC = () => {
                                 <span id={styles.bestBottom_item_itemPrice} className={styles.text_set_center}><h5>{convertWon(object.price)} ₩</h5></span>
                             </span>
                         </span>
-                    ))}
+                    ))):null}
                 </div>
             </div>
         </div>

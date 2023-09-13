@@ -12,11 +12,11 @@ interface mainPageItemPropsType {
 }
 export const getStaticProps = async () => {
     try {
-        const response1 = await fetch("http://localhost:3000/pages/api/besttop");
+        const response1 = await fetch("127.0.0.1/api/besttop");
         const resBestTop = await response1.json();
-        const response2 = await fetch("http://localhost:3000/pages/api/bestall");
+        const response2 = await fetch("127.0.0.1/api/bestall");
         const resBestAll = await response2.json();
-        const response3 = await fetch("http://localhost:3000/pages/api/bestbottom");
+        const response3 = await fetch("127.0.0.1/api/bestbottom");
         const resBestBottom = await response3.json();
         return { 
             props: { 

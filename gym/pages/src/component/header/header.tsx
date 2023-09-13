@@ -220,7 +220,7 @@ React.useEffect(()=>{
                             }}
                             transition={{
                                 duration: state ===0 ? 0 : state===1 ? 0.5 : 0.5,
-                                ease: "liner",
+                                ease: "linear",
                                 times: state ===1 ? [0, 0.5] : [0,0.5],
                               }}
                         />
@@ -237,7 +237,7 @@ React.useEffect(()=>{
                             }}
                             transition={{
                                 duration: state ===0 ? 0 : state===1 ? 0.5 : 0.5,
-                                ease: "liner",
+                                ease: "linear",
                                 times: state ===1? [0, 0.5] : [0,0.5],
                               }}
                         />

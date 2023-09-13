@@ -1,5 +1,4 @@
 type gymWearItem = {
-    topid:number;
     brandname: string;
     image:string;
     productname:string;
@@ -7,6 +6,8 @@ type gymWearItem = {
     url:string;
     likecount:number;
   }
-
-
+type searchResultCount = {
+    C:number
+  }
+export type {searchResultCount}
 export type {gymWearItem}

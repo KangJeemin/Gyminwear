@@ -6,9 +6,9 @@ import Announcement from './src/component/header/announceMent/announcement'
 import { gymWearItem } from '@/src/type/gymwear'
 
 interface mainPageItemPropsType {
-    bestTopItem:gymWearItem
-    bestAllItem:gymWearItem
-    bestBottomItem:gymWearItem
+    bestTopItem:[]
+    bestAllItem:[]
+    bestBottomItem:[]
 }
 export const getStaticProps = async () => {
     try {

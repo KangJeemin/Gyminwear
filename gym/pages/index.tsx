@@ -24,7 +24,7 @@ export const getStaticProps = async (context: any) => {
         return { props: { res: [] } }; // 혹은 빈 배열 등의 기본값으로 처리
     }
 };
-const index = ({gymitem}:returnAPIType)=>{
+const index = ({gymitem}:any)=>{
     return(
         <div
         style={{

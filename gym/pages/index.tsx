@@ -34,7 +34,7 @@ const index = ({bestTopItem,bestAllItem,bestBottomItem}:any)=>{
             <Announcement/>
             <BestAll gymitem={bestAllItem}/>
             <BestTop gymitem={bestTopItem}/>
-            <BestBottom/>
+            <BestBottom gymitem={bestBottomItem}/>
         </div>
     )
 }

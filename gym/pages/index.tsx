@@ -32,7 +32,7 @@ const index = ({bestTopItem,bestAllItem,bestBottomItem}:any)=>{
             overscrollBehavior:"none"
         }}>
             <Announcement/>
-            <BestAll/>
+            <BestAll gymitem={bestAllItem}/>
             <BestTop gymitem={bestTopItem}/>
             <BestBottom/>
         </div>

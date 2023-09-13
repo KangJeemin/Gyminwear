@@ -3,6 +3,11 @@ import BestAll from './src/component/middle/bestAll/bestAll'
 import BestTop from './src/component/middle/bestTop/bestTop'
 import BestBottom from './src/component/middle/bestBottom/bestBottom'
 import Announcement from './src/component/header/announceMent/announcement'
+import { gymWearItem } from '@/src/type/gymwear'
+
+interface returnAPIType {
+    gymitem:gymWearItem
+}
 
 export const getStaticProps = async (context: any) => {
     try {
@@ -19,7 +24,7 @@ export const getStaticProps = async (context: any) => {
         return { props: { res: [] } }; // 혹은 빈 배열 등의 기본값으로 처리
     }
 };
-const index = ({gymitem}:any)=>{
+const index = ({gymitem}:returnAPIType)=>{
     return(
         <div
         style={{

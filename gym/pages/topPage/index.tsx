@@ -27,7 +27,7 @@ const Index: React.FC = () => {
   return (
     <div id={styles.topComponent}
     style={{
-        
+        overscrollBehavior:"contain"
     }}>
         <div id={styles.topComponent_topText}  className={styles.text_set_center}>
           <h3 id={styles.topComponent_text}>Top</h3>

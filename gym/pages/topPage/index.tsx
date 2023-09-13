@@ -25,7 +25,10 @@ const Index: React.FC = () => {
     },[topAndBottomData])
  
   return (
-    <div id={styles.topComponent}>
+    <div id={styles.topComponent}
+    style={{
+        overscrollBehavior:"none"
+    }}>
         <div id={styles.topComponent_topText}  className={styles.text_set_center}>
           <h3 id={styles.topComponent_text}>Top</h3>
         </div>
@@ -49,7 +52,7 @@ const Index: React.FC = () => {
                             </span>
                         </span>
                     ))}
-        </div>
+            </div>
         {pageState===0 ? (
             <div id ={styles.topComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`}>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>

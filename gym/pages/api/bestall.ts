@@ -10,8 +10,9 @@ export default async function getBestAllItems(): Promise<gymWearItem> {
           console.error(err);
           reject(err);
         } else {
-          console.log(result);
-          resolve(result);
+            const serializedResult = JSON.stringify(result); // 데이터 직렬화
+            resolve(serializedResult);
+          
         }
       }
     );

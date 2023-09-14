@@ -17,7 +17,7 @@ interface mainPageItemPropsType {
     bestBottomItem:[]
 }
 export const getStaticProps = async () => {
-   const getAllItem:any=await bestall()
+   const getAllItem:any= await bestall()
    console.log('getAllItem=',getAllItem)
     return { 
         props: { 

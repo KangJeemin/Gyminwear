@@ -9,8 +9,7 @@ export default function  bestall() {
         if(err) {
             return console.log(err)
         } else {
-            a=result;
+            return result;            
         }
     });
-    return a;
 }

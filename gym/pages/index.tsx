@@ -3,7 +3,7 @@ import BestAll from './src/component/middle/bestAll/bestAll'
 import BestTop from './src/component/middle/bestTop/bestTop'
 import BestBottom from './src/component/middle/bestBottom/bestBottom'
 import Announcement from './src/component/header/announceMent/announcement'
-import getmaindata from './src/module/fetchingMainData'
+import getmaindata from '../src/module/fetchingMainData'
 import { gymWearItem } from '@/src/type/gymwear'
 
 interface getmaindataFetching{
@@ -18,7 +18,7 @@ interface mainPageItemPropsType {
 }
 export const getStaticProps = async () => {
     const getfetchingMainData:any = getmaindata()
-
+    console.log(getfetchingMainData)
     return { 
         props: { 
             bestTopItem:getfetchingMainData.resBestTop,
@@ -26,6 +26,7 @@ export const getStaticProps = async () => {
             bestBottomItem:getfetchingMainData.resBestBottom,
              } 
         };
+    
     
 };
 const Index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>{

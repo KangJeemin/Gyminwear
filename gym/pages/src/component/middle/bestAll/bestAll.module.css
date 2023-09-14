@@ -19,7 +19,7 @@
     height: 93%;
     display: flex;
     
-    overflow-x: scroll;
+    overflow-x: hidden;
     border: 1px solid white
 }
 #bestAll_itemContainer_flexNowrap::-webkit-scrollbar{

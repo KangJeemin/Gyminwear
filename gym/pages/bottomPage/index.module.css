@@ -14,7 +14,7 @@
     width: 100%;
     height: auto;
     background-color: white;
-    overflow-y: scroll;
+    overflow-y:hidden;
 }
 #bottomComponent_item_itemComponent{
     width: 100%;

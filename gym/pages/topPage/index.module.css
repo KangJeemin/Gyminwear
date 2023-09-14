@@ -80,6 +80,7 @@
 }
 .flex_scrollSet{
     flex-shrink: 0;
+    overscroll-behavior: none;
 }
 .width_15per{
     width: 15%;

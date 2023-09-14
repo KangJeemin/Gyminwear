@@ -30,7 +30,7 @@ export const getStaticProps = async () => {
         return { props: { res: [] } }; // 혹은 빈 배열 등의 기본값으로 처리
     }
 };
-const index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>{
+const Index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>{
     return(
         <div
         style={{
@@ -46,4 +46,4 @@ const index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>
 
 
 
-export default index;
+export default Index;

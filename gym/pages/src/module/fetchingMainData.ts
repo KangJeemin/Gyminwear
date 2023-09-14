@@ -1,11 +1,18 @@
-async function getmaindata () {
+function getmaindata () {
     try {
-        const response1 = await fetch("http://localhost:3000/api/besttop");
-        const resBestTop = await response1.json();
-        const response2 = await fetch("http://localhost:3000/api/bestall");
-        const resBestAll = await response2.json();
-        const response3 = await fetch("http://localhost:3000/api/bestbottom");
-        const resBestBottom = await response3.json();
+        let resBestAll
+        fetch("http://localhost:3000/api/bestall").then(res=>res).then(data=>{
+            resBestAll=data
+        })
+        let resBestTop
+        fetch("http://localhost:3000/api/besttop").then(res=>res).then(data=>{
+            resBestTop=data
+        })
+        let resBestBottom
+        fetch("http://localhost:3000/api/bestbottom").then(res=>res).then(data=>{
+            resBestBottom=data
+        })
+
         return{resBestAll,resBestTop,resBestBottom}
     } catch (error) {
         console.error("Error fetching data:", error);

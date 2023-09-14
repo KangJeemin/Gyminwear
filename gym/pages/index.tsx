@@ -3,7 +3,7 @@ import BestAll from './src/component/middle/bestAll/bestAll'
 import BestTop from './src/component/middle/bestTop/bestTop'
 import BestBottom from './src/component/middle/bestBottom/bestBottom'
 import Announcement from './src/component/header/announceMent/announcement'
-import bestall from '../pages/api/bestall'
+import bestall from './src/module/bestall'
 import { gymWearItem } from '@/src/type/gymwear'
 
 interface getmaindataFetching{

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { gymWearItem } from '@/src/type/gymwear';
-const db = require('../../src/db/db')
+const db = require('../../../src/db/db')
 
 export default function  bestall() {
     let a:any

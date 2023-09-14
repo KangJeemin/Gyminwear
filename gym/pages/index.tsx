@@ -4,13 +4,10 @@ import BestTop from './src/component/middle/bestTop/bestTop'
 import BestBottom from './src/component/middle/bestBottom/bestBottom'
 import Announcement from './src/component/header/announceMent/announcement'
 import bestall from './api/bestall'
+import besttop from './api/besttop'
+import bestbottom from './api/bestbottom'
 import { gymWearItem } from '@/src/type/gymwear'
 
-interface getmaindataFetching{
-    resBestAll:[]
-    resBestTop:[]
-    resBestBottom:[]
-}
 interface mainPageItemPropsType {
     bestTopItem:[]
     bestAllItem:[]
@@ -18,11 +15,16 @@ interface mainPageItemPropsType {
 }
 export const getStaticProps = async () => {
    const getAllItem= await bestall()
-   const convertJSON:gymWearItem = JSON.parse(getAllItem)
-   console.log('getAllItem=',getAllItem)
+   const convertJSONAll:gymWearItem = JSON.parse(getAllItem)
+   const getTopItem= await besttop()
+   const convertJSONTop:gymWearItem = JSON.parse(getTopItem)
+   const getBottomItem= await bestbottom()
+   const convertJSONBottom:gymWearItem = JSON.parse(getBottomItem)
     return { 
         props: { 
-            bestAllItem:convertJSON?convertJSON:null 
+            bestAllItem:convertJSONAll?convertJSONAll:null,
+            bestTopItem:convertJSONTop?convertJSONTop:null,
+            bestBottomItem:convertJSONBottom?convertJSONBottom:null 
              } 
         };
     

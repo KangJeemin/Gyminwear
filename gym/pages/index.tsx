@@ -17,11 +17,12 @@ interface mainPageItemPropsType {
     bestBottomItem:[]
 }
 export const getStaticProps = async () => {
-   const getAllItem:gymWearItem= await bestall()
+   const getAllItem= await bestall()
+   const convertJSON:gymWearItem = JSON.parse(getAllItem)
    console.log('getAllItem=',getAllItem)
     return { 
         props: { 
-            bestAllItem:getAllItem?getAllItem:null 
+            bestAllItem:convertJSON?convertJSON:null 
              } 
         };
     

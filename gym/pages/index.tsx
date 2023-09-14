@@ -21,9 +21,9 @@ export const getStaticProps = async () => {
     console.log(getfetchingMainData)
     return { 
         props: { 
-            bestTopItem:getfetchingMainData.resBestTop,
-            bestAllItem:getfetchingMainData.resBestAll,
-            bestBottomItem:getfetchingMainData.resBestBottom,
+            bestTopItem:getfetchingMainData[1],
+            bestAllItem:getfetchingMainData[0],
+            bestBottomItem:getfetchingMainData[2]
              } 
         };
     

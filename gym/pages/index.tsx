@@ -12,11 +12,11 @@ interface mainPageItemPropsType {
 }
 export const getStaticProps = async () => {
     try {
-        const response1 = await fetch("http://localhost:3000/api/besttop");
+        const response1 = await fetch("http://3.35.175.77/api/besttop");
         const resBestTop = await response1.json();
-        const response2 = await fetch("http://localhost:3000/api/bestall");
+        const response2 = await fetch("http://3.35.175.77/api/bestall");
         const resBestAll = await response2.json();
-        const response3 = await fetch("http://localhost:3000/api/bestbottom");
+        const response3 = await fetch("http://3.35.175.77/api/bestbottom");
         const resBestBottom = await response3.json();
         return { 
             props: { 
@@ -30,7 +30,7 @@ export const getStaticProps = async () => {
         return { props: { res: [] } }; // 혹은 빈 배열 등의 기본값으로 처리
     }
 };
-const index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>{
+const Index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>{
     return(
         <div
         style={{
@@ -46,4 +46,4 @@ const index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>
 
 
 
-export default index;
+export default Index;

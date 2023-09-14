@@ -3,6 +3,9 @@ import BestAll from './src/component/middle/bestAll/bestAll'
 import BestTop from './src/component/middle/bestTop/bestTop'
 import BestBottom from './src/component/middle/bestBottom/bestBottom'
 import Announcement from './src/component/header/announceMent/announcement'
+import bestall from './api/bestall'
+import besttop from './api/besttop'
+import bestbottom from './api/bestbottom'
 import { gymWearItem } from '@/src/type/gymwear'
 
 interface mainPageItemPropsType {
@@ -11,24 +14,21 @@ interface mainPageItemPropsType {
     bestBottomItem:[]
 }
 export const getStaticProps = async () => {
-    try {
-        const response1 = await fetch("http://3.35.175.77/api/besttop");
-        const resBestTop = await response1.json();
-        const response2 = await fetch("http://3.35.175.77/api/bestall");
-        const resBestAll = await response2.json();
-        const response3 = await fetch("http://3.35.175.77/api/bestbottom");
-        const resBestBottom = await response3.json();
-        return { 
-            props: { 
-                bestTopItem:resBestTop,
-                bestAllItem:resBestAll,
-                bestBottomItem:resBestBottom,
-                 } 
-            };
-    } catch (error) {
-        console.error("Error fetching data:", error);
-        return { props: { res: [] } }; // 혹은 빈 배열 등의 기본값으로 처리
-    }
+   const getAllItem= await bestall()
+   const convertJSONAll:gymWearItem = JSON.parse(getAllItem)
+   const getTopItem= await besttop()
+   const convertJSONTop:gymWearItem = JSON.parse(getTopItem)
+   const getBottomItem= await bestbottom()
+   const convertJSONBottom:gymWearItem = JSON.parse(getBottomItem)
+    return { 
+        props: { 
+            bestAllItem:convertJSONAll?convertJSONAll:null,
+            bestTopItem:convertJSONTop?convertJSONTop:null,
+            bestBottomItem:convertJSONBottom?convertJSONBottom:null 
+             } 
+        };
+    
+    
 };
 const Index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>{
     return(

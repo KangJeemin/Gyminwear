@@ -17,10 +17,10 @@ interface mainPageItemPropsType {
     bestBottomItem:[]
 }
 export const getStaticProps = async () => {
-   const bestAllItem = bestall()
+   const getAllItem:any = await bestall()
     return { 
         props: { 
-            bestAllItem,
+            bestAllItem:getAllItem
              } 
         };
     

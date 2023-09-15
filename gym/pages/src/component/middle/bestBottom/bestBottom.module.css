@@ -1,6 +1,6 @@
 #bestBottom{
     width: 100vw;
-    height: 75vh;
+    height: auto;
     border-color: red;
 
 
@@ -12,6 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
 
 }
 #bestBottom_itemContainer_flexNowrap{

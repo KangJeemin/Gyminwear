@@ -1,7 +1,7 @@
 #topComponent{
     width: 100vw;
-    height: 400vh;
-    min-height: 100vh; /* 최소 화면 높이만큼 설정 */
+    height: 200vh;
+    min-height: 200vh; /* 최소 화면 높이만큼 설정 */
     
 }
 #topComponent_topText{

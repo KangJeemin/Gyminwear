@@ -102,7 +102,6 @@ const Index: React.FC = () => {
         //     </div>   
         // ) 
         : null}
-    <Footer/>    
     </div>
     
   );

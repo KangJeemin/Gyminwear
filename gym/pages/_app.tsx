@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Header/>
       <HeaderMargin/>
       <Component {...pageProps} />
-      
+      <Footer/>
     </AuthProvider>
   )
 

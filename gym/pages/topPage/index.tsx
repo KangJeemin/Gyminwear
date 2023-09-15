@@ -28,13 +28,7 @@ const Index: React.FC = () => {
     },[topAndBottomData])
  
   return (
-    <div>
-    <Header/>
-    <HeaderMargin/>
-    <div id={styles.topComponent}
-    style={{
-        
-    }}>
+    <div id={styles.topComponent}>
         <div id={styles.topComponent_topText}  className={styles.text_set_center}>
           <h3 id={styles.topComponent_text}>Top</h3>
         </div>
@@ -109,7 +103,6 @@ const Index: React.FC = () => {
         // ) 
         : null}
     <Footer/>    
-    </div>
     </div>
     
   );

@@ -1,6 +1,7 @@
 #topComponent{
     width: 100vw;
     height: 400vh;
+    min-height: 100vh; /* 최소 화면 높이만큼 설정 */
     
 }
 #topComponent_topText{
@@ -10,7 +11,6 @@
     color: black;
     
 }
-
 #topComponent_itemContainer{
     width: 100%;
     height: auto;

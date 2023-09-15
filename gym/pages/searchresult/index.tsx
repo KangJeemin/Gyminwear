@@ -82,15 +82,15 @@ const Index = ({item,count}:any) => {
     <div id={styles.searchResultComponent}>
         <div id={styles.searchResultComponent_searchContainer}>
             <div id={styles.searchResultComponent_searchIconContainer}>
-                <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray",}}/>
+                <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"1em",color:"gray",}}/>
             </div>
             <div id= {styles.searchResultComponent_deleteIconContainer}>
-                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray",visibility:searchWord===""? "hidden":"visible"}} onClick={initializeSearchText}/>
+                <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"1em",color:"gray",visibility:searchWord===""? "hidden":"visible"}} onClick={initializeSearchText}/>
             </div>
             <input id={styles.searchResultComponent_search} onChange={setInputText} onKeyDown={keydown} value={searchWord} type="test" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
         </div>
         <div id={styles.searchResultComponent_topText}>
-          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchResultText}&#39;에 대한 {count}개의 검색 결과를 발견했습니다.</h1>
+          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchResultText}&#39;에 대한 {count}개의 검색 결과</h1>
         </div>
             <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`} ref={target2}>
                      {item.map((object:gymWearItem, index:number) => (

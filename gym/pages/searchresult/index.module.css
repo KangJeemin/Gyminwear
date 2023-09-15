@@ -25,7 +25,7 @@
 #searchResultComponent_search{
     width: 93%;
     height: 100%;
-    color: black;
+    color: #D9D9D9;
     background-color: white;
     font-size: 1rem;
     font-weight: bold;
@@ -38,7 +38,7 @@
     padding-left:3%;
     padding-right:3%;
     background-color:white;
-    color: gray;
+    color: black;
     display: flex;
     align-items: center;
     font-size: 0.7em;

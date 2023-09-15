@@ -6,6 +6,8 @@ import Image from 'next/image';
 import type { gymWearItem } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 import Footer from '../src/component/footer/footer'
+import Header from '../src/component/header/header/header';
+import HeaderMargin from '../src/component/header/headerMargin';
 
 const Index: React.FC = () => { 
     
@@ -26,6 +28,9 @@ const Index: React.FC = () => {
     },[topAndBottomData])
  
   return (
+    <div>
+    <Header/>
+    <HeaderMargin/>
     <div id={styles.topComponent}
     style={{
         
@@ -104,6 +109,7 @@ const Index: React.FC = () => {
         // ) 
         : null}
     <Footer/>    
+    </div>
     </div>
     
   );

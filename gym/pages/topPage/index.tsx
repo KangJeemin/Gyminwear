@@ -5,11 +5,18 @@ import styles from './index.module.css';
 import Image from 'next/image';
 import type { gymWearItem } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
-import Footer from '../src/component/footer/footer'
-import Header from '../src/component/header/header/header';
-import HeaderMargin from '../src/component/header/headerMargin';
+import { GetServerSidePropsContext } from 'next';
 
-const Index: React.FC = () => { 
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const { page } = context.query;
+    const res = await fetch(`http://localhost:3000/api/toppage?page=${page}`);
+    const data = await res.json();
+    return { props: { 
+        item:data.result,
+        count:data.countresult[0].C
+     } };
+  }
+const Index: React.FC = ({item,count}:any) => { 
     
     const router = useRouter();
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
@@ -26,6 +33,7 @@ const Index: React.FC = () => {
     useEffect(()=>{
         
     },[topAndBottomData])
+    
  
   return (
     <div id={styles.topComponent}>
@@ -33,7 +41,7 @@ const Index: React.FC = () => {
           <h3 id={styles.topComponent_text}>Top</h3>
         </div>
              <div id={styles.topComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
-                     {topAndBottomData.map((object:gymWearItem, index:number) => (
+                     {item.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.topComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.topComponent_item_imageSize}>
                                 <Image

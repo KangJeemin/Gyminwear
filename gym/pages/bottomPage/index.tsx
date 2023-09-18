@@ -5,24 +5,24 @@ import styles from './index.module.css';
 import Image from 'next/image';
 import type { gymWearItem } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
+import { GetServerSidePropsContext } from 'next';
 
-const Index: React.FC = () => { 
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const { page } = context.query;
+    const res = await fetch(`http://localhost:3000/api/bottom?page=${page}`);
+    const data = await res.json();
+    console.log(data)
+    return { props: { 
+        item:data
+     } };
+  }
+
+const Index= ({item}:any) => { 
     
     const router = useRouter();
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
     const [pageState,setPageState] = useState<number>(0)
-    const bottomItemDataAPI = async (page:number) =>{
-         await fetch(`/api/bottompage?page=${page}`)
-                .then(res=> res.json())
-                .then(data=>setTopAndBottomData(data))
-        
-            }
-    useEffect(()=>{
-        bottomItemDataAPI(1)
-    },[])
-    useEffect(()=>{
-        
-    },[topAndBottomData])
+    
  
   return (
     <div id={styles.bottomComponent}>
@@ -30,7 +30,7 @@ const Index: React.FC = () => {
           <h3 id={styles.bottomComponent_text}>Bottom</h3>
         </div>
              <div id={styles.bottomComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
-                     {topAndBottomData.map((object:gymWearItem, index:number) => (
+                     {item.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.bottomComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bottomComponent_item_imageSize}>
                                 <Image

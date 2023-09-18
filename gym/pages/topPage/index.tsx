@@ -30,9 +30,9 @@ const Index: React.FC = ({item,count}:any) => {
     // useEffect(()=>{
     //     topItemDataAPI(1)
     // },[])
-    useEffect(()=>{
+    // useEffect(()=>{
         
-    },[topAndBottomData])
+    // },[topAndBottomData])
     
  
   return (

@@ -179,7 +179,7 @@ React.useEffect(()=>{
                    <Image 
                         src={Logo} 
                         alt='이미지 표시 불가'
-                        layout='responsive'                        
+                        layout='fill'                        
                         />
                 </div>
                 <div id={styles.centerBox}></div>

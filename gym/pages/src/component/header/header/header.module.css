@@ -16,7 +16,7 @@
 #logoBox {
     width: 32%;
     height: 100%;
-    
+    position: relative;
     color: black;
 }
 #centerBox {

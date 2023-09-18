@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import { AuthContext } from '@/public/context/authcontext';
 import styles from './index.module.css';
 import Image from 'next/image';
-import type { gymWearItem } from '@/src/type/gymwear';
+import type { gymWearItem, GymItemProps } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 import { GetServerSidePropsContext } from 'next';
 
@@ -13,28 +13,15 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const data = await res.json();
     console.log(data)
     return { props: { 
-        item:data
+        gymitem:data
         
      } };
   }
-const Index: React.FC = ({item,count}:any) => { 
+const Index= ({gymitem}:GymItemProps) => { 
     
     const router = useRouter();
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
-    const [pageState,setPageState] = useState<number>(0)
-    // const topItemDataAPI = async (page:number) =>{
-    //      await fetch(`/api/toppage?page=${page}`)
-    //             .then(res=> res.json())
-    //             .then(data=>setTopAndBottomData(data))
-        
-    //         }
-    // useEffect(()=>{
-    //     topItemDataAPI(1)
-    // },[])
-    // useEffect(()=>{
-        
-    // },[topAndBottomData])
-    
+    const [pageState,setPageState] = useState<number>(0)   
  
   return (
     <div id={styles.topComponent}>
@@ -42,7 +29,7 @@ const Index: React.FC = ({item,count}:any) => {
           <h3 id={styles.topComponent_text}>Top</h3>
         </div>
              <div id={styles.topComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
-                     {item.map((object:gymWearItem, index:number) => (
+                     {gymitem.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.topComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.topComponent_item_imageSize}>
                                 <Image

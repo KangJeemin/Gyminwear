@@ -9,7 +9,7 @@ import { GetServerSidePropsContext } from 'next';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { page } = context.query;
-    const res = await fetch(`http://localhost:3000/api/bottom?page=${page}`);
+    const res = await fetch(`http://localhost:3000/api/bottompage?page=${page}`);
     const data = await res.json();
     console.log(data)
     return { props: { 

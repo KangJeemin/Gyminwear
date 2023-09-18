@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import { AuthContext } from '@/public/context/authcontext';
 import styles from './index.module.css';
 import Image from 'next/image';
-import type { gymWearItem,topAndBottomPageItem } from '@/src/type/gymwear';
+import type { gymWearItem ,GymItemProps} from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 import { GetServerSidePropsContext } from 'next';
 
@@ -13,11 +13,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const data = await res.json();
     console.log(data)
     return { props: { 
-        item:data
+        gymitem:data
      } };
   }
 
-const Index= ({item}:topAndBottomPageItem) => { 
+const Index= ({gymitem}:GymItemProps) => { 
     
     const router = useRouter();
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
@@ -30,7 +30,7 @@ const Index= ({item}:topAndBottomPageItem) => {
           <h3 id={styles.bottomComponent_text}>Bottom</h3>
         </div>
              <div id={styles.bottomComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
-                     {item.map((object:gymWearItem, index:number) => (
+                     {gymitem.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.bottomComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bottomComponent_item_imageSize}>
                                 <Image

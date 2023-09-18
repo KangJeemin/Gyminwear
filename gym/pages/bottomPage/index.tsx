@@ -17,7 +17,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
      } };
   }
 
-const Index= ({item}:any) => { 
+const Index:React.FC= ({item}:any) => { 
     
     const router = useRouter();
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)

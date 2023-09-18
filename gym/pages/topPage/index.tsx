@@ -11,9 +11,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { page } = context.query;
     const res = await fetch(`http://localhost:3000/api/toppage?page=${page}`);
     const data = await res.json();
+    console.log(data)
     return { props: { 
-        item:data.result,
-        count:data.countresult[0].C
+        item:data
+        
      } };
   }
 const Index: React.FC = ({item,count}:any) => { 

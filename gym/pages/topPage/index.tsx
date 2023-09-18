@@ -59,7 +59,7 @@ const Index= ({gymitem}:GymItemProps) => {
                 </span>
                 <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
                     setPageState(1)
-                    // topItemDataAPI(2)
+                    router.push(`/topPage?page=2`)
                     window.scrollTo(0, 0);
                     }}>&#62;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
@@ -69,7 +69,7 @@ const Index= ({gymitem}:GymItemProps) => {
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>
                 <span className={`${styles.width_15per} ${styles.text_set_center} ${styles.color_black}`} onClick={()=>{
                     setPageState(0)
-                    // topItemDataAPI(1)
+                    router.push(`/topPage?page=1`)
                     window.scrollTo(0, 0);
                 }}>&#60;</span>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}>

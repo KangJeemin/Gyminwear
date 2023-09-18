@@ -10,13 +10,13 @@
 #categoryBox{
     width:100vw;
     height:5vh;
-    position: "relative";
     border: none;
-
+    display: block;
 }
 #logoBox {
     width: 32%;
     height: 100%;
+    
     color: black;
 }
 #centerBox {
@@ -38,6 +38,7 @@
 #shoppingBox{
     width: 33%;
     height: 100%;
+    position: relative;
 }
 #hambergerBox{
     width: 33%;

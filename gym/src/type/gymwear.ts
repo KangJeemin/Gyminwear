@@ -12,6 +12,10 @@ type searchResultCount = {
 type GymItemProps = {
   gymitem:[]
 }
+type topAndBottomPageItem = {
+  item:[]
+}
 export type {searchResultCount}
 export type {gymWearItem}
 export type {GymItemProps}
+export type {topAndBottomPageItem}

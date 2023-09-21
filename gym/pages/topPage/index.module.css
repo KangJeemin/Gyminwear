@@ -157,19 +157,17 @@
 #pc_topNumberLeftBox{
     width: 33%;
     height: 100%;
-    background-color: red;
 }
 #pc_topNumberCenterBox{
     width: 34%;
     height: 100%;
-    background-color: blue;
     display: flex;
-    justify-content:space-between
+    justify-content:space-between;
+    color: black;
 }
 #pc_topNumberRightBox{
     width: 33%;
     height: 100%;
-    background-color: green;
 }
 #pc_topNumberMargin{
     width: 3rem;

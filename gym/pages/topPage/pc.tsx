@@ -40,7 +40,7 @@ import { GetServerSidePropsContext } from 'next';
                     <div id={styles.pc_topNumberCenterBox} className={`${styles.text_set_center}`}>
                         <div id={styles.pc_topNumberMargin}></div>
                         <span>&#60;</span>
-                        <span>1</span>
+                        <span style={{border:'1px solid',padding:'10px'}}>1</span>
                         <span>2</span>
                         <span>&#62;</span>
                         <div id={styles.pc_topNumberMargin}></div>

@@ -11,7 +11,7 @@ import Logo from '../../../../../public/image/gyminwearLogo.png'
 const PcHeader = () => {
     return(
     <div id={styles.pc_headerContainer} className={`${styles.flexRow}`}>
-        <div id={styles.pc_headerLeftBox}>a</div>
+        <div id={styles.pc_headerLeftBox}></div>
         <div id={styles.pc_headerCenterBox} className={`${styles.flexRow}`}>
             <div id={styles.pc_headerLogoBox}>
                 <Image 
@@ -24,10 +24,10 @@ const PcHeader = () => {
             <div id={styles.pc_headerBottomBox} className={`${styles.setTextCenter}`}>Bottom</div>
             <div id={styles.pc_headerxxxBox}>d</div>
             <div id={styles.pc_headerSearchBox}>
-                <FontAwesomeIcon  icon={faSearch} style={{fontSize:"2em",color:"black"}}/>
+                <FontAwesomeIcon  icon={faSearch} style={{fontSize:"1.5em",color:"black"}}/>
             </div>
         </div>
-        <div id={styles.pc_headerRightBox}>ㅊ</div>
+        <div id={styles.pc_headerRightBox}></div>
     </div>
     )
 }

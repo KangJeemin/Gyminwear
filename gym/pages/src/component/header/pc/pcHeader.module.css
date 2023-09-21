@@ -6,17 +6,14 @@
 #pc_headerLeftBox{
     width: 15%;
     height: 100%;
-    background-color: red;
 }
 #pc_headerCenterBox{
     width: 70%;
     height: 100%;
-    background-color: blue
 }
 #pc_headerRightBox{
     width: 15%;
     height: 100%;
-    background-color: green
 }
 #pc_headerLogoBox{
     position: relative;

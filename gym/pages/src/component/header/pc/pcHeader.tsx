@@ -11,13 +11,21 @@ import Logo from '../../../../../public/image/gyminwearLogo.png'
 const PcHeader = () => {
     return(
     <div id={styles.pc_headerContainer} className={`${styles.flexRow}`}>
-        <div id={styles.pc_headerLeftBox}>ㅁ</div>
-        <div id={styles.pc_headerCenterBox}>
-            <div id={styles.pcHeaderLogoBox}>ㅁ</div>
-            <div id={styles.pc_headerTopBox}></div>
-            <div id={styles.pc_headerBottomBox}></div>
-            <div id={styles.pc_headerxxxBox}></div>
-            <div id={styles.pc_headerSearchBox}></div>
+        <div id={styles.pc_headerLeftBox}>a</div>
+        <div id={styles.pc_headerCenterBox} className={`${styles.flexRow}`}>
+            <div id={styles.pc_headerLogoBox}>
+                <Image 
+                    src={Logo} 
+                    alt='이미지 표시 불가'
+                    layout='fill'                        
+                />
+            </div>
+            <div id={styles.pc_headerTopBox}>Top</div>
+            <div id={styles.pc_headerBottomBox}>Bottom</div>
+            <div id={styles.pc_headerxxxBox}>d</div>
+            <div id={styles.pc_headerSearchBox}>
+                <FontAwesomeIcon icon={faSearch} style={{fontSize:"2em",color:"black"}}/>
+            </div>
         </div>
         <div id={styles.pc_headerRightBox}>ㅊ</div>
     </div>

@@ -1,16 +1,16 @@
-#pc_headerContainer{
+#pcHeaderContainer{
     width: 100%;
     height: 10%;
 }
-#pc_headerLeftBox{
+#pcHeaderLeftBox{
     width: 15%;
     background-color: red;
 }
-#pc_headerCenterBox{
+#pcHeaderCenterBox{
     width: 70%;
     background-color: blue
 }
-#pc_headerRightBox{
+#pcHeaderRightBox{
     width: 15;
     background-color: green
 }

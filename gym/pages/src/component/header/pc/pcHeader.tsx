@@ -20,8 +20,8 @@ const PcHeader = () => {
                     layout='fill'                        
                 />
             </div>
-            <div id={styles.pc_headerTopBox}>Top</div>
-            <div id={styles.pc_headerBottomBox}>Bottom</div>
+            <div id={styles.pc_headerTopBox} className={`${styles.setTextCenter}`}>Top</div>
+            <div id={styles.pc_headerBottomBox} className={`${styles.setTextCenter}`}>Bottom</div>
             <div id={styles.pc_headerxxxBox}>d</div>
             <div id={styles.pc_headerSearchBox}>
                 <FontAwesomeIcon icon={faSearch} style={{fontSize:"2em",color:"black"}}/>

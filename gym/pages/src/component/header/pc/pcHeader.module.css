@@ -23,10 +23,10 @@
     width: 100px;
 }
 #pc_headerTopBox{
-    width: 10%;
+    width: 15%;
 }
 #pc_headerBottomBox{
-    width: 10%;
+    width: 15%;
 }
 #pc_headerxxxBox{
     width: 70%;
@@ -40,4 +40,9 @@
 .flexColumn{
     display:flex;
     flex-direction: column;
+}
+.setTextCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

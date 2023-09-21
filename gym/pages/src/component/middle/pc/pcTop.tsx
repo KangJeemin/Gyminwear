@@ -12,7 +12,7 @@ const PcTop = (props:GymItemProps) => {
             <div id={styles.pc_topLeftBox}></div>
             <div id={styles.pc_topCenterBox}>
                 <div id={styles.pc_topCenterMarginBox}></div>
-                <div id={styles.pc_topContentBox}>
+                <div id={styles.pc_topContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>
                    {props.gymitem?(props.gymitem.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.bestTop_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bestTop_item_imageSize}>

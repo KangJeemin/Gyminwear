@@ -4,8 +4,22 @@
 }
 #pc_mainImageContainer{
     width: 100%;
-    height: 30%;
+    height: 30rem;
     background-color: red;
+}
+#pc_mainImagemargin{
+    width: 100%;
+    height: 10rem;
+}
+#pc_mainImage2{
+    width: 100%;
+    height: 30rem;
+    background-color: yellow;
+}
+#pc_mainImage3{
+    width: 100%;
+    height: 30rem;
+    background-color: blue
 }
 #pc_mainImageContainerLeftBox{
     width: 15%;
@@ -35,20 +49,7 @@
     height: 100%;
 }
 
-#pc_mainImagemargin{
-    width: 100%;
-    height: 20%;
-}
-#pc_mainImage2{
-    width: 100%;
-    height: 20%;
-    background-color: yellow;
-}
-#pc_mainImage3{
-    width: 100%;
-    height: 20%;
-    background-color: blue
-}
+
 .flexRow {
     display:flex;
 }

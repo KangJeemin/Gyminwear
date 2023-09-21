@@ -7,6 +7,7 @@ import bestall from './api/bestall'
 import besttop from './api/besttop'
 import bestbottom from './api/bestbottom'
 import { gymWearItem } from '@/src/type/gymwear'
+import PcHeader from './src/component/header/pc/pcHeader'
 
 interface mainPageItemPropsType {
     bestTopItem:[]
@@ -36,10 +37,11 @@ const Index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>
         style={{
             overscrollBehavior:"none"
         }}>
-            <Announcement/>
-            <BestAll gymitem={bestAllItem}/>
-            <BestTop gymitem={bestTopItem}/>
-            <BestBottom gymitem={bestBottomItem}/>
+            {/* <Announcement/> */}
+            {/* <BestAll gymitem={bestAllItem}/> */}
+            {/* <BestTop gymitem={bestTopItem}/> */}
+            {/* <BestBottom gymitem={bestBottomItem}/> */}
+            <PcHeader/>
         </div>
     )
 }

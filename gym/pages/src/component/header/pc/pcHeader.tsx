@@ -6,10 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Image from 'next/image';
 import Logo from '../../../../../public/image/gyminwearLogo.png'
-import { style } from '@mui/system';
 
 
 const PcHeader = () => {
+    return(
     <div id={styles.pc_headerContainer}>
         <div id={styles.pc_headerLeftBox}></div>
         <div id={styles.pc_headerCenterBox}>
@@ -21,7 +21,7 @@ const PcHeader = () => {
         </div>
         <div id={styles.pc_headerRightBox}></div>
     </div>
-
+    )
 }
 
 export default PcHeader

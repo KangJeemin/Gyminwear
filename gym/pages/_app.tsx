@@ -9,10 +9,10 @@ import Footer from './src/component/footer/footer'
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
-      <Header/>
-      <HeaderMargin/>
+      {/* <Header/> */}
+      {/* <HeaderMargin/> */}
       <Component {...pageProps} />
-      <Footer/>
+      {/* <Footer/> */}
     </AuthProvider>
   )
 

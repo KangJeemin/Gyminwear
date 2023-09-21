@@ -4,10 +4,13 @@
 }
 #pc_headerLeftBox{
     width: 15%;
+    background-color: red;
 }
 #pc_headerCenterBox{
     width: 70%;
+    background-color: blue
 }
 #pc_headerRightBox{
     width: 15;
+    background-color: green
 }

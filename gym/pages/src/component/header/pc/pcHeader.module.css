@@ -1,6 +1,6 @@
 #pc_headerContainer{
     width: 100%;
-    height: 2rem;
+    height: 3rem;
     
 }
 #pc_headerLeftBox{
@@ -24,9 +24,11 @@
 }
 #pc_headerTopBox{
     width: 15%;
+    color: black;
 }
 #pc_headerBottomBox{
     width: 15%;
+    color: black;
 }
 #pc_headerxxxBox{
     width: 70%;

@@ -24,7 +24,7 @@ const PcHeader = () => {
             <div id={styles.pc_headerBottomBox} className={`${styles.setTextCenter}`}>Bottom</div>
             <div id={styles.pc_headerxxxBox}>d</div>
             <div id={styles.pc_headerSearchBox}>
-                <FontAwesomeIcon icon={faSearch} style={{fontSize:"2em",color:"black"}}/>
+                <FontAwesomeIcon  icon={faSearch} style={{fontSize:"2em",color:"black"}}/>
             </div>
         </div>
         <div id={styles.pc_headerRightBox}>ㅊ</div>

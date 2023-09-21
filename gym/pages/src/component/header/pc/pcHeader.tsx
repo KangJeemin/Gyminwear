@@ -10,16 +10,16 @@ import Logo from '../../../../../public/image/gyminwearLogo.png'
 
 const PcHeader = () => {
     return(
-    <div id={styles.pcHeaderContainer}>
-        <div id={styles.pcHeaderLeftBox}></div>
-        <div id={styles.pcHeaderCenterBox}>
-            <div id={styles.pcHeaderLogoBox}></div>
-            <div id={styles.pcHeaderTopBox}></div>
-            <div id={styles.pcHeaderBottomBox}></div>
-            <div id={styles.pcHeaderxxxBox}></div>
-            <div id={styles.pcHeaderSearchBox}></div>
+    <div id={styles.pc_headerContainer}>
+        <div id={styles.pc_headerLeftBox}>ㅁ</div>
+        <div id={styles.pc_headerCenterBox}>
+            <div id={styles.pcHeaderLogoBox}>ㅁ</div>
+            <div id={styles.pc_headerTopBox}></div>
+            <div id={styles.pc_headerBottomBox}></div>
+            <div id={styles.pc_headerxxxBox}></div>
+            <div id={styles.pc_headerSearchBox}></div>
         </div>
-        <div id={styles.pcHeaderRightBox}></div>
+        <div id={styles.pc_headerRightBox}>ㅊ</div>
     </div>
     )
 }

@@ -152,19 +152,27 @@
 #pc_topNumvberNavigateContainer{
     width: 100%;
     height: 5rem;
-    background-color: red;
+    
 }
 #pc_topNumberLeftBox{
     width: 33%;
     height: 100%;
+    background-color: red;
 }
 #pc_topNumberCenterBox{
     width: 34%;
     height: 100%;
+    background-color: blue;
+    display: flex;
+    justify-content:space-between
 }
 #pc_topNumberRightBox{
     width: 33%;
     height: 100%;
+    background-color: green;
+}
+#pc_topNumberMargin{
+    width: 3rem;
 }
 .grid_5x4{
     display: grid;

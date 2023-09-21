@@ -8,13 +8,19 @@ import Image from 'next/image';
 import Logo from '../../../../../public/image/gyminwearLogo.png'
 
 
-const Header = () => {
+const PcHeader = () => {
     <div id='pc-headerContainer'>
         <div id='pc-headerLeftBox'></div>
-        <div id='pc-headerCenterBox'></div>
+        <div id='pc-headerCenterBox'>
+            <div id='pc-headerLogoBox'></div>
+            <div id='pc-headerTopBox'></div>
+            <div id='pc-headerBottomBox'></div>
+            <div id='pc-headerxxxBox'></div>
+            <div id='pc-headerSearchBox'></div>
+        </div>
         <div id='pc-headerRightBox'></div>
     </div>
 
 }
 
-export default Header
+export default PcHeader

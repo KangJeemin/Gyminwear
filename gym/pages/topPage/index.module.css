@@ -89,3 +89,69 @@
 .color_blue{
     color: blue;
 }
+#pc_topContainer{
+    width: 100%;
+    height: auto;
+}
+#pc_topLeftBox{
+    width: 10%;
+    height: 100%;
+}
+#pc_topCenterBox{
+    width: 90%;
+    height: auto;
+}
+#pc_topRightBox{
+    width: 10%;
+    height: 100%;
+}
+#pc_topCenterMarginBox{
+    width: 100%;
+    height: 10rem;
+}
+#pc_topItem_itemComponent{
+    width: 100%;
+    height: 300px;
+    border-color: white;
+
+}
+#pc_topItem_imageSize{
+    width: 100%;
+    height: 80%;
+    position: relative;
+}
+#pc_topItem_textBoxSize{
+    width: 100%;
+    height: 30%;
+    background-color: white;
+}
+#pc_topItem_itemBrandName{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    color:black;
+    font-weight :bold;  
+}
+#pc_topItem_itemName{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    color: gray;
+}
+#pc_topItem_itemPrice{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    color:black;
+}
+.grid_5x4{
+    display: grid;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.padding_1{
+    padding: 5%;
+}
+.flex_scrollset{
+    flex-shrink: 0;
+}

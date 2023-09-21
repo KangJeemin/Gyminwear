@@ -39,6 +39,7 @@
 #pc_mainImageContainerImageBoxLeftButton{
     width: 5%;
     height: 100%;
+    background-color: purple;
 }
 #pc_mainImageContainerImageBoxImage{
     width: 90%;
@@ -47,6 +48,7 @@
 #pc_mainImageContainerImageBoxRightButton{
     width: 5%;
     height: 100%;
+    background-color: purple;
 }
 
 

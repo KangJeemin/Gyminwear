@@ -1,0 +1,20 @@
+#pc_topContainer{
+    width: 100%;
+    height: auto;
+}
+#pc_topLeftBox{
+    width: 10%;
+    height: 100%;
+}
+#pc_topCenterBox{
+    width: 90%;
+    height: auto;
+}
+#pc_topRightBox{
+    width: 10%;
+    height: 100%;
+}
+#pc_topCenterMarginBox{
+    width: 100%;
+    height: 10rem;
+}

@@ -96,6 +96,7 @@
 #pc_topLeftBox{
     width: 10%;
     height: 100%;
+    background-color: gray;
 }
 #pc_topCenterBox{
     width: 90%;
@@ -104,6 +105,7 @@
 #pc_topRightBox{
     width: 10%;
     height: 100%;
+    background-color: gray;
 }
 #pc_topCenterMarginBox{
     width: 100%;
@@ -154,7 +156,4 @@
 }
 .padding_3{
     padding: 10%;
-}
-.flex_scrollset{
-    flex-shrink: 0;
 }

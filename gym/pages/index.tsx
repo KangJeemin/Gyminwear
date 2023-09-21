@@ -9,6 +9,7 @@ import bestbottom from './api/bestbottom'
 import { gymWearItem } from '@/src/type/gymwear'
 import PcHeader from './src/component/header/pc/pcHeader'
 import PcMain from './src/component/middle/pc/pcMain'
+import PcAnnounce from './src/component/header/pc/pcAnnounce'
 
 interface mainPageItemPropsType {
     bestTopItem:[]
@@ -43,6 +44,7 @@ const Index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>
             {/* <BestTop gymitem={bestTopItem}/> */}
             {/* <BestBottom gymitem={bestBottomItem}/> */}
             <PcHeader/>
+            <PcAnnounce/>
             {/* <PcMain/> */}
         </div>
     )

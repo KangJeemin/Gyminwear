@@ -10,7 +10,7 @@ import Logo from '../../../../../public/image/gyminwearLogo.png'
 
 const PcHeader = () => {
     return(
-    <div id={styles.pc_headerContainer}>
+    <div id={styles.pc_headerContainer} className={`${styles.flexRow}`}>
         <div id={styles.pc_headerLeftBox}>ㅁ</div>
         <div id={styles.pc_headerCenterBox}>
             <div id={styles.pcHeaderLogoBox}>ㅁ</div>

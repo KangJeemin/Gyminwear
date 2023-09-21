@@ -1,6 +1,7 @@
 #pc_headerContainer{
     width: 100%;
     height: 10%;
+    
 }
 #pc_headerLeftBox{
     width: 15%;
@@ -11,6 +12,13 @@
     background-color: blue
 }
 #pc_headerRightBox{
-    width: 15;
+    width: 15%;
     background-color: green
+}
+.flexRow {
+    display:flex;
+}
+.flexColumn{
+    display:flex;
+    flex-direction: column;
 }

@@ -149,6 +149,23 @@
     color:black;
     font-size: 1.2rem;  
 }
+#pc_topNumvberNavigateContainer{
+    width: 100%;
+    height: 5rem;
+    background-color: red;
+}
+#pc_topNumberLeftBox{
+    width: 33%;
+    height: 100%;
+}
+#pc_topNumberCenterBox{
+    width: 34%;
+    height: 100%;
+}
+#pc_topNumberRightBox{
+    width: 33%;
+    height: 100%;
+}
 .grid_5x4{
     display: grid;
     grid-template-rows: 20% 20% 20% 20% 20%;

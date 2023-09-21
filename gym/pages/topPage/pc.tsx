@@ -35,7 +35,16 @@ import { GetServerSidePropsContext } from 'next';
                         </span>
                     ))}
                 </div>
-                <div></div>
+                <div id={styles.pc_topNumvberNavigateContainer} className={`${styles.flex_row}`}>
+                    <div id={styles.pc_topNumberLeftBox}></div>
+                    <div id={styles.pc_topNumberCenterBox}>
+                        <span>&#60;</span>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>&#62;</span>
+                    </div>
+                    <div id={styles.pc_topNumberRightBox}></div>
+                </div>
             </div>
             <div id={styles.pc_topRightBox}></div>
         </div>

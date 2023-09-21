@@ -21,10 +21,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
      };
   }
   const Index = ({gymitem}:GymItemProps) => {
+    return(
     <div>
         <Mobile gymitem={gymitem}/>
         <Pc gymitem={gymitem}/>
     </div>
+    )
     
     
 }

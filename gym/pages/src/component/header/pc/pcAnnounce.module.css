@@ -20,16 +20,19 @@
     width: 10%;
     height: 100%;
     background-color: red;
+    color: black;
 }
 #pc_announceText{
     width: 80%;
     height: 100%;
     background-color: blue;
+    color: black;
 }
 #pc_announceRightButton{
     width: 10%;
     height: 100%;
     background-color: green;
+    color: black;
 }
 .flexRow {
     display:flex;

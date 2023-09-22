@@ -10,6 +10,7 @@ interface pcSearchState {
 }
 
 const PcSearchModal = (props:pcSearchState) => {
+
     return (
         <motion.div id={styles.pc_searchContainer} className={`${styles.flexRow}`}
         animate={{
@@ -21,7 +22,7 @@ const PcSearchModal = (props:pcSearchState) => {
             times:props.state===0 ? [0,0] : props.state===1 ? [0,1] : [0,1],
             ease: 'easeOut',
           }}
-        onMouseLeave={props.setState(2)}>
+        onMouseLeave={()=>{props.setState(2)}}>
             <div id={styles.pc_searchContainerLeftBox}></div>
             <div id={styles.pc_searchContainerCenterBox} className={`${styles.flexColumn}`}>
                 <div id={styles.pc_searchContainerContentTop}></div>

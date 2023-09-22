@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { motion } from 'framer-motion';
 import styles from './pcSearchModal.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +10,16 @@ interface pcSearchState {
 const PcSearchModal = (props:pcSearchState) => {
 
     return (
-        <div id={styles.pc_searchContainer} className={`${styles.flexRow}`}>
+        <motion.div id={styles.pc_searchContainer} className={`${styles.flexRow}`}
+        animate={{
+            opacity:props.state===0 ? [0,0] : props.state=== 1 ? [0,1] : [1,0],
+            height: props.state===0 ? ['0vh','0vh'] : props.state=== 1 ? ['0vh','95vh'] : ['95vh','0vh']
+          }}
+          transition={{
+            duration: props.state===0 ? 0 : props.state===1 ? 0.5 : 0.5, 
+            times:props.state===0 ? [0,0] : props.state===1 ? [0,1] : [0,1],
+            ease: 'easeOut',
+          }}>
             <div id={styles.pc_searchContainerLeftBox}></div>
             <div id={styles.pc_searchContainerCenterBox} className={`${styles.flexColumn}`}>
                 <div id={styles.pc_searchContainerContentTop}></div>
@@ -21,7 +31,7 @@ const PcSearchModal = (props:pcSearchState) => {
                 <div id={styles.pc_searchContainerContentBottom}></div>
             </div>
             <div id={styles.pc_searchContainerRightBox}></div>
-        </div>
+        </motion.div>
     )
     
 }

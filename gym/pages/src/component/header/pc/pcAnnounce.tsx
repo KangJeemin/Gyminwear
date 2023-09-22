@@ -15,9 +15,9 @@ const PcAnnounce = () => {
         <div id={styles.pc_announceContainer} className={`${styles.flexRow}`}>
             <div id={styles.pc_announceLeftBox}></div>
             <div id={styles.pc_announceCenterBox} className={`${styles.flexRow}`}>
-                <div id={styles.pc_announceLeftButton}>&#60;</div>
-                <div id={styles.pc_announceText}>덤브스트럭 23 F/W 출시</div>
-                <div id={styles.pc_announceRightButton}>&#62;</div>
+                <div id={styles.pc_announceLeftButton } className={`${styles.setTextCenter}`}>&#60;</div>
+                <div id={styles.pc_announceText} className={`${styles.setTextCenter}`}>덤브스트럭 23 F/W 출시</div>
+                <div id={styles.pc_announceRightButton} className={`${styles.setTextCenter}`}>&#62;</div>
             </div>
             <div id={styles.pc_announceRightBox}></div>
         </div>

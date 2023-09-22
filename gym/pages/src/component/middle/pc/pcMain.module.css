@@ -64,14 +64,3 @@
     justify-content: center;
     align-items: center;
 }
-.grid_5x4{
-    display: grid;
-    grid-template-rows: 20% 20% 20% 20% 20%;
-    grid-template-columns: 25% 25% 25% 25%;
-}
-.padding_1{
-    padding: 5%;
-}
-.flex_scrollset{
-    flex-shrink: 0;
-}

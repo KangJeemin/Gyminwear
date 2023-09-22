@@ -1,0 +1,23 @@
+#pc_searchContainer{
+    width: 100%;
+    height: 30rem;
+}
+#pc_searchContainerLeftBox{
+    width: 15%;
+    height: 100%;
+}
+#pc_searchContainerContentTop{
+    width: 70%;
+    height: 100%;
+}
+#searchContainerRightBox{
+    width: 15%;
+    height: 100%;
+}
+
+#pc_searchContainerContentMiddle{
+
+}
+#pc_searchContainerContentBottom{
+
+}

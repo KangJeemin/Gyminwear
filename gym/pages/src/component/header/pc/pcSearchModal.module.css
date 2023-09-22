@@ -6,18 +6,28 @@
     width: 15%;
     height: 100%;
 }
-#pc_searchContainerContentTop{
+#pc_searchContainerCenterBox{
     width: 70%;
     height: 100%;
 }
+
 #searchContainerRightBox{
     width: 15%;
     height: 100%;
 }
+#pc_searchContainerContentTop{
+    width: 100%;
+    height: 30%;
+    background-color: red;
+}
 
 #pc_searchContainerContentMiddle{
-
+    width: 100%;
+    height: 20%;
+    background-color: blue;
 }
 #pc_searchContainerContentBottom{
-
+    width: 100%;
+    height: 50%;
+    background-color: purple;
 }

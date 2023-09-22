@@ -25,8 +25,10 @@ const PcHeader = () => {
             <div id={styles.pc_headerTopBox} className={`${styles.setTextCenter}`} onClick={()=>{
                 router.push(`/topPage?page=1`)
             }}>Top</div>
-            <div id={styles.pc_headerBottomBox} className={`${styles.setTextCenter}`}>Bottom</div>
-            <div id={styles.pc_headerxxxBox}>d</div>
+            <div id={styles.pc_headerBottomBox} className={`${styles.setTextCenter}`} onClick={()=>{
+                router.push(`/bottomPage?page=1`)
+            }}>Bottom</div>
+            <div id={styles.pc_headerxxxBox}></div>
             <div id={styles.pc_headerSearchBox}>
                 <FontAwesomeIcon  icon={faSearch} style={{fontSize:"1.5em",color:"black"}}/>
             </div>

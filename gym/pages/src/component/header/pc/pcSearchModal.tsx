@@ -2,9 +2,11 @@ import * as React from 'react'
 import styles from './pcSearchModal.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+interface pcSearchState {
+    state: number;
+}
 
-
-const PcSearchModal = () => {
+const PcSearchModal = (props:pcSearchState) => {
 
     return (
         <div id={styles.pc_searchContainer} className={`${styles.flexRow}`}>

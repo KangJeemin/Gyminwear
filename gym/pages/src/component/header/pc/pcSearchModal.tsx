@@ -9,10 +9,10 @@ const PcSearchModal = () => {
             <div id={styles.pc_searchContainerLeftBox}></div>
             <div id={styles.pc_searchContainerCenterBox} className={`${styles.flexColumn}`}>
                 <div id={styles.pc_searchContainerContentTop}></div>
-                <div id={styles.pc_searchContainerContentMiddle}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2em",color:"gray"}}/>
-                    <input type="text" />
-                    <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2em",color:"gray"}}/>
+                <div id={styles.pc_searchContainerContentMiddle} className={`${styles.flexRow}`}>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2rem",color:"gray"}}/>
+                    <input id={styles.pc_searchInput} type="text" />
+                    <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2rem",color:"gray"}}/>
                 </div>
                 <div id={styles.pc_searchContainerContentBottom}></div>
             </div>

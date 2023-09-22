@@ -3,12 +3,13 @@ import { motion } from 'framer-motion';
 import styles from './pcSearchModal.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+
 interface pcSearchState {
     state: number;
+    setState: Function;
 }
 
 const PcSearchModal = (props:pcSearchState) => {
-
     return (
         <motion.div id={styles.pc_searchContainer} className={`${styles.flexRow}`}
         animate={{
@@ -19,7 +20,8 @@ const PcSearchModal = (props:pcSearchState) => {
             duration: props.state===0 ? 0 : props.state===1 ? 0.5 : 0.5, 
             times:props.state===0 ? [0,0] : props.state===1 ? [0,1] : [0,1],
             ease: 'easeOut',
-          }}>
+          }}
+        onMouseLeave={props.setState(2)}>
             <div id={styles.pc_searchContainerLeftBox}></div>
             <div id={styles.pc_searchContainerCenterBox} className={`${styles.flexColumn}`}>
                 <div id={styles.pc_searchContainerContentTop}></div>

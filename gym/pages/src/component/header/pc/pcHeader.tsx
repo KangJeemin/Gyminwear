@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 import PcSearchModal from './pcSearchModal';
 
 
-const PcHeader = (props:number) => {
+const PcHeader = () => {
     const router=useRouter();
     const [pcSearchModalState,setPcSearchModalState]=React.useState<number>(0)
     const clickSearch = () => {
@@ -54,7 +54,7 @@ const PcHeader = (props:number) => {
             </div>
         </div>
         <div id={styles.pc_headerRightBox}></div>
-        <PcSearchModal state={pcSearchModalState}/>
+        <PcSearchModal state={pcSearchModalState} setState={setPcSearchModalState}/>
     </div>
     )
 }

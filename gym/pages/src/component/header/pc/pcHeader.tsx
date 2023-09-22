@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 
 const PcHeader = () => {
     const router=useRouter();
+    const [pcSearchModalState,setPcSearchModalState]=React.useState<number>(0)
     return(
     <div id={styles.pc_headerContainer} className={`${styles.flexRow}`}>
         <div id={styles.pc_headerLeftBox}></div>
@@ -36,6 +37,7 @@ const PcHeader = () => {
             </div>
         </div>
         <div id={styles.pc_headerRightBox}></div>
+        
     </div>
     )
 }

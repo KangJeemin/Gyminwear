@@ -3,7 +3,9 @@ import styles from './pcSearchModal.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
+
 const PcSearchModal = () => {
+
     return (
         <div id={styles.pc_searchContainer} className={`${styles.flexRow}`}>
             <div id={styles.pc_searchContainerLeftBox}></div>

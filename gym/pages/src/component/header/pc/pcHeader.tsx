@@ -15,7 +15,9 @@ const PcHeader = () => {
     <div id={styles.pc_headerContainer} className={`${styles.flexRow}`}>
         <div id={styles.pc_headerLeftBox}></div>
         <div id={styles.pc_headerCenterBox} className={`${styles.flexRow}`}>
-            <div id={styles.pc_headerLogoBox}>
+            <div id={styles.pc_headerLogoBox} onClick={()=>{
+                router.push('/')
+            }}>
                 <Image 
                     src={Logo} 
                     alt='이미지 표시 불가'

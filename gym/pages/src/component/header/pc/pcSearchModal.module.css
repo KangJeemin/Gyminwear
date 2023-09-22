@@ -1,6 +1,6 @@
 #pc_searchContainer{
     width: 100%;
-    height: 30rem;
+    height: 20rem;
 }
 #pc_searchContainerLeftBox{
     width: 15%;
@@ -30,4 +30,16 @@
     width: 100%;
     height: 50%;
     background-color: purple;
+}
+.flexRow {
+    display:flex;
+}
+.flexColumn{
+    display:flex;
+    flex-direction: column;
+}
+.setTextCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

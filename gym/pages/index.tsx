@@ -45,7 +45,7 @@ const Index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>
             {/* <BestBottom gymitem={bestBottomItem}/> */}
             <PcHeader/>
             <PcAnnounce/>
-            {/* <PcMain/> */}
+            <PcMain/>
         </div>
     )
 }

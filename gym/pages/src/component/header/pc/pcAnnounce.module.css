@@ -3,18 +3,16 @@
     height: 5rem;
 }
 #pc_announceLeftBox{
-    width: 10%;
+    width: 15%;
     height: 100%;
-    background-color: beige;
 }
 #pc_announceCenterBox{
     width: 90%;
     height: 100%;
 }
 #pc_announceRightBox{
-    width: 10%;
+    width: 15%;
     height: 100%;
-    background-color: beige;
 }
 #pc_announceLeftButton{
     width: 10%;

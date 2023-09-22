@@ -10,8 +10,8 @@ const PcSearchModal = () => {
             <div id={styles.pc_searchContainerCenterBox} className={`${styles.flexColumn}`}>
                 <div id={styles.pc_searchContainerContentTop}></div>
                 <div id={styles.pc_searchContainerContentMiddle} className={`${styles.flexRow}`}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2rem",color:"gray"}}/>
-                    <input id={styles.pc_searchInput} type="text" />
+                    <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2rem",color:"gray",marginLeft: "1rem"}}/>
+                    <input id={styles.pc_searchInput} type="text" placeholder='검색어를 입력하세요.'/>
                     <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2rem",color:"gray"}}/>
                 </div>
                 <div id={styles.pc_searchContainerContentBottom}></div>

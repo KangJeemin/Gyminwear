@@ -18,22 +18,20 @@
 #pc_searchContainerContentTop{
     width: 100%;
     height: 30%;
-    background-color: red;
 }
 
 #pc_searchContainerContentMiddle{
     width: 100%;
     height: 10%;
-    background-color: blue;
 }
 #pc_searchContainerContentBottom{
     width: 100%;
     height: 50%;
-    background-color: purple;
 }
 #pc_searchInput{
     width: 100%;
     height: 100%;
+    margin-left: 1rem;
     border: none;
     outline: none;
     color: gray;

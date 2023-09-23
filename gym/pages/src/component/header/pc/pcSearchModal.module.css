@@ -1,11 +1,7 @@
 #pc_searchContainer{
     width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
     height: 0rem;
     background-color: white;
-    
 }
 
 #pc_searchContainerLeftBox{

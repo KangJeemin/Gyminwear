@@ -28,32 +28,35 @@ const PcHeader = () => {
         }
     }
     return(
-    <div id={styles.pc_headerContainer} className={`${styles.flexRow}`}>
-        <div id={styles.pc_headerLeftBox}></div>
-        <div id={styles.pc_headerCenterBox} className={`${styles.flexRow}`}>
-            <div id={styles.pc_headerLogoBox} onClick={()=>{
-                router.push('/')
-            }}>
-                <Image 
-                    src={Logo} 
-                    alt='이미지 표시 불가'
-                    layout='fill'                        
-                />
+    <div id={styles.pc_headerContainerSearchAndMain}>
+        <div id={styles.pc_headerContainer} className={`${styles.flexRow}`}>
+            <div id={styles.pc_headerLeftBox}></div>
+            <div id={styles.pc_headerCenterBox} className={`${styles.flexRow}`}>
+                <div id={styles.pc_headerLogoBox} onClick={()=>{
+                    router.push('/')
+                }}>
+                    <Image 
+                        src={Logo} 
+                        alt='이미지 표시 불가'
+                        layout='fill'                        
+                    />
+                </div>
+                <div id={styles.pc_headerTopBox} className={`${styles.setTextCenter}`} onClick={()=>{
+                    router.push(`/topPage?page=1`)
+                }}>Top</div>
+                <div id={styles.pc_headerBottomBox} className={`${styles.setTextCenter}`} onClick={()=>{
+                    router.push(`/bottomPage?page=1`)
+                }}>Bottom</div>
+                <div id={styles.pc_headerxxxBox}></div>
+                <div id={styles.pc_headerSearchBox}>
+                    <FontAwesomeIcon  icon={faSearch} style={{fontSize:"1.5em",color:"black"}}onClick={()=>{
+                        clickSearch()
+                    }}/>
+                </div>
             </div>
-            <div id={styles.pc_headerTopBox} className={`${styles.setTextCenter}`} onClick={()=>{
-                router.push(`/topPage?page=1`)
-            }}>Top</div>
-            <div id={styles.pc_headerBottomBox} className={`${styles.setTextCenter}`} onClick={()=>{
-                router.push(`/bottomPage?page=1`)
-            }}>Bottom</div>
-            <div id={styles.pc_headerxxxBox}></div>
-            <div id={styles.pc_headerSearchBox}>
-                <FontAwesomeIcon  icon={faSearch} style={{fontSize:"1.5em",color:"black"}}onClick={()=>{
-                    clickSearch()
-                }}/>
-            </div>
+            <div id={styles.pc_headerRightBox}></div>
+                
         </div>
-        <div id={styles.pc_headerRightBox}></div>
         <PcSearchModal pcSearchModalState={pcSearchModalState} setPcSearchModalState={setPcSearchModalState}/>
     </div>
     )

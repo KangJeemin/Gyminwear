@@ -1,11 +1,15 @@
 #pc_headerContainer{
     width: 100%;
-    height: 3rem;
+    height: auto;
     position: fixed;
     top: 0;
     left: 0;
+}
+#pc_headerContainer{
+    width: 100%;
+    height: 3rem;
+    
     background-color: white;
-    z-index: 2;
 }
 #pc_headerLeftBox{
     width: 15%;

@@ -39,7 +39,7 @@ const PcSearchModal = (props:pcSearchState) => {
             times:props.pcSearchModalState===0 ? [0,0] : props.pcSearchModalState===1 ? [0,1] : [0,1],
             ease: 'easeOut',
           }}
-        onMouseLeave={()=>{props.setPcSearchModalState(2)}}>
+        >
             <div id={styles.pc_searchContainerLeftBox}></div>
             <div id={styles.pc_searchContainerCenterBox} className={`${styles.flexColumn}`}>
                 <div id={styles.pc_searchContainerContentTop}></div>

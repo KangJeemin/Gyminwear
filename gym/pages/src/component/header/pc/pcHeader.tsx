@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import * as React from 'react';
 import styles from './pcHeader.module.css'
-import { useRef } from 'react'
+import { useRef,ChangeEvent } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Image from 'next/image';
@@ -13,6 +13,9 @@ import PcSearchModal from './pcSearchModal';
 const PcHeader = () => {
     const router=useRouter();
     const [pcSearchModalState,setPcSearchModalState]=React.useState<number>(0)
+    const pushChangeTextColor = (e:ChangeEvent<HTMLInputElement>) => {
+        e.target.style.color='blue'
+      }
     const clickSearch = () => {
         if(pcSearchModalState === 0){
             setPcSearchModalState(1)

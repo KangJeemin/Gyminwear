@@ -15,7 +15,7 @@ const PcSearchModal = (props:pcSearchState) => {
         <motion.div id={styles.pc_searchContainer} className={`${styles.flexRow}`}
         animate={{
             opacity:props.pcSearchModalState===0 ? [0,0] : props.pcSearchModalState=== 1 ? [0,1] : [1,0],
-            height: props.pcSearchModalState===0 ? ['0rem','23rem'] : props.pcSearchModalState=== 1 ? ['0rem','23rem'] : ['23rem','0rem']
+            height: props.pcSearchModalState===0 ? ['0rem','20rem'] : props.pcSearchModalState=== 1 ? ['0rem','20rem'] : ['20rem','0rem']
           }}
           transition={{
             duration: props.pcSearchModalState===0 ? 0 : props.pcSearchModalState===1 ? 0.5 : 0.5, 

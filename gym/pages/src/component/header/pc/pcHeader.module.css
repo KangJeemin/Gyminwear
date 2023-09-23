@@ -5,8 +5,7 @@
     top: 0;
     left: 0;
     background-color: white;
-    
-    
+    z-index: 2;
 }
 #pc_headerLeftBox{
     width: 15%;

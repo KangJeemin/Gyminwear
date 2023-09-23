@@ -46,6 +46,8 @@ const PcHeader = () => {
                 </div>
                 <div id={styles.pc_headerTopBox} className={`${styles.setTextCenter}`} onClick={()=>{
                     router.push(`/topPage?page=1`)
+                    pushChangeTextColor
+                    
                 }}>Top</div>
                 <div id={styles.pc_headerBottomBox} className={`${styles.setTextCenter}`} onClick={()=>{
                     router.push(`/bottomPage?page=1`)

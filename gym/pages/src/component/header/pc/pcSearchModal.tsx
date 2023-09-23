@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 interface pcSearchState {
-    state: number;
-    setState: Function;
+    pcSearchModalState: number;
+    setPcSearchModalState: Function;
 }
 
 const PcSearchModal = (props:pcSearchState) => {
@@ -14,15 +14,15 @@ const PcSearchModal = (props:pcSearchState) => {
     return (
         <motion.div id={styles.pc_searchContainer} className={`${styles.flexRow}`}
         animate={{
-            opacity:props.state===0 ? [0,0] : props.state=== 1 ? [0,1] : [1,0],
-            height: props.state===0 ? ['0rem','23rem'] : props.state=== 1 ? ['0rem','23rem'] : ['23rem','0rem']
+            opacity:props.pcSearchModalState===0 ? [0,0] : props.pcSearchModalState=== 1 ? [0,1] : [1,0],
+            height: props.pcSearchModalState===0 ? ['0rem','23rem'] : props.pcSearchModalState=== 1 ? ['0rem','23rem'] : ['23rem','0rem']
           }}
           transition={{
-            duration: props.state===0 ? 0 : props.state===1 ? 0.5 : 0.5, 
-            times:props.state===0 ? [0,0] : props.state===1 ? [0,1] : [0,1],
+            duration: props.pcSearchModalState===0 ? 0 : props.pcSearchModalState===1 ? 0.5 : 0.5, 
+            times:props.pcSearchModalState===0 ? [0,0] : props.pcSearchModalState===1 ? [0,1] : [0,1],
             ease: 'easeOut',
           }}
-        onMouseLeave={()=>{props.setState(2)}}>
+        onMouseLeave={()=>{props.setPcSearchModalState(2)}}>
             <div id={styles.pc_searchContainerLeftBox}></div>
             <div id={styles.pc_searchContainerCenterBox} className={`${styles.flexColumn}`}>
                 <div id={styles.pc_searchContainerContentTop}></div>

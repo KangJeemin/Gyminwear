@@ -101,17 +101,17 @@
     background-color: gray;
 }
 #pc_searchResultLeftBox{
-    width: 15%;
+    width: 10%;
     height: 100%;
     background-color: aqua;
 }
 #pc_searchResultCenterbox{
-    width: 70%;
+    width: 80%;
     height: 100%;
     background-color: white
 }
 #pc_searchResultRightBox{
-    width: 15%;
+    width: 10%;
     height: 100%;
     background-color: aqua;
 }

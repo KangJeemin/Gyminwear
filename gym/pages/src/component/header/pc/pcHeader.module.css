@@ -32,10 +32,12 @@
 #pc_headerTopBox{
     width: 15%;
     color: black;
+    font-weight: bold;
 }
 #pc_headerBottomBox{
     width: 15%;
     color: black;
+    font-weight: bold;
 }
 #pc_headerxxxBox{
     width: 70%;

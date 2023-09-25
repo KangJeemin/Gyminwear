@@ -21,13 +21,15 @@ const Pc = () => {
     const {searchWord} = useContext(AuthContext)
 
     return(
-        <div id={styles.pc_searchResultContainer}>
+        <div id={styles.pc_searchResultContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_searchResultLeftBox}></div>
-            <div id={styles.pc_searchResultCenterBox}>
+            <div id={styles.pc_searchResultCenterBox} className={`${styles.flex_column}`} >
                 <div id={styles.pc_searchResultTextBox}>
                     <h2>&#39; {searchWord} &#39; 에 대한 검색 결과를 몇개 발견했습니다 .</h2>
                 </div>
-                <div id={styles.pc_searchResultInputBox}></div>
+                <div id={styles.pc_searchResultInputBox}>
+                    <input id={styles.pc_searchResultInput} type="text" />
+                </div>
                 <div id={styles.pc_searchResultMarginBox}></div>
                 <div id={styles.pc_searchResultItemBox}></div>
                 <div id={styles.pc_searchResultNumverNavigateBox}></div>
@@ -36,18 +38,6 @@ const Pc = () => {
         </div>
     )
 }
-
-    
-   
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const { search, page } = context.query;
-    const res = await fetch(`http://localhost:3000/api/search?search=${search}&page=${page}`);
-    const data = await res.json();
-    return { props: { 
-        item:data.result,
-        count:data.countresult[0].C
-     } };
-  }
   
 
 export default Pc;

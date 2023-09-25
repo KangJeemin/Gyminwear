@@ -13,14 +13,16 @@ interface pcSearchState {
 }
 
 const PcSearchModal = (props:pcSearchState) => {
-    const {searchWord, setSearchWord} = useContext(AuthContext)
+    const {searchWord, setSearchWord,setSearchResultText} = useContext(AuthContext)
     const router = useRouter()
     const pcSetInputText = (e:ChangeEvent<HTMLInputElement>) => {
         setSearchWord(e.target.value)
+        setSearchResultText(searchWord)
       }
       const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
         if(e.keyCode===13){
           router.push(`/searchresult?search=${searchWord}&page=1`)
+          
         }
       }
       const pcInitializeSearchText = () => {

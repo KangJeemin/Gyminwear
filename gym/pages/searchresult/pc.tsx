@@ -20,7 +20,18 @@ interface gymwear{
 
 const Pc = ({item,count}:SearchResultProps) => { 
     const router = useRouter()
-    const {searchWord} = useContext(AuthContext)
+    const {searchWord,setSearchWord} = useContext(AuthContext)
+    const pcSetInputText = (e:ChangeEvent<HTMLInputElement>) => {
+        setSearchWord(e.target.value)
+      }
+      const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
+        if(e.keyCode===13){
+          router.push(`/searchresult?search=${searchWord}&page=1`)
+        }
+      }
+      const pcInitializeSearchText = () => {
+        setSearchWord("")
+      }
 
     return(
         <div id={styles.pc_searchResultContainer} className={`${styles.flex_row}`}>
@@ -31,8 +42,10 @@ const Pc = ({item,count}:SearchResultProps) => {
                     <h2>&#39; {searchWord} &#39; 에 대한 {count}개의 검색결과.</h2>
                 </div>
                 <div id={styles.pc_searchResultMarginBox}></div>
-                <div id={styles.pc_searchResultInputBox}>
+                <div id={styles.pc_searchResultInputBox} className={`${styles.flex_row}`}>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2rem",color:"gray",marginLeft: "1rem"}}/>
                     <input id={styles.pc_searchResultInput} type="text" />
+                    <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2rem",color:"gray",visibility:searchWord===""? "hidden":"visible"}} onClick={pcInitializeSearchText}/>
                 </div>
                 <div id={styles.pc_searchResultMarginBox}></div>
                 <div id={styles.pc_searchResultItemBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>

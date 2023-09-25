@@ -97,7 +97,7 @@
 /* Pc버전 */
 #pc_searchResultContainer{
     width: 100%;
-    height: 400rem;
+    height: auto;
     background-color: brown;
 }
 #pc_searchResultLeftBox{
@@ -130,8 +130,8 @@
 }
 #pc_searchResultMarginBox{
     width: 100%;
-    height: 2rem;
-    background-color:red;
+    height: 4rem;
+    background-color:white;
 }
 #pc_searchResultItemBox{
     width: 100%;

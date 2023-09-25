@@ -26,9 +26,11 @@ const Pc = ({item,count}:SearchResultProps) => {
         <div id={styles.pc_searchResultContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_searchResultLeftBox}></div>
             <div id={styles.pc_searchResultCenterbox} className={`${styles.flex_column}`} >
+            <div id={styles.pc_searchResultMarginBox}></div>
                 <div id={styles.pc_searchResultTextBox}>
-                    <h2>&#39; {searchWord} &#39; 에 대한 검색 결과를 몇개 발견했습니다 .</h2>
+                    <h2>&#39; {searchWord} &#39; 에 대한 {count}개의 검색결과.</h2>
                 </div>
+                <div id={styles.pc_searchResultMarginBox}></div>
                 <div id={styles.pc_searchResultInputBox}>
                     <input id={styles.pc_searchResultInput} type="text" />
                 </div>

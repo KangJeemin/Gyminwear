@@ -20,19 +20,20 @@ interface gymwear{
 
 const Pc = ({item,count}:SearchResultProps) => { 
     const router = useRouter()
-    const {searchWord,setSearchWord} = useContext(AuthContext)
+    const {searchWord,setSearchWord,searchResultText,setSearchResultText} = useContext(AuthContext)
     const [reSearchWord,setReSearchWord]=useState<string>('')
     const pcSetInputText = (e:ChangeEvent<HTMLInputElement>) => {
-        setReSearchWord(e.target.value)
+        setSearchWord(e.target.value)
       }
       const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
         if(e.keyCode===13){
-          router.push(`/searchresult?search=${reSearchWord}&page=1`)
-          setSearchWord(reSearchWord)
+          router.push(`/searchresult?search=${searchWord}&page=1`)
+          setSearchResultText(searchWord)
+          
         }
       }
       const pcInitializeSearchText = () => {
-        setReSearchWord("")
+        setSearchWord("")
       }
 
     return(
@@ -41,7 +42,7 @@ const Pc = ({item,count}:SearchResultProps) => {
             <div id={styles.pc_searchResultCenterbox} className={`${styles.flex_column}`} >
             <div id={styles.pc_searchResultMarginBox}></div>
                 <div id={styles.pc_searchResultTextBox}>
-                    <h2>&#39; {searchWord} &#39; 에 대한 {count}개의 검색결과.</h2>
+                    <h2>&#39; {searchResultText} &#39; 에 대한 {count}개의 검색결과.</h2>
                 </div>
                 <div id={styles.pc_searchResultMarginBox}></div>
                 <div id={styles.pc_searchResultInputBox} className={`${styles.flex_row}`}>

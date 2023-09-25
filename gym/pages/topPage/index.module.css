@@ -110,6 +110,8 @@
 #pc_topCenterMarginBox{
     width: 100%;
     height: 10rem;
+    color: black;
+    font-size: 3rem;
 }
 #pc_topItem_itemComponent{
     width: 100%;

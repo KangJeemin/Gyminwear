@@ -116,9 +116,10 @@
     background-color: aqua;
 }
 #pc_searchResultTextBox{
-    width: 100%;
+    width: 80%;
     height: 2rem;
-    background-color:blue;
+    color: black;
+    margin-left: 2rem;
 }
 #pc_searchResultInputBox{
     width: 100%;

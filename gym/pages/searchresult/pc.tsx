@@ -43,7 +43,7 @@ const Pc = ({item,count}:SearchResultProps) => {
                 </div>
                 <div id={styles.pc_searchResultMarginBox}></div>
                 <div id={styles.pc_searchResultInputBox} className={`${styles.flex_row}`}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2rem",color:"gray",marginLeft: "1rem"}}/>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2rem",color:"gray",marginLeft: "2rem"}}/>
                     <input id={styles.pc_searchResultInput} type="text" />
                     <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2rem",color:"gray",visibility:searchWord===""? "hidden":"visible"}} onClick={pcInitializeSearchText}/>
                 </div>

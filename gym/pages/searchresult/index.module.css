@@ -94,6 +94,24 @@
     width: 100%;
     height: 5%;
 }
+#pc_searchResultContainer{
+    width: 100%;
+    height: auto;
+}
+#pc_searchResultLeftBox{
+    width: 15%;
+    height: 100%;
+}
+#pc_searchResultCenterbox{
+    width: 70%;
+    height: 100%;
+}
+#pc_searchResultRightBox{
+    width: 15%;
+    height: 100%;
+}
+
+
 
 .flex_row{
     display: flex;

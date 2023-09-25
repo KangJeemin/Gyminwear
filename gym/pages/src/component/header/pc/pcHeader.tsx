@@ -43,6 +43,7 @@ const PcHeader = () => {
             <div id={styles.pc_headerCenterBox} className={`${styles.flexRow}`}>
                 <div id={styles.pc_headerLogoBox} onClick={()=>{
                     router.push('/')
+                    setSearchState(0)
                 }}>
                     <Image 
                         src={Logo} 
@@ -52,11 +53,12 @@ const PcHeader = () => {
                 </div>
                 <div id={styles.pc_headerTopBox} className={`${styles.setTextCenter}`} onClick={()=>{
                     router.push(`/topPage?page=1`)
-                    pushChangeTextColor
+                    setSearchState(0)
                     
                 }}>Top</div>
                 <div id={styles.pc_headerBottomBox} className={`${styles.setTextCenter}`} onClick={()=>{
                     router.push(`/bottomPage?page=1`)
+                    setSearchState(0)
                 }}>Bottom</div>
                 <div id={styles.pc_headerxxxBox}></div>
                 <div id={styles.pc_headerSearchBox}>

@@ -42,12 +42,12 @@ const Pc = ({item,count}:SearchResultProps) => {
             <div id={styles.pc_searchResultCenterbox} className={`${styles.flex_column}`} >
             <div id={styles.pc_searchResultMarginBox}></div>
                 <div id={styles.pc_searchResultTextBox}>
-                    <h2>&#39; {searchResultText} &#39; 에 대한 {count}개의 검색결과.</h2>
+                    <h2>&#39; {searchResultText}ㅋㅋ &#39; 에 대한 {count}개의 검색결과.</h2>
                 </div>
                 <div id={styles.pc_searchResultMarginBox}></div>
                 <div id={styles.pc_searchResultInputBox} className={`${styles.flex_row}`}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2rem",color:"gray",marginLeft: "2rem"}}/>
-                    <input id={styles.pc_searchResultInput} type="text" onChange={pcSetInputText} onKeyDown={keydown} value={reSearchWord} />
+                    <input id={styles.pc_searchResultInput} type="text" onChange={pcSetInputText} onKeyDown={keydown} value={searchWord} placeholder='검색어를 입력하세요'/>
                     <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2rem",color:"gray",visibility:reSearchWord===""? "hidden":"visible"}} onClick={pcInitializeSearchText}/>
                 </div>
                 <div id={styles.pc_searchResultMarginBox}></div>

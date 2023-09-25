@@ -12,6 +12,7 @@ import type { gymWearItem } from '../../src/type/gymwear';
 import { GetServerSideProps,GetServerSidePropsContext } from 'next';
 import NumberNavigate from '../src/component/middle/numberNavigate/numberNavigate';
 import Pc from './pc';
+import PcHeaderMargin from '../src/component/header/pc/pcHeaderMargin';
 
 interface gymwear{
     data:gymWearItem;
@@ -19,7 +20,9 @@ interface gymwear{
 
 const Index = ({item,count}:any) => { 
 return(
-    <Pc/>
+    <div>
+        <Pc item={item} count={count}t />
+    </div>
 )
     
 //     const target = useRef<HTMLDivElement | null>(null);
@@ -122,15 +125,15 @@ return(
     
 //   );
 };
-// export async function getServerSideProps(context: GetServerSidePropsContext) {
-//     const { search, page } = context.query;
-//     const res = await fetch(`http://localhost:3000/api/search?search=${search}&page=${page}`);
-//     const data = await res.json();
-//     return { props: { 
-//         item:data.result,
-//         count:data.countresult[0].C
-//      } };
-//   }
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+    const { search, page } = context.query;
+    const res = await fetch(`http://localhost:3000/api/search?search=${search}&page=${page}`);
+    const data = await res.json();
+    return { props: { 
+        item:data.result,
+        count:data.countresult[0].C
+     } };
+  }
   
 
 export default Index;

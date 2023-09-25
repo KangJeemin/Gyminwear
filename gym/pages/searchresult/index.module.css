@@ -98,15 +98,17 @@
 #pc_searchResultContainer{
     width: 100%;
     height: auto;
+    background-color: brown;
 }
 #pc_searchResultLeftBox{
     width: 15%;
-    height: 100%;
+    height: 10rem;
     background-color: aqua;
 }
 #pc_searchResultCenterbox{
     width: 70%;
-    height: 100%;
+    height: 400rem;
+    background-color: coral;
 }
 #pc_searchResultRightBox{
     width: 15%;
@@ -135,10 +137,6 @@
     width: 100%;
     height: auto;
 }
-
-
-
-
 .flex_row{
     display: flex;
 }

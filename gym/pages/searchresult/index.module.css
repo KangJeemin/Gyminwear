@@ -5,7 +5,7 @@
 }
 #searchResultComponent_searchContainer{
     width: 100%;
-    margin-top: 10%;
+    margin-searchResult: 10%;
     height: 2rem;
     display: flex;
     justify-content: center;
@@ -15,12 +15,12 @@
 #searchResultComponent_searchIconContainer{
     position:absolute;
     left: 6%;
-    top:18%
+    searchResult:18%
 }
 #searchResultComponent_deleteIconContainer{
     position:absolute;
     left: 90%;
-    top:18%
+    searchResult:18%
 }
 #searchResultComponent_search{
     width: 93%;
@@ -32,7 +32,7 @@
     border-radius: 5px;
     padding-left: 2rem;
 }
-#searchResultComponent_topText{
+#searchResultComponent_searchResultText{
     width: 100%;
     height: 15%;
     padding-left:3%;
@@ -42,7 +42,7 @@
     display: flex;
     align-items: center;
     font-size: 0.7em;
-    margin-top: 5%;
+    margin-searchResult: 5%;
     /* font-weight: bolder; */
     
 }
@@ -182,6 +182,28 @@
     justify-content: center;
     color:black;
     font-size: 1.2rem;  
+}
+#pc_searchResultNumverNavigateBox{
+    width: 100%;
+    height: 5rem;
+}
+#pc_searchResultNumberLeftBox{
+    width: 33%;
+    height: 100%;
+}
+#pc_searchResultNumberCenterBox{
+    width: 34%;
+    height: 100%;
+    display: flex;
+    justify-content:space-between;
+    color: black;
+}
+#pc_searchResultNumberRightBox{
+    width: 33%;
+    height: 100%;
+}
+#pc_searchResultNumberMargin{
+    width: 3rem;
 }
 .grid_5x4{
     display: grid;

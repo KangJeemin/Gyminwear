@@ -72,7 +72,18 @@ const Pc = ({item,count}:SearchResultProps) => {
                             </span>
                         ))}
                 </div>
-                <div id={styles.pc_searchResultNumverNavigateBox}></div>
+                <div id={styles.pc_searchResultNumverNavigateBox} className={`${styles.flex_row}`}>
+                    <div id={styles.pc_searchResultNumberLeftBox}></div>
+                    <div id={styles.pc_searchResultNumberCenterBox} className={`${styles.text_set_center}`}>
+                        <div id={styles.pc_searchResultNumberMargin}></div>
+                        <span>&#60;</span>
+                        <span style={{border:'1px solid',padding:'10px'}}>1</span>
+                        <span>2</span>
+                        <span>&#62;</span>
+                        <div id={styles.pc_searchResultNumberMargin}></div>
+                    </div>
+                    <div id={styles.pc_searchResultNumberRightBox}></div>
+                </div>
             </div>
             <div id={styles.pc_searchResultRightBox}></div>
         </div>

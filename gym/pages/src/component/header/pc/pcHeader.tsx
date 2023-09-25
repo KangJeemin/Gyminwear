@@ -8,32 +8,34 @@ import Image from 'next/image';
 import Logo from '../../../../../public/image/gyminwearLogo.png'
 import { useRouter } from 'next/router';
 import PcSearchModal from './pcSearchModal';
+import { AuthContext } from '@/public/context/authcontext';
 
 
 const PcHeader = () => {
     const router=useRouter();
-    const [pcSearchModalState,setPcSearchModalState]=React.useState<number>(0)
+    const {searchState, setSearchState}= React.useContext(AuthContext)
+
     const pushChangeTextColor = (e:ChangeEvent<HTMLInputElement>) => {
         e.target.style.color='blue'
       }
     const clickSearch = () => {
-        if(pcSearchModalState === 0){
-            setPcSearchModalState(1)
+        if(searchState === 0){
+            setSearchState(1)
         }
-        else if(pcSearchModalState === 1){
-            setPcSearchModalState(2)
+        else if(searchState === 1){
+            setSearchState(2)
         }
-        else if(pcSearchModalState === 2){
-            setPcSearchModalState(1)
+        else if(searchState === 2){
+            setSearchState(1)
         }
         else{
-            setPcSearchModalState(0)
+            setSearchState(0)
         }
     }
     return(
     <div id={styles.pc_headerContainerSearchAndMain} onMouseLeave={()=>{
-        if(pcSearchModalState===1){
-            setPcSearchModalState(2)
+        if(searchState===1){
+            setSearchState(2)
         }
         }}>
         <div id={styles.pc_headerContainer} className={`${styles.flexRow}`}>
@@ -65,7 +67,7 @@ const PcHeader = () => {
             </div>
             <div id={styles.pc_headerRightBox}></div>
         </div>
-        <PcSearchModal pcSearchModalState={pcSearchModalState} setPcSearchModalState={setPcSearchModalState}/>
+        <PcSearchModal searchState={searchState} setSearchState={setSearchState}/>
     </div>
     )
 }

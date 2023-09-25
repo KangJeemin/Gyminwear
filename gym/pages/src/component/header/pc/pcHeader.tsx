@@ -67,7 +67,7 @@ const PcHeader = () => {
             </div>
             <div id={styles.pc_headerRightBox}></div>
         </div>
-        <PcSearchModal searchState={searchState} setSearchState={setSearchState}/>
+        <PcSearchModal/>
     </div>
     )
 }

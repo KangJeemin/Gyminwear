@@ -12,8 +12,8 @@ interface pcSearchState {
     setPcSearchModalState: Function;
 }
 
-const PcSearchModal = (props:pcSearchState) => {
-    const {searchWord, setSearchWord,setSearchResultText} = useContext(AuthContext)
+const PcSearchModal = () => {
+    const {searchWord, setSearchWord,setSearchResultText,searchState,setSearchState} = useContext(AuthContext)
     const router = useRouter()
     const pcSetInputText = (e:ChangeEvent<HTMLInputElement>) => {
         setSearchWord(e.target.value)
@@ -23,6 +23,7 @@ const PcSearchModal = (props:pcSearchState) => {
         if(e.keyCode===13){
           router.push(`/searchresult?search=${searchWord}&page=1`)
           setSearchResultText(searchWord)
+          setSearchState(0)
         }
       }
       const pcInitializeSearchText = () => {
@@ -33,12 +34,13 @@ const PcSearchModal = (props:pcSearchState) => {
     return (
         <motion.div id={styles.pc_searchContainer} className={`${styles.flexRow}`}
         animate={{
-            opacity:props.pcSearchModalState===0 ? [0,0] : props.pcSearchModalState=== 1 ? [0,1] : [1,0],
-            height: props.pcSearchModalState===0 ? ['0rem','20rem'] : props.pcSearchModalState=== 1 ? ['0rem','20rem'] : ['20rem','0rem']
+            display:searchState===0? 'none' : '',
+            opacity:searchState===0 ? [0,0] : searchState=== 1 ? [0,1] : [1,0],
+            height: searchState===0 ? ['0rem','20rem'] : searchState=== 1 ? ['0rem','20rem'] : ['20rem','0rem']
           }}
           transition={{
-            duration: props.pcSearchModalState===0 ? 0 : props.pcSearchModalState===1 ? 0.5 : 0.5, 
-            times:props.pcSearchModalState===0 ? [0,0] : props.pcSearchModalState===1 ? [0,1] : [0,1],
+            duration: searchState===0 ? 0 : searchState===1 ? 0.5 : 0.5, 
+            times:searchState===0 ? [0,0] : searchState===1 ? [0,1] : [0,1],
             ease: 'easeOut',
           }}
         >

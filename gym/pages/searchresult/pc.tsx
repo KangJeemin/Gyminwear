@@ -21,16 +21,18 @@ interface gymwear{
 const Pc = ({item,count}:SearchResultProps) => { 
     const router = useRouter()
     const {searchWord,setSearchWord} = useContext(AuthContext)
+    const [reSearchWord,setReSearchWord]=useState<string>('')
     const pcSetInputText = (e:ChangeEvent<HTMLInputElement>) => {
-        setSearchWord(e.target.value)
+        setReSearchWord(e.target.value)
       }
       const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
         if(e.keyCode===13){
-          router.push(`/searchresult?search=${searchWord}&page=1`)
+          router.push(`/searchresult?search=${reSearchWord}&page=1`)
+          setSearchWord(reSearchWord)
         }
       }
       const pcInitializeSearchText = () => {
-        setSearchWord("")
+        setReSearchWord("")
       }
 
     return(
@@ -44,7 +46,7 @@ const Pc = ({item,count}:SearchResultProps) => {
                 <div id={styles.pc_searchResultMarginBox}></div>
                 <div id={styles.pc_searchResultInputBox} className={`${styles.flex_row}`}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2rem",color:"gray",marginLeft: "2rem"}}/>
-                    <input id={styles.pc_searchResultInput} type="text" />
+                    <input id={styles.pc_searchResultInput} type="text" onChange={pcSetInputText} onKeyDown={keydown} value={reSearchWord} />
                     <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2rem",color:"gray",visibility:searchWord===""? "hidden":"visible"}} onClick={pcInitializeSearchText}/>
                 </div>
                 <div id={styles.pc_searchResultMarginBox}></div>

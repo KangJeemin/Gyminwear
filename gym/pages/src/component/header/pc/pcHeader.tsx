@@ -31,7 +31,11 @@ const PcHeader = () => {
         }
     }
     return(
-    <div id={styles.pc_headerContainerSearchAndMain} onMouseLeave={()=>{setPcSearchModalState(2)}}>
+    <div id={styles.pc_headerContainerSearchAndMain} onMouseLeave={()=>{
+        if(pcSearchModalState===1){
+            setPcSearchModalState(2)
+        }
+        }}>
         <div id={styles.pc_headerContainer} className={`${styles.flexRow}`}>
             <div id={styles.pc_headerLeftBox}></div>
             <div id={styles.pc_headerCenterBox} className={`${styles.flexRow}`}>

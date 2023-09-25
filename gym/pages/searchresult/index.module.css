@@ -137,6 +137,52 @@
     width: 100%;
     height: auto;
 }
+#pc_searchResult_Item_itemComponent{
+    width: 100%;
+    height: 500px;
+    border-color: white;
+
+}
+#pc_searchResult_Item_imageSize{
+    width: 100%;
+    height: 80%;
+    position: relative;
+}
+#pc_searchResult_Item_textBoxSize{
+    width: 100%;
+    height: 30%;
+    background-color: white;
+}
+#pc_searchResult_Item_itemBrandName{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    color:black;
+    font-weight :bold;
+    font-size: 1rem;  
+}
+#pc_searchResult_Item_itemName{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    font-size: 1.2rem;  
+    color: gray;
+}
+#pc_searchResult_Item_itemPrice{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    color:black;
+    font-size: 1.2rem;  
+}
+.grid_5x4{
+    display: grid;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.padding_3{
+    padding: 10%;
+}
 .flex_row{
     display: flex;
 }

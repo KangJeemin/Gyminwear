@@ -8,7 +8,7 @@ import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image'
 import convertWon from '@/pages/src/module/convertWon';
 import type { gymWearItem ,SearchResultProps} from '../../src/type/gymwear';
-import NumberNavigate from '../src/component/middle/numberNavigate/numberNavigate';
+import NumberNavigate from '../src/component/middle/mobile/numberNavigate/numberNavigate';
 
 interface gymwear{
     data:gymWearItem;

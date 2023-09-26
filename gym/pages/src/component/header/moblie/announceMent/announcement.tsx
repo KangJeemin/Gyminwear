@@ -3,7 +3,7 @@ import styles from './hambergerModal.module.css'
 import { useRouter } from 'next/router';
 import { Router } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
-import { AuthContext } from '../../../../../public/context/authcontext';
+import { AuthContext } from '../../../../../../public/context/authcontext';
 import { useScrollPosition, useScrollXPosition, useScrollYPosition } from 'react-use-scroll-position';
 
 

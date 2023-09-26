@@ -7,7 +7,7 @@ import type { gymWearItem, GymItemProps } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 import { GetServerSidePropsContext } from 'next';
 
-const Index= (props:GymItemProps) => { 
+const Moblie= (props:GymItemProps) => { 
     
     const router = useRouter();
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
@@ -93,4 +93,4 @@ const Index= (props:GymItemProps) => {
   );
 };
 
-export default Index
+export default Moblie

@@ -15,7 +15,7 @@ import { GetServerSidePropsContext } from 'next';
         <div id={styles.pc_bottomContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_bottomLeftBox}></div>
             <div id={styles.pc_bottomCenterBox}>
-                <div id={styles.pc_bottomCenterMarginBox} className={`${styles.text_set_center}`}>bottom</div>
+                <div id={styles.pc_bottomCenterMarginBox} className={`${styles.text_set_center}`}>Bottom</div>
                 <div id={styles.pc_bottomContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>
                    {gymitem.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.pc_bottomItem_itemComponent} className={`${styles.padding_3} ${styles.flex_column}`}>
@@ -50,7 +50,7 @@ import { GetServerSidePropsContext } from 'next';
                                 <div>2</div>
                                 <div id={styles.pc_bottomNumberNavigatenNumberMargin}></div>
                                 <div onClick={()=>{
-                                    router.push(`/bottomPage?page=2`)
+                                    router.push(`/topPage?page=2`)
                                     setPageState(1)
                                 }}>&#62;</div>
                             </div>
@@ -58,7 +58,7 @@ import { GetServerSidePropsContext } from 'next';
                         pageState === 1 ? (
                             <div className={`${styles.flex_row}`}> 
                                 <div onClick={()=>{
-                                    router.push(`/bottomPage?page=1`)
+                                    router.push(`/topPage?page=1`)
                                     setPageState(0)
                                 }}>&#60;</div>
                                 <div id={styles.pc_bottomNumberNavigatenNumberMargin}></div>

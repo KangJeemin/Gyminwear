@@ -91,6 +91,10 @@
 .color_blue{
     color: blue;
 }
+#pc_bottomContainer{
+    width: 100%;
+    height: auto;
+}
 #pc_bottomLeftBox{
     width: 10%;
     height: 100%;

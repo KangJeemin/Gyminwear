@@ -1,12 +1,9 @@
-import { useRouter } from 'next/router';
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import { AuthContext } from '@/public/context/authcontext';
-import styles from './index.module.css';
-import Image from 'next/image';
 import type { gymWearItem ,GymItemProps} from '@/src/type/gymwear';
-import convertWon from '@/pages/src/module/convertWon';
 import { GetServerSidePropsContext } from 'next';
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 import Pc from './pc';
+import Mobile from './moblie'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { page } = context.query;
@@ -19,7 +16,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
 const Index= ({gymitem}:GymItemProps) => { 
     return(
-        <Pc gymitem={gymitem} />
+        <div>
+            {isBrowser &&  <Pc gymitem={gymitem} />}
+            {isMobile && <Mobile gymitem={gymitem}/>}
+        </div>
     )
 }
 export default Index

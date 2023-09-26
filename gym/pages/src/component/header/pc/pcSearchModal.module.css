@@ -1,0 +1,55 @@
+#pc_searchContainer{
+    width: 100%;
+    height: 0rem;
+    background-color: white;
+}
+
+#pc_searchContainerLeftBox{
+    width: 15%;
+    height: 100%;
+}
+#pc_searchContainerCenterBox{
+    width: 70%;
+    height: 100%;
+}
+
+#searchContainerRightBox{
+    width: 15%;
+    height: 100%;
+}
+#pc_searchContainerContentTop{
+    width: 100%;
+    height: 30%;
+}
+
+#pc_searchContainerContentMiddle{
+    width: 100%;
+    height: 10%;
+}
+#pc_searchContainerContentBottom{
+    width: 100%;
+    height: 50%;
+}
+#pc_searchInput{
+    width: 100%;
+    height: 100%;
+    margin-left: 1rem;
+    border: none;
+    outline: none;
+    color: gray;
+    background-color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.flexRow {
+    display:flex;
+}
+.flexColumn{
+    display:flex;
+    flex-direction: column;
+}
+.setTextCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

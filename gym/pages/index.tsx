@@ -7,7 +7,11 @@ import bestall from './api/bestall'
 import besttop from './api/besttop'
 import bestbottom from './api/bestbottom'
 import { gymWearItem } from '@/src/type/gymwear'
-
+import PcHeader from './src/component/header/pc/pcHeader'
+import PcMain from './src/component/middle/pc/pcMain'
+import PcAnnounce from './src/component/header/pc/pcAnnounce'
+import PcHeaderMargin from './src/component/header/pc/pcHeaderMargin'
+import PcSearchModal from './src/component/header/pc/pcSearchModal'
 interface mainPageItemPropsType {
     bestTopItem:[]
     bestAllItem:[]
@@ -36,10 +40,14 @@ const Index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>
         style={{
             overscrollBehavior:"none"
         }}>
-            <Announcement/>
-            <BestAll gymitem={bestAllItem}/>
-            <BestTop gymitem={bestTopItem}/>
-            <BestBottom gymitem={bestBottomItem}/>
+            {/* <Announcement/> */}
+            {/* <BestAll gymitem={bestAllItem}/> */}
+            {/* <BestTop gymitem={bestTopItem}/> */}
+            {/* <BestBottom gymitem={bestBottomItem}/> */}
+            
+            {/* <PcSearchModal/> */}
+            {/* <PcAnnounce/> */}
+            <PcMain/>
         </div>
     )
 }

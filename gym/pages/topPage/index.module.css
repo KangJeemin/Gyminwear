@@ -89,3 +89,101 @@
 .color_blue{
     color: blue;
 }
+#pc_topContainer{
+    width: 100%;
+    height: auto;
+}
+#pc_topLeftBox{
+    width: 10%;
+    height: 100%;
+    background-color: gray;
+}
+#pc_topCenterBox{
+    width: 90%;
+    height: auto;
+}
+#pc_topRightBox{
+    width: 10%;
+    height: 100%;
+    background-color: gray;
+}
+#pc_topCenterMarginBox{
+    width: 100%;
+    height: 10rem;
+    color: black;
+    font-size: 3rem;
+}
+#pc_topItem_itemComponent{
+    width: 100%;
+    height: 500px;
+    border-color: white;
+
+}
+#pc_topItem_imageSize{
+    width: 100%;
+    height: 80%;
+    position: relative;
+}
+#pc_topItem_textBoxSize{
+    width: 100%;
+    height: 30%;
+    background-color: white;
+}
+#pc_topItem_itemBrandName{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    color:black;
+    font-weight :bold;
+    font-size: 1rem;  
+}
+#pc_topItem_itemName{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    font-size: 1.2rem;  
+    color: gray;
+}
+#pc_topItem_itemPrice{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    color:black;
+    font-size: 1.2rem;  
+}
+#pc_topNumvberNavigateContainer{
+    width: 100%;
+    height: 5rem;
+    
+}
+#pc_topNumberLeftBox{
+    width: 33%;
+    height: 100%;
+}
+#pc_topNumberCenterBox{
+    width: 34%;
+    height: 100%;
+    display: flex;
+    justify-content:space-between;
+    color: black;
+}
+#pc_topNumberRightBox{
+    width: 33%;
+    height: 100%;
+}
+#pc_topNumberMargin{
+    width: 3rem;
+}
+#pc_topNumberNavigatenNumberMargin{
+    width: 3rem;
+    height: 100%;
+    background-color: aqua;
+}
+.grid_5x4{
+    display: grid;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.padding_3{
+    padding: 10%;
+}

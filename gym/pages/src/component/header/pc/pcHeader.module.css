@@ -1,0 +1,60 @@
+#pc_headerContainerSearchAndMain{
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+#pc_headerContainer{
+    width: 100%;
+    height: 3rem;
+    
+    background-color: white;
+}
+#pc_headerLeftBox{
+    width: 15%;
+    height: 100%;
+}
+#pc_headerCenterBox{
+    width: 70%;
+    height: 100%;
+}
+#pc_headerRightBox{
+    width: 15%;
+    height: 100%;
+}
+#pc_headerLogoBox{
+    position: relative;
+    width: 100px;
+    margin: 0.5rem;
+}
+#pc_headerTopBox{
+    width: 15%;
+    color: black;
+    font-weight: bold;
+}
+#pc_headerBottomBox{
+    width: 15%;
+    color: black;
+    font-weight: bold;
+}
+#pc_headerxxxBox{
+    width: 70%;
+}
+#pc_headerSearchBox{
+    width: 10%;
+    margin: 0.7rem;
+}
+.flexRow {
+    display:flex;
+}
+.flexColumn{
+    display:flex;
+    flex-direction: column;
+}
+.setTextCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

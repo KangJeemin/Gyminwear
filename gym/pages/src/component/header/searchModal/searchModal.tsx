@@ -14,7 +14,7 @@ const SearchModal = () => {
   const router = useRouter();
 
   const setInputText = (e:ChangeEvent<HTMLInputElement>) => {
-    // setInputState(e.target.value);
+    
     setSearchWord(e.target.value)
   }
   const keydown = (e:React.KeyboardEvent<HTMLInputElement>)=>{

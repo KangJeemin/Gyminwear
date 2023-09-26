@@ -1,0 +1,80 @@
+#pc_mainContainer{
+    width: 100%;
+    height: auto;
+}
+#pc_mainImageContainer{
+    width: 100%;
+    height: 30rem;
+    background-color:white;
+}
+#pc_mainImagemargin{
+    width: 100%;
+    height: 5rem;
+}
+#pc_mainImage2{
+    width: 100%;
+    height: 30rem;
+    position: relative;
+    background-color: white
+}
+#pc_mainImage3{
+    width: 100%;
+    height: 30rem;
+    background-color: blue
+}
+#pc_mainImageContainerLeftBox{
+    width: 15%;
+    height: 100%;
+    background-color: grey;
+    
+}
+#pc_mainImageContainerImageBox{
+    width: 70%;
+    height: 100%;
+}
+#pc_mainImageContainerRightBox{
+    width: 15%;
+    height: 100%;
+    background-color: grey;
+    
+}
+
+#pc_mainImageContainerImageBoxLeftButton{
+    width: 5%;
+    height: 100%;
+    color: black;
+    font-weight: bold;
+    font-size: 2rem;
+}
+#pc_mainImageContainerImageBoxImage{
+    width: 90%;
+    height: 100%;
+}
+#pc_mainImageContainerImageBoxRightButton{
+    width: 5%;
+    height: 100%;
+    color: black;
+    font-weight: bold;
+    font-size: 2rem;
+}
+#pc_mainImageText{
+    width: 100%;
+    height: 20%;
+    color: black;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+
+.flexRow {
+    display:flex;
+}
+.flexColumn{
+    display:flex;
+    flex-direction: column;
+}
+.setTextCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

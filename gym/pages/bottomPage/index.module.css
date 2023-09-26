@@ -183,7 +183,7 @@
 }
 .grid_5x4{
     display: grid;
-    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-template-rows: 30% 30% 30% ;
     grid-template-columns: 25% 25% 25% 25%;
 }
 .padding_3{

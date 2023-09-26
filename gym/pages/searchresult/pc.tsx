@@ -10,7 +10,7 @@ import convertWon from '@/pages/src/module/convertWon';
 import axios from 'axios';
 import type { gymWearItem,SearchResultProps  } from '../../src/type/gymwear';
 import { GetServerSideProps,GetServerSidePropsContext } from 'next';
-import PcNumberNavigate from '../src/component/middle/pc/pcNumberNavigate'
+import PcNumberNavigate from '../src/component/middle/pc/pcNumberNavigate/pcNumberNavigate'
 
 
 interface gymwear{

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styles from './pcMain.module.css'
 import Image from 'next/image';
-import gbroLogo from '../../../../../public/image/gbro/gbroLogo.jpg'
+import gbroLogo from '../../../../../../public/image/gbro/gbroLogo.jpg'
 
 const PcMain = () => {
     return(

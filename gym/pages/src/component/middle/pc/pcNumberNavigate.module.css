@@ -20,3 +20,18 @@
 #pc_searchResultNumberMargin{
     width: 3rem;
 }
+.flex_row{
+    display: flex;
+}
+.justify_content_center{
+    justify-content: center;
+}
+.text_set_center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex_column{
+    display:flex;
+    flex-direction: column;
+}

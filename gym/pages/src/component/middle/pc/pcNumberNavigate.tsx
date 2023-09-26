@@ -24,13 +24,13 @@ function NumberNavigate(props:NumberNavigateProps) {
                     <div id={styles.pc_searchResultNumberLeftBox}></div>
                     <div id={styles.pc_searchResultNumberCenterBox} className={`${styles.text_set_center}`}>
                         <div id={styles.pc_searchResultNumberMargin}></div>
-                        <span>&#60;</span>
-                        <span style={{border:'1px solid',padding:'10px'}}>1</span>
-                        <span>2</span>
-                        <span onClick={()=>{
+                        <div>&#60;</div>
+                        <div style={{border:'1px solid',paddingLeft:'0.5rem',paddingRight:'0.5rem'}}>1</div>
+                        <div>2</div>
+                        <div onClick={()=>{
                             setPageState(2)
                             router.push(`/searchresult?search=${searchWord}&page=2`)
-                        }}>&#62;</span>
+                        }}>&#62;</div>
                         <div id={styles.pc_searchResultNumberMargin}></div>
                     </div>
                     <div id={styles.pc_searchResultNumberRightBox}></div>
@@ -41,13 +41,13 @@ function NumberNavigate(props:NumberNavigateProps) {
                 <div id={styles.pc_searchResultNumberLeftBox}></div>
                 <div id={styles.pc_searchResultNumberCenterBox} className={`${styles.text_set_center}`}>
                     <div id={styles.pc_searchResultNumberMargin}></div>
-                    <span onClick={()=>{
+                    <div onClick={()=>{
                         setPageState(1)
                         router.push(`/searchresult?search=${searchWord}&page=1`)
-                    }}>&#60;</span>
-                    <span style={{border:'1px solid',padding:'10px'}}>1</span>
-                    <span>2</span>
-                    <span>&#62;</span>
+                    }}>&#60;</div>
+                    <div>1</div>
+                    <div style={{border:'1px solid',paddingLeft:'0.5rem',paddingRight:'0.5rem'}}>2</div>
+                    <div>&#62;</div>
                     <div id={styles.pc_searchResultNumberMargin}></div>
                 </div>
                 <div id={styles.pc_searchResultNumberRightBox}></div>

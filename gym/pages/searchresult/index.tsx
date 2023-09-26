@@ -22,12 +22,8 @@ interface gymwear{
 const Index = ({item,count}:SearchResultProps) => { 
 return(
     <div>
-    <BrowserView>
-        <Pc item={item} count={count} />
-    </BrowserView>
-    <MobileView>
-        <Mobile item={item} count={count}/>
-    </MobileView>
+        {isBrowser && <Pc item={item} count={count}/>}
+        {isMobile && <Mobile item={item} count={count}/>}
     </div>
     
 

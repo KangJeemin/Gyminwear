@@ -42,27 +42,31 @@ import { GetServerSidePropsContext } from 'next';
                     <div id={styles.pc_topNumberCenterBox} className={`${styles.text_set_center}`}>
                         <div id={styles.pc_topNumberMargin}></div>
                         {pageState=== 0 ? (
-                            <div>
-                                <span>&#60;</span>
-                                <span id={styles.pc_topNumberNavigatenNumberMargin}></span>
-                                <span style={{border:'1px solid',padding:'10px'}}>1</span>
-                                <span id={styles.pc_topNumberNavigatenNumberMargin}></span>
-                                <span>2</span>
-                                <span onClick={()=>{
+                            <div className={`${styles.flex_row}`}> 
+                                <div>&#60;</div>
+                                <div id={styles.pc_topNumberNavigatenNumberMargin}></div>
+                                <div style={{border:'1px solid',paddingLeft:'0.5rem',paddingRight:'0.5rem'}}>1</div>
+                                <div id={styles.pc_topNumberNavigatenNumberMargin}></div>
+                                <div>2</div>
+                                <div id={styles.pc_topNumberNavigatenNumberMargin}></div>
+                                <div onClick={()=>{
                                     router.push(`/topPage?page=2`)
                                     setPageState(1)
-                                }}>&#62;</span>
+                                }}>&#62;</div>
                             </div>
                         ) : 
                         pageState === 1 ? (
-                            <div>
-                                <span onClick={()=>{
+                            <div className={`${styles.flex_row}`}> 
+                                <div onClick={()=>{
                                     router.push(`/topPage?page=1`)
                                     setPageState(0)
-                                }}>&#60;</span>
-                                <span >1</span>
-                                <span style={{border:'1px solid',padding:'10px'}}>2</span>
-                                <span>&#62;</span>
+                                }}>&#60;</div>
+                                <div id={styles.pc_topNumberNavigatenNumberMargin}></div>
+                                <div>1</div>
+                                <div id={styles.pc_topNumberNavigatenNumberMargin}></div>
+                                <div style={{border:'1px solid',paddingLeft:'0.5rem',paddingRight:'0.5rem'}}>2</div>
+                                <div id={styles.pc_topNumberNavigatenNumberMargin}></div>
+                                <div>&#62;</div>
                             </div>
                         ) : null}
                         

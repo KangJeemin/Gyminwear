@@ -177,6 +177,7 @@
 #pc_topNumberNavigatenNumberMargin{
     width: 3rem;
     height: 100%;
+    background-color: aqua;
 }
 .grid_5x4{
     display: grid;

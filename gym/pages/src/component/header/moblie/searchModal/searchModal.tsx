@@ -5,7 +5,6 @@ import { useContext, useState, ChangeEvent } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 
 const SearchModal = () => {

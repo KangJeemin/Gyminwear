@@ -7,11 +7,7 @@ import bestall from './api/bestall'
 import besttop from './api/besttop'
 import bestbottom from './api/bestbottom'
 import { gymWearItem } from '@/src/type/gymwear'
-import PcHeader from './src/component/header/pc/pcHeader/pcHeader'
 import PcMain from './src/component/middle/pc/pcMain/pcMain'
-import PcAnnounce from './src/component/header/pc/pcAnnounce/pcAnnounce'
-import PcHeaderMargin from './src/component/header/pc/pcHeaderMargin'
-import PcSearchModal from './src/component/header/pc/pcSearchModal/pcSearchModal'
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 

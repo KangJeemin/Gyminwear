@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import type { gymWearItem ,GymItemProps} from '@/src/type/gymwear';
 import { GetServerSidePropsContext } from 'next';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
-import Pc from './pc';
-import Mobile from './moblie'
+import PcBottom from './pcBottom';
+import MobileBottom from './bottom'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { page } = context.query;
@@ -17,8 +17,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 const Index= ({gymitem}:GymItemProps) => { 
     return(
         <div>
-            {isBrowser &&  <Pc gymitem={gymitem} />}
-            {isMobile && <Mobile gymitem={gymitem}/>}
+            {isBrowser &&  <PcBottom gymitem={gymitem} />}
+            {isMobile && <MobileBottom gymitem={gymitem}/>}
         </div>
     )
 }

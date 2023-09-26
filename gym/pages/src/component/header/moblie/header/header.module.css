@@ -51,9 +51,6 @@
     display:flex;
     flex-direction: column;
 }
-.menuBoxMargin{
-    /* margin: 7%; */
-}
 .setTextCenter{
     display: flex;
     justify-content: center;

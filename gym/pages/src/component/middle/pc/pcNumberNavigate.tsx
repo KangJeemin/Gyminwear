@@ -4,7 +4,6 @@ import styles from "./pcNumberNavigate.module.css"
 import { AuthContext } from "@/public/context/authcontext";
 interface NumberNavigateProps {
     number: number;
-    pageMove: Function;
 }
 
 

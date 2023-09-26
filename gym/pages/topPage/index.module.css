@@ -174,6 +174,10 @@
 #pc_topNumberMargin{
     width: 3rem;
 }
+#pc_topNumberNavigatenNumberMargin{
+    width: 3rem;
+    height: 100%;
+}
 .grid_5x4{
     display: grid;
     grid-template-rows: 20% 20% 20% 20% 20%;

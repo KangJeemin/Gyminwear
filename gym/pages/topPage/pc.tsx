@@ -10,6 +10,7 @@ import { GetServerSidePropsContext } from 'next';
 
   const Index = ({gymitem}:GymItemProps) => {
         const router = useRouter();
+        const [pageState,setPageState]=useState<number>(0)
     return(
         <div id={styles.pc_topContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_topLeftBox}></div>
@@ -40,10 +41,31 @@ import { GetServerSidePropsContext } from 'next';
                     <div id={styles.pc_topNumberLeftBox}></div>
                     <div id={styles.pc_topNumberCenterBox} className={`${styles.text_set_center}`}>
                         <div id={styles.pc_topNumberMargin}></div>
-                        <span>&#60;</span>
-                        <span style={{border:'1px solid',padding:'10px'}}>1</span>
-                        <span>2</span>
-                        <span>&#62;</span>
+                        {pageState=== 0 ? (
+                            <div>
+                                <span>&#60;</span>
+                                <span id={styles.pc_topNumberNavigatenNumberMargin}></span>
+                                <span style={{border:'1px solid',padding:'10px'}}>1</span>
+                                <span id={styles.pc_topNumberNavigatenNumberMargin}></span>
+                                <span>2</span>
+                                <span onClick={()=>{
+                                    router.push(`/topPage?page=2`)
+                                    setPageState(1)
+                                }}>&#62;</span>
+                            </div>
+                        ) : 
+                        pageState === 1 ? (
+                            <div>
+                                <span onClick={()=>{
+                                    router.push(`/topPage?page=1`)
+                                    setPageState(0)
+                                }}>&#60;</span>
+                                <span >1</span>
+                                <span style={{border:'1px solid',padding:'10px'}}>2</span>
+                                <span>&#62;</span>
+                            </div>
+                        ) : null}
+                        
                         <div id={styles.pc_topNumberMargin}></div>
                     </div>
                     <div id={styles.pc_topNumberRightBox}></div>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styles from './pcMain.module.css'
 import Image from 'next/image';
-
+import gbroLogo from '../../../../../public/image/gbro/gbroLogo.jpg'
 
 const PcMain = () => {
     return(
@@ -24,7 +24,13 @@ const PcMain = () => {
                 <div id={styles.pc_mainImageContainerRightBox}></div>
             </div>
             <div id={styles.pc_mainImagemargin}></div>
-            <div id={styles.pc_mainImage2}></div>
+            <div id={styles.pc_mainImage2}>
+                <Image
+                    src={gbroLogo}
+                    alt='이미지 표시 불가'
+                    layout='fill'
+                />
+            </div>
             <div id={styles.pc_mainImagemargin}></div>
             <div id={styles.pc_mainImage3}></div>
         </div>

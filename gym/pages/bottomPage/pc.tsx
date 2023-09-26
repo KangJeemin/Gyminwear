@@ -41,7 +41,7 @@ import { GetServerSidePropsContext } from 'next';
                     <div id={styles.pc_bottomNumberLeftBox}></div>
                     <div id={styles.pc_bottomNumberCenterBox} className={`${styles.text_set_center}`}>
                         <div id={styles.pc_bottomNumberMargin}></div>
-                        {pageState=== 0 ? (
+                        {/* {pageState=== 0 ? (
                             <div className={`${styles.flex_row}`}> 
                                 <div>&#60;</div>
                                 <div id={styles.pc_bottomNumberNavigatenNumberMargin}></div>
@@ -68,7 +68,7 @@ import { GetServerSidePropsContext } from 'next';
                                 <div id={styles.pc_bottomNumberNavigatenNumberMargin}></div>
                                 <div>&#62;</div>
                             </div>
-                        ) : null}
+                        ) : null} */}
                         
                         <div id={styles.pc_bottomNumberMargin}></div>
                     </div>

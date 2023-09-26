@@ -19,12 +19,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const Index = ({gymitem}:GymItemProps) => {
     return(
     <div>
-        <BrowserView>
-            <Pc gymitem={gymitem}/>
-        </BrowserView>
-        <MobileView>
-            <Mobile gymitem={gymitem}/>
-        </MobileView>
+        {isBrowser && <Pc gymitem={gymitem}/>}
+        {isMobile &&  <Mobile gymitem={gymitem}/>}
     </div>
     )
     

@@ -3,7 +3,7 @@
     height: auto;
     
 }
-#bottomComponent_topText{
+#bottomComponent_bottomText{
     width: 100%;
     height: 40px;
     background-color:#D9D9D9;
@@ -90,4 +90,98 @@
 }
 .color_blue{
     color: blue;
+}
+#pc_bottomLeftBox{
+    width: 10%;
+    height: 100%;
+    background-color: gray;
+}
+#pc_bottomCenterBox{
+    width: 90%;
+    height: auto;
+}
+#pc_bottomRightBox{
+    width: 10%;
+    height: 100%;
+    background-color: gray;
+}
+#pc_bottomCenterMarginBox{
+    width: 100%;
+    height: 10rem;
+    color: black;
+    font-size: 3rem;
+}
+#pc_bottomItem_itemComponent{
+    width: 100%;
+    height: 500px;
+    border-color: white;
+
+}
+#pc_bottomItem_imageSize{
+    width: 100%;
+    height: 80%;
+    position: relative;
+}
+#pc_bottomItem_textBoxSize{
+    width: 100%;
+    height: 30%;
+    background-color: white;
+}
+#pc_bottomItem_itemBrandName{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    color:black;
+    font-weight :bold;
+    font-size: 1rem;  
+}
+#pc_bottomItem_itemName{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    font-size: 1.2rem;  
+    color: gray;
+}
+#pc_bottomItem_itemPrice{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+    color:black;
+    font-size: 1.2rem;  
+}
+#pc_bottomNumvberNavigateContainer{
+    width: 100%;
+    height: 5rem;
+    
+}
+#pc_bottomNumberLeftBox{
+    width: 33%;
+    height: 100%;
+}
+#pc_bottomNumberCenterBox{
+    width: 34%;
+    height: 100%;
+    display: flex;
+    justify-content:space-between;
+    color: black;
+}
+#pc_bottomNumberRightBox{
+    width: 33%;
+    height: 100%;
+}
+#pc_bottomNumberMargin{
+    width: 3rem;
+}
+#pc_bottomNumberNavigatenNumberMargin{
+    width: 3rem;
+    height: 100%;
+    background-color: aqua;
+}
+.grid_5x4{
+    display: grid;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.padding_3{
+    padding: 10%;
 }

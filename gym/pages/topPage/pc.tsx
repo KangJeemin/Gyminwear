@@ -8,7 +8,7 @@ import convertWon from '@/pages/src/module/convertWon';
 import { GetServerSidePropsContext } from 'next';
 
 
-  const Index = ({gymitem}:GymItemProps) => {
+  const Pc = ({gymitem}:GymItemProps) => {
         const router = useRouter();
         const [pageState,setPageState]=useState<number>(0)
     return(
@@ -79,4 +79,4 @@ import { GetServerSidePropsContext } from 'next';
         </div>
     )
 }
-export default Index
+export default Pc

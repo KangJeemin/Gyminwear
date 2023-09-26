@@ -28,7 +28,9 @@ const PcMain = () => {
                 <Image
                     src={gbroLogo}
                     alt='이미지 표시 불가'
-                    layout='fill'
+                    layout='fixed'
+                    width={1280}
+                    height={480}
                 />
             </div>
             <div id={styles.pc_mainImagemargin}></div>

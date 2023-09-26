@@ -12,6 +12,9 @@ import PcMain from './src/component/middle/pc/pcMain'
 import PcAnnounce from './src/component/header/pc/pcAnnounce'
 import PcHeaderMargin from './src/component/header/pc/pcHeaderMargin'
 import PcSearchModal from './src/component/header/pc/pcSearchModal'
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+
+
 interface mainPageItemPropsType {
     bestTopItem:[]
     bestAllItem:[]
@@ -40,14 +43,15 @@ const Index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>
         style={{
             overscrollBehavior:"none"
         }}>
-            {/* <Announcement/> */}
-            {/* <BestAll gymitem={bestAllItem}/> */}
-            {/* <BestTop gymitem={bestTopItem}/> */}
-            {/* <BestBottom gymitem={bestBottomItem}/> */}
-            
-            {/* <PcSearchModal/> */}
-            {/* <PcAnnounce/> */}
-            <PcMain/>
+        {isBrowser && (<PcMain/>)}
+        {isMobile && (
+            <div>
+              <Announcement/>
+              <BestAll gymitem={bestAllItem}/>
+              <BestTop gymitem={bestTopItem}/>
+              <BestBottom gymitem={bestBottomItem}/>
+            </div>
+        )}
         </div>
     )
 }

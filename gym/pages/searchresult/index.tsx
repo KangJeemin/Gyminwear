@@ -11,9 +11,9 @@ import axios from 'axios';
 import type { gymWearItem ,SearchResultProps} from '../../src/type/gymwear';
 import { GetServerSideProps,GetServerSidePropsContext } from 'next';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
-import NumberNavigate from '../src/component/middle/mobile/numberNavigate/numberNavigate';
-import Pc from './pc';
-import Mobile from './mobile'
+import NumberNavigate from '../../src/component/middle/mobile/numberNavigate/numberNavigate';
+import Pc from '../../src/component/middle/pc/pcSearchresult/pc';
+import Mobile from '../../src/component/middle/pc/pcSearchresult/mobile'
 
 interface gymwear{
     data:gymWearItem;

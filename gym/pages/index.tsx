@@ -1,13 +1,13 @@
 import React from 'react'
-import BestAll from './src/component/middle/mobile/bestAll/bestAll'
-import BestTop from './src/component/middle/mobile/bestTop/bestTop'
-import BestBottom from './src/component/middle/mobile/bestBottom/bestBottom'
-import Announcement from './src/component/header/moblie/announceMent/announcement'
+import BestAll from '../src/component/middle/mobile/bestAll/bestAll'
+import BestTop from '../src/component/middle/mobile/bestTop/bestTop'
+import BestBottom from '../src/component/middle/mobile/bestBottom/bestBottom'
+import Announcement from '../src/component/header/moblie/announceMent/announcement'
 import bestall from './api/bestall'
 import besttop from './api/besttop'
 import bestbottom from './api/bestbottom'
 import { gymWearItem } from '@/src/type/gymwear'
-import PcMain from './src/component/middle/pc/pcMain/pcMain'
+import PcMain from '../src/component/middle/pc/pcMain/pcMain'
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 

@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import type { gymWearItem ,GymItemProps} from '@/src/type/gymwear';
 import { GetServerSidePropsContext } from 'next';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
-import PcBottom from '../src/component/middle/pc/pcBottom/pc';
-import MobileBottom from '../src/component/middle/pc/pcBottom/mobile'
+import PcBottom from '../../src/component/middle/pc/pcBottom/pc';
+import MobileBottom from '../../src/component/middle/pc/pcBottom/mobile'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { page } = context.query;

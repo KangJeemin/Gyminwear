@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import styles from './searchModal.module.css'
-import { AuthContext } from '../../../../../../public/context/authcontext';
+import { AuthContext } from '../../../../../public/context/authcontext';
 import { useContext, useState, ChangeEvent } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";

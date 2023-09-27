@@ -8,9 +8,9 @@ import { AuthContext } from '@/public/context/authcontext';
 import Image from 'next/image'
 import convertWon from '@/pages/src/module/convertWon';
 import axios from 'axios';
-import type { gymWearItem,SearchResultProps  } from '../../src/type/gymwear';
+import type { gymWearItem,SearchResultProps  } from '../../../../type/gymwear';
 import { GetServerSideProps,GetServerSidePropsContext } from 'next';
-import PcNumberNavigate from '../src/component/middle/pc/pcNumberNavigate/pcNumberNavigate'
+import PcNumberNavigate from '../pcNumberNavigate/pcNumberNavigate'
 
 
 interface gymwear{

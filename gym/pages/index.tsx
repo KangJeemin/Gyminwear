@@ -1,17 +1,16 @@
 import React from 'react'
-import BestAll from './src/component/middle/bestAll/bestAll'
-import BestTop from './src/component/middle/bestTop/bestTop'
-import BestBottom from './src/component/middle/bestBottom/bestBottom'
-import Announcement from './src/component/header/announceMent/announcement'
+import BestAll from '../src/component/middle/mobile/bestAll/bestAll'
+import BestTop from '../src/component/middle/mobile/bestTop/bestTop'
+import BestBottom from '../src/component/middle/mobile/bestBottom/bestBottom'
+import Announcement from '../src/component/header/moblie/announceMent/announcement'
 import bestall from './api/bestall'
 import besttop from './api/besttop'
 import bestbottom from './api/bestbottom'
 import { gymWearItem } from '@/src/type/gymwear'
-import PcHeader from './src/component/header/pc/pcHeader'
-import PcMain from './src/component/middle/pc/pcMain'
-import PcAnnounce from './src/component/header/pc/pcAnnounce'
-import PcHeaderMargin from './src/component/header/pc/pcHeaderMargin'
-import PcSearchModal from './src/component/header/pc/pcSearchModal'
+import PcMain from '../src/component/middle/pc/pcMain/pcMain'
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+
+
 interface mainPageItemPropsType {
     bestTopItem:[]
     bestAllItem:[]
@@ -40,14 +39,15 @@ const Index = ({bestTopItem,bestAllItem,bestBottomItem}:mainPageItemPropsType)=>
         style={{
             overscrollBehavior:"none"
         }}>
-            {/* <Announcement/> */}
-            {/* <BestAll gymitem={bestAllItem}/> */}
-            {/* <BestTop gymitem={bestTopItem}/> */}
-            {/* <BestBottom gymitem={bestBottomItem}/> */}
-            
-            {/* <PcSearchModal/> */}
-            {/* <PcAnnounce/> */}
-            <PcMain/>
+        {isBrowser && (<PcMain/>)}
+        {isMobile && (
+            <div>
+              <Announcement/>
+              <BestAll gymitem={bestAllItem}/>
+              <BestTop gymitem={bestTopItem}/>
+              <BestBottom gymitem={bestBottomItem}/>
+            </div>
+        )}
         </div>
     )
 }

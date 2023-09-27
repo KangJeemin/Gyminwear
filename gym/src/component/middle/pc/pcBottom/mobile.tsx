@@ -9,7 +9,7 @@ import { GetServerSidePropsContext } from 'next';
 
 
 
-const Mobile= ({gymitem}:GymItemProps) => { 
+const Mobile = ({gymitem}:GymItemProps) => { 
     
     const router = useRouter();
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)

@@ -7,7 +7,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Image from 'next/image';
 import Logo from '../../../../../public/image/gyminwearLogo.png'
 import { useRouter } from 'next/router';
-import PcSearchModal from './pcSearchModal';
+import PcSearchModal from '../pcSearchModal/pcSearchModal';
 import { AuthContext } from '@/public/context/authcontext';
 
 

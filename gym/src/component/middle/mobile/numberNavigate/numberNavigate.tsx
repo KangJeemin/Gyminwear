@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import styles from '../../../../searchresult/index.module.css';
+import styles from '../../../../../src/component/middle/pc/pcSearchresult/index.module.css';
 
 interface NumberNavigateProps {
     number: number;

@@ -13,8 +13,7 @@
     width: 90%;
     height: 100%;
     display: flex;
-    flex-wrap: nowrap;
-    flex-shrink: 0;
+    overflow: hidden;
 }
 #pc_slideContainerImageBoxRightButton{
     width: 5%;
@@ -36,7 +35,7 @@
     position: absolute;
 }
 #pc_slide1{
-    width: 100%;
+    width: 150%;
     height: 100%;
 }
 #pc_slide2{

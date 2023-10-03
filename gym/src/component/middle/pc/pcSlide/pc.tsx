@@ -13,7 +13,7 @@ const PcSlide = () => {
                 }}>&#60;</div>
                     <motion.div id={styles.pc_slideContainerImageBoxImage} className={`${styles.flexRow}`}
                         animate={{
-                            clipPath: slideState === 0 ? "inset('100px' '20px' '100px' '10px')" : "inset(0px)"
+                            clipPath: slideState === 0 ? "circle(40%)" : "inset(0px)"
                         }}
                         transition={{
                             duration: slideState ===0 ? 0 : slideState===1 ? 0.5 : 0.5,

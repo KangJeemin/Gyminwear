@@ -8,6 +8,7 @@
     color: black;
     font-weight: bold;
     font-size: 2rem;
+    z-index: 1;
 }
 #pc_slideContainerImageBoxImage{
     width: 90%;
@@ -21,6 +22,7 @@
     color: black;
     font-weight: bold;
     font-size: 2rem;
+    z-index: 1
 }
 #pc_slideText{
     width: 100%;

@@ -1,0 +1,34 @@
+#pc_mainImageContainerImageBox{
+    width: 70%;
+    height: 100%;
+}
+#pc_mainImageContainerImageBoxLeftButton{
+    width: 5%;
+    height: 100%;
+    color: black;
+    font-weight: bold;
+    font-size: 2rem;
+}
+#pc_mainImageContainerImageBoxImage{
+    width: 90%;
+    height: 100%;
+}
+#pc_mainImageContainerImageBoxRightButton{
+    width: 5%;
+    height: 100%;
+    color: black;
+    font-weight: bold;
+    font-size: 2rem;
+}
+.flexRow {
+    display:flex;
+}
+.flexColumn{
+    display:flex;
+    flex-direction: column;
+}
+.setTextCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

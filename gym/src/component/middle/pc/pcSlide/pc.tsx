@@ -1,9 +1,9 @@
 import * as React from 'react';
-import styles from './pcMain.module.css'
+import styles from './index.module.css'
 import Image from 'next/image';
-import gbroLogo from '../../../../../public/image/gbro/gbroLogo.jpg'
 
-const PcMain = () => {
+
+const PcSlide = () => {
     return(
         <div id={styles.pc_mainContainer} className={`${styles.flexColumn}`}>
             <div id={styles.pc_mainImageContainer} className={`${styles.flexRow}`}>
@@ -39,4 +39,4 @@ const PcMain = () => {
     )
 }
 
-export default PcMain
+export default PcSlide

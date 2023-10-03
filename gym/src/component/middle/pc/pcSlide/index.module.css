@@ -12,12 +12,15 @@
 #pc_slideContainerImageBoxImage{
     width: 90%;
     height: 100%;
+    position: absolute;
     overflow: hidden;
 }
 #pc_slideContainerImageBoxRightButton{
     width: 5%;
     height: 100%;
     color: black;
+    position: relative;
+    left: 90%;
     font-weight: bold;
     font-size: 2rem;
 }

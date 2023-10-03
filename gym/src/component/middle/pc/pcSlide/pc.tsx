@@ -11,7 +11,10 @@ const PcSlide = () => {
                 <div id={styles.pc_slideContainerImageBoxLeftButton} className={`${styles.setTextCenter}`} onClick={()=>{
                     setSlideState(slideState-1)
                 }}>&#60;</div>
-                    <motion.div id={styles.pc_slideContainerImageBoxImage}>
+                    <motion.div id={styles.pc_slideContainerImageBoxImage} style={{
+                        top:'0px',
+                        left:'-800px'
+                    }}>
                         <div id={styles.pc_slide1} >
                             <div style={{width:"100%",height:"20%"}}></div>
                             <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> 유행하는 짐웨어,</div>

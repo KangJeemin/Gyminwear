@@ -12,6 +12,8 @@
 #pc_slideContainerImageBoxImage{
     width: 90%;
     height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
 }
 #pc_slideContainerImageBoxRightButton{
     width: 5%;
@@ -33,11 +35,11 @@
     position: absolute;
 }
 #pc_slide1{
-    width: 50rem;
+    width: 100rem;
     height: 100%;
 }
 #pc_slide2{
-    width: 25rem;
+    width: 50rem;
     height: 100%;
 }
 .flexRow {

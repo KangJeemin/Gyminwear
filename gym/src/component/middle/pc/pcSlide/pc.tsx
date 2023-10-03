@@ -5,7 +5,6 @@ import Image from 'next/image';
 
 const PcSlide = () => {
     return(
-        <div>
             <div id={styles.pc_mainImageContainerImageBox} className={`${styles.flexRow}`}>
                 <div id={styles.pc_mainImageContainerImageBoxLeftButton} className={`${styles.setTextCenter}`}>&#60;</div>
                 <div id={styles.pc_mainImageContainerImageBoxImage}>
@@ -19,8 +18,6 @@ const PcSlide = () => {
                 </div>
                 <div id={styles.pc_mainImageContainerImageBoxRightButton} className={`${styles.setTextCenter}`}>&#62;</div>
             </div>
-        </div>
-                
     )
 }
 

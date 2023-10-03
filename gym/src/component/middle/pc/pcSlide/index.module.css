@@ -29,8 +29,8 @@
 }
 #pc_slideComponent{
     width: 100%;
+    height: 100%;
     position: absolute;
-    clip: shape;
 }
 #pc_slide1{
     width: 50rem;

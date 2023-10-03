@@ -11,17 +11,16 @@ const PcSlide = () => {
                 <div id={styles.pc_slideContainerImageBoxLeftButton} className={`${styles.setTextCenter}`} onClick={()=>{
                     setSlideState(slideState-1)
                 }}>&#60;</div>
-                <div id={styles.pc_slideContainerImageBoxImage} className={`${styles.flexRow}`}>
-                    <motion.div id={styles.pc_slideComponent}
-                        // animate={{
-                            // clipPath: slideState === 0 ? "inset('10px' '20px' '10px' '10px')" : "inset(0px)"
-                        // }}
-                        // transition={{
-                        //     duration: slideState ===0 ? 0 : slideState===1 ? 0.5 : 0.5,
-                        //     ease: "linear",
-                        //     times: slideState ===1? [0, 0.5] : [0,0.5],
-                        //   }}
-                    />
+                    <motion.div id={styles.pc_slideContainerImageBoxImage} className={`${styles.flexRow}`}
+                        animate={{
+                            clipPath: slideState === 0 ? "inset('100px' '20px' '100px' '10px')" : "inset(0px)"
+                        }}
+                        transition={{
+                            duration: slideState ===0 ? 0 : slideState===1 ? 0.5 : 0.5,
+                            ease: "linear",
+                            times: slideState ===1? [0, 0.5] : [0,0.5],
+                          }}
+                    >
                         <div id={styles.pc_slide1} >
                             <div style={{width:"100%",height:"20%"}}></div>
                             <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> 유행하는 짐웨어,</div>
@@ -40,7 +39,7 @@ const PcSlide = () => {
                             <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> ghi.</div>
                             <div style={{width:"100%",height:"20%"}}></div>
                         </div>
-                </div>
+                    </motion.div>
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{
                     setSlideState(slideState+1)
                 }}>&#62;</div>

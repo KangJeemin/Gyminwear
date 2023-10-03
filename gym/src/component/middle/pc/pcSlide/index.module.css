@@ -8,7 +8,7 @@
     color: black;
     font-weight: bold;
     font-size: 2rem;
-    z-index: 1
+    z-index: 1;
 }
 #pc_slideContainerImageBoxImage{
     width: 90%;
@@ -16,7 +16,7 @@
     position: relative;
     display: flex;
     flex-wrap: nowrap;
-    z-index: 0
+    z-index: auto;
     
 }
 #pc_slideContainerImageBoxRightButton{
@@ -24,8 +24,8 @@
     height: 100%;
     color: black;
     font-weight: bold;
-    position: relative;
     font-size: 2rem;
+    z-index: 1;
 }
 #pc_slideText{
     width: 100%;

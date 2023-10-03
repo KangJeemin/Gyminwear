@@ -1,31 +1,44 @@
-#pc_mainImageContainerImageBox{
+#pc_slideContainerImageBox{
     width: 70%;
     height: 100%;
 }
-#pc_mainImageContainerImageBoxLeftButton{
+#pc_slideContainerImageBoxLeftButton{
     width: 5%;
     height: 100%;
     color: black;
     font-weight: bold;
     font-size: 2rem;
 }
-#pc_mainImageContainerImageBoxImage{
+#pc_slideContainerImageBoxImage{
     width: 90%;
     height: 100%;
 }
-#pc_mainImageContainerImageBoxRightButton{
+#pc_slideContainerImageBoxRightButton{
     width: 5%;
     height: 100%;
     color: black;
     font-weight: bold;
     font-size: 2rem;
 }
-#pc_mainImageText{
+#pc_slideText{
     width: 100%;
     height: 20%;
     color: black;
     font-weight: bold;
     font-size: 2.5rem;
+}
+#pc_slideComponent{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+#pc_slide1{
+    width: 50rem;
+    height: 100%;
+}
+#pc_slide2{
+    width: 25rem;
+    height: 100%;
 }
 .flexRow {
     display:flex;

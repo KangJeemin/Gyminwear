@@ -10,7 +10,14 @@ const PcSlide = () => {
     return(
             <div id={styles.pc_slideContainerImageBox} className={`${styles.flexRow}`}>
                 <div id={styles.pc_slideContainerImageBoxLeftButton} className={`${styles.setTextCenter}`} onClick={()=>{
-                    setSlideState(slideState-1)
+                    if(slideState===-1 || slideState===0){
+                        setSlideState(4)    
+                    }
+                    else{
+                        setSlideState(slideState-1)
+                    }
+                    
+                    
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage} style={{
                         top:'0px',

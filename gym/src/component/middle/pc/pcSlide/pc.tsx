@@ -87,7 +87,15 @@ const PcSlide = () => {
                 </div>
                 
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{
-                    setSlideState(slideState+1)
+                    if(slideState===-1){
+                        setSlideState(1)
+                    }
+                    else if(slideState===4){
+                        setSlideState(0)
+                    }
+                    else{
+                        setSlideState(slideState+1)
+                    }
                 }}>&#62;</div>\
                 
             </div>

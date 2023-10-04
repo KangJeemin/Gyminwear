@@ -13,7 +13,7 @@ const PcSlide = () => {
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage} style={{
                         top:'0px',
-                        left:'0px'
+                        left:'-500px'
                 }}>
                     <div id={styles.pc_slide1} >
                         <div style={{width:"100%",height:"20%"}}></div>
@@ -33,10 +33,11 @@ const PcSlide = () => {
                         <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> ghi.</div>
                         <div style={{width:"100%",height:"20%"}}></div>
                     </div>
-                    <div id={styles.pc_slideNavigation}>
-
-                    </div>
+                    
                 </motion.div>
+                <div id={styles.pc_slideNavigation}>
+
+                </div>
                 
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{
                     setSlideState(slideState+1)

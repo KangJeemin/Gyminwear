@@ -1,7 +1,6 @@
 #pc_slideContainerImageBox{
     width: 70%;
     height: 100%;
-    z-index:0;
     position: relative;
     background-color: aqua;
 }
@@ -35,7 +34,7 @@
     z-index: 2;
     background-color: white;
     position: absolute;
-    left: 90%;
+    left: 95%;
     
 }
 #pc_slideText{

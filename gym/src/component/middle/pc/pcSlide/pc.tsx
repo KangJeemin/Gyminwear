@@ -35,7 +35,7 @@ const PcSlide = () => {
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage} style={{
                         top:'0px',
-                        left:'0%',
+                        left:'-50%',
                 }}>
                     <div id={styles.pc_slide1}>
                         <div style={{width:"100%",height:"20%"}}></div>

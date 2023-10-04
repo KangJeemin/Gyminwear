@@ -14,7 +14,7 @@
     background-color: white;
 }
 #pc_slideContainerImageBoxImage{
-    width: 90%;
+    width: auto;
     height: 100%;
     position: relative;
     display: flex;
@@ -38,17 +38,17 @@
     font-size: 2.5rem;
 }
 #pc_slide1{
-    width: 100%;
+    width: 30rem;
     height: 100%;
     background-color: red;
 }
 #pc_slide2{
-    width: 100%;
+    width: 30rem;
     height: 100%;
     background-color: blue;
 }
 #pc_slide3{
-    width: 100%;
+    width: 30rem;
     height: 100%;
     background-color:green;
 }

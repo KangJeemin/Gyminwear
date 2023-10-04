@@ -33,9 +33,13 @@ const PcSlide = () => {
                     
                     
                 }}>&#60;</div>
-                <motion.div id={styles.pc_slideContainerImageBoxImage} style={{
-                        top:'0px',
-                        left:'-70rem',
+                <motion.div id={styles.pc_slideContainerImageBoxImage}
+                    animate={{
+                        left: slideState===0? ['-350rem','0rem'] : slideState ===1 ? ['0rem', '-70rem'] :slideState ===1 ?  ['-70rem', '-140rem'] : slideState===2? ['-140rem', '-210rem'] : slideState===3 ? ['-210rem', '-280rem'] : slideState===4 ? ['-280rem', '-350rem'] :  ['0rem','0rem'],
+                    }}
+                    transition={{
+                        duration: 0.5,
+                        ease: "linear",
                 }}>
                     <div id={styles.pc_slide1}>
                         <div style={{width:"100%",height:"20%"}}></div>
@@ -56,6 +60,24 @@ const PcSlide = () => {
                         <div style={{width:"100%",height:"20%"}}></div>
                     </div>
                     <div id={styles.pc_slide3}>
+                        <div style={{width:"100%",height:"20%"}}></div>
+                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> abc,</div>
+                        <div style={{width:"100%"}}></div>
+                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> def,</div>
+                        <div style={{width:"100%"}}></div>
+                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> ghi.</div>
+                        <div style={{width:"100%",height:"20%"}}></div>
+                    </div>
+                    <div id={styles.pc_slide4}>
+                        <div style={{width:"100%",height:"20%"}}></div>
+                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> abc,</div>
+                        <div style={{width:"100%"}}></div>
+                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> def,</div>
+                        <div style={{width:"100%"}}></div>
+                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> ghi.</div>
+                        <div style={{width:"100%",height:"20%"}}></div>
+                    </div>
+                    <div id={styles.pc_slide5}>
                         <div style={{width:"100%",height:"20%"}}></div>
                         <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> abc,</div>
                         <div style={{width:"100%"}}></div>

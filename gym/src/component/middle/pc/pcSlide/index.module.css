@@ -55,11 +55,11 @@
     justify-content: center;
 }
 .slideNavigateLayout{
-    width: 1.5rem;
-    height: 50%;
+    width: 1rem;
+    height: 33%;
     background-color: gray;
     border-radius: 2rem;
-    margin: 1rem;
+    margin: 2rem;
 
 }
 .flexRow {

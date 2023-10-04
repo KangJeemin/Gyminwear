@@ -35,7 +35,7 @@ const PcSlide = () => {
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage} style={{
                         top:'0px',
-                        left:'0px',
+                        left:'-70rem',
                 }}>
                     <div id={styles.pc_slide1}>
                         <div style={{width:"100%",height:"20%"}}></div>
@@ -46,7 +46,7 @@ const PcSlide = () => {
                         <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> 짐인웨어에서 확인해 보세요.</div>
                         <div style={{width:"100%",height:"20%"}}></div>
                     </div>
-                    {/* <div id={styles.pc_slide2}>
+                    <div id={styles.pc_slide2}>
                         <div style={{width:"100%",height:"20%"}}></div>
                         <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> abc,</div>
                         <div style={{width:"100%"}}></div>
@@ -63,7 +63,7 @@ const PcSlide = () => {
                         <div style={{width:"100%"}}></div>
                         <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> ghi.</div>
                         <div style={{width:"100%",height:"20%"}}></div>
-                    </div> */}
+                    </div>
                 </motion.div>
                 <div id={styles.pc_slideNavigation}> 
                     <motion.div className={`${styles.slideNavigateLayout}`} 

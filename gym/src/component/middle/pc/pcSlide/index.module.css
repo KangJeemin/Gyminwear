@@ -48,15 +48,15 @@
 #pc_slide1{
     width: 70rem;
     height: 100%;
-    background-color:transparent
+    background-color:red
 }
 #pc_slide2{
-    width: 63.5rem;
+    width: 70rem;
     height: 100%;
     background-color: blue;
 }
 #pc_slide3{
-    width: 63.5rem;
+    width: 70rem;
     height: 100%;
     background-color:green;
 }

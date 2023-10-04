@@ -36,7 +36,7 @@ const PcSlide = () => {
                     
                 </motion.div>
                 <div id={styles.pc_slideNavigation}>
-
+                heyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyhey
                 </div>
                 
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{

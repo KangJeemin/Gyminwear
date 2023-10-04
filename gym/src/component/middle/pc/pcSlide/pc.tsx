@@ -37,22 +37,17 @@ const PcSlide = () => {
                     
                 </motion.div>
                 <div id={styles.pc_slideNavigation}> 
-                    {/* <motion.div className={`${styles.slideNavigateLayout}`} 
+                    <motion.div className={`${styles.slideNavigateLayout}`} 
                     animate={{
-                        scale: slideState ===1 ? [1, 1] : [1, 1],
+                        width: slideState ===1 ? ['1rem', '2rem'] : ['2rem', '1rem'],
                         
                     }}
                     transition={{
-                        duration: slideState ===0 ? 0 : slideState===1 ? 0.5 : 0.5,
+                        duration: 0.5,
                         ease: "linear",
-                        times: slideState ===1 ? [0, 0.5] : [0,0.5],
+                        times: slideState ===0.5,
                       }}>
-                    </motion.div> */}
-                    <motion.div className={ slideState===0? (`${styles.slideNavigateLayout} ${styles.slideNavigateSelectedLayout}`) :(`${styles.slideNavigateLayout}`)  }></motion.div>
-                    <motion.div className={ slideState===1? (`${styles.slideNavigateLayout} ${styles.slideNavigateSelectedLayout}`) :(`${styles.slideNavigateLayout}`)  }></motion.div>
-                    <motion.div className={ slideState===2? (`${styles.slideNavigateLayout} ${styles.slideNavigateSelectedLayout}`) :(`${styles.slideNavigateLayout}`)  }></motion.div>
-                    <motion.div className={ slideState===3? (`${styles.slideNavigateLayout} ${styles.slideNavigateSelectedLayout}`) :(`${styles.slideNavigateLayout}`)  }></motion.div>
-                    <motion.div className={ slideState===4? (`${styles.slideNavigateLayout} ${styles.slideNavigateSelectedLayout}`) :(`${styles.slideNavigateLayout}`)  }></motion.div>
+                    </motion.div>
                 </div>
                 
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{

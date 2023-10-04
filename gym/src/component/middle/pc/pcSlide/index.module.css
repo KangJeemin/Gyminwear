@@ -17,7 +17,7 @@
     width: 90%;
     height: 100%;
     position: relative;
-    flex-wrap: nowrap;
+    display: flex;
     z-index: 0;
     
 }
@@ -28,6 +28,7 @@
     font-weight: bold;
     font-size: 2rem;
     z-index: 1;
+    background-color: white;
 }
 #pc_slideText{
     width: 100%;
@@ -39,11 +40,13 @@
 #pc_slide1{
     width: 100%;
     height: 100%;
+    flex-wrap: nowrap;
     background-color: red;
 }
 #pc_slide2{
     width: 100%;
     height: 100%;
+    flex-wrap: nowrap;
     background-color: blue;
 }
 #pc_slideNavigation{

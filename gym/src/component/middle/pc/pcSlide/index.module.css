@@ -10,7 +10,7 @@
     font-weight: bold;
     position: relative;
     font-size: 2rem;
-    z-index: 100;
+    z-index: 1;
     background-color: white;
 }
 #pc_slideContainerImageBoxImage{

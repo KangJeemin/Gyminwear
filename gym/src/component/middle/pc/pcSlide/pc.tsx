@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 
 const PcSlide = () => {
-    const [slideState,setSlideState] = React.useState<number>(0)
+    const [slideState,setSlideState] = React.useState<number>(-1)
     
     return(
             <div id={styles.pc_slideContainerImageBox} className={`${styles.flexRow}`}>
@@ -39,15 +39,51 @@ const PcSlide = () => {
                 <div id={styles.pc_slideNavigation}> 
                     <motion.div className={`${styles.slideNavigateLayout}`} 
                     animate={{
-                        width: slideState ===1 ? ['1rem', '2rem'] : ['2rem', '1rem'],
+                        width: slideState ===-1 ? ['2rem', '2rem'] :slideState ===0 ?  ['1rem', '2rem'] :['2rem', '1rem'],
                         
                     }}
                     transition={{
                         duration: 0.5,
                         ease: "linear",
-                        times: slideState ===0.5,
                       }}>
                     </motion.div>
+                    <motion.div className={`${styles.slideNavigateLayout}`} 
+                    animate={{
+                        width: slideState ===1 ? ['1rem', '2rem'] : ['2rem', '1rem'],
+                    }}
+                    transition={{
+                        duration: 0.5,
+                        ease: "linear",
+                      }}>
+                    </motion.div>
+                    <motion.div className={`${styles.slideNavigateLayout}`} 
+                    animate={{
+                        width: slideState ===2 ? ['1rem', '2rem'] : ['2rem', '1rem'],
+                    }}
+                    transition={{
+                        duration: 0.5,
+                        ease: "linear",
+                      }}>
+                    </motion.div>
+                    <motion.div className={`${styles.slideNavigateLayout}`} 
+                    animate={{
+                        width: slideState ===3 ? ['1rem', '2rem'] : ['2rem', '1rem'],
+                    }}
+                    transition={{
+                        duration: 0.5,
+                        ease: "linear",
+                      }}>
+                    </motion.div>
+                    <motion.div className={`${styles.slideNavigateLayout}`} 
+                    animate={{
+                        width: slideState ===4 ? ['1rem', '2rem'] : ['2rem', '1rem'],
+                    }}
+                    transition={{
+                        duration: 0.5,
+                        ease: "linear",
+                      }}>
+                    </motion.div>
+
                 </div>
                 
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{

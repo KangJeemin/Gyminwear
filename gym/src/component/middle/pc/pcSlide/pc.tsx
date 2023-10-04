@@ -37,7 +37,7 @@ const PcSlide = () => {
                         top:'0px',
                         left:'0%',
                 }}>
-                    <div id={styles.pc_slide1} >
+                    <div id={styles.pc_slide1}>
                         <div style={{width:"100%",height:"20%"}}></div>
                         <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> 유행하는 짐웨어,</div>
                         <div style={{width:"100%"}}></div>
@@ -46,7 +46,16 @@ const PcSlide = () => {
                         <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> 짐인웨어에서 확인해 보세요.</div>
                         <div style={{width:"100%",height:"20%"}}></div>
                     </div>
-                    <div id={styles.pc_slide2} >
+                    <div id={styles.pc_slide2}>
+                        <div style={{width:"100%",height:"20%"}}></div>
+                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> abc,</div>
+                        <div style={{width:"100%"}}></div>
+                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> def,</div>
+                        <div style={{width:"100%"}}></div>
+                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> ghi.</div>
+                        <div style={{width:"100%",height:"20%"}}></div>
+                    </div>
+                    <div id={styles.pc_slide3}>
                         <div style={{width:"100%",height:"20%"}}></div>
                         <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> abc,</div>
                         <div style={{width:"100%"}}></div>
@@ -60,7 +69,7 @@ const PcSlide = () => {
                     <motion.div className={`${styles.slideNavigateLayout}`} 
                     animate={{
                         width: slideState ===-1 ? ['2rem', '2rem'] :slideState ===0 ?  ['1rem', '2rem'] :['2rem', '1rem'],
-                        
+
                     }}
                     transition={{
                         duration: 0.5,

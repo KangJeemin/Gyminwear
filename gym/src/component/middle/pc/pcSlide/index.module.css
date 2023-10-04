@@ -13,6 +13,7 @@
     font-size: 2rem;
     z-index: 2;
     background-color: white;
+    
 }
 #pc_slideContainerImageBoxImage{
     width: auto;
@@ -47,7 +48,7 @@
 #pc_slide1{
     width: 70rem;
     height: 100%;
-    background-color: red;
+    background-color:transparent
 }
 #pc_slide2{
     width: 63.5rem;

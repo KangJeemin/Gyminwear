@@ -29,8 +29,9 @@
     font-size: 2rem;
     z-index: 1;
     background-color: white;
-    position: relative;
-    left: 44%;
+    position: absolute;
+    left: 80%;
+    top: -20%;
 }
 #pc_slideText{
     width: 100%;
@@ -40,7 +41,7 @@
     font-size: 2.5rem;
 }
 #pc_slide1{
-    width: 10rem;
+    width: 30rem;
     height: 100%;
     background-color: red;
 }

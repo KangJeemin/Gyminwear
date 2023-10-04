@@ -125,7 +125,7 @@ const PcSlide = () => {
                     else{
                         setSlideState(slideState+1)
                     }
-                }}>&#62;</div>\
+                }}>&#62;</div>
                 
             </div>
     )

@@ -35,8 +35,12 @@ const PcSlide = () => {
                     </div>
                     
                 </motion.div>
-                <div id={styles.pc_slideNavigation}>
-                heyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyhey
+                <div id={styles.pc_slideNavigation}> 
+                    <div className={`${styles.slideNavigateLayout}`}>1</div>
+                    <div className={`${styles.slideNavigateLayout}`}>2</div>
+                    <div className={`${styles.slideNavigateLayout}`}>3</div>
+                    <div className={`${styles.slideNavigateLayout}`}>4</div>
+                    <div className={`${styles.slideNavigateLayout}`}>5</div>
                 </div>
                 
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{

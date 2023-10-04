@@ -51,6 +51,14 @@
     position: absolute;
     top: 45%;
     left: 0%;
+    display: flex;
+    justify-content: center;
+}
+.slideNavigateLayout{
+    width: 3rem;
+    height: 100%;
+    background-color: gray;
+    border-radius: 2rem;
 
 }
 .flexRow {

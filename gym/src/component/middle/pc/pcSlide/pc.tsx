@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 
 const PcSlide = () => {
     const [slideState,setSlideState] = React.useState<number>(0)
+    
     return(
             <div id={styles.pc_slideContainerImageBox} className={`${styles.flexRow}`}>
                 <div id={styles.pc_slideContainerImageBoxLeftButton} className={`${styles.setTextCenter}`} onClick={()=>{
@@ -47,11 +48,11 @@ const PcSlide = () => {
                         times: slideState ===1 ? [0, 0.5] : [0,0.5],
                       }}>
                     </motion.div> */}
-                    <motion.div className={`${styles.slideNavigateLayout} ${styles.slideNavigateSelectedLayout}` }></motion.div>
-                    <motion.div className={`${styles.slideNavigateLayout}`}></motion.div>
-                    <motion.div className={`${styles.slideNavigateLayout}`}></motion.div>
-                    <motion.div className={`${styles.slideNavigateLayout}`}></motion.div>
-                    <motion.div className={`${styles.slideNavigateLayout}`}></motion.div>
+                    <motion.div className={ slideState===0? (`${styles.slideNavigateLayout} ${styles.slideNavigateSelectedLayout}`) :(`${styles.slideNavigateLayout}`)  }></motion.div>
+                    <motion.div className={ slideState===1? (`${styles.slideNavigateLayout} ${styles.slideNavigateSelectedLayout}`) :(`${styles.slideNavigateLayout}`)  }></motion.div>
+                    <motion.div className={ slideState===2? (`${styles.slideNavigateLayout} ${styles.slideNavigateSelectedLayout}`) :(`${styles.slideNavigateLayout}`)  }></motion.div>
+                    <motion.div className={ slideState===3? (`${styles.slideNavigateLayout} ${styles.slideNavigateSelectedLayout}`) :(`${styles.slideNavigateLayout}`)  }></motion.div>
+                    <motion.div className={ slideState===4? (`${styles.slideNavigateLayout} ${styles.slideNavigateSelectedLayout}`) :(`${styles.slideNavigateLayout}`)  }></motion.div>
                 </div>
                 
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{

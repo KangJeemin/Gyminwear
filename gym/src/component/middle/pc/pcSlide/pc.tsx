@@ -36,7 +36,18 @@ const PcSlide = () => {
                     
                 </motion.div>
                 <div id={styles.pc_slideNavigation}> 
-                    <motion.div className={`${styles.slideNavigateLayout}`}></motion.div>
+                    {/* <motion.div className={`${styles.slideNavigateLayout}`} 
+                    animate={{
+                        scale: slideState ===1 ? [1, 1] : [1, 1],
+                        
+                    }}
+                    transition={{
+                        duration: slideState ===0 ? 0 : slideState===1 ? 0.5 : 0.5,
+                        ease: "linear",
+                        times: slideState ===1 ? [0, 0.5] : [0,0.5],
+                      }}>
+                    </motion.div> */}
+                    <motion.div className={`${styles.slideNavigateLayout} ${styles.slideNavigateSelectedLayout}` }></motion.div>
                     <motion.div className={`${styles.slideNavigateLayout}`}></motion.div>
                     <motion.div className={`${styles.slideNavigateLayout}`}></motion.div>
                     <motion.div className={`${styles.slideNavigateLayout}`}></motion.div>

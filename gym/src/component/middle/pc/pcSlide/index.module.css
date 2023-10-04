@@ -60,7 +60,9 @@
     background-color: gray;
     border-radius: 2rem;
     margin: 2rem;
-
+}
+.slideNavigateSelectedLayout{
+    width: 2rem;
 }
 .flexRow {
     display:flex;

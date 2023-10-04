@@ -6,37 +6,37 @@
     background-color: aqua;
 }
 #pc_slideContainerImageBoxLeftButton{
-    width: 5rem;
+    width: 5%;
     height: 100%;
     color: black;
     font-weight: bold;
-    position: relative;
+    position: absolute;
     font-size: 2rem;
-    z-index: 1;
+    z-index: 2;
     background-color: white;
 }
 #pc_slideContainerImageBoxImage{
-    
+    width: auto;
     height: 100%;
-    position: relative;
+    position: absolute;
     display: flex;
     flex-wrap: nowrap;
     z-index: 0;
-    left: 2rem;
+    left: 30%;
     
     
 }
 #pc_slideContainerImageBoxRightButton{
-    width: 5rem;
+    width: 5%;
     height: 100%;
     color: black;
     font-weight: bold;
     font-size: 2rem;
-    z-index: 1;
+    z-index: 2;
     background-color: white;
     position: absolute;
-    left: 80.2%;
-    top: -20%;
+    left: 90%;
+    
 }
 #pc_slideText{
     width: 100%;
@@ -46,7 +46,7 @@
     font-size: 2.5rem;
 }
 #pc_slide1{
-    width: 63.5rem;
+    width: 70rem;
     height: 100%;
     background-color: red;
 }

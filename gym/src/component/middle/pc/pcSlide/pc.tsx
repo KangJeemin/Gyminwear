@@ -35,7 +35,7 @@ const PcSlide = () => {
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage} style={{
                         top:'0px',
-                        left:'-500px'
+                        left:'0%'
                 }}>
                     <div id={styles.pc_slide1} >
                         <div style={{width:"100%",height:"20%"}}></div>
@@ -55,7 +55,6 @@ const PcSlide = () => {
                         <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> ghi.</div>
                         <div style={{width:"100%",height:"20%"}}></div>
                     </div>
-                    
                 </motion.div>
                 <div id={styles.pc_slideNavigation}> 
                     <motion.div className={`${styles.slideNavigateLayout}`} 

@@ -7,19 +7,19 @@ import { motion } from 'framer-motion';
 const PcSlide = () => {
     const [slideState,setSlideState] = React.useState<number>(-1)
 
-    React.useEffect(()=>{
-        setTimeout(() => {
-            if(slideState===-1){
-                setSlideState(1)
-            }
-            else if(slideState===4){
-                setSlideState(0)
-            }
-            else{
-                setSlideState(slideState+1)
-            }
-        }, 3000);
-    })
+    // React.useEffect(()=>{
+    //     setTimeout(() => {
+    //         if(slideState===-1){
+    //             setSlideState(1)
+    //         }
+    //         else if(slideState===4){
+    //             setSlideState(0)
+    //         }
+    //         else{
+    //             setSlideState(slideState+1)
+    //         }
+    //     }, 3000);
+    // })
     
     return(
             <div id={styles.pc_slideContainerImageBox} className={`${styles.flexRow}`}>

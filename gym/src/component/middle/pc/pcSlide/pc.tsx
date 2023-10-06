@@ -6,7 +6,13 @@ import { motion } from 'framer-motion';
 
 const PcSlide = () => {
     const [slideState,setSlideState] = React.useState<number>(-1)
+    const target = React.useRef<HTMLDivElement | null>(null);
+    
+    const clickNext = () => {
 
+    }
+        
+    
     // React.useEffect(()=>{
     //     setTimeout(() => {
     //         if(slideState===-1){

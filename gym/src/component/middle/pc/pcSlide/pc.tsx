@@ -6,12 +6,23 @@ import { motion } from 'framer-motion';
 
 const PcSlide = () => {
     const [slideState,setSlideState] = React.useState<number>(-1)
+    const [slideAnimate,setSlideAnimate] = React.useState<any>('')
     const target = React.useRef<HTMLDivElement | null>(null);
     
     const clickNext = () => {
-        if(target.current){
-            target.current.style.left = '70rem'
+        if(slideState===0){
+            setSlideAnimate(['0%','-90%'])
+            setSlideState(1)
         }
+        else if(slideState===1){
+            setSlideAnimate([['-90%','-180%']])
+            setSlideState(slideState+1)
+        }
+        else if(slideState===2){
+            setSlideAnimate([['-180%','-270%']])
+            setSlideState(slideState+1)
+        }
+        
     }
     const clickPrevius = () => {
         if(target.current){
@@ -48,7 +59,7 @@ const PcSlide = () => {
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage}
                     animate={{
-                        left: slideState===0? ['-350rem','0rem'] : slideState ===1 ? ['0rem', '-70rem'] :slideState ===1 ?  ['-70rem', '-140rem'] : slideState===2? ['-140rem', '-210rem'] : slideState===3 ? ['-210rem', '-280rem'] : slideState===4 ? ['-280rem', '-350rem'] :  ['0rem','0rem'],
+                        left: slideAnimate
                     }}
                     transition={{
                         duration: 0.5,

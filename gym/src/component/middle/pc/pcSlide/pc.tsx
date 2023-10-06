@@ -9,7 +9,14 @@ const PcSlide = () => {
     const target = React.useRef<HTMLDivElement | null>(null);
     
     const clickNext = () => {
-
+        if(target.current){
+            target.current.style.left = '70rem'
+        }
+    }
+    const clickPrevius = () => {
+        if(target.current){
+            target.current.style.left='-350rem'
+        }
     }
         
     
@@ -30,13 +37,13 @@ const PcSlide = () => {
     return(
             <div id={styles.pc_slideContainerImageBox} className={`${styles.flexRow}`}>
                 <div id={styles.pc_slideContainerImageBoxLeftButton} className={`${styles.setTextCenter}`} onClick={()=>{
-                    if(slideState===-1 || slideState===0){
-                        setSlideState(4)    
-                    }
-                    else{
-                        setSlideState(slideState-1)
-                    }
-                    
+                    // if(slideState===-1 || slideState===0){
+                    //     setSlideState(4)    
+                    // }
+                    // else{
+                    //     setSlideState(slideState-1)
+                    // }
+                    clickNext()
                     
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage}
@@ -46,7 +53,7 @@ const PcSlide = () => {
                     transition={{
                         duration: 0.5,
                         ease: "linear",
-                }}>
+                }} ref={target}>
                     <div id={styles.pc_slide1}>
                         <div style={{width:"100%",height:"20%"}}></div>
                         <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> 유행하는 짐웨어,</div>
@@ -144,15 +151,16 @@ const PcSlide = () => {
                 </div>
                 
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{
-                    if(slideState===-1){
-                        setSlideState(1)
-                    }
-                    else if(slideState===4){
-                        setSlideState(0)
-                    }
-                    else{
-                        setSlideState(slideState+1)
-                    }
+                    // if(slideState===-1){
+                    //     setSlideState(1)
+                    // }
+                    // else if(slideState===4){
+                    //     setSlideState(0)
+                    // }
+                    // else{
+                    //     setSlideState(slideState+1)
+                    // }
+                    clickPrevius()
                 }}>&#62;</div>
                 
             </div>

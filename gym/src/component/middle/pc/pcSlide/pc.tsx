@@ -2,7 +2,6 @@ import * as React from 'react';
 import styles from './index.module.css'
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { createEmitAndSemanticDiagnosticsBuilderProgram } from 'typescript';
 
 
 const PcSlide = () => {
@@ -10,16 +9,17 @@ const PcSlide = () => {
     const [slideAnimate,setSlideAnimate] = React.useState<any>('')
     
     const clickNext = () => {
+        
         if(slideState===0){
-            setSlideAnimate(['0px','-90px'])
+            setSlideAnimate(-90);
             setSlideState(1)
         }
         else if(slideState===1){
-            setSlideAnimate(['-90%','-180%'])
+            setSlideAnimate(-180)
             setSlideState(slideState+1)
         }
         else if(slideState===2){
-            setSlideAnimate(['-180%','-270%'])
+            setSlideAnimate(-270)
             setSlideState(slideState+1)
         }
         
@@ -54,12 +54,12 @@ const PcSlide = () => {
                     // else{
                     //     setSlideState(slideState-1)
                     // }
-                    clickNext()
+                    
                     
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage}
                     animate={{
-                        left: [...slideAnimate]
+                        left: `${slideAnimate}%`
                     }}
                     transition={{
                         duration: 0.5,
@@ -172,6 +172,7 @@ const PcSlide = () => {
                     //     setSlideState(slideState+1)
                     // }
                     // clickPrevius()
+                    clickNext()
                 }}>&#62;</div>
                 
             </div>

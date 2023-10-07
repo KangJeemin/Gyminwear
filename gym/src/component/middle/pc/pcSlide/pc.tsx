@@ -5,14 +5,15 @@ import { motion } from 'framer-motion';
 
 
 const PcSlide = () => {
-    const [slideState,setSlideState] = React.useState<number>(-1)
+    const [slideState,setSlideState] = React.useState<number>(0)
     const [slideAnimate,setSlideAnimate] = React.useState<any>('')
     const target = React.useRef<HTMLDivElement | null>(null);
     
     const clickNext = () => {
         if(slideState===0){
-            setSlideAnimate(['0%','-90%'])
+            setSlideAnimate(['0px','-90px'])
             setSlideState(1)
+            console.log(slideAnimate,"gey")
         }
         else if(slideState===1){
             setSlideAnimate([['-90%','-180%']])

@@ -12,7 +12,7 @@ const PcSlide = () => {
         
         if(slideState===0){
             setSlideAnimate(-90);
-            setSlideState(1)
+            setSlideState(slideState+1)
         }
         else if(slideState===1){
             setSlideAnimate(-180)

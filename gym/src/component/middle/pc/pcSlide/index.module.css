@@ -16,13 +16,14 @@
     
 }
 #pc_slideContainerImageBoxImage{
-    width: 460%;
+    width: 450%;
     height: 100%;
     position: absolute;
     display: flex;
     flex-wrap: nowrap;
     z-index: 0;
-    left: 30%;
+    left: 5%;
+    
     
     
 }

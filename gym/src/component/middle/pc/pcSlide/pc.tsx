@@ -2,18 +2,19 @@ import * as React from 'react';
 import styles from './index.module.css'
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { createEmitAndSemanticDiagnosticsBuilderProgram } from 'typescript';
 
 
 const PcSlide = () => {
     const [slideState,setSlideState] = React.useState<number>(0)
     const [slideAnimate,setSlideAnimate] = React.useState<any>('')
-    const target = React.useRef<HTMLDivElement | null>(null);
     
     const clickNext = () => {
+        console.log(slideState)
+        console.log(slideAnimate,"gey")
         if(slideState===0){
             setSlideAnimate(['0px','-90px'])
             setSlideState(1)
-            console.log(slideAnimate,"gey")
         }
         else if(slideState===1){
             setSlideAnimate([['-90%','-180%']])
@@ -25,11 +26,11 @@ const PcSlide = () => {
         }
         
     }
-    const clickPrevius = () => {
-        if(target.current){
-            target.current.style.left='-350rem'
-        }
-    }
+    // const clickPrevius = () => {
+    //     if(target.current){
+    //         target.current.style.left='-350rem'
+    //     }
+    // }
         
     
     // React.useEffect(()=>{
@@ -60,12 +61,12 @@ const PcSlide = () => {
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage}
                     animate={{
-                        left: slideAnimate
+                        left: ['0px','-90px']
                     }}
                     transition={{
                         duration: 0.5,
                         ease: "linear",
-                }} ref={target}>
+                }}>
                     <div id={styles.pc_slide1}>
                         <div style={{width:"100%",height:"20%"}}></div>
                         <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> 유행하는 짐웨어,</div>
@@ -172,7 +173,7 @@ const PcSlide = () => {
                     // else{
                     //     setSlideState(slideState+1)
                     // }
-                    clickPrevius()
+                    // clickPrevius()
                 }}>&#62;</div>
                 
             </div>

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const PcSlide = () => {
     const [slideState,setSlideState] = React.useState<number>(0)
-    const [slideAnimate,setSlideAnimate] = React.useState<any>('')
+    const [slideAnimate,setSlideAnimate] = React.useState<number>(0)
     
     const clickNext = () => {
         if(slideState===0){
@@ -44,26 +44,12 @@ const PcSlide = () => {
             setSlideState(slideState-1)
         }
     }
-    // const clickPrevius = () => {
-    //     if(target.current){
-    //         target.current.style.left='-350rem'
-    //     }
-    // }
         
-    
-    // React.useEffect(()=>{
-    //     setTimeout(() => {
-    //         if(slideState===-1){
-    //             setSlideState(1)
-    //         }
-    //         else if(slideState===4){
-    //             setSlideState(0)
-    //         }
-    //         else{
-    //             setSlideState(slideState+1)
-    //         }
-    //     }, 3000);
-    // })
+    React.useEffect(()=>{
+        setTimeout(() => {
+            clickNext()
+        }, 3000);
+    })
     React.useEffect(()=>{
         setSlideAnimate(5)
     },[])
@@ -71,12 +57,6 @@ const PcSlide = () => {
     return(
             <div id={styles.pc_slideContainerImageBox} className={`${styles.flexRow}`}>
                 <div id={styles.pc_slideContainerImageBoxLeftButton} className={`${styles.setTextCenter}`} onClick={()=>{
-                    // if(slideState===-1 || slideState===0){
-                    //     setSlideState(4)    
-                    // }
-                    // else{
-                    //     setSlideState(slideState-1)
-                    // }
                     clickPrevius()
                     
                 }}>&#60;</div>
@@ -185,16 +165,6 @@ const PcSlide = () => {
                 </div>
                 
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{
-                    // if(slideState===-1){
-                    //     setSlideState(1)
-                    // }
-                    // else if(slideState===4){
-                    //     setSlideState(0)
-                    // }
-                    // else{
-                    //     setSlideState(slideState+1)
-                    // }
-                    // clickPrevius()
                     clickNext()
                 }}>&#62;</div>
                 

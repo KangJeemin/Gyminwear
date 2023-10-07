@@ -9,7 +9,6 @@ const PcSlide = () => {
     const [slideAnimate,setSlideAnimate] = React.useState<any>('')
     
     const clickNext = () => {
-        
         if(slideState===0){
             setSlideAnimate(-85);
             setSlideState(slideState+1)
@@ -22,7 +21,28 @@ const PcSlide = () => {
             setSlideAnimate(-265)
             setSlideState(slideState+1)
         }
-        
+        else if(slideState===3){
+            setSlideAnimate(-355)
+            setSlideState(slideState+1)
+        }
+    }
+    const clickPrevius = () => {
+        if(slideState===4){
+            setSlideAnimate(-265);
+            setSlideState(slideState-1)
+        }
+        else if(slideState===3){
+            setSlideAnimate(-175)
+            setSlideState(slideState-1)
+        }
+        else if(slideState===2){
+            setSlideAnimate(-85)
+            setSlideState(slideState-1)
+        }
+        else if(slideState===1){
+            setSlideAnimate(5)
+            setSlideState(slideState-1)
+        }
     }
     // const clickPrevius = () => {
     //     if(target.current){
@@ -44,6 +64,9 @@ const PcSlide = () => {
     //         }
     //     }, 3000);
     // })
+    React.useEffect(()=>{
+        setSlideAnimate(5)
+    },[])
     
     return(
             <div id={styles.pc_slideContainerImageBox} className={`${styles.flexRow}`}>
@@ -54,7 +77,7 @@ const PcSlide = () => {
                     // else{
                     //     setSlideState(slideState-1)
                     // }
-                    
+                    clickPrevius()
                     
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage}

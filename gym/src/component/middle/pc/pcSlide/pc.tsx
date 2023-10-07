@@ -59,7 +59,7 @@ const PcSlide = () => {
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage}
                     animate={{
-                        left: slideAnimate[0]
+                        left: [...slideAnimate]
                     }}
                     transition={{
                         duration: 0.5,

@@ -11,15 +11,15 @@ const PcSlide = () => {
     const clickNext = () => {
         
         if(slideState===0){
-            setSlideAnimate(-90);
+            setSlideAnimate(-85);
             setSlideState(slideState+1)
         }
         else if(slideState===1){
-            setSlideAnimate(-180)
+            setSlideAnimate(-175)
             setSlideState(slideState+1)
         }
         else if(slideState===2){
-            setSlideAnimate(-270)
+            setSlideAnimate(-265)
             setSlideState(slideState+1)
         }
         

@@ -45,16 +45,21 @@ const PcSlide = () => {
             setSlideState(slideState-1)
         }
     }
-        
-    React.useEffect(()=>{
-        if(autoSlide===3){
-            setAutoSlide(0)
-            clickNext()
-        }
+    const autoSlideFunction = (time:number) =>{
         setTimeout(() => {
-            setAutoSlide(autoSlide+1)    
+            setAutoSlide(autoSlide+1)
         }, 1000);
-    },)
+        setTimeout(() => {
+            if(autoSlide===time){
+                setAutoSlide(0)
+                clickNext()
+        }    
+        }, 100);
+    }
+    React.useEffect(()=>{
+        autoSlideFunction(3)
+
+    },[autoSlide])
     React.useEffect(()=>{
         setSlideAnimate(5) //처음 로딩 시 애니메이션 컴포넌트의 위치 초기화.
     },[])

@@ -2,6 +2,7 @@ import * as React from 'react';
 import styles from './index.module.css'
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { set } from 'mongoose';
 
 
 const PcSlide = () => {
@@ -45,23 +46,20 @@ const PcSlide = () => {
             setSlideState(slideState-1)
         }
     }
-    const autoSlideFunction = (time:number) =>{
-        setTimeout(() => {
+    const autoSlideFunction = () =>{
+        setInterval(()=>{
             setAutoSlide(autoSlide+1)
-        }, 1000);
-        setTimeout(() => {
-            if(autoSlide===time){
-                setAutoSlide(0)
-                clickNext()
-        }    
-        }, 100);
+        },1000)
     }
     React.useEffect(()=>{
-        autoSlideFunction(3)
-
+        if(autoSlide===4){
+            setAutoSlide(0)
+            clickNext()
+    }    
     },[autoSlide])
     React.useEffect(()=>{
         setSlideAnimate(5) //처음 로딩 시 애니메이션 컴포넌트의 위치 초기화.
+        autoSlideFunction()
     },[])
     
     return(

@@ -28,16 +28,19 @@
     position: relative;
     width: 100px;
     margin: 0.5rem;
+    cursor: pointer;
 }
 #pc_headerTopBox{
     width: 15%;
     color: black;
     font-weight: bold;
+    cursor: pointer;
 }
 #pc_headerBottomBox{
     width: 15%;
     color: black;
     font-weight: bold;
+    cursor: pointer;
 }
 #pc_headerxxxBox{
     width: 70%;
@@ -45,6 +48,7 @@
 #pc_headerSearchBox{
     width: 10%;
     margin: 0.7rem;
+    cursor: pointer;
 }
 .flexRow {
     display:flex;

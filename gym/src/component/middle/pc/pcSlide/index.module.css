@@ -13,6 +13,7 @@
     font-size: 2rem;
     z-index: 2;
     background-color: white;
+    cursor: pointer;
     
 }
 #pc_slideContainerImageBoxImage{
@@ -37,6 +38,7 @@
     background-color: white;
     position: absolute;
     left: 95%;
+    cursor: pointer;
     
 }
 #pc_slideText{

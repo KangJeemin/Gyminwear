@@ -48,13 +48,14 @@ const PcSlide = () => {
         
     React.useEffect(()=>{
         setTimeout(() => {
-            setAutoSlide(autoSlide+1)
-            
+            if(autoSlide===4){
+                clickNext()
+                setAutoSlide(0)
+            }
+            else{
+                setAutoSlide(autoSlide+1)    
+            }
         }, 1000);
-        if(autoSlide===4){
-            clickNext()
-            setAutoSlide(0)
-        }
     })
     React.useEffect(()=>{
         setSlideAnimate(5) //처음 로딩 시 애니메이션 컴포넌트의 위치 초기화.

@@ -48,8 +48,8 @@ const PcSlide = () => {
         
     React.useEffect(()=>{
         setTimeout(() => {
-            clickNext()
-        }, 3000);
+            setAutoSlide(autoSlide+1)
+        }, 1000);
     })
     React.useEffect(()=>{
         setSlideAnimate(5)

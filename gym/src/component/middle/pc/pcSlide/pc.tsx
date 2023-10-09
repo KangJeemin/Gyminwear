@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 const PcSlide = () => {
     const [slideState,setSlideState] = React.useState<number>(0)
     const [slideAnimate,setSlideAnimate] = React.useState<number>(0)
+    const [autoSlide,setAutoSlide] = React.useState<number>(0)
     
     const clickNext = () => {
         if(slideState===0){

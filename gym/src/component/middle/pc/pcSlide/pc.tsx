@@ -65,7 +65,6 @@ const PcSlide = () => {
                 <div id={styles.pc_slideContainerImageBoxLeftButton} className={`${styles.setTextCenter}`} onClick={()=>{
                     clickPrevius()
                     setAutoSlide(0)
-                    
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage}
                     animate={{

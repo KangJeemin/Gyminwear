@@ -24,6 +24,7 @@ const PcSlide = () => {
             updatedOrder.push(pulsChild);
             setChildrenOrder(updatedOrder);
             count++;
+            console.log(count)
             if(count>=num){
                 count=0
             }

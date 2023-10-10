@@ -9,6 +9,44 @@ const PcSlide = () => {
     const [slideState,setSlideState] = React.useState<number>(0)
     const [slideAnimate,setSlideAnimate] = React.useState<number>(0)
     const [autoSlide,setAutoSlide] = React.useState<number>(0)
+    const [childrenOrder, setChildrenOrder] = React.useState([
+        styles.pc_slide1,
+        styles.pc_slide2,
+        styles.pc_slide3,
+        styles.pc_slide4,
+        styles.pc_slide5
+      ]);
+    
+      const createSlideChild = (num:number) => {
+        const updatedOrder:string[] = [...childrenOrder];
+        let count = 0;
+        const pulsChild =updatedOrder[count]
+        if(pulsChild !== undefined){
+            updatedOrder.push(pulsChild);
+            setChildrenOrder(updatedOrder);
+            count++;
+            if(count>=num){
+                count=0
+            }
+        }
+        else{
+            console.log("슬라이드 과정에서 Type 에러가 발생 ")
+        }
+        
+      };
+    
+      const moveLastChildToFirst = () => {
+        const updatedOrder:string[] = [...childrenOrder];
+        const lastChild = updatedOrder.pop();
+        if(lastChild !==undefined) {
+            updatedOrder.unshift(lastChild);
+            setChildrenOrder(updatedOrder);
+        }
+        else{
+            console.log("슬라이드 과정에서 Type 에러 발생")
+        }
+        
+      };
     
     const clickNext = () => {
         if(slideState===0){
@@ -55,6 +93,7 @@ const PcSlide = () => {
         if(autoSlide===4){
             setAutoSlide(0)
             clickNext()
+            createSlideChild(4)
         }    
         
     },[autoSlide])
@@ -182,6 +221,7 @@ const PcSlide = () => {
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{
                     clickNext()
                     setAutoSlide(0)
+                    createSlideChild(4)
                 }}>&#62;</div>
                 
             </div>

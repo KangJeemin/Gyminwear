@@ -15,18 +15,18 @@ const PcSlide = () => {
         styles.pc_slide4,
         styles.pc_slide5
       ]);
+    const [count, setCount]=React.useState(0)
     
       const createSlideChild = (num:number) => {
         const updatedOrder:string[] = [...childrenOrder];
-        let count = 0;
         const pulsChild =updatedOrder[count]
         if(pulsChild !== undefined){
             updatedOrder.push(pulsChild);
             setChildrenOrder(updatedOrder);
-            count++;
+            setCount(count=>count+1)
             console.log(count)
             if(count>=num){
-                count=0
+                setCount(0)
             }
         }
         else{

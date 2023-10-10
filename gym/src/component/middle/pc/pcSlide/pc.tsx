@@ -52,16 +52,16 @@ const PcSlide = () => {
         },1000)
     }
     React.useEffect(()=>{
-        if(autoSlide===4){
-            setAutoSlide(0)
-            clickNext()
-    }    
+        // if(autoSlide===4){
+        //     setAutoSlide(0)
+        //     clickNext()
+        // }    
+        console.log("he")
     },[autoSlide])
     React.useEffect(()=>{
         setSlideAnimate(5) //처음 로딩 시 애니메이션 컴포넌트의 위치 초기화.
         setInterval(()=>{
-            // setAutoSlide(autoSlide+1)
-            console.log("hey")
+            setAutoSlide(autoSlide+1)
         },1000)
     },[])
     

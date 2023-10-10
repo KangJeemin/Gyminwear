@@ -62,6 +62,7 @@ const PcSlide = () => {
         setSlideAnimate(5) //처음 로딩 시 애니메이션 컴포넌트의 위치 초기화.
         setInterval(()=>{
             setAutoSlide(autoSlide+1)
+            console.log('h2')
         },1000)
     },[])
     

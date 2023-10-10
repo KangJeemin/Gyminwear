@@ -59,9 +59,9 @@ const PcSlide = () => {
         console.log("he")
     },[autoSlide])
     React.useEffect(()=>{
-        setSlideAnimate(5) //처음 로딩 시 애니메이션 컴포넌트의 위치 초기화.ㄴ
+        setSlideAnimate(5) //처음 로딩 시 애니메이션 컴포넌트의 위치 초기화.
         setInterval(()=>{
-            setAutoSlide(autoSlide+1)
+            setAutoSlide((autoSlide)=>autoSlide+1)
             console.log(autoSlide)
         },1000)
     },[])

@@ -15,12 +15,20 @@
     width: 100%;
     height: 30rem;
     position: relative;
-    background-color: white
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 4rem;
 }
 #pc_mainImage3{
     width: 100%;
     height: 30rem;
-    background-color: blue
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 4rem;
 }
 #pc_mainImageContainerLeftBox{
     width: 15%;

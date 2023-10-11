@@ -101,6 +101,10 @@ const PcSlide = () => {
                 }}>
                     {childrenOrder.map((child, index) => (
                        <div key={index} id={child}>
+                        {index%5 === 2 ? (
+                            <img src="./real.png" alt="이미지 표시할 수 없음" />
+                        ) : (
+                        <>
                          <div style={{ width: "100%", height: "20%" }}></div>
                          <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
                            유행하는 짐웨어,
@@ -114,7 +118,9 @@ const PcSlide = () => {
                            짐인웨어에서 확인해 보세요.
                          </div>
                          <div style={{ width: "100%", height: "20%" }}></div>
-                       </div>
+                        </>
+                        )}
+                     </div>
                      ))}
                 </motion.div>
                 <div id={styles.pc_slideNavigation}> 

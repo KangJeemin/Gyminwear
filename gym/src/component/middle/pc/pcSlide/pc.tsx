@@ -41,6 +41,8 @@ const PcSlide = () => {
         else{
             console.log("슬라이드 과정에서 Type 에러가 발생 ")
         }
+        // 자동 슬라이더 시간 초기화
+        setAutoSlide(0)
     }
     const clickPrevius = (slideNum:number,slideWid:number) => {
           // 슬라이드 위치 이동
@@ -53,13 +55,14 @@ const PcSlide = () => {
         else{
             setSlideState(state=>state-1)
         }
+        // 자동 슬라이더 시간 초기화
+        setAutoSlide(0)
         
     }
     React.useEffect(()=>{
         // autoSlide가 4가 될 경우, 즉 4초가 지나면 슬라이더 넘김
         if(autoSlide===4){
             clickNext(4,100)
-            setAutoSlide(0)
         }    
         
     },[autoSlide])
@@ -67,7 +70,6 @@ const PcSlide = () => {
         //1초마다 autoSlide 값을 1씩 증가시킴으로써 슬라이더가 자동으로 넘어가도록 하는 기능 
         const intervalId = setInterval(() => {
             setAutoSlide((prevAutoSlide) => prevAutoSlide + 1);
-            console.log('gey')
           }, 1000);
         
         return () =>  {

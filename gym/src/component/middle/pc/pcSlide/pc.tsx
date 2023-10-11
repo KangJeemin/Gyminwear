@@ -92,7 +92,7 @@ const PcSlide = () => {
     return(
             <div id={styles.pc_slideContainerImageBox} className={`${styles.flexRow}`}>
                 <div id={styles.pc_slideContainerImageBoxLeftButton} className={`${styles.setTextCenter}`} onClick={()=>{
-                    clickPrevius(4,100)
+                    clickPrevius(4,90)
                     setAutoSlide(0)
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage}
@@ -146,21 +146,21 @@ const PcSlide = () => {
                         />
                         ) : 
                         index%5 === 4 ? (
-                            <>
-                            <div style={{ width: "100%", height: "20%" ,backgroundImage: `url:${pysicalcrown}`}}></div>
-                            <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
-                              건강한 피트니스의
-                            </div>
-                            <div style={{ width: "100%" }}></div>
-                            <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
-                              라이프 스타일을 축구하는 짐웨어 브랜드
-                            </div>
-                            <div style={{ width: "100%" }}></div>
-                            <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
-                              피지컬크라운 입니다.
-                            </div>
-                            <div style={{ width: "100%", height: "20%" }}></div>
-                           </>
+                            <div style={{width:"100%",height:"100%"}} className={`${styles.flexColumn}`}>
+                                <div style={{ width: "100%", height: "20%"}}></div>
+                                <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
+                                  건강한 피트니스의
+                                </div>
+                                <div style={{ width: "100%" }}></div>
+                                <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
+                                  라이프 스타일을 축구하는 짐웨어 브랜드
+                                </div>
+                                <div style={{ width: "100%" }}></div>
+                                <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
+                                  피지컬크라운 입니다.
+                                </div>
+                                <div style={{ width: "100%", height: "20%" }}></div>
+                           </div>
                         ) : (null)
                         }
                      </div>

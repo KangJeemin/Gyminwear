@@ -2,7 +2,6 @@
     width: 70%;
     height: 100%;
     position: relative;
-    background-color: aqua;
 }
 #pc_slideContainerImageBoxLeftButton{
     width: 5%;
@@ -24,9 +23,6 @@
     flex-wrap: nowrap;
     z-index: 0;
     left: 5%;
-    
-    
-    
 }
 #pc_slideContainerImageBoxRightButton{
     width: 5%;
@@ -42,7 +38,7 @@
     
 }
 #pc_slideText{
-    width: 90%;
+    width: 100%;
     height: 20%;
     color: black;
     font-weight: bold;
@@ -51,7 +47,8 @@
 #pc_slide1{
     width: 90%;
     height: 100%;
-    background-color:white
+    background-color:white;
+    position:relative;
 }
 #pc_slide2{
     width: 90%;
@@ -73,10 +70,21 @@
 #pc_slide5{
     width: 90%;
     height: 100%;
+    position: relative;
+}
+#pc_slide5::before{
+    width: 90%;
+    height: 100%;
     background-image: url('../../../../../public/image/slider/pysicalcrown_slider1.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: white;
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+    position: absolute;
+    background-color: cadetblue;
+    z-index: 3;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
 }
 #pc_slideNavigation{
     width: 100%;

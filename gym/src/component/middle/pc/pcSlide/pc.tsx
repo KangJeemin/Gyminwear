@@ -35,6 +35,7 @@ const PcSlide = () => {
         
       };
     const clickNext = (slideNum:number,slideWid:number) => {
+        setImageBoxWidth(width=>width+90)
         setSlideAnimate(slide=>slide-slideWid)  // 슬라이드 위치 이동
         if(slideState===slideNum){  // 슬라이드 아이콘 네비게이션 
             setSlideState(0) 
@@ -159,7 +160,7 @@ const PcSlide = () => {
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{
                     clickNext(4,90)
                     setAutoSlide(0)
-                    // createSlideChild(4)
+                    createSlideChild(4)
                 }}>&#62;</div>
                 
             </div>

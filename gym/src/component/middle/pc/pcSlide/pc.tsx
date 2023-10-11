@@ -1,10 +1,13 @@
 import * as React from 'react';
+import { useRouter } from 'next/router';
 import styles from './index.module.css'
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import gbroSlider from '../../../../../public/image/slider/gbro_slider1.jpg'
 
 
 const PcSlide = () => {
+    const router = useRouter();
     const [slideState,setSlideState] = React.useState<number>(0)
     const [slideAnimate,setSlideAnimate] = React.useState<number>(5)
     const [autoSlide,setAutoSlide] = React.useState<number>(0)
@@ -102,7 +105,14 @@ const PcSlide = () => {
                     {childrenOrder.map((child, index) => (
                        <div key={index} id={child}>
                         {index%5 === 2 ? (
-                            <img src="./real.png" alt="이미지 표시할 수 없음" />
+                            <Image
+                            src={gbroSlider}
+                            alt='이미지 표시 불가'
+                            layout='fill'
+                            onClick={()=>{
+                                router.push(`https://gymbro.kr/product/list_thumb.html?cate_no=105`)
+                            }}
+                        />
                         ) : (
                         <>
                          <div style={{ width: "100%", height: "20%" }}></div>

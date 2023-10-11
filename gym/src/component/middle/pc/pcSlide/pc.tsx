@@ -8,6 +8,7 @@ const PcSlide = () => {
     const [slideState,setSlideState] = React.useState<number>(0)
     const [slideAnimate,setSlideAnimate] = React.useState<number>(0)
     const [autoSlide,setAutoSlide] = React.useState<number>(0)
+    const [imageBoxWidth,setImageBoxWidth] = React.useState<number>(450)
     const [childrenOrder, setChildrenOrder] = React.useState([
         styles.pc_slide1,
         styles.pc_slide2,
@@ -96,7 +97,8 @@ const PcSlide = () => {
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage}
                     animate={{
-                        left: `${slideAnimate}%`
+                        left: `${slideAnimate}%`,
+                        width: `${}`
                     }}
                     transition={{
                         duration: 0.5,

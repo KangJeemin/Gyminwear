@@ -4,6 +4,8 @@ import styles from './index.module.css'
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import gbroSlider from '../../../../../public/image/slider/gbro_slider1.jpg'
+import gbroSlider2 from'../../../../../public/image/slider/gbro_slider2.png'
+import pysicalcrown from '../../../../../public/image/slider/pysicalcrown_slider1.png'
 
 
 const PcSlide = () => {
@@ -104,7 +106,24 @@ const PcSlide = () => {
                 }}>
                     {childrenOrder.map((child, index) => (
                        <div key={index} id={child}>
-                        {index%5 === 2 ? (
+                        {index%5 ===0 ? (
+                            <>
+                            <div style={{ width: "100%", height: "20%" }}></div>
+                            <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
+                              유행하는 짐웨어,
+                            </div>
+                            <div style={{ width: "100%" }}></div>
+                            <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
+                              오버핏 짐웨어,
+                            </div>
+                            <div style={{ width: "100%" }}></div>
+                            <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
+                              짐인웨어에서 확인해 보세요.
+                            </div>
+                            <div style={{ width: "100%", height: "20%" }}></div>
+                           </>
+                        ) :
+                        index%5 === 2 ? (
                             <Image
                             src={gbroSlider}
                             alt='이미지 표시 불가'
@@ -112,24 +131,38 @@ const PcSlide = () => {
                             onClick={()=>{
                                 router.push(`https://gymbro.kr/product/list_thumb.html?cate_no=105`)
                             }}
+
                         />
-                        ) : (
-                        <>
-                         <div style={{ width: "100%", height: "20%" }}></div>
-                         <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
-                           유행하는 짐웨어,
-                         </div>
-                         <div style={{ width: "100%" }}></div>
-                         <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
-                           오버핏 짐웨어,
-                         </div>
-                         <div style={{ width: "100%" }}></div>
-                         <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
-                           짐인웨어에서 확인해 보세요.
-                         </div>
-                         <div style={{ width: "100%", height: "20%" }}></div>
-                        </>
-                        )}
+                        ) :
+                        index%5 ===3 ? (
+                            <Image
+                            src={gbroSlider2}
+                            alt='이미지 표시 불가'
+                            layout='fill'
+                            onClick={()=>{
+                                router.push(`https://gymbro.kr/product/list_thumb.html?cate_no=115`)
+                            }}
+
+                        />
+                        ) : 
+                        index%5 === 4 ? (
+                            <>
+                            <div style={{ width: "100%", height: "20%" ,backgroundImage: `url:${pysicalcrown}`}}></div>
+                            <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
+                              건강한 피트니스의
+                            </div>
+                            <div style={{ width: "100%" }}></div>
+                            <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
+                              라이프 스타일을 축구하는 짐웨어 브랜드
+                            </div>
+                            <div style={{ width: "100%" }}></div>
+                            <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
+                              피지컬크라운 입니다.
+                            </div>
+                            <div style={{ width: "100%", height: "20%" }}></div>
+                           </>
+                        ) : (null)
+                        }
                      </div>
                      ))}
                 </motion.div>

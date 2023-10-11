@@ -67,12 +67,13 @@
 #pc_slide4{
     width: 100%;
     height: 100%;
-    background-color:pink;
+    position: relative;
+    cursor: pointer;
 }
 #pc_slide5{
     width: 100%;
     height: 100%;
-    background-color:yellow;
+    background-image: url('../../../../../public/image/slider/pysicalcrown_slider1.png');
 }
 #pc_slideNavigation{
     width: 100%;

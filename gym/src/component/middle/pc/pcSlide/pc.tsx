@@ -35,7 +35,6 @@ const PcSlide = () => {
         
       };
     const clickNext = (slideNum:number,slideWid:number) => {
-        setImageBoxWidth(width=>width+90)
         setSlideAnimate(slide=>slide-slideWid)  // 슬라이드 위치 이동
         if(slideState===slideNum){  // 슬라이드 아이콘 네비게이션 
             setSlideState(0) 
@@ -43,6 +42,7 @@ const PcSlide = () => {
         else{
             setSlideState(state=>state+1)
         }
+        setImageBoxWidth(width=>width+90)
         
     }
     const clickPrevius = (slideNum:number,slideWid:number) => {
@@ -64,7 +64,7 @@ const PcSlide = () => {
         
     },[autoSlide])
     React.useEffect(()=>{
-        setSlideAnimate(5) //처음 로딩 시 애니메이션 컴포넌트의 위치 초기화.
+        // setSlideAnimate(5) //처음 로딩 시 애니메이션 컴포넌트의 위치 초기화.
         // const intervalId = setInterval(() => {
         //     setAutoSlide((prevAutoSlide) => prevAutoSlide + 1);
         //   }, 1000);

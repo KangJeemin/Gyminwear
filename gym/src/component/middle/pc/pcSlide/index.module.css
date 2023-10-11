@@ -17,7 +17,7 @@
     
 }
 #pc_slideContainerImageBoxImage{
-    width: auto;
+    width: 450%;
     height: 100%;
     position: absolute;
     display: flex;
@@ -42,34 +42,34 @@
     
 }
 #pc_slideText{
-    width: 100%;
+    width: 90%;
     height: 20%;
     color: black;
     font-weight: bold;
     font-size: 2.5rem;
 }
 #pc_slide1{
-    flex: 1;
+    width: 90%;
     height: 100%;
     background-color:red
 }
 #pc_slide2{
-    flex: 1;
+    width: 90%;
     height: 100%;
     background-color: blue;
 }
 #pc_slide3{
-    flex: 1;
+    width: 90%;
     height: 100%;
     background-color:green;
 }
 #pc_slide4{
-    flex: 1;
+    width: 90%;
     height: 100%;
     background-color:pink;
 }
 #pc_slide5{
-    flex: 1;
+    width: 90%;
     height: 100%;
     background-color:yellow;
 }

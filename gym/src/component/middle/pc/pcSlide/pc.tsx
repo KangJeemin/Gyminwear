@@ -45,8 +45,13 @@ const PcSlide = () => {
         setAutoSlide(0)
     }
     const clickPrevius = (slideNum:number,slideWid:number) => {
-          // 슬라이드 위치 이동
-        setSlideAnimate(slide=>slide+slideWid)
+        // 자동 슬라이더 시간 초기화
+        setAutoSlide(0)
+        
+        // 페이지 첫 로딩시(슬라이더가 추가적으로 만들어지지 않았을 경우)에 왼쪽 버튼 눌러도 작동 안 하게 하는 기능 
+        if(slideAnimate<5){
+            // 슬라이드 위치 이동
+            setSlideAnimate(slide=>slide+slideWid)
         
         // 슬라이드 아이콘 네비게이션 
         if(slideState===0){  
@@ -55,8 +60,10 @@ const PcSlide = () => {
         else{
             setSlideState(state=>state-1)
         }
-        // 자동 슬라이더 시간 초기화
-        setAutoSlide(0)
+        }
+        
+        
+        
         
     }
     React.useEffect(()=>{

@@ -2,13 +2,13 @@ import * as React from 'react';
 import styles from './index.module.css'
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { set } from 'mongoose';
 
 
 const PcSlide = () => {
     const [slideState,setSlideState] = React.useState<number>(0)
-    const [slideAnimate,setSlideAnimate] = React.useState<number>(0)
+    const [slideAnimate,setSlideAnimate] = React.useState<number>(5)
     const [autoSlide,setAutoSlide] = React.useState<number>(0)
+    const [imageBoxWidth,setImageBoxWidth] = React.useState<number>(500)
     const [childrenOrder, setChildrenOrder] = React.useState([
         styles.pc_slide1,
         styles.pc_slide2,
@@ -16,89 +16,65 @@ const PcSlide = () => {
         styles.pc_slide4,
         styles.pc_slide5
       ]);
-    
-      const createSlideChild = (num:number) => {
+    const [count, setCount]=React.useState(0)
+    const clickNext = (slideNum:number,slideWid:number) => {
+        setSlideAnimate(slide=>slide-slideWid)  // 슬라이드 위치 이동
+        if(slideState===slideNum){  // 슬라이드 아이콘 네비게이션 
+            setSlideState(0) 
+        }
+        else{
+            setSlideState(state=>state+1)
+        }
+        setImageBoxWidth(width=>width+slideWid) //슬라이드 크기 증가 
+        
+        // 기존 5개의 배열에서, 순차적으로 순환하며 생성하며 배열을 늘려나감
         const updatedOrder:string[] = [...childrenOrder];
-        let count = 0;
         const pulsChild =updatedOrder[count]
         if(pulsChild !== undefined){
             updatedOrder.push(pulsChild);
             setChildrenOrder(updatedOrder);
-            count++;
-            if(count>=num){
-                count=0
+            setCount(count=>count+1)
+            if(count>=slideNum){
+                setCount(0)
             }
         }
         else{
             console.log("슬라이드 과정에서 Type 에러가 발생 ")
         }
+        // 자동 슬라이더 시간 초기화
+        setAutoSlide(0)
+    }
+    const clickPrevius = (slideNum:number,slideWid:number) => {
+        // 자동 슬라이더 시간 초기화
+        setAutoSlide(0)
         
-      };
-    
-      const moveLastChildToFirst = () => {
-        const updatedOrder:string[] = [...childrenOrder];
-        const lastChild = updatedOrder.pop();
-        if(lastChild !==undefined) {
-            updatedOrder.unshift(lastChild);
-            setChildrenOrder(updatedOrder);
+        // 페이지 첫 로딩시(슬라이더가 추가적으로 만들어지지 않았을 경우)에 왼쪽 버튼 눌러도 작동 안 하게 하는 기능 
+        if(slideAnimate<5){
+            // 슬라이드 위치 이동
+            setSlideAnimate(slide=>slide+slideWid)
+        
+        // 슬라이드 아이콘 네비게이션 
+        if(slideState===0){  
+            setSlideState(slideNum) 
         }
         else{
-            console.log("슬라이드 과정에서 Type 에러 발생")
+            setSlideState(state=>state-1)
+        }
         }
         
-      };
-    
-    const clickNext = () => {
-        if(slideState===0){
-            setSlideAnimate(-85);
-            setSlideState(slideState+1)
-        }
-        else if(slideState===1){
-            setSlideAnimate(-175)
-            setSlideState(slideState+1)
-        }
-        else if(slideState===2){
-            setSlideAnimate(-265)
-            setSlideState(slideState+1)
-        }
-        else if(slideState===3){
-            setSlideAnimate(-355)
-            setSlideState(slideState+1)
-        }
-    }
-    const clickPrevius = () => {
-        if(slideState===4){
-            setSlideAnimate(-265);
-            setSlideState(slideState-1)
-        }
-        else if(slideState===3){
-            setSlideAnimate(-175)
-            setSlideState(slideState-1)
-        }
-        else if(slideState===2){
-            setSlideAnimate(-85)
-            setSlideState(slideState-1)
-        }
-        else if(slideState===1){
-            setSlideAnimate(5)
-            setSlideState(slideState-1)
-        }
-    }
-    const autoSlideFunction = () =>{
-        setInterval(()=>{
-            setAutoSlide(autoSlide+1)
-        },1000)
+        
+        
+        
     }
     React.useEffect(()=>{
-        if(autoSlide===4){
-            setAutoSlide(0)
-            clickNext()
-            createSlideChild(4)
+        // autoSlide가 4가 될 경우, 즉 4초가 지나면 슬라이더 넘김
+        if(autoSlide===6){
+            clickNext(4,100)
         }    
         
     },[autoSlide])
     React.useEffect(()=>{
-        setSlideAnimate(5) //처음 로딩 시 애니메이션 컴포넌트의 위치 초기화.
+        //1초마다 autoSlide 값을 1씩 증가시킴으로써 슬라이더가 자동으로 넘어가도록 하는 기능 
         const intervalId = setInterval(() => {
             setAutoSlide((prevAutoSlide) => prevAutoSlide + 1);
           }, 1000);
@@ -111,62 +87,35 @@ const PcSlide = () => {
     return(
             <div id={styles.pc_slideContainerImageBox} className={`${styles.flexRow}`}>
                 <div id={styles.pc_slideContainerImageBoxLeftButton} className={`${styles.setTextCenter}`} onClick={()=>{
-                    clickPrevius()
+                    clickPrevius(4,100)
                     setAutoSlide(0)
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage}
                     animate={{
-                        left: `${slideAnimate}%`
+                        left: `${slideAnimate}%`,
+                        width: `${imageBoxWidth}%`
                     }}
                     transition={{
                         duration: 0.5,
                         ease: "linear",
                 }}>
-                    <div id={styles.pc_slide1}>
-                        <div style={{width:"100%",height:"20%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> 유행하는 짐웨어,</div>
-                        <div style={{width:"100%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> 오버핏 짐웨어,</div>
-                        <div style={{width:"100%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> 짐인웨어에서 확인해 보세요.</div>
-                        <div style={{width:"100%",height:"20%"}}></div>
-                    </div>
-                    <div id={styles.pc_slide2}>
-                        <div style={{width:"100%",height:"20%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> abc,</div>
-                        <div style={{width:"100%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> def,</div>
-                        <div style={{width:"100%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> ghi.</div>
-                        <div style={{width:"100%",height:"20%"}}></div>
-                    </div>
-                    <div id={styles.pc_slide3}>
-                        <div style={{width:"100%",height:"20%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> abc,</div>
-                        <div style={{width:"100%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> def,</div>
-                        <div style={{width:"100%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> ghi.</div>
-                        <div style={{width:"100%",height:"20%"}}></div>
-                    </div>
-                    <div id={styles.pc_slide4}>
-                        <div style={{width:"100%",height:"20%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> abc,</div>
-                        <div style={{width:"100%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> def,</div>
-                        <div style={{width:"100%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> ghi.</div>
-                        <div style={{width:"100%",height:"20%"}}></div>
-                    </div>
-                    <div id={styles.pc_slide5}>
-                        <div style={{width:"100%",height:"20%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> abc,</div>
-                        <div style={{width:"100%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> def,</div>
-                        <div style={{width:"100%"}}></div>
-                        <div id={styles.pc_slideText}  className={`${styles.setTextCenter}`}> ghi.</div>
-                        <div style={{width:"100%",height:"20%"}}></div>
-                    </div>
+                    {childrenOrder.map((child, index) => (
+                       <div key={index} id={child}>
+                         <div style={{ width: "100%", height: "20%" }}></div>
+                         <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
+                           유행하는 짐웨어,
+                         </div>
+                         <div style={{ width: "100%" }}></div>
+                         <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
+                           오버핏 짐웨어,
+                         </div>
+                         <div style={{ width: "100%" }}></div>
+                         <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
+                           짐인웨어에서 확인해 보세요.
+                         </div>
+                         <div style={{ width: "100%", height: "20%" }}></div>
+                       </div>
+                     ))}
                 </motion.div>
                 <div id={styles.pc_slideNavigation}> 
                     <motion.div className={`${styles.slideNavigateLayout}`} 
@@ -219,9 +168,9 @@ const PcSlide = () => {
                 </div>
                 
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{
-                    clickNext()
+                    clickNext(4,100)
                     setAutoSlide(0)
-                    createSlideChild(4)
+                    // createSlideChild(4)
                 }}>&#62;</div>
                 
             </div>

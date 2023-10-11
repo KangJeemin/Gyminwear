@@ -24,7 +24,6 @@ const PcSlide = () => {
             updatedOrder.push(pulsChild);
             setChildrenOrder(updatedOrder);
             setCount(count=>count+1)
-            console.log(count)
             if(count>=num){
                 setCount(0)
             }
@@ -70,11 +69,6 @@ const PcSlide = () => {
             setSlideState(slideState-1)
         }
     }
-    const autoSlideFunction = () =>{
-        setInterval(()=>{
-            setAutoSlide(autoSlide+1)
-        },1000)
-    }
     React.useEffect(()=>{
         if(autoSlide===4){
             setAutoSlide(0)
@@ -85,13 +79,13 @@ const PcSlide = () => {
     },[autoSlide])
     React.useEffect(()=>{
         setSlideAnimate(5) //처음 로딩 시 애니메이션 컴포넌트의 위치 초기화.
-        const intervalId = setInterval(() => {
-            setAutoSlide((prevAutoSlide) => prevAutoSlide + 1);
-          }, 1000);
+        // const intervalId = setInterval(() => {
+        //     setAutoSlide((prevAutoSlide) => prevAutoSlide + 1);
+        //   }, 1000);
         
-        return () =>  {
-            clearInterval(intervalId)
-        }
+        // return () =>  {
+        //     clearInterval(intervalId)
+        // }
     },[])
     
     return(

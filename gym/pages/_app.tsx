@@ -4,9 +4,10 @@ import { AuthProvider } from '../public/context/authcontext'
 import React from 'react'
 import Header from '../src/component/header/moblie/header/header'
 import HeaderMargin from '../src/component/header/moblie/headerMargin'
-import Footer from '../src/component/footer/footer'
+import Footer from '../src/component/footer/moblie/footer'
 import PcHeader from '../src/component/header/pc/pcHeader/pcHeader'
 import PcHeaderMargin from '../src/component/header/pc/pcHeaderMargin'
+import PcFooter from '@/src/component/footer/pc/pcFooter'
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -21,7 +22,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <HeaderMargin/>
       </MobileView>
       <Component {...pageProps} />
-      {/* <Footer/> */}
+      <BrowserView>
+        <PcFooter/>
+      </BrowserView>
+      
+      
     </AuthProvider>
   )
 

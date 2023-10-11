@@ -13,13 +13,12 @@ const PcSlide = () => {
     const [slideState,setSlideState] = React.useState<number>(0)
     const [slideAnimate,setSlideAnimate] = React.useState<number>(5)
     const [autoSlide,setAutoSlide] = React.useState<number>(0)
-    const [imageBoxWidth,setImageBoxWidth] = React.useState<number>(450)
+    const [imageBoxWidth,setImageBoxWidth] = React.useState<number>(360)
     const [childrenOrder, setChildrenOrder] = React.useState([
         styles.pc_slide1,
         styles.pc_slide2,
         styles.pc_slide3,
         styles.pc_slide4,
-        styles.pc_slide5
       ]);
     const [count, setCount]=React.useState(0)
     const clickNext = (slideNum:number,slideWid:number) => {
@@ -74,7 +73,7 @@ const PcSlide = () => {
     React.useEffect(()=>{
         // autoSlide가 4가 될 경우, 즉 4초가 지나면 슬라이더 넘김
         // if(autoSlide===6){
-        //     clickNext(4,100)
+        //     clickNext(3,90)
         // }    
         
     },[autoSlide])
@@ -92,7 +91,7 @@ const PcSlide = () => {
     return(
             <div id={styles.pc_slideContainerImageBox} className={`${styles.flexRow}`}>
                 <div id={styles.pc_slideContainerImageBoxLeftButton} className={`${styles.setTextCenter}`} onClick={()=>{
-                    clickPrevius(4,90)
+                    clickPrevius(3,90)
                     setAutoSlide(0)
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage}
@@ -106,7 +105,7 @@ const PcSlide = () => {
                 }}>
                     {childrenOrder.map((child, index) => (
                        <div key={index} id={child}>
-                        {index%5 ===0 ? (
+                        {index%4 ===0 ? (
                             <>
                             <div style={{ width: "100%", height: "20%" }}></div>
                             <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
@@ -123,7 +122,7 @@ const PcSlide = () => {
                             <div style={{ width: "100%", height: "20%" }}></div>
                            </>
                         ) :
-                        index%5 === 2 ? (
+                        index%4 === 1 ? (
                             <Image
                             src={gbroSlider}
                             alt='이미지 표시 불가'
@@ -134,7 +133,7 @@ const PcSlide = () => {
 
                         />
                         ) :
-                        index%5 ===3 ? (
+                        index%4 ===2 ? (
                             <Image
                             src={gbroSlider2}
                             alt='이미지 표시 불가'
@@ -145,8 +144,10 @@ const PcSlide = () => {
 
                         />
                         ) : 
-                        index%5 === 4 ? (
-                            <div style={{width:"100%",height:"100%"}} className={`${styles.flexColumn}`}>
+                        index%4 ===3 ? (
+                            <div style={{width:"100%",height:"100%",cursor:"pointer"}} className={`${styles.flexColumn}`} onClick={(()=>{
+                                router.push(`https://smartstore.naver.com/physicalcrown`)
+                            })}>
                                 <div style={{ width: "100%", height: "20%"}}></div>
                                 <div id={styles.pc_slideText} className={`${styles.setTextCenter}`}>
                                   건강한 피트니스의
@@ -204,7 +205,7 @@ const PcSlide = () => {
                         ease: "linear",
                       }}>
                     </motion.div>
-                    <motion.div className={`${styles.slideNavigateLayout}`} 
+                    {/* <motion.div className={`${styles.slideNavigateLayout}`} 
                     animate={{
                         width: slideState ===4 ? ['1rem', '2rem'] : ['2rem', '1rem'],
                     }}
@@ -212,14 +213,13 @@ const PcSlide = () => {
                         duration: 0.5,
                         ease: "linear",
                       }}>
-                    </motion.div>
+                    </motion.div> */}
 
                 </div>
                 
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{
-                    clickNext(4,90)
+                    clickNext(3,90)
                     setAutoSlide(0)
-                    // createSlideChild(4)
                 }}>&#62;</div>
                 
             </div>

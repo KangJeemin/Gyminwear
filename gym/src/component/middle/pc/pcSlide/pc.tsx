@@ -17,23 +17,6 @@ const PcSlide = () => {
         styles.pc_slide5
       ]);
     const [count, setCount]=React.useState(0)
-    
-      const createSlideChild = (num:number) => {
-        const updatedOrder:string[] = [...childrenOrder];
-        const pulsChild =updatedOrder[count]
-        if(pulsChild !== undefined){
-            updatedOrder.push(pulsChild);
-            setChildrenOrder(updatedOrder);
-            setCount(count=>count+1)
-            if(count>=num){
-                setCount(0)
-            }
-        }
-        else{
-            console.log("슬라이드 과정에서 Type 에러가 발생 ")
-        }
-        
-      };
     const clickNext = (slideNum:number,slideWid:number) => {
         setSlideAnimate(slide=>slide-slideWid)  // 슬라이드 위치 이동
         if(slideState===slideNum){  // 슬라이드 아이콘 네비게이션 
@@ -44,6 +27,20 @@ const PcSlide = () => {
         }
         setImageBoxWidth(width=>width+slideWid) //슬라이드 크기 증가 
         
+        // 기존 5개의 배열에서, 순차적으로 순환하며 생성하며 배열을 늘려나감
+        const updatedOrder:string[] = [...childrenOrder];
+        const pulsChild =updatedOrder[count]
+        if(pulsChild !== undefined){
+            updatedOrder.push(pulsChild);
+            setChildrenOrder(updatedOrder);
+            setCount(count=>count+1)
+            if(count>=slideNum){
+                setCount(0)
+            }
+        }
+        else{
+            console.log("슬라이드 과정에서 Type 에러가 발생 ")
+        }
     }
     const clickPrevius = (slideNum:number,slideWid:number) => {
         setSlideAnimate(slide=>slide+slideWid)  // 슬라이드 위치 이동
@@ -56,22 +53,22 @@ const PcSlide = () => {
         
     }
     React.useEffect(()=>{
+        // autoSlide가 4가 될 경우, 즉 4초가 지나면 슬라이더 넘김
         if(autoSlide===4){
-            setAutoSlide(0)
-            clickNext(4,90)
-            createSlideChild(4)
+            clickNext(4,100)
         }    
         
     },[autoSlide])
     React.useEffect(()=>{
-        // setSlideAnimate(5) //처음 로딩 시 애니메이션 컴포넌트의 위치 초기화.
-        // const intervalId = setInterval(() => {
-        //     setAutoSlide((prevAutoSlide) => prevAutoSlide + 1);
-        //   }, 1000);
+        //1초마다 autoSlide 값을 1씩 증가시킴으로써 슬라이더가 자동으로 넘어가도록 하는 기능 
+        const intervalId = setInterval(() => {
+            setAutoSlide((prevAutoSlide) => prevAutoSlide + 1);
+            console.log('gey')
+          }, 1000);
         
-        // return () =>  {
-        //     clearInterval(intervalId)
-        // }
+        return () =>  {
+            clearInterval(intervalId)
+        }
     },[])
     
     return(
@@ -160,7 +157,7 @@ const PcSlide = () => {
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{
                     clickNext(4,100)
                     setAutoSlide(0)
-                    createSlideChild(4)
+                    // createSlideChild(4)
                 }}>&#62;</div>
                 
             </div>

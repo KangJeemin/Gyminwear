@@ -68,7 +68,7 @@ const PcSlide = () => {
     }
     React.useEffect(()=>{
         // autoSlide가 4가 될 경우, 즉 4초가 지나면 슬라이더 넘김
-        if(autoSlide===4){
+        if(autoSlide===6){
             clickNext(4,100)
         }    
         

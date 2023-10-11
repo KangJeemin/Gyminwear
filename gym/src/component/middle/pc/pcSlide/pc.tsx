@@ -43,8 +43,11 @@ const PcSlide = () => {
         }
     }
     const clickPrevius = (slideNum:number,slideWid:number) => {
-        setSlideAnimate(slide=>slide+slideWid)  // 슬라이드 위치 이동
-        if(slideState===0){  // 슬라이드 아이콘 네비게이션 
+          // 슬라이드 위치 이동
+        setSlideAnimate(slide=>slide+slideWid)
+        
+        // 슬라이드 아이콘 네비게이션 
+        if(slideState===0){  
             setSlideState(slideNum) 
         }
         else{
@@ -56,6 +59,7 @@ const PcSlide = () => {
         // autoSlide가 4가 될 경우, 즉 4초가 지나면 슬라이더 넘김
         if(autoSlide===4){
             clickNext(4,100)
+            setAutoSlide(0)
         }    
         
     },[autoSlide])

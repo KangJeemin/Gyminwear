@@ -34,49 +34,30 @@ const PcSlide = () => {
         }
         
       };
-    const clickNext = () => {
-        // if(slideState===0){
-        //     setSlideAnimate(-85);
-        //     setSlideState(slideState+1)
-            
-        // }
-        // else if(slideState===1){
-        //     setSlideAnimate(-175)
-        //     setSlideState(slideState+1)
-        // }
-        // else if(slideState===2){
-        //     setSlideAnimate(-265)
-        //     setSlideState(slideState+1)
-        // }
-        // else if(slideState===3){
-        //     setSlideAnimate(-355)
-        //     setSlideState(slideState+1)
-        // }
-        setSlideAnimate(slide=>slide-90)
-        console.log(slideAnimate)
+    const clickNext = (slideNum:number,slideWid:number) => {
+        setSlideAnimate(slide=>slide-slideWid)  // 슬라이드 위치 이동
+        if(slideState===slideNum){  // 슬라이드 아이콘 네비게이션 
+            setSlideState(0) 
+        }
+        else{
+            setSlideState(state=>state+1)
+        }
+        
     }
-    const clickPrevius = () => {
-        if(slideState===4){
-            setSlideAnimate(-265);
-            setSlideState(slideState-1)
+    const clickPrevius = (slideNum:number,slideWid:number) => {
+        setSlideAnimate(slide=>slide+slideWid)  // 슬라이드 위치 이동
+        if(slideState===0){  // 슬라이드 아이콘 네비게이션 
+            setSlideState(slideNum) 
         }
-        else if(slideState===3){
-            setSlideAnimate(-175)
-            setSlideState(slideState-1)
+        else{
+            setSlideState(state=>state-1)
         }
-        else if(slideState===2){
-            setSlideAnimate(-85)
-            setSlideState(slideState-1)
-        }
-        else if(slideState===1){
-            setSlideAnimate(5)
-            setSlideState(slideState-1)
-        }
+        
     }
     React.useEffect(()=>{
         if(autoSlide===4){
             setAutoSlide(0)
-            clickNext()
+            clickNext(4,90)
             createSlideChild(4)
         }    
         
@@ -95,7 +76,7 @@ const PcSlide = () => {
     return(
             <div id={styles.pc_slideContainerImageBox} className={`${styles.flexRow}`}>
                 <div id={styles.pc_slideContainerImageBoxLeftButton} className={`${styles.setTextCenter}`} onClick={()=>{
-                    clickPrevius()
+                    clickPrevius(4,90)
                     setAutoSlide(0)
                 }}>&#60;</div>
                 <motion.div id={styles.pc_slideContainerImageBoxImage}
@@ -176,7 +157,7 @@ const PcSlide = () => {
                 </div>
                 
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{
-                    clickNext()
+                    clickNext(4,90)
                     setAutoSlide(0)
                     // createSlideChild(4)
                 }}>&#62;</div>

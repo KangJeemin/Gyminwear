@@ -25,6 +25,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <BrowserView>
         <PcFooter/>
       </BrowserView>
+      <MobileView>
+        <Footer/>
+      </MobileView>
       
       
     </AuthProvider>

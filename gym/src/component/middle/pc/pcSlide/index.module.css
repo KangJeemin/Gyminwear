@@ -72,14 +72,13 @@
     height: 100%;
     position: relative;
 }
-#pc_slide5::before{
+#pc_slide5::after{
     width: 90%;
     height: 100%;
     background-image: url('../../../../../public/image/slider/pysicalcrown_slider1.png');
-    /* background-repeat: no-repeat; */
-    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-position: center;
     position: absolute;
-    z-index: 3;
     top: 0px;
     left: 0px;
     right: 0px;

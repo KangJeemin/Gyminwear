@@ -13,7 +13,7 @@ const PcSlide = () => {
     const [slideState,setSlideState] = React.useState<number>(0)
     const [slideAnimate,setSlideAnimate] = React.useState<number>(5)
     const [autoSlide,setAutoSlide] = React.useState<number>(0)
-    const [imageBoxWidth,setImageBoxWidth] = React.useState<number>(500)
+    const [imageBoxWidth,setImageBoxWidth] = React.useState<number>(450)
     const [childrenOrder, setChildrenOrder] = React.useState([
         styles.pc_slide1,
         styles.pc_slide2,
@@ -73,9 +73,9 @@ const PcSlide = () => {
     }
     React.useEffect(()=>{
         // autoSlide가 4가 될 경우, 즉 4초가 지나면 슬라이더 넘김
-        if(autoSlide===6){
-            clickNext(4,100)
-        }    
+        // if(autoSlide===6){
+        //     clickNext(4,100)
+        // }    
         
     },[autoSlide])
     React.useEffect(()=>{
@@ -217,7 +217,7 @@ const PcSlide = () => {
                 </div>
                 
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{
-                    clickNext(4,100)
+                    clickNext(4,90)
                     setAutoSlide(0)
                     // createSlideChild(4)
                 }}>&#62;</div>

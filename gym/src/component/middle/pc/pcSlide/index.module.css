@@ -17,7 +17,7 @@
     
 }
 #pc_slideContainerImageBoxImage{
-    width: 500%;
+    width: 450%;
     height: 100%;
     position: absolute;
     display: flex;
@@ -49,31 +49,34 @@
     font-size: 2.5rem;
 }
 #pc_slide1{
-    width: 100%;
+    width: 90%;
     height: 100%;
     background-color:white
 }
 #pc_slide2{
-    width: 100%;
+    width: 90%;
     height: 100%;
     background-color: blue;
 }
 #pc_slide3{
-    width: 100%;
+    width: 90%;
     height: 100%;
     position: relative;
     cursor: pointer;
 }
 #pc_slide4{
-    width: 100%;
+    width: 90%;
     height: 100%;
     position: relative;
     cursor: pointer;
 }
 #pc_slide5{
-    width: 100%;
+    width: 90%;
     height: 100%;
     background-image: url('../../../../../public/image/slider/pysicalcrown_slider1.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
 }
 #pc_slideNavigation{
     width: 100%;

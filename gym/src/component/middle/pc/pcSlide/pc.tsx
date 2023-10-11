@@ -38,6 +38,7 @@ const PcSlide = () => {
         if(slideState===0){
             setSlideAnimate(-85);
             setSlideState(slideState+1)
+            
         }
         else if(slideState===1){
             setSlideAnimate(-175)
@@ -98,7 +99,7 @@ const PcSlide = () => {
                 <motion.div id={styles.pc_slideContainerImageBoxImage}
                     animate={{
                         left: `${slideAnimate}%`,
-                        width: `${}`
+                        width: `${imageBoxWidth}%`
                     }}
                     transition={{
                         duration: 0.5,

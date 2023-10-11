@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const PcSlide = () => {
     const [slideState,setSlideState] = React.useState<number>(0)
-    const [slideAnimate,setSlideAnimate] = React.useState<number>(0)
+    const [slideAnimate,setSlideAnimate] = React.useState<number>(5)
     const [autoSlide,setAutoSlide] = React.useState<number>(0)
     const [imageBoxWidth,setImageBoxWidth] = React.useState<number>(450)
     const [childrenOrder, setChildrenOrder] = React.useState([
@@ -35,23 +35,25 @@ const PcSlide = () => {
         
       };
     const clickNext = () => {
-        if(slideState===0){
-            setSlideAnimate(-85);
-            setSlideState(slideState+1)
+        // if(slideState===0){
+        //     setSlideAnimate(-85);
+        //     setSlideState(slideState+1)
             
-        }
-        else if(slideState===1){
-            setSlideAnimate(-175)
-            setSlideState(slideState+1)
-        }
-        else if(slideState===2){
-            setSlideAnimate(-265)
-            setSlideState(slideState+1)
-        }
-        else if(slideState===3){
-            setSlideAnimate(-355)
-            setSlideState(slideState+1)
-        }
+        // }
+        // else if(slideState===1){
+        //     setSlideAnimate(-175)
+        //     setSlideState(slideState+1)
+        // }
+        // else if(slideState===2){
+        //     setSlideAnimate(-265)
+        //     setSlideState(slideState+1)
+        // }
+        // else if(slideState===3){
+        //     setSlideAnimate(-355)
+        //     setSlideState(slideState+1)
+        // }
+        setSlideAnimate(slide=>slide-90)
+        console.log(slideAnimate)
     }
     const clickPrevius = () => {
         if(slideState===4){
@@ -176,7 +178,7 @@ const PcSlide = () => {
                 <div id={styles.pc_slideContainerImageBoxRightButton} className={`${styles.setTextCenter}`} onClick={()=>{
                     clickNext()
                     setAutoSlide(0)
-                    createSlideChild(4)
+                    // createSlideChild(4)
                 }}>&#62;</div>
                 
             </div>

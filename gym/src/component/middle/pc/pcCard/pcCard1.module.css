@@ -10,7 +10,18 @@
     font-size: 3rem;
 }
 #pc_card1Container{
-    width: 100%;
+    width: 120%;
     height: 85%;
+    background-color: white;
+}
+.card{
+    width: 25%;
+    height: 90%;
+    margin: 1%;
     background-color: green;
+    border-radius: 4%;
+
+}
+.flexRow{
+    display: flex;
 }

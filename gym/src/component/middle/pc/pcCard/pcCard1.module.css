@@ -4,8 +4,13 @@
 }
 #pc_card1ComponentText{
     width: 100%;
-    height: 20%;
+    height: 15%;
     color: black;
     background-color: blue;
     font-size: 3rem;
+}
+#pc_card1Container{
+    width: 100%;
+    height: 85%;
+    background-color: green;
 }

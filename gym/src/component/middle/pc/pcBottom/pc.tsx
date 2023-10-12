@@ -16,7 +16,7 @@ import { GetServerSidePropsContext } from 'next';
             <div id={styles.pc_bottomLeftBox}></div>
             <div id={styles.pc_bottomCenterBox}>
                 <div id={styles.pc_bottomCenterMarginBox} className={`${styles.text_set_center}`}>Bottom</div>
-                <div id={styles.pc_bottomContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>
+                <div id={styles.pc_bottomContentBox} className={`${styles.grid_5x2} ${styles.flex_scrollSet}`}>
                    {gymitem.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.pc_bottomItem_itemComponent} className={`${styles.padding_3} ${styles.flex_column}`}>
                             <span id={styles.pc_bottomItem_imageSize}>

@@ -13,15 +13,21 @@
     width: 120%;
     height: 85%;
     background-color: white;
+    
 }
 .card{
     width: 25%;
     height: 90%;
     margin: 1%;
     background-color: green;
-    border-radius: 4%;
+    box-shadow: 3px 3px 3px 3px gray;
+    border-radius: 30Px;
 
 }
 .flexRow{
     display: flex;
+}
+.flexRowOver{
+    display: flex;
+    flex-wrap: nowrap;
 }

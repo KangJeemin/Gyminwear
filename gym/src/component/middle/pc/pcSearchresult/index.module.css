@@ -205,6 +205,26 @@
 #pc_searchResultNumberMargin{
     width: 3rem;
 }
+.grid_1x4{
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.grid_2x4{
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.grid_3x4{
+    display: grid;
+    grid-template-rows: 33% 33% 33%;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.grid_4x4{
+    display: grid;
+    grid-template-rows: 25% 25% 25% 25%;
+    grid-template-columns: 25% 25% 25% 25%;
+}
 .grid_5x4{
     display: grid;
     grid-template-rows: 20% 20% 20% 20% 20%;

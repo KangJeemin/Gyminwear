@@ -13,8 +13,7 @@
 #pc_card1Container{
     width: 120%;
     height: 85%;
-    background-color: white;
-    
+    background-color: white;   
 }
 #pc_card1ContainerLeftButton{
     width: 70px;
@@ -23,6 +22,10 @@
     top: 50%;
     background-color: aqua;
 }
+#pc_card1Container:hover #pc_card1ContainerRightButton{
+    display: block;
+    animation-duration: 3s;
+}
 #pc_card1ContainerRightButton{
     width: 70px;
     height: 70px;
@@ -30,6 +33,7 @@
     top: 50%;
     left: 95%;
     background-color: aqua;
+    display: none;
 }
 .card{
     width: 25%;

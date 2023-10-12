@@ -3,6 +3,7 @@ import styles from './pcMain.module.css'
 import Image from 'next/image';
 import gbroLogo from '../../../../../public/image/gbro/gbroLogo.jpg'
 import PcSlide from '../pcSlide/pc';
+import PcCard1 from '../pcCard/pcCard1';
 
 const PcMain = () => {
     return(
@@ -16,7 +17,7 @@ const PcMain = () => {
             <div id={styles.pc_mainImage2} >
                 <div id={styles.pc_mainImage2LeftBox}></div>
                 <div id={styles.pc_mainImage2CenterBox}>
-
+                    <PcCard1/>
                 </div>
             </div>
             <div id={styles.pc_mainImagemargin}></div>

@@ -13,15 +13,11 @@ const PcMain = () => {
                 <div id={styles.pc_mainImageContainerRightBox}></div>
             </div>
             <div id={styles.pc_mainImagemargin}></div>
-            <div id={styles.pc_mainImage2}>
-                {/* <Image
-                    src={gbroLogo}
-                    alt='이미지 표시 불가'
-                    layout='fixed'
-                    width={1280}
-                    height={480}
-                /> */}
-                컨텐츠 준비 중 입니다.
+            <div id={styles.pc_mainImage2} >
+                <div id={styles.pc_mainImage2LeftBox}></div>
+                <div id={styles.pc_mainImage2CenterBox}>
+
+                </div>
             </div>
             <div id={styles.pc_mainImagemargin}></div>
             <div id={styles.pc_mainImage3}>

@@ -37,7 +37,7 @@ import { GetServerSidePropsContext } from 'next';
                         </span>
                     ))}
                 </div>
-                <div id={styles.pc_topNumvberNavigateContainer} className={`${styles.flex_row}`}>
+                {/* <div id={styles.pc_topNumvberNavigateContainer} className={`${styles.flex_row}`}>   상의 아이템이 20개가 넘어가질 않아서, 일단 주석처리
                     <div id={styles.pc_topNumberLeftBox}></div>
                     <div id={styles.pc_topNumberCenterBox} className={`${styles.text_set_center}`}>
                         <div id={styles.pc_topNumberMargin}></div>
@@ -73,7 +73,7 @@ import { GetServerSidePropsContext } from 'next';
                         <div id={styles.pc_topNumberMargin}></div>
                     </div>
                     <div id={styles.pc_topNumberRightBox}></div>
-                </div>
+                </div> */}
             </div>
             <div id={styles.pc_topRightBox}></div>
         </div>

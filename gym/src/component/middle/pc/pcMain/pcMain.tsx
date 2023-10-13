@@ -17,10 +17,7 @@ const PcMain = (props:GymItemProps) => {
             </div>
             <div id={styles.pc_mainImagemargin}></div>
             <div id={styles.pc_mainImage2}>
-                <div id={styles.pc_mainImage2LeftBox}></div>
-                <div id={styles.pc_mainImage2CenterBox}>
-                    <PcCard1 gymitem={props.gymitem}/>
-                </div>
+                <PcCard1 gymitem={props.gymitem}/>
             </div>
             <div id={styles.pc_mainImagemargin}></div>
             <div id={styles.pc_mainImage3}>

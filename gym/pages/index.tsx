@@ -45,7 +45,7 @@ const Index = ({bestTopItem,bestAllItem,bestBottomItem,bestPcAllItem}:mainPageIt
         style={{
             overscrollBehavior:"none"
         }}>
-        {isBrowser && (<PcMain/>)}
+        {isBrowser && (<PcMain gymitem={bestPcAllItem}/>)}
         {isMobile && (
             <div>
               <Announcement/>

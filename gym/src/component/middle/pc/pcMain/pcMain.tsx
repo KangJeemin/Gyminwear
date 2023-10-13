@@ -27,6 +27,9 @@ const PcMain = (props:GymItemProps) => {
                         layout='fill'
                     />
                 </div>
+                <div id={styles.pc_mainImage1Text}>
+                    <h1>짐인웨어는 당신의 꿈을 응원합니다.</h1>
+                </div>
                 <div id={styles.pc_mainImage1Box}></div>
             </div>
             <div id={styles.pc_mainImage2}>

@@ -25,6 +25,7 @@
     background-color: gray;
     opacity: 0.5;
     z-index: 1;
+    display: none;
     
 }
 
@@ -40,6 +41,9 @@
     z-index: 1;
 }
 #pc_card1Container:hover #pc_card1ContainerRightButton{
+    display: block;
+}
+#pc_card1Container:hover #pc_card1ContainerLeftButton{
     display: block;
 }
 #pc_card1_item_component{

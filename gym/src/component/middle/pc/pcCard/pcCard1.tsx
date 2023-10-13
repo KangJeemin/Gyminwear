@@ -23,7 +23,9 @@ const PcCard1 = (props:GymItemProps) => {
                     
                 //   }}
               >
-                <span id={styles.pc_card1ContainerLeftButton} className={`${styles.button}`}></span>
+                <span id={styles.pc_card1ContainerLeftButton} className={`${styles.button}`} onClick={()=>{
+                    setRightbutton(false)
+                }}></span>
                 <span id={styles.pc_card1ContainerRightButton} className={`${styles.button}`} onClick={()=>{
                     setRightbutton(true)
                 }}></span>

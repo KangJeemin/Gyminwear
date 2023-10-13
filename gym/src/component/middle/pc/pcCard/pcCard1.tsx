@@ -27,16 +27,17 @@ const PcCard1 = (props:GymItemProps) => {
                 <span id={styles.pc_card1ContainerRightButton} className={`${styles.button}`} onClick={()=>{
                     setRightbutton(true)
                 }}></span>
-                <motion.div style={{width:"100%",height:"100%",position:"relative"}} animate={{
-                    left:rightButton === true ? "-100%" : "0%"
-                }}
-                transition={{
-                    duration: 1,
-                    ease: "linear",
-                    
-                  }}>
+                <motion.div id={styles.pc_card1_item_component} 
+                    animate={{
+                        left:rightButton === true ? "-90%" : "0%"
+                    }}
+                    transition={{
+                        duration: 0.5,
+                        ease: "easeOut",
+
+                      }}>
                 {props.gymitem?(props.gymitem.map((object:gymWearItem, index) => (
-                        <span key={index} id={styles.pc_card1_item_component} className={`${styles.card}`}>
+                        <span key={index}  className={`${styles.card}`}>
                             <span id={styles.pc_card1_item_imageSize}>
                                 <Image
                                     src={object.image}

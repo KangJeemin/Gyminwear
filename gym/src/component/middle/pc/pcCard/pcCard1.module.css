@@ -11,7 +11,7 @@
     align-items: center;
 }
 #pc_card1Container{
-    width: 120%;
+    width: 180%;
     height: 85%;
     display: flex;
     flex-wrap: nowrap;
@@ -75,13 +75,12 @@
     font-weight :bold;  
 }
 .card{
-    width: 12%;
+    width: 30%;
     height: 60%;
-    margin: 1%;
+    margin: 0.5%;
     box-shadow: 0px 5px 10px 1px  gray;
     border-radius: 30px;
-
-    padding: 1%
+    padding: 0.5%
 }
 .button{
     border-radius: 30px;

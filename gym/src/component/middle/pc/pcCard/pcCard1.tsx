@@ -4,11 +4,12 @@ import type { GymItemProps,gymWearItem } from '@/src/type/gymwear';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
+import { display } from '@mui/system';
 
 const PcCard1 = (props:GymItemProps) => { 
     const router = useRouter();
     const [leftButton,setLeftbutton]=React.useState<boolean>(false)
-    const [rightButton,setRightbutton]=React.useState<boolean>(false)
+    const [moveButton,setmoveButton]=React.useState<boolean>(false)
     
     return(
         <div id={styles.pc_card1Component}>
@@ -23,15 +24,16 @@ const PcCard1 = (props:GymItemProps) => {
                     
                 //   }}
               >
-                <span id={styles.pc_card1ContainerLeftButton} className={`${styles.button}`} onClick={()=>{
-                    setRightbutton(false)
+                <span id={styles.pc_card1ContainerLeftButton} className={`${styles.button}` } onClick={()=>{
+                    setmoveButton(false)
                 }}></span>
                 <span id={styles.pc_card1ContainerRightButton} className={`${styles.button}`} onClick={()=>{
-                    setRightbutton(true)
-                }}></span>
+                    setmoveButton(true)
+                }}
+                style={{display:moveButton===true ? "none" :"block",}}></span>
                 <motion.div id={styles.pc_card1_item_component} 
                     animate={{
-                        left:rightButton === true ? "-90%" : "0%"
+                        left:moveButton === true ? "-90%" : "0%"
                     }}
                     transition={{
                         duration: 0.5,

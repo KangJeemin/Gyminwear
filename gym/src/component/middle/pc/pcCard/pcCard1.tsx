@@ -19,6 +19,7 @@ const PcCard1 = (props:GymItemProps) => {
                             <span id={styles.pc_card1_item_imageSize}>
                                 <Image
                                     src={object.image}
+                                    style={{borderRadius:"30px"}}
                                     alt='이미지 표시 불가'
                                     layout='fill'
                                     onClick={()=>{
@@ -26,9 +27,10 @@ const PcCard1 = (props:GymItemProps) => {
                                     }}
                                     />
                             </span>
-                            {/* <span id={styles.pc_card1_item_textBoxSize} className={`${styles.flex_column}`}>
+                            <span id={styles.pc_card1_item_textBoxSize}>
                                 <span id={styles.pc_card1_item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
-                            </span> */}
+                                <span id={styles.pc_card1_item_itemName} className={styles.text_set_center}><h5>{object.productname}</h5></span>
+                            </span>
                         </span>
                     ))):null}
             </div>

@@ -35,10 +35,14 @@
     background-color: aqua;
     display: none;
 }
+#pc_card1_item_component{
+    display: flex;
+    flex-direction: column;
+}
 
 #pc_card1_item_imageSize{
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
     position: relative;
 }
 #pc_card1_item_textBoxSize{

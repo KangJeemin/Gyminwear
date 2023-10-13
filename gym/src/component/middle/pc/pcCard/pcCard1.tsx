@@ -15,7 +15,7 @@ const PcCard1 = (props:GymItemProps) => {
                 <span id={styles.pc_card1ContainerLeftButton} className={`${styles.button}`}></span>
                 <span id={styles.pc_card1ContainerRightButton} className={`${styles.button}`}></span>
                 {props.gymitem?(props.gymitem.map((object:gymWearItem, index) => (
-                        <span key={index} className={`${styles.card}`}>
+                        <span key={index} id={styles.pc_card1_item_component} className={`${styles.card}`}>
                             <span id={styles.pc_card1_item_imageSize}>
                                 <Image
                                     src={object.image}
@@ -26,9 +26,9 @@ const PcCard1 = (props:GymItemProps) => {
                                     }}
                                     />
                             </span>
-                            <span id={styles.pc_card1_item_textBoxSize} className={`${styles.flex_column}`}>
+                            {/* <span id={styles.pc_card1_item_textBoxSize} className={`${styles.flex_column}`}>
                                 <span id={styles.pc_card1_item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
-                            </span>
+                            </span> */}
                         </span>
                     ))):null}
             </div>

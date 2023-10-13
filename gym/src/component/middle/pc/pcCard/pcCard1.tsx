@@ -3,6 +3,7 @@ import * as React from 'react'
 import type { GymItemProps,gymWearItem } from '@/src/type/gymwear';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 
 const PcCard1 = (props:GymItemProps) => { 
     const router = useRouter()
@@ -11,7 +12,7 @@ const PcCard1 = (props:GymItemProps) => {
     return(
         <div id={styles.pc_card1Component}>
             <div id={styles.pc_card1ComponentText}>이번주 인기 상품들</div>
-            <div id={styles.pc_card1Container} className={`${styles.flexRowOver}`}>
+            <motion.div id={styles.pc_card1Container} className={`${styles.flexRowOver}`}>
                 <span id={styles.pc_card1ContainerLeftButton} className={`${styles.button}`}></span>
                 <span id={styles.pc_card1ContainerRightButton} className={`${styles.button}`}></span>
                 {props.gymitem?(props.gymitem.map((object:gymWearItem, index) => (
@@ -33,7 +34,7 @@ const PcCard1 = (props:GymItemProps) => {
                             </span>
                         </span>
                     ))):null}
-            </div>
+            </motion.div>
         </div>
     )
 }

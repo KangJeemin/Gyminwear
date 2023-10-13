@@ -15,7 +15,8 @@
     height: 85%;
     display: flex;
     flex-wrap: nowrap;
-    background-color: white;   
+    background-color: white;
+    position: relative;   
 }
 #pc_card1ContainerLeftButton{
     width: 70px;

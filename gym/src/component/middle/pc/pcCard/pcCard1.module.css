@@ -13,6 +13,8 @@
 #pc_card1Container{
     width: 120%;
     height: 85%;
+    display: flex;
+    flex-wrap: nowrap;
     background-color: white;   
 }
 #pc_card1ContainerLeftButton{
@@ -73,7 +75,7 @@
     font-weight :bold;  
 }
 .card{
-    width: 25%;
+    width: 12%;
     height: 60%;
     margin: 1%;
     box-shadow: 0px 5px 10px 1px  gray;

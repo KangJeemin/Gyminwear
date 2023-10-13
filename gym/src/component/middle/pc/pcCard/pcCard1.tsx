@@ -1,9 +1,11 @@
 import styles from './pcCard1.module.css'
 import * as React from 'react'
+import type { GymItemProps,gymWearItem } from '@/src/type/gymwear';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
-
-const PcCard1 = () => { 
-    
+const PcCard1 = (props:GymItemProps) => { 
+    const router = useRouter()
     return(
         <div id={styles.pc_card1Component}>
             <div id={styles.pc_card1ComponentText}>이번주 인기 상품들</div>
@@ -15,7 +17,7 @@ const PcCard1 = () => {
                 <div className={styles.card}>z</div>
                 <div className={styles.card}>z</div>
                 <div className={styles.card}>z</div>
-                {/* {props.gymitem?(props.gymitem.map((object:gymWearItem, index) => (
+                {props.gymitem?(props.gymitem.map((object:gymWearItem, index) => (
                         <span key={index} className={`${styles.card}`}>
                             <span id={styles.pc_card1_item_imageSize}>
                                 <Image
@@ -31,7 +33,7 @@ const PcCard1 = () => {
                                 <span id={styles.pc_card1_item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
                             </span>
                         </span>
-                    ))):null} */}
+                    ))):null}
             </div>
         </div>
     )

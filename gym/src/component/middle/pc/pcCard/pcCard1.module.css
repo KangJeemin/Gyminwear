@@ -45,12 +45,6 @@
     padding-left: 1%;
     color: white;
 }
-#pc_card1Container:hover #pc_card1ContainerRightButton{
-    display: block;
-}
-#pc_card1Container:hover #pc_card1ContainerLeftButton{
-    display: block;
-}
 #pc_card1_item_component{
     width: 180%;
     height: 100%;

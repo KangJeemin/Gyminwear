@@ -6,15 +6,27 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 
 const PcCard1 = (props:GymItemProps) => { 
-    const router = useRouter()
-
+    const router = useRouter();
+    const [leftButton,setLeftbutton]=React.useState<boolean>(false)
+    const [rightButton,setRightbutton]=React.useState<boolean>(false)
     
     return(
         <div id={styles.pc_card1Component}>
             <div id={styles.pc_card1ComponentText}>이번주 인기 상품들</div>
-            <motion.div id={styles.pc_card1Container} className={`${styles.flexRowOver}`}>
+            <motion.div id={styles.pc_card1Container} className={`${styles.flexRowOver}`}
+                animate={{
+                    left:rightButton === true ? "-100%" : "0%"
+                }}
+                transition={{
+                    duration: 1,
+                    ease: "linear",
+                    
+                  }}
+              >
                 <span id={styles.pc_card1ContainerLeftButton} className={`${styles.button}`}></span>
-                <span id={styles.pc_card1ContainerRightButton} className={`${styles.button}`}></span>
+                <span id={styles.pc_card1ContainerRightButton} className={`${styles.button}`} onClick={()=>{
+                    setRightbutton(true)
+                }}></span>
                 {props.gymitem?(props.gymitem.map((object:gymWearItem, index) => (
                         <span key={index} id={styles.pc_card1_item_component} className={`${styles.card}`}>
                             <span id={styles.pc_card1_item_imageSize}>

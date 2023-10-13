@@ -1,11 +1,11 @@
 #searchResultComponent{
     width: 100vw;
     height: auto;
-    
 }
+
 #searchResultComponent_searchContainer{
     width: 100%;
-    margin-searchResult: 10%;
+    margin-top: 10%;
     height: 2rem;
     display: flex;
     justify-content: center;
@@ -15,12 +15,12 @@
 #searchResultComponent_searchIconContainer{
     position:absolute;
     left: 6%;
-    searchResult:18%
+    top:18%
 }
 #searchResultComponent_deleteIconContainer{
     position:absolute;
     left: 90%;
-    searchResult:18%
+    top:18%
 }
 #searchResultComponent_search{
     width: 93%;
@@ -42,6 +42,7 @@
     display: flex;
     align-items: center;
     font-size: 0.7em;
+    margin-top: 5%;
     /* font-weight: bolder; */
     
 }

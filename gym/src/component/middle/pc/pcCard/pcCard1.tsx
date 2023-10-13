@@ -12,13 +12,8 @@ const PcCard1 = (props:GymItemProps) => {
             <div id={styles.pc_card1Container} className={`${styles.flexRowOver}`}>
                 <span id={styles.pc_card1ContainerLeftButton} className={`${styles.button}`}></span>
                 <span id={styles.pc_card1ContainerRightButton} className={`${styles.button}`}></span>
-                <div className={styles.card}>z</div>
-                <div className={styles.card}>z</div>
-                <div className={styles.card}>z</div>
-                <div className={styles.card}>z</div>
-                <div className={styles.card}>z</div>
                 {props.gymitem?(props.gymitem.map((object:gymWearItem, index) => (
-                        <span key={index} className={`${styles.card}`}>
+                        <span key={index} className={`${styles.card} ${styles.positionRelative}`}>
                             <span id={styles.pc_card1_item_imageSize}>
                                 <Image
                                     src={object.image}

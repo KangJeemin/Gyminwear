@@ -35,6 +35,11 @@
     background-color: aqua;
     display: none;
 }
+
+#pc_card1_item_imageSize{
+    width: 100px;
+    height: 100px;
+}
 .card{
     width: 25%;
     height: 60%;
@@ -51,4 +56,7 @@
 .flexRowOver{
     display: flex;
     flex-wrap: nowrap;
+}
+.positionRelative{
+    position: relative;
 }

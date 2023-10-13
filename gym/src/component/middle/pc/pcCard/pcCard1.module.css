@@ -19,6 +19,7 @@
 #pc_card1ContainerLeftButton{
     width: 70px;
     height: 70px;
+    font-size: 4rem;
     position: absolute;
     top: 40%;
     left: 3%;
@@ -33,6 +34,7 @@
 #pc_card1ContainerRightButton{
     width: 70px;
     height: 70px;
+    font-size: 4rem;
     position: absolute;
     top: 40%;
     left: 95%;

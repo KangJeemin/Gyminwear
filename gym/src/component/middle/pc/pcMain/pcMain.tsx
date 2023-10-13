@@ -5,6 +5,7 @@ import gbroLogo from '../../../../../public/image/gbro/gbroLogo.jpg'
 import PcSlide from '../pcSlide/pc';
 import PcCard1 from '../pcCard/pcCard1';
 import Image1 from '@/public/image/mainImage/Image1.jpg'
+import Image2 from '@/public/image/mainImage/Image2.jpg'
 import type { GymItemProps,gymWearItem } from '@/src/type/gymwear';
 const PcMain = (props:GymItemProps) => {
 
@@ -21,7 +22,7 @@ const PcMain = (props:GymItemProps) => {
                 <div id={styles.pc_mainImage1Box}></div>
                 <div id={styles.pc_mainImage1}>
                     <Image
-                        src={Image1}
+                        src={Image2}
                         alt="이미지를 표시 할 수 없음"
                         layout='fill'
                     />

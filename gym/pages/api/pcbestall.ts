@@ -4,7 +4,7 @@ const db = require('../../src/db/db');
 export default async function getPcBestAllItems(): Promise<string> {
   return new Promise((resolve, reject) => {
     db.query(
-      "SELECT * FROM gym.bottom UNION SELECT * FROM gym.top ORDER BY likecount DESC LIMIT 0,6",
+      "SELECT * FROM gym.bottom UNION SELECT * FROM gym.top ORDER BY likecount DESC LIMIT 0,10",
       (err: any, result: gymWearItem) => {
         if (err) {
           console.error(err);

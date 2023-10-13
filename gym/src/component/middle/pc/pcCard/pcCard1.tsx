@@ -17,7 +17,7 @@ const PcCard1 = () => {
                 <div className={styles.card}>z</div>
                 {/* {props.gymitem?(props.gymitem.map((object:gymWearItem, index) => (
                         <span key={index} className={`${styles.card}`}>
-                            <span id={styles.bestAll_item_imageSize}>
+                            <span id={styles.pc_card1_item_imageSize}>
                                 <Image
                                     src={object.image}
                                     alt='이미지 표시 불가'
@@ -27,10 +27,8 @@ const PcCard1 = () => {
                                     }}
                                     />
                             </span>
-                            <span id={styles.bestAll_item_textBoxSize} className={`${styles.flex_column}`}>
-                                <span id={styles.bestAll_item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
-                                <span id={styles.bestAll_item_itemName} className={styles.text_set_center}><h5>{object.productname}</h5></span>
-                                <span id={styles.bestAll_item_itemPrice} className={styles.text_set_center}><h5>{convertWon(object.price)} ₩</h5></span>
+                            <span id={styles.pc_card1_item_textBoxSize} className={`${styles.flex_column}`}>
+                                <span id={styles.pc_card1_item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
                             </span>
                         </span>
                     ))):null} */}

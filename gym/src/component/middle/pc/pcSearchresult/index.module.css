@@ -42,7 +42,6 @@
     display: flex;
     align-items: center;
     font-size: 0.7em;
-    margin-searchResult: 5%;
     /* font-weight: bolder; */
     
 }
@@ -144,6 +143,7 @@
 #pc_searchResultItemBox{
     width: 100%;
     height: auto;
+    flex-shrink: 0;
 }
 #pc_searchResult_Item_itemComponent{
     width: 100%;

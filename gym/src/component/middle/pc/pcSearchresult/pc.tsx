@@ -69,7 +69,7 @@ const Pc = ({item,count}:SearchResultProps) => {
                     <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2rem",color:"gray",visibility:searchWord===""? "hidden":"visible"}} onClick={pcInitializeSearchText}/>
                 </div>
                 <div id={styles.pc_searchResultMarginBox}></div>
-                <div id={styles.pc_searchResultItemBox} className={`${gridLayout} ${styles.flex_scrollSet}`}>
+                <div id={styles.pc_searchResultItemBox} className={`${gridLayout}`}>
                     {item.map((object:gymWearItem, index:number) => (
                             <span key={index} id={styles.pc_searchResult_Item_itemComponent} className={`${styles.padding_3} ${styles.flex_column}`}>
                                 <span id={styles.pc_searchResult_Item_imageSize}>

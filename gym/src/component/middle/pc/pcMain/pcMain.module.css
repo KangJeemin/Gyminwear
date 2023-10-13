@@ -11,15 +11,25 @@
     width: 100%;
     height: 5rem;
 }
+#pc_mainImage1Container{
+    width: 100%;
+    height: 40rem;
+    background-color: black;
+}
+#pc_mainImage1{
+    width: 70%;
+    height: 100%;
+    position: relative;
+}
+#pc_mainImage1Box{
+    width: 15%;
+    height: 100%;
+    background-color: black;
+}
 #pc_mainImage2{
     width: 100%;
     height: 40rem;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    font-size: 4rem;
 }
 #pc_mainImage2LeftBox{
     width: 15%;

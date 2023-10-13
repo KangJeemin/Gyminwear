@@ -22,7 +22,7 @@ const Pc = ({item,count}:SearchResultProps) => {
     const router = useRouter()
     const {searchWord,setSearchWord,searchResultText,setSearchResultText} = useContext(AuthContext)
     const [reSearchWord,setReSearchWord]=useState<string>('')
-    const [gridLayout,setGridLayout]=React.useState<string>('styles.grid_1x4')
+    const [gridLayout,setGridLayout]=React.useState<string>('grid_1x4')
     const pcSetInputText = (e:ChangeEvent<HTMLInputElement>) => {
         setSearchWord(e.target.value)
       }
@@ -36,23 +36,23 @@ const Pc = ({item,count}:SearchResultProps) => {
       const pcInitializeSearchText = () => {
         setSearchWord("")
       }
-    //   useEffect(()=>{
-    //     if(count<5){
-    //         setGridLayout('styles.grid_1x4')
-    //     }
-    //     else if(count<9){
-    //         setGridLayout('styles.grid_2x4')
-    //     }
-    //     else if(count<13){
-    //         setGridLayout('styles.grid_3x4')
-    //     }
-    //     else if(count<17){
-    //         setGridLayout('styles.grid_4x4')
-    //     }
-    //     else{
-    //         setGridLayout('styles.grid_5x4')
-    //     }
-    //   },[])
+      useEffect(()=>{
+        if(count<5){
+            setGridLayout('grid_1x4')
+        }
+        else if(count<9){
+            setGridLayout('grid_2x4')
+        }
+        else if(count<13){
+            setGridLayout('grid_3x4')
+        }
+        else if(count<17){
+            setGridLayout('grid_4x4')
+        }
+        else{
+            setGridLayout('grid_5x4')
+        }
+      },)
 
     return(
         <div id={styles.pc_searchResultContainer} className={`${styles.flex_row}`}>
@@ -69,7 +69,7 @@ const Pc = ({item,count}:SearchResultProps) => {
                     <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2rem",color:"gray",visibility:searchWord===""? "hidden":"visible"}} onClick={pcInitializeSearchText}/>
                 </div>
                 <div id={styles.pc_searchResultMarginBox}></div>
-                <div id={styles.pc_searchResultItemBox} className={gridLayout}>
+                <div id={styles.pc_searchResultItemBox} className={styles[gridLayout]}>
                     {item.map((object:gymWearItem, index:number) => (
                             <span key={index} id={styles.pc_searchResult_Item_itemComponent} className={`${styles.padding_3} ${styles.flex_column}`}>
                                 <span id={styles.pc_searchResult_Item_imageSize}>

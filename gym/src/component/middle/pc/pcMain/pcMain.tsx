@@ -37,7 +37,7 @@ const PcMain = (props:GymItemProps) => {
             </div>
             <div id={styles.pc_mainImagemargin}></div>
             <div id={styles.pc_mainImage3}>
-                컨텐츠 준비 중 입니다.
+                {/* 컨텐츠 준비 중 입니다. */}
             </div>
         </div>
     )

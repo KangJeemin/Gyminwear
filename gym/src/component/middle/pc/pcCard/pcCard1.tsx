@@ -14,7 +14,7 @@ const PcCard1 = (props:GymItemProps) => {
     return(
         <div id={styles.pc_card1Component}>
             <div id={styles.pc_card1ComponentText}>이번주 인기 상품</div>
-            <motion.div id={styles.pc_card1Container} className={`${styles.flexRowOver}`} onMouseEnter={()=>{setOnOffButton(true)}} onMouseLeave={()=>{setOnOffButton(false)}}
+            <motion.div id={styles.pc_card1Container}  onMouseEnter={()=>{setOnOffButton(true)}} onMouseLeave={()=>{setOnOffButton(false)}}
                 // animate={{
                 //     left:rightButton === true ? "-100%" : "0%"
                 // }}
@@ -29,13 +29,13 @@ const PcCard1 = (props:GymItemProps) => {
                 }}
                 style={{
                     display: (onOffButton ===true) && (moveButton===true) ? "block" : "none"
-                }}><span className={`${styles.setTextCenter}`}>&#60;</span></span>
+                }}><span className={` ${styles.widAndHei100} ${styles.setTextCenter}`}>&#60;</span></span>
                 <span id={styles.pc_card1ContainerRightButton} className={`${styles.button} ${styles.text_set_center}`} onClick={()=>{
                     setmoveButton(true)
                 }}
                 style={{
                     display: (onOffButton ===true) && (moveButton===false) ? "block" : "none"
-                }}>	&#62;</span>
+                }}><span className={`${styles.setTextCenter} ${styles.widAndHei100}`}>&#62;</span></span>
                 <motion.div id={styles.pc_card1_item_component} 
                     animate={{
                         left:moveButton === true ? "-90%" : "0%"

@@ -9,7 +9,8 @@
     "lint": "next lint",
     "deploy:local": "next build && pm2 startOrRestart ecosystem.config.js --env local",
     "deploy:dev": "next build && pm2 startOrRestart ecosystem.config.js --env development",
-    "deploy:prod": "next build && pm2 startOrRestart ecosystem.config.js --env production"
+    "deploy:prod": "next build && pm2 startOrRestart ecosystem.config.js --env production",
+    "build":"next-sitemap"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -30,6 +31,7 @@
     "framer-motion": "^10.15.0",
     "mysql2": "^3.6.0",
     "next": "13.4.10",
+    "next-sitemap": "^4.2.3",
     "react": "18.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "18.2.0",

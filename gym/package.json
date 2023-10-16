@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prestart": "next build",
+    "prestart": " next-sitemap && next build",
     "start": "next start",
     "lint": "next lint",
     "deploy:local": "next build && pm2 startOrRestart ecosystem.config.js --env local",

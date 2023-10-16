@@ -29,7 +29,7 @@ const PcCard1 = (props:GymItemProps) => {
                 }}
                 style={{
                     display: (onOffButton ===true) && (moveButton===true) ? "block" : "none"
-                }}>	&#60;</span>
+                }}><span className={`${styles.setTextCenter}`}>&#60;</span></span>
                 <span id={styles.pc_card1ContainerRightButton} className={`${styles.button} ${styles.text_set_center}`} onClick={()=>{
                     setmoveButton(true)
                 }}

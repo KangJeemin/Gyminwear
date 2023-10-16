@@ -27,8 +27,9 @@
     opacity: 0.5;
     z-index: 1;
     display: none;
-    padding-left: 0.8%;
     color: white;
+    justify-content: center;
+    align-items: center;
 }
 
 #pc_card1ContainerRightButton{

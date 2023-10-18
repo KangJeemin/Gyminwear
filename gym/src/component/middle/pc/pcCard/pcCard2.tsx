@@ -12,37 +12,29 @@ type getGymItemFromPcMain = {
 const PcCard2 = (props:getGymItemFromPcMain) => { 
     
     const router = useRouter();
-    const [onOffButton,setOnOffButton]=React.useState<boolean>(false)
-    const [moveButton,setmoveButton]=React.useState<boolean>(false)
+    const [onOffButton1,setOnOffButton1]=React.useState<boolean>(false)
+    const [moveButton1,setmoveButton1]=React.useState<boolean>(false)
     
     return(
         <div id={styles.pc_card1Component}>
             <div id={styles.pc_card1ComponentText}>최신 짐웨어</div>
-            <motion.div id={styles.pc_card1Container}  onMouseEnter={()=>{setOnOffButton(true)}} onMouseLeave={()=>{setOnOffButton(false)}}
-                // animate={{
-                //     left:rightButton === true ? "-100%" : "0%"
-                // }}
-                // transition={{
-                //     duration: 1,
-                //     ease: "linear",
-                    
-                //   }}
+            <motion.div id={styles.pc_card1Container}  onMouseEnter={()=>{setOnOffButton1(true)}} onMouseLeave={()=>{setOnOffButton1(false)}}
               >
                 <span id={styles.pc_card1ContainerLeftButton} className={`${styles.button} ${styles.text_set_center}` } onClick={()=>{
-                    setmoveButton(false)
+                    setmoveButton1(false)
                 }}
                 style={{
-                    display: (onOffButton ===true) && (moveButton===true) ? "block" : "none"
+                    display: (onOffButton1 ===true) && (moveButton1===true) ? "block" : "none"
                 }}><span className={` ${styles.widAndHei100} ${styles.setTextCenter}`}>&#60;</span></span>
                 <span id={styles.pc_card1ContainerRightButton} className={`${styles.button} ${styles.text_set_center}`} onClick={()=>{
-                    setmoveButton(true)
+                    setmoveButton1(true)
                 }}
                 style={{
-                    display: (onOffButton ===true) && (moveButton===false) ? "block" : "none"
+                    display: (onOffButton1 ===true) && (moveButton1===false) ? "block" : "none"
                 }}><span className={`${styles.setTextCenter} ${styles.widAndHei100}`}>&#62;</span></span>
                 <motion.div id={styles.pc_card1_item_component} 
                     animate={{
-                        left:moveButton === true ? "-90%" : "0%"
+                        left:moveButton1 === true ? "-90%" : "0%"
                     }}
                     transition={{
                         duration: 0.5,

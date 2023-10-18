@@ -4,7 +4,7 @@ const db = require('../../src/db/db');
 export default async function getBestBottomItems(): Promise<string> {
   return new Promise((resolve, reject) => {
     db.query(
-        "SELECT * FROM bottom ORDER BY date DESC LIMIT 0,4",
+        "SELECT * FROM gym.bottom ORDER BY date DESC LIMIT 0,4",
       (err: any, result: gymWearItem) => {
         if (err) {
           console.error(err);

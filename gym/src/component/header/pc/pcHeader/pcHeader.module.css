@@ -37,11 +37,17 @@
     font-weight: bold;
     cursor: pointer;
 }
+#pc_headerTopBox:hover{
+    font-size: 1.5rem;    
+}
 #pc_headerBottomBox{
     width: 15%;
     color: black;
     font-weight: bold;
     cursor: pointer;
+}
+#pc_headerBottomBox:hover{
+    font-size: 1.5rem;    
 }
 #pc_headerxxxBox{
     width: 70%;
@@ -51,6 +57,11 @@
     margin: 0.7rem;
     cursor: pointer;
 }
+#pc_headerSearchBox:hover{
+    width: 50px;
+    
+}
+
 .flexRow {
     display:flex;
 }

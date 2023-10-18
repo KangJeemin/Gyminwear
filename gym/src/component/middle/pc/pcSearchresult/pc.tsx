@@ -84,7 +84,10 @@ const Pc = ({item,count}:SearchResultProps) => {
                                 </span>
                                 <span id={styles.pc_searchResult_Item_textBoxSize} className={`${styles.flex_column}`}>
                                     <span id={styles.pc_searchResult_Item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
-                                    <span id={styles.pc_searchResult_Item_itemName} className={styles.text_set_center}><h5>{object.productname}</h5></span>
+                                    <span id={styles.pc_searchResult_Item_itemName} 
+                                        onClick={()=>{
+                                            router.push(`${object.url}`)
+                                        }} className={styles.text_set_center}><h5>{object.productname}</h5></span>
                                     <span id={styles.pc_searchResult_Item_itemPrice} className={styles.text_set_center}><h5>{convertWon(object.price)} ₩</h5></span>
                                 </span>
                             </span>

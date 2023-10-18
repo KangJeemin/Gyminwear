@@ -31,7 +31,10 @@ import { GetServerSidePropsContext } from 'next';
                             </span>
                             <span id={styles.pc_topItem_textBoxSize} className={`${styles.flex_column}`}>
                                 <span id={styles.pc_topItem_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
-                                <span id={styles.pc_topItem_itemName} className={styles.text_set_center}><h5>{object.productname}</h5></span>
+                                <span id={styles.pc_topItem_itemName} 
+                                    onClick={()=>{
+                                        router.push(`${object.url}`)
+                                    }} className={styles.text_set_center}><h5>{object.productname}</h5></span>
                                 <span id={styles.pc_topItem_itemPrice} className={styles.text_set_center}><h5>{convertWon(object.price)} ₩</h5></span>
                             </span>
                         </span>

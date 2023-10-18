@@ -73,6 +73,7 @@
     justify-content: center;
     color:black;
     font-weight :bold;  
+    
 }
 #pc_card1_item_itemName{
     font-size: 1rem;
@@ -81,6 +82,7 @@
     justify-content: center;
     color:black;
     font-weight :bold;  
+    cursor: pointer;
 }
 .card{
     width: 30%;

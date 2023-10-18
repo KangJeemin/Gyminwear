@@ -15,14 +15,6 @@ const PcCard1 = (props:GymItemProps) => {
         <div id={styles.pc_card1Component}>
             <div id={styles.pc_card1ComponentText}>이번주 인기 상품</div>
             <motion.div id={styles.pc_card1Container}  onMouseEnter={()=>{setOnOffButton(true)}} onMouseLeave={()=>{setOnOffButton(false)}}
-                // animate={{
-                //     left:rightButton === true ? "-100%" : "0%"
-                // }}
-                // transition={{
-                //     duration: 1,
-                //     ease: "linear",
-                    
-                //   }}
               >
                 <span id={styles.pc_card1ContainerLeftButton} className={`${styles.button} ${styles.text_set_center}` } onClick={()=>{
                     setmoveButton(false)
@@ -60,7 +52,10 @@ const PcCard1 = (props:GymItemProps) => {
                             </span>
                             <span id={styles.pc_card1_item_textBoxSize}>
                                 <span id={styles.pc_card1_item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
-                                <span id={styles.pc_card1_item_itemName} className={styles.text_set_center}><h5>{object.productname}</h5></span>
+                                <span id={styles.pc_card1_item_itemName }
+                                    onClick={()=>{
+                                        router.push(`${object.url}`)
+                                    }} className={styles.text_set_center}><h5>{object.productname}</h5></span>
                             </span>
                         </span>
                     ))):null}

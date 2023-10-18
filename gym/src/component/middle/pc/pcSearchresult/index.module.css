@@ -169,6 +169,7 @@
     color:black;
     font-weight :bold;
     font-size: 1rem;  
+    cursor: pointer;
 }
 #pc_searchResult_Item_itemName{
     flex: 1;

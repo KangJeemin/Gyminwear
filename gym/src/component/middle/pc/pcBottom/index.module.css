@@ -119,7 +119,9 @@
     width: 100%;
     height: 500px;
     border-color: white;
-
+}
+#pc_bottomItem_itemComponent:hover{
+    padding: 0%
 }
 #pc_bottomItem_imageSize{
     width: 100%;

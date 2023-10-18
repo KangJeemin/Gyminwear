@@ -24,7 +24,7 @@
     position: absolute;
     top: 40%;
     left: 3%;
-    background-color: gray;
+    background-color: #00bfff;
     opacity: 0.5;
     z-index: 1;
     display: none;
@@ -40,7 +40,7 @@
     position: absolute;
     top: 40%;
     left: 95%;
-    background-color: gray;
+    background-color:#00bfff;
     opacity: 0.5;
     display: none;
     z-index: 1;

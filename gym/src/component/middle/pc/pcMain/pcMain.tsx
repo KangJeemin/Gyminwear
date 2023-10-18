@@ -40,7 +40,6 @@ const PcMain = (props:getGymItemtoPcMain) => {
             <div id={styles.pc_mainImage2}>
                 <PcCard1 gymitem={props.gymitem}/>
             </div>
-            <div id={styles.pc_mainImagemargin}></div>
             <div id={styles.pc_mainImage3}>
                 <PcCard2 gymitem2={props.gymitem2}/>
             </div>

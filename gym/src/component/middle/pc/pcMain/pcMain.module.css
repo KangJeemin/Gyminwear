@@ -39,7 +39,7 @@
 }
 #pc_mainImage2{
     width: 100%;
-    height: 40rem;
+    height: 600px;
     position: relative;
 }
 #pc_mainImage2LeftBox{
@@ -52,7 +52,7 @@
 }
 #pc_mainImage3{
     width: 100%;
-    height: 40rem;
+    height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;

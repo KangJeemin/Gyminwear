@@ -62,7 +62,7 @@ const PcHeader = () => {
                 }}>Bottom</div>
                 <div id={styles.pc_headerxxxBox}></div>
                 <div id={styles.pc_headerSearchBox}>
-                    <FontAwesomeIcon  icon={faSearch} style={{fontSize:"1.5em",color:"black"}}onClick={()=>{
+                    <FontAwesomeIcon  icon={faSearch} style={{color:"black"}}onClick={()=>{
                         clickSearch()
                     }}/>
                 </div>

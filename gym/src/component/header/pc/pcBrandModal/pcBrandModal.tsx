@@ -15,10 +15,21 @@ const PcBrandModal= () => {
         }}
         transition={{
             duration:0.5,
+            ease: "easeOut",
+
         }}
         >
             <div id={styles.pc_brandNameModalMarginBox}></div>
-            <motion.div id={styles.pc_brandNameModalCenterBox}>
+            <motion.div id={styles.pc_brandNameModalCenterBox}
+                animate={{
+                    display:brandModalState===true ? "flex" : "none"
+                }}
+                transition={{
+                    delay:0.25,
+                    duration:0.5,
+                    ease: "easeIn",
+                }}  
+            >
                 <div id={styles.pc_brandNameModalMarginBox2}></div>
                 <div id={styles.pc_brandNameModalBrandBox}>
                     <ul className={styles.ulStyle}>
@@ -41,8 +52,6 @@ const PcBrandModal= () => {
                         <li className={styles.liStyle}>피지컬크라운</li>
                         <li className={styles.liStyle}>피지컬크라운</li>
                         <li className={styles.liStyle}>피지컬크라운</li>
-                        
-
                     </ul>
                 </div>
                 <div id={styles.pc_brandNameModalMarginBox2}></div>

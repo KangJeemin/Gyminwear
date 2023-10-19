@@ -10,7 +10,7 @@
 }
 #pc_brandNameModalCenterBox{
     width: 70%;
-    display: flex;
+    display: none;
     flex-direction: column;
     height: 100%;
     ;

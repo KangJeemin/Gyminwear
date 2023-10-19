@@ -22,9 +22,18 @@
 #pc_brandNameModalBrandBox{
     width: 100%;
     height: 80%;
-    overflow-y: auto;
-    flex-wrap: nowrap;
+    overflow-y: scroll;
+    flex-wrap: nowrap;   
 }
+#pc_brandNameModalBrandBox::-webkit-scrollbar{
+    background: white;
+    width:10px;
+}
+#pc_brandNameModalBrandBox::-webkit-scrollbar-thumb{
+    border-radius: 30px;
+    background: gray
+}
+
 .ulStyle{
     padding: 1%;
     display: grid;

@@ -15,10 +15,11 @@ const PcBrandModal= () => {
         }}
         transition={{
             duration:1,
-            
         }}
         >
-
+            <div id={styles.pc_brandNameModalMarginBox}></div>
+            <motion.div id={styles.pc_brandNameModalCenterBox}></motion.div>
+            <div id={styles.pc_brandNameModalMarginBox}></div>
         </motion.div>
     )
 }

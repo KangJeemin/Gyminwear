@@ -3,3 +3,11 @@
     height: 0rem;
     background-color: red;
 }
+#pc_brandNameModalMarginBox{
+    width: 10%;
+    height: 100%;
+}
+#pc_brandNameModalCenterBox{
+    width: 80%;
+    height: 0%;
+}

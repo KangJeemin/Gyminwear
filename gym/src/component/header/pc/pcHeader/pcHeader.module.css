@@ -38,7 +38,7 @@
     cursor: pointer;
 }
 #pc_headerTopBox:hover{
-    font-size: 1.5rem;    
+    font-size: 1.2rem;    
 }
 #pc_headerBottomBox{
     width: 15%;
@@ -47,7 +47,7 @@
     cursor: pointer;
 }
 #pc_headerBottomBox:hover{
-    font-size: 1.5rem;    
+    font-size: 1.2rem;    
 }
 #pc_headerxxxBox{
     width: 70%;
@@ -58,7 +58,7 @@
     cursor: pointer;
 }
 #pc_headerSearchBox:hover{
-    width: 50px;
+    width: 45px;
     
 }
 

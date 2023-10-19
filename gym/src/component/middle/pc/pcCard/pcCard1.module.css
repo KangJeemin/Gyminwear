@@ -31,6 +31,7 @@
     color: white;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 #pc_card1ContainerRightButton{
@@ -45,6 +46,7 @@
     display: none;
     z-index: 1;
     color: white;
+    cursor: pointer;
 }
 #pc_card1_item_component{
     width: 180%;

@@ -27,9 +27,11 @@
 }
 .ulStyle{
     padding: 1%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
 }
 .liStyle{
     list-style: none;
     display: inline;
-    padding: 10%;
+    padding: 20px;
 }

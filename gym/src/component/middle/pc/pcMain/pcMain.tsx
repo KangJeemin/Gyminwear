@@ -4,10 +4,15 @@ import Image from 'next/image';
 import gbroLogo from '../../../../../public/image/gbro/gbroLogo.jpg'
 import PcSlide from '../pcSlide/pc';
 import PcCard1 from '../pcCard/pcCard1';
+import PcCard2 from '../pcCard/pcCard2'
 import Image1 from '@/public/image/mainImage/Image1.jpg'
 import Image2 from '@/public/image/mainImage/Image2.jpg'
-import type { GymItemProps,gymWearItem } from '@/src/type/gymwear';
-const PcMain = (props:GymItemProps) => {
+
+type getGymItemtoPcMain = {
+    gymitem:[]
+    gymitem2:[]
+  }
+const PcMain = (props:getGymItemtoPcMain) => {
 
 
     return(
@@ -35,9 +40,8 @@ const PcMain = (props:GymItemProps) => {
             <div id={styles.pc_mainImage2}>
                 <PcCard1 gymitem={props.gymitem}/>
             </div>
-            <div id={styles.pc_mainImagemargin}></div>
             <div id={styles.pc_mainImage3}>
-                {/* 컨텐츠 준비 중 입니다. */}
+                <PcCard2 gymitem2={props.gymitem2}/>
             </div>
         </div>
     )

@@ -119,7 +119,9 @@
     width: 100%;
     height: 500px;
     border-color: white;
-
+}
+#pc_bottomItem_itemComponent:hover{
+    padding: 0%
 }
 #pc_bottomItem_imageSize{
     width: 100%;
@@ -146,6 +148,7 @@
     justify-content: center;
     font-size: 1.2rem;  
     color: gray;
+    cursor: pointer;
 }
 #pc_bottomItem_itemPrice{
     flex: 1;
@@ -182,9 +185,24 @@
     height: 100%;
     background-color: aqua;
 }
-.grid_5x2{
+.grid_1x4{
     display: grid;
     grid-template-rows: 50% 50% ;
+    grid-template-columns: 25% 25% 25% 25% ;
+}
+.grid_2x4{
+    display: grid;
+    grid-template-rows: 50% 50% ;
+    grid-template-columns: 25% 25% 25% 25% ;
+}
+.grid_3x4{
+    display: grid;
+    grid-template-rows: 33.3% 33.3% 33.3%;
+    grid-template-columns: 25% 25% 25% 25% ;
+}
+.grid_4x4{
+    display: grid;
+    grid-template-rows: 25% 25% 25% 25%;
     grid-template-columns: 25% 25% 25% 25% ;
 }
 .grid_5x4{

@@ -65,7 +65,7 @@ const Pc = ({item,count}:SearchResultProps) => {
                 <div id={styles.pc_searchResultMarginBox}></div>
                 <div id={styles.pc_searchResultInputBox} className={`${styles.flex_row}`}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} style={{fontSize:"2rem",color:"gray",marginLeft: "2rem"}}/>
-                    <input id={styles.pc_searchResultInput} type="search" onChange={pcSetInputText} onKeyDown={keydown} value={searchWord} placeholder='검색어를 입력하세요'/>
+                    <input id={styles.pc_searchResultInput} type="text" onChange={pcSetInputText} onKeyDown={keydown} value={searchWord} placeholder='검색어를 입력하세요'/>
                     <FontAwesomeIcon icon={faCircleXmark} style={{fontSize:"2rem",color:"gray",visibility:searchWord===""? "hidden":"visible"}} onClick={pcInitializeSearchText}/>
                 </div>
                 <div id={styles.pc_searchResultMarginBox}></div>
@@ -84,7 +84,10 @@ const Pc = ({item,count}:SearchResultProps) => {
                                 </span>
                                 <span id={styles.pc_searchResult_Item_textBoxSize} className={`${styles.flex_column}`}>
                                     <span id={styles.pc_searchResult_Item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
-                                    <span id={styles.pc_searchResult_Item_itemName} className={styles.text_set_center}><h5>{object.productname}</h5></span>
+                                    <span id={styles.pc_searchResult_Item_itemName} 
+                                        onClick={()=>{
+                                            router.push(`${object.url}`)
+                                        }} className={styles.text_set_center}><h5>{object.productname}</h5></span>
                                     <span id={styles.pc_searchResult_Item_itemPrice} className={styles.text_set_center}><h5>{convertWon(object.price)} ₩</h5></span>
                                 </span>
                             </span>

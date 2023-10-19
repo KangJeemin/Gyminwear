@@ -37,20 +37,31 @@
     font-weight: bold;
     cursor: pointer;
 }
+#pc_headerTopBox:hover{
+    font-size: 1.2rem;    
+}
 #pc_headerBottomBox{
     width: 15%;
     color: black;
     font-weight: bold;
     cursor: pointer;
 }
+#pc_headerBottomBox:hover{
+    font-size: 1.2rem;    
+}
 #pc_headerxxxBox{
     width: 70%;
 }
 #pc_headerSearchBox{
-    width: 10%;
+    width: 40px;
     margin: 0.7rem;
     cursor: pointer;
 }
+#pc_headerSearchBox:hover{
+    width: 45px;
+    
+}
+
 .flexRow {
     display:flex;
 }

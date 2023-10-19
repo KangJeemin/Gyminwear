@@ -1,10 +1,10 @@
 import type { gymWearItem } from '@/src/type/gymwear';
 const db = require('../../src/db/db');
 
-export default async function getBestBottomItems(): Promise<string> {
+export default async function getPcBestRecentItems(): Promise<string> {
   return new Promise((resolve, reject) => {
     db.query(
-        "SELECT * FROM gym.bottom ORDER BY date DESC LIMIT 0,4",
+      "SELECT * FROM gym.bottom UNION SELECT * FROM gym.top ORDER BY date DESC LIMIT 0,10",
       (err: any, result: gymWearItem) => {
         if (err) {
           console.error(err);
@@ -12,6 +12,7 @@ export default async function getBestBottomItems(): Promise<string> {
         } else {
             const serializedResult = JSON.stringify(result); // 데이터 직렬화
             resolve(serializedResult);
+          
         }
       }
     );

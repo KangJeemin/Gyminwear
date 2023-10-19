@@ -62,8 +62,10 @@ const PcHeader = () => {
                     setSearchState(0)
                 }}>Bottom</div>
                 <div id={styles.pc_headerBrandBox} className={`${styles.setTextCenter}`} onClick={()=>{
-                    router.push(`/bottomPage?page=1`)
                     setBrandState(true)
+                }}
+                style={{
+                    color: brandState === true ? "blue" : "black"
                 }}>Brand</div>
                 <div id={styles.pc_headerxxxBox}></div>
                 <div id={styles.pc_headerSearchBox}>

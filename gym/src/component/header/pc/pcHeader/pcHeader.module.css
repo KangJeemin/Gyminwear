@@ -55,6 +55,9 @@
     font-weight: bold;
     cursor: pointer;
 }
+#pc_headerBrandBox:hover{
+    font-size: 1.2rem;    
+}
 #pc_headerxxxBox{
     width: 55%;
 }

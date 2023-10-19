@@ -62,6 +62,7 @@ const PcHeader = () => {
                     setSearchState(0)
                 }}>Bottom</div>
                 <div id={styles.pc_headerBrandBox} className={`${styles.setTextCenter}`} onClick={()=>{
+                    setSearchState(0)
                     if(brandModalState===false){
                         setBrandModalState(true)
                     }
@@ -76,6 +77,7 @@ const PcHeader = () => {
                 <div id={styles.pc_headerSearchBox}>
                     <FontAwesomeIcon  icon={faSearch} style={{color:"black"}}onClick={()=>{
                         clickSearch()
+                        setBrandModalState(false);
                     }}/>
                 </div>
                 

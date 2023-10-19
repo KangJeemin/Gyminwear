@@ -14,8 +14,7 @@ import { AuthContext } from '@/public/context/authcontext';
 
 const PcHeader = () => {
     const router=useRouter();
-    const {searchState, setSearchState}= React.useContext(AuthContext)
-    const [brandState,setBrandState] = React.useState(false)
+    const {searchState, setSearchState,brandModalState,setbrandModalState}= React.useContext(AuthContext)
 
     const pushChangeTextColor = (e:ChangeEvent<HTMLInputElement>) => {
         e.target.style.color='blue'
@@ -63,16 +62,16 @@ const PcHeader = () => {
                     setSearchState(0)
                 }}>Bottom</div>
                 <div id={styles.pc_headerBrandBox} className={`${styles.setTextCenter}`} onClick={()=>{
-                    if(brandState===false){
-                        setBrandState(true)
+                    if(brandModalState===false){
+                        setbrandModalState(true)
                     }
                     else{
-                        setBrandState(false)
+                        setbrandModalState(false)
                     }
                     
                 }}
                 style={{
-                    color: brandState === true ? "blue" : "black"
+                    color: brandModalState=== true ? "blue" : "black"
                 }}>Brand</div>
                 <div id={styles.pc_headerxxxBox}></div>
                 <div id={styles.pc_headerSearchBox}>
@@ -85,7 +84,7 @@ const PcHeader = () => {
             <div id={styles.pc_headerRightBox}></div>
         </div>
         <PcSearchModal/>
-        <PcBrandModal brandState={brandState}/>
+        <PcBrandModal/>
     </div>
     )
 }

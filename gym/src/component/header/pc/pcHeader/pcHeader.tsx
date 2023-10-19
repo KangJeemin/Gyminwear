@@ -14,6 +14,7 @@ import { AuthContext } from '@/public/context/authcontext';
 const PcHeader = () => {
     const router=useRouter();
     const {searchState, setSearchState}= React.useContext(AuthContext)
+    const [brandState,setBrandState] = React.useState(false)
 
     const pushChangeTextColor = (e:ChangeEvent<HTMLInputElement>) => {
         e.target.style.color='blue'
@@ -60,12 +61,17 @@ const PcHeader = () => {
                     router.push(`/bottomPage?page=1`)
                     setSearchState(0)
                 }}>Bottom</div>
+                <div id={styles.pc_headerBrandBox} className={`${styles.setTextCenter}`} onClick={()=>{
+                    router.push(`/bottomPage?page=1`)
+                    setBrandState(true)
+                }}>Brand</div>
                 <div id={styles.pc_headerxxxBox}></div>
                 <div id={styles.pc_headerSearchBox}>
                     <FontAwesomeIcon  icon={faSearch} style={{color:"black"}}onClick={()=>{
                         clickSearch()
                     }}/>
                 </div>
+                
             </div>
             <div id={styles.pc_headerRightBox}></div>
         </div>

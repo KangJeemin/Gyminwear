@@ -49,8 +49,14 @@
 #pc_headerBottomBox:hover{
     font-size: 1.2rem;    
 }
+#pc_headerBrandBox{
+    width: 15%;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
 #pc_headerxxxBox{
-    width: 70%;
+    width: 55%;
 }
 #pc_headerSearchBox{
     width: 40px;

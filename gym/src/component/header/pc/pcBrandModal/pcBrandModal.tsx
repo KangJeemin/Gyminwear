@@ -34,6 +34,14 @@ const PcBrandModal= () => {
                         <li className={styles.liStyle}>피지컬크라운</li>
                         <li className={styles.liStyle}>피지컬크라운</li>
                         <li className={styles.liStyle}>피지컬크라운</li>
+                        <li className={styles.liStyle}>피지컬크라운</li>
+                        <li className={styles.liStyle}>피지컬크라운</li>
+                        <li className={styles.liStyle}>피지컬크라운</li>
+                        <li className={styles.liStyle}>피지컬크라운</li>
+                        <li className={styles.liStyle}>피지컬크라운</li>
+                        <li className={styles.liStyle}>피지컬크라운</li>
+                        <li className={styles.liStyle}>피지컬크라운</li>
+                        
 
                     </ul>
                 </div>

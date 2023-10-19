@@ -9,14 +9,14 @@ const PcBrandModal= () => {
     
     return(
         <motion.div id={styles.pc_brandNameModalComponent} 
+        initial={{display:"flex"}}
         animate={{
-            display:brandModalState===true ? "flex" : "none",
             height:brandModalState===true ? "20rem" : "0rem",
         }}
         transition={{
+            // display: { duration: 0.5 },
             duration:0.5,
             ease: "easeOut",
-
         }}
         >
             <div id={styles.pc_brandNameModalMarginBox}></div>

@@ -38,6 +38,9 @@ const PcHeader = () => {
         if(searchState===1){
             setSearchState(2)
         }
+        if(brandModalState===true){
+            setBrandModalState(false)
+        }
         }}>
         <div id={styles.pc_headerContainer} className={`${styles.flexRow}`}>
             <div id={styles.pc_headerLeftBox}></div>

@@ -62,7 +62,13 @@ const PcHeader = () => {
                     setSearchState(0)
                 }}>Bottom</div>
                 <div id={styles.pc_headerBrandBox} className={`${styles.setTextCenter}`} onClick={()=>{
-                    setBrandState(true)
+                    if(brandState===false){
+                        setBrandState(true)
+                    }
+                    else{
+                        setBrandState(false)
+                    }
+                    
                 }}
                 style={{
                     color: brandState === true ? "blue" : "black"

@@ -10,7 +10,7 @@ const PcBrandModal= () => {
     return(
         <motion.div id={styles.pc_brandNameModalComponent} 
         animate={{
-            display:"flex",
+            display:brandModalState===true ? "flex" : "none",
             height:brandModalState===true ? "20rem" : "0rem",
         }}
         transition={{

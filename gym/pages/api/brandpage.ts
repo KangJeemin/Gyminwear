@@ -3,7 +3,7 @@ import type { gymWearItem } from '@/src/type/gymwear';
 const db = require('../../src/db/db')
 
 export default function brandpage(req : NextApiRequest, res : NextApiResponse) {
-    const brandName=req.query.brandName
+    const brandname=req.query.brandname
     const sort=req.query.sort
     const pageNumber= req.query.page
     

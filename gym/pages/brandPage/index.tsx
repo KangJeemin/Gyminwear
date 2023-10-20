@@ -9,13 +9,14 @@ type getbrandName={
     brandname:string
 }
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const { brandName,sort,page } = context.query;
-    const res = await fetch(`http://localhost:3000/api/brandpage?brandName=${brandName}&sort=${sort}&page=${page}`);
+    const { brandname,sort,page } = context.query;
+    console.log(context.query)
+    const res = await fetch(`http://localhost:3000/api/brandPage?brandname=${brandname}&sort=${sort}&page=${page}`);
     const data = await res.json();
     
     return { 
         props: { 
-        brandname:brandName,
+        brandname:brandname,
         gymitem:data
         }
      };

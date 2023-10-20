@@ -44,7 +44,7 @@ type getbrandname = {
                     <div id={styles.pc_brandCenterSortItems} className={sortState===4 ? styles.color_blue : ""}
                     onClick={()=>{
                         setSortState(4)
-                        router.push(`/brandPage?brandname=${props.brandname}&sort=긴바지page=1`)
+                        router.push(`/brandPage?brandname=${props.brandname}&sort=긴바지&page=1`)
                         }}>LongPants</div>
                 </div>
                 <div id={styles.pc_brandContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>

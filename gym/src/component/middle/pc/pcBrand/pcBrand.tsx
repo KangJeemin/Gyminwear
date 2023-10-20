@@ -21,11 +21,16 @@ type getbrandname = {
             <div id={styles.pc_brandCenterBox}>
                 <div id={styles.pc_brandCenterMarginBox} className={`${styles.text_set_center}`}>{props.brandname}</div>
                 <div id={styles.pc_brandCenterSortBox} className={`${styles.text_set_center}`}>
-                    <div id={styles.pc_brandCenterSortItems} className={sortState===0 ? styles.color_blue : "" }>All</div>
-                    <div id={styles.pc_brandCenterSortItems}>LongSleeve</div>
-                    <div id={styles.pc_brandCenterSortItems}>T-Shirt</div>
-                    <div id={styles.pc_brandCenterSortItems}>ShortPants</div>
-                    <div id={styles.pc_brandCenterSortItems}>LongPants</div>
+                    <div id={styles.pc_brandCenterSortItems} className={sortState===0 ? styles.color_blue : "" }
+                    onClick={()=>{setSortState(0)}}>All</div>
+                    <div id={styles.pc_brandCenterSortItems} className={sortState===1 ? styles.color_blue : ""} 
+                    onClick={()=>{setSortState(1)}}>LongSleeve</div>
+                    <div id={styles.pc_brandCenterSortItems} className={sortState===2 ? styles.color_blue : ""}
+                    onClick={()=>{setSortState(2)}}>T-Shirt</div>
+                    <div id={styles.pc_brandCenterSortItems} className={sortState===3 ? styles.color_blue : ""}
+                    onClick={()=>{setSortState(3)}}>ShortPants</div>
+                    <div id={styles.pc_brandCenterSortItems} className={sortState===4 ? styles.color_blue : ""}
+                    onClick={()=>{setSortState(4)}}>LongPants</div>
                 </div>
                 <div id={styles.pc_brandContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>
                    {props.gymitem.map((object:gymWearItem, index:number) => (

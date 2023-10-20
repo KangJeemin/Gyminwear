@@ -12,10 +12,8 @@ type getbrandName={
 }
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { brandname,sort,page } = context.query;
-    console.log("query=",context.query)
     const res = await fetch(`http://localhost:3000/api/brandpage?brandname=${brandname}&sort=${sort}&page=${page}`);
     const data = await res.json();
-    console.log("data=",data)
     
     return { 
         props: { 

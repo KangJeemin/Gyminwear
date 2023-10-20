@@ -21,7 +21,7 @@ type getbrandname = {
             <div id={styles.pc_brandCenterBox}>
                 <div id={styles.pc_brandCenterMarginBox} className={`${styles.text_set_center}`}>{props.brandname}</div>
                 <div id={styles.pc_brandCenterSortBox} className={`${styles.text_set_center}`}>
-                    <div id={styles.pc_brandCenterSortItems} className={sortState===0 ? 'styles.color_blue' : "" }>All</div>
+                    <div id={styles.pc_brandCenterSortItems} className={sortState===0 ? styles.color_blue : "" }>All</div>
                     <div id={styles.pc_brandCenterSortItems}>LongSleeve</div>
                     <div id={styles.pc_brandCenterSortItems}>T-Shirt</div>
                     <div id={styles.pc_brandCenterSortItems}>ShortPants</div>

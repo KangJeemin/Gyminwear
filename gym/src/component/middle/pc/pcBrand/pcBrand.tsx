@@ -16,6 +16,28 @@ type getbrandname = {
         const router = useRouter();
         const [pageState,setPageState]=useState<number>(0)
         const [sortState,setSortState]=useState<number>(0)
+        const [gridLayout,setGridLayout]=React.useState<string>('grid_1x4')
+
+        useEffect(()=>{
+            if(props.countresult==0){
+                setGridLayout('')
+            }
+            else if(props.countresult<5){
+                setGridLayout('grid_1x4')
+            }
+            else if(props.countresult<9){
+                setGridLayout('grid_2x4')
+            }
+            else if(props.countresult<13){
+                setGridLayout('grid_3x4')
+            }
+            else if(props.countresult<17){
+                setGridLayout('grid_4x4')
+            }
+            else{
+                setGridLayout('grid_5x4')
+            }
+          },)
     return(
         <div id={styles.pc_brandContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_brandLeftBox}></div>
@@ -48,7 +70,7 @@ type getbrandname = {
                         router.push(`/brandPage?brandname=${props.brandname}&sort=긴바지&page=1`)
                         }}>LongPants</div>
                 </div>
-                <div id={styles.pc_brandContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>
+                <div id={styles.pc_brandContentBox} className={styles[gridLayout]}>
                     {props.countresult ===0 ? (
                     <div id={styles.pc_brand404Page}>검색 결과가 없습니다</div>
                     ) : (

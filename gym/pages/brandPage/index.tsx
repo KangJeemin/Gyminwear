@@ -8,7 +8,7 @@ import Pc from '../../src/component/middle/pc/pcBrand/pcBrand'
 type getbrandName={
     brandname:string
     gymitem:[]
-    countresult:[]
+    countresult:number
 }
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { brandname,sort,page } = context.query;
@@ -21,7 +21,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         props: { 
         brandname:context.query.brandname,
         gymitem:data.result,
-        countresult:data.countresult
+        countresult:data.countresult[0].C
         }
      };
   }

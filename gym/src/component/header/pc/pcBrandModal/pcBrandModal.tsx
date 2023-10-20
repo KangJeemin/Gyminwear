@@ -2,6 +2,7 @@ import * as React from 'react'
 import styles from './index.module.css'
 import { motion } from 'framer-motion';
 import { AuthContext } from '@/public/context/authcontext';
+import { Opacity } from '@mui/icons-material';
 
 
 const PcBrandModal= () => {
@@ -9,10 +10,14 @@ const PcBrandModal= () => {
     
     return(
         <motion.div id={styles.pc_brandNameModalComponent} 
-        initial={{display:"none"}}
+        initial={{
+            display:"none",
+            opacity:0
+        }}
         animate={{
             display:brandModalState===true ? "flex" : "none",
             height:brandModalState===true ? "20rem" : "0rem",
+            opacity:brandModalState===true ? 1 : 0
         }}
         transition={{
             // display: { duration: 0.5 },

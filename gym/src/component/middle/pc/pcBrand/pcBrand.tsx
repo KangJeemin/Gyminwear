@@ -24,7 +24,7 @@ type getbrandname = {
                     <div id={styles.pc_brandCenterSortItems} className={sortState===0 ? styles.color_blue : "" }
                     onClick={()=>{
                         setSortState(0)
-                        router.push(`/brandPage?brandname=${props.brandname?props.brandname:""}&sort=$&page=1`)
+                        router.push(`/brandPage?brandname=${props.brandname}&sort=all&page=1`)
                         }}>All</div>
                     <div id={styles.pc_brandCenterSortItems} className={sortState===1 ? styles.color_blue : ""} 
                     onClick={()=>{

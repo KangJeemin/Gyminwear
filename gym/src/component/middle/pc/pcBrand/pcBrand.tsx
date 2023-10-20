@@ -49,7 +49,11 @@ type getbrandname = {
                         }}>LongPants</div>
                 </div>
                 <div id={styles.pc_brandContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>
-                   {props.gymitem.map((object:gymWearItem, index:number) => (
+                    {props.countresult ===0 ? (
+                    <>검색 결과가 없습니다</>
+                    ) : (
+                        <>
+                        {props.gymitem.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.pc_brandItem_itemComponent} className={`${styles.padding_3} ${styles.flex_column}`}>
                             <span id={styles.pc_brandItem_imageSize}>
                                 <Image
@@ -71,6 +75,9 @@ type getbrandname = {
                             </span>
                         </span>
                     ))}
+                        </>
+                    )}
+                   
                 </div>
                 {/* <div id={styles.pc_brandNumvberNavigateContainer} className={`${styles.flex_row}`}>   상의 아이템이 20개가 넘어가질 않아서, 일단 주석처리
                     <div id={styles.pc_brandNumberLeftBox}></div>

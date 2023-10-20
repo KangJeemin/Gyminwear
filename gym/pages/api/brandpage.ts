@@ -19,7 +19,7 @@ export default function brandpage(req : NextApiRequest, res : NextApiResponse) {
     }
     else{
         if(pageNumber==='1'){
-            db.query(`SELECT * FROM gym.top WHERE brandname LIKE '%${brandname}%' AND sort LIKE '%${sort}%' LIMIT 0,20`,
+            db.query(`SELECT * FROM gym.top WHERE brandname LIKE '%${brandname}%' AND sort LIKE '%${sort}%' UNION SELECT * FROM gym.bottom WHERE brandname LIKE '%${brandname}%' AND sort LIKE '%${sort}%' LIMIT 0,20`,
             function (err: any, result: gymWearItem) {
             if(err) {
                 console.log(err)
@@ -29,7 +29,7 @@ export default function brandpage(req : NextApiRequest, res : NextApiResponse) {
             });
         }
         else if(pageNumber==='2'){
-            db.query("SELECT * FROM gym.top ORDER BY date LIMIT 20,20",
+            db.query(`SELECT * FROM gym.top WHERE brandname LIKE '%${brandname}%' AND sort LIKE '%${sort}%' UNION SELECT * FROM gym.bottom WHERE brandname LIKE '%${brandname}%' AND sort LIKE '%${sort}%' LIMIT 20,20`,
             function (err: any, result: gymWearItem) {
             if(err) {
                 console.log(err)

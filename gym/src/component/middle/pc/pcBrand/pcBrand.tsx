@@ -14,17 +14,18 @@ type getbrandname = {
   const Pc = (props:getbrandname) => {
         const router = useRouter();
         const [pageState,setPageState]=useState<number>(0)
+        
     return(
         <div id={styles.pc_brandContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_brandLeftBox}></div>
             <div id={styles.pc_brandCenterBox}>
                 <div id={styles.pc_brandCenterMarginBox} className={`${styles.text_set_center}`}>{props.brandname}</div>
                 <div id={styles.pc_brandCenterSortBox} className={`${styles.text_set_center}`}>
-                    <div>All</div>
-                    <div>LongSleeve</div>
-                    <div>T-Shirt</div>
-                    <div>ShortPants</div>
-                    <div>LongPants</div>
+                    <div id={styles.pc_brandCenterSortItems}>All</div>
+                    <div id={styles.pc_brandCenterSortItems}>LongSleeve</div>
+                    <div id={styles.pc_brandCenterSortItems}>T-Shirt</div>
+                    <div id={styles.pc_brandCenterSortItems}>ShortPants</div>
+                    <div id={styles.pc_brandCenterSortItems}>LongPants</div>
                 </div>
                 <div id={styles.pc_brandContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>
                    {props.gymitem.map((object:gymWearItem, index:number) => (

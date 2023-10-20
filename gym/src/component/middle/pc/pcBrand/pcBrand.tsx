@@ -18,7 +18,14 @@ type getbrandname = {
         <div id={styles.pc_brandContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_brandLeftBox}></div>
             <div id={styles.pc_brandCenterBox}>
-                <div id={styles.pc_brandCenterMarginBox} className={`${styles.text_set_center}`}>{props.brandname? props.brandname : null}</div>
+                <div id={styles.pc_brandCenterMarginBox} className={`${styles.text_set_center}`}>{props.brandname}</div>
+                <div id={styles.pc_brandCenterSortBox} className={`${styles.text_set_center}`}>
+                    <div>All</div>
+                    <div>LongSleeve</div>
+                    <div>T-Shirt</div>
+                    <div>ShortPants</div>
+                    <div>LongPants</div>
+                </div>
                 <div id={styles.pc_brandContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>
                    {props.gymitem.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.pc_brandItem_itemComponent} className={`${styles.padding_3} ${styles.flex_column}`}>

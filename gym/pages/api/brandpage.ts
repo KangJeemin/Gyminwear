@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { gymWearItem } from '@/src/type/gymwear';
+import type { searchResultCount } from '@/src/type/gymwear';
 const db = require('../../src/db/db')
 
 export default function brandpage(req : NextApiRequest, res : NextApiResponse) {
@@ -20,25 +21,6 @@ export default function brandpage(req : NextApiRequest, res : NextApiResponse) {
     else{
         
         if(pageNumber==='1'){
-// 
-// db.query(`SELECT * FROM top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%' LIMIT 0,20`,
-//         function (err: any, result: gymWearItem) {
-//             if(err) {
-//                 res.status(500).json({ error: 'An error occurred in err' });
-//             } else {
-//                 db.query(`SELECT COUNT(*) AS C FROM top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%'`,
-//                 function (counterr: any, countresult: searchResultCount) {
-//                 if(counterr) {
-//                    res.status(500).json({ error: 'An error occurred in counterr' });
-//                 } else {
-//                         res.json({result,countresult})
-//                 }
-//                 });                
-//             }
-        // });
-// 
-
-
             db.query(`SELECT * FROM gym.top WHERE brandname LIKE '%${brandname}%' AND sort LIKE '%${sort}%' UNION SELECT * FROM gym.bottom WHERE brandname LIKE '%${brandname}%' AND sort LIKE '%${sort}%' LIMIT 0,20`,
             function (err: any, result: gymWearItem) {
             if(err) {
@@ -51,8 +33,7 @@ export default function brandpage(req : NextApiRequest, res : NextApiResponse) {
                 } else {
                     res.json({result,countresult})
                 }
-                                });                
-                // res.json(result);
+                });                
             }
             });
         }

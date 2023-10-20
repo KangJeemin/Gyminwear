@@ -7,6 +7,7 @@ import Pc from '../../src/component/middle/pc/pcBrand/pcBrand'
 
 type getbrandName={
     brandname:string
+    gymitem:[]
 }
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { brandname,sort,page } = context.query;
@@ -21,11 +22,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         }
      };
   }
-  const Index = ({gymitem}:GymItemProps,{brandname}:getbrandName) => {
+  const Index = (props:getbrandName) => {
     return(
     <div>
-        {isBrowser && <Pc gymitem={gymitem} brandname={brandname}/>}
-        {isMobile &&  <Mobile gymitem={gymitem}/>}
+        {isBrowser && <Pc gymitem={props.gymitem} brandname={props.brandname}/>}
+        {isMobile &&  <Mobile gymitem={props.gymitem}/>}
         
     </div>
     )

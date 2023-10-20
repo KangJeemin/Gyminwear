@@ -24,19 +24,27 @@ type getbrandname = {
                     <div id={styles.pc_brandCenterSortItems} className={sortState===0 ? styles.color_blue : "" }
                     onClick={()=>{
                         setSortState(0)
-                        router.push(`/brandpage?brandname=${props.brandname?props.brandname:""}&sort=$&page=1`)
+                        router.push(`/brandPage?brandname=${props.brandname?props.brandname:""}&sort=$&page=1`)
                         }}>All</div>
                     <div id={styles.pc_brandCenterSortItems} className={sortState===1 ? styles.color_blue : ""} 
                     onClick={()=>{
                         setSortState(1)
-                        router.push(`/brandpage?brandname=${props.brandname}&sort=긴팔&page=1`)
+                        router.push(`/brandPage?brandname=${props.brandname}&sort=긴팔&page=1`)
                         }}>LongSleeve</div>
                     <div id={styles.pc_brandCenterSortItems} className={sortState===2 ? styles.color_blue : ""}
-                    onClick={()=>{setSortState(2)}}>T-Shirt</div>
+                    onClick={()=>{
+                        setSortState(2)
+                        router.push(`/brandPage?brandname=${props.brandname}&sort=반팔&page=1`)
+                        }}>T-Shirt</div>
                     <div id={styles.pc_brandCenterSortItems} className={sortState===3 ? styles.color_blue : ""}
-                    onClick={()=>{setSortState(3)}}>ShortPants</div>
+                    onClick={()=>{
+                        setSortState(3)
+                        router.push(`/brandPage?brandname=${props.brandname}&sort=반바지&page=1`)}}>ShortPants</div>
                     <div id={styles.pc_brandCenterSortItems} className={sortState===4 ? styles.color_blue : ""}
-                    onClick={()=>{setSortState(4)}}>LongPants</div>
+                    onClick={()=>{
+                        setSortState(4)
+                        router.push(`/brandPage?brandname=${props.brandname}&sort=긴바지page=1`)
+                        }}>LongPants</div>
                 </div>
                 <div id={styles.pc_brandContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>
                    {props.gymitem.map((object:gymWearItem, index:number) => (

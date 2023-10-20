@@ -5,6 +5,9 @@ import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detec
 import Mobile from '../../src/component/middle/pc/PcTop/moblie'
 import Pc from '../../src/component/middle/pc/PcTop/pc'
 
+type getbrandName={
+    brandname:string
+}
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { brandName,sort,page } = context.query;
     const res = await fetch(`http://localhost:3000/api/brandpage?brandName=${brandName}&sort=${sort}&page=${page}`);
@@ -12,14 +15,15 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     
     return { 
         props: { 
+        brandname:brandName,
         gymitem:data
         }
      };
   }
-  const Index = ({gymitem}:GymItemProps) => {
+  const Index = ({gymitem}:GymItemProps,{brandname}:getbrandName) => {
     return(
     <div>
-        {isBrowser && <Pc gymitem={gymitem}/>}
+        {isBrowser && <Pc gymitem={gymitem} brandname={brandname}/>}
         {isMobile &&  <Mobile gymitem={gymitem}/>}
         
     </div>

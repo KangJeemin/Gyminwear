@@ -9,12 +9,19 @@ export default function brandpage(req : NextApiRequest, res : NextApiResponse) {
     const pageNumber= req.query.page
     
     if(sort==="all"){
-        db.query(`SELECT * FROM gym.top WHERE brandname LIKE '%${brandname}%' UNION SELECT * FROM gym.bottom WHERE brandname LIKE '%${brandname}%'   LIMIT 0,20`,
+        db.query(`SELECT * FROM gym.top WHERE brandname LIKE '%${brandname}%' UNION SELECT * FROM gym.bottom WHERE brandname LIKE '%${brandname}%' LIMIT 0,20`,
         function (err: any, result: gymWearItem) {
         if(err) {
-            console.log(err)
+            res.status(500).json({ error: 'An error occurred in err' });
         } else {
-            res.json(result);
+            db.query(`SELECT COUNT(*) AS C FROM (SELECT * FROM gym.top WHERE brandname LIKE '%${brandname}%' UNION ALL SELECT * FROM gym.bottom WHERE brandname LIKE '%${brandname}%') AS combine_results`,
+            function (counterr: any, countresult: searchResultCount) {
+            if(counterr) {
+                res.status(500).json({ error: 'An error occurred in counterr' });
+            } else {
+                res.json({result,countresult})
+            }
+            });                
         }
         });
     }

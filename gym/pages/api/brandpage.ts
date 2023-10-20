@@ -8,7 +8,7 @@ export default function brandpage(req : NextApiRequest, res : NextApiResponse) {
     const pageNumber= req.query.page
     
     if(pageNumber==='1'){
-        db.query("SELECT * FROM gym.top ORDER BY date LIMIT 0,20",
+        db.query(`SELECT * FROM top WHERE brandname LIKE '%${brandname}%' AND sort LIKE '%${sort}%' LIMIT 0,20`,
         function (err: any, result: gymWearItem) {
         if(err) {
             console.log(err)

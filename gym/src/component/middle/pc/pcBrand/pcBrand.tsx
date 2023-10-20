@@ -20,7 +20,7 @@ type getbrandname = {
         <div id={styles.pc_brandContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_brandLeftBox}></div>
             <div id={styles.pc_brandCenterBox}>
-                <div id={styles.pc_brandCenterMarginBox} className={`${styles.text_set_center}`}>{props.countresult}</div>
+                <div id={styles.pc_brandCenterMarginBox} className={`${styles.text_set_center}`}>{props.brandname}</div>
                 <div id={styles.pc_brandCenterSortBox} className={`${styles.text_set_center}`}>
                     <div id={styles.pc_brandCenterSortItems} className={sortState===0 ? styles.color_blue : "" }
                     onClick={()=>{
@@ -50,7 +50,7 @@ type getbrandname = {
                 </div>
                 <div id={styles.pc_brandContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>
                     {props.countresult ===0 ? (
-                    <>검색 결과가 없습니다</>
+                    <div id={styles.pc_brand404Page}>검색 결과가 없습니다</div>
                     ) : (
                         <>
                         {props.gymitem.map((object:gymWearItem, index:number) => (

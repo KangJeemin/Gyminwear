@@ -6,18 +6,21 @@ import Image from 'next/image';
 import type { gymWearItem, GymItemProps } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 import { GetServerSidePropsContext } from 'next';
+type getbrandname = {
+    gymitem:[],
+    brandname:string
+}
 
-
-  const Pc = ({gymitem}:GymItemProps) => {
+  const Pc = (props:getbrandname) => {
         const router = useRouter();
         const [pageState,setPageState]=useState<number>(0)
     return(
         <div id={styles.pc_brandContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_brandLeftBox}></div>
             <div id={styles.pc_brandCenterBox}>
-                <div id={styles.pc_brandCenterMarginBox} className={`${styles.text_set_center}`}>Top</div>
+                <div id={styles.pc_brandCenterMarginBox} className={`${styles.text_set_center}`}>brand</div>
                 <div id={styles.pc_brandContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>
-                   {gymitem.map((object:gymWearItem, index:number) => (
+                   {props.gymitem.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.pc_brandItem_itemComponent} className={`${styles.padding_3} ${styles.flex_column}`}>
                             <span id={styles.pc_brandItem_imageSize}>
                                 <Image

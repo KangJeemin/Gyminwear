@@ -3,7 +3,7 @@ import type { gymWearItem, GymItemProps } from '@/src/type/gymwear';
 import { GetServerSidePropsContext } from 'next';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 import Mobile from '../../src/component/middle/pc/PcTop/moblie'
-import Pc from '../../src/component/middle/pc/PcTop/pc'
+import Pc from '../../src/component/middle/pc/pcBrand/pcBrand'
 
 type getbrandName={
     brandname:string

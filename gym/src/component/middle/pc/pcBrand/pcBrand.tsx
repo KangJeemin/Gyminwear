@@ -14,14 +14,14 @@ type getbrandname = {
   const Pc = (props:getbrandname) => {
         const router = useRouter();
         const [pageState,setPageState]=useState<number>(0)
-        
+        const [sortState,setSortState]=useState<number>(0)
     return(
         <div id={styles.pc_brandContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_brandLeftBox}></div>
             <div id={styles.pc_brandCenterBox}>
                 <div id={styles.pc_brandCenterMarginBox} className={`${styles.text_set_center}`}>{props.brandname}</div>
                 <div id={styles.pc_brandCenterSortBox} className={`${styles.text_set_center}`}>
-                    <div id={styles.pc_brandCenterSortItems}>All</div>
+                    <div id={styles.pc_brandCenterSortItems} className={sortState===0 ? 'styles.color_blue' : "" }>All</div>
                     <div id={styles.pc_brandCenterSortItems}>LongSleeve</div>
                     <div id={styles.pc_brandCenterSortItems}>T-Shirt</div>
                     <div id={styles.pc_brandCenterSortItems}>ShortPants</div>

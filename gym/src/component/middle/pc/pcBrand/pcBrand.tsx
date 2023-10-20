@@ -7,7 +7,8 @@ import type { gymWearItem, GymItemProps } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 import { GetServerSidePropsContext } from 'next';
 type getbrandname = {
-    gymitem:[],
+    gymitem:[]
+    countresult:{C:number}[]
     brandname:string
 }
 
@@ -19,7 +20,7 @@ type getbrandname = {
         <div id={styles.pc_brandContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_brandLeftBox}></div>
             <div id={styles.pc_brandCenterBox}>
-                <div id={styles.pc_brandCenterMarginBox} className={`${styles.text_set_center}`}>{props.brandname}</div>
+                <div id={styles.pc_brandCenterMarginBox} className={`${styles.text_set_center}`}>{props.countresult.C}</div>
                 <div id={styles.pc_brandCenterSortBox} className={`${styles.text_set_center}`}>
                     <div id={styles.pc_brandCenterSortItems} className={sortState===0 ? styles.color_blue : "" }
                     onClick={()=>{

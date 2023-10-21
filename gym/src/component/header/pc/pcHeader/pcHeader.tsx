@@ -81,7 +81,7 @@ const PcHeader = () => {
                     setBrandModalState(0)
                 }}>Bottom</div>
                 <div id={styles.pc_headerBrandBox} className={`${styles.setTextCenter}`} onClick={()=>{
-                    setSearchState(0)
+                    setSearchState(2)
                     clickBrandModal()
                 }}
                 style={{

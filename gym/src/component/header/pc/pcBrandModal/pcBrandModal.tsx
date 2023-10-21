@@ -45,23 +45,6 @@ const PcBrandModal= () => {
                             router.push(`/brandPage?brandname=피지컬크라운&sort=all&page=1`)
                         }}>피지컬크라운</li>
                         <li className={styles.liStyle}>짐브로</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
-                        <li className={styles.liStyle}>피지컬크라운</li>
                     </ul>
                 </div>
                 <div id={styles.pc_brandNameModalMarginBox2}></div>

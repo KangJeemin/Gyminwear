@@ -36,7 +36,7 @@ const PcSearchModal = () => {
         animate={{
             display:searchState===0? 'none' : '',
             opacity:searchState===0 ? [0,0] : searchState=== 1 ? [0,1] : [1,0],
-            height: searchState===0 ? ['0rem','20rem'] : searchState=== 1 ? ['0rem','20rem'] : ['20rem','0rem']
+            height: searchState===0 ? '0rem' : searchState=== 1 ? ['0rem','20rem'] : ['20rem','0rem']
           }}
           transition={{
             duration: searchState===0 ? 0 : searchState===1 ? 0.5 : 0.5, 

@@ -40,7 +40,6 @@ const PcSearchModal = () => {
           }}
           transition={{
             duration: searchState===0 ? 0 : searchState===1 ? 0.5 : 0.5, 
-            times:searchState===0 ? [0,0] : searchState===1 ? [0,1] : [0,1],
             ease: 'easeOut',
           }}
         >

@@ -17,9 +17,9 @@ const PcBrandModal= () => {
             opacity:0
         }}
         animate={{
-            display:brandModalState===true ? "flex" : "none",
-            height:brandModalState===true ? "20rem" : "0rem",
-            opacity:brandModalState===true ? 1 : 0
+            display:brandModalState===0 ? "none" : "flex",
+            height:brandModalState===0 ? "0rem": brandModalState===1 ? "20rem" : "0rem" ,
+            opacity:brandModalState===0 ? 0: brandModalState===1 ? 1 : 1 
         }}
         transition={{
             // display: { duration: 0.5 },
@@ -30,7 +30,7 @@ const PcBrandModal= () => {
             <div id={styles.pc_brandNameModalMarginBox}></div>
             <motion.div id={styles.pc_brandNameModalCenterBox}
                 animate={{
-                    display:brandModalState===true ? "flex" : "none"
+                    display:brandModalState===0 ? "none" : "flex",
                 }}
                 transition={{
                     delay:0.25,
@@ -44,7 +44,9 @@ const PcBrandModal= () => {
                         <li className={styles.liStyle} onClick={()=>{
                             router.push(`/brandPage?brandname=피지컬크라운&sort=all&page=1`)
                         }}>피지컬크라운</li>
-                        <li className={styles.liStyle}>짐브로</li>
+                        <li className={styles.liStyle} onClick={()=>{
+                            router.push(`/brandPage?brandname=짐브로&sort=all&page=1`)
+                        }}>짐브로</li>
                     </ul>
                 </div>
                 <div id={styles.pc_brandNameModalMarginBox2}></div>

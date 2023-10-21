@@ -33,13 +33,27 @@ const PcHeader = () => {
             setSearchState(0)
         }
     }
+    const clickBrandModal = () => {
+        if(brandModalState === 0){
+            setBrandModalState(1)
+        }
+        else if(brandModalState === 1){
+            setBrandModalState(2)
+        }
+        else if(brandModalState === 2){
+            setBrandModalState(1)
+        }
+        else{
+            setBrandModalState(0)
+        }
+    }
     return(
     <div id={styles.pc_headerContainerSearchAndMain} onMouseLeave={()=>{
         if(searchState===1){
             setSearchState(2)
         }
-        if(brandModalState===true){
-            setBrandModalState(false)
+        if(brandModalState===1){
+            setBrandModalState(2)
         }
         }}>
         <div id={styles.pc_headerContainer} className={`${styles.flexRow}`}>
@@ -58,29 +72,26 @@ const PcHeader = () => {
                 <div id={styles.pc_headerTopBox} className={`${styles.setTextCenter}`} onClick={()=>{
                     router.push(`/topPage?page=1`)
                     setSearchState(0)
+                    setBrandModalState(0)
                     
                 }}>Top</div>
                 <div id={styles.pc_headerBottomBox} className={`${styles.setTextCenter}`} onClick={()=>{
                     router.push(`/bottomPage?page=1`)
                     setSearchState(0)
+                    setBrandModalState(0)
                 }}>Bottom</div>
                 <div id={styles.pc_headerBrandBox} className={`${styles.setTextCenter}`} onClick={()=>{
                     setSearchState(0)
-                    if(brandModalState===false){
-                        setBrandModalState(true)
-                    }
-                    else{
-                        setBrandModalState(false)
-                    }
+                    clickBrandModal()
                 }}
                 style={{
-                    color: brandModalState=== true ? "blue" : "black"
+                    color: brandModalState=== 1 ? "blue" : "black"
                 }}>Brand</div>
                 <div id={styles.pc_headerxxxBox}></div>
                 <div id={styles.pc_headerSearchBox}>
                     <FontAwesomeIcon  icon={faSearch} style={{color:"black"}}onClick={()=>{
                         clickSearch()
-                        setBrandModalState(false);
+                        setBrandModalState(2)
                     }}/>
                 </div>
                 

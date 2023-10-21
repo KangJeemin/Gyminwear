@@ -8,6 +8,8 @@ interface AuthContextProps {
   setHambergerState: (hambergerState:number) => void;
   searchState: number;
   setSearchState: (searchState:number) => void;
+  brandModalState: number;
+  setBrandModalState:(brandModalstate:number) => void;
   announceState:boolean;
   setAnnounceState:(announceState:boolean) => void;
   searchWord:string;
@@ -29,6 +31,8 @@ export const AuthContext = createContext<AuthContextProps>({
   setHambergerState: () => {},
   searchState:0,
   setSearchState: () => {},
+  brandModalState:0,
+  setBrandModalState:() => {},
   announceState:true,
   setAnnounceState: () => {},
   searchWord:'',
@@ -51,6 +55,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [state, setState] = useState(0);
   const [hambergerState, setHambergerState] = useState(0);
   const [searchState, setSearchState] = useState(0);
+  const [brandModalState, setBrandModalState] = useState(0);
   const [announceState, setAnnounceState] = useState(true);
   const [searchWord, setSearchWord] = useState('');
   const [searchResultText, setSearchResultText] = useState('');
@@ -67,6 +72,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         setHambergerState,
         searchState,
         setSearchState,
+        brandModalState,
+        setBrandModalState,
         announceState,
         setAnnounceState,
         searchWord,

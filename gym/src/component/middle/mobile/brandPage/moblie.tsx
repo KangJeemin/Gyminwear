@@ -6,8 +6,12 @@ import Image from 'next/image';
 import type { gymWearItem, GymItemProps } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 import { GetServerSidePropsContext } from 'next';
-
-const Moblie= (props:GymItemProps) => { 
+type getbrandname = {
+    gymitem:[]
+    countresult:number
+    brandname:string
+}
+const Moblie= (props:getbrandname) => { 
     
     const router = useRouter();
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
@@ -16,7 +20,7 @@ const Moblie= (props:GymItemProps) => {
   return (
     <div id={styles.brandComponent}>
         <div id={styles.brandComponent_topText}  className={styles.text_set_center}>
-          <h3 id={styles.brandComponent_text}>Top</h3>
+          <h3 id={styles.brandComponent_text}>{props.brandname}</h3>
         </div>
              <div id={styles.brandComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
                      {props.gymitem.map((object:gymWearItem, index:number) => (

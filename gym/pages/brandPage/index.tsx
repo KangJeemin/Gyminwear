@@ -2,8 +2,9 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import type { gymWearItem, GymItemProps } from '@/src/type/gymwear';
 import { GetServerSidePropsContext } from 'next';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
-import Mobile from '../../src/component/middle/pc/PcTop/moblie'
+import Mobile from '../../src/component/middle/mobile/brandPage/moblie'
 import Pc from '../../src/component/middle/pc/pcBrand/pcBrand'
+import Moblie from '@/src/component/middle/pc/PcTop/moblie';
 
 type getbrandName={
     brandname:string
@@ -27,7 +28,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return(
     <div>
         {isBrowser && <Pc gymitem={props.gymitem} brandname={props.brandname} countresult={props.countresult}/>}
-        {isMobile &&  <Mobile gymitem={props.gymitem}/>}
+        {isMobile &&  <Moblie gymitem={props.gymitem} brandname={props.brandname} countresult={props.countresult}/>}
         
     </div>
     )

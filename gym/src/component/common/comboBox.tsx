@@ -1,12 +1,12 @@
 import { fontSize } from '@mui/system';
 import { color } from 'framer-motion';
-import React, { HtmlHTMLAttributes } from 'react';
+import React from 'react';
 
 type comboBoxProps = {
     handle:Function
 }
 const comboBox= (props:comboBoxProps) => {
-    const selectValue = (e) => {
+    const selectValue = (e:React.ChangeEvent<HTMLSelectElement>) => {
         props.handle(e.target.value)
     }
 
@@ -17,7 +17,7 @@ const comboBox= (props:comboBoxProps) => {
             fontSize:"inherit"
             
         }} onChange={selectValue}>
-			<option value="All">All</option>
+			<option value="all">All</option>
             <option value="긴팔">Long Sleeve</option>
             <option value="반팔">T-Shirt</option>
             <option value="반바지">Short Pants</option>

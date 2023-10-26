@@ -17,8 +17,8 @@ const BrandList = (props:brandListState) => {
             height:props.brandListState ? "500px" : "0px"
         }}
         transition={{
-            times:0.5,
-            ease: 'linear',
+            times:1,
+            ease: "easeInOut",
         }}
         >
             <ul>

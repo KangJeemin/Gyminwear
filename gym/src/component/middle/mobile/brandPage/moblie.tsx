@@ -19,7 +19,7 @@ const Moblie= (props:getbrandname) => {
     const [comboBoxValue,setComboBoxValue] = useState<string>("")
 
 useEffect(()=>{
-    console.log(comboBoxValue)
+    router.push(`/brandPage?brandname=${props.brandname}&sort=${comboBoxValue}&page=1`)
 },[comboBoxValue])
   return (
     <div id={styles.brandComponent}>

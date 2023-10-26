@@ -1,9 +1,14 @@
 #brandListContainer{
     width: 80%;
-    height: auto;
-    padding-left: 10px;
+    height: 0px;
+    padding-top: 10px;
+    overflow-y: auto;
+    flex-wrap: nowrap;
 }
 #brandListBrandName{
     color: black;
-    font-size: 1rem;
+    font-size: 0.5rem;
+    list-style: none;
+    font-weight: bold;
+    padding: 20px;
 }

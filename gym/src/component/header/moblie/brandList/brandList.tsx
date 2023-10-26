@@ -10,9 +10,23 @@ type brandListState = {
 const BrandList = (props:brandListState) => {
     const router = useRouter();
     return(
-        <motion.div id={styles.brandListContainer}>
+        <motion.div id={styles.brandListContainer} style={{
+            
+        }}
+        animate={{
+            height:props.brandListState ? "500px" : "0px"
+        }}
+        transition={{
+            times:0.5,
+            ease: 'linear',
+        }}
+        >
             <ul>
                 <li id={styles.brandListBrandName} onClick={()=>{router.push(`/brandPage?brandname=피지컬크라운&sort=all&page=1`)}}>피지컬크라운</li>
+                <li id={styles.brandListBrandName} onClick={()=>{router.push(`/brandPage?brandname=짐브로&sort=all&page=1`)}}>짐브로</li>
+                <li id={styles.brandListBrandName} onClick={()=>{router.push(`/brandPage?brandname=짐브로&sort=all&page=1`)}}>짐브로</li>
+                <li id={styles.brandListBrandName} onClick={()=>{router.push(`/brandPage?brandname=짐브로&sort=all&page=1`)}}>짐브로</li>
+                <li id={styles.brandListBrandName} onClick={()=>{router.push(`/brandPage?brandname=짐브로&sort=all&page=1`)}}>짐브로</li>
             </ul>
             
             

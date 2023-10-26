@@ -50,7 +50,7 @@ const HambergerModal = () => {
             setSearchState(0)
             setState(0)
           }}>Bottom</div>
-          <div className={styles.hambergerNavigate} onClick={()=>{}}>Brand
+          <div className={styles.hambergerNavigate} onClick={()=>{setBrandListState(true)}}>Brand
             <BrandList brandListState={brandListState}/>
           </div>
         </div>

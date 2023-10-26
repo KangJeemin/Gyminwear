@@ -25,7 +25,6 @@ useEffect(()=>{
     <div id={styles.brandComponent}>
         <div id={styles.brandComponent_topText}  className={styles.text_set_center}>
           <h3 id={styles.brandComponent_text}>{props.brandname}</h3>
-          <h3 id={styles.brandComponent_text}>{props.countresult}</h3>
         </div>
         <div id={styles.brandComponent_ComboBoxContainer} className={`${styles.flex_row}`}>
             <ComboBox handle={setComboBoxValue}/>

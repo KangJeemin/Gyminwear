@@ -6,7 +6,7 @@ import { AuthContext } from '../../../../../public/context/authcontext';
 
 const HambergerModal = () => {
   const {hambergerState,setState,setHambergerState,setSearchState} = useContext(AuthContext)
-  const [brandState, setBrandState] = useState<boolean>(false)
+  const [brandListState, setBrandListState] = useState<boolean>(false)
   const router = useRouter();
   return (
     <motion.div

@@ -1,0 +1,9 @@
+#brandListContainer{
+    width: 80%;
+    height: auto;
+    padding-left: 10px;
+}
+#brandListBrandName{
+    color: black;
+    font-size: 1rem;
+}

@@ -10,6 +10,12 @@
     color: black;
     
 }
+#brandComponent_ComboBoxContainer{
+    width: 100%;
+    height: 2rem;
+    justify-content: end;
+    align-items: center;
+}
 #brandComponent_itemContainer{
     width: 100%;
     height: auto;

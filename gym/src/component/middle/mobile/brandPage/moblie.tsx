@@ -13,40 +13,44 @@ type getbrandname = {
     brandname:string
 }
 const Moblie= (props:getbrandname) => { 
-    
     const router = useRouter();
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
     const [pageState,setPageState] = useState<number>(0)   
- 
+    const [comboBoxValue,setComboBoxValue] = useState<string>("")
+
+useEffect(()=>{
+    console.log(comboBoxValue)
+},[comboBoxValue])
   return (
     <div id={styles.brandComponent}>
         <div id={styles.brandComponent_topText}  className={styles.text_set_center}>
           <h3 id={styles.brandComponent_text}>{props.brandname}</h3>
           <h3 id={styles.brandComponent_text}>{props.countresult}</h3>
-        <ComboBox/>
-
         </div>
-             <div id={styles.brandComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
-                     {props.gymitem.map((object:gymWearItem, index:number) => (
-                        <span key={index} id={styles.brandComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
-                            <span id={styles.brandComponent_item_imageSize}>
-                                <Image
-                                    src={object.image}
-                                    alt='이미지 표시 불가'
-                                    layout='fill'
-                                    onClick={()=>{
-                                        router.push(`${object.url}`)
-                                    }}
-                                    />
-                            </span>
-                            <span id={styles.brandComponent_item_textBoxSize} className={`${styles.flex_column}`}>
-                                <span id={styles.brandComponent_item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
-                                <span id={styles.brandComponent_item_itemName} className={styles.text_set_center}><h5>{object.productname}</h5></span>
-                                <span id={styles.brandComponent_item_itemPrice} className={styles.text_set_center}><h5>{convertWon(object.price)} ₩</h5></span>
-                            </span>
-                        </span>
-                    ))}
-            </div>
+        <div id={styles.brandComponent_ComboBoxContainer} className={`${styles.flex_row}`}>
+            <ComboBox handle={setComboBoxValue}/>
+        </div>
+        <div id={styles.brandComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
+            {props.gymitem.map((object:gymWearItem, index:number) => (
+                <span key={index} id={styles.brandComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
+                    <span id={styles.brandComponent_item_imageSize}>
+                        <Image
+                            src={object.image}
+                            alt='이미지 표시 불가'
+                            layout='fill'
+                            onClick={()=>{
+                                router.push(`${object.url}`)
+                            }}
+                        />
+                    </span>
+                    <span id={styles.brandComponent_item_textBoxSize} className={`${styles.flex_column}`}>
+                        <span id={styles.brandComponent_item_itemBrandName} className={styles.text_set_center}><h4>{object.brandname}</h4></span>
+                        <span id={styles.brandComponent_item_itemName} className={styles.text_set_center}><h5>{object.productname}</h5></span>
+                        <span id={styles.brandComponent_item_itemPrice} className={styles.text_set_center}><h5>{convertWon(object.price)} ₩</h5></span>
+                    </span>
+                </span>
+                ))}
+        </div>
         {/* {pageState===0 ? (
             <div id ={styles.brandComponent_navigateContainer} className={`${styles.flex_row} ${styles.justify_content_center}`}>
                 <span className={`${styles.width_15per} ${styles.text_set_center}`}></span>

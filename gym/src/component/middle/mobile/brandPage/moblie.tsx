@@ -21,6 +21,15 @@ const Moblie= (props:getbrandname) => {
     <div id={styles.brandComponent}>
         <div id={styles.brandComponent_topText}  className={styles.text_set_center}>
           <h3 id={styles.brandComponent_text}>{props.brandname}</h3>
+          <h3 id={styles.brandComponent_text}>{props.countresult}</h3>
+          <select>
+			<option key="All" value="All">All</option>
+            <option key="LongSleeve" value="LongSleeve">Long Sleeve</option>
+            <option key="TShirt" value="TShirt">T-Shirt</option>
+            <option key="shortPants" value="shortPants">Short Pants</option>
+            <option key="LongPants" value="LongPants">Long Pants</option>
+		</select>
+
         </div>
              <div id={styles.brandComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
                      {props.gymitem.map((object:gymWearItem, index:number) => (

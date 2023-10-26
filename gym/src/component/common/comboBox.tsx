@@ -1,10 +1,14 @@
 import React from 'react';
 
+type comboBoxProps = {
+    handle:Function
+}
 
-const comboBox= () => {
+
+const comboBox= (props:comboBoxProps) => {
 
     return(
-        <select>
+        <select onChange={()=>{props.handle}}>
 			<option key="All" value="All">All</option>
             <option key="LongSleeve" value="LongSleeve">Long Sleeve</option>
             <option key="TShirt" value="TShirt">T-Shirt</option>

@@ -54,7 +54,7 @@ const Index = ({bestTopItem,bestAllItem,bestBottomItem,bestPcAllItem,bestPcRecen
         {isBrowser && (<PcMain gymitem={bestPcAllItem} gymitem2={bestPcRecentItem}/>)}
         {isMobile && (
             <div>
-              {/* <Announcement/> */}
+              <Announcement/>
               <BestAll gymitem={bestAllItem}/>
               <BestTop gymitem={bestTopItem}/>
               <BestBottom gymitem={bestBottomItem}/>

@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
 import styles from './hambergerModal.module.css'
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../../../../public/context/authcontext';
 
 const HambergerModal = () => {
   const {hambergerState,setState,setHambergerState,setSearchState} = useContext(AuthContext)
+  const [brandState, setBrandState] = useState<boolean>(false)
   const router = useRouter();
   return (
     <motion.div
@@ -47,6 +48,9 @@ const HambergerModal = () => {
             setSearchState(0)
             setState(0)
           }}>Bottom</div>
+          <div className={styles.hambergerNavigate} onClick={()=>{
+            
+          }}>Brand</div>
         </div>
         <div id={styles.hambergerBoxRight}></div>
       </div>

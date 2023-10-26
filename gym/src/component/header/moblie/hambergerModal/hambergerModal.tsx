@@ -3,6 +3,8 @@ import styles from './hambergerModal.module.css'
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../../../public/context/authcontext';
+import BrandList from '../brandList/brandList';
+
 
 const HambergerModal = () => {
   const {hambergerState,setState,setHambergerState,setSearchState} = useContext(AuthContext)
@@ -48,9 +50,9 @@ const HambergerModal = () => {
             setSearchState(0)
             setState(0)
           }}>Bottom</div>
-          <div className={styles.hambergerNavigate} onClick={()=>{
-            
-          }}>Brand</div>
+          <div className={styles.hambergerNavigate} onClick={()=>{}}>Brand
+            <BrandList brandListState={brandListState}/>
+          </div>
         </div>
         <div id={styles.hambergerBoxRight}></div>
       </div>

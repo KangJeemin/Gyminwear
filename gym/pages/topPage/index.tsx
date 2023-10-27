@@ -7,7 +7,7 @@ import Pc from '../../src/component/middle/pc/PcTop/pc'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { sort,page } = context.query;
-    const res = await fetch(`http://localhost:3000/api/toppage?sort=${sort}?page=${page}`);
+    const res = await fetch(`http://localhost:3000/api/toppage?sort=${sort}&page=${page}`);
     const data = await res.json();
     
     return { 

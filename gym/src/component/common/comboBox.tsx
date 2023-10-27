@@ -9,7 +9,7 @@ const ComboBox= (props:comboBoxProps) => {
     const [sortArray, setSortArray]=useState<{ sortvalue: string, sortText: string }[]>([])
 
     const checkSortNum =(text:string)=>{
-        const resultArray:{ sortvalue: string, sortText: string }[]
+        let resultArray:{ sortvalue: string, sortText: string }[] = []
         const sort5Array:{ sortvalue: string, sortText: string }[]=[
             {sortvalue:"All", sortText:"All"},
             {sortvalue:"긴팔", sortText:"Long Sleeve"},
@@ -22,11 +22,15 @@ const ComboBox= (props:comboBoxProps) => {
             setSortArray(sort5Array)
         }
         // toppage
-        else if(){
+        else if(text==="top"){
             resultArray = sort5Array.slice(0, 1).concat(sort5Array.slice(3));
+            setSortArray(resultArray)
         }
         // bottompage
-         else 
+         else {
+            resultArray = sort5Array.slice(0, 3);            
+            setSortArray(resultArray)
+         }
     }    
     
     const selectValue = (e:React.ChangeEvent<HTMLSelectElement>) => {

@@ -33,7 +33,6 @@ export const getStaticProps = async () => {
    const getPcRecentItem= await pcrecent()
    const convertJSONPcRecent:gymWearItem =JSON.parse(getPcRecentItem)
     return { 
-
         props: { 
             bestAllItem:convertJSONAll?convertJSONAll:null,
             bestTopItem:convertJSONTop?convertJSONTop:null,
@@ -56,7 +55,7 @@ const Index = ({bestTopItem,bestAllItem,bestBottomItem,bestPcAllItem,bestPcRecen
             <div>
               <Announcement/>
               <BestAll gymitem={bestAllItem}/>
-              {/* <BestTop gymitem={bestTopItem}/> */}
+              <BestTop gymitem={bestTopItem}/>
               <BestBottom gymitem={bestBottomItem}/>
             </div>
         )}

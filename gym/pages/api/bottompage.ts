@@ -5,7 +5,7 @@ const db = require('../../src/db/db')
 export default function bottompage(req : NextApiRequest, res : NextApiResponse) {
     const pageNumber= req.query.page
     if(pageNumber==='1'){
-        db.query("SELECT * FROM bottom LIMIT 0,20",
+        db.query("SELECT * FROM gym.bottom LIMIT 0,20",
         function (err: any, result: gymWearItem) {
         if(err) {
             console.log(err)
@@ -15,7 +15,7 @@ export default function bottompage(req : NextApiRequest, res : NextApiResponse) 
         });
     }
     else if(pageNumber==='2'){
-        db.query("SELECT * FROM bottom LIMIT 20,20",
+        db.query("SELECT * FROM gym.bottom LIMIT 20,20",
         function (err: any, result: gymWearItem) {
         if(err) {
             console.log(err)

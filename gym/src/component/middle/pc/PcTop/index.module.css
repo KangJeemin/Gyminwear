@@ -113,6 +113,20 @@
     color: black;
     font-size: 3rem;
 }
+#pc_topCenterSortBox{
+    width: 100%;
+    height: 10rem;
+    color: black;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1rem;
+}
+#pc_topCenterSortItems{
+    cursor: pointer;
+}
+#pc_topCenterSortItems:hover{
+    font-size: 1.2rem;
+}
 #pc_topItem_itemComponent{
     width: 100%;
     height: 500px;

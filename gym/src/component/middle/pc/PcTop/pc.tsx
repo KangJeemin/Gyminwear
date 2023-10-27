@@ -11,11 +11,29 @@ import { GetServerSidePropsContext } from 'next';
   const Pc = ({gymitem}:GymItemProps) => {
         const router = useRouter();
         const [pageState,setPageState]=useState<number>(0)
+        const [sortState, setSortState]=useState<number>(0)
     return(
         <div id={styles.pc_topContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_topLeftBox}></div>
             <div id={styles.pc_topCenterBox}>
                 <div id={styles.pc_topCenterMarginBox} className={`${styles.text_set_center}`}>Top</div>
+                <div id={styles.pc_topCenterSortBox} className={`${styles.text_set_center}`}>
+                    <div id={styles.pc_topCenterSortItems} className={sortState===0 ? styles.color_blue : "" }
+                    onClick={()=>{
+                        setSortState(0)
+                        // router.push(`/brandPage?brandname=${props.brandname}&sort=all&page=1`)
+                        }}>All</div>
+                    <div id={styles.pc_topCenterSortItems} className={sortState===1 ? styles.color_blue : ""} 
+                    onClick={()=>{
+                        setSortState(1)
+                        // router.push(`/brandPage?brandname=${props.brandname}&sort=긴팔&page=1`)
+                        }}>LongSleeve</div>
+                    <div id={styles.pc_topCenterSortItems} className={sortState===2 ? styles.color_blue : ""}
+                    onClick={()=>{
+                        setSortState(2)
+                        // router.push(`/brandPage?brandname=${props.brandname}&sort=반팔&page=1`)
+                        }}>T-Shirt</div>
+                </div>
                 <div id={styles.pc_topContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>
                    {gymitem.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.pc_topItem_itemComponent} className={`${styles.padding_3} ${styles.flex_column}`}>

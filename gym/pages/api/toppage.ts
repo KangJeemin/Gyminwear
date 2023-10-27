@@ -3,7 +3,10 @@ import type { gymWearItem } from '@/src/type/gymwear';
 const db = require('../../src/db/db')
 
 export default function toppage(req : NextApiRequest, res : NextApiResponse) {
+    const sort=req.query.sort
     const pageNumber= req.query.page
+    
+    
     if(pageNumber==='1'){
         db.query("SELECT * FROM gym.top ORDER BY date LIMIT 0,20",
         function (err: any, result: gymWearItem) {

@@ -21,17 +21,17 @@ import { GetServerSidePropsContext } from 'next';
                     <div id={styles.pc_topCenterSortItems} className={sortState===0 ? styles.color_blue : "" }
                     onClick={()=>{
                         setSortState(0)
-                        // router.push(`/brandPage?brandname=${props.brandname}&sort=all&page=1`)
+                        router.push(`/topPage?&sort=all&page=1`)
                         }}>All</div>
                     <div id={styles.pc_topCenterSortItems} className={sortState===1 ? styles.color_blue : ""} 
                     onClick={()=>{
                         setSortState(1)
-                        // router.push(`/brandPage?brandname=${props.brandname}&sort=긴팔&page=1`)
+                        router.push(`/topPage?&sort=긴팔&page=1`)
                         }}>LongSleeve</div>
                     <div id={styles.pc_topCenterSortItems} className={sortState===2 ? styles.color_blue : ""}
                     onClick={()=>{
                         setSortState(2)
-                        // router.push(`/brandPage?brandname=${props.brandname}&sort=반팔&page=1`)
+                        router.push(`/topPage?&sort=반팔&page=1`)
                         }}>T-Shirt</div>
                 </div>
                 <div id={styles.pc_topContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>

@@ -70,10 +70,9 @@ const PcHeader = () => {
                     />
                 </div>
                 <div id={styles.pc_headerTopBox} className={`${styles.setTextCenter}`} onClick={()=>{
-                    router.push(`/topPage?page=1`)
+                    router.push(`/topPage?sort=all?page=1`)
                     setSearchState(0)
                     setBrandModalState(0)
-                    
                 }}>Top</div>
                 <div id={styles.pc_headerBottomBox} className={`${styles.setTextCenter}`} onClick={()=>{
                     router.push(`/bottomPage?page=1`)

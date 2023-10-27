@@ -6,8 +6,8 @@ import Mobile from '../../src/component/middle/pc/PcTop/moblie'
 import Pc from '../../src/component/middle/pc/PcTop/pc'
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const { page } = context.query;
-    const res = await fetch(`http://localhost:3000/api/toppage?page=${page}`);
+    const { sort,page } = context.query;
+    const res = await fetch(`http://localhost:3000/api/toppage?sort=${sort}?page=${page}`);
     const data = await res.json();
     
     return { 

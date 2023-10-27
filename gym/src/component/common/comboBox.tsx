@@ -5,10 +5,10 @@ type comboBoxProps = {
     handle:Function
 }
 const ComboBox= (props:comboBoxProps) => {
-    const {comboBoxState, setComboBoxState} = useContext(AuthContext)
+    const {comboBoxState, setComboBoxState,comboBoxDestination} = useContext(AuthContext)
     const [sortArray, setSortArray]=useState<{ sortvalue: string, sortText: string }[]>([])
 
-    const checkSortNum =(text:string)=>{
+    const checkSortNum =(comboBoxDestination:string)=>{
         let resultArray:{ sortvalue: string, sortText: string }[] = []
         const sort5Array:{ sortvalue: string, sortText: string }[]=[
             {sortvalue:"All", sortText:"All"},
@@ -18,11 +18,11 @@ const ComboBox= (props:comboBoxProps) => {
             {sortvalue:"긴바지", sortText:"Long Pants"},
         ]
         // brandpage
-        if(text==="brand"){
+        if(comboBoxDestination==="brand"){
             setSortArray(sort5Array)
         }
         // toppage
-        else if(text==="top"){
+        else if(comboBoxDestination==="top"){
             resultArray = sort5Array.slice(0, 1).concat(sort5Array.slice(3));
             setSortArray(resultArray)
         }
@@ -37,6 +37,9 @@ const ComboBox= (props:comboBoxProps) => {
         props.handle(e.target.value)
         setComboBoxState(e.target.value);
     }
+    useEffect(()=>{
+        checkSortNum(comboBoxDestination)
+    },[comboBoxDestination])
     return(
         <select value={comboBoxState} style={{
             backgroundColor:"white",

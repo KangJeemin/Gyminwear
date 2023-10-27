@@ -24,6 +24,8 @@ interface AuthContextProps {
   setTopAndBottomData:(topAndBottomData:gymWearItem[])=>void;
   comboBoxState:string;
   setComboBoxState:(comboBoxState:string)=>void;
+  comboBoxDestination:string,
+  setComboBoxDestination:(comboBoxDestination:string)=>void,
 }
 
 export const AuthContext = createContext<AuthContextProps>({
@@ -49,6 +51,8 @@ export const AuthContext = createContext<AuthContextProps>({
   setTopAndBottomData:()=>{},
   comboBoxState:"all",
   setComboBoxState:()=>{},
+  comboBoxDestination:"",
+  setComboBoxDestination:()=>{},
 
   
 
@@ -69,6 +73,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [searchResultDataSort20, setSearchResultDataSort20]= useState<gymWearItem[]>([]);
   const [topAndBottomData, setTopAndBottomData]= useState<gymWearItem[]>([]);
   const [comboBoxState,setComboBoxState]= useState<string>("all")
+  const [comboBoxDestination,setComboBoxDestination] = useState<string>("")
 
   return (
     <AuthContext.Provider
@@ -94,7 +99,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         topAndBottomData,
         setTopAndBottomData,
         comboBoxState,
-        setComboBoxState
+        setComboBoxState,
+        comboBoxDestination,
+        setComboBoxDestination,
       }}
     >
       {children}

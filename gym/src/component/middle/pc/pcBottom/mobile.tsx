@@ -5,6 +5,7 @@ import styles from './index.module.css';
 import Image from 'next/image';
 import type { gymWearItem ,GymItemProps} from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
+import ComboBox from '@/src/component/common/comboBox';
 import { GetServerSidePropsContext } from 'next';
 type getBottomItem = {
     gymitem:[]
@@ -13,14 +14,22 @@ type getBottomItem = {
 const Mobile = (props:getBottomItem) => { 
     
     const router = useRouter();
-    const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
+    const {hambergerState,searchState,topAndBottomData,setTopAndBottomData,setComboBoxDestination} = useContext(AuthContext)
     const [pageState,setPageState] = useState<number>(0)
-    
- 
+    const [comboBoxValue,setComboBoxValue] = useState<string>("")
+    useEffect(()=>{
+        setComboBoxDestination("top")
+    },[])
+    useEffect(()=>{
+        router.push(`/bottomPage?&sort=${comboBoxValue}&page=1`)
+    },[comboBoxValue])
   return (
     <div id={styles.bottomComponent}>
         <div id={styles.bottomComponent_topText}  className={styles.text_set_center}>
           <h3 id={styles.bottomComponent_text}>Bottom</h3>
+        </div>
+        <div id={styles.bottomComponent_ComboBoxContainer} className={`${styles.flex_row}`}>
+            <ComboBox handle={setComboBoxValue}/>
         </div>
              <div id={styles.bottomComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
                      {props.gymitem.map((object:gymWearItem, index:number) => (

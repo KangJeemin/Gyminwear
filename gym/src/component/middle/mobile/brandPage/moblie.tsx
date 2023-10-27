@@ -14,10 +14,16 @@ type getbrandname = {
 }
 const Moblie= (props:getbrandname) => { 
     const router = useRouter();
-    const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
+    const {hambergerState,searchState,topAndBottomData,setTopAndBottomData,setComboBoxState} = useContext(AuthContext)
     const [pageState,setPageState] = useState<number>(0)   
     const [comboBoxValue,setComboBoxValue] = useState<string>("")
+    const [initializeComboBox,setInitializeComboBox] = useState<string>("")
 
+//brandname이 바뀔때마다, combobox값 All로 초기화
+useEffect(()=>{
+    setComboBoxState("all")
+},[props.brandname])
+//combobox 값 바뀔때마다, API 요청
 useEffect(()=>{
     router.push(`/brandPage?brandname=${props.brandname}&sort=${comboBoxValue}&page=1`)
 },[comboBoxValue])

@@ -1,23 +1,22 @@
-import { fontSize } from '@mui/system';
-import { color } from 'framer-motion';
-import React from 'react';
-
+import React, { useEffect, useState,useContext } from 'react';
+import { AuthContext } from '@/public/context/authcontext';
 type comboBoxProps = {
     handle:Function
 }
-const comboBox= (props:comboBoxProps) => {
+const ComboBox= (props:comboBoxProps) => {
+    const {comboBoxState, setComboBoxState} = useContext(AuthContext)
     const selectValue = (e:React.ChangeEvent<HTMLSelectElement>) => {
         props.handle(e.target.value)
+        setComboBoxState(e.target.value);
     }
-
     return(
-        <select style={{
+        <select value={comboBoxState} style={{
             backgroundColor:"white",
             color:"black",
             fontSize:"inherit"
             
         }} onChange={selectValue}>
-			<option value="all">All</option>
+			<option value="all" selected>All</option>
             <option value="긴팔">Long Sleeve</option>
             <option value="반팔">T-Shirt</option>
             <option value="반바지">Short Pants</option>
@@ -25,4 +24,4 @@ const comboBox= (props:comboBoxProps) => {
 		</select>
     )
 }
-export default comboBox
+export default ComboBox

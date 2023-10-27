@@ -56,7 +56,7 @@ const Index = ({bestTopItem,bestAllItem,bestBottomItem,bestPcAllItem,bestPcRecen
             <div>
               <Announcement/>
               <BestAll gymitem={bestAllItem}/>
-              <BestTop gymitem={bestTopItem}/>
+              {/* <BestTop gymitem={bestTopItem}/> */}
               <BestBottom gymitem={bestBottomItem}/>
             </div>
         )}

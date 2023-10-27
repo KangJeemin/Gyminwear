@@ -6,10 +6,11 @@ import Image from 'next/image';
 import type { gymWearItem ,GymItemProps} from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 import { GetServerSidePropsContext } from 'next';
-
-
-
-const Mobile = ({gymitem}:GymItemProps) => { 
+type getBottomItem = {
+    gymitem:[]
+    // countresult:number
+}
+const Mobile = (props:getBottomItem) => { 
     
     const router = useRouter();
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
@@ -22,7 +23,7 @@ const Mobile = ({gymitem}:GymItemProps) => {
           <h3 id={styles.bottomComponent_text}>Bottom</h3>
         </div>
              <div id={styles.bottomComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
-                     {gymitem.map((object:gymWearItem, index:number) => (
+                     {props.gymitem.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.bottomComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.bottomComponent_item_imageSize}>
                                 <Image

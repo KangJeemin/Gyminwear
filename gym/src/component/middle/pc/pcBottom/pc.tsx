@@ -15,7 +15,7 @@ type getBottomItem = {
         const router = useRouter();
         const [pageState,setPageState]=useState<number>(0)
         const [gridLayout,setGridLayout]=React.useState<string>('grid_1x4')
-        const [sortState,setSortState]=useState<number>()
+        const [sortState,setSortState]=useState<number>(0)
 
         useEffect(()=>{
             if(props.countresult==0){

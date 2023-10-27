@@ -115,6 +115,20 @@
     color: black;
     font-size: 3rem;
 }
+#pc_bottomCenterSortBox{
+    width: 100%;
+    height: 10rem;
+    color: black;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1rem;
+}
+#pc_bottomCenterSortItems{
+    cursor: pointer;
+}
+#pc_bottomCenterSortItems:hover{
+    font-size: 1.2rem;
+}
 #pc_bottomItem_itemComponent{
     width: 100%;
     height: 500px;

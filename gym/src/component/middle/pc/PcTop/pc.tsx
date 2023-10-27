@@ -6,12 +6,37 @@ import Image from 'next/image';
 import type { gymWearItem, GymItemProps } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 import { GetServerSidePropsContext } from 'next';
+type getTopItem = {
+    gymitem:[]
+    countresult:number
+}
 
-
-  const Pc = ({gymitem}:GymItemProps) => {
+  const Pc = (props:getTopItem) => {
         const router = useRouter();
         const [pageState,setPageState]=useState<number>(0)
         const [sortState, setSortState]=useState<number>(0)
+        const [gridLayout,setGridLayout]=React.useState<string>('grid_1x4')
+
+        useEffect(()=>{
+            if(props.countresult==0){
+                setGridLayout('')
+            }
+            else if(props.countresult<5){
+                setGridLayout('grid_1x4')
+            }
+            else if(props.countresult<9){
+                setGridLayout('grid_2x4')
+            }
+            else if(props.countresult<13){
+                setGridLayout('grid_3x4')
+            }
+            else if(props.countresult<17){
+                setGridLayout('grid_4x4')
+            }
+            else{
+                setGridLayout('grid_5x4')
+            }
+          },)
     return(
         <div id={styles.pc_topContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_topLeftBox}></div>
@@ -34,8 +59,8 @@ import { GetServerSidePropsContext } from 'next';
                         router.push(`/topPage?sort=반팔&page=1`)
                         }}>T-Shirt</div>
                 </div>
-                <div id={styles.pc_topContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>
-                   {gymitem.map((object:gymWearItem, index:number) => (
+                <div id={styles.pc_topContentBox} className={styles[gridLayout]}>
+                   {props.gymitem.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.pc_topItem_itemComponent} className={`${styles.padding_3} ${styles.flex_column}`}>
                             <span id={styles.pc_topItem_imageSize}>
                                 <Image

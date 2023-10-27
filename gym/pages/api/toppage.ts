@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { gymWearItem } from '@/src/type/gymwear';
+import type { searchResultCount } from '@/src/type/gymwear';
 const db = require('../../src/db/db')
 
 export default function toppage(req : NextApiRequest, res : NextApiResponse) {
@@ -8,17 +9,21 @@ export default function toppage(req : NextApiRequest, res : NextApiResponse) {
     
     if(sort==="all"){
         if(pageNumber==='1'){
-            db.query("SELECT * FROM gym.top ORDER BY date LIMIT 0,20",
+            db.query(`SELECT * FROM gym.top ORDER BY date LIMIT 0,20`,
             function (err: any, result: gymWearItem) {
             if(err) {
-            console.log(err)
+                res.status(500).json({ error: 'An error occurred in err' });
             } else {
-            res.json(result);
+                db.query(`SELECT COUNT(*) AS C FROM (SELECT * FROM gym.top ORDER BY date LIMIT 0,20) AS combine_results`,
+                function (counterr: any, countresult: searchResultCount) {
+                if(counterr) {
+                    res.status(500).json({ error: 'An error occurred in counterr' });
+                } else {
+                    res.json({result,countresult})
+                }
+                });                
             }
             });
-        }
-        else{
-            console.log("toppage all페이지 1의 아이템 정보 요청 중 에러 발생")
         }
     }
     else{
@@ -26,9 +31,16 @@ export default function toppage(req : NextApiRequest, res : NextApiResponse) {
             db.query(`SELECT * FROM gym.top  WHERE sort LIKE '%${sort}%' ORDER BY date LIMIT 0,20`,
             function (err: any, result: gymWearItem) {
             if(err) {
-                console.log(err)
+                res.status(500).json({ error: 'An error occurred in err' });
             } else {
-                res.json(result);
+                db.query(`SELECT COUNT(*) AS C FROM (SELECT * FROM gym.top  WHERE sort LIKE '%${sort}%' ORDER BY date LIMIT 0,20) AS combine_results`,
+                function (counterr: any, countresult: searchResultCount) {
+                if(counterr) {
+                    res.status(500).json({ error: 'An error occurred in counterr' });
+                } else {
+                    res.json({result,countresult})
+                }
+                });                
             }
             });
         }
@@ -36,15 +48,20 @@ export default function toppage(req : NextApiRequest, res : NextApiResponse) {
             db.query(`SELECT * FROM gym.top  WHERE sort LIKE '%${sort}%' ORDER BY date LIMIT 20,20`,
             function (err: any, result: gymWearItem) {
             if(err) {
-                console.log(err)
+                res.status(500).json({ error: 'An error occurred in err' });
             } else {
-                res.json(result);
+                db.query(`SELECT COUNT(*) AS C FROM (SELECT * FROM gym.top  WHERE sort LIKE '%${sort}%' ORDER BY date LIMIT 20,20) AS combine_results`,
+                function (counterr: any, countresult: searchResultCount) {
+                if(counterr) {
+                    res.status(500).json({ error: 'An error occurred in counterr' });
+                } else {
+                    res.json({result,countresult})
+                }
+                });                
             }
             });
         }
-        else{
-            console.log("toppage 페이지 아이템 정보 요청 중 에러 발생")
-        }
+      
     }
 }
 

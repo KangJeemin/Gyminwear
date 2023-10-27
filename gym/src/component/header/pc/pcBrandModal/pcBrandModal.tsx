@@ -7,7 +7,7 @@ import { Opacity } from '@mui/icons-material';
 
 
 const PcBrandModal= () => {
-    const {brandModalState} = React.useContext(AuthContext)
+    const {brandModalState,setBrandModalState} = React.useContext(AuthContext)
     const router = useRouter()
     
     return(
@@ -43,9 +43,12 @@ const PcBrandModal= () => {
                     <ul className={styles.ulStyle}>
                         <li className={styles.liStyle} onClick={()=>{
                             router.push(`/brandPage?brandname=피지컬크라운&sort=all&page=1`)
+                            setBrandModalState(0)
+
                         }}>피지컬크라운</li>
                         <li className={styles.liStyle} onClick={()=>{
                             router.push(`/brandPage?brandname=짐브로&sort=all&page=1`)
+                            setBrandModalState(0)
                         }}>짐브로</li>
                     </ul>
                 </div>

@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion';
 import styles from './hambergerModal.module.css'
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../../../../public/context/authcontext';
+import BrandList from '../brandList/brandList';
+
 
 const HambergerModal = () => {
   const {hambergerState,setState,setHambergerState,setSearchState} = useContext(AuthContext)
+  const [brandListState, setBrandListState] = useState<boolean>(false)
   const router = useRouter();
   return (
     <motion.div
@@ -36,17 +39,20 @@ const HambergerModal = () => {
         <div id={styles.hambergerBoxCenter}>
           <div className={styles.hambergerNavigate}></div>
           <div className={styles.hambergerNavigate} onClick={()=>{
-            router.push(`/topPage?page=1`)
+            router.push(`/topPage?sort=all&page=1`)
             setHambergerState(0)
             setSearchState(0)
             setState(0)
           }}>Top</div>
           <div className={styles.hambergerNavigate} onClick={()=>{
-            router.push("/bottomPage?page=1")
+            router.push(`/bottomPage?sort=all&page=1`)
             setHambergerState(0)
             setSearchState(0)
             setState(0)
           }}>Bottom</div>
+          <div className={styles.hambergerNavigate} onClick={()=>{brandListState? setBrandListState(false):setBrandListState(true)}}>{brandListState ? <>Brand - </> :<>Brand +</> }
+            <BrandList brandListState={brandListState}/>
+          </div>
         </div>
         <div id={styles.hambergerBoxRight}></div>
       </div>

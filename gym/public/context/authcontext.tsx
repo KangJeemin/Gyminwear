@@ -22,6 +22,10 @@ interface AuthContextProps {
   setSearchResultDataSort20:(searchResultDataSort20:gymWearItem[])=> void;
   topAndBottomData:gymWearItem[];
   setTopAndBottomData:(topAndBottomData:gymWearItem[])=>void;
+  comboBoxState:string;
+  setComboBoxState:(comboBoxState:string)=>void;
+  comboBoxDestination:string,
+  setComboBoxDestination:(comboBoxDestination:string)=>void,
 }
 
 export const AuthContext = createContext<AuthContextProps>({
@@ -44,7 +48,13 @@ export const AuthContext = createContext<AuthContextProps>({
   searchResultDataSort20:[],
   setSearchResultDataSort20:()=>{},
   topAndBottomData:[],
-  setTopAndBottomData:()=>{}
+  setTopAndBottomData:()=>{},
+  comboBoxState:"all",
+  setComboBoxState:()=>{},
+  comboBoxDestination:"",
+  setComboBoxDestination:()=>{},
+
+  
 
 
 });
@@ -62,6 +72,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [searchResultData, setSearchResultData]= useState<gymWearItem[]>([]);
   const [searchResultDataSort20, setSearchResultDataSort20]= useState<gymWearItem[]>([]);
   const [topAndBottomData, setTopAndBottomData]= useState<gymWearItem[]>([]);
+  const [comboBoxState,setComboBoxState]= useState<string>("all")
+  const [comboBoxDestination,setComboBoxDestination] = useState<string>("")
 
   return (
     <AuthContext.Provider
@@ -85,7 +97,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         searchResultDataSort20,
         setSearchResultDataSort20,
         topAndBottomData,
-        setTopAndBottomData
+        setTopAndBottomData,
+        comboBoxState,
+        setComboBoxState,
+        comboBoxDestination,
+        setComboBoxDestination,
       }}
     >
       {children}

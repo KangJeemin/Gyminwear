@@ -33,7 +33,6 @@ export const getStaticProps = async () => {
    const getPcRecentItem= await pcrecent()
    const convertJSONPcRecent:gymWearItem =JSON.parse(getPcRecentItem)
     return { 
-
         props: { 
             bestAllItem:convertJSONAll?convertJSONAll:null,
             bestTopItem:convertJSONTop?convertJSONTop:null,

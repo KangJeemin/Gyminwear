@@ -6,18 +6,61 @@ import Image from 'next/image';
 import type { gymWearItem, GymItemProps } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 import { GetServerSidePropsContext } from 'next';
+type getTopItem = {
+    gymitem:[]
+    countresult:number
+}
 
-
-  const Pc = ({gymitem}:GymItemProps) => {
+  const Pc = (props:getTopItem) => {
         const router = useRouter();
         const [pageState,setPageState]=useState<number>(0)
+        const [sortState, setSortState]=useState<number>(0)
+        const [gridLayout,setGridLayout]=React.useState<string>('grid_1x4')
+
+        useEffect(()=>{
+            if(props.countresult==0){
+                setGridLayout('')
+            }
+            else if(props.countresult<5){
+                setGridLayout('grid_1x4')
+            }
+            else if(props.countresult<9){
+                setGridLayout('grid_2x4')
+            }
+            else if(props.countresult<13){
+                setGridLayout('grid_3x4')
+            }
+            else if(props.countresult<17){
+                setGridLayout('grid_4x4')
+            }
+            else{
+                setGridLayout('grid_5x4')
+            }
+          },)
     return(
         <div id={styles.pc_topContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_topLeftBox}></div>
             <div id={styles.pc_topCenterBox}>
                 <div id={styles.pc_topCenterMarginBox} className={`${styles.text_set_center}`}>Top</div>
-                <div id={styles.pc_topContentBox} className={`${styles.grid_5x4} ${styles.flex_scrollSet}`}>
-                   {gymitem.map((object:gymWearItem, index:number) => (
+                <div id={styles.pc_topCenterSortBox} className={`${styles.text_set_center}`}>
+                    <div id={styles.pc_topCenterSortItems} className={sortState===0 ? styles.color_blue : "" }
+                    onClick={()=>{
+                        setSortState(0)
+                        router.push(`/topPage?sort=all&page=1`)
+                        }}>All</div>
+                    <div id={styles.pc_topCenterSortItems} className={sortState===1 ? styles.color_blue : ""} 
+                    onClick={()=>{
+                        setSortState(1)
+                        router.push(`/topPage?sort=긴팔&page=1`)
+                        }}>LongSleeve</div>
+                    <div id={styles.pc_topCenterSortItems} className={sortState===2 ? styles.color_blue : ""}
+                    onClick={()=>{
+                        setSortState(2)
+                        router.push(`/topPage?sort=반팔&page=1`)
+                        }}>T-Shirt</div>
+                </div>
+                <div id={styles.pc_topContentBox} className={styles[gridLayout]}>
+                   {props.gymitem.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.pc_topItem_itemComponent} className={`${styles.padding_3} ${styles.flex_column}`}>
                             <span id={styles.pc_topItem_imageSize}>
                                 <Image

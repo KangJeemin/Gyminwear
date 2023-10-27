@@ -11,7 +11,7 @@ const ComboBox= (props:comboBoxProps) => {
     const checkSortNum =(comboBoxDestination:string)=>{
         let resultArray:{ sortvalue: string, sortText: string }[] = []
         const sort5Array:{ sortvalue: string, sortText: string }[]=[
-            {sortvalue:"All", sortText:"All"},
+            {sortvalue:"all", sortText:"All"},
             {sortvalue:"긴팔", sortText:"Long Sleeve"},
             {sortvalue:"반팔", sortText:"T-Shirt"},
             {sortvalue:"반바지", sortText:"Short Pants"},
@@ -21,12 +21,12 @@ const ComboBox= (props:comboBoxProps) => {
         if(comboBoxDestination==="brand"){
             setSortArray(sort5Array)
         }
-        // toppage
-        else if(comboBoxDestination==="top"){
+        // bottompage
+        else if(comboBoxDestination==="bottom"){
             resultArray = sort5Array.slice(0, 1).concat(sort5Array.slice(3));
             setSortArray(resultArray)
         }
-        // bottompage
+        // toppage
          else {
             resultArray = sort5Array.slice(0, 3);            
             setSortArray(resultArray)
@@ -47,7 +47,7 @@ const ComboBox= (props:comboBoxProps) => {
             fontSize:"inherit"
         }} onChange={selectValue}>
             {sortArray.map((object,index)=>(
-            <option key={index} value={object.sortvalue} >{object.sortText}</option>    
+            <option key={index} value={object.sortvalue}>{object.sortText}</option>    
             ))}
 		</select>
     )

@@ -39,13 +39,13 @@ const HambergerModal = () => {
         <div id={styles.hambergerBoxCenter}>
           <div className={styles.hambergerNavigate}></div>
           <div className={styles.hambergerNavigate} onClick={()=>{
-            router.push(`/topPage?page=1`)
+            router.push(`/topPage?sort=all&page=1`)
             setHambergerState(0)
             setSearchState(0)
             setState(0)
           }}>Top</div>
           <div className={styles.hambergerNavigate} onClick={()=>{
-            router.push("/bottomPage?page=1")
+            router.push(`/bottomPage?sort=all&page=1`)
             setHambergerState(0)
             setSearchState(0)
             setState(0)

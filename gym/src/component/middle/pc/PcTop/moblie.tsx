@@ -6,17 +6,29 @@ import Image from 'next/image';
 import type { gymWearItem, GymItemProps } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 import { GetServerSidePropsContext } from 'next';
+import ComboBox from '@/src/component/common/comboBox';
 
 const Moblie= (props:GymItemProps) => { 
     
     const router = useRouter();
-    const {hambergerState,searchState,topAndBottomData,setTopAndBottomData} = useContext(AuthContext)
+    const {hambergerState,searchState,topAndBottomData,setTopAndBottomData,comboBoxDestination,setComboBoxDestination} = useContext(AuthContext)
     const [pageState,setPageState] = useState<number>(0)   
+    const [comboBoxValue,setComboBoxValue] = useState<string>("all")
+
+    useEffect(()=>{
+        setComboBoxDestination("top")
+    },[])
+    useEffect(()=>{
+        router.push(`/topPage?&sort=${comboBoxValue}&page=1`)
+    },[comboBoxValue])
  
   return (
     <div id={styles.topComponent}>
         <div id={styles.topComponent_topText}  className={styles.text_set_center}>
           <h3 id={styles.topComponent_text}>Top</h3>
+        </div>
+        <div id={styles.topComponent_ComboBoxContainer} className={`${styles.flex_row}`}>
+            <ComboBox handle={setComboBoxValue}/>
         </div>
              <div id={styles.topComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`}>
                      {props.gymitem.map((object:gymWearItem, index:number) => (

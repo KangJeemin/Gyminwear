@@ -16,7 +16,7 @@ const Moblie= (props:getbrandname) => {
     const router = useRouter();
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData,setComboBoxState,setComboBoxDestination} = useContext(AuthContext)
     const [pageState,setPageState] = useState<number>(0)   
-    const [comboBoxValue,setComboBoxValue] = useState<string>("")
+    const [comboBoxValue,setComboBoxValue] = useState<string>("all")
     const [initializeComboBox,setInitializeComboBox] = useState<string>("")
 
 //brandname이 바뀔때마다, combobox값 All로 초기화

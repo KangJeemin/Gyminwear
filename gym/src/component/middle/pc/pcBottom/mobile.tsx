@@ -16,9 +16,9 @@ const Mobile = (props:getBottomItem) => {
     const router = useRouter();
     const {hambergerState,searchState,topAndBottomData,setTopAndBottomData,setComboBoxDestination} = useContext(AuthContext)
     const [pageState,setPageState] = useState<number>(0)
-    const [comboBoxValue,setComboBoxValue] = useState<string>("")
+    const [comboBoxValue,setComboBoxValue] = useState<string>("all")
     useEffect(()=>{
-        setComboBoxDestination("top")
+        setComboBoxDestination("bottom")
     },[])
     useEffect(()=>{
         router.push(`/bottomPage?&sort=${comboBoxValue}&page=1`)

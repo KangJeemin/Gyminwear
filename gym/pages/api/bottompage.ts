@@ -15,7 +15,7 @@ export default async function bottompage(req : NextApiRequest, res : NextApiResp
     
     if(sort==="all"){
             if(pageNumber==='1'){
-                db.query(`SELECT * FROM gym.bottom ORDER BY date ${limit}`,
+                db.query(`SELECT * FROM gym.bottom ORDER BY date LIMIT ${limit}`,
                 function (err: any, result: gymWearItem) {
                 if(err) {
                     res.status(500).json({ error: 'An error occurred in err' });

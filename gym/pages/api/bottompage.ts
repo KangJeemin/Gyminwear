@@ -6,7 +6,12 @@ const db = require('../../src/db/db')
 export default function bottompage(req : NextApiRequest, res : NextApiResponse) {
     const sort=req.query.sort
     const pageNumber= req.query.page
-    
+    let limit:string = ""
+    const queryLimit = (pageNumber:string) => {
+        let pageNumbertoInt = (parseInt(pageNumber)-1)*20
+        limit = `${pageNumbertoInt},20`
+    }
+    console.log(req.query)    
     if(sort==="all"){
         if(pageNumber==='1'){
             db.query(`SELECT * FROM gym.bottom ORDER BY date LIMIT 0,20`,

@@ -14,80 +14,39 @@ export default async function bottompage(req : NextApiRequest, res : NextApiResp
     await queryLimit(pageNumber)
     
     if(sort==="all"){
-            if(pageNumber==='1'){
-                db.query(`SELECT * FROM gym.bottom ORDER BY date LIMIT ${limit}`,
-                function (err: any, result: gymWearItem) {
-                if(err) {
-                    res.status(500).json({ error: 'An error occurred in err' });
-                } else {
-                    db.query(`SELECT COUNT(*) AS C FROM (SELECT * FROM gym.bottom ORDER BY date LIMIT 0,20) AS combine_results`,
-                    function (counterr: any, countresult: searchResultCount) {
-                    if(counterr) {
-                        res.status(500).json({ error: 'An error occurred in counterr' });
-                    } else {
-                        res.json({result,countresult})
-                    }
-                    });                
-                }
-                });
+        db.query(`SELECT * FROM gym.bottom ORDER BY date LIMIT ${limit}`,
+        function (err: any, result: gymWearItem) {
+        if(err) {
+            res.status(500).json({ error: 'An error occurred in err' });
+        } else {
+            db.query(`SELECT COUNT(*) AS C FROM (SELECT * FROM gym.bottom ORDER BY date LIMIT ${limit}) AS combine_results`,
+            function (counterr: any, countresult: searchResultCount) {
+            if(counterr) {
+                res.status(500).json({ error: 'An error occurred in counterr' });
+            } else {
+                res.json({result,countresult})
             }
+            });                
         }
-    // if(sort==="all"){
-    //     if(pageNumber==='1'){
-    //         db.query(`SELECT * FROM gym.bottom ORDER BY date LIMIT 0,20`,
-    //         function (err: any, result: gymWearItem) {
-    //         if(err) {
-    //             res.status(500).json({ error: 'An error occurred in err' });
-    //         } else {
-    //             db.query(`SELECT COUNT(*) AS C FROM (SELECT * FROM gym.bottom ORDER BY date LIMIT 0,20) AS combine_results`,
-    //             function (counterr: any, countresult: searchResultCount) {
-    //             if(counterr) {
-    //                 res.status(500).json({ error: 'An error occurred in counterr' });
-    //             } else {
-    //                 res.json({result,countresult})
-    //             }
-    //             });                
-    //         }
-    //         });
-    //     }
-    // }
-    // else{
-    //     if(pageNumber==='1'){
-    //         db.query(`SELECT * FROM gym.bottom  WHERE sort LIKE '%${sort}%' ORDER BY date LIMIT 0,20`,
-    //         function (err: any, result: gymWearItem) {
-    //         if(err) {
-    //             res.status(500).json({ error: 'An error occurred in err' });
-    //         } else {
-    //             db.query(`SELECT COUNT(*) AS C FROM (SELECT * FROM gym.bottom  WHERE sort LIKE '%${sort}%' ORDER BY date LIMIT 0,20) AS combine_results`,
-    //             function (counterr: any, countresult: searchResultCount) {
-    //             if(counterr) {
-    //                 res.status(500).json({ error: 'An error occurred in counterr' });
-    //             } else {
-    //                 res.json({result,countresult})
-    //             }
-    //             });                
-    //         }
-    //         });
-    //     }
-    //     else if(pageNumber==='2'){
-    //         db.query(`SELECT * FROM gym.bottom  WHERE sort LIKE '%${sort}%' ORDER BY date LIMIT 20,20`,
-    //         function (err: any, result: gymWearItem) {
-    //         if(err) {
-    //             res.status(500).json({ error: 'An error occurred in err' });
-    //         } else {
-    //             db.query(`SELECT COUNT(*) AS C FROM (SELECT * FROM gym.bottom  WHERE sort LIKE '%${sort}%' ORDER BY date LIMIT 20,20) AS combine_results`,
-    //             function (counterr: any, countresult: searchResultCount) {
-    //             if(counterr) {
-    //                 res.status(500).json({ error: 'An error occurred in counterr' });
-    //             } else {
-    //                 res.json({result,countresult})
-    //             }
-    //             });                
-    //         }
-    //         });
-    //     }
-      
-    // }
+        });
+    }
+    else{
+        db.query(`SELECT * FROM gym.bottom  WHERE sort LIKE '%${sort}%' ORDER BY date LIMIT ${limit}`,
+        function (err: any, result: gymWearItem) {
+        if(err) {
+            res.status(500).json({ error: 'An error occurred in err' });
+        } else {
+            db.query(`SELECT COUNT(*) AS C FROM (SELECT * FROM gym.bottom  WHERE sort LIKE '%${sort}%' ORDER BY date LIMIT ${limit}) AS combine_results`,
+            function (counterr: any, countresult: searchResultCount) {
+            if(counterr) {
+                res.status(500).json({ error: 'An error occurred in counterr' });
+            } else {
+                res.json({result,countresult})
+            }
+            });                
+        }
+        });
+    }
 }
 
 

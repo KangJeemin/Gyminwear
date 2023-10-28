@@ -1,17 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { gymWearItem } from '@/src/type/gymwear';
 import type { searchResultCount } from '@/src/type/gymwear';
+import createMysqlLimit from '@/src/module/createMysqlLimit';
 const db = require('../../src/db/db')
 
 export default async function bottompage(req : NextApiRequest, res : NextApiResponse) {
     const sort=req.query.sort
-    const pageNumber= req.query.page
-    let limit:string = ""
-    const queryLimit = (pageNumber:any) => {
-        let pageNumbertoInt = (parseInt(pageNumber)-1)*20
-        limit = `${pageNumbertoInt},20`
-    }
-    await queryLimit(pageNumber)
+    const pageNumber:string= req.query.page as string
+    let limit:string = await createMysqlLimit(pageNumber)
     
     if(sort==="all"){
         db.query(`SELECT * FROM gym.bottom ORDER BY date LIMIT ${limit}`,

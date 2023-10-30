@@ -11,35 +11,34 @@ type getTopItem = {
 }
 
   const Pc = (props:getTopItem) => {
-        const router = useRouter();
-        const [pageState,setPageState]=useState<number>(0)
-        const [sortState, setSortState]=useState<number>(0)
-        const [gridLayout,setGridLayout]=React.useState<string>('grid_1x4')
-
-        useEffect(()=>{
-            setPcGrid(props.countresult,setGridLayout)
-          },)
+    const router = useRouter();
+    const [pageState,setPageState]=useState<number>(0)
+    const [sortState, setSortState]=useState<number>(0)
+    const [gridLayout,setGridLayout]=React.useState<string>('grid_1x4')
+    const sortOptions = [
+        { label: "All", value: "all" },
+        { label: "LongSleeve", value: "긴팔" },
+        { label: "T-Shirt", value: "반팔" },
+        ];
+    useEffect(()=>{
+        setPcGrid(props.countresult,setGridLayout)
+        },)
     return(
         <div id={styles.pc_topContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_topLeftBox}></div>
             <div id={styles.pc_topCenterBox}>
                 <div id={styles.pc_topCenterMarginBox} className={`${styles.text_set_center}`}>Top</div>
                 <div id={styles.pc_topCenterSortBox} className={`${styles.text_set_center}`}>
-                    <div id={styles.pc_topCenterSortItems} className={sortState===0 ? styles.color_blue : "" }
-                    onClick={()=>{
-                        setSortState(0)
-                        router.push(`/topPage?sort=all&page=1`)
-                        }}>All</div>
-                    <div id={styles.pc_topCenterSortItems} className={sortState===1 ? styles.color_blue : ""} 
-                    onClick={()=>{
-                        setSortState(1)
-                        router.push(`/topPage?sort=긴팔&page=1`)
-                        }}>LongSleeve</div>
-                    <div id={styles.pc_topCenterSortItems} className={sortState===2 ? styles.color_blue : ""}
-                    onClick={()=>{
-                        setSortState(2)
-                        router.push(`/topPage?sort=반팔&page=1`)
-                        }}>T-Shirt</div>
+                {sortOptions.map((option, index) => (
+                    <div key={option.value} id={styles.pc_topCenterSortItems} className={sortState === index ? styles.color_blue : ""}
+                    onClick={() => {
+                    setSortState(index);
+                    router.push(`/topPage?&sort=${option.value}&page=1`);
+                    }}
+                    >
+                    {option.label}
+                    </div>
+                    ))}
                 </div>
                 <div id={styles.pc_topContentBox} className={styles[gridLayout]}>
                    {props.gymitem.map((object:gymWearItem, index:number) => (

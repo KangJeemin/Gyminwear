@@ -15,7 +15,11 @@ type getBottomItem = {
         const [pageState,setPageState]=useState<number>(0)
         const [gridLayout,setGridLayout]=React.useState<string>('grid_1x4')
         const [sortState,setSortState]=useState<number>(0)
-
+        const sortOptions = [
+            { label: "All", value: "all" },
+            { label: "Short Pants", value: "반바지" },
+            { label: "Long Pants", value: "긴바지" },
+            ];
         useEffect(()=>{
             setPcGrid(props.countresult,setGridLayout)
           },)
@@ -25,21 +29,16 @@ type getBottomItem = {
             <div id={styles.pc_bottomCenterBox}>
                 <div id={styles.pc_bottomCenterMarginBox} className={`${styles.text_set_center}`}>Bottom</div>
                 <div id={styles.pc_bottomCenterSortBox} className={`${styles.text_set_center}`}>
-                    <div id={styles.pc_bottomCenterSortItems} className={sortState===0 ? styles.color_blue : "" }
-                    onClick={()=>{
-                        setSortState(0)
-                        router.push(`/bottomPage?sort=all&page=1`)
-                        }}>All</div>
-                    <div id={styles.pc_bottomCenterSortItems} className={sortState===1 ? styles.color_blue : ""} 
-                    onClick={()=>{
-                        setSortState(1)
-                        router.push(`/bottomPage?sort=반바지&page=1`)
-                        }}>Short Pants</div>
-                    <div id={styles.pc_bottomCenterSortItems} className={sortState===2 ? styles.color_blue : ""}
-                    onClick={()=>{
-                        setSortState(2)
-                        router.push(`/bottomPage?sort=긴바지&page=1`)
-                        }}>Long Pants</div>
+                    {sortOptions.map((option, index) => (
+                        <div key={option.value} id={styles.pc_bottomCenterSortItems} className={sortState === index ? styles.color_blue : ""}
+                        onClick={() => {
+                        setSortState(index);
+                        router.push(`/bottomPage?&sort=${option.value}&page=1`);
+                        }}
+                        >
+                        {option.label}
+                        </div>
+                        ))}
                 </div>
                 <div id={styles.pc_bottomContentBox} className={styles[gridLayout]}>
                    {props.gymitem.map((object:gymWearItem, index:number) => (

@@ -9,6 +9,10 @@ import { Opacity } from '@mui/icons-material';
 const PcBrandModal= () => {
     const {brandModalState,setBrandModalState} = React.useContext(AuthContext)
     const router = useRouter()
+    const brandList = [
+        {id:1,brandname:"피지컬크라운"},
+        {id:2,brandname:"짐브로"}, 
+     ]
     
     return(
         <motion.div id={styles.pc_brandNameModalComponent} 
@@ -41,15 +45,12 @@ const PcBrandModal= () => {
                 <div id={styles.pc_brandNameModalMarginBox2}></div>
                 <div id={styles.pc_brandNameModalBrandBox}>
                     <ul className={styles.ulStyle}>
-                        <li className={styles.liStyle} onClick={()=>{
-                            router.push(`/brandPage?brandname=피지컬크라운&sort=all&page=1`)
-                            setBrandModalState(0)
-
-                        }}>피지컬크라운</li>
-                        <li className={styles.liStyle} onClick={()=>{
-                            router.push(`/brandPage?brandname=짐브로&sort=all&page=1`)
-                            setBrandModalState(0)
-                        }}>짐브로</li>
+                    {brandList.map((object,index)=>(
+                        <li key={index} className={styles.liStyle} onClick={()=>{
+                        router.push(`/brandPage?brandname=${object.brandname}&sort=all&page=1`)
+                        setBrandModalState(0)
+                        }}>{object.brandname}</li>
+                    ))}
                     </ul>
                 </div>
                 <div id={styles.pc_brandNameModalMarginBox2}></div>

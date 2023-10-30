@@ -11,47 +11,37 @@ type getbrandname = {
     countresult:number
     brandname:string
 }
-
   const Pc = (props:getbrandname) => {
-        const router = useRouter();
-        const [pageState,setPageState]=useState<number>(0)
-        const [sortState,setSortState]=useState<number>(0)
-        const [gridLayout,setGridLayout]=React.useState<string>('grid_1x4')
-
-        useEffect(()=>{
-            setPcGrid(props.countresult,setGridLayout)
-          },)
+    const router = useRouter();
+    const [pageState,setPageState]=useState<number>(0)
+    const [sortState,setSortState]=useState<number>(0)
+    const [gridLayout,setGridLayout]=React.useState<string>('grid_1x4')
+    const sortOptions = [
+        { label: "All", value: "all" },
+        { label: "LongSleeve", value: "긴팔" },
+        { label: "T-Shirt", value: "반팔" },
+        { label: "ShortPants", value: "반바지" },
+        { label: "LongPants", value: "긴바지" },
+      ];
+    useEffect(()=>{
+        setPcGrid(props.countresult,setGridLayout)
+        },)
     return(
         <div id={styles.pc_brandContainer} className={`${styles.flex_row}`}>
             <div id={styles.pc_brandLeftBox}></div>
             <div id={styles.pc_brandCenterBox}>
                 <div id={styles.pc_brandCenterMarginBox} className={`${styles.text_set_center}`}>{props.brandname}</div>
                 <div id={styles.pc_brandCenterSortBox} className={`${styles.text_set_center}`}>
-                    <div id={styles.pc_brandCenterSortItems} className={sortState===0 ? styles.color_blue : "" }
-                    onClick={()=>{
-                        setSortState(0)
-                        router.push(`/brandPage?brandname=${props.brandname}&sort=all&page=1`)
-                        }}>All</div>
-                    <div id={styles.pc_brandCenterSortItems} className={sortState===1 ? styles.color_blue : ""} 
-                    onClick={()=>{
-                        setSortState(1)
-                        router.push(`/brandPage?brandname=${props.brandname}&sort=긴팔&page=1`)
-                        }}>LongSleeve</div>
-                    <div id={styles.pc_brandCenterSortItems} className={sortState===2 ? styles.color_blue : ""}
-                    onClick={()=>{
-                        setSortState(2)
-                        router.push(`/brandPage?brandname=${props.brandname}&sort=반팔&page=1`)
-                        }}>T-Shirt</div>
-                    <div id={styles.pc_brandCenterSortItems} className={sortState===3 ? styles.color_blue : ""}
-                    onClick={()=>{
-                        setSortState(3)
-                        router.push(`/brandPage?brandname=${props.brandname}&sort=반바지&page=1`)
-                        }}>ShortPants</div>
-                    <div id={styles.pc_brandCenterSortItems} className={sortState===4 ? styles.color_blue : ""}
-                    onClick={()=>{
-                        setSortState(4)
-                        router.push(`/brandPage?brandname=${props.brandname}&sort=긴바지&page=1`)
-                        }}>LongPants</div>
+                    {sortOptions.map((option, index) => (
+                    <div key={option.value} id={styles.pc_brandCenterSortItems} className={sortState === index ? styles.color_blue : ""}
+                    onClick={() => {
+                    setSortState(index);
+                    router.push(`/brandPage?brandname=${props.brandname}&sort=${option.value}&page=1`);
+                    }}
+                    >
+                    {option.label}
+                    </div>
+                    ))}
                 </div>
                 <div id={styles.pc_brandContentBox} className={styles[gridLayout]}>
                     {props.countresult ===0 ? (

@@ -1,11 +1,10 @@
 import { useRouter } from 'next/router';
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import { AuthContext } from '@/public/context/authcontext';
 import styles from './index.module.css';
 import Image from 'next/image';
 import type { gymWearItem, GymItemProps } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
-import { GetServerSidePropsContext } from 'next';
+import setPcGrid from '@/src/module/setPcGrid';
 type getBottomItem = {
     gymitem:[]
     countresult:number
@@ -18,24 +17,7 @@ type getBottomItem = {
         const [sortState,setSortState]=useState<number>(0)
 
         useEffect(()=>{
-            if(props.countresult==0){
-                setGridLayout('')
-            }
-            else if(props.countresult<5){
-                setGridLayout('grid_1x4')
-            }
-            else if(props.countresult<9){
-                setGridLayout('grid_2x4')
-            }
-            else if(props.countresult<13){
-                setGridLayout('grid_3x4')
-            }
-            else if(props.countresult<17){
-                setGridLayout('grid_4x4')
-            }
-            else{
-                setGridLayout('grid_5x4')
-            }
+            setPcGrid(props.countresult,setGridLayout)
           },)
     return(
         <div id={styles.pc_bottomContainer} className={`${styles.flex_row}`}>

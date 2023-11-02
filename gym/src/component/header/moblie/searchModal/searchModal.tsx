@@ -29,15 +29,6 @@ const SearchModal = () => {
   const initializeSearchText = () => {
     setSearchWord("")
   }
-  const searchDataAPI = () =>{
-    fetch('/api/search',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json', // 데이터 타입을 JSON으로 지정
-      },
-      body: JSON.stringify(inputState), // JSON 형식으로 데이터 전송
-    })
-  }
 
   return (
     <motion.div

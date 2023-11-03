@@ -10,12 +10,16 @@ import convertWon from '@/pages/src/module/convertWon';
 import type { gymWearItem ,SearchResultProps} from '../../../../type/gymwear';
 import NumberNavigate from '../../mobile/numberNavigate/numberNavigate';
 
+type getBottomItem = {
+    gymitem:[]
+    countresult:number
+}
 interface gymwear{
     data:gymWearItem;
     count: number
 }
 
-const Mobile = ({item,count}:SearchResultProps) => {
+const Mobile = (props:getBottomItem) => {
     const target = useRef<HTMLDivElement | null>(null);
     const target1 = useRef<HTMLDivElement | null>(null);
     const target2 = useRef<HTMLDivElement | null>(null);
@@ -75,7 +79,7 @@ const Mobile = ({item,count}:SearchResultProps) => {
     }
     useEffect(()=>{
     
-    },[item,count])
+    },[props.gymitem,props.countresult])
   return (
     <div id={styles.searchResultComponent}>
         <div id={styles.searchResultComponent_searchContainer}>
@@ -88,10 +92,10 @@ const Mobile = ({item,count}:SearchResultProps) => {
             <input id={styles.searchResultComponent_search} onChange={setInputText} onKeyDown={keydown} value={searchWord} type="test" onFocus={setViewBlurry} onBlur={setViewBlurryOut}/>
         </div>
         <div id={styles.searchResultComponent_topText}>
-          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchResultText}&#39;에 대한 {count}개의 검색 결과</h1>
+          <h1 id={styles.searchResultComponent_text} ref={target1}>	&#39;{searchResultText}&#39;에 대한 {props.countresult}개의 검색 결과</h1>
         </div>
             <div id={styles.searchResultComponent_itemContainer} className={`${styles.grid_1x2} ${styles.flex_scrollSet}`} ref={target2}>
-                     {item.map((object:gymWearItem, index:number) => (
+                     {props.gymitem.map((object:gymWearItem, index:number) => (
                         <span key={index} id={styles.searchResultComponent_item_itemComponent} className={`${styles.padding_1} ${styles.flex_column}`}>
                             <span id={styles.searchResultComponent_item_imageSize}>
                                 <Image
@@ -111,7 +115,7 @@ const Mobile = ({item,count}:SearchResultProps) => {
                         </span>
                     ))}
         </div>
-        <NumberNavigate number={count} pageMove={searchDataAPI}/>
+        <NumberNavigate number={props.countresult} pageMove={searchDataAPI}/>
     </div>
   )
 };

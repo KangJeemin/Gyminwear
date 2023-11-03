@@ -7,14 +7,18 @@ import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detec
 import Pc from '../../src/component/middle/pc/pcSearchresult/pc';
 import Mobile from '../../src/component/middle/mobile/search/mobile'
 
+type getBottomItem={
+    gymitem:[]
+    countresult:number
+}
 interface gymwear{
     data:gymWearItem;
 }
-const Index = ({item,count}:SearchResultProps) => { 
+const Index = (props:getBottomItem) => { 
 return(
     <div>
-        {isBrowser && <Pc item={item} count={count}/>}
-        {isMobile && <Mobile item={item} count={count}/>}
+        {isBrowser && <Pc gymitem={props.gymitem} countresult={props.countresult}/>}
+        {isMobile && <Mobile gymitem={props.gymitem} countresult={props.countresult}/>}
     </div>
 )
     
@@ -24,7 +28,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const res = await fetch(`http://localhost:3000/api/search?search=${search}&page=${page}`);
     const data = await res.json();
     return { props: { 
-        item:data.result,
+        gymitem:data.result,
         count:data.countresult[0].C
      } };
   }

@@ -29,7 +29,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const data = await res.json();
     return { props: { 
         gymitem:data.result,
-        count:data.countresult[0].C
+        countresult:data.countresult[0].C
      } };
   }
   

@@ -5,7 +5,6 @@ import styles from './index.module.css';
 import Image from 'next/image';
 import type { gymWearItem, GymItemProps } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
-import { GetServerSidePropsContext } from 'next';
 import ComboBox from '@/src/component/common/comboBox';
 
 const Moblie= (props:GymItemProps) => { 

@@ -3,7 +3,7 @@ import type { gymWearItem ,GymItemProps} from '@/src/type/gymwear';
 import { GetServerSidePropsContext } from 'next';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 import PcBottom from '../../src/component/middle/pc/pcBottom/pc';
-import MobileBottom from '../../src/component/middle/pc/pcBottom/mobile'
+import MobileBottom from '../../src/component/middle/mobile/bottom/mobile'
 
 type getBottomItem={
     gymitem:[]

@@ -11,14 +11,18 @@ import axios from 'axios';
 import type { gymWearItem,SearchResultProps  } from '../../../../type/gymwear';
 import { GetServerSideProps,GetServerSidePropsContext } from 'next';
 import PcNumberNavigate from '../pcNumberNavigate/pcNumberNavigate'
+import setPcGrid from '@/src/module/setPcGrid';
 
-
+type getBottomItem = {
+    gymitem:[]
+    countresult:number
+}
 interface gymwear{
     data:gymWearItem;
     count: number
 }
 
-const Pc = ({item,count}:SearchResultProps) => { 
+const Pc = (props:getBottomItem) => { 
     const router = useRouter()
     const {searchWord,setSearchWord,searchResultText,setSearchResultText} = useContext(AuthContext)
     const [reSearchWord,setReSearchWord]=useState<string>('')
@@ -37,22 +41,9 @@ const Pc = ({item,count}:SearchResultProps) => {
         setSearchWord("")
       }
       useEffect(()=>{
-        if(count<5){
-            setGridLayout('grid_1x4')
-        }
-        else if(count<9){
-            setGridLayout('grid_2x4')
-        }
-        else if(count<13){
-            setGridLayout('grid_3x4')
-        }
-        else if(count<17){
-            setGridLayout('grid_4x4')
-        }
-        else{
-            setGridLayout('grid_5x4')
-        }
+        setPcGrid(props.countresult,setGridLayout)  
       },)
+      
 
     return(
         <div id={styles.pc_searchResultContainer} className={`${styles.flex_row}`}>
@@ -60,7 +51,7 @@ const Pc = ({item,count}:SearchResultProps) => {
             <div id={styles.pc_searchResultCenterbox} className={`${styles.flex_column}`} >
             <div id={styles.pc_searchResultMarginBox}></div>
                 <div id={styles.pc_searchResultTextBox}>
-                    <h2>&#39; {searchResultText} &#39; 에 대한 {count}개의 검색결과.</h2>
+                    <h2>&#39; {searchResultText} &#39; 에 대한 {props.countresult}개의 검색결과.</h2>
                 </div>
                 <div id={styles.pc_searchResultMarginBox}></div>
                 <div id={styles.pc_searchResultInputBox} className={`${styles.flex_row}`}>
@@ -70,7 +61,7 @@ const Pc = ({item,count}:SearchResultProps) => {
                 </div>
                 <div id={styles.pc_searchResultMarginBox}></div>
                 <div id={styles.pc_searchResultItemBox} className={styles[gridLayout]}>
-                    {item.map((object:gymWearItem, index:number) => (
+                    {props.gymitem.map((object:gymWearItem, index:number) => (
                             <span key={index} id={styles.pc_searchResult_Item_itemComponent} className={`${styles.padding_3} ${styles.flex_column}`}>
                                 <span id={styles.pc_searchResult_Item_imageSize}>
                                     <Image
@@ -93,7 +84,7 @@ const Pc = ({item,count}:SearchResultProps) => {
                             </span>
                         ))}
                 </div>
-                <PcNumberNavigate number={count}/>
+                <PcNumberNavigate number={props.countresult}/>
             </div>
             <div id={styles.pc_searchResultRightBox}></div>
         </div>

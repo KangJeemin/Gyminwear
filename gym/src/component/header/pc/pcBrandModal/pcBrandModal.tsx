@@ -49,7 +49,7 @@ const PcBrandModal= () => {
                         <li key={index} className={styles.liStyle} onClick={()=>{
                         router.push(`/brandPage?brandname=${object.brandname}&sort=all&page=1`)
                         setBrandModalState(0)
-                        setPcSortState(0)
+                        setPcSortState(0) 
                         }}>{object.brandname}</li>
                     ))}
                     </ul>

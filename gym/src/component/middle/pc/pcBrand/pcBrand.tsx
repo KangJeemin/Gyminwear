@@ -5,6 +5,8 @@ import Image from 'next/image';
 import type { gymWearItem, GymItemProps } from '@/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 import setPcGrid from '@/src/module/setPcGrid';
+import { AuthContext } from '@/public/context/authcontext';
+import { ConsoleLogger } from '@nestjs/common';
 
 type getbrandname = {
     gymitem:[]
@@ -15,6 +17,7 @@ type getbrandname = {
     const router = useRouter();
     const [pageState,setPageState]=useState<number>(0)
     const [sortState,setSortState]=useState<number>(0)
+    const {pcSortState,setPcSortState}=useContext(AuthContext)
     const [gridLayout,setGridLayout]=React.useState<string>('grid_1x4')
     const sortOptions = [
         { label: "All", value: "all" },
@@ -33,9 +36,9 @@ type getbrandname = {
                 <div id={styles.pc_brandCenterMarginBox} className={`${styles.text_set_center}`}>{props.brandname}</div>
                 <div id={styles.pc_brandCenterSortBox} className={`${styles.text_set_center}`}>
                     {sortOptions.map((option, index) => (
-                    <div key={option.value} id={styles.pc_brandCenterSortItems} className={sortState === index ? styles.color_blue : ""}
+                    <div key={option.value} id={styles.pc_brandCenterSortItems} className={pcSortState === index ? styles.color_blue : ""}
                     onClick={() => {
-                    setSortState(index);
+                    setPcSortState(index);
                     router.push(`/brandPage?brandname=${props.brandname}&sort=${option.value}&page=1`);
                     }}
                     >

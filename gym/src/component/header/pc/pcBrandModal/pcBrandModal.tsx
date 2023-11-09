@@ -7,7 +7,7 @@ import { Opacity } from '@mui/icons-material';
 
 
 const PcBrandModal= () => {
-    const {brandModalState,setBrandModalState} = React.useContext(AuthContext)
+    const {brandModalState,setBrandModalState,setPcSortState} = React.useContext(AuthContext)
     const router = useRouter()
     const brandList = [
         {id:1,brandname:"피지컬크라운"},
@@ -49,6 +49,7 @@ const PcBrandModal= () => {
                         <li key={index} className={styles.liStyle} onClick={()=>{
                         router.push(`/brandPage?brandname=${object.brandname}&sort=all&page=1`)
                         setBrandModalState(0)
+                        setPcSortState(0)
                         }}>{object.brandname}</li>
                     ))}
                     </ul>

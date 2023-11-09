@@ -1,5 +1,5 @@
 export default {
-  title: "Gyminwear",
+  title: "짐인웨어",
   description: "최신 유행하는 개성있는 짐웨어를 만나보세요!",
   canonical: "https://gyminwear.com",
   openGraph: {

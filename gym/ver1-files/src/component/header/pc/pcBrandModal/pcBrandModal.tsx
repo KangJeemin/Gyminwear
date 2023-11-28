@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styles from './index.module.css'
 import { motion } from 'framer-motion';
-import { AuthContext } from '@/public/context/authcontext';
+import { AuthContext } from '@/ver1-files/context/authcontext';
 import { useRouter } from 'next/router';
 import { Opacity } from '@mui/icons-material';
 

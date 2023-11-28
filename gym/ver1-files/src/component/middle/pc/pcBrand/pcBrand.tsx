@@ -5,7 +5,7 @@ import Image from 'next/image';
 import type { gymWearItem, GymItemProps } from '@/ver1-files/src/type/gymwear';
 import convertWon from '@/pages/src/module/convertWon';
 import setPcGrid from '@/ver1-files/src/module/setPcGrid';
-import { AuthContext } from '@/public/context/authcontext';
+import { AuthContext } from '@/ver1-files/context/authcontext';
 import { ConsoleLogger } from '@nestjs/common';
 
 type getbrandname = {

@@ -5,7 +5,7 @@ import HambergerModal from '../hambergerModal/hambergerModal';
 import SearchModal from '../searchModal/searchModal'
 import Announcement from '../announceMent/announcement'
 import { useRef } from 'react'
-import { AuthContext } from '../../../../../../public/context/authcontext';
+import { AuthContext } from '../../../../../context/authcontext';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useScrollPosition, useScrollXPosition, useScrollYPosition } from 'react-use-scroll-position';

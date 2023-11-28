@@ -4,7 +4,7 @@ import styles from './pcSearchModal.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState, ChangeEvent,} from 'react';
-import { AuthContext } from '@/public/context/authcontext';
+import { AuthContext } from '@/ver1-files/context/authcontext';
 import { useRouter } from 'next/router';
 
 interface pcSearchState {

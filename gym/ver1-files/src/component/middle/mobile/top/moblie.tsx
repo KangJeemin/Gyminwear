@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import { AuthContext } from '@/public/context/authcontext';
+import { AuthContext } from '@/ver1-files/context/authcontext';
 import styles from './index.module.css';
 import Image from 'next/image';
 import type { gymWearItem, GymItemProps } from '@/ver1-files/src/type/gymwear';

@@ -1,6 +1,6 @@
 import React, { useState,useContext,useEffect } from 'react'
 import styles from './bestTop.module.css'
-import { AuthContext } from '@/public/context/authcontext';
+import { AuthContext } from '@/ver1-files/context/authcontext';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import convertWon from '@/pages/src/module/convertWon';

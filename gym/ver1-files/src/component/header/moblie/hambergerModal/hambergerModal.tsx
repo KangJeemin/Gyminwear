@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import styles from './hambergerModal.module.css'
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
-import { AuthContext } from '../../../../../../public/context/authcontext';
+import { AuthContext } from '../../../../../context/authcontext';
 import BrandList from '../brandList/brandList';
 
 

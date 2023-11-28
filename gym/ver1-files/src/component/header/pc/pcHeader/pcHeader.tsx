@@ -9,7 +9,7 @@ import Logo from '../../../../../public/image/gyminwearLogo.png'
 import { useRouter } from 'next/router';
 import PcSearchModal from '../pcSearchModal/pcSearchModal';
 import PcBrandModal from '../pcBrandModal/pcBrandModal';
-import { AuthContext } from '@/public/context/authcontext';
+import { AuthContext } from '@/ver1-files/context/authcontext';
 
 
 const PcHeader = () => {

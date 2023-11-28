@@ -3,7 +3,7 @@ import styles from './index.module.css';
 import { useRouter} from 'next/router';
 import { motion } from 'framer-motion';
 import { useContext } from 'react';
-import { AuthContext } from '@/public/context/authcontext';
+import { AuthContext } from '@/ver1-files/context/authcontext';
 import { breadcrumbsClasses } from '@mui/material';
 
 type brandListState = {

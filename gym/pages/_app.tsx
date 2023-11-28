@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { AuthProvider } from '../public/context/authcontext'
+import { AuthProvider } from '../ver1-files/context/authcontext'
 import React from 'react'
 import Header from '../ver1-files/src/component/header/moblie/header/header'
 import HeaderMargin from '../ver1-files/src/component/header/moblie/headerMargin'

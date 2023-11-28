@@ -3,7 +3,7 @@ import styles from './bestAll.module.css';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import axios from 'axios';
-import { AuthContext } from '@/public/context/authcontext';
+import { AuthContext } from '@/ver1-files/context/authcontext';
 import convertWon from '@/pages/src/module/convertWon';
 import type { GymItemProps,gymWearItem } from '@/ver1-files/src/type/gymwear';
 

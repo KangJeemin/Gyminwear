@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect, useContext, ChangeEvent } from 'rea
 import styles from './index.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass,faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-import { AuthContext } from '@/public/context/authcontext';
+import { AuthContext } from '@/ver1-files/context/authcontext';
 import Image from 'next/image'
 import convertWon from '@/pages/src/module/convertWon';
 import type { gymWearItem ,SearchResultProps} from '../../../../type/gymwear';

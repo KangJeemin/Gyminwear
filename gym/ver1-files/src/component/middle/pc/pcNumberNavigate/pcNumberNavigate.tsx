@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React,{useContext, useState} from "react";
 import styles from "./pcNumberNavigate.module.css"
-import { AuthContext } from "@/public/context/authcontext";
+import { AuthContext } from "@/ver1-files/context/authcontext";
 interface NumberNavigateProps {
     number: number;
 }

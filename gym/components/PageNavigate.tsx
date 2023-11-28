@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import styles from '@/styles/styles.module.css'
+import Link from 'next/link'
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -28,7 +29,7 @@ export default function AutoGrid() {
             <Box className={styles.Text1}>짐웨어 바로가기</Box>
             <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
                 <Box gridColumn="span 4">
-                 <Item>본투윈</Item>
+                 <Item><a href=''>본투윈</a></Item>
                 </Box>
                 <Box gridColumn="span 4">
                  <Item>덤브스트럭</Item>

@@ -29,7 +29,7 @@ export default function AutoGrid() {
             <Box className={styles.Text1}>짐웨어 바로가기</Box>
             <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
                 <Box gridColumn="span 4">
-                 <Item><a href=''>본투윈</a></Item>
+                 <Item><Link href='https://borntowin.kr/'>본투윈</Link></Item>
                 </Box>
                 <Box gridColumn="span 4">
                  <Item>덤브스트럭</Item>

@@ -4,7 +4,7 @@ import { AuthContext } from '@/ver1-files/context/authcontext';
 import styles from './index.module.css';
 import Image from 'next/image';
 import type { gymWearItem ,GymItemProps} from '@/ver1-files/src/type/gymwear';
-import convertWon from '@/pages/src/module/convertWon';
+import convertWon from '@/ver1-files/module/convertWon';
 import ComboBox from '@/ver1-files/src/component/common/comboBox';
 import { GetServerSidePropsContext } from 'next';
 type getBottomItem = {

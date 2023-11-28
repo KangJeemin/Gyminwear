@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import styles from './index.module.css';
 import Image from 'next/image';
 import type { gymWearItem, GymItemProps } from '@/ver1-files/src/type/gymwear';
-import convertWon from '@/pages/src/module/convertWon';
+import convertWon from '@/ver1-files/module/convertWon';
 import setPcGrid from '@/ver1-files/src/module/setPcGrid';
 type getBottomItem = {
     gymitem:[]

@@ -3,7 +3,7 @@ import styles from './bestTop.module.css'
 import { AuthContext } from '@/ver1-files/context/authcontext';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import convertWon from '@/pages/src/module/convertWon';
+import convertWon from '@/ver1-files/module/convertWon';
 import axios from 'axios'; 
 import type { gymWearItem,GymItemProps } from '@/ver1-files/src/type/gymwear';
 import type { GetStaticProps, InferGetStaticPropsType } from "next";

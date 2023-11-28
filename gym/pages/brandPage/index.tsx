@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import type { gymWearItem, GymItemProps } from '@/src/type/gymwear';
+import type { gymWearItem, GymItemProps } from '@/ver1-files/src/type/gymwear';
 import { GetServerSidePropsContext } from 'next';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
-import Moblie from '../../src/component/middle/mobile/brandPage/moblie'
-import Pc from '../../src/component/middle/pc/pcBrand/pcBrand'
+import Moblie from '../../ver1-files/src/component/middle/mobile/brandPage/moblie'
+import Pc from '../../ver1-files/src/component/middle/pc/pcBrand/pcBrand'
 
 type getbrandName={
     brandname:string

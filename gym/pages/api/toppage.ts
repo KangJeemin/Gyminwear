@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import type { gymWearItem } from '@/src/type/gymwear';
-import type { searchResultCount } from '@/src/type/gymwear';
-import createMysqlLimit from '@/src/module/createMysqlLimit';
+import type { gymWearItem } from '@/ver1-files/src/type/gymwear';
+import type { searchResultCount } from '@/ver1-files/src/type/gymwear';
+import createMysqlLimit from '@/ver1-files/src/module/createMysqlLimit';
 const db = require('../../src/db/db')
 
 export default async function toppage(req : NextApiRequest, res : NextApiResponse) {

@@ -1,4 +1,4 @@
-import type { gymWearItem } from '@/src/type/gymwear';
+import type { gymWearItem } from '@/ver1-files/src/type/gymwear';
 const db = require('../../src/db/db');
 
 export default async function getBestBottomItems(): Promise<string> {

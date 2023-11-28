@@ -14,8 +14,6 @@ import { NextSeo } from 'next-seo'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    
-    <AuthProvider>
       <NextSeo
        title="짐인웨어"
        description="유행하는 짐웨어, 오버핏 짐웨어를 만나보세요!"
@@ -41,24 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
         cardType: 'summary_large_image',
       }}
       />
-      <BrowserView>
-        <PcHeader/>
-        <PcHeaderMargin/>
-      </BrowserView>
-      <MobileView>
-        <Header/>
-        <HeaderMargin/>
-      </MobileView>
-      <Component {...pageProps} />
-      <BrowserView>
-        <PcFooter/>
-      </BrowserView>
-      <MobileView>
-        <Footer/>
-      </MobileView>
-      
-      
-    </AuthProvider>
+     
   )
 
 }

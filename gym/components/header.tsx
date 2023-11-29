@@ -9,7 +9,7 @@ export default function Header() {
         <>
         <Box style={{
             width:"100%",
-            height:"100px",
+            height:"10vh",
             backgroundColor:"#F0EACC",
             display:"flex",
             flexDirection: "row"

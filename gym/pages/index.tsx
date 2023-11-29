@@ -7,6 +7,9 @@ import PageNavigate from '@/components/PageNavigate';
 export default function index() {
   return (
     <>
+      <Head>
+      <meta name="naver-site-verification" content="ed45f0e362ab1bf63a17000be1426ad91060cd44" />
+      </Head>
       <Header />
       <PageNavigate />
     </>

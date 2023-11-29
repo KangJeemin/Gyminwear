@@ -32,7 +32,7 @@ export default function AutoGrid() {
                  <Item><Link href='https://borntowin.kr/'>본투윈</Link></Item>
                 </Box>
                 <Box gridColumn="span 4">
-                 <Item>덤브스트럭</Item>
+                 <Item><Link href='https://borntowin.kr/'>덤브스트럭</Link></Item>
                 </Box>
                 <Box gridColumn="span 4">
                  <Item>피지컬크라운</Item>
@@ -56,6 +56,9 @@ export default function AutoGrid() {
                  <Item>키네틱피플</Item>
                 </Box>
                 <Box gridColumn="span 4">
+                 <Item>B_FoB</Item>
+                </Box>
+                <Box gridColumn="span 4">
                  <Item>머슬암드</Item>
                 </Box>
                 <Box gridColumn="span 4">
@@ -71,8 +74,51 @@ export default function AutoGrid() {
                  <Item>RSPT</Item>
                 </Box>
                 <Box gridColumn="span 4">
-                 <Item>피지코 어패럴</Item>
+                 <Item>피지코어패럴</Item>
                 </Box>
+                <Box gridColumn="span 4">
+                 <Item>아던트소울</Item>
+                </Box>
+                <Box gridColumn="span 4">
+                 <Item>멧블랙</Item>
+                </Box>
+                <Box gridColumn="span 4">
+                 <Item>피지컬가먼츠</Item>
+                </Box>
+                <Box gridColumn="span 4">
+                 <Item>액츄얼라이즈</Item>
+                </Box>
+                <Box gridColumn="span 3">
+                 <Item>RANK</Item>
+                </Box>
+                <Box gridColumn="span 2">
+                 <Item>고룩</Item>
+                </Box>
+                <Box gridColumn="span 3">
+                 <Item>UNF</Item>
+                </Box>
+                <Box gridColumn="span 4">
+                 <Item>골드앤머신</Item>
+                </Box>
+                <Box gridColumn="span 4">
+                 <Item>언브로큰</Item>
+                </Box>
+                <Box gridColumn="span 4">
+                 <Item>베르만어패럴</Item>
+                </Box>
+                <Box gridColumn="span 4">
+                 <Item>머스콜로</Item>
+                </Box>
+                <Box gridColumn="span 4">
+                 <Item>VENAFIT</Item>
+                </Box>
+                <Box gridColumn="span 4">
+                 <Item>BRUNK</Item>
+                </Box>
+                <Box gridColumn="span 4">
+                 <Item>하드지머</Item>
+                </Box>
+
             </Box>
         </Box>
         <Box className={styles.main_Margin}></Box>

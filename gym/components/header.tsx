@@ -7,7 +7,7 @@ export default function Header() {
         <Box style={{
             width:"100%",
             height:"100px",
-            backgroundColor:"red"
+            backgroundColor:"#F0EACC"
         }}>
             a
         </Box>

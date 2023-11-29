@@ -9,7 +9,7 @@ export default function Header() {
         <>
         <Box style={{
             width:"100%",
-            height:"10vh",
+            height:"7vh",
             backgroundColor:"#F0EACC",
             display:"flex",
             flexDirection: "row"
@@ -24,12 +24,15 @@ export default function Header() {
             width:"40%",
             height:"100%",
             backgroundColor:"#F0EACC",
-            position:"relative"
+            display:"flex",
+            justifyContent:"center",
+            alignItems:"center"
             }}>
                 <Image
                 src={gyminwearLogo} 
                 alt='이미지 표시 불가'
-                layout='fill'                        
+                width={150}
+                height={65} 
                 />
             </Box>
             <Box style={{

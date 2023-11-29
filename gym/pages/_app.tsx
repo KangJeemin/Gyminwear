@@ -16,23 +16,23 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <NextSeo
-       title="짐인웨어"
-       description="유행하는 짐웨어, 오버핏 짐웨어를 만나보세요!"
-       canonical="https://www.gyminwear.com/"
+       title="짐웨어 | 국내 짐웨어 모음 사이트"
+       description="짐웨어 사이트들을 모아 놓았습니다. 짐인웨어에서 짐웨어 브랜들을 확인하고, 홈페이지로 이동하여 다양한 짐웨어를 확인해보세요!"
+       canonical="https://gyminwear.com/"
        openGraph={{
-         url: 'https://www.gyminwear.com',
+         url: 'https://gyminwear.com',
          title: '짐인웨어',
-         description: '최신 유행하는 짐웨어를 만나보세요!',
+         description: '짐웨어 사이트들을 모아 놓았습니다.',
          images: [
            {
-             url: 'https://www.example.ie/og-image-01.jpg',
-             width: 800,
-             height: 600,
+             url: 'https://gyminwear.com/public/gyminwearLogo.jpg',
+             width: 400,
+             height: 300,
              alt: 'Og Image Alt',
              type: 'image/jpeg',
            },
          ],
-         siteName: 'Gyminwear',
+         siteName: '짐인웨어',
        }}
       twitter={{
         handle: '@handle',

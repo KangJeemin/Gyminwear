@@ -2,31 +2,32 @@ import { Password } from '@mui/icons-material';
 import type { NextApiRequest, NextApiResponse } from 'next';
 const db = require('@/lib/connectMysql');
 const crypto = require('crypto');
-type userInfo = {
+type LoginInfo = {  
     email:string,
-    name:string,
     password:string,
-    nickname:String
 }
 
 export default async function Join(req : NextApiRequest, res : NextApiResponse){
     if (req.method === 'POST') {
-        const requestData:userInfo = req.body;
+        const requestData:LoginInfo = req.body;
 
-        // 오늘 날짜의 밀리초와 랜덤 값을 곱하여 반올림하여 정수를 만듬, 그 후 문자열로 변환
+        // 현재 비밀번호와 데이터베이스에 저장되어 있는 salt 값으로 비밀번호 조회하기
         const inputPassword = requestData.password;
-        const salt =  Math.round((new Date().valueOf() * Math.random())) + "";
+        let salt:string = "";
+        let DbPassword: string = "";
         const hashPassword =  crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
 
+        // db.query(`SELECT * FROM top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%' LIMIT ${limit}`,
           try{
             db.query(
-                `INSERT INTO user (email,name,password,nickname,salt) VALUES ('${requestData.email}','${requestData.name}','${hashPassword}','${requestData.nickname}','${salt}');`
+                `SELECT `
             ,(error:any,result:any)=>{
                 if(error){
                     console.error("회원가입 중 유저 정보를 삽입 하는 과정에서 오류 발생")
                     return false
                 } else{
-                    res.status(200).json({ result: true });  
+
+                    // res.status(200).json({ result: true });  
                     // 모든 쿼리가 완료되면 데이터베이스 연결 종료
                     db.end();
                 }

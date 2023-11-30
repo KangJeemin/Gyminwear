@@ -1,3 +1,4 @@
+import { Password } from '@mui/icons-material';
 import type { NextApiRequest, NextApiResponse } from 'next';
 const db = require('@/lib/connectMysql');
 const crypto = require('crypto');
@@ -10,26 +11,28 @@ type userInfo = {
 
 export default async function Join(req : NextApiRequest, res : NextApiResponse){
     if (req.method === 'POST') {
-        const requestData = req.body;
-        let inputPassword = requestData.password;
+        const requestData:userInfo = req.body;
+        let inputPassword = await requestData.password;
         let salt = Math.round((new Date().valueOf() * Math.random())) + "";
-        let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
+        let hashPassword = await crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
 
-        
+        console.log('password=',inputPassword)
+        console.log('hashPassword=',hashPassword)
           try{
-            return new Promise((resolve, reject) => {
-                db.query(
-                  "SELECT * FROM gym.bottom UNION SELECT * FROM gym.top ORDER BY likecount DESC LIMIT 0,4",
-                  (err: any, result: boolean) => {
-                    if (err) {
-                      console.error(err);
-                      reject(err);
-                    } else {
-                        resolve(result)
-                    }
-                  }
-                );
-              });
+            res.status(200).json({ result: '성공' });  
+            // return new Promise((resolve, reject) => {
+            //     db.query(
+            //       "SELECT * FROM gym.bottom UNION SELECT * FROM gym.top ORDER BY likecount DESC LIMIT 0,4",
+            //       (err: any, result: boolean) => {
+            //         if (err) {
+            //           console.error(err);
+            //           reject(err);
+            //         } else {
+            //             resolve(result)
+            //         }
+            //       }
+            //     );
+            //   });
           }
           catch (error) {
             console.error("데이터 베이스에 유저 정보 저장 중 에러 발생")

@@ -83,8 +83,9 @@ const checkJoin = (email:string,name:string,password:string,nickname:string) => 
         password,
         nickname
     }    
+    //회원가입 조건이 만족한다면 true 불만족 한다면 false
     const sendUserinfo = checkJoin(email.toString(),name.toString(),password.toString(),nickname.toString())
-
+    //회원가입 조건이 모두 만족할 때 서버에 회원가입 요청
     if(sendUserinfo===true){
       try{
         const response = await fetch('api/join', {
@@ -109,8 +110,6 @@ const checkJoin = (email:string,name:string,password:string,nickname:string) => 
       }
       
     }
-    // console.log(checkJoin(name.toString(),password.toString(),nickname.toString()))
-
     
   };
 

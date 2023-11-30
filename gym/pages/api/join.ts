@@ -13,14 +13,24 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
     if (req.method === 'POST') {
         const requestData:userInfo = req.body;
 
-        let inputPassword = await requestData.password;
         // 오늘 날짜의 밀리초와 랜덤 값을 곱하여 반올림하여 정수를 만듬, 그 후 문자열로 변환
-        let salt = Math.round((new Date().valueOf() * Math.random())) + "";
+        let inputPassword = await requestData.password;
+        let salt = await Math.round((new Date().valueOf() * Math.random())) + "";
         let hashPassword = await crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
 
-        console.log('password=',inputPassword)
-        console.log('hashPassword=',hashPassword)
           try{
+            db.query(
+                `INSERT INTO user (email,name,password,nickname,salt) VALUES (${requestData.email},${requestData.name},${hashPassword},${requestData.nickname},${salt})`
+            ,(error:any,result:any)=>{
+                if(error){
+                    console.error("회원가입 중 유저 정보를 삽입 하는 과정에서 오류 발생")
+                    return false
+                } else{
+                    console.log('result=',result)
+                }
+            })
+
+
             res.status(200).json({ result: '성공' });  
             // return new Promise((resolve, reject) => {
             //     db.query(

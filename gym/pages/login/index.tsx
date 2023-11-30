@@ -30,7 +30,7 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit  = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     
@@ -38,6 +38,31 @@ export default function SignIn() {
     const loginInfo = {
       email,
       password,
+    }
+    try{
+      const response = await fetch('api/join', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(loginInfo),
+      });
+      if (response.ok) {
+        // 성공적인 응답 처리
+        const responseData = await response.json();
+        // 응답 결과가 true일 경우 회원가입 성공 했다는 알림과 함께 로그인 페이지로 이동.
+        if(responseData.result){
+          // router.push('/login');
+          alert('회원가입에 성공했습니다.')
+        }
+      } else {
+        // 오류 응답 처리
+        console.error('POST 요청이 실패했습니다.');
+      }
+    }
+    catch (error) {
+      // 네트워크 오류 등 예외 처리
+      console.error('오류 발생:', error);
     }
     console.log(loginInfo)
     

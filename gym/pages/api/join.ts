@@ -12,6 +12,7 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
         const requestData:LoginInfo = req.body;
 
         // 현재 비밀번호와 데이터베이스에 저장되어 있는 salt 값으로 비밀번호 조회하기
+        const inputEmail = requestData.email;
         const inputPassword = requestData.password;
         let salt:string = "";
         let DbPassword: string = "";
@@ -20,13 +21,13 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
         // db.query(`SELECT * FROM top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%' LIMIT ${limit}`,
           try{
             db.query(
-                `SELECT `
+                `SELECT password FROM user WHERE email = ${inputEmail}; `
             ,(error:any,result:any)=>{
                 if(error){
                     console.error("회원가입 중 유저 정보를 삽입 하는 과정에서 오류 발생")
                     return false
                 } else{
-
+                    console.log(result)
                     // res.status(200).json({ result: true });  
                     // 모든 쿼리가 완료되면 데이터베이스 연결 종료
                     db.end();

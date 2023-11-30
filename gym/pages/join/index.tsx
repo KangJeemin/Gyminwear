@@ -33,7 +33,17 @@ const defaultTheme = createTheme();
 export default function SignUp() {
 const [userInfo,setUserInfo] = React.useState(false);
 const [userPassword, setUserPassword] = React.useState("")
-const checkJoin = (password:string) => {
+
+const checkJoin = (name:string,password:string) => {
+    //이름 확인
+    const validateName =() => {
+        const nameRegex = /^[가-힣]+$/;
+        return name.length === 3 && nameRegex.test(name);
+    }
+    if(!validateName()){
+        console.error("성함을 재 입력해주세요")
+        return false;
+    }
     //바말번호 확인 
     const validatePassword = () => {
         const passwordRegex =/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/;
@@ -41,18 +51,17 @@ const checkJoin = (password:string) => {
       };
       if (!validatePassword()) {
         console.error("비밀번호는 8자리 이상, 영문, 숫자, 특수문자를 포함하여 입력해주세요.")
-        return;
+        return false;
       }
 }
   const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const email = await data.get('email');
-    const name = await data.get('name')
-    const password = await data.get('password')
-    const nickname = await data.get('nickname')
-    checkJoin(password)
+    const { email, name, password, nickname } = Object.fromEntries(data.entries());
+    checkJoin(name,password)
+    console.log(checkJoin(name,password))
+
     const userInfo = {
         email,
         name,

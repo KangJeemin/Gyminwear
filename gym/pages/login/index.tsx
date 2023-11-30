@@ -12,7 +12,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { ContactSupportOutlined, Email } from '@mui/icons-material';
 
 function Copyright(props: any) {
   return (
@@ -38,7 +37,7 @@ export default function SignIn() {
     const { email, password} = Object.fromEntries(data.entries());
     const loginInfo = {
       email,
-      password
+      passwor
     }
     console.log(loginInfo)
     

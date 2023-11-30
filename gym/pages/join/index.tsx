@@ -34,8 +34,15 @@ export default function SignUp() {
 const [userInfo,setUserInfo] = React.useState(false);
 const [userPassword, setUserPassword] = React.useState("")
 
-const checkJoin = (name:string,password:string,nickname:string) => {
-    
+const checkJoin = (email:string,name:string,password:string,nickname:string) => {
+    const validateEmail = () => {
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return emailRegex.test(email)
+    }
+    if(!validateEmail()){
+        alert("올바른 이메일 형식을 입력해주세요.😅)")
+        return false;
+    }
     //이름 확인 (한글로만 3자)
     const validateName =() => {
         const nameRegex = /^[가-힣]+$/;
@@ -76,7 +83,7 @@ const checkJoin = (name:string,password:string,nickname:string) => {
         password,
         nickname
     }    
-    const sendUserinfo = checkJoin(name.toString(),password.toString(),nickname.toString())
+    const sendUserinfo = checkJoin(email.toString(),name.toString(),password.toString(),nickname.toString())
 
     if(sendUserinfo===true){
         console.log(userInfo)

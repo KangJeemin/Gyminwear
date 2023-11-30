@@ -34,24 +34,33 @@ export default function SignUp() {
 const [userInfo,setUserInfo] = React.useState(false);
 const [userPassword, setUserPassword] = React.useState("")
 
-const checkJoin = (name:string,password:string) => {
-    //이름 확인
+const checkJoin = (name:string,password:string,nickname:string) => {
+    
+    //이름 확인 (한글로만 3자)
     const validateName =() => {
         const nameRegex = /^[가-힣]+$/;
         return name.length === 3 && nameRegex.test(name);
     }
     if(!validateName()){
-        console.error("성함을 재 입력해주세요")
+        alert("성함을 재 입력해주세요(한글로 3자리 입력해주세요.😅)")
         return false;
     }
-    //바말번호 확인 
+    //바말번호 확인 (영대소문자, 특수문자 포함 12자 이상)
     const validatePassword = () => {
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).+$/;
-
         return password.length >= 8 && passwordRegex.test(password);
       };
       if (!validatePassword()) {
-        console.error("비밀번호는 8자리 이상, 영문, 숫자, 특수문자를 포함하여 입력해주세요.")
+        alert("비밀번호는 8자리 이상, 영문, 숫자, 특수문자를 포함하여 입력해주세요.😭")
+        return false;
+      }
+    // 닉네임 확인(한글, 영대소문자 3~12자)
+    const validateNickName=()=>{
+        const regex = /^[a-zA-Z0-9가-힣]+$/;
+        return (nickname.length >=3 && nickname.length <=12) && regex.test(nickname);
+    }
+    if (!validateNickName()) {
+        alert("닉네임은 영어 또는 한글로 3~12자 이내로 입력해주세요.😭")
         return false;
       }
     return true 
@@ -61,8 +70,8 @@ const checkJoin = (name:string,password:string) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const { email, name, password, nickname } = Object.fromEntries(data.entries());
-    checkJoin(name.toString(),password.toString())
-    console.log(checkJoin(name.toString(),password.toString()))
+    checkJoin(name.toString(),password.toString(),nickname.toString())
+    console.log(checkJoin(name.toString(),password.toString(),nickname.toString()))
 
     const userInfo = {
         email,
@@ -128,7 +137,7 @@ const checkJoin = (name:string,password:string) => {
                   required
                   fullWidth
                   id="nickname"
-                  label="닉네임"
+                  label="닉네임(3~12자 이내)"
                   name="nickname"
                   autoComplete="nickname"
                 />

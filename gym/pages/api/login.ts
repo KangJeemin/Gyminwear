@@ -11,7 +11,7 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
         const requestData:LoginInfo = req.body;
         
         // 현재 비밀번호와 데이터베이스에 저장되어 있는 salt 값으로 비밀번호 조회하기
-        const inputEmail = requestData.email;
+        const inputEmail = await requestData.email;
         const inputPassword = requestData.password;
         let salt:string = "";
         let DbPassword: string = "";

@@ -12,13 +12,11 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
         
         // 현재 비밀번호와 데이터베이스에 저장되어 있는 salt 값으로 비밀번호 조회하기
         const inputEmail = await requestData.email;
-        const inputPassword = requestData.password;
+        const inputPassword = await requestData.password;
         let salt:string = "";
         let DbPassword: string = "";
-        
-        
-
-        // db.query(`SELECT * FROM top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%' LIMIT ${limit}`,
+        const hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");     
+           
           try{
             db.query(
                 `SELECT password,salt FROM user WHERE email='${inputEmail}'; `
@@ -28,10 +26,13 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
                     return false
                 } else{
                     console.log(result)
-                    DbPassword=result[0].password;
-                    salt=result[0].salt;
-                    // 모든 쿼리가 완료되면 데이터베이스 연결 종료
-                    db.end();
+                    DbPassword= await result[0].password;
+                    salt= await result[0].salt;
+                  
+                    if(DbPassword==hashPassword){
+                      console.log('성공')
+                        // res.status(200).json({ result:true });  
+                    }
                 }
             })
           }
@@ -39,17 +40,6 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
             console.error("데이터 베이스에 유저 정보 저장 중 에러 발생")
             res.status(500).json({ error: '서버 오류' });  
           }
-        const hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");        
-        if(DbPassword===hashPassword){
-          res.status(200).json({ result:true });  
-        }
-        else{
-          res.status(404).json({ result:false }); 
-          // res.status(200).json({ result:true });  
-
-        }
-        
-
       } else {
         res.status(405).json({ error: '허용되지 않는 메서드' });
       }  

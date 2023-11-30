@@ -37,7 +37,7 @@ export default function SignIn() {
     const { email, password} = Object.fromEntries(data.entries());
     const loginInfo = {
       email,
-      passwor
+      password,
     }
     console.log(loginInfo)
     

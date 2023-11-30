@@ -86,7 +86,28 @@ const checkJoin = (email:string,name:string,password:string,nickname:string) => 
     const sendUserinfo = checkJoin(email.toString(),name.toString(),password.toString(),nickname.toString())
 
     if(sendUserinfo===true){
-        console.log(userInfo)
+      try{
+        const response = await fetch('api/join', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userInfo),
+        });
+        if (response.ok) {
+          // 성공적인 응답 처리
+          const responseData = await response.json();
+          console.log(responseData)
+        } else {
+          // 오류 응답 처리
+          console.error('POST 요청이 실패했습니다.');
+        }
+      }
+      catch (error) {
+        // 네트워크 오류 등 예외 처리
+        console.error('오류 발생:', error);
+      }
+      
     }
     // console.log(checkJoin(name.toString(),password.toString(),nickname.toString()))
 

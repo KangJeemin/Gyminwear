@@ -12,7 +12,9 @@ type userInfo = {
 export default async function Join(req : NextApiRequest, res : NextApiResponse){
     if (req.method === 'POST') {
         const requestData:userInfo = req.body;
+
         let inputPassword = await requestData.password;
+        // 오늘 날짜의 밀리초와 랜덤 값을 곱하여 반올림하여 정수를 만듬, 그 후 문자열로 변환
         let salt = Math.round((new Date().valueOf() * Math.random())) + "";
         let hashPassword = await crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
 
@@ -38,13 +40,6 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
             console.error("데이터 베이스에 유저 정보 저장 중 에러 발생")
             res.status(500).json({ error: '서버 오류' });  
           }
-
-
-          const responseData = {
-
-            message: 'POST 요청이 성공했습니다.',
-            receivedData: requestData,
-          };
       } else {
         res.status(405).json({ error: '허용되지 않는 메서드' });
       }  

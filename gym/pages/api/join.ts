@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 const db = require('@/lib/connectMysql');
+const crypto = require('crypto');
 
 
 export default async function Join(req : NextApiRequest, res : NextApiResponse){
@@ -7,6 +8,7 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
         
           // 요청 데이터 가져오기
           const requestData = req.body;
+
         
           try{
             return new Promise((resolve, reject) => {

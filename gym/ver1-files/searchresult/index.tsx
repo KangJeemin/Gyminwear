@@ -1,11 +1,11 @@
 
 import React, { useState, useRef, useEffect, useContext, ChangeEvent } from 'react';
-import type { gymWearItem ,SearchResultProps} from '../../ver1-files/src/type/gymwear';
+import type { gymWearItem ,SearchResultProps} from '../src/type/gymwear';
 import { GetServerSideProps,GetServerSidePropsContext } from 'next';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
-import Pc from '../../ver1-files/src/component/middle/pc/pcSearchresult/pc';
-import Mobile from '../../ver1-files/src/component/middle/mobile/search/mobile'
+import Pc from '../src/component/middle/pc/pcSearchresult/pc';
+import Mobile from '../src/component/middle/mobile/search/mobile'
 
 type getBottomItem={
     gymitem:[]

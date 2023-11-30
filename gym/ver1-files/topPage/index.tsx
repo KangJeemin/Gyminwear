@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import type { gymWearItem, GymItemProps } from '@/ver1-files/src/type/gymwear';
 import { GetServerSidePropsContext } from 'next';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
-import Mobile from '../../ver1-files/src/component/middle/mobile/top/moblie'
-import Pc from '../../ver1-files/src/component/middle/pc/PcTop/pc'
+import Mobile from '../src/component/middle/mobile/top/moblie'
+import Pc from '../src/component/middle/pc/PcTop/pc'
 
 type getTopItem={
     gymitem:[]

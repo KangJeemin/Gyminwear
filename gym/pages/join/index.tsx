@@ -14,8 +14,6 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function Copyright(props: any) {
-    
-    const [userInfo,setUserInfo] = React.useState(false);
 
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -33,35 +31,33 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
+const [userInfo,setUserInfo] = React.useState(false);
+const [userPassword, setUserPassword] = React.useState("")
+const checkJoin = (password:string) => {
+    //바말번호 확인 
+    const validatePassword = () => {
+        const passwordRegex =/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/;
+        return password.length >= 8 && passwordRegex.test(password);
+      };
+      if (!validatePassword()) {
+        console.error("비밀번호는 8자리 이상, 영문, 숫자, 특수문자를 포함하여 입력해주세요.")
+        return;
+      }
+}
   const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-
     const email = await data.get('email');
     const name = await data.get('name')
     const password = await data.get('password')
     const nickname = await data.get('nickname')
-
+    checkJoin(password)
     const userInfo = {
         email,
         name,
         password,
         nickname
-    }
-
-    const checkJoin =() => {
-        //바말번호 확인 
-        const validatePassword = () => {
-            const passwordRegex =
-              /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/;
-            return password.length >= 8 && passwordRegex.test(password);
-          };
-          if (!validatePassword()) {
-            console.error("비밀번호는 8자리 이상, 영문, 숫자, 특수문자를 포함하여 입력해주세요.")
-            return;
-          }
-        
     }
   };
 
@@ -137,6 +133,7 @@ export default function SignUp() {
               type="submit"
               fullWidth
               variant="contained"
+              onClick={checkJoin}
               sx={{ mt: 3, mb: 2 }}
             >
               회원가입

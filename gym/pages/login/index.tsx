@@ -39,6 +39,7 @@ export default function SignIn() {
       email,
       password,
     }
+    
     try{
       const response = await fetch('api/login', {
         method: 'POST',

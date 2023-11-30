@@ -20,10 +20,10 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
         // db.query(`SELECT * FROM top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%' LIMIT ${limit}`,
           try{
             db.query(
-                `SELECT password FROM user WHERE email = ${inputEmail}; `
+                `SELECT password FROM user WHERE email = '${inputEmail}'; `
             ,(error:any,result:any)=>{
                 if(error){
-                    console.error("회원가입 중 유저 정보를 삽입 하는 과정에서 오류 발생")
+                    console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")
                     return false
                 } else{
                     console.log(result)

@@ -100,8 +100,10 @@ const checkJoin = (email:string,name:string,password:string,nickname:string) => 
         if (response.ok) {
           // 성공적인 응답 처리
           const responseData = await response.json();
+          // 응답 결과가 true일 경우 회원가입 성공 했다는 알림과 함께 로그인 페이지로 이동.
           if(responseData.result){
             router.push('/login');
+            alert('회원가입에 성공했습니다.')
           }
         } else {
           // 오류 응답 처리

@@ -14,6 +14,9 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function Copyright(props: any) {
+    
+    const [userInfo,setUserInfo] = React.useState(false);
+
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
@@ -30,16 +33,36 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
+    
     event.preventDefault();
-
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      name: data.get('name'),
-      password: data.get('password'),
-      nickname: data.get('nickname'),
-    });
+
+    const email = await data.get('email');
+    const name = await data.get('name')
+    const password = await data.get('password')
+    const nickname = await data.get('nickname')
+
+    const userInfo = {
+        email,
+        name,
+        password,
+        nickname
+    }
+
+    const checkJoin =() => {
+        //바말번호 확인 
+        const validatePassword = () => {
+            const passwordRegex =
+              /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/;
+            return password.length >= 8 && passwordRegex.test(password);
+          };
+          if (!validatePassword()) {
+            console.error("비밀번호는 8자리 이상, 영문, 숫자, 특수문자를 포함하여 입력해주세요.")
+            return;
+          }
+        
+    }
   };
 
   return (
@@ -87,7 +110,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
-                  label="비밀번호"
+                  label="비밀번호(8자리,특수문자,영소대문자포함)"
                   type="password"
                   id="password"
                   autoComplete="new-password"

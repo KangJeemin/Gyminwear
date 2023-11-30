@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { ContactSupportOutlined, Email } from '@mui/icons-material';
 
 function Copyright(props: any) {
   return (
@@ -33,10 +34,14 @@ export default function SignIn() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    
+    const { email, password} = Object.fromEntries(data.entries());
+    const loginInfo = {
+      email,
+      password
+    }
+    console.log(loginInfo)
+    
   };
 
   return (
@@ -55,7 +60,7 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            로그인
+            <span style={{ color: 'black' }}>로그인</span>
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -63,7 +68,7 @@ export default function SignIn() {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="이메일 주소"
               name="email"
               autoComplete="email"
               autoFocus
@@ -73,14 +78,14 @@ export default function SignIn() {
               required
               fullWidth
               name="password"
-              label="Password"
+              label="비밀번호"
               type="password"
               id="password"
               autoComplete="current-password"
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              label={<Box sx={{ color: 'black' }}>로그인 정보를 기억할까요?</Box>}
             />
             <Button
               type="submit"

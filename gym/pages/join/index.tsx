@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useRouter } from 'next/router';
 
 function Copyright(props: any) {
 
@@ -33,6 +34,7 @@ const defaultTheme = createTheme();
 export default function SignUp() {
 const [userInfo,setUserInfo] = React.useState(false);
 const [userPassword, setUserPassword] = React.useState("")
+const router = useRouter();
 
 const checkJoin = (email:string,name:string,password:string,nickname:string) => {
     const validateEmail = () => {
@@ -98,7 +100,9 @@ const checkJoin = (email:string,name:string,password:string,nickname:string) => 
         if (response.ok) {
           // 성공적인 응답 처리
           const responseData = await response.json();
-          console.log(responseData)
+          if(responseData.result){
+            router.push('/login');
+          }
         } else {
           // 오류 응답 처리
           console.error('POST 요청이 실패했습니다.');

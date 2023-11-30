@@ -54,6 +54,7 @@ const checkJoin = (name:string,password:string) => {
         console.error("비밀번호는 8자리 이상, 영문, 숫자, 특수문자를 포함하여 입력해주세요.")
         return false;
       }
+    return true 
 }
   const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
     

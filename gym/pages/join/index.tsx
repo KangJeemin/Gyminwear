@@ -32,11 +32,13 @@ const defaultTheme = createTheme();
 export default function SignUp() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const data = new FormData(event.currentTarget);
     console.log({
-      nickname: data.get('nickname'),
       email: data.get('email'),
+      name: data.get('name'),
       password: data.get('password'),
+      nickname: data.get('nickname'),
     });
   };
 
@@ -104,7 +106,7 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <FormControlLabel
                     control={<Checkbox value="allowExtraEmails" color="primary" />}
-                    label={<span style={{ color: 'black' }}>회원가입을 위한 정보제공에 동의하신다면 체크하여주세요.</span>}
+                    label={<Box sx={{ color: 'black' }}>짐인웨어에대한 공지사항 및 기타알림(행사)을 이메일로 받아보시려면 체크하여주세요!</Box>}
                 />
               </Grid>
             </Grid>

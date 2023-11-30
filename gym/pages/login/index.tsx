@@ -39,7 +39,7 @@ export default function SignIn() {
       email,
       password,
     }
-    
+
     try{
       const response = await fetch('api/login', {
         method: 'POST',
@@ -54,8 +54,12 @@ export default function SignIn() {
         // 응답 결과가 true일 경우 회원가입 성공 했다는 알림과 함께 로그인 페이지로 이동.
         if(responseData.result){
           // router.push('/login');
-          alert('회원가입에 성공했습니다.')
+          alert('로그인에 성공했습니다.')
         }
+        else{
+          alert('로그인에 실패했습니다.')
+        }
+        
       } else {
         // 오류 응답 처리
         console.error('POST 요청이 실패했습니다.');

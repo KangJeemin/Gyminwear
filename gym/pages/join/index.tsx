@@ -66,19 +66,24 @@ const checkJoin = (name:string,password:string,nickname:string) => {
     return true 
 }
   const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
-    
+   
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const { email, name, password, nickname } = Object.fromEntries(data.entries());
-    checkJoin(name.toString(),password.toString(),nickname.toString())
-    console.log(checkJoin(name.toString(),password.toString(),nickname.toString()))
-
     const userInfo = {
         email,
         name,
         password,
         nickname
+    }    
+    const sendUserinfo = checkJoin(name.toString(),password.toString(),nickname.toString())
+
+    if(sendUserinfo===true){
+        console.log(userInfo)
     }
+    // console.log(checkJoin(name.toString(),password.toString(),nickname.toString()))
+
+    
   };
 
   return (

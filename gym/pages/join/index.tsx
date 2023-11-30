@@ -60,8 +60,8 @@ const checkJoin = (name:string,password:string) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const { email, name, password, nickname } = Object.fromEntries(data.entries());
-    checkJoin(name,password)
-    console.log(checkJoin(name,password))
+    checkJoin(name.toString(),password.toString())
+    console.log(checkJoin(name.toString(),password.toString()))
 
     const userInfo = {
         email,

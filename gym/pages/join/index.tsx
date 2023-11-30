@@ -56,9 +56,7 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            <h5 style={{
-                color:"black"
-                }}>회원가입</h5>
+          <span style={{ color: 'black' }}>회원가입</span>
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -105,13 +103,9 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label='ss'
+                    control={<Checkbox value="allowExtraEmails" color="primary" />}
+                    label={<span style={{ color: 'black' }}>회원가입을 위한 정보제공에 동의하신다면 체크하여주세요.</span>}
                 />
-                <p style={{
-                color:"blue",
-                display:"inline"
-                }}>회원가입을 위한 개인정보 활용에 동의를 하신다면 체크 하여주세요.</p>
               </Grid>
             </Grid>
             <Button

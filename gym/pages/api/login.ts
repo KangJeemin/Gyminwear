@@ -9,27 +9,27 @@ type LoginInfo = {
 export default async function Join(req : NextApiRequest, res : NextApiResponse){
     if (req.method === 'POST') {
         const requestData:LoginInfo = req.body;
-
+        
         // 현재 비밀번호와 데이터베이스에 저장되어 있는 salt 값으로 비밀번호 조회하기
         const inputEmail = requestData.email;
         const inputPassword = requestData.password;
         let salt:string = "";
         let DbPassword: string = "";
-        const hashPassword =  crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
+        
         
 
         // db.query(`SELECT * FROM top WHERE brandname LIKE '%${searchstring}%' OR productname LIKE '%${searchstring}%' LIMIT ${limit}`,
           try{
             db.query(
-                `SELECT password,salt FROM user WHERE email = '${inputEmail}'; `
-            ,(error:any,result:any)=>{
+                `SELECT password,salt FROM user WHERE email='${inputEmail}'; `
+            ,async(error:any,result:any)=>{
                 if(error){
                     console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")
                     return false
                 } else{
-                    
-                    DbPassword=result.password;
-                    salt=result.salt;
+                    console.log(result)
+                    DbPassword=result[0].password;
+                    salt=result[0].salt;
                     // 모든 쿼리가 완료되면 데이터베이스 연결 종료
                     db.end();
                 }
@@ -39,12 +39,14 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
             console.error("데이터 베이스에 유저 정보 저장 중 에러 발생")
             res.status(500).json({ error: '서버 오류' });  
           }
-        
+        const hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");        
         if(DbPassword===hashPassword){
           res.status(200).json({ result:true });  
         }
         else{
-          res.status(404).json({ result:false });  
+          res.status(404).json({ result:false }); 
+          // res.status(200).json({ result:true });  
+
         }
         
 

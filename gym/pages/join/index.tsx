@@ -46,7 +46,8 @@ const checkJoin = (name:string,password:string) => {
     }
     //바말번호 확인 
     const validatePassword = () => {
-        const passwordRegex =/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).+$/;
+
         return password.length >= 8 && passwordRegex.test(password);
       };
       if (!validatePassword()) {
@@ -142,7 +143,6 @@ const checkJoin = (name:string,password:string) => {
               type="submit"
               fullWidth
               variant="contained"
-              onClick={checkJoin}
               sx={{ mt: 3, mb: 2 }}
             >
               회원가입

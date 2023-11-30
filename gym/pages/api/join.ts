@@ -1,13 +1,19 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 const db = require('@/lib/connectMysql');
 const crypto = require('crypto');
-
+type userInfo = {
+    email:string,
+    name:string,
+    password:string,
+    nickname:String
+}
 
 export default async function Join(req : NextApiRequest, res : NextApiResponse){
     if (req.method === 'POST') {
-        
-          // 요청 데이터 가져오기
-          const requestData = req.body;
+        const requestData = req.body;
+        let inputPassword = requestData.password;
+        let salt = Math.round((new Date().valueOf() * Math.random())) + "";
+        let hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");
 
         
           try{

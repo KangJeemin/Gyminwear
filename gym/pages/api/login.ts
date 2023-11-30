@@ -15,7 +15,7 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
         const inputPassword = await requestData.password;
         let salt:string = "";
         let DbPassword: string = "";
-        const hashPassword :string = "";
+        let hashPassword :string = "";
            
           try{
             db.query(
@@ -28,7 +28,7 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
                     console.log(result)
                     DbPassword= await result[0].password;
                     salt= await result[0].salt;
-                    crypto.createHash("sha512").update(inputPassword + salt).digest("hex");     
+                    hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");     
                     console.log("hash=",hashPassword)
                     //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 똑같으면 프론트에 true를 줌
                     if(DbPassword==hashPassword){

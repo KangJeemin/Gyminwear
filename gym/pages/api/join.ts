@@ -12,7 +12,7 @@ type userInfo = {
 export default async function Join(req : NextApiRequest, res : NextApiResponse){
     if (req.method === 'POST') {
         const requestData:userInfo = req.body;
-        
+
         // 오늘 날짜의 밀리초와 랜덤 값을 곱하여 반올림하여 정수를 만듬, 그 후 문자열로 변환
         const inputPassword = requestData.password;
         const salt =  Math.round((new Date().valueOf() * Math.random())) + "";
@@ -27,6 +27,8 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
                     return false
                 } else{
                     res.status(200).json({ result: true });  
+                    // 모든 쿼리가 완료되면 데이터베이스 연결 종료
+                    db.end();
                 }
             })
           }

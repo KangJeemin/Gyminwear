@@ -23,6 +23,7 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
             ,async(error:any,result:any)=>{
                 if(error){
                     console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")
+                    res.status(200).json({ result:false }); 
                     return false
                 } else{
                     DbPassword= await result[0].password;
@@ -36,7 +37,10 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
                     }
                     //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 다르면 프론트에 false를 줌 (로그인 실패)
                     else{
-                      res.status(200).json({ result:false }); 
+                      res.status(200).json({ 
+                        result:false,
+                        content:"비밀번호 불일치"
+                       }); 
                       hashPassword=''; 
                     }
                 }

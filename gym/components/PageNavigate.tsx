@@ -40,13 +40,13 @@ export default function AutoGrid() {
                 <Box gridColumn="span 4">
                  <Item><Link href='https://www.freedomdom.kr/'>프리덤에슬레틱</Link></Item>
                 </Box>
-                <Box gridColumn="span 2">
+                <Box gridColumn="span 4">
                  <Item><Link href='https://overwhelm.co.kr/'>압도</Link></Item>
                 </Box>
                 <Box gridColumn="span 4">
                  <Item><Link href='https://firstwear.kr/'>퍼스트웨어</Link></Item>
                 </Box>
-                <Box gridColumn="span 2">
+                <Box gridColumn="span 4">
                  <Item><Link href='https://www.rbwapparel.com/'>RBW</Link></Item>
                 </Box>
                 <Box gridColumn="span 4">
@@ -88,13 +88,13 @@ export default function AutoGrid() {
                 <Box gridColumn="span 4">
                  <Item><Link href='https://smartstore.naver.com/actualize'>액츄얼라이즈</Link></Item>
                 </Box>
-                <Box gridColumn="span 3">
+                <Box gridColumn="span 4">
                  <Item><Link href='https://the-rank.co.kr/'>RANK</Link></Item>
                 </Box>
-                <Box gridColumn="span 2">
+                <Box gridColumn="span 4">
                  <Item><Link href='https://smartstore.naver.com/go_look'>고룩</Link></Item>
                 </Box>
-                <Box gridColumn="span 3">
+                <Box gridColumn="span 4">
                  <Item><Link href='https://smartstore.naver.com/universal_fit'>UNF</Link></Item>
                 </Box>
                 <Box gridColumn="span 4">

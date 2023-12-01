@@ -34,10 +34,13 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
                     //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 똑같으면 프론트에 true를 줌
                     if(DbPassword==hashPassword){
                       console.log('성공');
-                        res.status(200).json({ result:true });  
+                        res.status(200).json({ result:true }); 
+                        hashPassword=''; 
                     }
                     else{
                       console.log('실패');
+                      res.status(200).json({ result:false }); 
+                      hashPassword=''; 
                     }
                 }
             })

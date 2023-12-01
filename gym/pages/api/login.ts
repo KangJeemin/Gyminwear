@@ -25,20 +25,17 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
                     console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")
                     return false
                 } else{
-                    console.log(result)
                     DbPassword= await result[0].password;
                     salt= await result[0].salt;
                     hashPassword = crypto.createHash("sha512").update(inputPassword + salt).digest("hex");     
-                    console.log("hash=",hashPassword)
                     
-                    //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 똑같으면 프론트에 true를 줌
+                    //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 똑같으면 프론트에 true를 줌 (로그인 성공)
                     if(DbPassword==hashPassword){
-                      console.log('성공');
-                        res.status(200).json({ result:true }); 
-                        hashPassword=''; 
+                      res.status(200).json({ result:true }); 
+                      hashPassword=''; 
                     }
+                    //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 다르면 프론트에 false를 줌 (로그인 실패)
                     else{
-                      console.log('실패');
                       res.status(200).json({ result:false }); 
                       hashPassword=''; 
                     }

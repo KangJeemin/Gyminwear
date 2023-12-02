@@ -11,9 +11,7 @@ type LoginInfo = {
     password:string,
 }
 async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
-  const { username } = await req.body
   if (req.method === 'POST') {
-    const requestData:LoginInfo = req.body;
     const {email,password}:LoginInfo = req.body;
     
     // 현재 비밀번호와 데이터베이스에 저장되어 있는 salt 값으로 비밀번호 조회하기
@@ -33,12 +31,11 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
                 //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 똑같으면 프론트에 true를 줌 (로그인 성공)
                 if(DbPassword==hashPassword){
                   req.session.user = {
-                    useremail:email,
-                    nickname:result[0].nickname,
-                    isLoggedin:true
+                  useremail:email,
+                  nickname:result[0].nickname,
+                  isLoggedin:true,
                 };
-                await req.session.save();
-    
+                  await req.session.save();
                   res.status(200).json({ result:true }); 
                   hashPassword=''; 
                 }
@@ -58,15 +55,6 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
   } else {
     res.status(405).json({ error: '허용되지 않는 메서드' });
   }  
-
-  try {
-    const user = { isLoggedIn: true, email, name } as User
-    req.session.user = user
-    await req.session.save()
-    res.json(user)
-  } catch (error) {
-    res.status(500).json({ message: (error as Error).message })
-  }
 }
 
 export default withIronSessionApiRoute(loginRoute, sessionOptions)

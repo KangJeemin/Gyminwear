@@ -1,5 +1,6 @@
 // this file is a wrapper with defaults to be used in both API routes and `getServerSideProps` functions
 import type { IronSessionOptions } from 'iron-session'
+import type { User} from '@/interface/user'
 
 export const sessionOptions: IronSessionOptions = {
   password: process.env.NEXT_PUBLIC_IRON_SESSION_PASSWORD as string,

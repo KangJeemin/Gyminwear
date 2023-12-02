@@ -1,4 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type {User} from '@/interface/user'
+import { withIronSessionApiRoute } from 'iron-session/next'
+import { NextApiRequest, NextApiResponse } from 'next';
+
 
 const db = require('@/lib/connectMysql');
 const crypto = require('crypto');
@@ -12,11 +15,7 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
   const { username } = await req.body
 
   try {
-    const {
-      data: { login, avatar_url },
-    } = await octokit.rest.users.getByUsername({ username })
-
-    const user = { isLoggedIn: true, login, avatarUrl: avatar_url } as User
+    const user = { isLoggedIn: true, email, name } as User
     req.session.user = user
     await req.session.save()
     res.json(user)

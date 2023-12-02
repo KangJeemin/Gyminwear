@@ -19,7 +19,7 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
     // 현재 비밀번호와 데이터베이스에 저장되어 있는 salt 값으로 비밀번호 조회하기
       try{
         db.query(
-            `SELECT password,salt FROM user WHERE email='${email}'; `
+            `SELECT password,salt,nickname FROM user WHERE email='${email}'; `
         ,async(error:any,result:any)=>{
             if(error){
                 console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")
@@ -32,6 +32,13 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
                 
                 //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 똑같으면 프론트에 true를 줌 (로그인 성공)
                 if(DbPassword==hashPassword){
+                  req.session.user = {
+                    useremail:email,
+                    nickname:result[0].nickname,
+                    isLoggedin:true
+                };
+                await req.session.save();
+    
                   res.status(200).json({ result:true }); 
                   hashPassword=''; 
                 }

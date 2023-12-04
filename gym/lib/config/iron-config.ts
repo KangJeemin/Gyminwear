@@ -1,19 +1,25 @@
-// this file is a wrapper with defaults to be used in both API routes and `getServerSideProps` functions
-import type { IronSessionOptions } from 'iron-session'
-import type { User} from '@/interface/user'
+import { SessionOptions } from "iron-session";
 
-export const sessionOptions: IronSessionOptions = {
-  password: process.env.NEXT_PUBLIC_IRON_SESSION_PASSWORD as string,
-  cookieName: 'iron-session/examples/next.js',
-  // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
-  // cookieOptions: {
-  //   secure: process.env.NODE_ENV === 'production',
-  // },
+export interface SessionData {
+  username: string;
+  isLoggedIn: boolean;
 }
 
-// This is where we specify the typings of req.session.*
-declare module 'iron-session' {
-  interface IronSessionData {
-    user?: User
-  }
+export const defaultSession: SessionData = {
+  username: "",
+  isLoggedIn: false,
+};
+
+export const sessionOptions: SessionOptions = {
+  password: process.env.NEXT_PUBLIC_IRON_SESSION_PASSWORD as string,
+  cookieName: 'iron-session/examples/next.js',
+  cookieOptions: {
+    // secure only works in `https` environments
+    // if your localhost is not on `https`, then use: `secure: process.env.NODE_ENV === "production"`
+    secure: true,
+  },
+};
+
+export function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }

@@ -1,4 +1,3 @@
-import type {User} from '@/interface/user'
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getIronSession } from "iron-session";
 import {

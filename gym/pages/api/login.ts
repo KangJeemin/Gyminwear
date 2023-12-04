@@ -43,18 +43,19 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
                   session.isLoggedIn = true;
                   session.username = email;
                   await session.save();
-                  // simulate looking up the user in db
-                  await sleep(250);
+                  
                   res.status(200).json({ result:true }); 
-                  return res.json(session);
                   hashPassword=''; 
+                  console.log('session=',session)
+                  return res.json(session);
+                  
                 }
                 //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 다르면 프론트에 false를 줌 (로그인 실패)
                 else{
                   console.error("비밀번호 불일치")
-                  return res.json(defaultSession);
                   res.status(200).json({result:false}); 
                   hashPassword=''; 
+                  return res.json(defaultSession);
                 }
             }
         })

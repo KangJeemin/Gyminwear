@@ -2,6 +2,7 @@ import { withIronSessionApiRoute } from 'iron-session/next'
 import { sessionOptions } from '@/lib/config/iron-config'
 import { NextApiRequest, NextApiResponse } from 'next'
 
+
 export type User = {
   isLoggedIn: boolean
   login: string

@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { SessionData, defaultSession } from "@/lib/config/iron-config";
 import useSWRMutation from "swr/mutation";
 
-const sessionApiRoute = "/api/session";
+const sessionApiRoute = "/api/login";
 
 async function fetchJson<JSON = unknown>(
   input: RequestInfo,

@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import useSession from '@/lib/useSession';
 
 function Copyright(props: any) {
   return (
@@ -30,6 +31,15 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  
+  const {session, isLoading} =useSession();
+  React.useEffect(()=>{
+    if (!isLoading && !session.isLoggedIn) {
+      console.log("하이여")
+    }
+    }, [isLoading, session.isLoggedIn,]);
+  
+  
   const handleSubmit  = async(event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);

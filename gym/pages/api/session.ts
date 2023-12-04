@@ -5,7 +5,7 @@ import {
   sessionOptions,
   sleep,
   SessionData,
-} from "../../../pages-components/pages-router-api-route-swr/lib";
+} from "@/lib/config/iron-config";
 
 // login
 export default async function handler(

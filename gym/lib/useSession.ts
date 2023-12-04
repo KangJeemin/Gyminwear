@@ -1,8 +1,8 @@
 import useSWR from "swr";
-import { SessionData, defaultSession } from "./lib";
+import { SessionData, defaultSession } from "@/lib/config/iron-config";
 import useSWRMutation from "swr/mutation";
 
-const sessionApiRoute = "/api/pages-router-api-route-swr/session";
+const sessionApiRoute = "/api/session";
 
 async function fetchJson<JSON = unknown>(
   input: RequestInfo,

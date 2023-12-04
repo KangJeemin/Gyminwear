@@ -1,7 +1,13 @@
 import type {User} from '@/interface/user'
-import { withIronSessionApiRoute } from 'iron-session/next'
 import { NextApiRequest, NextApiResponse } from 'next';
-import { sessionOptions } from '@/lib/config/iron-config'
+import { getIronSession } from "iron-session";
+import {
+  defaultSession,
+  sessionOptions,
+  sleep,
+  SessionData,
+} from "@/lib/config/iron-config";
+
 const db = require('@/lib/connectMysql');
 const crypto = require('crypto');
 
@@ -10,7 +16,12 @@ type LoginInfo = {
     email:string,
     password:string,
 }
-async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
+export default async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
+  const session = await getIronSession<SessionData>(
+    req,
+    res,
+    sessionOptions,
+  );
   if (req.method === 'POST') {
     const {email,password}:LoginInfo = req.body;
     
@@ -30,18 +41,19 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
                 
                 //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 똑같으면 프론트에 true를 줌 (로그인 성공)
                 if(DbPassword==hashPassword){
-                  req.session.user = {
-                  useremail:email,
-                  nickname:result[0].nickname,
-                  isLoggedin:true,
-                };
-                  await req.session.save();
-                  res.status(200).json({ result:true }); 
+                  session.isLoggedIn = true;
+                  session.username = email;
+                  await session.save();
+                  // simulate looking up the user in db
+                  await sleep(250);
+                  return res.json(session);
+                  // res.status(200).json({ result:true }); 
                   hashPassword=''; 
                 }
                 //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 다르면 프론트에 false를 줌 (로그인 실패)
                 else{
                   console.error("비밀번호 불일치")
+                  return res.json(defaultSession);
                   res.status(200).json({result:false}); 
                   hashPassword=''; 
                 }
@@ -57,6 +69,34 @@ async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
   }  
 }
 
-export default withIronSessionApiRoute(loginRoute, sessionOptions)
+
     
   
+
+
+// login
+
+  
+
+  // if (request.method === "POST") {
+  //   const { username = "No username" } = request.body;
+
+
+    
+
+    
+  // } else if (request.method === "GET") {
+  //   // simulate looking up the user in db
+  //   await sleep(250);
+
+  //   if (session.isLoggedIn !== true) {
+  //   }
+
+  //   return response.json(session);
+  // } else if (request.method === "DELETE") {
+  //   session.destroy();
+
+  //   return response.json(defaultSession);
+  // }
+
+  // return response.status(405).end(`Method ${request.method} Not Allowed`);

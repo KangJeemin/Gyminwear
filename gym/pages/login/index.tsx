@@ -34,8 +34,9 @@ export default function SignIn() {
   
   const {session, isLoading,login} =useSession();
   React.useEffect(()=>{
-    if (!isLoading && !session.isLoggedIn) {
-      console.log("하이여")
+    if (session.isLoggedIn) {
+      console.log("로그인됨")
+      
     }
     }, [isLoading, session.isLoggedIn,]);
   

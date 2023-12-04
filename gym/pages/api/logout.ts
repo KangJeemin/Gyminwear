@@ -11,9 +11,9 @@ export default async function logout(req: NextApiRequest, res: NextApiResponse) 
         res,
         sessionOptions,
       );
-        session.destroy();
         session.isLoggedIn=false;
         session.username=""
+        session.destroy();
         console.log("쿠기파괴")
         return res.json(defaultSession);
 }

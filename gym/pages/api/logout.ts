@@ -11,9 +11,8 @@ export default async function logout(req: NextApiRequest, res: NextApiResponse) 
         res,
         sessionOptions,
       );
-    if (req.method === "DELETE") {
+  
         session.destroy();
     
         return res.json(defaultSession);
-}
 }

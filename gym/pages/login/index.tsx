@@ -32,7 +32,7 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
   
-  const {session, isLoading} =useSession();
+  const {session, isLoading,login} =useSession();
   React.useEffect(()=>{
     if (!isLoading && !session.isLoggedIn) {
       console.log("하이여")
@@ -41,6 +41,7 @@ export default function SignIn() {
   
   
   const handleSubmit  = async(event: React.FormEvent<HTMLFormElement>) => {
+    
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     

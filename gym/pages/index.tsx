@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Header from '@/components/header';
 import PageNavigate from '@/components/PageNavigate';
 import ResponsiveAppBar from '@/components/appbar';
+import Miniboard from '@/components/miniboard'
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getIronSession } from "iron-session";
 import {
@@ -22,6 +23,8 @@ export default function index() {
       </Head>
       <ResponsiveAppBar />
       <PageNavigate />
+      <Miniboard/>
+
     </>
   );
 }

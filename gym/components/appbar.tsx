@@ -12,13 +12,6 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import useSession from '@/lib/useSession'
-import { NextApiRequest, NextApiResponse } from 'next';
-import { getIronSession } from "iron-session";
-import {
-  sessionOptions,
-  SessionData,
-} from "@/lib/config/iron-config";
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settingsLoggedIn = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -26,19 +19,10 @@ const settingsLoggedOut = ['Login'];
 
 
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar(props:any) {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-  
-  const getsession = async (req: NextApiRequest, res: NextApiResponse) => {
-    const session = await getIronSession<SessionData>(
-    req,
-    res,
-    sessionOptions,
-  );
-  return session;
-  }
-  let value= getsession(req,res)
+
   
   
 
@@ -171,7 +155,7 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-            {sessionSt === true ? (
+            {props.isLoggedIn === true ? (
             <>
               {settingsLoggedIn.map((settingsLoggedIn) => (
                 <MenuItem key={settingsLoggedIn} onClick={handleCloseUserMenu}>

@@ -11,6 +11,7 @@ import {
   SessionData,
   sessionOptions,
 } from "@/lib/config/iron-config";
+import session from '@/pages/api/session'
 
 export default function index(session:any) {
   return (
@@ -23,14 +24,19 @@ export default function index(session:any) {
     </>
   );
 }
-
-export async function getServerSideProps(req: NextApiRequest, res: NextApiResponse) {
-  const session = await getIronSession<SessionData>(
-    req,
-    res,
-    sessionOptions,
-  );
+// export const getStaticProps = async () => {
+//   const getsession = await session();
+//    return getsession;
+   
+   
+// };
+// export async function getServerSideProps(req: NextApiRequest, res: NextApiResponse) {
+//   const session = await getIronSession<SessionData>(
+//     req,
+//     res,
+//     sessionOptions,
+//   );
   
   
-  return session
-}
+//   return session
+// }

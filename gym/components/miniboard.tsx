@@ -2,6 +2,7 @@ import * as React from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import styles from '@/styles/styles.module.css';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 export default function MiniBoard() {
   return (
@@ -30,11 +31,16 @@ export default function MiniBoard() {
             <Box sx={{
               width:"100%",
               height:{xs:"37.5px",md:"75px"},
-              backgroundColor:"blue"
-            }}>BodyBox
-              {/* <Box id={styles.miniboardNickName}>미니보드 바로가기</Box> */}
-              {/* <Box id={styles.miniboardHeart}>미니보드 바로가기</Box> */}
-              {/* <Box id={styles.miniboardComment}>미니보드 바로가기</Box> */}
+              backgrou0ndColor:"blue",
+              display:"flex",
+            }}>
+              <Box sx={{}}>닉네임</Box>
+              <Box sx={{
+                background:"red"
+              }}><FavoriteBorderIcon/></Box>
+              <Box sx={{
+                background:"purple"
+              }}>댓글</Box>
             </Box>
           </Box>
           <Box sx={{

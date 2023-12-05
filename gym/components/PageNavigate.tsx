@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import styles from '@/styles/styles.module.css'
+import Container from '@mui/material/Container';
 import Link from 'next/link'
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -16,17 +17,22 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function AutoGrid() {
   return (
-    <Box style={{
-        display:"flex",
-        width:"100%",
-        height:"100%"
-    }}>
-        <Box className={styles.main_Margin}></Box>
-        <Box style={{
-            width:"100%",
-            height:"100%"
-        }}>
-            <Box className={styles.Text1}>짐웨어 바로가기</Box>
+    // <Box style={{
+    //     display:"flex",
+    //     width:"100%",
+    //     height:"100%"
+    // }}>
+    //     <Box className={styles.main_Margin}></Box>
+    //     <Box style={{
+    //         width:"100%",
+    //         height:"100%"
+    //     }}>
+            
+    //     </Box>
+    //     <Box className={styles.main_Margin}></Box>
+    // </Box>
+    <Container maxWidth="xl">
+<Box className={styles.Text1}>짐웨어 바로가기</Box>
             <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
                 <Box gridColumn="span 4">
                  <Item><Link href='https://borntowin.kr/'>본투윈</Link></Item>
@@ -119,8 +125,6 @@ export default function AutoGrid() {
                  <Item><Link href='https://smartstore.naver.com/addtobag'>하드지머</Link></Item>
                 </Box>
             </Box>
-        </Box>
-        <Box className={styles.main_Margin}></Box>
-    </Box>
+    </Container>
   );
 }

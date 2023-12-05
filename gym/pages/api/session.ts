@@ -40,7 +40,6 @@ export default async function handler(
     return response.json(session);
   } else if (request.method === "DELETE") {
     session.destroy();
-
     return response.json(defaultSession);
   }
 

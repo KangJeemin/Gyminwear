@@ -24,14 +24,15 @@ function ResponsiveAppBar() {
   const {session, isLoading,login} =useSession();
 
   React.useEffect(()=>{
-    if (!isLoading && !session.isLoggedIn) {
-      console.log("로그아웃")
+    if (session.isLoggedIn) {
+      console.log("로그인 되어있음")
     }
     else{
-      console.log("로그인")
+      console.log("로그아웃 되어있음")
     }
    
   }, [isLoading, session.isLoggedIn,]);
+
   if (isLoading) {
     return <p className="text-lg">Loading...</p>;
   }

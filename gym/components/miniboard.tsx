@@ -17,19 +17,19 @@ export default function MiniBoard() {
           display:"flex"
         }}>
           <Box sx={{
-            width:"80%",
+            width:{ xs: '100%', md: '80%' },
             backgroundColor:"yellow",
             display:"flex",
             flexDirection:"column"
           }}>
             <Box sx={{
               width:"100%",
-              height:"75px",
+              height:{xs:"37.5px",md:"75px"},
               backgroundColor:"red"
             }}>HeaderBox</Box>
             <Box sx={{
               width:"100%",
-              height:"75px",
+              height:{xs:"37.5px",md:"75px"},
               backgroundColor:"blue"
             }}>BodyBox
               {/* <Box id={styles.miniboardNickName}>미니보드 바로가기</Box> */}

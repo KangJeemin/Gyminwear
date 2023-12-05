@@ -12,18 +12,20 @@ import {
   sessionOptions,
 } from "@/lib/config/iron-config";
 import session from '@/pages/api/session'
+import { getCookie, getCookies } from 'cookies-next'
 
-export default function index(session:any) {
+export default function index() {
   return (
     <>
       <Head>
       <meta name="naver-site-verification" content="ed45f0e362ab1bf63a17000be1426ad91060cd44" />
       </Head>
-      <ResponsiveAppBar props={session}/>
+      <ResponsiveAppBar />
       <PageNavigate />
     </>
   );
 }
+
 // export const getStaticProps = async () => {
 //   const getsession = await session();
 //    return getsession;

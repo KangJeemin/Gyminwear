@@ -4,7 +4,7 @@ import useSWRMutation from "swr/mutation";
 
 const sessionApiRoute = "/api/login";
 
-async function fetchJson<JSON = unknown>(
+async function fetchJson<JSON>(
   input: RequestInfo,
   init?: RequestInit,
 ): Promise<JSON> {

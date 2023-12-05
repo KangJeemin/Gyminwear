@@ -25,20 +25,3 @@ export default function index() {
     </>
   );
 }
-
-// export const getStaticProps = async () => {
-//   const getsession = await session();
-//    return getsession;
-   
-   
-// };
-// export async function getServerSideProps(req: NextApiRequest, res: NextApiResponse) {
-//   const session = await getIronSession<SessionData>(
-//     req,
-//     res,
-//     sessionOptions,
-//   );
-  
-  
-//   return session
-// }

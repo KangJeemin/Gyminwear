@@ -18,7 +18,8 @@ export default async function handler(
         response,
         sessionOptions,
           );
-    resolve(session);    
+    resolve(session);   
+    reject() 
     })
   
     

@@ -12,14 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import {
-  setCookie,
-  getCookies,
-  getCookie,
-  deleteCookie,
-  hasCookie,
-} from 'cookies-next'
-
+import useSession from '@/lib/useSession';
 const pages = ['Products', 'Pricing', 'Blog'];
 const settingsLoggedIn = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const settingsLoggedOut = ['Login'];
@@ -30,8 +23,9 @@ function ResponsiveAppBar(props:any) {
   
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const {session}=useSession();
   React.useEffect(()=>{
-    console.log('fetch=',fetch('api/session'))
+    console.log(session)
   },[anchorElUser])
   
   

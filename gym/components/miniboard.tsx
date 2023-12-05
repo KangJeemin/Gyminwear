@@ -3,7 +3,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import styles from '@/styles/styles.module.css';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-
+import TextsmsOutlinedIcon from '@mui/icons-material/TextsmsOutlined';
 export default function MiniBoard() {
   return (
     <Container>
@@ -31,7 +31,7 @@ export default function MiniBoard() {
             <Box sx={{
               width:"100%",
               height:{xs:"37.5px",md:"75px"},
-              backgrou0ndColor:"blue",
+              backgroundColor:"blue",
               display:"flex",
             }}>
               <Box sx={{}}>닉네임</Box>
@@ -40,7 +40,7 @@ export default function MiniBoard() {
               }}><FavoriteBorderIcon/></Box>
               <Box sx={{
                 background:"purple"
-              }}>댓글</Box>
+              }}><TextsmsOutlinedIcon/></Box>
             </Box>
           </Box>
           <Box sx={{

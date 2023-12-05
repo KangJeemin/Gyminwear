@@ -18,7 +18,7 @@ export default function MiniBoard() {
           display:"flex"
         }}>
           <Box sx={{
-            width:{ xs: '100%', md: '80%' },
+            width:"80%",
             backgroundColor:"yellow",
             display:"flex",
             flexDirection:"column"

@@ -31,6 +31,7 @@ export default function AutoGrid() {
     //     </Box>
     //     <Box className={styles.main_Margin}></Box>
     // </Box>
+    <Container>
     <Container maxWidth="xl">
 <Box className={styles.Text1}>짐웨어 바로가기</Box>
             <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
@@ -125,6 +126,7 @@ export default function AutoGrid() {
                  <Item><Link href='https://smartstore.naver.com/addtobag'>하드지머</Link></Item>
                 </Box>
             </Box>
+    </Container>
     </Container>
   );
 }

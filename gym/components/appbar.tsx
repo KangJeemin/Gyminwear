@@ -13,26 +13,28 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import useSession from '@/lib/useSession';
+
 const pages = ['Products', 'Pricing', 'Blog'];
 const settingsLoggedIn = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const settingsLoggedOut = ['Login'];
 
-
-
 function ResponsiveAppBar() {
-  
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const {session, isLoading,login} =useSession();
-  
+
   React.useEffect(()=>{
-    if (session.isLoggedIn) {
-      console.log("로그인됨")
-      
+    if (!isLoading && !session.isLoggedIn) {
+      console.log("로그아웃")
     }
-    }, [isLoading, session.isLoggedIn,]);
-  
-  
+    else{
+      console.log("로그인")
+    }
+   
+  }, [isLoading, session.isLoggedIn,]);
+  if (isLoading) {
+    return <p className="text-lg">Loading...</p>;
+  }
   
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {

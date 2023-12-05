@@ -11,12 +11,16 @@ import {
 export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse,
-) {
-  const session = await getIronSession<SessionData>(
-    request,
-    response,
-    sessionOptions,
-  );
-    return session
+):Promise<SessionData> {
+    return new Promise (async (resolve,reject)=>{
+    const session = await getIronSession<SessionData>(
+        request,
+        response,
+        sessionOptions,
+          );
+    resolve(session);    
+    })
+  
+    
     
 }

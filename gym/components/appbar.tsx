@@ -31,7 +31,7 @@ function ResponsiveAppBar(props:any) {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   React.useEffect(()=>{
-    console.log(console.log(getCookies()))
+    console.log('fetch=',fetch('api/session'))
   },[anchorElUser])
   
   

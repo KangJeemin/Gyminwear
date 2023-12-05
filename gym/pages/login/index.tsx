@@ -61,11 +61,13 @@ export default function SignIn() {
         body: JSON.stringify(loginInfo),
       });
       if (response.ok) {
+        
         // 성공적인 응답 처리
         const responseData = await response.json();
         // 응답 결과가 true일 경우 회원가입 성공 했다는 알림과 함께 로그인 페이지로 이동.
         if(responseData.result){
           // router.push('/login');
+          console.log('res=',responseData)
           alert('로그인에 성공했습니다.')
         }
         else{
@@ -81,7 +83,6 @@ export default function SignIn() {
       // 네트워크 오류 등 예외 처리
       console.error('오류 발생:', error);
     }
-    console.log(loginInfo)
     
   };
 

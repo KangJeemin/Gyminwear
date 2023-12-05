@@ -19,14 +19,19 @@ const settingsLoggedOut = ['Login'];
 
 
 
-function ResponsiveAppBar(props:any) {
+function ResponsiveAppBar() {
   
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-  const {session}=useSession();
+  const {session, isLoading,login} =useSession();
+  
   React.useEffect(()=>{
-    console.log(session)
-  },[anchorElUser])
+    if (session.isLoggedIn) {
+      console.log("로그인됨")
+      
+    }
+    }, [isLoading, session.isLoggedIn,]);
+  
   
   
 
@@ -159,7 +164,7 @@ function ResponsiveAppBar(props:any) {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-            {props.isLoggedIn === true ? (
+            {session.isLoggedIn === true ? (
             <>
               {settingsLoggedIn.map((settingsLoggedIn) => (
                 <MenuItem key={settingsLoggedIn} onClick={handleCloseUserMenu}>

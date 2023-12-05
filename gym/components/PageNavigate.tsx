@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import styles from '@/styles/styles.module.css'
+import Container from '@mui/material/Container';
 import Link from 'next/link'
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -16,17 +17,23 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function AutoGrid() {
   return (
-    <Box style={{
-        display:"flex",
-        width:"100%",
-        height:"100%"
-    }}>
-        <Box className={styles.main_Margin}></Box>
-        <Box style={{
-            width:"100%",
-            height:"100%"
-        }}>
-            <Box className={styles.Text1}>짐웨어 바로가기</Box>
+    // <Box style={{
+    //     display:"flex",
+    //     width:"100%",
+    //     height:"100%"
+    // }}>
+    //     <Box className={styles.main_Margin}></Box>
+    //     <Box style={{
+    //         width:"100%",
+    //         height:"100%"
+    //     }}>
+            
+    //     </Box>
+    //     <Box className={styles.main_Margin}></Box>
+    // </Box>
+    <Container>
+    <Container maxWidth="xl">
+<Box className={styles.Text1}>짐웨어 바로가기</Box>
             <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
                 <Box gridColumn="span 4">
                  <Item><Link href='https://borntowin.kr/'>본투윈</Link></Item>
@@ -40,13 +47,13 @@ export default function AutoGrid() {
                 <Box gridColumn="span 4">
                  <Item><Link href='https://www.freedomdom.kr/'>프리덤에슬레틱</Link></Item>
                 </Box>
-                <Box gridColumn="span 2">
+                <Box gridColumn="span 4">
                  <Item><Link href='https://overwhelm.co.kr/'>압도</Link></Item>
                 </Box>
                 <Box gridColumn="span 4">
                  <Item><Link href='https://firstwear.kr/'>퍼스트웨어</Link></Item>
                 </Box>
-                <Box gridColumn="span 2">
+                <Box gridColumn="span 4">
                  <Item><Link href='https://www.rbwapparel.com/'>RBW</Link></Item>
                 </Box>
                 <Box gridColumn="span 4">
@@ -88,13 +95,13 @@ export default function AutoGrid() {
                 <Box gridColumn="span 4">
                  <Item><Link href='https://smartstore.naver.com/actualize'>액츄얼라이즈</Link></Item>
                 </Box>
-                <Box gridColumn="span 3">
+                <Box gridColumn="span 4">
                  <Item><Link href='https://the-rank.co.kr/'>RANK</Link></Item>
                 </Box>
-                <Box gridColumn="span 2">
+                <Box gridColumn="span 4">
                  <Item><Link href='https://smartstore.naver.com/go_look'>고룩</Link></Item>
                 </Box>
-                <Box gridColumn="span 3">
+                <Box gridColumn="span 4">
                  <Item><Link href='https://smartstore.naver.com/universal_fit'>UNF</Link></Item>
                 </Box>
                 <Box gridColumn="span 4">
@@ -119,8 +126,7 @@ export default function AutoGrid() {
                  <Item><Link href='https://smartstore.naver.com/addtobag'>하드지머</Link></Item>
                 </Box>
             </Box>
-        </Box>
-        <Box className={styles.main_Margin}></Box>
-    </Box>
+    </Container>
+    </Container>
   );
 }

@@ -10,3 +10,47 @@
     height: 100%;
        
 }
+.test1{
+    width: 100%;
+    color: black;
+}
+#miniboardMainContainer{
+    width: 500px;
+    height: 500px;
+}
+
+#miniboardTextContainer{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+}
+#miniboardImageBox{
+    width: 40%;
+    height: 100%;
+    background-color: chartreuse;
+}
+#miniboardHeaderBox{
+    width: 100%;
+    height: 50px;
+    background-color: red;
+}
+#miniboardBodyBox{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    background-color: blue;
+}
+#miniboardNickName{
+    width: 100%;
+    height: 1rem;
+    background-color: brown;
+}
+#miniboardHeart{
+
+}
+#miniboardComment{
+
+}

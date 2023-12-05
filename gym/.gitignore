@@ -39,3 +39,6 @@ public/sitemap.xml
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+#gyminwear_version1
+/ver1_files

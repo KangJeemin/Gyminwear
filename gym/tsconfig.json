@@ -18,6 +18,11 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "ver1-files/module/arrayLength.tx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "ver1_files/module/arrayLength.tx"
+  ],
   "exclude": ["node_modules"]
 }

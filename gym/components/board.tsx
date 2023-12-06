@@ -35,7 +35,14 @@ export default function board() {
           >
             {Array.from(Array(16)).map((_, index) => (
               <Grid xs={4} sm={4} md={4} key={index}>
-                <Box>1</Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                  }}
+                >
+                  <Box sx={{ order: { xs: 2, md: 1 } }}>1</Box>
+                  <Box sx={{ order: { xs: 1, md: 2 } }}>2</Box>
+                </Box>
               </Grid>
             ))}
           </Grid>

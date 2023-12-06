@@ -4,6 +4,7 @@ import PageNavigate from '@/components/PageNavigate';
 import ResponsiveAppBar from '@/components/appbar';
 import Miniboard from '@/components/miniboard'
 import useSession from '@/lib/useSession';
+import Pagedivide from '@/components/pagedivide';
 
 export default function Main() {
   const {session,isLoading}=useSession();
@@ -25,6 +26,7 @@ export default function Main() {
       </Head>
       <ResponsiveAppBar />
       <PageNavigate />
+      <Pagedivide/>
       <Miniboard/>
 
     </>

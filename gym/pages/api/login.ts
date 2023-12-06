@@ -6,7 +6,6 @@ import {
   sleep,
   SessionData,
 } from "@/lib/config/iron-config";
-
 const db = require('@/lib/connectMysql');
 const crypto = require('crypto');
 
@@ -47,6 +46,7 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
                   res.status(200).json({ result:true }); 
                   hashPassword=''; 
                   console.log('session=',session)
+                  //이넘은 어딜 반환한느거임?
                   return res.json(session);
                   
                 }

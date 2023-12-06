@@ -6,7 +6,7 @@ export interface SessionData {
 }
 
 export const defaultSession: SessionData = {
-  username: "",
+  username: "s",
   isLoggedIn: false,
 };
 

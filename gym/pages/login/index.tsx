@@ -46,12 +46,6 @@ export default function SignIn() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const username = data.get("email") as string;
-    
-    const { email, password} = Object.fromEntries(data.entries());
-    const loginInfo = {
-      email,
-      password,
-    }
     login(username, {
       optimisticData: {
         isLoggedIn: true,
@@ -62,6 +56,12 @@ export default function SignIn() {
         console.log('로그인 성공 후:', session);
       },
     });
+    const { email, password} = Object.fromEntries(data.entries());
+    const loginInfo = {
+      email,
+      password,
+    }
+   
   
     try{
       const response = await fetch('api/login', {
@@ -70,6 +70,7 @@ export default function SignIn() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(loginInfo),
+        
       });
       if (response.ok) {
         

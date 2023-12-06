@@ -30,7 +30,7 @@ export default function board() {
         <Box sx={{ flexGrow: 1 }}>
           <Grid
             container
-            spacing={{ xs: 2, md: 3 }}
+            spacing={{ xs: 1, xl: 2 }}
             columns={{ xs: 4, sm: 8, md: 16 }}
           >
             {Array.from(Array(16)).map((_, index) => (
@@ -39,15 +39,15 @@ export default function board() {
                   sx={{
                     display: "flex",
                     flexDirection: { xs: "row", xl: "column" },
-                    width: "500px",
-                    height: "300px",
+                    width: { xs: "350px", xl: "500px" },
+                    height: { xs: "100px", xl: "300px" },
                   }}
                 >
                   <Box
                     sx={{
                       order: { xs: 2, md: 1 },
-                      width: "50%",
-                      height: "50%",
+                      width: { xs: "20%", xl: "250px" },
+                      height: { xs: "100%", xl: "200px" },
                       backgroundColor: "green",
                     }}
                   >
@@ -56,8 +56,8 @@ export default function board() {
                   <Box
                     sx={{
                       order: { xs: 1, md: 2 },
-                      width: "50%",
-                      height: "50%",
+                      width: { xs: "80%", xl: "250px" },
+                      height: { xs: "100%", xl: "100px" },
                       backgroundColor: "red",
                     }}
                   >

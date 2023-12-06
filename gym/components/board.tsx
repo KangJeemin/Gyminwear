@@ -25,6 +25,7 @@ export default function board() {
             marginTop: "20px",
             fontWeight: "bold",
             borderBottom: 1,
+            marginBottom: "20px",
           }}
         >
           게시판

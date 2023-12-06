@@ -6,6 +6,8 @@ import styles from "@/styles/styles.module.css";
 import Image from "next/image";
 import gyminwearLogo from "@/public/image/gyminwearLogo.png";
 import { border, borderColor, color } from "@mui/system";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 export default function board() {
   return (
     <Container>
@@ -69,6 +71,18 @@ export default function board() {
           </Grid>
         </Box>
       </Container>
+
+      <Box
+        sx={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "cetner",
+        }}
+      >
+        <Stack spacing={10} sx={{ margin: "auto" }}>
+          <Pagination count={10} shape="rounded" />
+        </Stack>
+      </Box>
     </Container>
   );
 }

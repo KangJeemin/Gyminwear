@@ -45,6 +45,7 @@ export default function SignIn() {
     
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const username = data.get("email") as string;
     
     const { email, password} = Object.fromEntries(data.entries());
     const loginInfo = {
@@ -69,6 +70,13 @@ export default function SignIn() {
           // router.push('/login');
           console.log('res=',responseData)
           alert('로그인에 성공했습니다.')
+          login(username, {
+            optimisticData: {
+              isLoggedIn: true,
+              username,
+            },
+          });
+          console.log('sesson=',session);
         }
         else{
           alert('로그인에 실패했습니다.')

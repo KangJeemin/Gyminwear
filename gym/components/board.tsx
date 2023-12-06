@@ -1,6 +1,7 @@
 import * as React from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import Grid from "@mui/material/Unstable_Grid2";
 import styles from "@/styles/styles.module.css";
 import Image from "next/image";
 import gyminwearLogo from "@/public/image/gyminwearLogo.png";
@@ -25,6 +26,19 @@ export default function board() {
           }}
         >
           게시판
+        </Box>
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid
+            container
+            spacing={{ xs: 2, md: 3 }}
+            columns={{ xs: 4, sm: 8, md: 16 }}
+          >
+            {Array.from(Array(16)).map((_, index) => (
+              <Grid xs={4} sm={4} md={4} key={index}>
+                <Box>1</Box>
+              </Grid>
+            ))}
+          </Grid>
         </Box>
       </Container>
     </Container>

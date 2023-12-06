@@ -38,10 +38,31 @@ export default function board() {
                 <Box
                   sx={{
                     display: "flex",
+                    flexDirection: { xs: "row", xl: "column" },
+                    width: "500px",
+                    height: "300px",
                   }}
                 >
-                  <Box sx={{ order: { xs: 2, md: 1 } }}>1</Box>
-                  <Box sx={{ order: { xs: 1, md: 2 } }}>2</Box>
+                  <Box
+                    sx={{
+                      order: { xs: 2, md: 1 },
+                      width: "50%",
+                      height: "50%",
+                      backgroundColor: "green",
+                    }}
+                  >
+                    여기가 이미지 담겨야함
+                  </Box>
+                  <Box
+                    sx={{
+                      order: { xs: 1, md: 2 },
+                      width: "50%",
+                      height: "50%",
+                      backgroundColor: "red",
+                    }}
+                  >
+                    2
+                  </Box>
                 </Box>
               </Grid>
             ))}

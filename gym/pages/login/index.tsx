@@ -52,13 +52,17 @@ export default function SignIn() {
       email,
       password,
     }
-    alert('로그인에 성공했습니다.')
     login(username, {
       optimisticData: {
         isLoggedIn: true,
         username,
       },
+      onSuccess: (data, variables, context) => {
+        // 여기에 원하는 동작을 추가하세요
+        console.log('로그인 성공 후:', session);
+      },
     });
+  
     try{
       const response = await fetch('api/login', {
         method: 'POST',
@@ -74,7 +78,8 @@ export default function SignIn() {
         // 응답 결과가 true일 경우 회원가입 성공 했다는 알림과 함께 로그인 페이지로 이동.
         if(responseData.result){
           // router.push('/login');
-          console.log('res=',responseData)
+        alert('로그인에 성공했습니다.')
+
           
           console.log('sesson=',session);
         }

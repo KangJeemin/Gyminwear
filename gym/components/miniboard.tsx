@@ -68,6 +68,7 @@ export default function MiniBoard() {
                 }}
               ></Box>
               <Box sx={{}}>날짜</Box>
+
               <Box
                 sx={{
                   paddingLeft: { xs: "10px", md: "20px" },
@@ -76,6 +77,7 @@ export default function MiniBoard() {
                 <TextsmsOutlinedIcon />
               </Box>
               <Box sx={{}}>3</Box>
+              <Box sx={{}}>조회</Box>
             </Box>
           </Box>
           <Box

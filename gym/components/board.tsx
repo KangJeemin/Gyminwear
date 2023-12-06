@@ -64,7 +64,8 @@ export default function board() {
                       backgroundColor: "red",
                     }}
                   >
-                    2
+                    <Box>제목</Box>
+                    <Box>2</Box>
                   </Box>
                 </Box>
               </Grid>

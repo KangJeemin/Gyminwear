@@ -42,10 +42,10 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
                   session.isLoggedIn = true;
                   session.username = email;
                   await session.save();
-                  
+                  await sleep(250);
                   res.status(200).json({ result:true }); 
                   hashPassword=''; 
-                  console.log('session=',session)
+                  console.log('서버session=',session)
                   //이넘은 어딜 반환한느거임?
                   return res.json(session);
                   

@@ -183,7 +183,12 @@ function ResponsiveAppBar() {
                   {settingsLoggedIn.map((settingsLoggedIn) => (
                     <MenuItem
                       key={settingsLoggedIn}
-                      onClick={handleCloseUserMenu}
+                      onClick={() => {
+                        handleCloseUserMenu();
+                        router.push(
+                          settingsLoggedIn === "Logout" ? "/api/logout" : `/`
+                        );
+                      }}
                     >
                       <Typography textAlign="center">
                         {settingsLoggedIn}
@@ -196,7 +201,10 @@ function ResponsiveAppBar() {
                   {settingsLoggedOut.map((settingsLoggedOut) => (
                     <MenuItem
                       key={settingsLoggedOut}
-                      onClick={handleCloseUserMenu}
+                      onClick={() => {
+                        handleCloseUserMenu();
+                        router.push(`/login`);
+                      }}
                     >
                       <Typography textAlign="center">
                         {settingsLoggedOut}

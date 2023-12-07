@@ -50,6 +50,7 @@ export default function Quillwrapper(){
     return(
         <QuillWrapper  modules={modules} formats={formats} theme="snow"  placeholder="내용을 입력하세요." style={{
             width:"100%",
+            height:"300px"
         }}/>
     )
 }

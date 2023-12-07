@@ -39,7 +39,7 @@ export default function write() {
         글쓰기
       </Box>
       <QuillWrapper/>
-      <Box sx={{paddingTop:"20px",display:"flex"}}>
+      <Box sx={{paddingTop:"100px",display:"flex"}}>
       <Box sx={{width:{xl:"90%"}}}></Box>
       <Button
         component="label"

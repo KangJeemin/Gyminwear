@@ -110,7 +110,9 @@ function ResponsiveAppBar() {
                   <Typography
                     textAlign="center"
                     onClick={() => {
-                      router.push(page);
+                      router.push(
+                        page === "Home" ? "/" : `/${page.toLowerCase()}`
+                      );
                     }}
                   >
                     {page}

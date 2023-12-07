@@ -38,13 +38,24 @@ export default function write() {
       >
         글쓰기
       </Box>
-      <QuillWrapper/> 
+      <QuillWrapper/>
+      <Box sx={{paddingTop:"20px",display:"flex"}}>
+      <Box sx={{width:{xl:"90%"}}}></Box>
+      <Button
+        component="label"
+        variant="contained"
+      >
+        취소
+      </Button>
+      <Box sx={{width:{xs:"90%",xl:"5%"}}}></Box>
       <Button
         component="label"
         variant="contained"
       >
         저장
       </Button>
+      </Box>
+      
     </DoubleContainer>
   );
 }

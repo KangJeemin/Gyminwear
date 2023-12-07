@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import ReactQuill from 'react-quill'
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -32,6 +33,7 @@ export default function write() {
       >
         글쓰기
       </Box>
+      <ReactQuill/>
       <Button
         component="label"
         variant="contained"

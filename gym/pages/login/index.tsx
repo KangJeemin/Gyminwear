@@ -53,21 +53,21 @@ export default function SignIn() {
     const username = data.get("email") as string;
     console.log("login 함수 실행");
 
-    login(username, {
-      optimisticData: {
-        isLoggedIn: true,
-        username,
-      },
-      onSuccess: (data, variables, context) => {
-        // 여기에 원하는 동작을 추가하세요
-        console.log("로그인 성공 후:", session);
-      },
-    });
     const { email, password } = Object.fromEntries(data.entries());
     const loginInfo = {
       email,
       password,
     };
+    // login(email, {
+    //   optimisticData: {
+    //     isLoggedIn: true,
+    //     email,
+    //   },
+    //   onSuccess: (data, variables, context) => {
+    //     // 여기에 원하는 동작을 추가하세요
+    //     console.log("로그인 성공 후:", session);
+    //   },
+    // });
 
     try {
       const response = await fetch("api/login", {

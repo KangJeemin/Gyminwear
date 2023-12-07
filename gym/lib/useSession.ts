@@ -39,8 +39,9 @@ export default function useSession() {
     },
   );
 
+  //login함수는 useSWRMutation 훅으로부터 받은 trigger 메서드
   const { trigger: login } = useSWRMutation(sessionApiRoute, doLogin, {
-    // the login route already provides the updated information, no need to revalidate
+    // 로그인 후에 데이터를 가져오지 않음.
     revalidate: false,
   });
   const { trigger: logout } = useSWRMutation(sessionApiRoute, doLogout);

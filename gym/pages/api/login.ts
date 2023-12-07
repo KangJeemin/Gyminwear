@@ -39,14 +39,17 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
                 
                 //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 똑같으면 프론트에 true를 줌 (로그인 성공)
                 if(DbPassword==hashPassword){
+                  session.email = email;
                   session.isLoggedIn = true;
-                  session.username = email;
+                  session.nickname = result[0].nickname;
                   await session.save();
+                  
+                  // sleep으로 login 함수에 promise 던져주는듯
                   await sleep(250);
                   res.status(200).json({ result:true }); 
                   hashPassword=''; 
-                  console.log('서버session=',session)
-                  //이넘은 어딜 반환한느거임?
+                  console.log('서버session=',session);
+                  //이넘은 어딜 반환한느거임? A) Login 함수에 반환하는듯.
                   return res.json(session);
                   
                 }

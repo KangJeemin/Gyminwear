@@ -8,6 +8,7 @@ import gyminwearLogo from "@/public/image/gyminwearLogo.png";
 import { border, borderColor, color } from "@mui/system";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 export default function board() {
   return (
     <Container>
@@ -61,16 +62,64 @@ export default function board() {
                       order: { xs: 1, md: 2 },
                       width: { xs: "80%", xl: "250px" },
                       height: { xs: "100%", xl: "100px" },
+                      paddingTop: { xl: "10px" },
+                      paddingLeft: { xl: "10px" },
                       backgroundColor: "red",
                     }}
                   >
-                    <Box>제목</Box>
-                    <Box>2</Box>
+                    <Box
+                      sx={{
+                        width: "100%",
+                        height: "35px",
+                      }}
+                    >
+                      제목
+                    </Box>
+                    <Box
+                      sx={{
+                        width: "100%",
+                        height: "30px",
+                      }}
+                    >
+                      작성자
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: "50%",
+                          height: "20px",
+                        }}
+                      >
+                        날짜
+                      </Box>
+                      <Box
+                        sx={{
+                          width: "50%",
+                          height: "20px",
+                        }}
+                      >
+                        조회수
+                      </Box>
+                    </Box>
                   </Box>
                 </Box>
               </Grid>
             ))}
           </Grid>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            paddingTop: "20px",
+            paddingBottom: "20px",
+          }}
+        >
+          <Button variant="outlined">글쓰기</Button>
         </Box>
       </Container>
 

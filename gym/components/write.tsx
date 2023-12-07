@@ -21,12 +21,7 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 export default function write() {
-  const [isOpen, setOpen] = React.useState(false);
-  let ReactQuill = isOpen && typeof window === 'object' ? require('react-quill') : () => false;
 
-  React.useEffect(() => {
-    setOpen(true);
-  }, []);
   return (
     <DoubleContainer>
       <Box

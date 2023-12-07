@@ -20,7 +20,7 @@ const pages = ["Home", "Board"];
 const settingsLoggedOut = ["Login"];
 
 function ResponsiveAppBar() {
-  const { session, isLoading, login } = useSession();
+  const { session, isLoading, login, logout1 } = useSession();
   const [settingsLoggedIn, setLoginSetting] = React.useState<string[]>();
   const router = useRouter();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -185,9 +185,7 @@ function ResponsiveAppBar() {
                       key={settingsLoggedIn}
                       onClick={() => {
                         handleCloseUserMenu();
-                        router.push(
-                          settingsLoggedIn === "Logout" ? "/api/logout" : `/`
-                        );
+                        logout1();
                       }}
                     >
                       <Typography textAlign="center">

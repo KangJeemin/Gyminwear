@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import useSession from "@/lib/useSession";
+import { useRouter } from "next/router";
 
 const pages = ["Home", "Board"];
 // const settingsLoggedIn = ["Profile", "Account", "Dashboard", "Logout"];
@@ -21,6 +22,7 @@ const settingsLoggedOut = ["Login"];
 function ResponsiveAppBar() {
   const { session, isLoading, login } = useSession();
   const [settingsLoggedIn, setLoginSetting] = React.useState<string[]>();
+  const router = useRouter();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -102,9 +104,17 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
+              {/* mobile pageNavigation */}
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography
+                    textAlign="center"
+                    onClick={() => {
+                      router.push(page);
+                    }}
+                  >
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -129,11 +139,14 @@ function ResponsiveAppBar() {
             {/* mobile 버전 버전의 대문글씨 */}
             Gyminwear
           </Typography>
+          {/* Pc PageNavigation */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => {
+                  router.push(page === "Home" ? "/" : `/${page.toLowerCase()}`);
+                }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}

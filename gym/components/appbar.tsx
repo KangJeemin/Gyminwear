@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import useSession from "@/lib/useSession";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = ["Home", "Board"];
 // const settingsLoggedIn = ["Profile", "Account", "Dashboard", "Logout"];
 const settingsLoggedOut = ["Login"];
 

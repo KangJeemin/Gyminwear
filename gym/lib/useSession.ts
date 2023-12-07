@@ -20,9 +20,16 @@ async function fetchJson<JSON>(
 function doLogin(url: string, { arg }: { arg: string }) {
   return fetchJson<SessionData>(url, {
     method: "POST",
-    body: JSON.stringify({ username: arg }),
+    body: JSON.stringify({ email: arg }),
   });
 }
+// 로그인 할때 여러개의 인자를 보내게될 경우
+// function doLogin(url: string, { arg }: { arg: { email: string, password: string } }) {
+//   return fetchJson<SessionData>(url, {
+//     method: "POST",
+//     body: JSON.stringify(arg),
+//   });
+// }
 
 function doLogout(url: string) {
   return fetchJson<SessionData>(url, {

@@ -37,6 +37,14 @@ function doLogout(url: string) {
   });
 }
 
+function logout1(url: string) {
+  fetch("api/logout", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
 export default function useSession() {
   const { data: session, isLoading } = useSWR(
     sessionApiRoute,
@@ -53,5 +61,5 @@ export default function useSession() {
   });
   const { trigger: logout } = useSWRMutation(sessionApiRoute, doLogout);
 
-  return { session, logout, login, isLoading };
+  return { session, logout, login, isLoading, logout1 };
 }

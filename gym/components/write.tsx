@@ -33,21 +33,17 @@ export default function write() {
           fontWeight: "bold",
           borderBottom: 1,
           marginBottom: "20px",
+          
         }}
       >
         글쓰기
       </Box>
-      <QuillWrapper
-     
-  /> 
-
+      <QuillWrapper/> 
       <Button
         component="label"
         variant="contained"
-        startIcon={<CloudUploadIcon />}
       >
-        Upload file
-        <VisuallyHiddenInput type="file" />
+        저장
       </Button>
     </DoubleContainer>
   );

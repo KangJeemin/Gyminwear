@@ -48,6 +48,9 @@ const QuillWrapper = dynamic(() => import('react-quill'), {
 
 export default function Quillwrapper(){
     return(
-        <QuillWrapper  modules={modules} formats={formats} theme="snow"/>
+        <QuillWrapper  modules={modules} formats={formats} theme="snow" style={{
+            width:"100%",
+            height:"400px"
+        }}/>
     )
 }

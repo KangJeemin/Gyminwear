@@ -58,6 +58,7 @@ export default function SignIn() {
       email,
       password,
     };
+    // 이거 없어도 클라이언트에서 세션 받아지는데? login 함수는 무엇일까
     // login(email, {
     //   optimisticData: {
     //     isLoggedIn: true,

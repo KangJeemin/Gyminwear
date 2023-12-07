@@ -5,6 +5,10 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'; 
+
+const [content, setContent] = React.useState(""); // ReactQuill의 내용을 관리할 상태
+
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -33,7 +37,10 @@ export default function write() {
       >
         글쓰기
       </Box>
-      <ReactQuill/>
+      <ReactQuill
+        value={content}
+        onChange={(value) => setContent(value)}
+      />
       <Button
         component="label"
         variant="contained"

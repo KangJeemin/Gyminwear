@@ -37,7 +37,9 @@ export default function write() {
       >
         글쓰기
       </Box>
-      <QuillWrapper  theme="snow" />
+      <QuillWrapper
+     
+  /> 
 
       <Button
         component="label"

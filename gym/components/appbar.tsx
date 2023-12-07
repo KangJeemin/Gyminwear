@@ -1,42 +1,34 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import useSession from '@/lib/useSession';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import AdbIcon from "@mui/icons-material/Adb";
+import useSession from "@/lib/useSession";
+import { useRouter } from "next/router";
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settingsLoggedIn = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const settingsLoggedOut = ['Login'];
+const pages = ["Home", "Board"];
+// const settingsLoggedIn = ["Profile", "Account", "Dashboard", "Logout"];
+const settingsLoggedOut = ["Login"];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-  const {session, isLoading,login} =useSession();
-
-  React.useEffect(()=>{
-    if (session.isLoggedIn) {
-      console.log("로그인 되어있음")
-    }
-    else{
-      console.log("로그아웃 되어있음")
-    }
-   
-  }, [isLoading, session.isLoggedIn,]);
-
-  if (isLoading) {
-    return <p className="text-lg">Loading...</p>;
-  }
-  
+  const { session, isLoading, login, logout1 } = useSession();
+  const [settingsLoggedIn, setLoginSetting] = React.useState<string[]>();
+  const router = useRouter();
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+    null
+  );
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -52,6 +44,12 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  React.useEffect(() => {
+    // session이 존재하는 경우에만 배열로 변환하여 설정
+    if (session) {
+      setLoginSetting(["Hi! " + session.nickname, "Logout"]);
+    }
+  }, [session]);
 
   return (
     <AppBar position="static">
@@ -65,19 +63,19 @@ function ResponsiveAppBar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             {/* PC화면의 대문글씨 */}
             Gyminwear
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -92,23 +90,33 @@ function ResponsiveAppBar() {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
+              {/* mobile pageNavigation */}
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography
+                    textAlign="center"
+                    onClick={() => {
+                      router.push(
+                        page === "Home" ? "/" : `/${page.toLowerCase()}`
+                      );
+                    }}
+                  >
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -121,24 +129,27 @@ function ResponsiveAppBar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             {/* mobile 버전 버전의 대문글씨 */}
             Gyminwear
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          {/* Pc PageNavigation */}
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                onClick={() => {
+                  router.push(page === "Home" ? "/" : `/${page.toLowerCase()}`);
+                }}
+                sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
               </Button>
@@ -152,36 +163,54 @@ function ResponsiveAppBar() {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-            {session.isLoggedIn === true ? (
-            <>
-              {settingsLoggedIn.map((settingsLoggedIn) => (
-                <MenuItem key={settingsLoggedIn} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{settingsLoggedIn}</Typography>
-                </MenuItem>
-              ))}
-            </>) : (
-            <>
-              {settingsLoggedOut.map((settingsLoggedOut) => (
-                <MenuItem key={settingsLoggedOut} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{settingsLoggedOut}</Typography>
-                </MenuItem>
-              ))}
-            </>) }
+              {session.isLoggedIn === true ? (
+                <>
+                  {settingsLoggedIn.map((settingsLoggedIn) => (
+                    <MenuItem
+                      key={settingsLoggedIn}
+                      onClick={() => {
+                        handleCloseUserMenu();
+                        logout1();
+                      }}
+                    >
+                      <Typography textAlign="center">
+                        {settingsLoggedIn}
+                      </Typography>
+                    </MenuItem>
+                  ))}
+                </>
+              ) : (
+                <>
+                  {settingsLoggedOut.map((settingsLoggedOut) => (
+                    <MenuItem
+                      key={settingsLoggedOut}
+                      onClick={() => {
+                        handleCloseUserMenu();
+                        router.push(`/login`);
+                      }}
+                    >
+                      <Typography textAlign="center">
+                        {settingsLoggedOut}
+                      </Typography>
+                    </MenuItem>
+                  ))}
+                </>
+              )}
             </Menu>
           </Box>
         </Toolbar>

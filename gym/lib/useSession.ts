@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { SessionData, defaultSession } from "@/lib/config/iron-config";
 import useSWRMutation from "swr/mutation";
 
-const sessionApiRoute = "/api/login";
+const sessionApiRoute = "/api/session";
 
 async function fetchJson<JSON>(
   input: RequestInfo,
@@ -20,9 +20,16 @@ async function fetchJson<JSON>(
 function doLogin(url: string, { arg }: { arg: string }) {
   return fetchJson<SessionData>(url, {
     method: "POST",
-    body: JSON.stringify({ username: arg }),
+    body: JSON.stringify({ email: arg }),
   });
 }
+// 로그인 할때 여러개의 인자를 보내게될 경우
+// function doLogin(url: string, { arg }: { arg: { email: string, password: string } }) {
+//   return fetchJson<SessionData>(url, {
+//     method: "POST",
+//     body: JSON.stringify(arg),
+//   });
+// }
 
 function doLogout(url: string) {
   return fetchJson<SessionData>(url, {
@@ -30,6 +37,14 @@ function doLogout(url: string) {
   });
 }
 
+function logout1(url: string) {
+  fetch("api/logout", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
 export default function useSession() {
   const { data: session, isLoading } = useSWR(
     sessionApiRoute,
@@ -39,11 +54,12 @@ export default function useSession() {
     },
   );
 
+  //login함수는 useSWRMutation 훅으로부터 받은 trigger 메서드
   const { trigger: login } = useSWRMutation(sessionApiRoute, doLogin, {
-    // the login route already provides the updated information, no need to revalidate
+    // 로그인 후에 데이터를 가져오지 않음.
     revalidate: false,
   });
   const { trigger: logout } = useSWRMutation(sessionApiRoute, doLogout);
 
-  return { session, logout, login, isLoading };
+  return { session, logout, login, isLoading, logout1 };
 }

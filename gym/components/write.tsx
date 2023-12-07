@@ -4,6 +4,10 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'; 
+import QuillWrapper from "./quillWrapper";
+
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -17,6 +21,7 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 export default function write() {
+
   return (
     <DoubleContainer>
       <Box
@@ -28,18 +33,29 @@ export default function write() {
           fontWeight: "bold",
           borderBottom: 1,
           marginBottom: "20px",
+          
         }}
       >
         글쓰기
       </Box>
+      <QuillWrapper/>
+      <Box sx={{paddingTop:"100px",display:"flex"}}>
+      <Box sx={{width:{xl:"90%"}}}></Box>
       <Button
         component="label"
         variant="contained"
-        startIcon={<CloudUploadIcon />}
       >
-        Upload file
-        <VisuallyHiddenInput type="file" />
+        취소
       </Button>
+      <Box sx={{width:{xs:"90%",xl:"5%"}}}></Box>
+      <Button
+        component="label"
+        variant="contained"
+      >
+        저장
+      </Button>
+      </Box>
+      
     </DoubleContainer>
   );
 }

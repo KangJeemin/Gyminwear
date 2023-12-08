@@ -8,6 +8,7 @@ import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'; 
 import QuillWrapper from "./quillWrapper";
 import TextField from '@mui/material/TextField';
+import Modal from "./modal";
 
 
 
@@ -40,6 +41,9 @@ export default function write() {
       >
         글쓰기
       </Box>
+      <Modal>
+        <Box>a</Box>
+      </Modal>
       <Box
         sx={{
           width: "100%",

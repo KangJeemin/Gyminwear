@@ -7,6 +7,8 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'; 
 import QuillWrapper from "./quillWrapper";
+import TextField from '@mui/material/TextField';
+
 
 
 const VisuallyHiddenInput = styled("input")({
@@ -37,6 +39,21 @@ export default function write() {
         }}
       >
         글쓰기
+      </Box>
+      <Box
+        sx={{
+          width: "100%",
+          height: "50px",
+          color: "black",
+          display:"flex",
+          marginTop: "20px",
+          fontWeight: "bold",
+          marginBottom: "20px",
+        }}
+      >
+       <TextField id="title" label="제목" variant="standard" sx={{width:"70%"}} />
+       <Box sx={{width:"10%"}}></Box>
+       <TextField id="nickname" label="작성자" variant="standard" sx={{width:"20%"}} value="강지민"/>
       </Box>
       <QuillWrapper/>
       <Box sx={{paddingTop:"100px",display:"flex"}}>

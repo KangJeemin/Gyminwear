@@ -43,7 +43,6 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
                   session.isLoggedIn = true;
                   session.nickname = result[0].nickname;
                   await session.save();
-                  
                   // sleep으로 login 함수에 promise 던져주는듯
                   await sleep(250);
                   res.status(200).json({ result:true }); 

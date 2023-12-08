@@ -9,6 +9,8 @@ import 'react-quill/dist/quill.snow.css';
 import QuillWrapper from "./quillWrapper";
 import TextField from '@mui/material/TextField';
 import Modal from "./modal";
+import Container from '@mui/material/Container';
+
 
 
 
@@ -52,7 +54,22 @@ export default function write() {
         글쓰기
       </Box>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <Box>dsadsa</Box>
+        <Container>
+          <h3>글 작성을 취소하시겠습니까?</h3>
+          <h5>(취소하면 작성 중인 내용은 저장되지 않습니다.)</h5>
+          <Box sx={{
+            width:"100%",
+            display:"flex",
+            justifyContent:"space-around",
+            paddingTop:"20px"}}>
+          <Button variant="contained" size="small">
+          예
+        </Button>
+        <Button variant="contained" size="small">
+          아니오
+        </Button>
+          </Box>
+        </Container>
       </Modal>
       <Box
         sx={{

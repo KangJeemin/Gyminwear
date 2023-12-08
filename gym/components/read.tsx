@@ -58,6 +58,7 @@ export default function Read() {
         댓글(0)
       </Box>
       <Comment />
+      <Comment />
       <Box
         sx={{
           width: "100%",

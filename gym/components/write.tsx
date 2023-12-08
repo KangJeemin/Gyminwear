@@ -7,6 +7,11 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'; 
 import QuillWrapper from "./quillWrapper";
+import TextField from '@mui/material/TextField';
+import Modal from "./modal";
+import Container from '@mui/material/Container';
+
+
 
 
 const VisuallyHiddenInput = styled("input")({
@@ -21,6 +26,16 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 export default function write() {
+  const [isModalOpen, setModalOpen] = React.useState(true);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
 
   return (
     <DoubleContainer>
@@ -38,6 +53,39 @@ export default function write() {
       >
         글쓰기
       </Box>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Container>
+          <h3>글 작성을 취소하시겠습니까?</h3>
+          <h5>(취소하면 작성 중인 내용은 저장되지 않습니다.)</h5>
+          <Box sx={{
+            width:"100%",
+            display:"flex",
+            justifyContent:"space-around",
+            paddingTop:"20px"}}>
+          <Button variant="contained" size="small">
+          예
+        </Button>
+        <Button variant="contained" size="small">
+          아니오
+        </Button>
+          </Box>
+        </Container>
+      </Modal>
+      <Box
+        sx={{
+          width: "100%",
+          height: "50px",
+          color: "black",
+          display:"flex",
+          marginTop: "20px",
+          fontWeight: "bold",
+          marginBottom: "20px",
+        }}
+      >
+       <TextField id="title" label="제목" variant="standard" sx={{width:"70%"}} />
+       <Box sx={{width:"10%"}}></Box>
+       <TextField id="nickname" label="작성자" variant="standard" sx={{width:"20%"}} value="강지민"/>
+      </Box>
       <QuillWrapper/>
       <Box sx={{paddingTop:"100px",display:"flex"}}>
       <Box sx={{width:{xl:"90%"}}}></Box>
@@ -52,7 +100,7 @@ export default function write() {
         component="label"
         variant="contained"
       >
-        저장
+        등록
       </Button>
       </Box>
       

@@ -15,7 +15,7 @@ export default function Read() {
           marginTop: "20px",
           fontWeight: "bold",
           borderBottom: 1,
-          marginBottom: "20px",
+          marginBottom: "10px",
         }}
       >
         <Box
@@ -39,6 +39,7 @@ export default function Read() {
         sx={{
           width: "100%",
           height: { xs: "500px", xl: "800px" },
+          marginTop: "20px",
           borderBottom: 1,
         }}
       >
@@ -51,7 +52,7 @@ export default function Read() {
           paddingBottom: "20px",
         }}
       >
-        댓글()
+        댓글(0)
       </Box>
     </DoubleContainer>
   );

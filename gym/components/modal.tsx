@@ -1,48 +1,47 @@
-import { useCallback, useRef, useEffect, MouseEventHandler } from 'react'
-import { useRouter } from 'next/navigation'
+// components/Modal.tsx
+import React from 'react';
 
-export default function Modal({ children }: { children: React.ReactNode }) {
-  const overlay = useRef(null)
-  const wrapper = useRef(null)
-  const router = useRouter()
+const Modal: React.FC<{ isOpen: boolean, onClose: () => void, children:React.ReactNode }> = ({ isOpen, onClose, children }) => {
+  if (!isOpen) return null;
 
-  const onDismiss = useCallback(() => {
-    router.back()
-  }, [router])
-
-  const onClick: MouseEventHandler = useCallback(
-    (e) => {
-      if (e.target === overlay.current || e.target === wrapper.current) {
-        if (onDismiss) onDismiss()
-      }
+  const styles:Record<string, React.CSSProperties> = {
+    overlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      background: 'rgba(0, 0, 0, 0.5)', /* 투명도 조절 */
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
-    [onDismiss, overlay, wrapper]
-  )
-
-  const onKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onDismiss()
+    modal: {
+      background: 'white',
+      padding: '20px',
+      borderRadius: '8px',
     },
-    [onDismiss]
-  )
-
-  useEffect(() => {
-    document.addEventListener('keydown', onKeyDown)
-    return () => document.removeEventListener('keydown', onKeyDown)
-  }, [onKeyDown])
+    closeButton: {
+      position: 'absolute',
+      top: '10px',
+      right: '10px',
+      fontSize: '18px',
+      cursor: 'pointer',
+      background: 'none',
+      border: 'none',
+    },
+  };
 
   return (
-    <div
-      ref={overlay}
-      className="fixed z-10 left-0 right-0 top-0 bottom-0 mx-auto bg-black/60"
-      onClick={onClick}
-    >
-      <div
-        ref={wrapper}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full sm:w-10/12 md:w-8/12 lg:w-1/2 p-6"
-      >
+    <div style={styles.overlay}>
+      <div style={styles.modal}>
+        <button style={styles.closeButton} onClick={onClose}>
+          &times;
+        </button>
         {children}
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default Modal;

@@ -24,6 +24,16 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 export default function write() {
+  const [isModalOpen, setModalOpen] = React.useState(true);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
 
   return (
     <DoubleContainer>
@@ -41,8 +51,8 @@ export default function write() {
       >
         글쓰기
       </Box>
-      <Modal>
-        <Box>a</Box>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Box>dsadsa</Box>
       </Modal>
       <Box
         sx={{
@@ -73,7 +83,7 @@ export default function write() {
         component="label"
         variant="contained"
       >
-        저장
+        등록
       </Button>
       </Box>
       

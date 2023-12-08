@@ -63,6 +63,7 @@ export default function Write() {
             }}
           >
             <Button
+              component="label"
               variant="contained"
               size="small"
               onClick={() => {
@@ -71,7 +72,12 @@ export default function Write() {
             >
               예
             </Button>
-            <Button variant="contained" size="small" onClick={closeModal}>
+            <Button
+              component="label"
+              variant="contained"
+              size="small"
+              onClick={closeModal}
+            >
               아니오
             </Button>
           </Box>

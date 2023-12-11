@@ -94,7 +94,7 @@ export default function board() {
                           height: "20px",
                         }}
                       >
-                        날짜
+                        조회수
                       </Box>
                       <Box
                         sx={{
@@ -102,7 +102,7 @@ export default function board() {
                           height: "20px",
                         }}
                       >
-                        조회수
+                        날짜
                       </Box>
                     </Box>
                   </Box>

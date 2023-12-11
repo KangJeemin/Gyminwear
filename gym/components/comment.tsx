@@ -1,9 +1,20 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from '@mui/material/Button';
 
+const Comment = () => {
+  const [isDeleted, setIsDeleted] = useState(false);
 
-export default function Comment() {
+  const handleDeleteClick = () => {
+    // 삭제 버튼이 클릭되면 isDeleted를 true로 설정
+    setIsDeleted(true);
+  };
+
+  // 만약 삭제된 상태라면 null을 반환하여 렌더링하지 않음
+  if (isDeleted) {
+    return null;
+  }
+
   return (
     <Box
       sx={{
@@ -12,7 +23,7 @@ export default function Comment() {
         height: "100px",
         borderBottom: 1,
         marginBottom: "10px",
-        paddingBottom:'10px'
+        paddingBottom: '10px'
       }}
     >
       <Box
@@ -36,7 +47,7 @@ export default function Comment() {
           sx={{
             marginTop: "10px",
           }}
-        > 
+        >
           작성내용
         </Box>
         <Box
@@ -62,14 +73,20 @@ export default function Comment() {
           <Box>답글쓰기</Box>
           <Box>수정</Box>
         </Box>
-        
       </Box>
-      <Button variant="outlined" color="error" sx={{
-        width:'20px',
-        height:'80px'
-      }}>
+      <Button
+        variant="outlined"
+        color="error"
+        sx={{
+          width: '20px',
+          height: '80px'
+        }}
+        onClick={handleDeleteClick} // 삭제 버튼 클릭 시 핸들러 함수 호출
+      >
         D
       </Button>
     </Box>
   );
-}
+};
+
+export default Comment;

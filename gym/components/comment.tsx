@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from '@mui/material/Button';
+import CommentComment from '@/components/commentComment'
 
 const Comment = () => {
   const [isDeleted, setIsDeleted] = useState(false);
@@ -16,6 +17,7 @@ const Comment = () => {
   }
 
   return (
+    <>
     <Box
       sx={{
         display: "flex",
@@ -86,6 +88,8 @@ const Comment = () => {
         D
       </Button>
     </Box>
+    <CommentComment/>
+    </>
   );
 };
 

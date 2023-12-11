@@ -30,6 +30,7 @@ const QuillWrapper = dynamic(() => import("react-quill"), {
 export default function Quillwrapper() {
   const [modules, setModules] = React.useState({
     toolbar: [
+      ["image","link","video"],
       [{ header: "1" }, { header: "2" }, { font: [] }],
       [{ size: [] }],
       ["bold", "italic", "underline", "strike", "blockquote"],
@@ -39,7 +40,6 @@ export default function Quillwrapper() {
         { indent: "-1" },
         { indent: "+1" },
       ],
-      ["link", "image", "video"],
       ["clean"],
     ],
     clipboard: {
@@ -50,15 +50,16 @@ export default function Quillwrapper() {
   React.useEffect(() => {
     // 화면 너비를 기반으로 모바일 장치 여부 확인
     const isMobile = window.innerWidth <= 768;
+    console.log('quill=',modules)
 
     if (isMobile) {
       // 모바일 버전에 대한 툴바 설정
       setModules({
         toolbar: [
+          ["image","link","video"],
           [{ header: "1" }, { header: "2" }],
           ["bold", "italic", "underline"],
           ["list", "bullet"],
-          ["link", "image"],
           ["clean"],
         ],
         clipboard: {

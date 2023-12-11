@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from '@mui/material/Button';
-import CommentComment from '@/components/commentComment'
 
-const Comment = () => {
+const CommentComment = () => {
   const [isDeleted, setIsDeleted] = useState(false);
 
   const handleDeleteClick = () => {
@@ -17,7 +16,7 @@ const Comment = () => {
   }
 
   return (
-    <>
+    
     <Box
       sx={{
         display: "flex",
@@ -28,6 +27,12 @@ const Comment = () => {
         paddingBottom: '10px'
       }}
     >
+        <Box sx={{
+        width:"5%",
+        height:"100px"
+    }}>
+ㄴ
+    </Box>
       <Box
         sx={{
           width: "30px",
@@ -40,7 +45,7 @@ const Comment = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          width: "90%",
+          width: "85%",
           marginLeft: "10px",
         }}
       >
@@ -88,9 +93,7 @@ const Comment = () => {
         D
       </Button>
     </Box>
-    <CommentComment/>
-    </>
   );
 };
 
-export default Comment;
+export default CommentComment;

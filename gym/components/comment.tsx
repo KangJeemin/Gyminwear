@@ -1,5 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
+import Button from '@mui/material/Button';
+
 
 export default function Comment() {
   return (
@@ -10,6 +12,7 @@ export default function Comment() {
         height: "100px",
         borderBottom: 1,
         marginBottom: "10px",
+        paddingBottom:'10px'
       }}
     >
       <Box
@@ -24,7 +27,7 @@ export default function Comment() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          width: "80%",
+          width: "90%",
           marginLeft: "10px",
         }}
       >
@@ -33,7 +36,7 @@ export default function Comment() {
           sx={{
             marginTop: "10px",
           }}
-        >
+        > 
           작성내용
         </Box>
         <Box
@@ -57,8 +60,16 @@ export default function Comment() {
             12:42
           </Box>
           <Box>답글쓰기</Box>
+          <Box>수정</Box>
         </Box>
+        
       </Box>
+      <Button variant="outlined" color="error" sx={{
+        width:'20px',
+        height:'80px'
+      }}>
+        D
+      </Button>
     </Box>
   );
 }

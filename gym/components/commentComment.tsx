@@ -28,10 +28,10 @@ const CommentComment = () => {
       }}
     >
         <Box sx={{
-        width:"10%",
+        width:"5%",
         height:"100px"
     }}>
-
+ㄴ
     </Box>
       <Box
         sx={{
@@ -45,7 +45,7 @@ const CommentComment = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          width: "80%",
+          width: "85%",
           marginLeft: "10px",
         }}
       >

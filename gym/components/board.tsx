@@ -9,7 +9,10 @@ import { border, borderColor, color } from "@mui/system";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-export default function board() {
+import { useRouter } from "next/router";
+
+export default function Board() {
+  const router = useRouter();
   return (
     <Container>
       <Container
@@ -119,7 +122,14 @@ export default function board() {
             paddingBottom: "20px",
           }}
         >
-          <Button variant="outlined">글쓰기</Button>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              router.push("/board/write");
+            }}
+          >
+            글쓰기
+          </Button>
         </Box>
       </Container>
 

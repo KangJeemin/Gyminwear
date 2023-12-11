@@ -50,7 +50,7 @@ export default function board() {
                   <Box
                     sx={{
                       order: { xs: 2, md: 1 },
-                      width: { xs: "20%", xl: "250px" },
+                      width: { xs: "30%", xl: "250px" },
                       height: { xs: "100%", xl: "200px" },
                       backgroundColor: "green",
                     }}
@@ -60,7 +60,7 @@ export default function board() {
                   <Box
                     sx={{
                       order: { xs: 1, md: 2 },
-                      width: { xs: "80%", xl: "250px" },
+                      width: { xs: "70%", xl: "250px" },
                       height: { xs: "100%", xl: "100px" },
                       paddingTop: { xl: "10px" },
                       paddingLeft: { xl: "10px" },

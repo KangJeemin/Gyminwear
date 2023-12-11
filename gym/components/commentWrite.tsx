@@ -5,11 +5,18 @@ import TextField from "@mui/material/TextField";
 
 export default function CommentWrtie() {
   return (
-    <>
+    <Box
+      sx={{
+        width: "100%",
+        height: "300px",
+        display: "flex",
+        marginBottom: "20px",
+      }}
+    >
       <Box
         sx={{
           width: "5%",
-          height: "300px",
+          height: "100%",
         }}
       >
         ㄴ
@@ -68,6 +75,6 @@ export default function CommentWrtie() {
           </Button>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }

@@ -5,12 +5,12 @@ import { Container } from "@mui/system";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Comment from "./comment";
-import {useRouter} from 'next/router'
+import { useRouter } from "next/router";
 import Modal from "./modal";
-
 
 export default function Read() {
   const [isModalOpen, setModalOpen] = React.useState(false);
+  const [isCommentOpen, setCommentlOpen] = React.useState(false);
   const router = useRouter();
 
   const openModal = () => {
@@ -18,6 +18,13 @@ export default function Read() {
   };
 
   const closeModal = () => {
+    setModalOpen(false);
+  };
+  const openComment = () => {
+    setModalOpen(true);
+  };
+
+  const closeComment = () => {
     setModalOpen(false);
   };
   return (

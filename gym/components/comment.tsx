@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import Button from '@mui/material/Button';
-import CommentComment from '@/components/commentComment'
-
+import Button from "@mui/material/Button";
+import CommentComment from "@/components/commentComment";
+import CommentWrtie from "./commentWrite";
 const Comment = () => {
-  const [isDeleted, setIsDeleted] = useState(false);
+  const [isDeleted, setIsDeleted] = React.useState(false);
+  const [isCommentOpen, setCommentOpen] = React.useState(false);
+  const openComment = () => {
+    isCommentOpen ? setCommentOpen(false) : setCommentOpen(true);
+  };
 
   const handleDeleteClick = () => {
     // 삭제 버튼이 클릭되면 isDeleted를 true로 설정
@@ -18,77 +22,78 @@ const Comment = () => {
 
   return (
     <>
-    <Box
-      sx={{
-        display: "flex",
-        width: "100%",
-        height: "100px",
-        borderBottom: 1,
-        marginBottom: "10px",
-        paddingBottom: '10px'
-      }}
-    >
-      <Box
-        sx={{
-          width: "30px",
-          height: "30px",
-        }}
-      >
-        이미지
-      </Box>
       <Box
         sx={{
           display: "flex",
-          flexDirection: "column",
-          width: "90%",
-          marginLeft: "10px",
+          width: "100%",
+          height: "100px",
+          borderBottom: 1,
+          marginBottom: "10px",
+          paddingBottom: "10px",
         }}
       >
-        <Box>작성자</Box>
         <Box
           sx={{
-            marginTop: "10px",
+            width: "30px",
+            height: "30px",
           }}
         >
-          작성내용
+          이미지
         </Box>
         <Box
           sx={{
             display: "flex",
-            marginTop: "10px",
+            flexDirection: "column",
+            width: "90%",
+            marginLeft: "10px",
           }}
         >
+          <Box>작성자</Box>
           <Box
             sx={{
-              marginRight: "10px",
+              marginTop: "10px",
             }}
           >
-            2023.11.21
+            작성내용
           </Box>
           <Box
             sx={{
-              marginRight: "10px",
+              display: "flex",
+              marginTop: "10px",
             }}
           >
-            12:42
+            <Box
+              sx={{
+                marginRight: "10px",
+              }}
+            >
+              2023.11.21
+            </Box>
+            <Box
+              sx={{
+                marginRight: "10px",
+              }}
+            >
+              12:42
+            </Box>
+            <Box onClick={openComment}>답글쓰기</Box>
+            <Box>수정</Box>
           </Box>
-          <Box>답글쓰기</Box>
-          <Box>수정</Box>
         </Box>
+        <Button
+          variant="outlined"
+          color="error"
+          sx={{
+            width: "20px",
+            height: "80px",
+          }}
+          onClick={handleDeleteClick} // 삭제 버튼 클릭 시 핸들러 함수 호출
+        >
+          D
+        </Button>
       </Box>
-      <Button
-        variant="outlined"
-        color="error"
-        sx={{
-          width: '20px',
-          height: '80px'
-        }}
-        onClick={handleDeleteClick} // 삭제 버튼 클릭 시 핸들러 함수 호출
-      >
-        D
-      </Button>
-    </Box>
-    <CommentComment/>
+      {isCommentOpen ? <CommentWrtie /> : null}
+      <CommentComment />
     </>
   );
 };

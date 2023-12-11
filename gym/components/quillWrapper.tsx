@@ -30,6 +30,7 @@ const QuillWrapper = dynamic(() => import("react-quill"), {
 export default function Quillwrapper() {
   const [modules, setModules] = React.useState({
     toolbar: [
+      ["image","link","video"],
       [{ header: "1" }, { header: "2" }, { font: [] }],
       [{ size: [] }],
       ["bold", "italic", "underline", "strike", "blockquote"],
@@ -39,7 +40,6 @@ export default function Quillwrapper() {
         { indent: "-1" },
         { indent: "+1" },
       ],
-      ["link", "image", "video"],
       ["clean"],
     ],
     clipboard: {

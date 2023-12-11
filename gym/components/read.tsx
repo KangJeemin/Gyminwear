@@ -5,8 +5,21 @@ import { Container } from "@mui/system";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Comment from "./comment";
+import {useRouter} from 'next/router'
+import Modal from "./modal";
+
 
 export default function Read() {
+  const [isModalOpen, setModalOpen] = React.useState(false);
+  const router = useRouter();
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
   return (
     <DoubleContainer>
       <Box
@@ -38,6 +51,39 @@ export default function Read() {
         <Box sx={{ width: "10%" }}>조회수:30</Box>
         <Box sx={{ width: "10%" }}>12:45</Box>
       </Box>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Container>
+          <h3>게시글을 삭제하시겠습니까?</h3>
+          <h5></h5>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-around",
+              paddingTop: "20px",
+            }}
+          >
+            <Button
+              component="label"
+              variant="contained"
+              size="small"
+              onClick={() => {
+                router.push("/");
+              }}
+            >
+              예
+            </Button>
+            <Button
+              component="label"
+              variant="contained"
+              size="small"
+              onClick={closeModal}
+            >
+              아니오
+            </Button>
+          </Box>
+        </Container>
+      </Modal>
       <Box
         sx={{
           width: "100%",
@@ -47,6 +93,16 @@ export default function Read() {
         }}
       >
         글 내용 작성{" "}
+      </Box>
+      <Box sx={{ paddingTop: "10px", display: "flex" }}>
+        <Box sx={{ width: { xl: "90%" } }}></Box>
+        <Button component="label" variant="contained" onClick={openModal}>
+          삭제
+        </Button>
+        <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
+        <Button component="label" variant="contained">
+          수정
+        </Button>
       </Box>
       <Box
         sx={{

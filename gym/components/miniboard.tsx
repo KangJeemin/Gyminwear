@@ -19,7 +19,7 @@ export default function MiniBoard() {
             fontWeight: "bold",
           }}
         >
-          미니보드 바로가기
+          자유게시판
         </Box>
         <Box
           maxWidth="xl"

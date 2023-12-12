@@ -46,16 +46,19 @@ export default function Board() {
                   sx={{
                     display: "flex",
                     flexDirection: { xs: "row", xl: "column" },
-                    width: { xs: "350px", xl: "500px" },
+                    width: { xs: "350px", xl: "250px" },
                     height: { xs: "100px", xl: "300px" },
+                    // borderBottom: { xs: 1, xl: "none" },
+                    border: 1,
                   }}
                 >
                   <Box
                     sx={{
                       order: { xs: 2, md: 1 },
-                      width: { xs: "30%", xl: "250px" },
+                      width: { xs: "30%", xl: "200px" },
                       height: { xs: "100%", xl: "200px" },
                       backgroundColor: "green",
+                      marginLeft: { xl: "22px" },
                     }}
                   >
                     여기가 이미지 담겨야함
@@ -63,11 +66,11 @@ export default function Board() {
                   <Box
                     sx={{
                       order: { xs: 1, md: 2 },
-                      width: { xs: "70%", xl: "250px" },
+                      width: { xs: "70%", xl: "220px" },
                       height: { xs: "100%", xl: "100px" },
                       paddingTop: { xl: "10px" },
                       paddingLeft: { xl: "10px" },
-                      backgroundColor: "red",
+                      fontFamily: "monospace",
                     }}
                   >
                     <Box
@@ -76,15 +79,16 @@ export default function Board() {
                         height: "35px",
                       }}
                     >
-                      제목
+                      본투윈입고 운동 했습니다 회원님들
                     </Box>
                     <Box
                       sx={{
                         width: "100%",
                         height: "30px",
+                        color: "#D9D9D9",
                       }}
                     >
-                      작성자
+                      프리덤 성애자
                     </Box>
                     <Box
                       sx={{
@@ -93,19 +97,23 @@ export default function Board() {
                     >
                       <Box
                         sx={{
-                          width: "50%",
+                          width: "30%",
                           height: "20px",
+                          fontSize: 15,
                         }}
                       >
-                        조회수
+                        조회:3
                       </Box>
                       <Box
                         sx={{
-                          width: "50%",
+                          width: "70%",
                           height: "20px",
+                          display: "flex",
+                          justifyContent: "flex-end",
+                          fontSize: 15,
                         }}
                       >
-                        날짜
+                        12:56
                       </Box>
                     </Box>
                   </Box>

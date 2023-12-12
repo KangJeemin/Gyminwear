@@ -114,7 +114,8 @@ function ResponsiveAppBar() {
                       );
                     }}
                   >
-                    <ListItemText primary={page} />
+                    [
+                    <ListItemText primary={page} />]
                   </Typography>
                 </MenuItem>
               ))}

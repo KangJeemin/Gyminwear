@@ -13,7 +13,7 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
     if (req.method === 'GET'){
       try{
         db.query(
-            `SELECT nickname FROM user WHERE nickname='홍효정'`
+            `SELECT nickname FROM user WHERE nickname='홍효정';`
         ,(error:any,result:any)=>{
             if(error){
                 console.error("닉네임 중복 체크중 오류 발생");
@@ -21,7 +21,8 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
                 return false
                 
             } else{
-              if(result.length>1){
+              if(result.length>0){
+                console.log("g");
                 res.status(200).json(false);  
               }
               else{
@@ -36,10 +37,8 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
         res.status(500).json({ error: '서버 오류' });  
       }
     }
-    else{
-      res.status(405).json({ error: '허용되지 않는 메서드' });
-    }
-    if (req.method === 'POST') {
+    
+    else if (req.method === 'POST') {
         const requestData:userInfo = req.body;
         
         // 오늘 날짜의 밀리초와 랜덤 값을 곱하여 반올림하여 정수를 만듬, 그 후 문자열로 변환

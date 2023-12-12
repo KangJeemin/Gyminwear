@@ -45,17 +45,16 @@ export default function SignUp() {
   const checkNickNameF = async () => {
     const response = await fetch("api/join", {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
     });
-    console.log("response=", response);
-    if (!response) {
-      alert("중복된 닉네임이 존재합니다. 다른 닉네임으로 재설정해주세요.");
-      return false;
-    } else {
-      alert("이 닉네임은 사용이 가능 합니다.");
-      return true;
+    if (response.ok) {
+      const responseData = await response.json();
+      if (!responseData) {
+        alert("중복된 닉네임이 존재합니다. 다른 닉네임으로 재설정해주세요.");
+        setCheckNickName(true);
+      } else {
+        alert("이 닉네임은 사용이 가능 합니다.");
+        setCheckNickName(false);
+      }
     }
   };
   const checkJoin = (

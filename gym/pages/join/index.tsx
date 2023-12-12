@@ -50,10 +50,11 @@ export default function SignUp() {
       const responseData = await response.json();
       if (!responseData) {
         alert("중복된 닉네임이 존재합니다. 다른 닉네임으로 재설정해주세요.");
-        setCheckNickName(true);
+        setCheckNickName(false);
       } else {
         alert("이 닉네임은 사용이 가능 합니다.");
-        setCheckNickName(false);
+
+        setCheckNickName(true);
       }
     }
   };

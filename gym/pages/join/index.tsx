@@ -36,14 +36,18 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const [userInfo, setUserInfo] = React.useState(false);
-  const [userPassword, setUserPassword] = React.useState("");
-  const [checkNickName, setCheckNickName] = React.useState(false);
+  const [userInfo, setUserInfo] = React.useState<boolean>(false);
+  const [userPassword, setUserPassword] = React.useState<string>("");
+  const [checkNickName, setCheckNickName] = React.useState<boolean>(false);
+  const [nickNameWord, setNickNameWord] = React.useState<string>("");
 
   const router = useRouter();
 
+  const typingNickName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNickNameWord(e.target.value);
+  };
   const checkNickNameF = async () => {
-    const response = await fetch("api/join", {
+    const response = await fetch(`api/join?nickname=${nickNameWord}`, {
       method: "GET",
     });
     if (response.ok) {
@@ -53,7 +57,6 @@ export default function SignUp() {
         setCheckNickName(false);
       } else {
         alert("이 닉네임은 사용이 가능 합니다.");
-
         setCheckNickName(true);
       }
     }
@@ -69,7 +72,7 @@ export default function SignUp() {
       return emailRegex.test(email);
     };
     if (!validateEmail()) {
-      alert("올바른 이메일 형식을 입력해주세요.😅)");
+      alert("올바른 이메일 형식을 입력해주세요.😅");
       return false;
     }
     //이름 확인 (한글로만 3자)
@@ -78,7 +81,7 @@ export default function SignUp() {
       return name.length === 3 && nameRegex.test(name);
     };
     if (!validateName()) {
-      alert("성함을 재 입력해주세요(한글로 3자리 입력해주세요.😅)");
+      alert("성함을 재 입력해주세요(한글로 3자리 입력해주세요.😅");
       return false;
     }
     //바말번호 확인 (영대소문자, 특수문자 포함 12자 이상)
@@ -105,7 +108,7 @@ export default function SignUp() {
     }
 
     if (!checkNickName) {
-      alert("닉네임 중복확인을 진행해주세요.");
+      alert("닉네임 중복확인을 진행해주세요😭.");
       return false;
     }
     return true;
@@ -222,6 +225,7 @@ export default function SignUp() {
                   label="닉네임(3~12자 이내)"
                   name="nickname"
                   autoComplete="nickname"
+                  onChange={typingNickName}
                 />
                 <Button
                   variant="contained"

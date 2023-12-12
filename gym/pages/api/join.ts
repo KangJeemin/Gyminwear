@@ -13,7 +13,7 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
     if (req.method === 'GET'){
       try{
         db.query(
-            `SELECT nickname FROM user WHERE nickname='홍효정';`
+            `SELECT nickname FROM user WHERE nickname='${req.query.nickname}';`
         ,(error:any,result:any)=>{
             if(error){
                 console.error("닉네임 중복 체크중 오류 발생");

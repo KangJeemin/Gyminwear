@@ -1,3 +1,4 @@
+import { ContactPageOutlined } from '@mui/icons-material';
 import type { NextApiRequest, NextApiResponse } from 'next';
 const db = require('@/lib/connectMysql');
 const crypto = require('crypto');
@@ -15,12 +16,18 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
             `SELECT nickname FROM user WHERE nickname='홍효정'`
         ,(error:any,result:any)=>{
             if(error){
-                console.error("닉네임 중복 체크중 오류 발생")
-                return false
+                console.error("닉네임 중복 체크중 오류 발생");
                 res.status(200).json(false);  
+                return false
+                
             } else{
-              console.log(result)
-                // res.status(200).json(true);  
+              if(result.length>1){
+                res.status(200).json(false);  
+              }
+              else{
+                res.status(200).json(true);  
+              }
+              
             }
         })
       }

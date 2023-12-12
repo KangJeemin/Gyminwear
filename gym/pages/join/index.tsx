@@ -38,9 +38,11 @@ const defaultTheme = createTheme();
 export default function SignUp() {
   const [userInfo, setUserInfo] = React.useState(false);
   const [userPassword, setUserPassword] = React.useState("");
+  const [checkNickName, setCheckNickName] = React.useState(false);
+
   const router = useRouter();
 
-  const checkNickName = async () => {
+  const checkNickNameF = async () => {
     const response = await fetch("api/join", {
       method: "GET",
       headers: {
@@ -48,7 +50,13 @@ export default function SignUp() {
       },
     });
     console.log("response=", response);
-    return response;
+    if (!response) {
+      alert("중복된 닉네임이 존재합니다. 다른 닉네임으로 재설정해주세요.");
+      return false;
+    } else {
+      alert("이 닉네임은 사용이 가능 합니다.");
+      return true;
+    }
   };
   const checkJoin = (
     email: string,
@@ -95,9 +103,12 @@ export default function SignUp() {
       alert("닉네임은 영어 또는 한글로 3~12자 이내로 입력해주세요.😭");
       return false;
     }
-
+    const checkNickName = () => {
+      const nickname = checkNickNameF();
+      return nickname;
+    };
     if (!checkNickName()) {
-      alert("중복된 닉네임이 있습니다. 다른 닉네임으로 설정해주세요.");
+      alert("닉네임 중복확인을 진행해주세요.");
       return false;
     }
     return true;
@@ -215,7 +226,11 @@ export default function SignUp() {
                   name="nickname"
                   autoComplete="nickname"
                 />
-                <Button variant="contained" sx={{ ml: 3, width: "40%" }}>
+                <Button
+                  variant="contained"
+                  sx={{ ml: 3, width: "40%" }}
+                  onClick={checkNickNameF}
+                >
                   중복확인
                 </Button>
               </Grid>

@@ -111,6 +111,7 @@ export default function Board() {
                           display: "flex",
                           justifyContent: "flex-end",
                           fontSize: 15,
+                          marginRight: { xs: "10px" },
                         }}
                       >
                         12:56

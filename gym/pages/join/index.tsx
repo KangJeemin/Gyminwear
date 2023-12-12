@@ -47,17 +47,29 @@ export default function SignUp() {
     setNickNameWord(e.target.value);
   };
   const checkNickNameF = async () => {
-    const response = await fetch(`api/join?nickname=${nickNameWord}`, {
-      method: "GET",
-    });
-    if (response.ok) {
-      const responseData = await response.json();
-      if (!responseData) {
-        alert("중복된 닉네임이 존재합니다. 다른 닉네임으로 재설정해주세요.");
-        setCheckNickName(false);
-      } else {
-        alert("이 닉네임은 사용이 가능 합니다.");
-        setCheckNickName(true);
+    const regex = /^[a-zA-Z0-9가-힣]+$/;
+    if (
+      !(
+        nickNameWord.length >= 3 &&
+        nickNameWord.length <= 12 &&
+        regex.test(nickNameWord)
+      )
+    ) {
+      alert("닉네임은 영어 또는 한글로 3~12자 이내로 입력해주세요.😭");
+      return false;
+    } else {
+      const response = await fetch(`api/join?nickname=${nickNameWord}`, {
+        method: "GET",
+      });
+      if (response.ok) {
+        const responseData = await response.json();
+        if (!responseData) {
+          alert("중복된 닉네임이 존재합니다. 다른 닉네임으로 재설정해주세요.");
+          setCheckNickName(false);
+        } else {
+          alert("이 닉네임은 사용이 가능 합니다.");
+          setCheckNickName(true);
+        }
       }
     }
   };
@@ -93,17 +105,6 @@ export default function SignUp() {
       alert(
         "비밀번호는 8자리 이상, 영문, 숫자, 특수문자를 포함하여 입력해주세요.😭"
       );
-      return false;
-    }
-    // 닉네임 확인(한글, 영대소문자 3~12자)
-    const validateNickName = () => {
-      const regex = /^[a-zA-Z0-9가-힣]+$/;
-      return (
-        nickname.length >= 3 && nickname.length <= 12 && regex.test(nickname)
-      );
-    };
-    if (!validateNickName()) {
-      alert("닉네임은 영어 또는 한글로 3~12자 이내로 입력해주세요.😭");
       return false;
     }
 

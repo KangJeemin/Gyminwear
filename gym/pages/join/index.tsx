@@ -40,6 +40,16 @@ export default function SignUp() {
   const [userPassword, setUserPassword] = React.useState("");
   const router = useRouter();
 
+  const checkNickName = async () => {
+    const response = await fetch("api/join", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log("response=", response);
+    return response;
+  };
   const checkJoin = (
     email: string,
     name: string,
@@ -83,6 +93,11 @@ export default function SignUp() {
     };
     if (!validateNickName()) {
       alert("닉네임은 영어 또는 한글로 3~12자 이내로 입력해주세요.😭");
+      return false;
+    }
+
+    if (!checkNickName()) {
+      alert("중복된 닉네임이 있습니다. 다른 닉네임으로 설정해주세요.");
       return false;
     }
     return true;
@@ -200,11 +215,7 @@ export default function SignUp() {
                   name="nickname"
                   autoComplete="nickname"
                 />
-                <Button
-                  type="submit"
-                  variant="contained"
-                  sx={{ ml: 3, width: "40%" }}
-                >
+                <Button variant="contained" sx={{ ml: 3, width: "40%" }}>
                   중복확인
                 </Button>
               </Grid>

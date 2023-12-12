@@ -9,6 +9,29 @@ type userInfo = {
 }
 
 export default async function Join(req : NextApiRequest, res : NextApiResponse){
+    if (req.method === 'GET'){
+      try{
+        db.query(
+            `SELECT nickname FROM user WHERE nickname='홍효정'`
+        ,(error:any,result:any)=>{
+            if(error){
+                console.error("닉네임 중복 체크중 오류 발생")
+                return false
+                res.status(200).json(false);  
+            } else{
+              console.log(result)
+                // res.status(200).json(true);  
+            }
+        })
+      }
+      catch (error) {
+        console.error("데이터 베이스에 유저 정보 저장 중 에러 발생")
+        res.status(500).json({ error: '서버 오류' });  
+      }
+    }
+    else{
+      res.status(405).json({ error: '허용되지 않는 메서드' });
+    }
     if (req.method === 'POST') {
         const requestData:userInfo = req.body;
         

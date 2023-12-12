@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import useSession from "@/lib/useSession";
 import { useRouter } from "next/router";
-
+import ListItemText from "@mui/material/ListItemText";
 const pages = ["Home", "Board"];
 // const settingsLoggedIn = ["Profile", "Account", "Dashboard", "Logout"];
 const settingsLoggedOut = ["Login"];
@@ -104,7 +104,6 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {/* mobile pageNavigation */}
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography
@@ -115,7 +114,7 @@ function ResponsiveAppBar() {
                       );
                     }}
                   >
-                    {page}
+                    <ListItemText primary={page} />
                   </Typography>
                 </MenuItem>
               ))}

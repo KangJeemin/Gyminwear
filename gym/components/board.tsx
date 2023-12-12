@@ -77,9 +77,17 @@ export default function Board() {
                       sx={{
                         width: "100%",
                         height: "35px",
+                        display: "flex",
                       }}
                     >
                       본투윈입고 운동 했습니다 회원님들
+                      <Box
+                        sx={{
+                          color: "red",
+                        }}
+                      >
+                        [2]
+                      </Box>
                     </Box>
                     <Box
                       sx={{

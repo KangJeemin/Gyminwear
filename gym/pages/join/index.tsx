@@ -103,11 +103,8 @@ export default function SignUp() {
       alert("닉네임은 영어 또는 한글로 3~12자 이내로 입력해주세요.😭");
       return false;
     }
-    const checkNickName = () => {
-      const nickname = checkNickNameF();
-      return nickname;
-    };
-    if (!checkNickName()) {
+
+    if (!checkNickName) {
       alert("닉네임 중복확인을 진행해주세요.");
       return false;
     }

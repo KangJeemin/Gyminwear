@@ -37,7 +37,7 @@ function doLogout(url: string) {
   });
 }
 
-function logout1(url: string) {
+function logout1() {
   fetch("api/logout", {
     method: "DELETE",
     headers: {

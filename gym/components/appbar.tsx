@@ -180,7 +180,7 @@ function ResponsiveAppBar() {
             >
               {session.isLoggedIn === true ? (
                 <>
-                  {settingsLoggedIn.map((settingsLoggedIn) => (
+                  {settingsLoggedIn?.map((settingsLoggedIn) => (
                     <MenuItem
                       key={settingsLoggedIn}
                       onClick={() => {

@@ -80,7 +80,7 @@ export default function Board() {
                         display: "flex",
                       }}
                     >
-                      본투윈입고 운동 했습니다 회원님들가나다라
+                      본투윈입고 운동 했습니다 회원님들
                       <Box
                         sx={{
                           color: "red",

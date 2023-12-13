@@ -32,32 +32,61 @@ export default function Read() {
       <Box
         sx={{
           display: "flex",
+          flexDirection: "column",
           width: "100%",
           height: "50px",
           color: "black",
           marginTop: "20px",
           fontWeight: "bold",
-          borderBottom: 1,
-          marginBottom: "10px",
+
+          // marginBottom: "10px",
           fontFamily: "monospace",
         }}
       >
         <Box
           sx={{
-            width: "70%",
+            width: "100%",
+            fontWeight: 700,
+            fontSize: 20,
           }}
         >
-          본투윈 입고 운동 했습니다
+          본투윈 입고 운동 했습니다.
         </Box>
+
         <Box
           sx={{
-            width: "10%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            width: "100%",
+            marginTop: "20px",
+            marginBottom: "20px",
+            // paddingBottom: "20px",
+            borderBottom: 1,
           }}
         >
-          작성자:강지민
+          <Box
+            sx={{
+              width: { xs: "30%", xl: "200px" },
+            }}
+          >
+            작성자: 강지민
+          </Box>
+          <Box
+            sx={{
+              width: { xs: "30%", xl: "200px" },
+            }}
+          >
+            조회수: 30
+          </Box>
+          <Box
+            sx={{
+              width: { xs: "30%", xl: "200px" },
+            }}
+          >
+            12:45
+          </Box>
         </Box>
-        <Box sx={{ width: "10%" }}>조회수:30</Box>
-        <Box sx={{ width: "10%" }}>12:45</Box>
       </Box>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <Container>

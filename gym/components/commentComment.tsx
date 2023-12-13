@@ -31,7 +31,7 @@ const CommentComment = () => {
       <Box
         sx={{
           width: "5%",
-          height: "100px",
+          height: "auto",
           border: 1,
         }}
       >
@@ -39,8 +39,8 @@ const CommentComment = () => {
       </Box>
       <Box
         sx={{
-          width: "30px",
-          height: "30px",
+          width: "5%",
+          height: "auto",
           border: 1,
         }}
       >
@@ -59,31 +59,37 @@ const CommentComment = () => {
       >
         <Box
           sx={{
+            display: "flex",
             border: 1,
           }}
         >
-          강지민
+          <Box
+            sx={{
+              marginRight: "10px",
+              fontWeight: 700,
+            }}
+          >
+            강지민
+          </Box>
+          <Box
+            sx={{
+              marginRight: "10px",
+              color: "#D9D9D9",
+            }}
+          >
+            12:42
+          </Box>
         </Box>
-        {/* <Typography
-          variant="h5"
-          gutterBottom
-          sx={{
-            whiteSpace: "nowrap", // 줄 바꿈 방지 스타일
-          }}
-        >
-          h5.Headingdadadsad
-        </Typography> */}
-
         <Box
           sx={{
             marginTop: "10px",
             width: "100%",
-
             border: 1,
             whiteSpace: "normal", // 줄 바꿈 방지 스타일
+            fontSize: { xl: 20 },
           }}
         >
-          오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다
+          오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다
         </Box>
         <Box
           sx={{
@@ -92,35 +98,33 @@ const CommentComment = () => {
             border: 1,
           }}
         >
-          <Box
-            sx={{
-              marginRight: "10px",
-            }}
-          >
-            2023.11.21
-          </Box>
-          <Box
-            sx={{
-              marginRight: "10px",
-            }}
-          >
-            12:42
-          </Box>
           <Box>답글쓰기</Box>
-          <Box>수정</Box>
         </Box>
       </Box>
-      <Button
-        variant="outlined"
-        color="error"
+      <Box
         sx={{
-          width: "10px",
-          height: "80px",
+          display: { xl: "flex" },
         }}
-        onClick={handleDeleteClick} // 삭제 버튼 클릭 시 핸들러 함수 호출
       >
-        D
-      </Button>
+        <Button
+          variant="outlined"
+          sx={{
+            height: { xs: "50%", xl: "100%" },
+          }}
+        >
+          수정
+        </Button>
+        <Button
+          variant="outlined"
+          color="error"
+          sx={{
+            height: { xs: "50%", xl: "100%" },
+          }}
+          onClick={handleDeleteClick} // 삭제 버튼 클릭 시 핸들러 함수 호출
+        >
+          삭제
+        </Button>
+      </Box>
     </Box>
   );
 };

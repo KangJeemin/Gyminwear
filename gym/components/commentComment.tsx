@@ -120,6 +120,7 @@ const CommentComment = () => {
           variant="outlined"
           color="error"
           sx={{
+            minWidth: "10px",
             height: { xs: "50%", xl: "100%" },
           }}
           onClick={handleDeleteClick} // 삭제 버튼 클릭 시 핸들러 함수 호출

@@ -126,7 +126,7 @@ const Comment = () => {
         </Box>
       </Box>
       {isCommentOpen ? <CommentWrtie /> : null}
-      <CommentComment />
+      <CommentComment openComment={openComment} />
     </>
   );
 };

@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-const CommentComment = () => {
+const CommentComment = (props: any) => {
   const [isDeleted, setIsDeleted] = useState(false);
 
   const handleDeleteClick = () => {
@@ -97,7 +97,7 @@ const CommentComment = () => {
             border: 1,
           }}
         >
-          <Box>답글쓰기</Box>
+          <Box onClick={props.openComment}>답글쓰기</Box>
         </Box>
       </Box>
       <Box

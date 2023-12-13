@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import Comment from "./comment";
 import { useRouter } from "next/router";
 import Modal from "./modal";
+import WestIcon from "@mui/icons-material/West";
 
 export default function Read() {
   const [isModalOpen, setModalOpen] = React.useState(false);
@@ -46,10 +47,14 @@ export default function Read() {
         <Box
           sx={{
             width: "100%",
+            display: "flex",
             fontWeight: 700,
             fontSize: 20,
           }}
         >
+          <Box>
+            <WestIcon />
+          </Box>
           본투윈 입고 운동 했습니다.
         </Box>
 

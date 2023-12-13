@@ -21,6 +21,7 @@ const CommentComment = () => {
       sx={{
         display: "flex",
         width: "100%",
+        height: "auto",
         borderBottom: 1,
         marginBottom: "10px",
         fontFamily: "monospace",
@@ -61,7 +62,7 @@ const CommentComment = () => {
         >
           강지민
         </Box>
-        <Typography
+        {/* <Typography
           variant="h5"
           gutterBottom
           sx={{
@@ -69,17 +70,19 @@ const CommentComment = () => {
           }}
         >
           h5.Headingdadadsad
-        </Typography>
+        </Typography> */}
 
-        {/* <Box
+        <Box
           sx={{
             marginTop: "10px",
             width: "100%",
+            height: "50%",
             border: 1,
+            whiteSpace: "normal", // 줄 바꿈 방지 스타일
           }}
         >
-          오운완~aaaaaaasasaaaasasqsasasas
-        </Box> */}
+          오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다
+        </Box>
         <Box
           sx={{
             display: "flex",

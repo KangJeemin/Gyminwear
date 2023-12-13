@@ -51,8 +51,7 @@ const CommentComment = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-
-          width: "85%",
+          width: "80%",
           marginLeft: "10px",
           border: 1,
         }}
@@ -103,12 +102,15 @@ const CommentComment = () => {
       </Box>
       <Box
         sx={{
-          display: { xl: "flex" },
+          display: "flex",
+          width: "10%",
+          flexDirection: { xs: "column", xl: "row" },
         }}
       >
         <Button
           variant="outlined"
           sx={{
+            minWidth: "10px",
             height: { xs: "50%", xl: "100%" },
           }}
         >

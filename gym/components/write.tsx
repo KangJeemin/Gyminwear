@@ -11,6 +11,7 @@ import TextField from "@mui/material/TextField";
 import Modal from "./modal";
 import Container from "@mui/material/Container";
 import { useRouter } from "next/router";
+import WestIcon from "@mui/icons-material/West";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -24,7 +25,8 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 export default function Write() {
-  const [isModalOpen, setModalOpen] = React.useState(false);
+  const [content, setContent] = React.useState<string>("");
+  const [isModalOpen, setModalOpen] = React.useState<boolean>(false);
   const router = useRouter();
 
   const openModal = () => {
@@ -45,9 +47,12 @@ export default function Write() {
           marginTop: "20px",
           fontWeight: "bold",
           borderBottom: 1,
+          fontFamily: "monospace",
           marginBottom: "20px",
+          fontSize: 20,
         }}
       >
+        <WestIcon />
         글쓰기
       </Box>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
@@ -109,14 +114,20 @@ export default function Write() {
           value="강지민"
         />
       </Box>
-      <QuillWrapper />
+      <QuillWrapper content={content} setContent={setContent} />
       <Box sx={{ paddingTop: "100px", display: "flex" }}>
         <Box sx={{ width: { xl: "90%" } }}></Box>
         <Button component="label" variant="contained" onClick={openModal}>
           취소
         </Button>
         <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
-        <Button component="label" variant="contained">
+        <Button
+          component="label"
+          variant="contained"
+          onClick={() => {
+            console.log(content);
+          }}
+        >
           등록
         </Button>
       </Box>

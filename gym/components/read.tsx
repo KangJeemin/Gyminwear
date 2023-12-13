@@ -39,8 +39,6 @@ export default function Read() {
           color: "black",
           marginTop: "20px",
           fontWeight: "bold",
-
-          // marginBottom: "10px",
           fontFamily: "monospace",
         }}
       >
@@ -64,8 +62,8 @@ export default function Read() {
             flexDirection: "row",
             justifyContent: "space-between",
             width: "100%",
-            marginTop: "20px",
-            marginBottom: "20px",
+            marginTop: "10px",
+            // marginBottom: "30px",
             // paddingBottom: "20px",
             borderBottom: 1,
           }}

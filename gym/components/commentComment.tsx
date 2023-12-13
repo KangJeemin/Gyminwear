@@ -50,6 +50,8 @@ const CommentComment = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
+          justifyContent: "space-between",
+
           width: "85%",
           marginLeft: "10px",
           border: 1,
@@ -76,12 +78,12 @@ const CommentComment = () => {
           sx={{
             marginTop: "10px",
             width: "100%",
-            height: "50%",
+
             border: 1,
             whiteSpace: "normal", // 줄 바꿈 방지 스타일
           }}
         >
-          오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다
+          오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다
         </Box>
         <Box
           sx={{

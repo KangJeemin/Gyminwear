@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 const CommentComment = () => {
   const [isDeleted, setIsDeleted] = useState(false);
@@ -16,27 +17,30 @@ const CommentComment = () => {
   }
 
   return (
-    
     <Box
       sx={{
         display: "flex",
         width: "100%",
-        height: "100px",
         borderBottom: 1,
         marginBottom: "10px",
-        paddingBottom: '10px'
+        fontFamily: "monospace",
+        border: 1,
       }}
     >
-        <Box sx={{
-        width:"5%",
-        height:"100px"
-    }}>
-ㄴ
-    </Box>
+      <Box
+        sx={{
+          width: "5%",
+          height: "100px",
+          border: 1,
+        }}
+      >
+        ㄴ
+      </Box>
       <Box
         sx={{
           width: "30px",
           height: "30px",
+          border: 1,
         }}
       >
         이미지
@@ -47,20 +51,40 @@ const CommentComment = () => {
           flexDirection: "column",
           width: "85%",
           marginLeft: "10px",
+          border: 1,
         }}
       >
-        <Box>작성자</Box>
         <Box
           sx={{
-            marginTop: "10px",
+            border: 1,
           }}
         >
-          작성내용
+          강지민
         </Box>
+        <Typography
+          variant="h5"
+          gutterBottom
+          sx={{
+            whiteSpace: "nowrap", // 줄 바꿈 방지 스타일
+          }}
+        >
+          h5.Headingdadadsad
+        </Typography>
+
+        {/* <Box
+          sx={{
+            marginTop: "10px",
+            width: "100%",
+            border: 1,
+          }}
+        >
+          오운완~aaaaaaasasaaaasasqsasasas
+        </Box> */}
         <Box
           sx={{
             display: "flex",
             marginTop: "10px",
+            border: 1,
           }}
         >
           <Box
@@ -85,8 +109,8 @@ const CommentComment = () => {
         variant="outlined"
         color="error"
         sx={{
-          width: '20px',
-          height: '80px'
+          width: "10px",
+          height: "80px",
         }}
         onClick={handleDeleteClick} // 삭제 버튼 클릭 시 핸들러 함수 호출
       >

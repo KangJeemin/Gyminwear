@@ -30,6 +30,7 @@ const Comment = () => {
           borderBottom: 1,
           marginBottom: "10px",
           paddingBottom: "10px",
+          fontFamily: "monospace",
         }}
       >
         <Box

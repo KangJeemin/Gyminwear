@@ -39,6 +39,7 @@ export default function Read() {
           fontWeight: "bold",
           borderBottom: 1,
           marginBottom: "10px",
+          fontFamily: "monospace",
         }}
       >
         <Box

@@ -32,7 +32,8 @@ export default function Write() {
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log("data=", data);
+    const data1 = Object.fromEntries(data.entries());
+    console.log("data=", data1);
   };
   const handleSubmit = async () => {
     // if (!file) {
@@ -173,11 +174,21 @@ export default function Write() {
       />
       <QuillWrapper id="content" content={content} setContent={setContent} />
 
-      <Box sx={{ paddingTop: "100px", display: "flex" }}>
+      <Box
+        component="form"
+        onSubmit={handleSubmitWrite}
+        sx={{ paddingTop: "100px", display: "flex" }}
+      >
         <Box sx={{ width: { xl: "90%" } }}></Box>
         <Button component="label" variant="contained" onClick={openModal}>
           취소
         </Button>
+        <TextField
+          id="title"
+          label="제목"
+          variant="standard"
+          sx={{ width: "70%" }}
+        />
         <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
         <Button type="submit" variant="contained">
           등록

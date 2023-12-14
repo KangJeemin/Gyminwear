@@ -13,14 +13,14 @@ export default async function POST(request:NextApiRequest,response:NextApiRespon
     const { filename, contentType } = await request.body
     const client = new S3Client({  
       credentials: {
-        accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY ? process.env.NEXT_PUBLIC_AWS_ACCESS_KEY : '' ,
-        secretAccessKey:process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY ? process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY : '',
+        accessKeyId: process.env.AWS_ACCESS_KEY ? process.env.AWS_ACCESS_KEY : '' ,
+        secretAccessKey:process.env.AWS_SECRET_ACCESS_KEY ? process.env.AWS_SECRET_ACCESS_KEY : '',
       },
-      region: process.env.NEXT_PUBLIC_AWS_REGION ? process.env.NEXT_PUBLIC_AWS_REGION : '' ,
+      region: process.env.AWS_REGION ? process.env.AWS_REGION : '' ,
       
       })
     const { url, fields } = await createPresignedPost(client, {
-      Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME ? process.env.NEXT_PUBLIC_AWS_BUCKET_NAME : '' ,
+      Bucket: process.env.AWS_BUCKET_NAME ? process.env.AWS_BUCKET_NAME : '' ,
       Key: uuidv4(),
       Conditions: [
         ['content-length-range', 0, 10485760], // up to 10 MB

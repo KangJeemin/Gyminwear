@@ -43,7 +43,6 @@ export default function Write() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ filename: file.name, contentType: file.type }),
-        // body: JSON.stringify({ filename: "hey" }),
       });
 
       if (response.ok) {

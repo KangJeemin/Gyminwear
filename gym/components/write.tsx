@@ -149,6 +149,7 @@ export default function Write() {
         >
           <TextField
             id="title"
+            name="title"
             label="제목"
             variant="standard"
             sx={{ width: "70%" }}

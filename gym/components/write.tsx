@@ -11,8 +11,6 @@ import Modal from "./modal";
 import Container from "@mui/material/Container";
 import { useRouter } from "next/router";
 import WestIcon from "@mui/icons-material/West";
-import { ConfigurationServicePlaceholders } from "aws-sdk/lib/config_service_placeholders";
-import { ContactPageSharp } from "@mui/icons-material";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -35,7 +33,8 @@ export default function Write() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const { title, title2, password } = Object.fromEntries(data.entries());
-    console.log(title);
+    const title3 = data.get("title");
+    console.log(title3);
     console.log(title2);
   };
   const handleSubmit = async () => {
@@ -136,66 +135,56 @@ export default function Write() {
           </Box>
         </Container>
       </Modal>
-      <Box
-        component="form"
-        onSubmit={handleSubmitWrite}
-        sx={{
-          width: "100%",
-          height: "50px",
-          color: "black",
-          display: "flex",
-          marginTop: "20px",
-          fontWeight: "bold",
-          marginBottom: "20px",
-        }}
-      >
-        <TextField
-          id="title"
-          label="제목"
-          variant="standard"
-          sx={{ width: "70%" }}
+      <Box component="form" noValidate onSubmit={handleSubmitWrite}>
+        <Box
+          sx={{
+            width: "100%",
+            height: "50px",
+            color: "black",
+            display: "flex",
+            marginTop: "20px",
+            fontWeight: "bold",
+            marginBottom: "20px",
+          }}
+        >
+          <TextField
+            id="title"
+            label="제목"
+            variant="standard"
+            sx={{ width: "70%" }}
+          />
+          <Box sx={{ width: "10%" }}></Box>
+          <TextField
+            id="nickname"
+            label="작성자"
+            variant="standard"
+            sx={{ width: "20%" }}
+            value="강지민"
+          />
+        </Box>
+        <input
+          id="file"
+          type="file"
+          onChange={(e) => {
+            const files = e.target.files;
+            if (files) {
+              setFile(files[0]);
+            }
+          }}
+          accept="image/png, image/jpeg"
         />
-        <Box sx={{ width: "10%" }}></Box>
-        <TextField
-          id="nickname"
-          label="작성자"
-          variant="standard"
-          sx={{ width: "20%" }}
-          value="강지민"
-        />
-      </Box>
-      <input
-        id="file"
-        type="file"
-        onChange={(e) => {
-          const files = e.target.files;
-          if (files) {
-            setFile(files[0]);
-          }
-        }}
-        accept="image/png, image/jpeg"
-      />
-      <QuillWrapper id="content" content={content} setContent={setContent} />
+        <QuillWrapper id="content" content={content} setContent={setContent} />
+        <Box sx={{ paddingTop: "100px", display: "flex" }}>
+          <Box sx={{ width: { xl: "90%" } }}></Box>
+          <Button component="label" variant="contained" onClick={openModal}>
+            취소
+          </Button>
 
-      <Box
-        component="form"
-        onSubmit={handleSubmitWrite}
-        sx={{ paddingTop: "100px", display: "flex" }}
-      >
-        <Box sx={{ width: { xl: "90%" } }}></Box>
-        <Button component="label" variant="contained" onClick={openModal}>
-          취소
-        </Button>
-        <TextField
-          id="title2"
-          label="제목"
-          variant="standard"
-          sx={{ width: "70%" }}
-        />
-        <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
-        <Button type="submit" variant="contained">
-          등록
-        </Button>
+          <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
+          <Button type="submit" variant="contained">
+            등록
+          </Button>
+        </Box>
       </Box>
     </DoubleContainer>
   );

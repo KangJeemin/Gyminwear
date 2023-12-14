@@ -44,9 +44,11 @@ export default function Write() {
         body: JSON.stringify({ filename: file.name, contentType: file.type }),
         // body: JSON.stringify({ filename: "hey" }),
       });
-      console.log("response=", response);
+
       if (response.ok) {
+        console.log(response.json());
         const { url, fields } = await response.json();
+        console.log(url);
         const formData = new FormData();
         Object.entries(fields).forEach(([key, value]) => {
           formData.append(key, value as string);

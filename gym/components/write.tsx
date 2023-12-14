@@ -35,36 +35,40 @@ export default function Write() {
       console.error("선택된 파일이 없습니다");
       return;
     }
-    const response = await fetch("http://localhost:3000/api/upload", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ filename: file.name, contentType: file.type }),
-    });
-    if (response.ok) {
-      const { url, fields } = await response.json();
-
-      const formData = new FormData();
-      Object.entries(fields).forEach(([key, value]) => {
-        formData.append(key, value as string);
-      });
-      formData.append("file", file);
-
-      const uploadResponse = await fetch(url, {
+    try {
+      const response = await fetch("http://localhost:3000/api/upload", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        // body: JSON.stringify({ filename: file.name, contentType: file.type }),
+        body: JSON.stringify({ filename: "hey" }),
       });
+      console.log("response=", response);
+      if (response.ok) {
+        const { url, fields } = await response.json();
 
-      if (uploadResponse.ok) {
-        alert("Upload successful!");
+        const formData = new FormData();
+        Object.entries(fields).forEach(([key, value]) => {
+          formData.append(key, value as string);
+        });
+        formData.append("file", file);
+
+        const uploadResponse = await fetch(url, {
+          method: "POST",
+          body: formData,
+        });
+
+        if (uploadResponse.ok) {
+          alert("Upload successful!");
+        } else {
+          console.error("S3 Upload Error:", uploadResponse);
+          alert("Upload failed.");
+        }
       } else {
-        console.error("S3 Upload Error:", uploadResponse);
-        alert("Upload failed.");
+        alert("Failed to get pre-signed URL.");
       }
-    } else {
-      alert("Failed to get pre-signed URL.");
-    }
+    } catch {}
   };
 
   const openModal = () => {

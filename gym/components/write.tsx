@@ -47,13 +47,11 @@ export default function Write() {
 
       if (response.ok) {
         const { url, fields } = await response.json();
-        console.log(url);
         const formData = new FormData();
         Object.entries(fields).forEach(([key, value]) => {
           formData.append(key, value as string);
         });
         formData.append("file", file);
-        console.log("formData=", formData);
         const uploadResponse = await fetch(url, {
           method: "POST",
           body: formData,

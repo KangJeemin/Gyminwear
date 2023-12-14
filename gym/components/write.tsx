@@ -3,7 +3,6 @@ import DoubleContainer from "./doubleContainer";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import QuillWrapper from "./quillWrapper";
@@ -30,45 +29,48 @@ export default function Write() {
   const [file, setFile] = React.useState<File | null>(null);
   const router = useRouter();
 
+  const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log("data=", data);
+  };
   const handleSubmit = async () => {
-    if (!file) {
-      console.error("선택된 파일이 없습니다");
-      return;
-    }
-    try {
-      console.log(file.type);
-      const response = await fetch("http://localhost:3000/api/upload", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ filename: file.name, contentType: file.type }),
-      });
-
-      if (response.ok) {
-        const { url, fields } = await response.json();
-        const formData = new FormData();
-        Object.entries(fields).forEach(([key, value]) => {
-          formData.append(key, value as string);
-        });
-        formData.append("file", file);
-        const uploadResponse = await fetch(url, {
-          method: "POST",
-          body: formData,
-        });
-
-        if (uploadResponse.ok) {
-          alert("Upload successful!");
-        } else {
-          console.error("S3 Upload Error:", uploadResponse);
-          alert("Upload failed.");
-        }
-      } else {
-        alert("Failed to get pre-signed URL.");
-      }
-    } catch (error) {
-      console.log("clientError=", error);
-    }
+    // if (!file) {
+    //   console.error("선택된 파일이 없습니다");
+    //   return;
+    // }
+    // try {
+    //   console.log(file.type);
+    //   const response = await fetch("http://localhost:3000/api/upload", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ filename: file.name, contentType: file.type }),
+    //   });
+    //   if (response.ok) {
+    //     const { url, fields } = await response.json();
+    //     const formData = new FormData();
+    //     Object.entries(fields).forEach(([key, value]) => {
+    //       formData.append(key, value as string);
+    //     });
+    //     formData.append("file", file);
+    //     const uploadResponse = await fetch(url, {
+    //       method: "POST",
+    //       body: formData,
+    //     });
+    //     if (uploadResponse.ok) {
+    //       alert("Upload successful!");
+    //     } else {
+    //       console.error("S3 Upload Error:", uploadResponse);
+    //       alert("Upload failed.");
+    //     }
+    //   } else {
+    //     alert("Failed to get pre-signed URL.");
+    //   }
+    // } catch (error) {
+    //   console.log("clientError=", error);
+    // }
   };
 
   const openModal = () => {
@@ -131,6 +133,8 @@ export default function Write() {
         </Container>
       </Modal>
       <Box
+        component="form"
+        onSubmit={handleSubmitWrite}
         sx={{
           width: "100%",
           height: "50px",
@@ -167,7 +171,7 @@ export default function Write() {
         }}
         accept="image/png, image/jpeg"
       />
-      <QuillWrapper content={content} setContent={setContent} />
+      <QuillWrapper id="content" content={content} setContent={setContent} />
 
       <Box sx={{ paddingTop: "100px", display: "flex" }}>
         <Box sx={{ width: { xl: "90%" } }}></Box>
@@ -175,14 +179,7 @@ export default function Write() {
           취소
         </Button>
         <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
-        <Button
-          component="label"
-          variant="contained"
-          onClick={() => {
-            console.log(content);
-            handleSubmit();
-          }}
-        >
+        <Button type="submit" variant="contained">
           등록
         </Button>
       </Box>

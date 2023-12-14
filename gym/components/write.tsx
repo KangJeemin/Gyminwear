@@ -36,6 +36,7 @@ export default function Write() {
       return;
     }
     try {
+      console.log(file.type);
       const response = await fetch("http://localhost:3000/api/upload", {
         method: "POST",
         headers: {

@@ -32,10 +32,14 @@ export default function Write() {
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const { title, title2, password } = Object.fromEntries(data.entries());
-    const title3 = data.get("title");
-    console.log(title3);
-    console.log(title2);
+    const { title, nickname } = Object.fromEntries(data.entries());
+    const sendWrtie = {
+      title,
+      nickname,
+      content,
+    };
+
+    // const { title, nickname, content } = Object.fromEntries(data.entries());
   };
   const handleSubmit = async () => {
     // if (!file) {
@@ -157,6 +161,7 @@ export default function Write() {
           <Box sx={{ width: "10%" }}></Box>
           <TextField
             id="nickname"
+            name="nickname"
             label="작성자"
             variant="standard"
             sx={{ width: "20%" }}
@@ -174,7 +179,11 @@ export default function Write() {
           }}
           accept="image/png, image/jpeg"
         />
-        <QuillWrapper id="content" content={content} setContent={setContent} />
+        <QuillWrapper
+          name="content"
+          content={content}
+          setContent={setContent}
+        />
         <Box sx={{ paddingTop: "100px", display: "flex" }}>
           <Box sx={{ width: { xl: "90%" } }}></Box>
           <Button component="label" variant="contained" onClick={openModal}>

@@ -28,7 +28,7 @@ export default async function POST(request:NextApiRequest,response:NextApiRespon
 
     return response.json({  url, fields })
   } catch (error) {
-    return response.json({ error: onmessage })
+    return response.json({ error: "error" })
   }
 }
 }

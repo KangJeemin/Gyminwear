@@ -11,7 +11,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
 
-export default function Board() {
+export default function Board(props: any) {
   const router = useRouter();
   return (
     <Container>
@@ -40,7 +40,7 @@ export default function Board() {
             spacing={{ xs: 1, xl: 2 }}
             columns={{ xs: 4, sm: 8, md: 16 }}
           >
-            {Array.from(Array(16)).map((_, index) => (
+            {Array.from(Array(props.mapcount)).map((_, index) => (
               <Grid xs={4} sm={4} md={4} key={index}>
                 <Box
                   sx={{
@@ -149,18 +149,19 @@ export default function Board() {
           </Button>
         </Box>
       </Container>
-
-      <Box
-        sx={{
-          display: "flex",
-          width: "100%",
-          justifyContent: "cetner",
-        }}
-      >
-        <Stack spacing={10} sx={{ margin: "auto" }}>
-          <Pagination count={10} shape="rounded" />
-        </Stack>
-      </Box>
+      {props.mapcount < 5 ? null : (
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "cetner",
+          }}
+        >
+          <Stack spacing={10} sx={{ margin: "auto" }}>
+            <Pagination count={10} shape="rounded" />
+          </Stack>
+        </Box>
+      )}
     </Container>
   );
 }

@@ -5,6 +5,7 @@ import ResponsiveAppBar from "@/components/appbar";
 import Miniboard from "@/components/miniboard";
 import useSession from "@/lib/useSession";
 import Pagedivide from "@/components/pagedivide";
+import Board from "@/components/board";
 
 export default function Main() {
   const { session, isLoading } = useSession();
@@ -27,7 +28,7 @@ export default function Main() {
       </Head>
       <PageNavigate />
       <Pagedivide />
-      <Miniboard />
+      <Board mapcount={4} />
     </>
   );
 }

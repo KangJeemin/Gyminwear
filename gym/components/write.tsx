@@ -46,7 +46,6 @@ export default function Write() {
       });
 
       if (response.ok) {
-        console.log(response.json());
         const { url, fields } = await response.json();
         console.log(url);
         const formData = new FormData();
@@ -69,7 +68,9 @@ export default function Write() {
       } else {
         alert("Failed to get pre-signed URL.");
       }
-    } catch {}
+    } catch (error) {
+      console.log("clientError=", error);
+    }
   };
 
   const openModal = () => {

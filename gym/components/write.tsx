@@ -11,6 +11,8 @@ import Modal from "./modal";
 import Container from "@mui/material/Container";
 import { useRouter } from "next/router";
 import WestIcon from "@mui/icons-material/West";
+import { ConfigurationServicePlaceholders } from "aws-sdk/lib/config_service_placeholders";
+import { ContactPageSharp } from "@mui/icons-material";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -32,8 +34,9 @@ export default function Write() {
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const data1 = Object.fromEntries(data.entries());
-    console.log("data=", data1);
+    const { title, title2, password } = Object.fromEntries(data.entries());
+    console.log(title);
+    console.log(title2);
   };
   const handleSubmit = async () => {
     // if (!file) {
@@ -184,7 +187,7 @@ export default function Write() {
           취소
         </Button>
         <TextField
-          id="title"
+          id="title2"
           label="제목"
           variant="standard"
           sx={{ width: "70%" }}

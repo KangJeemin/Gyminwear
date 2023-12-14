@@ -35,7 +35,7 @@ export default function Write() {
       console.error("선택된 파일이 없습니다");
       return;
     }
-    const response = await fetch("api/upload", {
+    const response = await fetch("http://localhost:3000/api/upload", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -152,7 +152,6 @@ export default function Write() {
           value="강지민"
         />
       </Box>
-      <QuillWrapper content={content} setContent={setContent} />
       <input
         id="file"
         type="file"
@@ -164,6 +163,8 @@ export default function Write() {
         }}
         accept="image/png, image/jpeg"
       />
+      <QuillWrapper content={content} setContent={setContent} />
+
       <Box sx={{ paddingTop: "100px", display: "flex" }}>
         <Box sx={{ width: { xl: "90%" } }}></Box>
         <Button component="label" variant="contained" onClick={openModal}>
@@ -175,6 +176,7 @@ export default function Write() {
           variant="contained"
           onClick={() => {
             console.log(content);
+            handleSubmit();
           }}
         >
           등록

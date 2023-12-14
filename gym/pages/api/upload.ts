@@ -6,10 +6,13 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function POST(request:NextApiRequest,response:NextApiResponse) {
   if(request.method==="POST"){
+    
     console.log('a')
     try {
     const { filename, contentType } = await request.body
-    const client = new S3Client({ region: process.env.NEXT_PUBLIC_AWS_REGION })
+    const client = new S3Client({  region: process.env.NEXT_PUBLIC_AWS_REGION,
+      })
+      console.log(client)
     const { url, fields } = await createPresignedPost(client, {
       Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME ? process.env.NEXT_PUBLIC_AWS_BUCKET_NAME : '' ,
       Key: uuidv4(),

@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { ConsoleLogger } from '@nestjs/common';
 
 
-export async function POST(request:NextApiRequest,response:NextApiResponse) {
+export default async function POST(request:NextApiRequest,response:NextApiResponse) {
   if(request.method==="POST"){
 
   const { filename, contentType } = await request.body

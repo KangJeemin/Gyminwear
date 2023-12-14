@@ -27,7 +27,41 @@ const VisuallyHiddenInput = styled("input")({
 export default function Write() {
   const [content, setContent] = React.useState<string>("");
   const [isModalOpen, setModalOpen] = React.useState<boolean>(false);
+  const [file, setFile] = React.useState<File | null>(null);
   const router = useRouter();
+
+  const handleSubmit = async () => {
+    const response = await fetch("api/upload", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ filename: file.name, contentType: file.type }),
+    });
+    if (response.ok) {
+      const { url, fields } = await response.json();
+
+      const formData = new FormData();
+      Object.entries(fields).forEach(([key, value]) => {
+        formData.append(key, value as string);
+      });
+      formData.append("file", file);
+
+      const uploadResponse = await fetch(url, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (uploadResponse.ok) {
+        alert("Upload successful!");
+      } else {
+        console.error("S3 Upload Error:", uploadResponse);
+        alert("Upload failed.");
+      }
+    } else {
+      alert("Failed to get pre-signed URL.");
+    }
+  };
 
   const openModal = () => {
     setModalOpen(true);
@@ -115,6 +149,17 @@ export default function Write() {
         />
       </Box>
       <QuillWrapper content={content} setContent={setContent} />
+      <input
+        id="file"
+        type="file"
+        onChange={(e) => {
+          const files = e.target.files;
+          if (files) {
+            setFile(files[0]);
+          }
+        }}
+        accept="image/png, image/jpeg"
+      />
       <Box sx={{ paddingTop: "100px", display: "flex" }}>
         <Box sx={{ width: { xl: "90%" } }}></Box>
         <Button component="label" variant="contained" onClick={openModal}>

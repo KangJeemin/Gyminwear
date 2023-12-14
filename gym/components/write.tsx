@@ -41,8 +41,8 @@ export default function Write() {
         headers: {
           "Content-Type": "application/json",
         },
-        // body: JSON.stringify({ filename: file.name, contentType: file.type }),
-        body: JSON.stringify({ filename: "hey" }),
+        body: JSON.stringify({ filename: file.name, contentType: file.type }),
+        // body: JSON.stringify({ filename: "hey" }),
       });
       console.log("response=", response);
       if (response.ok) {

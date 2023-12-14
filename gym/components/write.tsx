@@ -31,6 +31,10 @@ export default function Write() {
   const router = useRouter();
 
   const handleSubmit = async () => {
+    if (!file) {
+      console.error("선택된 파일이 없습니다");
+      return;
+    }
     const response = await fetch("api/upload", {
       method: "POST",
       headers: {

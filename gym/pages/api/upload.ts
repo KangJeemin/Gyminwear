@@ -7,9 +7,9 @@ import { ConsoleLogger } from '@nestjs/common';
 
 export default async function POST(request:NextApiRequest,response:NextApiResponse) {
   if(request.method==="POST"){
-
+    try {
   const { filename, contentType } = await request.body
-  try {
+  
     const client = new S3Client({ region: process.env.NEXT_PUBLIC_AWS_REGION })
     const { url, fields } = await createPresignedPost(client, {
       Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME ? process.env.NEXT_PUBLIC_AWS_BUCKET_NAME: '',

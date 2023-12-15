@@ -161,7 +161,7 @@ export default function Read(props: any) {
           paddingBottom: "20px",
         }}
       >
-        {props.data[0].commentcount}
+        댓글({props.data[0].commentcount})
       </Box>
       <Comment />
       <Comment />

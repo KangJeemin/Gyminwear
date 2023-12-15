@@ -25,22 +25,21 @@ export default function Read(props: any) {
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [isCommentOpen, setCommentlOpen] = React.useState(false);
   const router = useRouter();
+
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const { title, nickname } = Object.fromEntries(data.entries());
-    const sendWrtie = {
-      title,
-      nickname,
-    };
-    const response = await fetch("http://localhost:3000/api/board", {
+    const { commentcontent } = Object.fromEntries(data.entries());
+
+    const response = await fetch("http://localhost:3000/api/comment", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        title: title,
-        nickname: nickname,
+        postid: props.data[0].postid,
+        content: commentcontent,
+        nickname: session.nickname,
       }),
     });
     console.log(response);
@@ -204,6 +203,7 @@ export default function Read(props: any) {
           id="CommentNickname"
           label="닉네임"
           variant="standard"
+          value={session.nickname}
           sx={{ width: "300px" }}
         />
         <Box
@@ -235,7 +235,7 @@ export default function Read(props: any) {
           }}
         >
           <Button
-            component="label"
+            type="submit"
             variant="contained"
             sx={{
               width: "70px",

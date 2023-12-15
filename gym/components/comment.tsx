@@ -3,9 +3,32 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import CommentComment from "@/components/commentComment";
 import CommentWrtie from "./commentWrite";
+import TextField from "@mui/material/TextField";
+
 const Comment = () => {
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);
+
+  const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const { title, nickname } = Object.fromEntries(data.entries());
+    const sendWrtie = {
+      title,
+      nickname,
+    };
+    const response = await fetch("http://localhost:3000/api/board", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: title,
+        nickname: nickname,
+      }),
+    });
+    console.log(response);
+  };
   const openComment = () => {
     isCommentOpen ? setCommentOpen(false) : setCommentOpen(true);
   };
@@ -23,6 +46,9 @@ const Comment = () => {
   return (
     <>
       <Box
+        component="form"
+        noValidate
+        onSubmit={handleSubmitWrite}
         sx={{
           display: "flex",
           width: "100%",
@@ -75,7 +101,10 @@ const Comment = () => {
               12:42
             </Box>
           </Box>
-          <Box
+          <TextField
+            id="nickname"
+            name="nickname"
+            variant="standard"
             sx={{
               marginTop: "10px",
               width: "100%",
@@ -83,9 +112,7 @@ const Comment = () => {
               whiteSpace: "normal", // 줄 바꿈 방지 스타일
               fontSize: { xl: 20 },
             }}
-          >
-            오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다
-          </Box>
+          />
           <Box
             sx={{
               display: "flex",

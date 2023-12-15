@@ -51,7 +51,17 @@ export default function Board(props: any) {
             columns={{ xs: 4, sm: 8, md: 16 }}
           >
             {props.data.map((object: boardInfo, index: number) => (
-              <Grid xs={4} sm={4} md={4} key={index}>
+              <Grid
+                xs={4}
+                sm={4}
+                md={4}
+                key={index}
+                onClick={() => {
+                  router.push(
+                    `http://localhost:3000/board/read?id=${object.postid}`
+                  );
+                }}
+              >
                 <Box
                   sx={{
                     display: "flex",

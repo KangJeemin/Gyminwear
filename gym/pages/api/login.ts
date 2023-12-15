@@ -26,7 +26,7 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
     // 현재 비밀번호와 데이터베이스에 저장되어 있는 salt 값으로 비밀번호 조회하기
       try{
         db.query(
-            `SELECT password,salt,nickname FROM user WHERE email='${email}'; `
+            `SELECT password,salt,nickname FROM users WHERE email='${email}'; `
         ,async(error:any,result:any)=>{
             if(error){
                 console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")

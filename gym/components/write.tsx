@@ -11,7 +11,7 @@ import Modal from "./modal";
 import Container from "@mui/material/Container";
 import { useRouter } from "next/router";
 import WestIcon from "@mui/icons-material/West";
-
+import useSession from "@/lib/useSession";
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -27,6 +27,7 @@ export default function Write() {
   const [content, setContent] = React.useState<string>("");
   const [isModalOpen, setModalOpen] = React.useState<boolean>(false);
   const [file, setFile] = React.useState<File | null>(null);
+  const { session } = useSession();
   const router = useRouter();
 
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -165,7 +166,7 @@ export default function Write() {
             label="작성자"
             variant="standard"
             sx={{ width: "20%" }}
-            value="강지민"
+            value={session.nickname}
           />
         </Box>
         <input

@@ -48,7 +48,7 @@ export default function CommentWrtie() {
       <Box
         sx={{
           width: "95%",
-          height: "300px",
+          height: "auto",
           border: 1,
           display: "flex",
           flexDirection: "column",
@@ -72,7 +72,7 @@ export default function CommentWrtie() {
             inputProps={{ maxLength: 300 }}
             sx={{
               width: "100%",
-              height: "100%",
+              height: "200px",
               backgroundColor: "white",
               // border: "none",
               color: "black",

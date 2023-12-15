@@ -39,8 +39,17 @@ export default function Write() {
       nickname,
       content,
     };
-
-    // const { title, nickname, content } = Object.fromEntries(data.entries());
+    const response = await fetch("http://localhost:3000/api/write", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: title,
+        nickname: nickname,
+        content: content,
+      }),
+    });
   };
   const handleSubmit = async () => {
     // if (!file) {

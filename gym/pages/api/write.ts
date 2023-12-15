@@ -16,10 +16,11 @@ type writeInfo = {
 }
 export default async function write(req: NextApiRequest, res: NextApiResponse) {
     const {title,nickname,content}:writeInfo = req.body;
+    
     if(req.method==="POST"){
         try{
             db.query(
-                `INSERT INTO posts (userid,title,content) VALUES ((SELECT userid FROM users WHERE nickname =${nickname}),${title},${content}');`
+                `INSERT INTO posts (userid,title,content) VALUES ((SELECT userid FROM users WHERE nickname ='${nickname}'),'${title}','${content}');`
             ,(error:any,result:any)=>{
                 if(error){
                     console.error("게시물을 작성하는 과정에서 오류 발생.")

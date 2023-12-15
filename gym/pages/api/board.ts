@@ -20,6 +20,7 @@ type writeInfo = {
 }
 export default async function board(req: NextApiRequest, res: NextApiResponse) {
     const {title,nickname,content}:writeInfo = req.body;
+    const {id,page} = req.query
     
     if(req.method==="POST"){
         try{
@@ -41,6 +42,29 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
           }
     }
     else if(req.method==="GET") {
+        if(page===undefined){
+            try{
+                db.query(
+                    `SELECT posts.title, users.nickname, posts.content, posts.viewcount, posts.date, COUNT(comments.commentid) AS commentcount
+                    FROM posts
+                    JOIN users ON posts.userid = users.userid LEFT JOIN comments ON posts.postid = comments.postid WHERE posts.postid= ${id} GROUP BY posts.postid;
+                    `
+                ,(error:any,result:any)=>{
+                    if(error){
+                        console.error("게시물을 조회하는 과정에서 오류 발생.")
+                        return false
+                    } else{
+                        res.status(200).json(result);  
+                    }
+                })
+              }
+              catch (error) {
+                console.error("데이터 베이스에 유저 정보 조회 중")
+                res.status(500).json({ error: '서버 오류' });  
+              }
+        }
+        else{
+
         try{
             db.query(
                 `SELECT posts.postid, posts.title, users.nickname, posts.content, posts.viewcount, posts.date, COUNT(comments.commentid) AS commentcount
@@ -60,5 +84,6 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
             console.error("데이터 베이스에 유저 정보 조회 중")
             res.status(500).json({ error: '서버 오류' });  
           }
+        }
     }
 }

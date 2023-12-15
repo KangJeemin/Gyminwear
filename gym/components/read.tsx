@@ -7,13 +7,22 @@ import TextField from "@mui/material/TextField";
 import Comment from "./comment";
 import { useRouter } from "next/router";
 import Modal from "./modal";
+import QuillWrapper from "./quillWrapper";
 import WestIcon from "@mui/icons-material/West";
 
-export default function Read() {
+type readInfo = {
+  title: string;
+  nickname: string;
+  content: string;
+  viewcount: number;
+  date: string;
+  commentcount: number;
+};
+export default function Read(props: any) {
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [isCommentOpen, setCommentlOpen] = React.useState(false);
   const router = useRouter();
-
+  console.log(props);
   const openModal = () => {
     setModalOpen(true);
   };
@@ -53,7 +62,7 @@ export default function Read() {
           <Box>
             <WestIcon />
           </Box>
-          본투윈 입고 운동 했습니다.
+          {props.data[0].title}
         </Box>
 
         <Box
@@ -73,21 +82,21 @@ export default function Read() {
               width: { xs: "30%", xl: "200px" },
             }}
           >
-            작성자: 강지민
+            작성자:{props.data[0].nickname}
           </Box>
           <Box
             sx={{
               width: { xs: "30%", xl: "200px" },
             }}
           >
-            조회수: 30
+            조회수:{props.data[0].viewcount}
           </Box>
           <Box
             sx={{
               width: { xs: "30%", xl: "200px" },
             }}
           >
-            12:45
+            날짜:{props.data[0].date}
           </Box>
         </Box>
       </Box>
@@ -124,15 +133,16 @@ export default function Read() {
           </Box>
         </Container>
       </Modal>
+      {/* <QuillWrapper content={props.data[0].content} /> */}
       <Box
         sx={{
           width: "100%",
           height: { xs: "500px", xl: "800px" },
-          marginTop: "20px",
+          marginTop: "30px",
           borderBottom: 1,
         }}
       >
-        글 내용 작성{" "}
+        {props.data[0].content}
       </Box>
       <Box sx={{ paddingTop: "10px", display: "flex" }}>
         <Box sx={{ width: { xl: "90%" } }}></Box>
@@ -151,7 +161,7 @@ export default function Read() {
           paddingBottom: "20px",
         }}
       >
-        댓글(0)
+        {props.data[0].commentcount}
       </Box>
       <Comment />
       <Comment />

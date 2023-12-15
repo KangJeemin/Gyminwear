@@ -10,8 +10,29 @@ const db = require('@/lib/connectMysql');
 
 
 type writeInfo = {  
-    
+    title:string,
+    nickname:string,
+    content:string,
 }
 export default async function write(req: NextApiRequest, res: NextApiResponse) {
-
+    const {title,nickname,content}:writeInfo = req.body;
+    if(req.method==="POST"){
+        try{
+            db.query(
+                `INSERT INTO posts (userid,title,content) VALUES ((SELECT userid FROM users WHERE nickname =${nickname}),${title},${content}');`
+            ,(error:any,result:any)=>{
+                if(error){
+                    console.error("게시물을 작성하는 과정에서 오류 발생.")
+                    return false
+                } else{
+                    console.log('게시물 작성 성공')
+                    res.status(200).json({ result: true });  
+                }
+            })
+          }
+          catch (error) {
+            console.error("데이터 베이스에 유저 정보 저장 중 에러 발생")
+            res.status(500).json({ error: '서버 오류' });  
+          }
+    }
 }

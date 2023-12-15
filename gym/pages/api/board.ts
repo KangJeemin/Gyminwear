@@ -39,9 +39,9 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
     else if(req.method==="GET") {
         try{
             db.query(
-                `SELECT posts.postid, posts.title, users.nickname, posts.content, posts.date
+                `SELECT posts.postid, posts.title, users.nickname, posts.content, posts.viewcount, posts.date, COUNT(comments.commentid) AS commentcount
                 FROM posts
-                JOIN users ON posts.userid = users.userid;
+                JOIN users ON posts.userid = users.userid LEFT JOIN comments ON posts.postid = comments.postid GROUP BY posts.postid;
                 `
             ,(error:any,result:any)=>{
                 if(error){

@@ -10,7 +10,12 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
-
+type boardInfo = {
+  postid: number;
+  title: string;
+  nickname: string;
+  content: string;
+};
 export default function Board(props: any) {
   const router = useRouter();
   console.log(props.data);
@@ -41,7 +46,7 @@ export default function Board(props: any) {
             spacing={{ xs: 1, xl: 2 }}
             columns={{ xs: 4, sm: 8, md: 16 }}
           >
-            {Array.from(Array(props.mapcount)).map((_, index) => (
+            {props.data.map((object: boardInfo, index: number) => (
               <Grid xs={4} sm={4} md={4} key={index}>
                 <Box
                   sx={{
@@ -81,7 +86,7 @@ export default function Board(props: any) {
                         display: "flex",
                       }}
                     >
-                      본투윈입고 운동 했습니다 회원님들
+                      {object.title}
                       <Box
                         sx={{
                           color: "red",
@@ -97,7 +102,7 @@ export default function Board(props: any) {
                         color: "#D9D9D9",
                       }}
                     >
-                      프리덤 성애자
+                      {object.nickname}
                     </Box>
                     <Box
                       sx={{

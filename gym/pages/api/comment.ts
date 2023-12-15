@@ -8,9 +8,10 @@ type userInfo = {
     nickname:String
 }
 export default async function Comment(req : NextApiRequest, res : NextApiResponse){
-    
+    const {postid,nickname,content} = req.body;
+    console.log(postid,nickname,content);
     if (req.method === 'POST') {
-        const {postid,nickname,content} = req.body;
+        
           try{
             db.query(
                 `INSERT INTO comments (postid,userid,content) VALUES ('${postid}',(SELECT userid FROM users WHERE nickname ='${nickname}'),'${content}');`

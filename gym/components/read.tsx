@@ -10,6 +10,7 @@ import Modal from "./modal";
 import WestIcon from "@mui/icons-material/West";
 import parse from "html-react-parser";
 import Input from "@mui/material/Input";
+import useSession from "@/lib/useSession";
 
 type readInfo = {
   title: string;
@@ -20,9 +21,30 @@ type readInfo = {
   commentcount: number;
 };
 export default function Read(props: any) {
+  const { session } = useSession();
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [isCommentOpen, setCommentlOpen] = React.useState(false);
   const router = useRouter();
+  const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const { title, nickname } = Object.fromEntries(data.entries());
+    const sendWrtie = {
+      title,
+      nickname,
+    };
+    const response = await fetch("http://localhost:3000/api/board", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: title,
+        nickname: nickname,
+      }),
+    });
+    console.log(response);
+  };
   console.log(props);
   const openModal = () => {
     setModalOpen(true);
@@ -167,6 +189,9 @@ export default function Read(props: any) {
       <Comment />
       <Comment />
       <Box
+        component="form"
+        noValidate
+        onSubmit={handleSubmitWrite}
         sx={{
           width: "100%",
           height: "300px",

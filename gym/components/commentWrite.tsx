@@ -2,6 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import Input from "@mui/material/Input";
 
 export default function CommentWrtie() {
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -31,7 +32,7 @@ export default function CommentWrtie() {
       onSubmit={handleSubmitWrite}
       sx={{
         width: "100%",
-        height: "300px",
+        height: "auto",
         display: "flex",
         marginBottom: "20px",
       }}
@@ -66,18 +67,19 @@ export default function CommentWrtie() {
             height: "200px",
           }}
         >
-          <input
-            style={{
-              width: "200px",
+          <Input
+            multiline
+            inputProps={{ maxLength: 300 }}
+            sx={{
+              width: "100%",
               height: "100%",
               backgroundColor: "white",
               // border: "none",
               color: "black",
-              outline: "none", // 기본 포커스 효과 제거
             }}
-            placeholder="내용을 입력하세요"
+            placeholder="댓글은 300자까지 입력 가능합니다."
             name="commentcontent"
-          />
+          ></Input>
         </Box>
         <Box
           sx={{

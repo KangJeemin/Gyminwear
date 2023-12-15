@@ -7,8 +7,8 @@ import TextField from "@mui/material/TextField";
 import Comment from "./comment";
 import { useRouter } from "next/router";
 import Modal from "./modal";
-import QuillWrapper from "./quillWrapper";
 import WestIcon from "@mui/icons-material/West";
+import parse from "html-react-parser";
 
 type readInfo = {
   title: string;
@@ -142,7 +142,7 @@ export default function Read(props: any) {
           borderBottom: 1,
         }}
       >
-        {props.data[0].content}
+        {parse(props.data[0].content)}
       </Box>
       <Box sx={{ paddingTop: "10px", display: "flex" }}>
         <Box sx={{ width: { xl: "90%" } }}></Box>

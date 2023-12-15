@@ -10,8 +10,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const res = await fetch(`http://localhost:3000/api/board?id=${id}`);
   const data = await res.json();
 
-  console.log("data=1", data);
-
   return {
     props: {
       data: data,

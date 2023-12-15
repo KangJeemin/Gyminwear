@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import Modal from "./modal";
 import WestIcon from "@mui/icons-material/West";
 import parse from "html-react-parser";
+import Input from "@mui/material/Input";
 
 type readInfo = {
   title: string;
@@ -186,18 +187,19 @@ export default function Read(props: any) {
             height: "200px",
           }}
         >
-          <input
-            style={{
+          <Input
+            multiline
+            inputProps={{ maxLength: 300 }}
+            sx={{
               width: "100%",
-              height: "100%",
+              height: "200px",
               backgroundColor: "white",
-              border: "none",
+              // border: "none",
               color: "black",
-              outline: "none", // 기본 포커스 효과 제거
             }}
-            placeholder="내용을 입력하세요"
-            name="comment"
-          />
+            placeholder="댓글은 300자까지 입력 가능합니다."
+            name="commentcontent"
+          ></Input>
         </Box>
         <Box
           sx={{

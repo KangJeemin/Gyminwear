@@ -48,8 +48,6 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
                     console.error("게시물을 조회하는 과정에서 오류 발생.")
                     return false
                 } else{
-                    console.log('게시물 조회 성공')
-                    console.log('result=',result)
                     res.status(200).json(result);  
                 }
             })

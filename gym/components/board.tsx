@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 
 export default function Board(props: any) {
   const router = useRouter();
+  console.log(props.data);
   return (
     <Container>
       <Container

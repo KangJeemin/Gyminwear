@@ -17,7 +17,7 @@ type boardInfo = {
 export default function board(props: any) {
   return (
     <>
-      <Board mapcount={16} />
+      <Board mapcount={16} data={props.data} />
     </>
   );
 }
@@ -27,11 +27,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   const res = await fetch(`http://localhost:3000/api/board?page=1`);
   const data = await res.json();
+
   console.log("data=", data);
 
   return {
     props: {
-      data: data.result,
+      data: data,
     },
   };
 }

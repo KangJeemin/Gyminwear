@@ -14,7 +14,7 @@ type writeInfo = {
     nickname:string,
     content:string,
 }
-export default async function write(req: NextApiRequest, res: NextApiResponse) {
+export default async function board(req: NextApiRequest, res: NextApiResponse) {
     const {title,nickname,content}:writeInfo = req.body;
     
     if(req.method==="POST"){
@@ -32,7 +32,30 @@ export default async function write(req: NextApiRequest, res: NextApiResponse) {
             })
           }
           catch (error) {
-            console.error("데이터 베이스에 유저 정보 저장 중 에러 발생")
+            console.error("데이터 베이스에 게시물 저장 중 에러 발생")
+            res.status(500).json({ error: '서버 오류' });  
+          }
+    }
+    else if(req.method==="GET") {
+        try{
+            db.query(
+                `SELECT posts.postid, posts.title, users.nickname, posts.content, posts.date
+                FROM posts
+                JOIN users ON posts.userid = users.userid;
+                `
+            ,(error:any,result:any)=>{
+                if(error){
+                    console.error("게시물을 조회하는 과정에서 오류 발생.")
+                    return false
+                } else{
+                    console.log('게시물 조회 성공')
+                    console.log('result=',result)
+                    res.status(200).json(result);  
+                }
+            })
+          }
+          catch (error) {
+            console.error("데이터 베이스에 유저 정보 조회 중")
             res.status(500).json({ error: '서버 오류' });  
           }
     }

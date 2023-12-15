@@ -6,11 +6,32 @@ import Board from "@/components/board";
 import Miniboard from "@/components/miniboard";
 import useSession from "@/lib/useSession";
 import Pagedivide from "@/components/pagedivide";
+import { GetServerSidePropsContext } from "next";
+import { ConstructionOutlined } from "@mui/icons-material";
 
-export default function board() {
+type boardInfo = {
+  brandname: string;
+  gymitem: [];
+  countresult: number;
+};
+export default function board(props: any) {
   return (
     <>
       <Board mapcount={16} />
     </>
   );
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { page } = context.query;
+
+  const res = await fetch(`http://localhost:3000/api/board?page=1`);
+  const data = await res.json();
+  console.log("data=", data);
+
+  return {
+    props: {
+      data: data.result,
+    },
+  };
 }

@@ -10,11 +10,15 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
+import DateTimeFormatter from "@/lib/dateTimeFomatter";
 type boardInfo = {
   postid: number;
   title: string;
   nickname: string;
   content: string;
+  viewcount: number;
+  date: string;
+  commentcount: number;
 };
 export default function Board(props: any) {
   const router = useRouter();
@@ -92,7 +96,7 @@ export default function Board(props: any) {
                           color: "red",
                         }}
                       >
-                        [2]
+                        [{object.commentcount}]
                       </Box>
                     </Box>
                     <Box
@@ -116,7 +120,7 @@ export default function Board(props: any) {
                           fontSize: 15,
                         }}
                       >
-                        조회:3
+                        조회:{object.viewcount}
                       </Box>
                       <Box
                         sx={{
@@ -128,7 +132,7 @@ export default function Board(props: any) {
                           marginRight: { xs: "10px" },
                         }}
                       >
-                        12:56
+                        <DateTimeFormatter dateString={object.date} />
                       </Box>
                     </Box>
                   </Box>

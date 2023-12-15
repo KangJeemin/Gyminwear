@@ -10,9 +10,13 @@ const db = require('@/lib/connectMysql');
 
 
 type writeInfo = {  
+    postid:number,
     title:string,
     nickname:string,
     content:string,
+    viewcount:number,
+    date:string,
+    commentcount:number
 }
 export default async function board(req: NextApiRequest, res: NextApiResponse) {
     const {title,nickname,content}:writeInfo = req.body;

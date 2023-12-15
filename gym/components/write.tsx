@@ -39,7 +39,7 @@ export default function Write() {
       nickname,
       content,
     };
-    const response = await fetch("http://localhost:3000/api/write", {
+    const response = await fetch("http://localhost:3000/api/board", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,6 +50,7 @@ export default function Write() {
         content: content,
       }),
     });
+    console.log(response);
   };
   const handleSubmit = async () => {
     // if (!file) {

@@ -6,28 +6,32 @@ import Input from "@mui/material/Input";
 import useSession from "@/lib/useSession";
 
 export default function CommentWrtie(props: any) {
+  const { session } = useSession();
+
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+    const { commentnickname, commentcontent } = Object.fromEntries(
+      data.entries()
+    );
+
     console.log(props.parentid);
     console.log(props.postid);
 
-    const data = new FormData(event.currentTarget);
-    const { title, nickname } = Object.fromEntries(data.entries());
-
-    // postid: props.boardData[0].postid,
-    // content: commentcontent,
-    // nickname: session.nickname,
-    // const response = await fetch("http://localhost:3000/api/comment", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     title: title,
-    //     nickname: nickname,
-    //   }),
-    // });
-    // console.log(response);
+    const response = await fetch("http://localhost:3000/api/comment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        postid: props.postid,
+        parentid: props.parentid,
+        nickname: commentnickname,
+        content: commentcontent,
+      }),
+    });
+    console.log(response);
   };
   return (
     <Box
@@ -64,6 +68,7 @@ export default function CommentWrtie(props: any) {
           label="닉네임"
           variant="standard"
           sx={{ width: "300px" }}
+          value={session.nickname}
         />
         <Box
           sx={{

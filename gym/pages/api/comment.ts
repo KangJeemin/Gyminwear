@@ -9,12 +9,13 @@ type userInfo = {
 }
 
 export default async function Comment(req : NextApiRequest, res : NextApiResponse){
-    const {postid,nickname,content} = req.body;
+    const {parentid,postid,nickname,content} = req.body;
     const {id,page} = req.query
     if (req.method === 'POST') {
+      
           try{
             db.query(
-                `INSERT INTO comments (postid,userid,content) VALUES ('${postid}',(SELECT userid FROM users WHERE nickname ='${nickname}'),'${content}');`
+                `INSERT INTO comments (parentcommentid,postid,userid,content) VALUES (${parentid===undefined?null:parentid},'${postid}',(SELECT userid FROM users WHERE nickname ='${nickname}'),'${content}');`
             ,(error:any,result:any)=>{
                 if(error){
                     console.error("댓글 저장 중 오류 발생")

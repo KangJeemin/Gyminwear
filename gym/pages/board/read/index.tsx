@@ -6,7 +6,7 @@ export default function index(props: any) {
   return (
     <>
       <Read data={props.data}></Read>
-      <CommentContainer />
+      <CommentContainer data={props.commentData} />
     </>
   );
 }
@@ -27,6 +27,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return {
       props: {
         data: boardData,
+        commentData: commentData,
       },
     };
   } catch (error) {

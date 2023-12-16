@@ -37,8 +37,7 @@ export default async function Comment(req : NextApiRequest, res : NextApiRespons
                   console.error("댓글 조회 중 오류 발생")
                   return false
               } else{
-                  console.log('commentData',result);
-                  res.status(200).json({ result: true });  
+                  res.status(200).json(result);  
               }
           })
         }

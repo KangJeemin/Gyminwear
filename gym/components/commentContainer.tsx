@@ -7,11 +7,14 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import useSession from "@/lib/useSession";
 
-export default function CommentContainer() {
+export default function CommentContainer(props: any) {
   const { session } = useSession();
   return (
     <DoubleContainer>
-      <Comment />
+      {props.commentData.map((object: [], index: number) => (
+        <Comment key={index} />
+      ))}
+
       <Box
         component="form"
         noValidate

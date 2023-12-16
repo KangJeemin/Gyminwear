@@ -129,7 +129,12 @@ const Comment = (props: any) => {
           </Button>
         </Box>
       </Box>
-      {isCommentOpen ? <CommentWrtie /> : null}
+      {isCommentOpen ? (
+        <CommentWrtie
+          postid={props.data.postid}
+          parentid={props.data.commentid}
+        />
+      ) : null}
       <CommentComment openComment={openComment} />
     </>
   );

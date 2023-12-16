@@ -31,7 +31,7 @@ export default async function Comment(req : NextApiRequest, res : NextApiRespons
       else if(req.method==="GET"){
         try{
           db.query(
-              `SELECT * FROM comments WHERE postsid=${id};`
+              `SELECT * FROM comments WHERE postid='${id}';`
           ,(error:any,result:any)=>{
               if(error){
                   console.error("댓글 조회 중 오류 발생")

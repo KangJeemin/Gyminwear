@@ -13,16 +13,30 @@ export default function index(props: any) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
 
-  const resBoard = await fetch(`http://localhost:3000/api/board?id=${id}`);
-  const boardData = await resBoard.json();
+  try {
+    // Parallel fetch using Promise.all
+    const [boardRes, commentRes] = await Promise.all([
+      fetch(`http://localhost:3000/api/board?id=${id}`),
+      fetch(`http://localhost:3000/api/comment?id=${id}`),
+    ]);
 
-  // const resComment = await fetch(`http://localhost:3000/api/comment?id=${id}`);
-  // const commentData = await resComment.json();
-  // console.log("commentData=", commentData);
+    const boardData = await boardRes.json();
+    const commentData = await commentRes.json();
+    console.log("commentData=", commentData);
 
-  return {
-    props: {
-      data: boardData,
-    },
-  };
+    return {
+      props: {
+        data: boardData,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+
+    // Handle error and return appropriate props or redirect
+    return {
+      props: {
+        data: null,
+      },
+    };
+  }
 }

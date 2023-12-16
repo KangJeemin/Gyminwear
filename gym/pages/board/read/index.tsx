@@ -16,8 +16,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const resBoard = await fetch(`http://localhost:3000/api/board?id=${id}`);
   const boardData = await resBoard.json();
 
-  const resComment = await fetch(`http://localhost:3000/api/comment`);
-  const commentData = await resComment.json();
+  // const resComment = await fetch(`http://localhost:3000/api/comment?id=${id}`);
+  // const commentData = await resComment.json();
+  // console.log("commentData=", commentData);
 
   return {
     props: {

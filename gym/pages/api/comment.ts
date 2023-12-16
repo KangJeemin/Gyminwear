@@ -9,9 +9,8 @@ type userInfo = {
 }
 export default async function Comment(req : NextApiRequest, res : NextApiResponse){
     const {postid,nickname,content} = req.body;
-    console.log(postid,nickname,content);
+    const {id,page} = req.query
     if (req.method === 'POST') {
-        
           try{
             db.query(
                 `INSERT INTO comments (postid,userid,content) VALUES ('${postid}',(SELECT userid FROM users WHERE nickname ='${nickname}'),'${content}');`
@@ -28,9 +27,30 @@ export default async function Comment(req : NextApiRequest, res : NextApiRespons
             console.error("댓글을 저장하기 위해 데이터베이스에 접근 하는 도중 에러 발생")
             res.status(500).json({ error: '서버 오류' });  
           }
-      } else {
+      } 
+      else if(req.method==="GET"){
+        try{
+          db.query(
+              `SELECT * FROM comments WHERE postsid=${id};`
+          ,(error:any,result:any)=>{
+              if(error){
+                  console.error("댓글 조회 중 오류 발생")
+                  return false
+              } else{
+                  console.log('commentData',result);
+                  res.status(200).json({ result: true });  
+              }
+          })
+        }
+        catch (error) {
+          console.error("댓글을 저장하기 위해 데이터베이스에 접근 하는 도중 에러 발생")
+          res.status(500).json({ error: '서버 오류' });  
+        }
+      }
+      else {
         res.status(405).json({ error: '허용되지 않는 메서드' });
       }  
+    
   
 }
 

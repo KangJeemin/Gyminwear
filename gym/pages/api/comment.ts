@@ -7,6 +7,7 @@ type userInfo = {
     password:string,
     nickname:String
 }
+
 export default async function Comment(req : NextApiRequest, res : NextApiResponse){
     const {postid,nickname,content} = req.body;
     const {id,page} = req.query
@@ -29,9 +30,12 @@ export default async function Comment(req : NextApiRequest, res : NextApiRespons
           }
       } 
       else if(req.method==="GET"){
+        
         try{
           db.query(
-              `SELECT * FROM comments WHERE postid='${id}';`
+              `SELECT comments.commentid, comments.parentcommentid, comments.postid, users.nickname ,comments.content, comments.date, comments.modifydate 
+              FROM comments 
+              JOIN users ON comments.userid = users.userid WHERE postid='${id}';`
           ,(error:any,result:any)=>{
               if(error){
                   console.error("댓글 조회 중 오류 발생")

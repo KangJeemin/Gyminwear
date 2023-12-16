@@ -11,8 +11,8 @@ export default function CommentContainer(props: any) {
   const { session } = useSession();
   return (
     <DoubleContainer>
-      {props.commentData.map((object: [], index: number) => (
-        <Comment key={index} />
+      {props.data.map((object: [], index: number) => (
+        <Comment key={index} data={object[index]} />
       ))}
 
       <Box

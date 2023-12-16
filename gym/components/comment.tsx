@@ -8,7 +8,7 @@ import useSession from "@/lib/useSession";
 
 import { GetServerSidePropsContext } from "next";
 
-const Comment = () => {
+const Comment = (props: any) => {
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);
   const [commentInfo, setCommentInfo] = React.useState("");

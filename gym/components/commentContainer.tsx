@@ -12,7 +12,7 @@ export default function CommentContainer(props: any) {
   return (
     <DoubleContainer>
       {props.data.map((object: [], index: number) => (
-        <Comment key={index} data={object[index]} />
+        <Comment key={index} data={object} />
       ))}
 
       <Box

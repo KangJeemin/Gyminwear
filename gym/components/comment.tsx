@@ -3,16 +3,12 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import CommentComment from "@/components/commentComment";
 import CommentWrtie from "./commentWrite";
-
-import useSession from "@/lib/useSession";
-
 import { GetServerSidePropsContext } from "next";
 
 const Comment = (props: any) => {
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);
   const [commentInfo, setCommentInfo] = React.useState("");
-  const { session } = useSession();
   console.log("props=", props.data);
 
   const openComment = () => {
@@ -141,18 +137,3 @@ const Comment = (props: any) => {
 };
 
 export default Comment;
-
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  // const { page } = context.query;
-
-  const res = await fetch(`http://localhost:3000/comments`);
-  const data = await res.json();
-
-  console.log("data=", data);
-
-  return {
-    props: {
-      data: data,
-    },
-  };
-}

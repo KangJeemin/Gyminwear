@@ -9,7 +9,6 @@ const Comment = (props: any) => {
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);
   const [commentInfo, setCommentInfo] = React.useState("");
-  console.log("props=", props.data);
 
   const openComment = () => {
     isCommentOpen ? setCommentOpen(false) : setCommentOpen(true);
@@ -69,7 +68,7 @@ const Comment = (props: any) => {
                 fontWeight: 700,
               }}
             >
-              강지민
+              {props.data.nickname}
             </Box>
             <Box
               sx={{
@@ -77,7 +76,7 @@ const Comment = (props: any) => {
                 color: "#D9D9D9",
               }}
             >
-              12:42
+              {props.data.date}
             </Box>
           </Box>
           <Box
@@ -89,7 +88,7 @@ const Comment = (props: any) => {
               fontSize: { xl: 20 },
             }}
           >
-            오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다오운완입니디다다다다다다다다다다다다다다
+            {props.data.content}
           </Box>
           <Box
             sx={{

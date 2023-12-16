@@ -12,7 +12,6 @@ export default function CommentContainer() {
   return (
     <DoubleContainer>
       <Comment />
-      <Comment />
       <Box
         component="form"
         noValidate

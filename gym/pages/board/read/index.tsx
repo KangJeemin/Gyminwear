@@ -13,12 +13,15 @@ export default function index(props: any) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
 
-  const res = await fetch(`http://localhost:3000/api/board?id=${id}`);
-  const data = await res.json();
+  const resBoard = await fetch(`http://localhost:3000/api/board?id=${id}`);
+  const boardData = await resBoard.json();
+
+  const resComment = await fetch(`http://localhost:3000/api/comment`);
+  const commentData = await resComment.json();
 
   return {
     props: {
-      data: data,
+      data: boardData,
     },
   };
 }

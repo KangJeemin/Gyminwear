@@ -6,7 +6,7 @@ export default function index(props: any) {
   return (
     <>
       <Read data={props.data}></Read>
-      <CommentContainer data={props.commentData} />
+      <CommentContainer data={props.commentData} boardData={props.data} />
     </>
   );
 }

@@ -9,6 +9,25 @@ import useSession from "@/lib/useSession";
 
 export default function CommentContainer(props: any) {
   const { session } = useSession();
+  const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+    const { commentcontent } = Object.fromEntries(data.entries());
+
+    const response = await fetch("http://localhost:3000/api/comment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({
+        postid: props.boardData[0].postid,
+        content: commentcontent,
+        nickname: session.nickname,
+      }),
+    });
+  };
   return (
     <DoubleContainer>
       {props.data.map((object: [], index: number) => (
@@ -18,7 +37,7 @@ export default function CommentContainer(props: any) {
       <Box
         component="form"
         noValidate
-        // onSubmit={handleSubmitWrite}
+        onSubmit={handleSubmitWrite}
         sx={{
           width: "100%",
           height: "300px",

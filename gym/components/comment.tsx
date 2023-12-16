@@ -13,27 +13,8 @@ const Comment = (props: any) => {
   const [isCommentOpen, setCommentOpen] = React.useState(false);
   const [commentInfo, setCommentInfo] = React.useState("");
   const { session } = useSession();
+  console.log("props=", props.data);
 
-  // const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   const { title, nickname } = Object.fromEntries(data.entries());
-  //   const sendWrtie = {
-  //     title,
-  //     nickname,
-  //   };
-  //   const response = await fetch("http://localhost:3000/api/board", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       title: title,
-  //       nickname: nickname,
-  //     }),
-  //   });
-  //   console.log(response.json());
-  // };
   const openComment = () => {
     isCommentOpen ? setCommentOpen(false) : setCommentOpen(true);
   };

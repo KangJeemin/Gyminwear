@@ -22,20 +22,27 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
     const boardData = await boardRes.json();
     const allCommentData = await commentRes.json();
-    const commentData = allCommentData.filter(
-      (obj) => obj.parentcommentid === null
-    );
-    const commentCommentData = allCommentData.filter(
-      (obj) => obj.parentcommentid !== null
-    );
-    console.log("commentData=", commentData);
-    console.log("commentCommentData=", commentCommentData);
+    const result = [];
+
+    // 객체를 id를 키로 하는 맵으로 변환
+    const idMap = new Map();
+    allCommentData.forEach((obj) => {
+      idMap.set(obj.commentid, { ...obj, child: [] });
+    });
+
+    // 부모-자식 관계 설정
+    allCommentData.forEach((obj) => {
+      if (obj.parentcommentid !== null) {
+        idMap.get(obj.parentcommentid).child.push(idMap.get(obj.commentid));
+      } else {
+        result.push(idMap.get(obj.commentid));
+      }
+    });
 
     return {
       props: {
         data: boardData,
-        commentData: commentData,
-        commentCommentData: commentCommentData,
+        commentData: allCommentData,
       },
     };
   } catch (error) {

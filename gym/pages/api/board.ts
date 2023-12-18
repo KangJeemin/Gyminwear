@@ -21,7 +21,6 @@ type writeInfo = {
 export default async function board(req: NextApiRequest, res: NextApiResponse) {
     const {postid,title,nickname,content}:writeInfo = req.body;
     const {id,page} = req.query
-    console.log('page=',page)
     
     if(req.method==="POST"){
         try{

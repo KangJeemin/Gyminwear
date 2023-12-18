@@ -90,7 +90,7 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
         try{
             console.log('postid=',postid)
             db.query(
-                `DELETE FROM posts WHERE postid='${postid}';`
+                `DELETE FROM posts WHERE postid=${postid};`
             ,(error:any,result:any)=>{
                 if(error){
                     console.error("게시물을 삭제하는 과정에서 오류 발생")

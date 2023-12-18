@@ -106,4 +106,7 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
             res.status(500).json({ error: '서버 오류' });  
           }       
     }
+    else {
+        res.status(405).json({ error: '허용되지 않는 메서드' });
+      }  
 }

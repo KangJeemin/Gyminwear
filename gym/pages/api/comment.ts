@@ -9,7 +9,7 @@ type userInfo = {
 }
 
 export default async function Comment(req : NextApiRequest, res : NextApiResponse){
-    const {parentid,postid,nickname,content} = req.body;
+    const {parentid,postid,nickname,content,commentid} = req.body;
     const {id,page} = req.query
     if (req.method === 'POST') {
       
@@ -31,7 +31,6 @@ export default async function Comment(req : NextApiRequest, res : NextApiRespons
           }
       } 
       else if(req.method==="GET"){
-        
         try{
           db.query(
               `SELECT comments.commentid, comments.parentcommentid, comments.postid, users.nickname ,comments.content, comments.date, comments.modifydate 
@@ -50,6 +49,25 @@ export default async function Comment(req : NextApiRequest, res : NextApiRespons
           console.error("댓글을 저장하기 위해 데이터베이스에 접근 하는 도중 에러 발생")
           res.status(500).json({ error: '서버 오류' });  
         }
+      }
+      else if(req.method==="DELETE"){
+        try{
+          db.query(
+              `DELETE FROM comments WHERE commentid=${commentid};`
+          ,(error:any,result:any)=>{
+              if(error){
+                  console.error("게시물을 삭제하는 과정에서 오류 발생")
+                  return false
+              } else{
+                  console.log('게시물 삭제 성공');
+                  res.status(200).json({ result: true });  
+              }
+          })
+        }
+        catch (error) {
+          console.error("삭제하기 위해 데이터베이스 접근 중 오류 발생.")
+          res.status(500).json({ error: '서버 오류' });  
+        }       
       }
       else {
         res.status(405).json({ error: '허용되지 않는 메서드' });

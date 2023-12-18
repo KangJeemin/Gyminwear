@@ -24,7 +24,7 @@ export default function Read(props: any) {
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [isCommentOpen, setCommentlOpen] = React.useState(false);
   const router = useRouter();
-  console.log("props=", props);
+
   const handleSubmitDelete = async () => {
     const response = await fetch("http://localhost:3000/api/board", {
       method: "DELETE",

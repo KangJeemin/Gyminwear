@@ -21,8 +21,15 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     ]);
 
     const boardData = await boardRes.json();
-    const commentData = await commentRes.json();
+    const allCommentData = await commentRes.json();
+    const commentData = allCommentData.filter(
+      (obj) => obj.parentcommentid === null
+    );
+    const commentCommentData = allCommentData.filter(
+      (obj) => obj.parentcommentid !== null
+    );
     console.log("commentData=", commentData);
+    console.log("commentCommentData=", commentCommentData);
 
     return {
       props: {

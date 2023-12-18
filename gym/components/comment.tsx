@@ -6,6 +6,7 @@ import CommentWrtie from "./commentWrite";
 import { GetServerSidePropsContext } from "next";
 
 const Comment = (props: any) => {
+  console.log("commentProps=", props);
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);
   const [commentInfo, setCommentInfo] = React.useState("");

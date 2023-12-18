@@ -19,7 +19,6 @@ type readInfo = {
   commentcount: number;
 };
 export default function Read(props: any) {
-  console.log("props=", props);
   const { session } = useSession();
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [isCommentOpen, setCommentlOpen] = React.useState(false);
@@ -36,25 +35,6 @@ export default function Read(props: any) {
       }),
     });
   };
-  // const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   const { commentcontent } = Object.fromEntries(data.entries());
-
-  //   const response = await fetch("http://localhost:3000/api/comment", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       postid: props.data[0].postid,
-  //       content: commentcontent,
-  //       nickname: session.nickname,
-  //     }),
-  //   });
-  //   console.log(response);
-  // };
-  // console.log(props);
   const openModal = () => {
     setModalOpen(true);
   };

@@ -35,6 +35,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       props: {
         data: boardData,
         commentData: commentData,
+        commentCommentData: commentCommentData,
       },
     };
   } catch (error) {

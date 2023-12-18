@@ -135,7 +135,9 @@ const Comment = (props: any) => {
           parentid={props.data.commentid}
         />
       ) : null}
-      <CommentComment openComment={openComment} />
+      {props.data.child.map((object: [], index: number) => (
+        <CommentComment key={index} data={object} openComment={openComment} />
+      ))}
     </>
   );
 };

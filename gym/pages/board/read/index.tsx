@@ -42,7 +42,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return {
       props: {
         data: boardData,
-        commentData: allCommentData,
+        commentData: result,
       },
     };
   } catch (error) {

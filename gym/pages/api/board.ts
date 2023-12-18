@@ -88,14 +88,15 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
     }
     else if(req.method==="DELETE"){
         try{
+            console.log('postid=',postid)
             db.query(
-                `DELETE FROM posts WHERE postid=${postid};`
+                `DELETE FROM posts WHERE postid='${postid}';`
             ,(error:any,result:any)=>{
                 if(error){
                     console.error("게시물을 삭제하는 과정에서 오류 발생")
                     return false
                 } else{
-                    console.log('게시물 작성 성공')
+                    console.log('게시물 삭제 성공');
                     res.status(200).json({ result: true });  
                 }
             })

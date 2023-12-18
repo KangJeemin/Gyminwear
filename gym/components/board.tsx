@@ -22,7 +22,7 @@ type boardInfo = {
 };
 export default function Board(props: any) {
   const router = useRouter();
-  console.log(props.data);
+  // console.log(props.data);
   return (
     <Container>
       <Container

@@ -9,6 +9,7 @@ import Modal from "./modal";
 import WestIcon from "@mui/icons-material/West";
 import parse from "html-react-parser";
 import useSession from "@/lib/useSession";
+import { ContactSupport } from "@mui/icons-material";
 
 type readInfo = {
   title: string;
@@ -23,7 +24,7 @@ export default function Read(props: any) {
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [isCommentOpen, setCommentlOpen] = React.useState(false);
   const router = useRouter();
-
+  console.log("props=", props);
   const handleSubmitDelete = async () => {
     const response = await fetch("http://localhost:3000/api/board", {
       method: "DELETE",
@@ -34,6 +35,9 @@ export default function Read(props: any) {
         postid: props.data[0].postid,
       }),
     });
+    if (response.ok) {
+      alert("게시물이 삭제되었습니다.");
+    }
   };
   const openModal = () => {
     setModalOpen(true);

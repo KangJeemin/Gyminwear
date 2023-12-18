@@ -19,7 +19,7 @@ type writeInfo = {
     commentcount:number
 }
 export default async function board(req: NextApiRequest, res: NextApiResponse) {
-    const {title,nickname,content}:writeInfo = req.body;
+    const {postid,title,nickname,content}:writeInfo = req.body;
     const {id,page} = req.query
     console.log('page=',page)
     
@@ -86,5 +86,24 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
               }
             
         }
+    }
+    else if(req.method==="DELETE"){
+        try{
+            db.query(
+                `DELETE FROM posts WHERE postid=${postid};`
+            ,(error:any,result:any)=>{
+                if(error){
+                    console.error("게시물을 삭제하는 과정에서 오류 발생")
+                    return false
+                } else{
+                    console.log('게시물 작성 성공')
+                    res.status(200).json({ result: true });  
+                }
+            })
+          }
+          catch (error) {
+            console.error("삭제하기 위해 데이터베이스 접근 중 오류 발생.")
+            res.status(500).json({ error: '서버 오류' });  
+          }       
     }
 }

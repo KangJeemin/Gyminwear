@@ -16,9 +16,6 @@ export default function CommentWrtie(props: any) {
       data.entries()
     );
 
-    console.log(props.parentid);
-    console.log(props.postid);
-
     const response = await fetch("http://localhost:3000/api/comment", {
       method: "POST",
       headers: {

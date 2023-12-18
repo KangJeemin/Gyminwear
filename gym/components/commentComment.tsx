@@ -6,8 +6,19 @@ import Typography from "@mui/material/Typography";
 const CommentComment = (props: any) => {
   const [isDeleted, setIsDeleted] = useState(false);
 
-  const handleDeleteClick = () => {
-    // 삭제 버튼이 클릭되면 isDeleted를 true로 설정
+  const handleDeleteClick = async () => {
+    const response = await fetch("http://localhost:3000/api/comment", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        commentid: props.data.commentid,
+      }),
+    });
+    if (response.ok) {
+      alert("댓글이 삭제되었습니다.");
+    }
     setIsDeleted(true);
   };
 

@@ -84,21 +84,7 @@ const Comment = (props: any) => {
             >
               {props.data.nickname}
             </Box>
-            <Input
-              multiline
-              inputProps={{ maxLength: 300 }}
-              sx={{
-                width: "100%",
-                height: "200px",
-                backgroundColor: "white",
-                // border: "none",
-                color: "black",
-                pointerEvents: "none",
-              }}
-              placeholder="댓글은 300자까지 입력 가능합니다."
-              value="dsadsa"
-              name="commentcontent"
-            ></Input>
+
             <Box
               sx={{
                 marginRight: "10px",
@@ -108,17 +94,22 @@ const Comment = (props: any) => {
               {props.data.date}
             </Box>
           </Box>
-          <Box
+          <Input
+            multiline
+            inputProps={{ maxLength: 300 }}
             sx={{
               marginTop: "10px",
               width: "100%",
               border: 1,
               whiteSpace: "normal", // 줄 바꿈 방지 스타일
               fontSize: { xl: 20 },
+              pointerEvents: "none",
             }}
-          >
-            {props.data.content}
-          </Box>
+            placeholder="댓글은 300자까지 입력 가능합니다."
+            value={props.data.content}
+            name="commentcontent"
+          ></Input>
+
           <Box
             sx={{
               display: "flex",

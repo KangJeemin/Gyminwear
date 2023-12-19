@@ -39,22 +39,11 @@ export default function Read(props: any) {
     }
   };
   const handlePostDataToWrite = async () => {
-    const response = await fetch(
-      `http://localhost:3000/api/board?id=${props.data[0].postid}`,
-      {
-        method: "GET",
-      }
-    );
-    const result = await response.json();
-
     // 데이터를 상태로 저장
     router.replace({
-      pathname: "board/write",
-      query: { data: JSON.stringify(result) },
+      pathname: "write",
+      query: { id: props.data[0].postid },
     });
-    if (response.ok) {
-      alert("게시물데이터 요청이 완료 되었습니다.");
-    }
   };
   const openModal = () => {
     setModalOpen(true);

@@ -23,19 +23,15 @@ const VisuallyHiddenInput = styled("input")({
   whiteSpace: "nowrap",
   width: 1,
 });
-export default function Write() {
+export default function Write(props: any) {
   const [content, setContent] = React.useState<string>("");
   const [isModalOpen, setModalOpen] = React.useState<boolean>(false);
   const [file, setFile] = React.useState<File | null>(null);
   const { session } = useSession();
   const router = useRouter();
   React.useEffect(() => {
-    const { data } = router.query;
-    if (data) {
-      // const parsedData = JSON.parse(data);
-      console.log("Data from read page:", data);
-    }
-  }, [router.query]);
+    setContent(props.data[0].content);
+  }, []);
 
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -174,6 +170,7 @@ export default function Write() {
             name="title"
             label="제목"
             variant="standard"
+            defaultValue={props.data[0].title ? props.data[0].title : ""}
             sx={{ width: "70%" }}
           />
           <Box sx={{ width: "10%" }}></Box>

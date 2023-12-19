@@ -206,9 +206,15 @@ export default function Write(props: any) {
           </Button>
 
           <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
-          <Button type="submit" variant="contained">
-            등록
-          </Button>
+          {props.data[0].content ? (
+            <Button type="submit" variant="contained">
+              수정
+            </Button>
+          ) : (
+            <Button type="submit" variant="contained">
+              등록
+            </Button>
+          )}
         </Box>
       </Box>
     </DoubleContainer>

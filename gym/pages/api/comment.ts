@@ -76,6 +76,7 @@ export default async function Comment(req : NextApiRequest, res : NextApiRespons
           ,(error:any,result:any)=>{
               if(error){
                   console.error("댓글을 수정하는 과정에서 오류 발생")
+                  console.log(error)
                   return false
               } else{
                   console.log('댓글 수정 성공');

@@ -9,7 +9,6 @@ import Modal from "./modal";
 import WestIcon from "@mui/icons-material/West";
 import parse from "html-react-parser";
 import useSession from "@/lib/useSession";
-import { ContactSupport } from "@mui/icons-material";
 
 type readInfo = {
   title: string;
@@ -37,6 +36,24 @@ export default function Read(props: any) {
     });
     if (response.ok) {
       alert("게시물이 삭제되었습니다.");
+    }
+  };
+  const handlePostDataToWrite = async () => {
+    const response = await fetch(
+      `http://localhost:3000/api/board?id=${props.data[0].postid}`,
+      {
+        method: "GET",
+      }
+    );
+    const result = await response.json();
+
+    // 데이터를 상태로 저장
+    router.replace({
+      pathname: "board/write",
+      query: { data: JSON.stringify(result) },
+    });
+    if (response.ok) {
+      alert("게시물데이터 요청이 완료 되었습니다.");
     }
   };
   const openModal = () => {
@@ -167,7 +184,11 @@ export default function Read(props: any) {
           삭제
         </Button>
         <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
-        <Button component="label" variant="contained">
+        <Button
+          component="label"
+          variant="contained"
+          onClick={handlePostDataToWrite}
+        >
           수정
         </Button>
       </Box>

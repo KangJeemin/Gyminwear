@@ -29,6 +29,13 @@ export default function Write() {
   const [file, setFile] = React.useState<File | null>(null);
   const { session } = useSession();
   const router = useRouter();
+  React.useEffect(() => {
+    const { data } = router.query;
+    if (data) {
+      // const parsedData = JSON.parse(data);
+      console.log("Data from read page:", data);
+    }
+  }, [router.query]);
 
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

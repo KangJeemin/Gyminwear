@@ -88,7 +88,6 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
     }
     else if(req.method==="DELETE"){
         try{
-            console.log('postid=',postid)
             db.query(
                 `DELETE FROM posts WHERE postid=${postid};`
             ,(error:any,result:any)=>{

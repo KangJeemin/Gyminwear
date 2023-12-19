@@ -9,7 +9,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
 
   try {
-    if (id !== null) {
+    if (id !== undefined) {
       const response = await fetch(`http://localhost:3000/api/board?id=${id}`);
       const data = await response.json();
       return {
@@ -20,7 +20,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     } else {
       return {
         props: {
-          data: false,
+          data: null,
         },
       };
     }

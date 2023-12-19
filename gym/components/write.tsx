@@ -30,7 +30,7 @@ export default function Write(props: any) {
   const { session } = useSession();
   const router = useRouter();
   React.useEffect(() => {
-    setContent(props.data[0].content);
+    props.data === null ? setContent("") : setContent(props.data[0].content);
   }, []);
 
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -170,7 +170,7 @@ export default function Write(props: any) {
             name="title"
             label="제목"
             variant="standard"
-            defaultValue={props.data[0].title ? props.data[0].title : ""}
+            defaultValue={props.data === null ? "" : props.data[0].title}
             sx={{ width: "70%" }}
           />
           <Box sx={{ width: "10%" }}></Box>
@@ -206,13 +206,13 @@ export default function Write(props: any) {
           </Button>
 
           <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
-          {props.data[0].content ? (
+          {props.data === null ? (
             <Button type="submit" variant="contained">
-              수정
+              등록
             </Button>
           ) : (
             <Button type="submit" variant="contained">
-              등록
+              수정
             </Button>
           )}
         </Box>

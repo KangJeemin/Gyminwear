@@ -3,7 +3,10 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import CommentComment from "@/components/commentComment";
 import CommentWrtie from "./commentWrite";
+import Input from "@mui/material/Input";
+
 import { GetServerSidePropsContext } from "next";
+import { NoEncryption } from "@mui/icons-material";
 
 const Comment = (props: any) => {
   const [isDeleted, setIsDeleted] = React.useState(false);
@@ -81,6 +84,21 @@ const Comment = (props: any) => {
             >
               {props.data.nickname}
             </Box>
+            <Input
+              multiline
+              inputProps={{ maxLength: 300 }}
+              sx={{
+                width: "100%",
+                height: "200px",
+                backgroundColor: "white",
+                // border: "none",
+                color: "black",
+                pointerEvents: "none",
+              }}
+              placeholder="댓글은 300자까지 입력 가능합니다."
+              value="dsadsa"
+              name="commentcontent"
+            ></Input>
             <Box
               sx={{
                 marginRight: "10px",

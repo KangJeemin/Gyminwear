@@ -69,7 +69,26 @@ export default async function Comment(req : NextApiRequest, res : NextApiRespons
           res.status(500).json({ error: '서버 오류' });  
         }       
       }
-      else {
+      else if(req.method==="PUT"){
+        try{
+          db.query(
+            `UPDATE comments SET content='${content}', modifydate=NOW() WHERE commentid=${commentid};`
+          ,(error:any,result:any)=>{
+              if(error){
+                  console.error("댓글을 수정하는 과정에서 오류 발생")
+                  return false
+              } else{
+                  console.log('댓글 수정 성공');
+                  res.status(200).json({ result: true });  
+              }
+          })
+        }
+        catch (error) {
+          console.error("댓글을 수정하기 위해  데이터베이스 접근 중 오류 발생.")
+          res.status(500).json({ error: '서버 오류' });  
+        }       
+      }
+      else{
         res.status(405).json({ error: '허용되지 않는 메서드' });
       }  
     

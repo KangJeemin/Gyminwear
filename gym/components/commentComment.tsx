@@ -5,7 +5,21 @@ import Typography from "@mui/material/Typography";
 
 const CommentComment = (props: any) => {
   const [isDeleted, setIsDeleted] = useState(false);
-
+  const handleModifyClick = async () => {
+    const response = await fetch("http://localhost:3000/api/comment", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        commentid: props.data.commentid,
+        content: props.data.content,
+      }),
+    });
+    if (response.ok) {
+      alert("댓글이 수정되었습니다.");
+    }
+  };
   const handleDeleteClick = async () => {
     const response = await fetch("http://localhost:3000/api/comment", {
       method: "DELETE",

@@ -9,6 +9,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
 
   try {
+    //수정 API 요청
     if (id !== undefined) {
       const response = await fetch(`http://localhost:3000/api/board?id=${id}`);
       const data = await response.json();
@@ -17,6 +18,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
           data: data,
         },
       };
+      // 작성 API 요청
     } else {
       return {
         props: {

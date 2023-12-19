@@ -12,6 +12,7 @@ import Container from "@mui/material/Container";
 import { useRouter } from "next/router";
 import WestIcon from "@mui/icons-material/West";
 import useSession from "@/lib/useSession";
+import { write } from "fs";
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -35,20 +36,24 @@ export default function Write(props: any) {
   }, []);
 
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
+    let method: string;
+    if (props.data === null) {
+      method = "POST";
+    } else {
+      method = "PUT";
+    }
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const id = props.data[0].postid;
     const { title, nickname } = Object.fromEntries(data.entries());
-    const sendWrtie = {
-      title,
-      nickname,
-      content,
-    };
+
     const response = await fetch("http://localhost:3000/api/board", {
-      method: "POST",
+      method: method,
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        postid: id,
         title: title,
         nickname: nickname,
         content: content,

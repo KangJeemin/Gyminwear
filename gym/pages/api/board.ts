@@ -105,7 +105,26 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
             res.status(500).json({ error: '서버 오류' });  
           }       
     }
-    else {
-        res.status(405).json({ error: '허용되지 않는 메서드' });
+    else if(req.method==="PUT"){
+        try{
+            db.query(
+                `UPDATE posts SET title='${title}',content='${content}', modifydate=NOW() WHERE postid=${postid};`
+            ,(error:any,result:any)=>{
+                if(error){
+                    console.error("게시물을 업데이트 과정에서 오류 발생.")
+                    return false
+                } else{
+                    console.log('게시물 업데이트 성공')
+                    res.status(200).json({ result: true });  
+                }
+            })
+          }
+          catch (error) {
+            console.error("데이터 베이스에 게시물 저장 중 에러 발생")
+            res.status(500).json({ error: '서버 오류' });  
+          }
       }  
+    else{
+        res.status(405).json({ error: '허용되지 않는 메서드' });
+    }
 }

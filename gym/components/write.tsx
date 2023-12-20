@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import WestIcon from "@mui/icons-material/West";
 import useSession from "@/lib/useSession";
 import { write } from "fs";
+import { resolve } from "path";
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -77,15 +78,23 @@ export default function Write(props: any) {
       });
       if (response.ok) {
         const { url, fields } = await response.json();
-        const formData = new FormData();
-        Object.entries(fields).forEach(([key, value]) => {
-          formData.append(key, value as string);
-        });
-        console.log("펜딩이여?");
-        formData.append("file", file);
+        console.log("fields=", fields);
+        const objectData = new Object();
+        // const promise = new Promise((resolve, reject) => {
+        //   Object.entries(fields).forEach(([key, value]) => {
+        //     formData.append(key, value as string);
+        //     resolve(formData);
+        //   });
+        // });
+        // promise.then((result) => {
+        //   console.log("result=", result);
+        // });
+        Object.entries(fields).forEach(([key, value]) => {});
+        // await formData.append("file", file);
+        // console.log("formData=", formData);
         const uploadResponse = await fetch(url, {
           method: "POST",
-          body: formData,
+          body: fields,
         });
         if (uploadResponse.ok) {
           alert("Upload successful!");

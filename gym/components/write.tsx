@@ -104,6 +104,12 @@ export default function Write(props: any) {
     }
   };
 
+  const handleFileRead = async () => {
+    const response = await fetch("http://localhost:3000/api/upload");
+    if (response.ok) {
+      console.log(response);
+    }
+  };
   const openModal = () => {
     setModalOpen(true);
   };
@@ -217,7 +223,7 @@ export default function Write(props: any) {
 
           <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
           {props.data === null ? (
-            <Button variant="contained" onClick={handleSubmit}>
+            <Button variant="contained" onClick={handleFileRead}>
               등록
             </Button>
           ) : (

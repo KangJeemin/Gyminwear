@@ -97,7 +97,7 @@ export default function Write(props: any) {
         alert("Failed to get pre-signed URL.");
       }
     } catch (error) {
-      console.log("clientError=", error);
+      console.error("clientError=", error);
     }
   };
 
@@ -214,7 +214,7 @@ export default function Write(props: any) {
 
           <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
           {props.data === null ? (
-            <Button type="submit" variant="contained">
+            <Button variant="contained" onClick={handleSubmit}>
               등록
             </Button>
           ) : (

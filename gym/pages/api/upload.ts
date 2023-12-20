@@ -1,8 +1,9 @@
 import { createPresignedPost } from '@aws-sdk/s3-presigned-post';
-import { S3Client } from '@aws-sdk/client-s3';
+import { S3Client ,GetObjectCommand} from '@aws-sdk/client-s3';
 import { v4 as uuidv4 } from 'uuid';
 import { NextApiRequest, NextApiResponse } from "next";
 import AWS from 'aws-sdk'
+import { RequestMapping } from '@nestjs/common';
 
 
 export default async function POST(request:NextApiRequest,response:NextApiResponse) {
@@ -38,4 +39,27 @@ export default async function POST(request:NextApiRequest,response:NextApiRespon
     response.json({ error: "error" })
   }
 }
+else if(request.method==="GET") {
+  const client = new S3Client({  
+    credentials: {
+      accessKeyId: process.env.AWS_ACCESS_KEY ? process.env.AWS_ACCESS_KEY : '' ,
+      secretAccessKey:process.env.AWS_SECRET_ACCESS_KEY ? process.env.AWS_SECRET_ACCESS_KEY : '',
+    },
+    region: process.env.AWS_REGION ? process.env.AWS_REGION : '' ,
+    
+    })
+    const command = new GetObjectCommand({
+      Bucket: process.env.AWS_BUCKET_NAME,
+      Key: "08b6e033-6f01-4d21-9a41-c2ef70c2bb07",
+    });
+
+  try {
+    const response = await client.send(command);
+    // The Body object also has 'transformToByteArray' and 'transformToWebStream' methods.
+    const str = await response.Body.transformToString();
+    console.log(str);
+  } catch (err) {
+    console.error(err);
+  }
+};
 }

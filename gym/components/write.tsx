@@ -79,32 +79,23 @@ export default function Write(props: any) {
       if (response.ok) {
         const { url, fields } = await response.json();
         const formData = new FormData();
-        // const promise = new Promise((resolve, reject) => {
-        //   Object.entries(fields).forEach(([key, value]) => {
-        //     formData.append(key, value as string);
-        //     resolve(formData);
-        //   });
-        // });
-        // promise.then((result) => {
-        //   console.log("result=", result);
-        // });
         Object.entries(fields).forEach(([key, value]) => {
           formData.append(key, value as string);
         });
+        await formData.append("Content-Type", "image/png");
         await formData.append("file", file);
         console.log("formData=", formData);
         const uploadResponse = await fetch(url, {
           method: "POST",
           body: formData,
-        })
-          .then((res) => res.json)
-          .then((data) => console.log(data));
-        // if (uploadResponse.ok) {
-        //   alert("Upload successful!");
-        // } else {
-        //   console.error("S3 Upload Error:", uploadResponse);
-        //   alert("Upload failed.");
-        // }
+        });
+
+        if (uploadResponse.ok) {
+          alert("Upload successful!");
+        } else {
+          console.error("S3 Upload Error:", uploadResponse);
+          alert("Upload failed.");
+        }
       } else {
         alert("Failed to get pre-signed URL.");
       }

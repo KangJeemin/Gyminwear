@@ -130,7 +130,9 @@ const Comment = (props: any) => {
               pointerEvents: commentModify ? "" : "none",
             }}
             placeholder="댓글은 300자까지 입력 가능합니다."
-            defaultValue={props.data.content}
+            defaultValue={
+              commentModify ? props.data.content : props.data.content
+            }
             name="commentcontent"
           ></Input>
           <Box

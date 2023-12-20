@@ -11,14 +11,17 @@ import { NoEncryption } from "@mui/icons-material";
 const Comment = (props: any) => {
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);
-  const [commentInfo, setCommentInfo] = React.useState("");
+  const [comment, setComment] = React.useState(props.data.content);
   const [commentModify, setCommentModify] = React.useState(false);
 
   const openComment = () => {
     isCommentOpen ? setCommentOpen(false) : setCommentOpen(true);
   };
   const handleUpdateClick = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    //commentModify가 true일 경우만 FormEvent 실행.
+    if (commentModify) {
+      event.preventDefault();
+    }
 
     const data = new FormData(event.currentTarget);
     const { commentcontent } = Object.fromEntries(data.entries());
@@ -130,9 +133,9 @@ const Comment = (props: any) => {
               pointerEvents: commentModify ? "" : "none",
             }}
             placeholder="댓글은 300자까지 입력 가능합니다."
-            defaultValue={
-              commentModify ? props.data.content : props.data.content
-            }
+            defaultValue={commentModify ? comment : props.data.content}
+            value={comment}
+            onChange={setComment}
             name="commentcontent"
           ></Input>
           <Box

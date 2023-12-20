@@ -78,8 +78,7 @@ export default function Write(props: any) {
       });
       if (response.ok) {
         const { url, fields } = await response.json();
-        console.log("fields=", fields);
-        const objectData = new Object();
+        const formData = new FormData();
         // const promise = new Promise((resolve, reject) => {
         //   Object.entries(fields).forEach(([key, value]) => {
         //     formData.append(key, value as string);
@@ -89,19 +88,23 @@ export default function Write(props: any) {
         // promise.then((result) => {
         //   console.log("result=", result);
         // });
-        Object.entries(fields).forEach(([key, value]) => {});
-        // await formData.append("file", file);
-        // console.log("formData=", formData);
+        Object.entries(fields).forEach(([key, value]) => {
+          formData.append(key, value as string);
+        });
+        await formData.append("file", file);
+        console.log("formData=", formData);
         const uploadResponse = await fetch(url, {
           method: "POST",
-          body: fields,
-        });
-        if (uploadResponse.ok) {
-          alert("Upload successful!");
-        } else {
-          console.error("S3 Upload Error:", uploadResponse);
-          alert("Upload failed.");
-        }
+          body: formData,
+        })
+          .then((res) => res.json)
+          .then((data) => console.log(data));
+        // if (uploadResponse.ok) {
+        //   alert("Upload successful!");
+        // } else {
+        //   console.error("S3 Upload Error:", uploadResponse);
+        //   alert("Upload failed.");
+        // }
       } else {
         alert("Failed to get pre-signed URL.");
       }

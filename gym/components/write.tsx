@@ -62,42 +62,43 @@ export default function Write(props: any) {
     console.log(response);
   };
   const handleSubmit = async () => {
-    // if (!file) {
-    //   console.error("선택된 파일이 없습니다");
-    //   return;
-    // }
-    // try {
-    //   console.log(file.type);
-    //   const response = await fetch("http://localhost:3000/api/upload", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({ filename: file.name, contentType: file.type }),
-    //   });
-    //   if (response.ok) {
-    //     const { url, fields } = await response.json();
-    //     const formData = new FormData();
-    //     Object.entries(fields).forEach(([key, value]) => {
-    //       formData.append(key, value as string);
-    //     });
-    //     formData.append("file", file);
-    //     const uploadResponse = await fetch(url, {
-    //       method: "POST",
-    //       body: formData,
-    //     });
-    //     if (uploadResponse.ok) {
-    //       alert("Upload successful!");
-    //     } else {
-    //       console.error("S3 Upload Error:", uploadResponse);
-    //       alert("Upload failed.");
-    //     }
-    //   } else {
-    //     alert("Failed to get pre-signed URL.");
-    //   }
-    // } catch (error) {
-    //   console.log("clientError=", error);
-    // }
+    if (!file) {
+      console.error("선택된 파일이 없습니다");
+      return;
+    }
+    try {
+      console.log(file.type);
+      const response = await fetch("http://localhost:3000/api/upload", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ filename: file.name, contentType: file.type }),
+      });
+      if (response.ok) {
+        const { url, fields } = await response.json();
+        const formData = new FormData();
+        Object.entries(fields).forEach(([key, value]) => {
+          formData.append(key, value as string);
+        });
+        console.log("펜딩이여?");
+        formData.append("file", file);
+        const uploadResponse = await fetch(url, {
+          method: "POST",
+          body: formData,
+        });
+        if (uploadResponse.ok) {
+          alert("Upload successful!");
+        } else {
+          console.error("S3 Upload Error:", uploadResponse);
+          alert("Upload failed.");
+        }
+      } else {
+        alert("Failed to get pre-signed URL.");
+      }
+    } catch (error) {
+      console.log("clientError=", error);
+    }
   };
 
   const openModal = () => {
@@ -159,7 +160,7 @@ export default function Write(props: any) {
           </Box>
         </Container>
       </Modal>
-      <Box component="form" noValidate onSubmit={handleSubmitWrite}>
+      <Box component="form" noValidate onSubmit={handleSubmit}>
         <Box
           sx={{
             width: "100%",

@@ -8,8 +8,6 @@ import { RequestMapping } from '@nestjs/common';
 
 export default async function POST(request:NextApiRequest,response:NextApiResponse) {
   if(request.method==="POST"){
-    
-    console.log('a')
     try {
     const { filename, contentType } = await request.body
     const client = new S3Client({  

@@ -69,6 +69,7 @@ export default function Write(props: any) {
       return;
     }
     try {
+      console.log("file=", file);
       console.log(file.type);
       const response = await fetch("http://localhost:3000/api/upload", {
         method: "POST",
@@ -86,6 +87,7 @@ export default function Write(props: any) {
         await formData.append("Content-Type", "image/png");
         await formData.append("file", file);
         console.log("formData=", formData);
+        console.log("fields", fields);
         const uploadResponse = await fetch(url, {
           method: "POST",
           body: formData,
@@ -154,7 +156,7 @@ export default function Write(props: any) {
               variant="contained"
               size="small"
               onClick={() => {
-                router.push("/");
+                router.push("/board");
               }}
             >
               예
@@ -200,12 +202,24 @@ export default function Write(props: any) {
             value={session.nickname}
           />
         </Box>
-
-        <Image
+        {/* <Image
           src="https://gyminwearimage.s3.ap-northeast-2.amazonaws.com/8ac7e616-78b4-4690-9dd8-1ee7a4448c13"
           alt="이미지 표시 못함"
           width={500}
           height={500}
+        />{" "} */}
+
+        <input
+          id="file"
+          type="file"
+          onChange={(e) => {
+            const files = e.target.files;
+            if (files) {
+              setFile(files[0]);
+              console.log("files=", files);
+            }
+          }}
+          accept="image/png, image/jpeg"
         />
         <QuillWrapper
           name="content"
@@ -220,7 +234,7 @@ export default function Write(props: any) {
 
           <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
           {props.data === null ? (
-            <Button variant="contained" onClick={handleFileRead}>
+            <Button variant="contained" onClick={handleSubmit}>
               등록
             </Button>
           ) : (

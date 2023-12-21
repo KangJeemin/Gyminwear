@@ -81,7 +81,11 @@ export default function Read(props: any) {
             fontSize: 20,
           }}
         >
-          <Box>
+          <Box
+            onClick={() => {
+              window.history.back();
+            }}
+          >
             <WestIcon />
           </Box>
           {props.data[0].title}

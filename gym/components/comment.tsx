@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import CommentComment from "@/components/commentComment";
@@ -14,9 +14,10 @@ import { NoEncryption } from "@mui/icons-material";
 const Comment = (props: any) => {
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);
-  const [comment, setComment] = React.useState(props.data.content);
+  const [comment, setComment] = React.useState("a");
   const [commentModify, setCommentModify] = React.useState(false);
 
+  useEffect(() => {}, [commentModify]);
   const openComment = () => {
     isCommentOpen ? setCommentOpen(false) : setCommentOpen(true);
   };
@@ -141,7 +142,6 @@ const Comment = (props: any) => {
               pointerEvents: commentModify ? "" : "none",
             }}
             placeholder="댓글은 300자까지 입력 가능합니다."
-            defaultValue={commentModify ? comment : props.data.content}
             value={comment}
             onChange={setComment}
             name="commentcontent"
@@ -166,7 +166,6 @@ const Comment = (props: any) => {
           {commentModify ? (
             <>
               <Button
-                type="submit"
                 variant="outlined"
                 sx={{
                   minWidth: "10px",
@@ -184,6 +183,7 @@ const Comment = (props: any) => {
                 }}
                 onClick={() => {
                   setCommentModify(false);
+                  setComment(props.data.comment);
                 }}
               >
                 취소

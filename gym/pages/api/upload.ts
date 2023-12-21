@@ -56,7 +56,7 @@ else if(request.method==="GET") {
   try {
     const response = await client.send(command);
     // The Body object also has 'transformToByteArray' and 'transformToWebStream' methods.
-    const str = await response.Body.transformToString();
+    const str = await response.Body;
     console.log(str);
   } catch (err) {
     console.error(err);

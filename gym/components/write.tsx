@@ -12,6 +12,7 @@ import Container from "@mui/material/Container";
 import { useRouter } from "next/router";
 import WestIcon from "@mui/icons-material/West";
 import useSession from "@/lib/useSession";
+import Image from "next/image";
 import { write } from "fs";
 import { resolve } from "path";
 const VisuallyHiddenInput = styled("input")({
@@ -199,16 +200,12 @@ export default function Write(props: any) {
             value={session.nickname}
           />
         </Box>
-        <input
-          id="file"
-          type="file"
-          onChange={(e) => {
-            const files = e.target.files;
-            if (files) {
-              setFile(files[0]);
-            }
-          }}
-          accept="image/png, image/jpeg"
+
+        <Image
+          src="https://gyminwearimage.s3.ap-northeast-2.amazonaws.com/8ac7e616-78b4-4690-9dd8-1ee7a4448c13"
+          alt="이미지 표시 못함"
+          width={500}
+          height={500}
         />
         <QuillWrapper
           name="content"

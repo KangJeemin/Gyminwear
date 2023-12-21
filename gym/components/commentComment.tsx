@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
 import Typography from "@mui/material/Typography";
 
 const CommentComment = (props: any) => {
@@ -64,12 +66,19 @@ const CommentComment = (props: any) => {
       </Box>
       <Box
         sx={{
-          width: "5%",
+          width: "10%",
           height: "auto",
+          color: "#D9D9D9",
+
           border: 1,
         }}
       >
-        이미지
+        <AccountCircleIcon
+          sx={{
+            width: "100%",
+            height: "100%",
+          }}
+        />
       </Box>
       <Box
         sx={{
@@ -77,7 +86,6 @@ const CommentComment = (props: any) => {
           flexDirection: "column",
           justifyContent: "space-between",
           width: "80%",
-          marginLeft: "10px",
           border: 1,
         }}
       >

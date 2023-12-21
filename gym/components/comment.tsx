@@ -4,6 +4,8 @@ import Button from "@mui/material/Button";
 import CommentComment from "@/components/commentComment";
 import CommentWrtie from "./commentWrite";
 import Input from "@mui/material/Input";
+import PersonIcon from "@mui/icons-material/Person";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import { GetServerSidePropsContext } from "next";
 import { NoEncryption } from "@mui/icons-material";
@@ -80,12 +82,21 @@ const Comment = (props: any) => {
       >
         <Box
           sx={{
-            width: "5%",
+            width: "10%",
             height: "auto",
             border: 1,
+            color: "#D9D9D9",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          이미지
+          <AccountCircleIcon
+            sx={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </Box>
         <Box
           sx={{
@@ -93,7 +104,6 @@ const Comment = (props: any) => {
             flexDirection: "column",
             justifyContent: "space-between",
             width: "85%",
-            marginLeft: "10px",
             border: 1,
           }}
         >

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import DateTimeFormatter from "@/lib/dateTimeFomatter";
 
 import Typography from "@mui/material/Typography";
 
@@ -109,7 +110,7 @@ const CommentComment = (props: any) => {
               color: "#D9D9D9",
             }}
           >
-            {props.data.date}
+            <DateTimeFormatter dateString={props.data.date} />
           </Box>
         </Box>
         <Box

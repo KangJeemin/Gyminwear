@@ -6,6 +6,7 @@ import CommentWrtie from "./commentWrite";
 import Input from "@mui/material/Input";
 import PersonIcon from "@mui/icons-material/Person";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import DateTimeFormatter from "@/lib/dateTimeFomatter";
 
 import { GetServerSidePropsContext } from "next";
 import { NoEncryption } from "@mui/icons-material";
@@ -86,9 +87,6 @@ const Comment = (props: any) => {
             height: "auto",
             border: 1,
             color: "#D9D9D9",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
           }}
         >
           <AccountCircleIcon
@@ -128,7 +126,7 @@ const Comment = (props: any) => {
                 color: "#D9D9D9",
               }}
             >
-              {props.data.date}
+              <DateTimeFormatter dateString={props.data.date} />
             </Box>
           </Box>
           <Input

@@ -9,6 +9,7 @@ import Modal from "./modal";
 import WestIcon from "@mui/icons-material/West";
 import parse from "html-react-parser";
 import useSession from "@/lib/useSession";
+import DateTimeFormatter from "@/lib/dateTimeFomatter";
 
 type readInfo = {
   title: string;
@@ -120,9 +121,10 @@ export default function Read(props: any) {
           <Box
             sx={{
               width: { xs: "30%", xl: "200px" },
+              display: "flex",
             }}
           >
-            날짜:{props.data[0].date}
+            <DateTimeFormatter dateString={props.data[0].date} />
           </Box>
         </Box>
       </Box>

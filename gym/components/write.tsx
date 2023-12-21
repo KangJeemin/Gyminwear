@@ -136,7 +136,7 @@ export default function Write(props: any) {
           fontSize: 20,
         }}
       >
-        <WestIcon />
+        <WestIcon onClick={openModal} />
         글쓰기
       </Box>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
@@ -156,7 +156,7 @@ export default function Write(props: any) {
               variant="contained"
               size="small"
               onClick={() => {
-                router.push("/board");
+                window.history.back();
               }}
             >
               예

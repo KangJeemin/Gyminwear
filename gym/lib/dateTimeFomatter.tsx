@@ -4,8 +4,27 @@ const DateTimeFormatter = ({ dateString }: any) => {
   const inputDate = new Date(dateString);
   const currentDate = new Date();
 
+  const inputDay = new Date(
+    inputDate.getFullYear(),
+    inputDate.getMonth(),
+    inputDate.getDate(),
+    0,
+    0,
+    0,
+    0
+  );
+  const currentDay = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+    currentDate.getDate(),
+    0,
+    0,
+    0,
+    0
+  );
+
   // Check if the given date is in the past
-  const isPastDate = inputDate >= currentDate;
+  const isPastDate = inputDay < currentDay;
   // Options for formatting time
 
   // Format date and time based on the condition

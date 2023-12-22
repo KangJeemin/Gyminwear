@@ -77,7 +77,7 @@ export default function Write(props: any) {
   };
   const handleSubmit = async () => {
     const imageUrls = extractImageUrls(content);
-    if (!file) {
+    if (!content) {
       console.error("선택된 파일이 없습니다");
       return;
     }
@@ -92,8 +92,8 @@ export default function Write(props: any) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            filename: file.name,
-            contentType: file.type,
+            filename: blobData.name,
+            contentType: blobData.type,
           }),
         });
 

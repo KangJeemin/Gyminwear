@@ -179,9 +179,8 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {session.isLoggedIn === true ? (
-                <>
-                  {settingsLoggedIn?.map((settingsLoggedIn) => (
+              {session.isLoggedIn === true
+                ? settingsLoggedIn?.map((settingsLoggedIn) => (
                     <MenuItem
                       key={settingsLoggedIn}
                       onClick={() => {
@@ -193,11 +192,8 @@ function ResponsiveAppBar() {
                         {settingsLoggedIn}
                       </Typography>
                     </MenuItem>
-                  ))}
-                </>
-              ) : (
-                <>
-                  {settingsLoggedOut.map((settingsLoggedOut) => (
+                  ))
+                : settingsLoggedOut.map((settingsLoggedOut) => (
                     <MenuItem
                       key={settingsLoggedOut}
                       onClick={() => {
@@ -210,8 +206,6 @@ function ResponsiveAppBar() {
                       </Typography>
                     </MenuItem>
                   ))}
-                </>
-              )}
             </Menu>
           </Box>
         </Toolbar>

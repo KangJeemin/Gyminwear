@@ -14,7 +14,7 @@ import { NoEncryption } from "@mui/icons-material";
 const Comment = (props: any) => {
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);
-  const [comment, setComment] = React.useState("a");
+  const [comment, setComment] = React.useState(props.data.content);
   const [commentModify, setCommentModify] = React.useState(false);
 
   useEffect(() => {}, [commentModify]);

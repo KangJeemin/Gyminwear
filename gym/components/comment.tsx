@@ -167,6 +167,7 @@ const Comment = (props: any) => {
           {commentModify ? (
             <>
               <Button
+                type="submit"
                 variant="outlined"
                 sx={{
                   minWidth: "10px",
@@ -182,9 +183,7 @@ const Comment = (props: any) => {
                   minWidth: "10px",
                   height: { xs: "50%", xl: "100%" },
                 }}
-                onClick={() => {
-                  setCommentModify(false);
-                }}
+                onMouseUp={() => setCommentModify(false)}
               >
                 취소
               </Button>
@@ -197,9 +196,7 @@ const Comment = (props: any) => {
                   minWidth: "10px",
                   height: { xs: "50%", xl: "100%" },
                 }}
-                onClick={() => {
-                  setCommentModify(true);
-                }}
+                onMouseDown={() => setCommentModify(true)}
               >
                 수정
               </Button>

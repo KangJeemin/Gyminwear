@@ -61,7 +61,6 @@ export default function Write(props: any) {
       }
     });
 
-    console.log(doc.documentElement.outerHTML);
     // 변경된 HTML 반환
     return doc.documentElement.outerHTML;
   };
@@ -76,7 +75,6 @@ export default function Write(props: any) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const { title, nickname } = Object.fromEntries(data.entries());
-    // const id = props.data[0].postid ? props.data[0].postid : null;
     const newSrcarray: Array<string> = [];
     let AWSurl: string = "";
     const imageUrls = extractImageUrls(content);
@@ -137,7 +135,7 @@ export default function Write(props: any) {
       },
       body: JSON.stringify({
         // 게시물 작성일떄는 postid가 아직 없음.
-        // postid: id ? id : null,
+        postid: method === "PUT" ? props.data[0].postid : null,
         title: title,
         nickname: nickname,
         content: changeMultipleImageSrc(content, newSrcarray, AWSurl),

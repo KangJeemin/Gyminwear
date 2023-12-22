@@ -13,8 +13,6 @@ import { useRouter } from "next/router";
 import WestIcon from "@mui/icons-material/West";
 import useSession from "@/lib/useSession";
 import Image from "next/image";
-import { write } from "fs";
-import { resolve } from "path";
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
@@ -34,6 +32,7 @@ export default function Write(props: any) {
   const { session } = useSession();
   const router = useRouter();
   React.useEffect(() => {
+    // props.data가 null 일 경우 글쓰기 페이지로 판단, 값이 있을 경우 수정 페이지로 판단.
     props.data === null ? setContent("") : setContent(props.data[0].content);
   }, []);
 
@@ -44,8 +43,30 @@ export default function Write(props: any) {
     const imageUrls = Array.from(imageElements).map((img) => img.src);
     return imageUrls;
   };
+  const changeMultipleImageSrc = (
+    html: string,
+    newSrcArray: Array<string>,
+    url: string
+  ) => {
+    // HTML을 DOM으로 파싱
+    const doc = new DOMParser().parseFromString(html, "text/html");
 
-  const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
+    // img 태그 선택
+    const imageElements = doc.querySelectorAll("img");
+
+    // 각 img 태그의 src 속성 변경
+    imageElements.forEach((img, index) => {
+      if (newSrcArray[index]) {
+        img.src = url + newSrcArray[index];
+      }
+    });
+
+    console.log(doc.documentElement.outerHTML);
+    // 변경된 HTML 반환
+    return doc.documentElement.outerHTML;
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     let method: string;
     if (props.data === null) {
       method = "POST";
@@ -53,39 +74,20 @@ export default function Write(props: any) {
       method = "PUT";
     }
     event.preventDefault();
-
-    //에디터에서 img 태그의 url 추출
-    const imageUrls = extractImageUrls(content);
-
     const data = new FormData(event.currentTarget);
-    const id = props.data[0].postid;
     const { title, nickname } = Object.fromEntries(data.entries());
-
-    const response = await fetch("http://localhost:3000/api/board", {
-      method: method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        postid: id,
-        title: title,
-        nickname: nickname,
-        content: content,
-      }),
-    });
-    console.log(response);
-  };
-  const handleSubmit = async () => {
+    // const id = props.data[0].postid ? props.data[0].postid : null;
+    const newSrcarray: Array<string> = [];
+    let AWSurl: string = "";
     const imageUrls = extractImageUrls(content);
-    if (!content) {
-      console.error("선택된 파일이 없습니다");
-      return;
-    }
+
+    //이미지의 개수만큼 반복
     for (let i = 0; i < imageUrls.length; i++) {
       const imageUrl = imageUrls[i];
+      //base64 형태를 blob으로 변환
       const blobData = await fetch(imageUrl).then((res) => res.blob());
-
       try {
+        // AWS S3 bucket의 URL 주소 응답받기
         const response = await fetch("http://localhost:3000/api/upload", {
           method: "POST",
           headers: {
@@ -99,22 +101,26 @@ export default function Write(props: any) {
 
         if (response.ok) {
           const { url, fields } = await response.json();
+          AWSurl = url;
           const formData = new FormData();
           Object.entries(fields).forEach(([key, value]) => {
             formData.append(key, value as string);
+            //console.log("fields.key=", fields.key); 버킷에 저장되는 이미지의 key값
           });
           formData.append("Content-Type", "image/png");
           formData.append("file", blobData);
+          // 랜덤한 객체의 key값을 배열로 저장
+          newSrcarray.push(fields.key);
+
+          //AWS S3 Bucket에 이미지 업로드
           const uploadResponse = await fetch(url, {
             method: "POST",
             body: formData,
           });
 
-          if (uploadResponse.ok) {
-            alert("Upload successful!");
-          } else {
-            console.error("S3 Upload Error:", uploadResponse);
-            alert("Upload failed.");
+          if (!uploadResponse.ok) {
+            alert("사진 업로드에 실패했습니다");
+            return false;
           }
         } else {
           alert("Failed to get pre-signed URL.");
@@ -123,11 +129,23 @@ export default function Write(props: any) {
         console.error("clientError=", error);
       }
     }
-  };
-  const handleFileRead = async () => {
-    const response = await fetch("http://localhost:3000/api/upload");
+    // 이미지를 버킷에 저장 후 데이터베이스에 작성 요청.
+    const response = await fetch("http://localhost:3000/api/board", {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // 게시물 작성일떄는 postid가 아직 없음.
+        // postid: id ? id : null,
+        title: title,
+        nickname: nickname,
+        content: changeMultipleImageSrc(content, newSrcarray, AWSurl),
+      }),
+    });
     if (response.ok) {
-      console.log(response);
+      alert("게시물이 작성되었습니다.");
+      router.push("/board");
     }
   };
   const openModal = () => {
@@ -219,14 +237,7 @@ export default function Write(props: any) {
             value={session.nickname}
           />
         </Box>
-        {/* <Image
-          src="https://gyminwearimage.s3.ap-northeast-2.amazonaws.com/8ac7e616-78b4-4690-9dd8-1ee7a4448c13"
-          alt="이미지 표시 못함"
-          width={500}
-          height={500}
-        />{" "} */}
-
-        <input
+        {/* <input
           id="file"
           type="file"
           onChange={(e) => {
@@ -237,7 +248,7 @@ export default function Write(props: any) {
             }
           }}
           accept="image/png, image/jpeg"
-        />
+        /> */}
         <QuillWrapper
           name="content"
           content={content}
@@ -251,7 +262,7 @@ export default function Write(props: any) {
 
           <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
           {props.data === null ? (
-            <Button variant="contained" onClick={handleSubmit}>
+            <Button type="submit" variant="contained">
               등록
             </Button>
           ) : (

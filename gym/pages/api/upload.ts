@@ -18,7 +18,7 @@ export default async function POST(request:NextApiRequest,response:NextApiRespon
       region: process.env.AWS_REGION ? process.env.AWS_REGION : '' ,
       
       })
-    const { url, fields } = await createPresignedPost(client, {
+    const { url, fields } = await createPresignedPost(client, {  
       Bucket: process.env.AWS_BUCKET_NAME ? process.env.AWS_BUCKET_NAME : '' ,
       Key: uuidv4(),
       Conditions: [

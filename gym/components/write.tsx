@@ -106,6 +106,7 @@ export default function Write(props: any) {
         for (let i = 0; i < imageUrls.length; i++) {
           const imageUrl = imageUrls[i];
           const blobData = await fetch(imageUrl).then((res) => res.blob());
+          await formData.append("Content-Type", "image/png");
           await formData.append("image", blobData, `desired_filename_${i}.jpg`);
         }
         //---

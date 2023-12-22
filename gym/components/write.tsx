@@ -90,7 +90,7 @@ export default function Write(props: any) {
         },
         body: JSON.stringify({
           filename: file.name,
-          contentType: file.type,
+          contentType: "multipart/form-data",
         }),
       });
       if (response.ok) {
@@ -109,11 +109,12 @@ export default function Write(props: any) {
         for (let i = 0; i < imageUrls.length; i++) {
           const imageUrl = imageUrls[i];
           const blobData = await fetch(imageUrl).then((res) => res.blob());
-          Object.entries(fields).forEach(([key, value]) => {
-            formData.append(key, value as string);
-          });
-          formData.append("Content-Type", "image/png");
-          formData.append("file", blobData);
+          console.log("blobData=", blobData);
+          // Object.entries(fields).forEach(([key, value]) => {
+          //   formData.append(key, value as string);
+          // });
+          // formData.append("Content-Type", "image/png");
+          // formData.append("file", blobData);
         }
         //---
         const uploadResponse = await fetch(url, {

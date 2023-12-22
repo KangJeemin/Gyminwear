@@ -76,79 +76,54 @@ export default function Write(props: any) {
     console.log(response);
   };
   const handleSubmit = async () => {
+    const imageUrls = extractImageUrls(content);
     if (!file) {
       console.error("선택된 파일이 없습니다");
       return;
     }
-    try {
-      console.log("file=", file);
-      console.log(file.type);
-      const response = await fetch("http://localhost:3000/api/upload", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          filename: file.name,
-          contentType: file.type,
-        }),
-      });
-      if (response.ok) {
-        const { url, fields } = await response.json();
-        const formData = new FormData();
-        const formDataArray = [];
-        // Object.entries(fields).forEach(([key, value]) => {
-        //   formData.append(key, value as string);
-        // });
-        // formData.append("Content-Type", "image/png");
-        // formData.append("file", file);
+    for (let i = 0; i < imageUrls.length; i++) {
+      const imageUrl = imageUrls[i];
+      const blobData = await fetch(imageUrl).then((res) => res.blob());
 
-        //---
-        const imageUrls = extractImageUrls(content);
+      try {
+        const response = await fetch("http://localhost:3000/api/upload", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            filename: file.name,
+            contentType: file.type,
+          }),
+        });
 
-        // Upload each image to AWS S3
-        for (let i = 0; i < imageUrls.length; i++) {
-          const imageUrl = imageUrls[i];
-          const blobData = await fetch(imageUrl).then((res) => res.blob());
-          console.log("blobData=", blobData);
+        if (response.ok) {
+          const { url, fields } = await response.json();
+          const formData = new FormData();
           Object.entries(fields).forEach(([key, value]) => {
-            console.log("key=", key);
-            console.log("value=", value);
             formData.append(key, value as string);
           });
           formData.append("Content-Type", "image/png");
           formData.append("file", blobData);
-
-          formDataArray.push(formData);
-        }
-        //---
-        const uploadPromises = formDataArray.map((formData) => {
-          return fetch(url, {
+          const uploadResponse = await fetch(url, {
             method: "POST",
             body: formData,
           });
-        });
-        const uploadResponses = await Promise.all(uploadPromises);
 
-        // Check if all uploads were successful
-        const allUploadsSuccessful = uploadResponses.every(
-          (response) => response.ok
-        );
-
-        if (allUploadsSuccessful) {
-          alert("All uploads successful!");
+          if (uploadResponse.ok) {
+            alert("Upload successful!");
+          } else {
+            console.error("S3 Upload Error:", uploadResponse);
+            alert("Upload failed.");
+          }
         } else {
-          console.error("Some S3 Uploads failed:", uploadResponses);
-          alert("Some uploads failed.");
+          alert("Failed to get pre-signed URL.");
         }
-      } else {
-        alert("Failed to get pre-signed URL.");
+      } catch (error) {
+        console.error("clientError=", error);
       }
-    } catch (error) {
-      console.error("clientError=", error);
     }
   };
-
   const handleFileRead = async () => {
     const response = await fetch("http://localhost:3000/api/upload");
     if (response.ok) {

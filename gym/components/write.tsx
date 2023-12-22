@@ -88,7 +88,10 @@ export default function Write(props: any) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ filename: file.name, contentType: file.type }),
+        body: JSON.stringify({
+          filename: file.name,
+          contentType: "multipart/form-data",
+        }),
       });
       if (response.ok) {
         const { url, fields } = await response.json();
@@ -96,8 +99,8 @@ export default function Write(props: any) {
         Object.entries(fields).forEach(([key, value]) => {
           formData.append(key, value as string);
         });
-        await formData.append("Content-Type", "image/png");
-        await formData.append("file", file);
+        formData.append("Content-Type", "image/png");
+        formData.append("file", file);
 
         //---
         const imageUrls = extractImageUrls(content);
@@ -106,8 +109,9 @@ export default function Write(props: any) {
         for (let i = 0; i < imageUrls.length; i++) {
           const imageUrl = imageUrls[i];
           const blobData = await fetch(imageUrl).then((res) => res.blob());
-          await formData.append("Content-Type", "image/png");
-          await formData.append("image", blobData, `desired_filename_${i}.jpg`);
+          formData.append("Content-Type", "image/png");
+          formData.append("key", `desired_filename_${i}.jpg`);
+          formData.append("file", blobData);
         }
         //---
         const uploadResponse = await fetch(url, {

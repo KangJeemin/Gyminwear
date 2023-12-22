@@ -96,6 +96,7 @@ export default function Write(props: any) {
       if (response.ok) {
         const { url, fields } = await response.json();
         const formData = new FormData();
+        const formDataArray = [];
         // Object.entries(fields).forEach(([key, value]) => {
         //   formData.append(key, value as string);
         // });
@@ -111,22 +112,34 @@ export default function Write(props: any) {
           const blobData = await fetch(imageUrl).then((res) => res.blob());
           console.log("blobData=", blobData);
           Object.entries(fields).forEach(([key, value]) => {
+            console.log("key=", key);
+            console.log("value=", value);
             formData.append(key, value as string);
           });
           formData.append("Content-Type", "image/png");
           formData.append("file", blobData);
+
+          formDataArray.push(formData);
         }
         //---
-        const uploadResponse = await fetch(url, {
-          method: "POST",
-          body: formData,
+        const uploadPromises = formDataArray.map((formData) => {
+          return fetch(url, {
+            method: "POST",
+            body: formData,
+          });
         });
+        const uploadResponses = await Promise.all(uploadPromises);
 
-        if (uploadResponse.ok) {
-          alert("Upload successful!");
+        // Check if all uploads were successful
+        const allUploadsSuccessful = uploadResponses.every(
+          (response) => response.ok
+        );
+
+        if (allUploadsSuccessful) {
+          alert("All uploads successful!");
         } else {
-          console.error("S3 Upload Error:", uploadResponse);
-          alert("Upload failed.");
+          console.error("Some S3 Uploads failed:", uploadResponses);
+          alert("Some uploads failed.");
         }
       } else {
         alert("Failed to get pre-signed URL.");

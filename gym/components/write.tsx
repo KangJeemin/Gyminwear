@@ -43,6 +43,7 @@ export default function Write(props: any) {
     const imageUrls = Array.from(imageElements).map((img) => img.src);
     return imageUrls;
   };
+  // 에디터의 img src에 AWS S3 URL 넣기
   const changeMultipleImageSrc = (
     html: string,
     newSrcArray: Array<string>,
@@ -75,6 +76,7 @@ export default function Write(props: any) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const { title, nickname } = Object.fromEntries(data.entries());
+    //AWS S3 객체의 이미지 Key값들을 저장.
     const newSrcarray: Array<string> = [];
     let AWSurl: string = "";
     const imageUrls = extractImageUrls(content);

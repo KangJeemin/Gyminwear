@@ -1,12 +1,9 @@
 import * as React from "react";
 import dynamic from "next/dynamic";
 import ImageResize from "quill-image-resize-module-ts";
+
 import Quill from "quill";
-/*
- * Quill editor formats
- * See https://quilljs.com/docs/formats/
- */
-Quill.register("modules/ImageResize", ImageResize);
+Quill.register("modules/imageResize", ImageResize);
 
 const formats = [
   "header",
@@ -45,7 +42,7 @@ export default function Quillwrapper(props: any) {
       ],
       ["clean"],
     ],
-    ImageResize: { modules: ["Resize"] },
+    imageResize: { modules: ["Resize"] },
     clipboard: {
       matchVisual: false,
     },
@@ -66,7 +63,7 @@ export default function Quillwrapper(props: any) {
           ["list", "bullet"],
           ["clean"],
         ],
-        ImageResize: { modules: ["Resize"] },
+        imageResize: { modules: ["Resize"] },
         clipboard: {
           matchVisual: false,
         },

@@ -196,7 +196,7 @@ const Comment = (props: any) => {
                   minWidth: "10px",
                   height: { xs: "50%", xl: "100%" },
                 }}
-                onMouseDown={() => setCommentModify(true)}
+                onMouseUp={() => setCommentModify(true)}
               >
                 수정
               </Button>

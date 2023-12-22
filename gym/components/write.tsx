@@ -37,6 +37,14 @@ export default function Write(props: any) {
     props.data === null ? setContent("") : setContent(props.data[0].content);
   }, []);
 
+  //에디터에서 img 태그의 url 추출
+  const extractImageUrls = (html: string) => {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const imageElements = doc.querySelectorAll("img");
+    const imageUrls = Array.from(imageElements).map((img) => img.src);
+    return imageUrls;
+  };
+
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
     let method: string;
     if (props.data === null) {
@@ -45,6 +53,10 @@ export default function Write(props: any) {
       method = "PUT";
     }
     event.preventDefault();
+
+    //에디터에서 img 태그의 url 추출
+    const imageUrls = extractImageUrls(content);
+
     const data = new FormData(event.currentTarget);
     const id = props.data[0].postid;
     const { title, nickname } = Object.fromEntries(data.entries());
@@ -86,8 +98,17 @@ export default function Write(props: any) {
         });
         await formData.append("Content-Type", "image/png");
         await formData.append("file", file);
-        console.log("formData=", formData);
-        console.log("fields", fields);
+
+        //---
+        const imageUrls = extractImageUrls(content);
+
+        // Upload each image to AWS S3
+        for (let i = 0; i < imageUrls.length; i++) {
+          const imageUrl = imageUrls[i];
+          const blobData = await fetch(imageUrl).then((res) => res.blob());
+          await formData.append("image", blobData, `desired_filename_${i}.jpg`);
+        }
+        //---
         const uploadResponse = await fetch(url, {
           method: "POST",
           body: formData,

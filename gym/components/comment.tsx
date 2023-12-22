@@ -142,7 +142,8 @@ const Comment = (props: any) => {
               pointerEvents: commentModify ? "" : "none",
             }}
             placeholder="댓글은 300자까지 입력 가능합니다."
-            value={comment}
+            defaultValue={props.data.content}
+            value={commentModify ? null : props.data.content}
             onChange={setComment}
             name="commentcontent"
           ></Input>
@@ -183,7 +184,6 @@ const Comment = (props: any) => {
                 }}
                 onClick={() => {
                   setCommentModify(false);
-                  setComment(props.data.comment);
                 }}
               >
                 취소

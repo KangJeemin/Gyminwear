@@ -1,9 +1,7 @@
 import * as React from "react";
 import dynamic from "next/dynamic";
 import ImageResize from "quill-image-resize-module-ts";
-
 import Quill from "quill";
-Quill.register("modules/imageResize", ImageResize);
 
 const formats = [
   "header",
@@ -26,6 +24,7 @@ const QuillWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading ...</p>,
 });
+Quill.register("modules/imageResize", ImageResize);
 
 export default function Quillwrapper(props: any) {
   const [modules, setModules] = React.useState({
@@ -42,7 +41,10 @@ export default function Quillwrapper(props: any) {
       ],
       ["clean"],
     ],
-    imageResize: { modules: ["Resize"] },
+    imageResize: {
+      parchment: Quill.import("parchment"),
+      modules: ["Resize", "DisplaySize"],
+    },
     clipboard: {
       matchVisual: false,
     },

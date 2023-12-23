@@ -168,6 +168,7 @@ export default function Read(props: any) {
           width: "100%",
           height: { xs: "500px", xl: "800px" },
           marginTop: "30px",
+          overflow: "scroll",
           borderBottom: 1,
         }}
       >

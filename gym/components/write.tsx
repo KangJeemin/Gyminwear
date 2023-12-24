@@ -266,7 +266,12 @@ export default function Write(props: any) {
               등록
             </Button>
           ) : (
-            <Button type="submit" variant="contained">
+            <Button
+              variant="contained"
+              onClick={() => {
+                console.log("red");
+              }}
+            >
               수정
             </Button>
           )}

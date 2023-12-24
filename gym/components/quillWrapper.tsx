@@ -24,7 +24,7 @@ const QuillWrapper = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading ...</p>,
 });
-Quill.register("modules/imageResize", ImageResize);
+// Quill.register("modules/imageResize", ImageResize);
 
 export default function Quillwrapper(props: any) {
   const [modules, setModules] = React.useState({
@@ -41,10 +41,10 @@ export default function Quillwrapper(props: any) {
       ],
       ["clean"],
     ],
-    imageResize: {
-      parchment: Quill.import("parchment"),
-      modules: ["Resize", "DisplaySize"],
-    },
+    // imageResize: {
+    //   parchment: Quill.import("parchment"),
+    //   modules: ["Resize", "DisplaySize"],
+    // },
     clipboard: {
       matchVisual: false,
     },
@@ -65,7 +65,7 @@ export default function Quillwrapper(props: any) {
           ["list", "bullet"],
           ["clean"],
         ],
-        imageResize: { modules: ["Resize"] },
+        // imageResize: { modules: ["Resize"] },
         clipboard: {
           matchVisual: false,
         },

@@ -164,42 +164,13 @@ const Comment = (props: any) => {
             flexDirection: { xs: "column", xl: "row" },
           }}
         >
-          {commentModify ? (
+          {!commentModify && (
             <>
               <Button
                 variant="outlined"
                 sx={{
                   minWidth: "10px",
                   height: { xs: "50%", xl: "100%" },
-                  display: commentModify ? "" : "none",
-                }}
-                onClick={() => {
-                  console.log("q");
-                  setCommentModify(false);
-                }}
-              >
-                완료
-              </Button>
-              <Button
-                variant="outlined"
-                color="error"
-                sx={{
-                  minWidth: "10px",
-                  height: { xs: "50%", xl: "100%" },
-                }}
-                onMouseUp={() => setCommentModify(false)}
-              >
-                취소
-              </Button>
-            </>
-          ) : (
-            <>
-              <Button
-                variant="outlined"
-                sx={{
-                  minWidth: "10px",
-                  height: { xs: "50%", xl: "100%" },
-                  display: commentModify ? "none" : "",
                 }}
                 onClick={() => setCommentModify(true)}
               >
@@ -212,9 +183,35 @@ const Comment = (props: any) => {
                   minWidth: "10px",
                   height: { xs: "50%", xl: "100%" },
                 }}
-                onClick={handleDeleteClick} // 삭제 버튼 클릭 시 핸들러 함수 호출
+                onClick={handleDeleteClick}
               >
                 삭제
+              </Button>
+            </>
+          )}
+
+          {commentModify && (
+            <>
+              <Button
+                type="submit"
+                variant="outlined"
+                sx={{
+                  minWidth: "10px",
+                  height: { xs: "50%", xl: "100%" },
+                }}
+              >
+                완료
+              </Button>
+              <Button
+                variant="outlined"
+                color="error"
+                sx={{
+                  minWidth: "10px",
+                  height: { xs: "50%", xl: "100%" },
+                }}
+                onClick={() => setCommentModify(false)}
+              >
+                취소
               </Button>
             </>
           )}

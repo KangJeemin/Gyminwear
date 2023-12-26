@@ -249,17 +249,19 @@ export default function Write(props: any) {
           }}
           accept="image/png, image/jpeg"
         /> */}
-        <QuillWrapper
-          name="content"
-          content={content}
-          setContent={setContent}
-        />
+        <Box sx={{ width: { xs: "100%", xl: "80%" } }}>
+          <QuillWrapper
+            name="content"
+            content={content}
+            setContent={setContent}
+          />
+        </Box>
+
         <Box sx={{ paddingTop: "100px", display: "flex" }}>
           <Box sx={{ width: { xl: "90%" } }}></Box>
           <Button component="label" variant="contained" onClick={openModal}>
             취소
           </Button>
-
           <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
           {props.data === null ? (
             <Button type="submit" variant="contained">

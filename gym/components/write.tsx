@@ -59,8 +59,8 @@ export default function Write(props: any) {
     imageElements.forEach((img, index) => {
       if (newSrcArray[index]) {
         img.src = url + newSrcArray[index];
-        img.width = 400;
-        img.height = 400;
+        img.width = 350;
+        img.height = 368;
       }
     });
 

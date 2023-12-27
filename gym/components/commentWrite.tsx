@@ -75,7 +75,7 @@ export default function CommentWrtie(props: any) {
         <Box
           sx={{
             width: "100%",
-            height: "200px",
+            height: "auto",
           }}
         >
           <Input
@@ -83,10 +83,10 @@ export default function CommentWrtie(props: any) {
             inputProps={{ maxLength: 300 }}
             sx={{
               width: "100%",
-              height: "200px",
+              height: "auto",
               backgroundColor: "white",
-              // border: "none",
               color: "black",
+              outline: "none",
             }}
             placeholder="댓글은 300자까지 입력 가능합니다."
             name="commentcontent"
@@ -95,7 +95,7 @@ export default function CommentWrtie(props: any) {
         <Box
           sx={{
             width: "100%",
-            height: "20px",
+            height: "40px",
             display: "flex",
             justifyContent: "flex-end",
           }}

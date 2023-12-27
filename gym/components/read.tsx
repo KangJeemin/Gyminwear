@@ -165,11 +165,14 @@ export default function Read(props: any) {
       {/* <QuillWrapper content={props.data[0].content} /> */}
       <Box
         sx={{
-          width: "100%",
-          height: { xs: "500px", xl: "auto" },
+          width: { xs: "400px", xl: "800px" },
+          height: "auto",
           marginTop: "30px",
           overflowY: "scroll",
           borderBottom: 1,
+          color: "black",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
         {parse(props.data[0].content)}

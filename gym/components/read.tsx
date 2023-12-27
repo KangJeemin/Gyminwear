@@ -84,6 +84,10 @@ export default function Read(props: any) {
           }}
         >
           <Box
+            sx={{
+              marginRight: "10px",
+              cursor: "pointer",
+            }}
             onClick={() => {
               window.history.back();
             }}

@@ -6,9 +6,12 @@ import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import useSession from "@/lib/useSession";
+import { useRouter } from "next/router";
 
 export default function CommentContainer(props: any) {
   const { session } = useSession();
+  const router = useRouter();
+
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -27,6 +30,10 @@ export default function CommentContainer(props: any) {
         nickname: session.nickname,
       }),
     });
+    if (response.ok) {
+      alert("댓글이 작성되었습니다.");
+      router.reload();
+    }
   };
   return (
     <DoubleContainer>

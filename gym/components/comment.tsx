@@ -7,10 +7,6 @@ import Input from "@mui/material/Input";
 import PersonIcon from "@mui/icons-material/Person";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
-
-import { GetServerSidePropsContext } from "next";
-import { NoEncryption } from "@mui/icons-material";
-
 const Comment = (props: any) => {
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);
@@ -43,6 +39,7 @@ const Comment = (props: any) => {
 
     if (response.ok) {
       alert("댓글이 수정되었습니다.");
+      setCommentModify(false);
     }
   };
   const handleDeleteClick = async () => {

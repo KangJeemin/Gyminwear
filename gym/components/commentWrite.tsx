@@ -4,9 +4,11 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Input from "@mui/material/Input";
 import useSession from "@/lib/useSession";
+import { useRouter } from "next/router";
 
 export default function CommentWrtie(props: any) {
   const { session } = useSession();
+  const router = useRouter();
 
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -28,7 +30,10 @@ export default function CommentWrtie(props: any) {
         content: commentcontent,
       }),
     });
-    console.log(response);
+    if (response.ok) {
+      alert("댓글이 작성되었습니다.");
+      router.reload();
+    }
   };
   return (
     <Box

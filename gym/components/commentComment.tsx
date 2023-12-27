@@ -3,12 +3,23 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
+import Input from "@mui/material/Input";
 
 import Typography from "@mui/material/Typography";
 
 const CommentComment = (props: any) => {
   const [isDeleted, setIsDeleted] = useState(false);
-  const handleModifyClick = async () => {
+  const [comment, setComment] = React.useState(props.data.content);
+  const [commentModify, setCommentModify] = React.useState(false);
+  React.useEffect(() => {}, [commentModify]);
+
+  const handleUpdateClick = async (event: React.FormEvent<HTMLFormElement>) => {
+    if (commentModify) {
+      event.preventDefault();
+    }
+
+    const data = new FormData(event.currentTarget);
+    const { commentcontent } = Object.fromEntries(data.entries());
     const response = await fetch("http://localhost:3000/api/comment", {
       method: "PUT",
       headers: {
@@ -16,7 +27,7 @@ const CommentComment = (props: any) => {
       },
       body: JSON.stringify({
         commentid: props.data.commentid,
-        content: props.data.content,
+        content: commentcontent,
       }),
     });
     if (response.ok) {
@@ -46,6 +57,9 @@ const CommentComment = (props: any) => {
 
   return (
     <Box
+      component="form"
+      noValidate
+      onSubmit={handleUpdateClick}
       sx={{
         display: "flex",
         width: "100%",
@@ -113,17 +127,23 @@ const CommentComment = (props: any) => {
             <DateTimeFormatter dateString={props.data.date} />
           </Box>
         </Box>
-        <Box
+        <Input
+          multiline
+          inputProps={{ maxLength: 300 }}
           sx={{
             marginTop: "10px",
             width: "100%",
             border: 1,
             whiteSpace: "normal", // 줄 바꿈 방지 스타일
             fontSize: { xl: 20 },
+            pointerEvents: commentModify ? "" : "none",
           }}
-        >
-          {props.data.content}
-        </Box>
+          placeholder="댓글은 300자까지 입력 가능합니다."
+          defaultValue={props.data.content}
+          value={commentModify ? null : props.data.content}
+          onChange={setComment}
+          name="commentcontent"
+        ></Input>
         <Box
           sx={{
             display: "flex",
@@ -141,26 +161,57 @@ const CommentComment = (props: any) => {
           flexDirection: { xs: "column", xl: "row" },
         }}
       >
-        <Button
-          variant="outlined"
-          sx={{
-            minWidth: "10px",
-            height: { xs: "50%", xl: "100%" },
-          }}
-        >
-          수정
-        </Button>
-        <Button
-          variant="outlined"
-          color="error"
-          sx={{
-            minWidth: "10px",
-            height: { xs: "50%", xl: "100%" },
-          }}
-          onClick={handleDeleteClick} // 삭제 버튼 클릭 시 핸들러 함수 호출
-        >
-          삭제
-        </Button>
+        {!commentModify && (
+          <>
+            <Button
+              variant="outlined"
+              sx={{
+                minWidth: "10px",
+                height: { xs: "50%", xl: "100%" },
+              }}
+              onClick={() => setCommentModify(true)}
+            >
+              수정
+            </Button>
+            <Button
+              variant="outlined"
+              color="error"
+              sx={{
+                minWidth: "10px",
+                height: { xs: "50%", xl: "100%" },
+              }}
+              onClick={handleDeleteClick}
+            >
+              삭제
+            </Button>
+          </>
+        )}
+
+        {commentModify && (
+          <>
+            <Button
+              type="submit"
+              variant="outlined"
+              sx={{
+                minWidth: "10px",
+                height: { xs: "50%", xl: "100%" },
+              }}
+            >
+              완료
+            </Button>
+            <Button
+              variant="outlined"
+              color="error"
+              sx={{
+                minWidth: "10px",
+                height: { xs: "50%", xl: "100%" },
+              }}
+              onClick={() => setCommentModify(false)}
+            >
+              취소
+            </Button>
+          </>
+        )}
       </Box>
     </Box>
   );

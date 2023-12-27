@@ -166,7 +166,7 @@ export default function Read(props: any) {
       <Box
         sx={{
           width: "100%",
-          height: { xs: "500px", xl: "800px" },
+          height: { xs: "500px", xl: "auto" },
           marginTop: "30px",
           overflowY: "scroll",
           borderBottom: 1,

@@ -83,7 +83,7 @@ export default function Quillwrapper(props: any) {
       placeholder="내용을 입력하세요."
       style={{
         width: "100%",
-        height: "300px",
+        height: "auto",
       }}
     />
   );

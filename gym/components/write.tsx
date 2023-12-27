@@ -59,8 +59,9 @@ export default function Write(props: any) {
     imageElements.forEach((img, index) => {
       if (newSrcArray[index]) {
         img.src = url + newSrcArray[index];
-        img.width = 350;
-        img.height = 368;
+        // 이미지의 크기를 조절
+        img.style.width = "100%";
+        img.style.height = "512px";
       }
     });
 

@@ -79,6 +79,14 @@ export default function Write(props: any) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const { title, nickname } = Object.fromEntries(data.entries());
+    if (!title) {
+      alert("제목을 입력해주세요.");
+      return;
+    }
+    if (!content) {
+      alert("내용을 입력해주세요.");
+      return;
+    }
     //AWS S3 객체의 이미지 Key값들을 저장.
     const newSrcarray: Array<string> = [];
     let AWSurl: string = "";
@@ -271,12 +279,7 @@ export default function Write(props: any) {
               등록
             </Button>
           ) : (
-            <Button
-              variant="contained"
-              onClick={() => {
-                console.log("red");
-              }}
-            >
+            <Button type="submit" variant="contained">
               수정
             </Button>
           )}

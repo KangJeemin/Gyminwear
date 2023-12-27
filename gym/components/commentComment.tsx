@@ -4,13 +4,16 @@ import Button from "@mui/material/Button";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
 import Input from "@mui/material/Input";
+import { useRouter } from "next/router";
 
 import Typography from "@mui/material/Typography";
+import { Router } from "react-router-dom";
 
 const CommentComment = (props: any) => {
   const [isDeleted, setIsDeleted] = useState(false);
   const [comment, setComment] = React.useState(props.data.content);
   const [commentModify, setCommentModify] = React.useState(false);
+  const router = useRouter();
   React.useEffect(() => {}, [commentModify]);
 
   const handleUpdateClick = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -46,6 +49,7 @@ const CommentComment = (props: any) => {
     });
     if (response.ok) {
       alert("댓글이 삭제되었습니다.");
+      router.reload();
     }
     setIsDeleted(true);
   };

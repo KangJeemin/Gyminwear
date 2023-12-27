@@ -151,7 +151,7 @@ export default function Read(props: any) {
               size="small"
               onClick={() => {
                 handleSubmitDelete();
-                router.push("/");
+                router.push("/board");
               }}
             >
               예

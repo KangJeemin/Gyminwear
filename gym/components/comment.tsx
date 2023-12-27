@@ -7,11 +7,14 @@ import Input from "@mui/material/Input";
 import PersonIcon from "@mui/icons-material/Person";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
+import { useRouter } from "next/router";
+
 const Comment = (props: any) => {
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);
   const [comment, setComment] = React.useState(props.data.content);
   const [commentModify, setCommentModify] = React.useState(false);
+  const router = useRouter();
 
   useEffect(() => {}, [commentModify]);
   const openComment = () => {
@@ -54,6 +57,7 @@ const Comment = (props: any) => {
     });
     if (response.ok) {
       alert("댓글이 삭제되었습니다.");
+      router.reload();
     }
     setIsDeleted(true);
   };

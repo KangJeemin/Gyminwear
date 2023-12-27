@@ -65,7 +65,7 @@ export default function Write(props: any) {
       }
     });
 
-    // 변경된 HTML 반환
+    // 변경된 HTML 중 body만 반환
     return doc.body.innerHTML;
   };
 

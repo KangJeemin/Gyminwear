@@ -10,6 +10,7 @@ import WestIcon from "@mui/icons-material/West";
 import parse from "html-react-parser";
 import useSession from "@/lib/useSession";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
+import DateTimeFormatterInBoard from "@/lib/dateTimeFommatterINBoard";
 
 type readInfo = {
   title: string;
@@ -124,7 +125,7 @@ export default function Read(props: any) {
               display: "flex",
             }}
           >
-            <DateTimeFormatter dateString={props.data[0].date} />
+            <DateTimeFormatterInBoard dateString={props.data[0].date} />
           </Box>
         </Box>
       </Box>

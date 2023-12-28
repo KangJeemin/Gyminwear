@@ -78,6 +78,7 @@ export default function CommentContainer(props: any) {
             }}
             placeholder="댓글은 300자까지 입력 가능합니다."
             name="commentcontent"
+            value={props.session ? null : "로그인후 댓글 작성이 가능합니다."}
           ></Input>
         </Box>
         <Box
@@ -95,6 +96,7 @@ export default function CommentContainer(props: any) {
               width: "70px",
               height: "40px",
             }}
+            disabled={!session.isLoggedIn ? true : false}
           >
             등록
           </Button>

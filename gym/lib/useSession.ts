@@ -38,7 +38,7 @@ function doLogout(url: string) {
 }
 
 async function logout1() {
-  const res= await fetch("api/logout", {
+  const res= await fetch("/api/logout", {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

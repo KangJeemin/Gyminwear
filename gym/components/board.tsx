@@ -175,6 +175,7 @@ export default function Board(props: any) {
           <Button
             variant="outlined"
             onClick={() => {
+              //로그인이 되어 있을 경우에만 글쓰기 가능.
               if (session.isLoggedIn) {
                 router.push("/board/write");
               } else {

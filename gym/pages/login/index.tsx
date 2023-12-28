@@ -40,6 +40,7 @@ export default function SignIn() {
   const { session, isLoading, login } = useSession();
   const router = useRouter();
   React.useEffect(() => {
+    // 로그인이 되어 있을 경우 전 페이지로 이동
     if (session.isLoggedIn) {
       window.history.back();
     }

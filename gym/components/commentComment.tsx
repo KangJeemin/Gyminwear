@@ -80,6 +80,10 @@ const CommentComment = (props: any) => {
         sx={{
           width: "5%",
           height: "auto",
+          display: "flex",
+          justifyContent: "center",
+          fontSize: 25,
+          backgroundColor: "#F5F5F5",
         }}
       >
         ㄴ
@@ -89,6 +93,7 @@ const CommentComment = (props: any) => {
           width: "10%",
           height: "auto",
           color: "#D9D9D9",
+          backgroundColor: "#F5F5F5",
         }}
       >
         <AccountCircleIcon

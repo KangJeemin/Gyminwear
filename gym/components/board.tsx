@@ -42,6 +42,10 @@ export default function Board(props: any) {
             fontWeight: "bold",
             borderBottom: 1,
             marginBottom: "20px",
+            cursor: "pointer",
+          }}
+          onClick={() => {
+            router.push("/board");
           }}
         >
           게시판
@@ -81,7 +85,6 @@ export default function Board(props: any) {
                         order: { xs: 2, md: 1 },
                         width: { xs: "30%", xl: "200px" },
                         height: { xs: "100%", xl: "200px" },
-                        backgroundColor: "green",
                         marginLeft: { xl: "22px" },
                         position: "relative",
                       }}

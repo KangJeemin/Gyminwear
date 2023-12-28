@@ -5,6 +5,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
 import Input from "@mui/material/Input";
 import { useRouter } from "next/router";
+import useSession from "@/lib/useSession";
 
 import Typography from "@mui/material/Typography";
 import { Router } from "react-router-dom";
@@ -13,6 +14,8 @@ const CommentComment = (props: any) => {
   const [isDeleted, setIsDeleted] = useState(false);
   const [comment, setComment] = React.useState(props.data.content);
   const [commentModify, setCommentModify] = React.useState(false);
+  const { session } = useSession();
+
   const router = useRouter();
   React.useEffect(() => {}, [commentModify]);
 
@@ -158,65 +161,67 @@ const CommentComment = (props: any) => {
           <Box onClick={props.openComment}>답글쓰기</Box>
         </Box>
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          width: "10%",
-          flexDirection: { xs: "column", xl: "row" },
-        }}
-      >
-        {!commentModify && (
-          <>
-            <Button
-              variant="outlined"
-              sx={{
-                minWidth: "10px",
-                height: { xs: "50%", xl: "100%" },
-              }}
-              onClick={() => setCommentModify(true)}
-            >
-              수정
-            </Button>
-            <Button
-              variant="outlined"
-              color="error"
-              sx={{
-                minWidth: "10px",
-                height: { xs: "50%", xl: "100%" },
-              }}
-              onClick={handleDeleteClick}
-            >
-              삭제
-            </Button>
-          </>
-        )}
+      {session.nickname === props.data.nickname && (
+        <Box
+          sx={{
+            display: "flex",
+            width: "10%",
+            flexDirection: { xs: "column", xl: "row" },
+          }}
+        >
+          {!commentModify && (
+            <>
+              <Button
+                variant="outlined"
+                sx={{
+                  minWidth: "10px",
+                  height: { xs: "50%", xl: "100%" },
+                }}
+                onClick={() => setCommentModify(true)}
+              >
+                수정
+              </Button>
+              <Button
+                variant="outlined"
+                color="error"
+                sx={{
+                  minWidth: "10px",
+                  height: { xs: "50%", xl: "100%" },
+                }}
+                onClick={handleDeleteClick}
+              >
+                삭제
+              </Button>
+            </>
+          )}
 
-        {commentModify && (
-          <>
-            <Button
-              type="submit"
-              variant="outlined"
-              sx={{
-                minWidth: "10px",
-                height: { xs: "50%", xl: "100%" },
-              }}
-            >
-              완료
-            </Button>
-            <Button
-              variant="outlined"
-              color="error"
-              sx={{
-                minWidth: "10px",
-                height: { xs: "50%", xl: "100%" },
-              }}
-              onClick={() => setCommentModify(false)}
-            >
-              취소
-            </Button>
-          </>
-        )}
-      </Box>
+          {commentModify && (
+            <>
+              <Button
+                type="submit"
+                variant="outlined"
+                sx={{
+                  minWidth: "10px",
+                  height: { xs: "50%", xl: "100%" },
+                }}
+              >
+                완료
+              </Button>
+              <Button
+                variant="outlined"
+                color="error"
+                sx={{
+                  minWidth: "10px",
+                  height: { xs: "50%", xl: "100%" },
+                }}
+                onClick={() => setCommentModify(false)}
+              >
+                취소
+              </Button>
+            </>
+          )}
+        </Box>
+      )}
     </Box>
   );
 };

@@ -160,65 +160,67 @@ const Comment = (props: any) => {
             <Box onClick={openComment}>답글쓰기</Box>
           </Box>
         </Box>
-        <Box
-          sx={{
-            display: "flex",
-            width: "10%",
-            flexDirection: { xs: "column", xl: "row" },
-          }}
-        >
-          {!commentModify && (
-            <>
-              <Button
-                variant="outlined"
-                sx={{
-                  minWidth: "10px",
-                  height: { xs: "50%", xl: "100%" },
-                }}
-                onClick={() => setCommentModify(true)}
-              >
-                수정
-              </Button>
-              <Button
-                variant="outlined"
-                color="error"
-                sx={{
-                  minWidth: "10px",
-                  height: { xs: "50%", xl: "100%" },
-                }}
-                onClick={handleDeleteClick}
-              >
-                삭제
-              </Button>
-            </>
-          )}
+        {session.nickname === props.data.nickname && (
+          <Box
+            sx={{
+              display: "flex",
+              width: "10%",
+              flexDirection: { xs: "column", xl: "row" },
+            }}
+          >
+            {!commentModify && (
+              <>
+                <Button
+                  variant="outlined"
+                  sx={{
+                    minWidth: "10px",
+                    height: { xs: "50%", xl: "100%" },
+                  }}
+                  onClick={() => setCommentModify(true)}
+                >
+                  수정
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="error"
+                  sx={{
+                    minWidth: "10px",
+                    height: { xs: "50%", xl: "100%" },
+                  }}
+                  onClick={handleDeleteClick}
+                >
+                  삭제
+                </Button>
+              </>
+            )}
 
-          {commentModify && (
-            <>
-              <Button
-                type="submit"
-                variant="outlined"
-                sx={{
-                  minWidth: "10px",
-                  height: { xs: "50%", xl: "100%" },
-                }}
-              >
-                완료
-              </Button>
-              <Button
-                variant="outlined"
-                color="error"
-                sx={{
-                  minWidth: "10px",
-                  height: { xs: "50%", xl: "100%" },
-                }}
-                onClick={() => setCommentModify(false)}
-              >
-                취소
-              </Button>
-            </>
-          )}
-        </Box>
+            {commentModify && (
+              <>
+                <Button
+                  type="submit"
+                  variant="outlined"
+                  sx={{
+                    minWidth: "10px",
+                    height: { xs: "50%", xl: "100%" },
+                  }}
+                >
+                  완료
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="error"
+                  sx={{
+                    minWidth: "10px",
+                    height: { xs: "50%", xl: "100%" },
+                  }}
+                  onClick={() => setCommentModify(false)}
+                >
+                  취소
+                </Button>
+              </>
+            )}
+          </Box>
+        )}
       </Box>
       {isCommentOpen ? (
         <CommentWrtie

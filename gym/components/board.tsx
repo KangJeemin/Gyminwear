@@ -29,7 +29,6 @@ export default function Board(props: any) {
   const handlePageChange = (event, page: number) => {
     router.push(`/board?page=${page}`);
   };
-  // console.log(props.data);
   return (
     <Container>
       <Container

@@ -174,7 +174,6 @@ export default function Read(props: any) {
           height: "auto",
           marginTop: "30px",
           overflowY: "scroll",
-          borderBottom: 1,
           color: "black",
         }}
       >

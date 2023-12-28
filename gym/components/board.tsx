@@ -25,6 +25,10 @@ type boardInfo = {
 export default function Board(props: any) {
   const router = useRouter();
   const { session } = useSession();
+  const handlePageChange = (event, page: number) => {
+    // 여기에 페이지 변경에 따라 수행할 작업을 추가합니다.
+    console.log(`페이지 변경: ${page}`);
+  };
   // console.log(props.data);
   return (
     <Container>
@@ -197,7 +201,11 @@ export default function Board(props: any) {
           }}
         >
           <Stack spacing={10} sx={{ margin: "auto" }}>
-            <Pagination count={10} shape="rounded" />
+            <Pagination
+              count={10}
+              shape="rounded"
+              onChange={handlePageChange}
+            />
           </Stack>
         </Box>
       )}

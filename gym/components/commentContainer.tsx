@@ -56,6 +56,7 @@ export default function CommentContainer(props: any) {
         <TextField
           id="CommentNickname"
           label="닉네임"
+          disabled={!session.isLoggedIn ? true : false}
           variant="standard"
           value={session.nickname}
           sx={{ width: "300px" }}
@@ -76,9 +77,13 @@ export default function CommentContainer(props: any) {
               // border: "none",
               color: "black",
             }}
-            placeholder="댓글은 300자까지 입력 가능합니다."
+            placeholder={
+              session.isLoggedIn
+                ? "댓글은 300자까지 입력 가능합니다."
+                : "로그인후 댓글 작성이 가능합니다."
+            }
+            disabled={!session.isLoggedIn ? true : false}
             name="commentcontent"
-            value={props.session ? null : "로그인후 댓글 작성이 가능합니다."}
           ></Input>
         </Box>
         <Box

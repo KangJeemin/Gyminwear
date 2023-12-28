@@ -67,6 +67,7 @@ export default function CommentWrtie(props: any) {
         <TextField
           id="CommentNickname"
           name="commentnickname"
+          disabled={!session.isLoggedIn ? true : false}
           label="닉네임"
           variant="standard"
           sx={{ width: "300px" }}
@@ -88,11 +89,13 @@ export default function CommentWrtie(props: any) {
               color: "black",
               outline: "none",
             }}
-            placeholder="댓글은 300자까지 입력 가능합니다."
-            name="commentcontent"
-            value={
-              session.isLoggedIn ? null : "로그인후 댓글 작성이 가능합니다."
+            placeholder={
+              session.isLoggedIn
+                ? "댓글은 300자까지 입력 가능합니다."
+                : "로그인후 댓글 작성이 가능합니다."
             }
+            name="commentcontent"
+            disabled={!session.isLoggedIn ? true : false}
           ></Input>
         </Box>
         <Box

@@ -3,17 +3,11 @@ import Read from "@/components/read";
 import CommentContainer from "@/components/commentContainer";
 import useSession from "@/lib/useSession";
 import { GetServerSidePropsContext } from "next";
-export default function Index(props: any) {
-  const { session } = useSession();
-
+export default function index(props: any) {
   return (
     <>
       <Read data={props.data}></Read>
-      <CommentContainer
-        data={props.commentData}
-        boardData={props.data}
-        session={session.isLoggedIn}
-      />
+      <CommentContainer data={props.commentData} boardData={props.data} />
     </>
   );
 }

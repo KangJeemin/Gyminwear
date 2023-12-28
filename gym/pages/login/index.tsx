@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import useSession from "@/lib/useSession";
+import { useRouter } from "next/router";
 
 function Copyright(props: any) {
   return (
@@ -37,22 +38,19 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
   const { session, isLoading, login } = useSession();
-
+  const router = useRouter();
+  React.useEffect(() => {
+    if (session.isLoggedIn) {
+      window.history.back();
+    }
+  });
   if (isLoading) {
     return <div>Loading...</div>;
-  }
-
-  if (!session.isLoggedIn) {
-    console.log("클라이언트sesson=", session);
-    console.log("로그인됨");
   }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const username = data.get("email") as string;
-    console.log("login 함수 실행");
-
     const { email, password } = Object.fromEntries(data.entries());
     const loginInfo = {
       email,
@@ -84,8 +82,8 @@ export default function SignIn() {
         const responseData = await response.json();
         // 응답 결과가 true일 경우 회원가입 성공 했다는 알림과 함께 로그인 페이지로 이동.
         if (responseData.result) {
-          // router.push('/login');
           alert("로그인에 성공했습니다.");
+          window.history.back();
         } else {
           alert("로그인에 실패했습니다.");
         }

@@ -45,15 +45,34 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
         if(id===undefined){
             try{
                 db.query(
-                    `SELECT posts.postid, posts.title, users.nickname, posts.content, posts.viewcount, posts.date, COUNT(comments.commentid) AS commentcount
-                    FROM posts
-                    JOIN users ON posts.userid = users.userid LEFT JOIN comments ON posts.postid = comments.postid GROUP BY posts.postid;
+                    `SELECT
+                    posts.postid,
+                    posts.title,
+                    users.nickname,
+                    posts.content,
+                    posts.viewcount,
+                    posts.date,
+                    COUNT(comments.commentid) AS commentcount,
+                    (SELECT COUNT(*) FROM (
+                      SELECT posts.postid
+                      FROM posts
+                      JOIN users ON posts.userid = users.userid
+                      LEFT JOIN comments ON posts.postid = comments.postid
+                      GROUP BY posts.postid
+                    ) AS subquery) AS pagecount
+                  FROM
+                    posts
+                    JOIN users ON posts.userid = users.userid
+                    LEFT JOIN comments ON posts.postid = comments.postid
+                  GROUP BY
+                    posts.postid, posts.title, users.nickname, posts.content, posts.viewcount, posts.date;
                     `
                 ,(error:any,result:any)=>{
                     if(error){
                         console.error("게시물을 조회하는 과정에서 오류 발생.")
                         return false
                     } else{
+                        console.log(result)
                         res.status(200).json(result);  
                     }
                 })

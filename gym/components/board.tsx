@@ -21,6 +21,7 @@ type boardInfo = {
   viewcount: number;
   date: string;
   commentcount: number;
+  pagecount: number;
 };
 export default function Board(props: any) {
   const router = useRouter();
@@ -202,7 +203,7 @@ export default function Board(props: any) {
         >
           <Stack spacing={10} sx={{ margin: "auto" }}>
             <Pagination
-              count={10}
+              count={props.data[0].pagecount / 16 + 1}
               shape="rounded"
               onChange={handlePageChange}
             />

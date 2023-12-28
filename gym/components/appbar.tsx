@@ -112,7 +112,7 @@ function ResponsiveAppBar() {
                     textAlign="center"
                     onClick={() => {
                       router.push(
-                        page === "Home" ? "/" : `/${page.toLowerCase()}`
+                        page === "Home" ? "/" : `/${page.toLowerCase()}?page=1`
                       );
                     }}
                   >
@@ -148,7 +148,9 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={() => {
-                  router.push(page === "Home" ? "/" : `/${page.toLowerCase()}`);
+                  router.push(
+                    page === "Home" ? "/" : `/${page.toLowerCase()}?page=1`
+                  );
                 }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >

@@ -6,7 +6,9 @@ import {
   sleep,
   SessionData,
 } from "@/lib/config/iron-config";
+import returnSqlLimit from '@/lib/returnSqlLimit';
 const db = require('@/lib/connectMysql');
+
 
 
 type writeInfo = {  
@@ -20,8 +22,9 @@ type writeInfo = {
 }
 export default async function board(req: NextApiRequest, res: NextApiResponse) {
     const {postid,title,nickname,content}:writeInfo = req.body;
-    const {id,page} = req.query
-    
+    const {id} = req.query
+    const page:string= req.query.page as string
+    let limit:string = await returnSqlLimit(page)
     if(req.method==="POST"){
         try{
             db.query(
@@ -65,14 +68,17 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
                     JOIN users ON posts.userid = users.userid
                     LEFT JOIN comments ON posts.postid = comments.postid
                   GROUP BY
-                    posts.postid, posts.title, users.nickname, posts.content, posts.viewcount, posts.date;
+                    posts.postid, posts.title, users.nickname, posts.content, posts.viewcount, posts.date
+                  ORDER BY
+                    posts.date DESC
+                  LIMIT ${limit};
+                  
                     `
                 ,(error:any,result:any)=>{
                     if(error){
                         console.error("게시물을 조회하는 과정에서 오류 발생.")
                         return false
                     } else{
-                        console.log(result)
                         res.status(200).json(result);  
                     }
                 })

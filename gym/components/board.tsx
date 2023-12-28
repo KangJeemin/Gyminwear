@@ -27,8 +27,7 @@ export default function Board(props: any) {
   const router = useRouter();
   const { session } = useSession();
   const handlePageChange = (event, page: number) => {
-    // 여기에 페이지 변경에 따라 수행할 작업을 추가합니다.
-    console.log(`페이지 변경: ${page}`);
+    router.push(`/board?page=${page}`);
   };
   // console.log(props.data);
   return (
@@ -51,7 +50,7 @@ export default function Board(props: any) {
             cursor: "pointer",
           }}
           onClick={() => {
-            router.push("/board");
+            router.push("/board?page=1");
           }}
         >
           게시판

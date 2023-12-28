@@ -8,7 +8,7 @@ import Pagedivide from "@/components/pagedivide";
 import Board from "@/components/board";
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:3000/api/board", {
+  const res = await fetch("http://localhost:3000/api/board?page=1", {
     method: "GET",
   });
   const data = await res.json();

@@ -180,12 +180,18 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {session.isLoggedIn === true
-                ? settingsLoggedIn?.map((settingsLoggedIn) => (
+                ? settingsLoggedIn?.map((settingsLoggedIn, index) => (
                     <MenuItem
                       key={settingsLoggedIn}
                       onClick={() => {
                         handleCloseUserMenu();
-                        logout1();
+                        if (index === 0) {
+                          // 처리할 이벤트 1
+                          // 예: alert("Hi! " + session.nickname);
+                        } else if (index === 1) {
+                          // 처리할 이벤트 2
+                          logout1();
+                        }
                       }}
                     >
                       <Typography textAlign="center">

@@ -37,13 +37,16 @@ function doLogout(url: string) {
   });
 }
 
-function logout1() {
-  fetch("api/logout", {
+async function logout1() {
+  const res= await fetch("api/logout", {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
   });
+  if(res.ok){
+    alert("로그아웃 되었습니다.")
+  }
 }
 export default function useSession() {
   const { data: session, isLoading } = useSWR(

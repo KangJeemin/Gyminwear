@@ -180,20 +180,25 @@ export default function Read(props: any) {
       >
         {parse(props.data[0].content)}
       </Box>
-      <Box sx={{ paddingTop: "10px", display: "flex" }}>
-        <Box sx={{ width: { xl: "90%" } }}></Box>
-        <Button component="label" variant="contained" onClick={openModal}>
-          삭제
-        </Button>
-        <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
-        <Button
-          component="label"
-          variant="contained"
-          onClick={handlePostDataToWrite}
-        >
-          수정
-        </Button>
-      </Box>
+      {session.nickname === props.data[0].nickname ? (
+        <>
+          <Box sx={{ paddingTop: "10px", display: "flex" }}>
+            <Box sx={{ width: { xl: "90%" } }}></Box>
+            <Button component="label" variant="contained" onClick={openModal}>
+              삭제
+            </Button>
+            <Box sx={{ width: { xs: "90%", xl: "5%" } }}></Box>
+            <Button
+              component="label"
+              variant="contained"
+              onClick={handlePostDataToWrite}
+            >
+              수정
+            </Button>
+          </Box>
+        </>
+      ) : null}
+
       <Box
         sx={{
           fontWeight: "bold",

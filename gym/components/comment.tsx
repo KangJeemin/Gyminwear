@@ -8,6 +8,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
 import { useRouter } from "next/router";
+import useSession from "@/lib/useSession";
 
 const Comment = (props: any) => {
   const [isDeleted, setIsDeleted] = React.useState(false);
@@ -15,6 +16,7 @@ const Comment = (props: any) => {
   const [comment, setComment] = React.useState(props.data.content);
   const [commentModify, setCommentModify] = React.useState(false);
   const router = useRouter();
+  const { session } = useSession();
 
   useEffect(() => {}, [commentModify]);
   const openComment = () => {

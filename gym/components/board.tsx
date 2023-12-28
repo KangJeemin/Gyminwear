@@ -11,7 +11,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
-import extractFirstImageUrl from "@/lib/extractFirstImageUrl";
+import { extractFirstImageUrl2 } from "@/lib/extractFirstImageUrl";
 type boardInfo = {
   postid: number;
   title: string;
@@ -56,111 +56,109 @@ export default function Board(props: any) {
             spacing={{ xs: 1, xl: 2 }}
             columns={{ xs: 4, sm: 8, md: 16 }}
           >
-            {props.data
-              .slice(0, props.mapcount)
-              .map((object: boardInfo, index: number) => (
-                <Grid
-                  xs={4}
-                  sm={4}
-                  md={4}
-                  key={index}
-                  onClick={() => {
-                    router.push(
-                      `http://localhost:3000/board/read?id=${object.postid}`
-                    );
+            {props.data.slice(0, 16).map((object: boardInfo, index: number) => (
+              <Grid
+                xs={4}
+                sm={4}
+                md={4}
+                key={index}
+                onClick={() => {
+                  router.push(
+                    `http://localhost:3000/board/read?id=${object.postid}`
+                  );
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: { xs: "row", xl: "column" },
+                    width: { xs: "350px", xl: "250px" },
+                    height: { xs: "100px", xl: "300px" },
+                    // borderBottom: { xs: 1, xl: "none" },
+                    border: 1,
                   }}
                 >
                   <Box
                     sx={{
-                      display: "flex",
-                      flexDirection: { xs: "row", xl: "column" },
-                      width: { xs: "350px", xl: "250px" },
-                      height: { xs: "100px", xl: "300px" },
-                      // borderBottom: { xs: 1, xl: "none" },
-                      border: 1,
+                      order: { xs: 2, md: 1 },
+                      width: { xs: "30%", xl: "200px" },
+                      height: { xs: "100%", xl: "200px" },
+                      marginLeft: { xl: "22px" },
+                      position: "relative",
+                    }}
+                  >
+                    <Image
+                      src={extractFirstImageUrl2(object.content) || ""}
+                      alt="이미지를 표시할 수 없습니다"
+                      layout="fill"
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      order: { xs: 1, md: 2 },
+                      width: { xs: "70%", xl: "220px" },
+                      height: { xs: "100%", xl: "100px" },
+                      paddingTop: { xl: "10px" },
+                      paddingLeft: { xl: "10px" },
+                      fontFamily: "monospace",
                     }}
                   >
                     <Box
                       sx={{
-                        order: { xs: 2, md: 1 },
-                        width: { xs: "30%", xl: "200px" },
-                        height: { xs: "100%", xl: "200px" },
-                        marginLeft: { xl: "22px" },
-                        position: "relative",
+                        width: "100%",
+                        height: "35px",
+                        display: "flex",
                       }}
                     >
-                      <Image
-                        src={extractFirstImageUrl(object.content) || ""}
-                        alt="이미지를 표시할 수 없습니다"
-                        layout="fill"
-                      />
+                      {object.title}
+                      <Box
+                        sx={{
+                          color: "red",
+                        }}
+                      >
+                        [{object.commentcount}]
+                      </Box>
                     </Box>
                     <Box
                       sx={{
-                        order: { xs: 1, md: 2 },
-                        width: { xs: "70%", xl: "220px" },
-                        height: { xs: "100%", xl: "100px" },
-                        paddingTop: { xl: "10px" },
-                        paddingLeft: { xl: "10px" },
-                        fontFamily: "monospace",
+                        width: "100%",
+                        height: "30px",
+                        color: "#D9D9D9",
+                      }}
+                    >
+                      {object.nickname}
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
                       }}
                     >
                       <Box
                         sx={{
-                          width: "100%",
-                          height: "35px",
-                          display: "flex",
+                          width: "30%",
+                          height: "20px",
+                          fontSize: 15,
                         }}
                       >
-                        {object.title}
-                        <Box
-                          sx={{
-                            color: "red",
-                          }}
-                        >
-                          [{object.commentcount}]
-                        </Box>
+                        조회:{object.viewcount}
                       </Box>
                       <Box
                         sx={{
-                          width: "100%",
-                          height: "30px",
-                          color: "#D9D9D9",
-                        }}
-                      >
-                        {object.nickname}
-                      </Box>
-                      <Box
-                        sx={{
+                          width: "70%",
+                          height: "20px",
                           display: "flex",
+                          justifyContent: "flex-end",
+                          fontSize: 15,
+                          marginRight: { xs: "10px" },
                         }}
                       >
-                        <Box
-                          sx={{
-                            width: "30%",
-                            height: "20px",
-                            fontSize: 15,
-                          }}
-                        >
-                          조회:{object.viewcount}
-                        </Box>
-                        <Box
-                          sx={{
-                            width: "70%",
-                            height: "20px",
-                            display: "flex",
-                            justifyContent: "flex-end",
-                            fontSize: 15,
-                            marginRight: { xs: "10px" },
-                          }}
-                        >
-                          <DateTimeFormatter dateString={object.date} />
-                        </Box>
+                        <DateTimeFormatter dateString={object.date} />
                       </Box>
                     </Box>
                   </Box>
-                </Grid>
-              ))}
+                </Box>
+              </Grid>
+            ))}
           </Grid>
         </Box>
         <Box

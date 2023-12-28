@@ -1,13 +1,23 @@
-const extractFirstImageUrl = (html: string) => {
-  if (typeof window === "undefined") {
-    // 코드가 서버에서 실행 중인 경우, 기본 값을 반환하거나 해당하는 방식으로 처리합니다. (DOMParser is not defined 에러 해결 )
-    return null;
-  }
+
+export const extractFirstImageUrl = (html: string) => {
+  
   const doc = new DOMParser().parseFromString(html, "text/html");
   const imageElements = doc.querySelectorAll("img");
   const firstImageUrl =
     imageElements && imageElements.length > 0 ? imageElements[0].src : null;
   return firstImageUrl;
 };
+//don't use DOMParser to render buildTime
+export const extractFirstImageUrl2 =(html:string) => {
+  const imgPattern = /<img[^>]*src="([^"]*)"[^>]*>/g;
+  let matches = html.match(imgPattern);
 
-export default extractFirstImageUrl;
+  // 추출된 URL 출력
+  if (matches) {
+    let urls = matches.map(function(match) {
+      let srcMatch = /src="([^"]*)"/.exec(match);
+      return srcMatch ? srcMatch[1] : null;
+    });
+    return urls.length > 0 ? urls[0] : null;
+}
+}

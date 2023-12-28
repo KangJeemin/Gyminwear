@@ -112,7 +112,6 @@ const Comment = (props: any) => {
           <Box
             sx={{
               display: "flex",
-              border: 1,
             }}
           >
             <Box
@@ -139,10 +138,11 @@ const Comment = (props: any) => {
             sx={{
               marginTop: "10px",
               width: "100%",
-              border: 1,
               whiteSpace: "normal", // 줄 바꿈 방지 스타일
               fontSize: { xl: 20 },
               pointerEvents: commentModify ? "" : "none",
+              border: "none",
+              outline: "none",
             }}
             placeholder="댓글은 300자까지 입력 가능합니다."
             defaultValue={props.data.content}
@@ -154,7 +154,6 @@ const Comment = (props: any) => {
             sx={{
               display: "flex",
               marginTop: "10px",
-              border: 1,
             }}
           >
             <Box onClick={openComment}>답글쓰기</Box>

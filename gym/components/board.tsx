@@ -26,7 +26,7 @@ type boardInfo = {
 export default function Board(props: any) {
   const router = useRouter();
   const { session } = useSession();
-  const handlePageChange = (event, page: number) => {
+  const handlePageChange = (event: any, page: number) => {
     router.push(`/board?page=${page}`);
   };
   return (

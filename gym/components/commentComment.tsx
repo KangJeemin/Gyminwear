@@ -71,7 +71,6 @@ const CommentComment = (props: any) => {
         display: "flex",
         width: "100%",
         height: "auto",
-        borderBottom: 1,
         marginBottom: "10px",
         fontFamily: "monospace",
         border: 1,
@@ -81,7 +80,6 @@ const CommentComment = (props: any) => {
         sx={{
           width: "5%",
           height: "auto",
-          border: 1,
         }}
       >
         ㄴ
@@ -91,8 +89,6 @@ const CommentComment = (props: any) => {
           width: "10%",
           height: "auto",
           color: "#D9D9D9",
-
-          border: 1,
         }}
       >
         <AccountCircleIcon
@@ -114,7 +110,6 @@ const CommentComment = (props: any) => {
         <Box
           sx={{
             display: "flex",
-            border: 1,
           }}
         >
           <Box
@@ -140,7 +135,6 @@ const CommentComment = (props: any) => {
           sx={{
             marginTop: "10px",
             width: "100%",
-            border: 1,
             whiteSpace: "normal", // 줄 바꿈 방지 스타일
             fontSize: { xl: 20 },
             pointerEvents: commentModify ? "" : "none",
@@ -155,7 +149,6 @@ const CommentComment = (props: any) => {
           sx={{
             display: "flex",
             marginTop: "10px",
-            border: 1,
           }}
         >
           <Box onClick={props.openComment}>답글쓰기</Box>

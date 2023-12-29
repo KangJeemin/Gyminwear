@@ -22,7 +22,7 @@ export default async function handler(
     const { username = "No username" } = request.body;
 
     session.isLoggedIn = true;
-    session.username = username;
+    session.nickname = username;
     await session.save();
 
     // simulate looking up the user in db

@@ -23,16 +23,16 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
     const boardData = await boardRes.json();
     const allCommentData = await commentRes.json();
-    const result = [];
+    const result: any = [];
 
     // 객체를 id를 키로 하는 맵으로 변환
     const idMap = new Map();
-    allCommentData.forEach((obj) => {
+    allCommentData.forEach((obj: any) => {
       idMap.set(obj.commentid, { ...obj, child: [] });
     });
 
     // 부모-자식 관계 설정
-    allCommentData.forEach((obj) => {
+    allCommentData.forEach((obj: any) => {
       if (obj.parentcommentid !== null) {
         idMap.get(obj.parentcommentid).child.push(idMap.get(obj.commentid));
       } else {

@@ -6,12 +6,11 @@ import Miniboard from "@/components/miniboard";
 import useSession from "@/lib/useSession";
 import Pagedivide from "@/components/pagedivide";
 import Board from "@/components/board";
+import getMiniBoard from "@/pages/api/miniboard";
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:3000/api/board?page=1", {
-    method: "GET",
-  });
-  const data = await res.json();
+  const MiniBoard = await getMiniBoard();
+  const data = JSON.parse(MiniBoard);
   return {
     props: {
       data: data,

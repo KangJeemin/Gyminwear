@@ -1,3 +1,4 @@
+import { ContactPageOutlined } from '@mui/icons-material';
 import type { NextApiRequest, NextApiResponse } from 'next';
 const db = require('@/lib/connectMysql');
 const crypto = require('crypto');
@@ -9,7 +10,35 @@ type userInfo = {
 }
 
 export default async function Join(req : NextApiRequest, res : NextApiResponse){
-    if (req.method === 'POST') {
+    if (req.method === 'GET'){
+      try{
+        db.query(
+            `SELECT nickname FROM users WHERE nickname='${req.query.nickname}';`
+        ,(error:any,result:any)=>{
+            if(error){
+                console.error("닉네임 중복 체크중 오류 발생");
+                res.status(200).json(false);  
+                return false
+                
+            } else{
+              if(result.length>0){
+                console.log("g");
+                res.status(200).json(false);  
+              }
+              else{
+                res.status(200).json(true);  
+              }
+              
+            }
+        })
+      }
+      catch (error) {
+        console.error("데이터 베이스에 유저 정보 저장 중 에러 발생")
+        res.status(500).json({ error: '서버 오류' });  
+      }
+    }
+    
+    else if (req.method === 'POST') {
         const requestData:userInfo = req.body;
         
         // 오늘 날짜의 밀리초와 랜덤 값을 곱하여 반올림하여 정수를 만듬, 그 후 문자열로 변환
@@ -19,7 +48,7 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
 
           try{
             db.query(
-                `INSERT INTO user (email,name,password,nickname,salt) VALUES ('${requestData.email}','${requestData.name}','${hashPassword}','${requestData.nickname}','${salt}');`
+                `INSERT INTO users (email,name,password,nickname,salt) VALUES ('${requestData.email}','${requestData.name}','${hashPassword}','${requestData.nickname}','${salt}');`
             ,(error:any,result:any)=>{
                 if(error){
                     console.error("회원가입 중 유저 정보를 삽입 하는 과정에서 오류 발생")

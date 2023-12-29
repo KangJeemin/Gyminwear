@@ -5,8 +5,21 @@ import ResponsiveAppBar from "@/components/appbar";
 import Miniboard from "@/components/miniboard";
 import useSession from "@/lib/useSession";
 import Pagedivide from "@/components/pagedivide";
+import Board from "@/components/board";
 
-export default function Main() {
+export const getStaticProps = async () => {
+  const res = await fetch("http://localhost:3000/api/board?page=1", {
+    method: "GET",
+  });
+  const data = await res.json();
+  return {
+    props: {
+      data: data,
+    },
+  };
+};
+
+export default function Main(props: any) {
   const { session, isLoading } = useSession();
   React.useEffect(() => {
     console.log(session);
@@ -27,7 +40,7 @@ export default function Main() {
       </Head>
       <PageNavigate />
       <Pagedivide />
-      <Miniboard />
+      <Board mapcount={4} data={props.data} />
     </>
   );
 }

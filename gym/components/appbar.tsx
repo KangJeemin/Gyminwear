@@ -14,7 +14,9 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import useSession from "@/lib/useSession";
 import { useRouter } from "next/router";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
+import ListItemText from "@mui/material/ListItemText";
 const pages = ["Home", "Board"];
 // const settingsLoggedIn = ["Profile", "Account", "Dashboard", "Logout"];
 const settingsLoggedOut = ["Login"];
@@ -60,7 +62,7 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -104,18 +106,17 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {/* mobile pageNavigation */}
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography
                     textAlign="center"
                     onClick={() => {
                       router.push(
-                        page === "Home" ? "/" : `/${page.toLowerCase()}`
+                        page === "Home" ? "/" : `/${page.toLowerCase()}?page=1`
                       );
                     }}
                   >
-                    {page}
+                    <ListItemText primary={page} />
                   </Typography>
                 </MenuItem>
               ))}
@@ -126,7 +127,7 @@ function ResponsiveAppBar() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -147,7 +148,9 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={() => {
-                  router.push(page === "Home" ? "/" : `/${page.toLowerCase()}`);
+                  router.push(
+                    page === "Home" ? "/" : `/${page.toLowerCase()}?page=1`
+                  );
                 }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
@@ -159,7 +162,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <AccountCircleIcon sx={{ color: "white" }} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -178,25 +181,27 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {session.isLoggedIn === true ? (
-                <>
-                  {settingsLoggedIn.map((settingsLoggedIn) => (
+              {session.isLoggedIn === true
+                ? settingsLoggedIn?.map((settingsLoggedIn, index) => (
                     <MenuItem
                       key={settingsLoggedIn}
                       onClick={() => {
                         handleCloseUserMenu();
-                        logout1();
+                        if (index === 0) {
+                          // 처리할 이벤트 1
+                          // 예: alert("Hi! " + session.nickname);
+                        } else if (index === 1) {
+                          // 처리할 이벤트 2
+                          logout1();
+                        }
                       }}
                     >
                       <Typography textAlign="center">
                         {settingsLoggedIn}
                       </Typography>
                     </MenuItem>
-                  ))}
-                </>
-              ) : (
-                <>
-                  {settingsLoggedOut.map((settingsLoggedOut) => (
+                  ))
+                : settingsLoggedOut.map((settingsLoggedOut) => (
                     <MenuItem
                       key={settingsLoggedOut}
                       onClick={() => {
@@ -209,8 +214,6 @@ function ResponsiveAppBar() {
                       </Typography>
                     </MenuItem>
                   ))}
-                </>
-              )}
             </Menu>
           </Box>
         </Toolbar>

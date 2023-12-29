@@ -10,6 +10,7 @@ const mysqlModule =() => {
              host: process.env.NEXT_PUBLIC_DATABASE_HOST,
              port: process.env.NEXT_PUBLIC_DATABASE_PORT,
              database: process.env.NEXT_PUBLIC_DATABASE_DATABASE,
+             multipleStatements: true,
              connectionLimit: 10, // Adjust this value based on your needs
              });
         }

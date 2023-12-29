@@ -14,6 +14,7 @@ export default async function logout(req: NextApiRequest, res: NextApiResponse) 
       );
         session.isLoggedIn=false;
         session.email=""
+        session.nickname=""
         session.destroy();
         console.log("쿠기파괴")
         return res.json(defaultSession);

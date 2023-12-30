@@ -128,7 +128,7 @@ export default function Board(props: any) {
                         sx={{
                           width: "100%",
                           height: "30px",
-                          color: "#D9D9D9",
+                          color: "#8E8E8E",
                         }}
                       >
                         {object.nickname}

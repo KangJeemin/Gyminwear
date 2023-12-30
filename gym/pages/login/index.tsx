@@ -83,7 +83,6 @@ export default function SignIn() {
         const responseData = await response.json();
         // 응답 결과가 true일 경우 회원가입 성공 했다는 알림과 함께 로그인 페이지로 이동.
         if (responseData.result) {
-          alert("로그인에 성공했습니다.");
           window.history.back();
         } else {
           alert("로그인에 실패했습니다.");

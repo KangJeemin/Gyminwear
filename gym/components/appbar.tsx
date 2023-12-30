@@ -112,7 +112,11 @@ function ResponsiveAppBar() {
                     textAlign="center"
                     onClick={() => {
                       router.push(
-                        page === "Home" ? "/" : `/${page.toLowerCase()}?page=1`
+                        page === "Home"
+                          ? `${process.env.NEXT_PUBLIC_IP}/`
+                          : `${
+                              process.env.NEXT_PUBLIC_IP
+                            }/${page.toLowerCase()}?page=1`
                       );
                     }}
                   >
@@ -149,7 +153,11 @@ function ResponsiveAppBar() {
                 key={page}
                 onClick={() => {
                   router.push(
-                    page === "Home" ? "/" : `/${page.toLowerCase()}?page=1`
+                    page === "Home"
+                      ? `${process.env.NEXT_PUBLIC_IP}/`
+                      : `${
+                          process.env.NEXT_PUBLIC_IP
+                        }/${page.toLowerCase()}?page=1`
                   );
                 }}
                 sx={{ my: 2, color: "white", display: "block" }}

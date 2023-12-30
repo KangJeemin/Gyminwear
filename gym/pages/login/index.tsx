@@ -70,7 +70,7 @@ export default function SignIn() {
     // });
 
     try {
-      const response = await fetch("api/login", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { SessionData, defaultSession } from "@/lib/config/iron-config";
 import useSWRMutation from "swr/mutation";
 
-const sessionApiRoute = "/api/session";
+const sessionApiRoute = `${process.env.NEXT_PUBLIC_IP}/api/session`;
 
 async function fetchJson<JSON>(
   input: RequestInfo,
@@ -38,7 +38,7 @@ function doLogout(url: string) {
 }
 
 async function logout1() {
-  const res= await fetch("/api/logout", {
+  const res= await fetch(`${process.env.NEXT_PUBLIC_IP}/api/logout`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

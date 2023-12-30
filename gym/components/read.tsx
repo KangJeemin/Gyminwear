@@ -27,7 +27,7 @@ export default function Read(props: any) {
   const router = useRouter();
 
   const handleSubmitDelete = async () => {
-    const response = await fetch("http://localhost:3000/api/board", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/board`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -151,7 +151,7 @@ export default function Read(props: any) {
               size="small"
               onClick={() => {
                 handleSubmitDelete();
-                router.push("/board");
+                router.push(`${process.env.NEXT_PUBLIC_IP}/board`);
               }}
             >
               예

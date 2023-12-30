@@ -32,7 +32,6 @@ export default function Board(props: any) {
   return (
     <Container>
       <Container
-        maxWidth="xl"
         sx={{
           color: "black",
         }}
@@ -78,7 +77,7 @@ export default function Board(props: any) {
                     sx={{
                       display: "flex",
                       flexDirection: { xs: "row", xl: "column" },
-                      width: { xs: "350px", xl: "250px" },
+                      width: { xs: "100%", xl: "100%" },
                       height: { xs: "100px", xl: "300px" },
                       // borderBottom: { xs: 1, xl: "none" },
                       border: 1,

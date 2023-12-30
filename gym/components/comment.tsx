@@ -31,7 +31,7 @@ const Comment = (props: any) => {
     const data = new FormData(event.currentTarget);
     const { commentcontent } = Object.fromEntries(data.entries());
 
-    const response = await fetch("http://localhost:3000/api/comment", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/comment`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const Comment = (props: any) => {
     }
   };
   const handleDeleteClick = async () => {
-    const response = await fetch("http://localhost:3000/api/comment", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/comment`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

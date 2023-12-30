@@ -99,16 +99,19 @@ export default function Write(props: any) {
       const blobData = await fetch(imageUrl).then((res) => res.blob());
       try {
         // AWS S3 bucket의 URL 주소 응답받기
-        const response = await fetch("http://localhost:3000/api/upload", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            filename: blobData.name,
-            contentType: blobData.type,
-          }),
-        });
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_IP}/api/upload`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              filename: blobData.name,
+              contentType: blobData.type,
+            }),
+          }
+        );
 
         if (response.ok) {
           const { url, fields } = await response.json();
@@ -141,7 +144,7 @@ export default function Write(props: any) {
       }
     }
     // 이미지를 버킷에 저장 후 데이터베이스에 작성 요청.
-    const response = await fetch("http://localhost:3000/api/board", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/board`, {
       method: method,
       headers: {
         "Content-Type": "application/json",
@@ -156,7 +159,7 @@ export default function Write(props: any) {
     });
     if (response.ok) {
       alert("게시물이 작성되었습니다.");
-      router.push("/board");
+      router.push(`${process.env.NEXT_PUBLIC_IP}/board`);
     }
   };
   const openModal = () => {

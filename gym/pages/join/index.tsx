@@ -58,9 +58,12 @@ export default function SignUp() {
       alert("닉네임은 영어 또는 한글로 3~12자 이내로 입력해주세요.😭");
       return false;
     } else {
-      const response = await fetch(`api/join?nickname=${nickNameWord}`, {
-        method: "GET",
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_IP}/api/join?nickname=${nickNameWord}`,
+        {
+          method: "GET",
+        }
+      );
       if (response.ok) {
         const responseData = await response.json();
         if (!responseData) {
@@ -136,7 +139,7 @@ export default function SignUp() {
     //회원가입 조건이 모두 만족할 때 서버에 회원가입 요청
     if (sendUserinfo === true) {
       try {
-        const response = await fetch("api/join", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/join`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -148,7 +151,7 @@ export default function SignUp() {
           const responseData = await response.json();
           // 응답 결과가 true일 경우 회원가입 성공 했다는 알림과 함께 로그인 페이지로 이동.
           if (responseData.result) {
-            router.push("/login");
+            router.push(`${process.env.NEXT_PUBLIC_IP}/login`);
             alert("회원가입에 성공했습니다.");
           }
         } else {
@@ -260,7 +263,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/login" variant="body2">
+                <Link href="https://gyminwear/login" variant="body2">
                   이미 짐인웨어 회원이신가요? 그럼 바로 로그인 하세요!
                 </Link>
               </Grid>

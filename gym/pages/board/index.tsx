@@ -24,7 +24,9 @@ export default function board(props: any) {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { page } = context.query;
-  const res = await fetch(`http://localhost:3000/api/board?page=${page}`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_IP}/api/board?page=${page}`
+  );
   const data = await res.json();
 
   return {

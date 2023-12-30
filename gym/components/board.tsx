@@ -27,12 +27,11 @@ export default function Board(props: any) {
   const router = useRouter();
   const { session } = useSession();
   const handlePageChange = (event: any, page: number) => {
-    router.push(`/board?page=${page}`);
+    router.push(`${process.env.NEXT_PUBLIC_IP}/board?page=${page}`);
   };
   return (
     <Container>
       <Container
-        maxWidth="xl"
         sx={{
           color: "black",
         }}
@@ -49,7 +48,7 @@ export default function Board(props: any) {
             cursor: "pointer",
           }}
           onClick={() => {
-            router.push("/board?page=1");
+            router.push(`${process.env.NEXT_PUBLIC_IP}/board?page=1`);
           }}
         >
           게시판
@@ -70,7 +69,7 @@ export default function Board(props: any) {
                   key={index}
                   onClick={() => {
                     router.push(
-                      `http://localhost:3000/board/read?id=${object.postid}`
+                      `${process.env.NEXT_PUBLIC_IP}/board/read?id=${object.postid}`
                     );
                   }}
                 >
@@ -78,7 +77,7 @@ export default function Board(props: any) {
                     sx={{
                       display: "flex",
                       flexDirection: { xs: "row", xl: "column" },
-                      width: { xs: "350px", xl: "250px" },
+                      width: { xs: "100%", xl: "auto" },
                       height: { xs: "100px", xl: "300px" },
                       // borderBottom: { xs: 1, xl: "none" },
                       border: 1,
@@ -180,10 +179,10 @@ export default function Board(props: any) {
             onClick={() => {
               //로그인이 되어 있을 경우에만 글쓰기 가능.
               if (session.isLoggedIn) {
-                router.push("/board/write");
+                router.push(`${process.env.NEXT_PUBLIC_IP}/board/write`);
               } else {
                 alert("로그인 후 이용해주세요.");
-                router.push("/login");
+                router.push(`${process.env.NEXT_PUBLIC_IP}/login`);
               }
             }}
           >

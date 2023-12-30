@@ -17,8 +17,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   try {
     // Parallel fetch using Promise.all
     const [boardRes, commentRes] = await Promise.all([
-      fetch(`http://localhost:3000/api/board?id=${id}`),
-      fetch(`http://localhost:3000/api/comment?id=${id}`),
+      fetch(`${process.env.NEXT_PUBLIC_IP}/api/board?id=${id}`),
+      fetch(`${process.env.NEXT_PUBLIC_IP}/api/comment?id=${id}`),
     ]);
 
     const boardData = await boardRes.json();

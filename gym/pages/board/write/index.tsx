@@ -11,7 +11,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   try {
     //수정 API 요청
     if (id !== undefined) {
-      const response = await fetch(`http://localhost:3000/api/board?id=${id}`);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_IP}/api/board?id=${id}`
+      );
       const data = await response.json();
       return {
         props: {

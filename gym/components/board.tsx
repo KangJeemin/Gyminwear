@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
 import { extractFirstImageUrl2 } from "@/lib/extractFirstImageUrl";
 import useSession from "@/lib/useSession";
+import { collectAppConfig } from "next/dist/build/utils";
 type boardInfo = {
   postid: number;
   title: string;
@@ -27,6 +28,7 @@ export default function Board(props: any) {
   const router = useRouter();
   const { session } = useSession();
   const handlePageChange = (event: any, page: number) => {
+    console.log("page=", page);
     router.push(`${process.env.NEXT_PUBLIC_IP}/board?page=${page}`);
   };
   return (
@@ -57,7 +59,7 @@ export default function Board(props: any) {
           <Grid
             container
             spacing={{ xs: 1, xl: 2 }}
-            columns={{ xs: 4, sm: 8, md: 16 }}
+            columns={{ xs: 4, sm: 4, md: 20 }}
           >
             {props.data
               .slice(0, props.mapcount)
@@ -65,7 +67,7 @@ export default function Board(props: any) {
                 <Grid
                   xs={4}
                   sm={4}
-                  md={4}
+                  md={5}
                   key={index}
                   onClick={() => {
                     router.push(
@@ -200,7 +202,7 @@ export default function Board(props: any) {
         >
           <Stack spacing={10} sx={{ margin: "auto" }}>
             <Pagination
-              count={props.data[0].pagecount / 16 + 1}
+              count={Math.floor(props.data[0].pagecount / 20) + 1}
               shape="rounded"
               onChange={handlePageChange}
             />

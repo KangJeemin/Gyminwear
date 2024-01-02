@@ -24,7 +24,7 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
     const {postid,title,nickname,content}:writeInfo = req.body;
     const {id} = req.query
     const page:string= req.query.page as string
-    let limit:string = await returnSqlLimit(page)
+    
     if(req.method==="POST"){
         try{
             db.query(
@@ -45,6 +45,7 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
           }
     }
     else if(req.method==="GET") {
+        const limit:string = await returnSqlLimit(page)
         if(id===undefined){
             try{
                 db.query(

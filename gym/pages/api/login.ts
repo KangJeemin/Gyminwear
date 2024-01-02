@@ -44,9 +44,9 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
                   session.isLoggedIn = true;
                   session.nickname = result[0].nickname;
                   session.remember = remember
-                  if(remember==="remember"){
+                  if(session.remember=== "remember" ){
                     // sessionOptions.ttl=60 * 60 * 24*7
-                    sessionOptions.ttl=60*60*24
+                     sessionOptions.ttl=60*60*24;
 
                   }
                   await session.save();

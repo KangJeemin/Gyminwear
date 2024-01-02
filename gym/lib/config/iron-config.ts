@@ -29,7 +29,7 @@ export const sessionOptions: SessionOptions = {
     
   },
   
-  ttl: 60*2, // 세션 시간 기본 하루 설정
+  ttl: 60, // 세션 시간 기본 하루 설정
   
 };
 

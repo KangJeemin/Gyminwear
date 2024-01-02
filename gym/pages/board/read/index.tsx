@@ -39,6 +39,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         result.push(idMap.get(obj.commentid));
       }
     });
+    result.forEach((parentObj: any) => {
+      parentObj.child.sort((a: any, b: any) => {
+        // 여기에서 a와 b를 비교하여 정렬 조건을 지정해주세요.
+        // 예를 들어, commentid를 기준으로 오름차순 정렬하는 경우:
+        return a.commentid - b.commentid;
+      });
+    });
 
     return {
       props: {

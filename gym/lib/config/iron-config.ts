@@ -20,6 +20,7 @@ export const sessionOptions: SessionOptions = {
     // if your localhost is not on `https`, then use: `secure: process.env.NODE_ENV === "production"`
     // secure: true,
   // },
+  ttl: 3600, // Set session duration to 1 hour (in seconds)
 };
 
 export function sleep(ms: number) {

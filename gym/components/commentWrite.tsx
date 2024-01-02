@@ -25,7 +25,8 @@ export default function CommentWrtie(props: any) {
       },
       body: JSON.stringify({
         postid: props.postid,
-        parentid: props.parentid,
+        parentid: props.commentid,
+        // parentid: props.parentCommentId,
         nickname: commentnickname,
         content: commentcontent,
       }),

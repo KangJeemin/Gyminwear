@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import CommentComment from "@/components/commentComment";
 import CommentWrtie from "./commentWrite";
 import Input from "@mui/material/Input";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -261,7 +260,7 @@ const Comment = (props: any) => {
           commentid={
             props.parentComent
               ? props.data.commentid
-              : props.parentComentId.commentid
+              : props.parentData.commentid
           }
         />
       ) : null}

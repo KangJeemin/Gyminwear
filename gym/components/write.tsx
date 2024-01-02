@@ -159,7 +159,7 @@ export default function Write(props: any) {
     });
     if (response.ok) {
       alert("게시물이 작성되었습니다.");
-      router.push(`${process.env.NEXT_PUBLIC_IP}/board`);
+      router.push(`${process.env.NEXT_PUBLIC_IP}/board?page=1`);
     }
   };
   const openModal = () => {

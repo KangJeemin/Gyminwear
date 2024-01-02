@@ -15,12 +15,14 @@ export const defaultSession: SessionData = {
 export const sessionOptions: SessionOptions = {
   password: process.env.NEXT_PUBLIC_IRON_SESSION_PASSWORD as string,
   cookieName: 'iron-session/examples/next.js',
-  // cookieOptions: {
+  cookieOptions: {
     // secure only works in `https` environments
     // if your localhost is not on `https`, then use: `secure: process.env.NODE_ENV === "production"`
     // secure: true,
-  // },
-  ttl: 3600, // Set session duration to 1 hour (in seconds)
+    
+  },
+  ttl: 60 * 2, // Set session duration to 1 hour (in seconds)
+  
 };
 
 export function sleep(ms: number) {

@@ -52,10 +52,11 @@ export default function SignIn() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const { email, password } = Object.fromEntries(data.entries());
+    const { email, password, remember } = Object.fromEntries(data.entries());
     const loginInfo = {
       email,
       password,
+      remember,
     };
     // 이거 없어도 클라이언트에서 세션 받아지는데? login 함수는 무엇일까
     // login(email, {
@@ -70,6 +71,7 @@ export default function SignIn() {
     // });
 
     try {
+      console.log("checbox=", remember);
       const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/login`, {
         method: "POST",
         headers: {
@@ -142,7 +144,9 @@ export default function SignIn() {
               autoComplete="current-password"
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+              control={
+                <Checkbox name="remember" value="remember" color="primary" />
+              }
               label={
                 <Box sx={{ color: "black" }}>로그인 정보를 기억할까요?</Box>
               }

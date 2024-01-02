@@ -13,6 +13,7 @@ const crypto = require('crypto');
 type LoginInfo = {  
     email:string,
     password:string,
+    remember:string,
 }
 export default async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
   const session = await getIronSession<SessionData>(
@@ -21,7 +22,7 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
     sessionOptions,
   );
   if (req.method === 'POST') {
-    const {email,password}:LoginInfo = req.body;
+    const {email,password,remember}:LoginInfo = req.body;
     
     // 현재 비밀번호와 데이터베이스에 저장되어 있는 salt 값으로 비밀번호 조회하기
       try{
@@ -42,6 +43,12 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
                   session.email = email;
                   session.isLoggedIn = true;
                   session.nickname = result[0].nickname;
+                  session.remember = remember
+                  if(remember==="remember"){
+                    // sessionOptions.ttl=60 * 60 * 24*7
+                    sessionOptions.ttl=60*60*24
+
+                  }
                   await session.save();
                   // sleep으로 login 함수에 promise 던져주는듯
                   await sleep(250);

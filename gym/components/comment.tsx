@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 import CommentComment from "@/components/commentComment";
 import CommentWrtie from "./commentWrite";
 import Input from "@mui/material/Input";
-import PersonIcon from "@mui/icons-material/Person";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
 import { useRouter } from "next/router";
@@ -227,9 +226,6 @@ const Comment = (props: any) => {
           parentid={props.data.commentid}
         />
       ) : null}
-      {props.data.child.map((object: [], index: number) => (
-        <CommentComment key={index} data={object} openComment={openComment} />
-      ))}
     </>
   );
 };

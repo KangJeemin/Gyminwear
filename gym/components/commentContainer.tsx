@@ -11,6 +11,9 @@ import { useRouter } from "next/router";
 export default function CommentContainer(props: any) {
   const { session } = useSession();
   const router = useRouter();
+  React.useState(() => {
+    console.log("props=", props);
+  });
 
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -37,8 +40,21 @@ export default function CommentContainer(props: any) {
   };
   return (
     <DoubleContainer>
-      {props.data.map((object: [], index: number) => (
-        <Comment key={index} data={object} postid={props.boardData[0].postid} />
+      {props.data.map((object: any, index: number) => (
+        <>
+          <Comment
+            key={index}
+            data={object}
+            postid={props.boardData[0].postid}
+          />
+          {object.child.map((innerObject: [], innerIndex: number) => (
+            <Comment
+              key={innerIndex}
+              data={innerObject}
+              postid={props.boardData[0].postid}
+            />
+          ))}
+        </>
       ))}
 
       <Box

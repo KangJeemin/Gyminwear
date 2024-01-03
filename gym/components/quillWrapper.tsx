@@ -1,8 +1,10 @@
 import * as React from "react";
-import dynamic from "next/dynamic";
-import ImageResize from "quill-image-resize-module-ts";
-import Quill from "quill";
 
+import dynamic from "next/dynamic";
+import ImageCompress from "quill-image-compress";
+import { Quill } from "react-quill";
+
+Quill.register("modules/imageCompress", ImageCompress);
 const formats = [
   "header",
   "font",
@@ -45,6 +47,15 @@ export default function Quillwrapper(props: any) {
     //   parchment: Quill.import("parchment"),
     //   modules: ["Resize", "DisplaySize"],
     // },
+    // modules: {
+    //   imageCompress: {
+    //     quality: 0.7, // default
+    //     maxWidth: 1000, // default
+    //     maxHeight: 1000, // default
+    //     imageType: "image/jpeg", // default
+    //     debug: true, // default
+    //   },
+    // },
     clipboard: {
       matchVisual: false,
     },
@@ -52,8 +63,9 @@ export default function Quillwrapper(props: any) {
 
   React.useEffect(() => {
     // 화면 너비를 기반으로 모바일 장치 여부 확인
-    const isMobile = window.innerWidth <= 768;
-    console.log("quill=", modules);
+    // const isMobile = window.innerWidth <= 768;
+    // console.log("quill=", modules);
+    const isMobile = true;
 
     if (isMobile) {
       // 모바일 버전에 대한 툴바 설정
@@ -65,6 +77,15 @@ export default function Quillwrapper(props: any) {
           ["list", "bullet"],
           ["clean"],
         ],
+        // modules: {
+        //   imageCompress: {
+        //     quality: 0.7, // default
+        //     maxWidth: 1000, // default
+        //     maxHeight: 1000, // default
+        //     imageType: "image/jpeg", // default
+        //     debug: true, // default
+        //   },
+        // },
         // imageResize: { modules: ["Resize"] },
         clipboard: {
           matchVisual: false,

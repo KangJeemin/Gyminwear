@@ -38,7 +38,6 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
   const { session, isLoading, login } = useSession();
-  const router = useRouter();
   React.useEffect(() => {
     // 로그인이 되어 있을 경우 전 페이지로 이동
     if (session.isLoggedIn) {
@@ -144,9 +143,7 @@ export default function SignIn() {
               autoComplete="current-password"
             />
             <FormControlLabel
-              control={
-                <Checkbox name="remember" value="remember" color="primary" />
-              }
+              control={<Checkbox name="remember" color="primary" />}
               label={
                 <Box sx={{ color: "black" }}>로그인 정보를 기억할까요?</Box>
               }

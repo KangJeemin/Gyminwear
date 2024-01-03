@@ -40,15 +40,16 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
                 
                 //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 똑같으면 프론트에 true를 줌 (로그인 성공)
                 if(DbPassword==hashPassword){
+                  
+                  if(remember==="on"){
+                    // sessionOptions.ttl=60 * 60 * 24*7
+                     sessionOptions.ttl=60
+                  }
                   session.email = email;
                   session.isLoggedIn = true;
                   session.nickname = result[0].nickname;
-                  session.remember = remember
-                  if(session.remember=== "remember" ){
-                    // sessionOptions.ttl=60 * 60 * 24*7
-                     sessionOptions.ttl=60*60*24;
-
-                  }
+                  session.remember = remember;
+                  
                   await session.save();
                   // sleep으로 login 함수에 promise 던져주는듯
                   await sleep(250);

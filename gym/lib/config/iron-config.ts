@@ -29,8 +29,6 @@ export const sessionOptions: SessionOptions = {
     
   },
   
-  ttl: 60, // 세션 시간 기본 하루 설정
-  
 };
 
 export function sleep(ms: number) {

@@ -119,7 +119,6 @@ export default function Write(props: any) {
           const formData = new FormData();
           Object.entries(fields).forEach(([key, value]) => {
             formData.append(key, value as string);
-            //console.log("fields.key=", fields.key); 버킷에 저장되는 이미지의 key값
           });
           formData.append("Content-Type", "image/png");
           formData.append("file", blobData);

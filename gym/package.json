@@ -42,6 +42,7 @@
     "next": "13.4.10",
     "next-seo": "^6.1.0",
     "next-sitemap": "^4.2.3",
+    "quill-image-compress": "^1.2.30",
     "quill-image-resize-module-ts": "^3.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",

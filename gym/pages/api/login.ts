@@ -16,13 +16,24 @@ type LoginInfo = {
     remember:string,
 }
 export default async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
+  const {email,password,remember}:LoginInfo = req.body;
+  
+  // sessionOption에 접근하기위해 객체를 복사하고 수정
+  const modifiedSessionOptions = {
+    ...sessionOptions,
+    cookieOptions: {
+      ...sessionOptions.cookieOptions,
+      maxAge: remember==="on"? 60*60*24*7:60*60*24 ,
+    },
+  };
+  
   const session = await getIronSession<SessionData>(
     req,
     res,
-    sessionOptions,
+    modifiedSessionOptions,
   );
   if (req.method === 'POST') {
-    const {email,password,remember}:LoginInfo = req.body;
+    
     
     // 현재 비밀번호와 데이터베이스에 저장되어 있는 salt 값으로 비밀번호 조회하기
       try{
@@ -40,15 +51,11 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
                 
                 //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 똑같으면 프론트에 true를 줌 (로그인 성공)
                 if(DbPassword==hashPassword){
-                  
-                  // if(remember==="on"){
-                  //   // sessionOptions.ttl=60 * 60 * 24*7
-                  //    sessionOptions.ttl=60
-                  // }
                   session.email = email;
                   session.isLoggedIn = true;
                   session.nickname = result[0].nickname;
                   session.remember = remember;
+                  
                   await session.save();
                   // sleep으로 login 함수에 promise 던져주는듯
                   res.status(200).json({ result:true }); 

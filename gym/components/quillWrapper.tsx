@@ -1,7 +1,7 @@
 import * as React from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
-
+import Skeleton from "@mui/material/skeleton";
 const formats = [
   "header",
   "font",
@@ -21,20 +21,29 @@ const formats = [
 // QuillWrapper를 정의하기 전에 ImageCompress를 등록해보세요.
 
 export default function Quillwrapper(props: any) {
+  // useMemo 사용해야함. 안 그러면 계속 렌더링 됨.
   const QuillWrapper = React.useMemo(
     () =>
       dynamic(
         () =>
           import("react-quill").then(({ Quill }) => {
+            console.log("Quill and ImageCompress registered successfully");
             const ImageCompress = require("quill-image-compress");
             Quill.register("modules/imageCompress", ImageCompress);
-
             // Continue with the rest of your dynamic import
             return import("react-quill");
           }),
         {
           ssr: false,
-          loading: () => <p>Loading ...</p>,
+          loading: () => (
+            <>
+              <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+
+              {/* For other variants, adjust the size with `width` and `height` */}
+              <Skeleton variant="circular" width={40} height={40} />
+              <Skeleton variant="rectangular" height={200} />
+            </>
+          ),
         }
       ),
     []

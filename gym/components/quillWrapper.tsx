@@ -1,10 +1,10 @@
 import * as React from "react";
-
+import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
 import ImageCompress from "quill-image-compress";
 import { Quill } from "react-quill";
 
-Quill.register("modules/imageCompress", ImageCompress);
+// Quill.register("modules/imageCompress", ImageCompress);
 const formats = [
   "header",
   "font",

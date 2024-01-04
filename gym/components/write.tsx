@@ -262,7 +262,7 @@ export default function Write(props: any) {
           }}
           accept="image/png, image/jpeg"
         /> */}
-        <Box sx={{ width: { xs: "100%", xl: "80%" } }}>
+        <Box sx={{ width: { xs: "100%", xl: "100%" } }}>
           <QuillWrapper
             name="content"
             content={content}

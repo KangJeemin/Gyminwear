@@ -44,7 +44,7 @@ export default function Write(props: any) {
       </>
     ),
   });
-  const memoizationValue = React.useMemo(() => {
+  const memoizationVlue = React.useMemo(() => {
     return content;
   }, []);
   React.useEffect(() => {
@@ -281,7 +281,7 @@ export default function Write(props: any) {
         <Box sx={{ width: { xs: "100%", xl: "100%" } }}>
           <ReactQuill
             name="content"
-            content={memoizationValue}
+            content={content}
             setContent={setContent}
           />
         </Box>

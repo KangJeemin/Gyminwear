@@ -3,9 +3,11 @@ import DoubleContainer from "./doubleContainer";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
+import dynamic from "next/dynamic";
+
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import QuillWrapper from "./quillWrapper";
+// import QuillWrapper from "./quillWrapper";
 import TextField from "@mui/material/TextField";
 import Modal from "./modal";
 import Container from "@mui/material/Container";
@@ -31,6 +33,7 @@ export default function Write(props: any) {
   const [file, setFile] = React.useState<File | null>(null);
   const { session } = useSession();
   const router = useRouter();
+  const QuillWrapper = dynamic(() => import("./quillWrapper"), { ssr: false });
   React.useEffect(() => {
     // props.data가 null 일 경우 글쓰기 페이지로 판단, 값이 있을 경우 수정 페이지로 판단.
     props.data === null ? setContent("") : setContent(props.data[0].content);

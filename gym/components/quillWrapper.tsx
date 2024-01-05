@@ -1,7 +1,11 @@
 import * as React from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
-import Skeleton from "@mui/material/skeleton";
+import Skeleton from "@mui/material/Skeleton";
+import ReactQuill, { Quill } from "react-quill";
+import ImageCompress from "quill-image-compress";
+Quill.register("modules/imageCompress", ImageCompress);
+
 const formats = [
   "header",
   "font",
@@ -22,32 +26,19 @@ const formats = [
 
 export default function Quillwrapper(props: any) {
   // useMemo 사용해야함. 안 그러면 계속 렌더링 됨.
-  const QuillWrapper = React.useMemo(
-    () =>
-      dynamic(
-        () =>
-          import("react-quill").then(({ Quill }) => {
-            console.log("Quill and ImageCompress registered successfully");
-            const ImageCompress = require("quill-image-compress");
-            Quill.register("modules/imageCompress", ImageCompress);
-            // Continue with the rest of your dynamic import
-            return import("react-quill");
-          }),
-        {
-          ssr: false,
-          loading: () => (
-            <>
-              <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+  // const QuillWrapper = dynamic({
+  //   ssr: false,
+  //   loading: () => (
+  //     <>
+  //       <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
 
-              {/* For other variants, adjust the size with `width` and `height` */}
-              <Skeleton variant="circular" width={40} height={40} />
-              <Skeleton variant="rectangular" height={200} />
-            </>
-          ),
-        }
-      ),
-    []
-  );
+  //       {/* For other variants, adjust the size with `width` and `height` */}
+  //       <Skeleton variant="circular" width={40} height={40} />
+  //       <Skeleton variant="rectangular" height={200} />
+  //     </>
+  //   ),
+  // });
+
   const [modules, setModules] = React.useState({
     toolbar: [
       ["image", "link", "video"],
@@ -62,54 +53,53 @@ export default function Quillwrapper(props: any) {
       ],
       ["clean"],
     ],
-    modules: {
-      imageCompress: {
-        quality: 0.7,
-        maxWidth: 1000,
-        maxHeight: 1000,
-        imageType: "image/jpeg",
-        debug: true,
-      },
+
+    imageCompress: {
+      quality: 0.7,
+      maxWidth: 1000,
+      maxHeight: 1000,
+      imageType: "image/jpeg",
+      debug: true,
     },
     clipboard: {
       matchVisual: false,
     },
   });
 
-  React.useEffect(() => {
-    // 화면 너비를 기반으로 모바일 장치 여부 확인
-    const isMobile = true;
+  // React.useEffect(() => {
+  //   // 화면 너비를 기반으로 모바일 장치 여부 확인
+  //   const isMobile = true;
 
-    if (isMobile) {
-      // 모바일 버전에 대한 툴바 설정
-      setModules((prevModules) => ({
-        ...prevModules,
-        toolbar: [
-          ["image", "link", "video"],
-          [{ header: "1" }, { header: "2" }],
-          ["bold", "italic", "underline"],
-          ["list", "bullet"],
-          ["clean"],
-        ],
-        modules: {
-          ...prevModules.modules,
-          imageCompress: {
-            quality: 0.7,
-            maxWidth: 1000,
-            maxHeight: 1000,
-            imageType: "image/jpeg",
-            debug: true,
-          },
-        },
-        clipboard: {
-          matchVisual: false,
-        },
-      }));
-    }
-  }, [QuillWrapper]);
+  //   if (isMobile) {
+  //     // 모바일 버전에 대한 툴바 설정
+  //     setModules((prevModules) => ({
+  //       ...prevModules,
+  //       toolbar: [
+  //         ["image", "link", "video"],
+  //         [{ header: "1" }, { header: "2" }],
+  //         ["bold", "italic", "underline"],
+  //         ["list", "bullet"],
+  //         ["clean"],
+  //       ],
+  //       modules: {
+  //         ...prevModules.modules,
+  //         imageCompress: {
+  //           quality: 0.7,
+  //           maxWidth: 1000,
+  //           maxHeight: 1000,
+  //           imageType: "image/jpeg",
+  //           debug: true,
+  //         },
+  //       },
+  //       clipboard: {
+  //         matchVisual: false,
+  //       },
+  //     }));
+  //   }
+  // }, [QuillWrapper]);
 
   return (
-    <QuillWrapper
+    <ReactQuill
       value={props.content}
       onChange={props.setContent}
       modules={modules}

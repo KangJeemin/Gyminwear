@@ -3,8 +3,6 @@ import DoubleContainer from "./doubleContainer";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import dynamic from "next/dynamic";
-import Skeleton from "@mui/material/Skeleton";
 import "react-quill/dist/quill.snow.css";
 import TextField from "@mui/material/TextField";
 import Modal from "./modal";
@@ -12,6 +10,8 @@ import Container from "@mui/material/Container";
 import { useRouter } from "next/router";
 import WestIcon from "@mui/icons-material/West";
 import useSession from "@/lib/useSession";
+import Quillwrapper from "./quillWrapper";
+
 import Image from "next/image";
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -31,17 +31,6 @@ export default function Write(props: any) {
   const [file, setFile] = React.useState<File | null>(null);
   const { session } = useSession();
   const router = useRouter();
-  const QuillWrapper = dynamic(() => import("./quillWrapper"), {
-    ssr: false,
-    // quill이 로딩중일때 렌더링할 Skeleton
-    loading: () => (
-      <>
-        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-        <Skeleton variant="circular" width={40} height={40} />
-        <Skeleton variant="rectangular" height={200} />
-      </>
-    ),
-  });
   React.useEffect(() => {
     // props.data가 null 일 경우 글쓰기 페이지로 판단, 값이 있을 경우 수정 페이지로 판단.
     props.data === null ? setContent("") : setContent(props.data[0].content);
@@ -274,7 +263,7 @@ export default function Write(props: any) {
           accept="image/png, image/jpeg"
         /> */}
         <Box sx={{ width: { xs: "100%", xl: "100%" } }}>
-          <QuillWrapper
+          <Quillwrapper
             name="content"
             content={content}
             setContent={setContent}

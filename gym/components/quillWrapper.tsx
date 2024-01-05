@@ -1,6 +1,7 @@
 import * as React from "react";
-import "react-quill/dist/quill.snow.css";
-import ReactQuill, { Quill } from "react-quill";
+import Skeleton from "@mui/material/Skeleton";
+import { Quill } from "react-quill";
+import dynamic from "next/dynamic";
 import ImageCompress from "quill-image-compress";
 Quill.register("modules/imageCompress", ImageCompress);
 
@@ -22,6 +23,17 @@ const formats = [
 ];
 
 export default function Quillwrapper(props: any) {
+  const ReactQuill = dynamic(() => import("react-quill"), {
+    ssr: false,
+    // quill이 로딩중일때 렌더링할 Skeleton
+    loading: () => (
+      <>
+        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+        <Skeleton variant="circular" width={40} height={40} />
+        <Skeleton variant="rectangular" height={200} />
+      </>
+    ),
+  });
   const modules = React.useMemo(
     () => ({
       toolbar: [
@@ -51,6 +63,9 @@ export default function Quillwrapper(props: any) {
     []
   ); // Note the correct placement of parentheses
 
+  React.useState(() => {
+    console.log(window);
+  });
   return (
     <ReactQuill
       value={props.content}

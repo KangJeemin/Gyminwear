@@ -44,9 +44,9 @@ export default function Write(props: any) {
       </>
     ),
   });
-  const memoizationVlue = React.useMemo(() => {
+  const memoizationValue = React.useMemo(() => {
     return content;
-  }, []);
+  }, [content]);
   React.useEffect(() => {
     // props.data가 null 일 경우 글쓰기 페이지로 판단, 값이 있을 경우 수정 페이지로 판단.
     props.data === null ? setContent("") : setContent(props.data[0].content);
@@ -281,7 +281,7 @@ export default function Write(props: any) {
         <Box sx={{ width: { xs: "100%", xl: "100%" } }}>
           <ReactQuill
             name="content"
-            content={content}
+            content={memoizationValue}
             setContent={setContent}
           />
         </Box>

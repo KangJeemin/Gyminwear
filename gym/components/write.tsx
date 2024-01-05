@@ -10,9 +10,7 @@ import Container from "@mui/material/Container";
 import { useRouter } from "next/router";
 import WestIcon from "@mui/icons-material/West";
 import useSession from "@/lib/useSession";
-// import Quillwrapper from "./quillWrapper";
-import Skeleton from "@mui/material/Skeleton";
-import dynamic from "next/dynamic";
+import ReactQuill from "./quillWrapper";
 
 import Image from "next/image";
 const VisuallyHiddenInput = styled("input")({
@@ -33,17 +31,6 @@ export default function Write(props: any) {
   const [file, setFile] = React.useState<File | null>(null);
   const { session } = useSession();
   const router = useRouter();
-  const ReactQuill = dynamic(() => import("./quillWrapper"), {
-    ssr: false,
-    // quill이 로딩중일때 렌더링할 Skeleton
-    loading: () => (
-      <>
-        <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-        <Skeleton variant="circular" width={40} height={40} />
-        <Skeleton variant="rectangular" height={200} />
-      </>
-    ),
-  });
   const memoizationValue = React.useMemo(() => {
     return content;
   }, [content]);

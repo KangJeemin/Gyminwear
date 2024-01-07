@@ -17,7 +17,7 @@ type boardInfo = {
 export default function board(props: any) {
   return (
     <>
-      <Board mapcount={16} data={props.data} />
+      <Board mapcount={20} data={props.data} />
     </>
   );
 }

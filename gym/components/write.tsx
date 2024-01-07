@@ -3,15 +3,15 @@ import DoubleContainer from "./doubleContainer";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import QuillWrapper from "./quillWrapper";
 import TextField from "@mui/material/TextField";
 import Modal from "./modal";
 import Container from "@mui/material/Container";
 import { useRouter } from "next/router";
 import WestIcon from "@mui/icons-material/West";
 import useSession from "@/lib/useSession";
+import ReactQuill from "./quillWrapper";
+
 import Image from "next/image";
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -31,6 +31,9 @@ export default function Write(props: any) {
   const [file, setFile] = React.useState<File | null>(null);
   const { session } = useSession();
   const router = useRouter();
+  const memoizationValue = React.useMemo(() => {
+    return content;
+  }, [content]);
   React.useEffect(() => {
     // props.data가 null 일 경우 글쓰기 페이지로 판단, 값이 있을 경우 수정 페이지로 판단.
     props.data === null ? setContent("") : setContent(props.data[0].content);
@@ -119,7 +122,6 @@ export default function Write(props: any) {
           const formData = new FormData();
           Object.entries(fields).forEach(([key, value]) => {
             formData.append(key, value as string);
-            //console.log("fields.key=", fields.key); 버킷에 저장되는 이미지의 key값
           });
           formData.append("Content-Type", "image/png");
           formData.append("file", blobData);
@@ -159,7 +161,7 @@ export default function Write(props: any) {
     });
     if (response.ok) {
       alert("게시물이 작성되었습니다.");
-      router.push(`${process.env.NEXT_PUBLIC_IP}/board`);
+      router.push(`${process.env.NEXT_PUBLIC_IP}/board?page=1`);
     }
   };
   const openModal = () => {
@@ -263,10 +265,10 @@ export default function Write(props: any) {
           }}
           accept="image/png, image/jpeg"
         /> */}
-        <Box sx={{ width: { xs: "100%", xl: "80%" } }}>
-          <QuillWrapper
+        <Box sx={{ width: { xs: "100%", xl: "100%" } }}>
+          <ReactQuill
             name="content"
-            content={content}
+            content={memoizationValue}
             setContent={setContent}
           />
         </Box>

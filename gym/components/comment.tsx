@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import CommentComment from "@/components/commentComment";
 import CommentWrtie from "./commentWrite";
 import Input from "@mui/material/Input";
-import PersonIcon from "@mui/icons-material/Person";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
 import { useRouter } from "next/router";
@@ -17,7 +15,9 @@ const Comment = (props: any) => {
   const [commentModify, setCommentModify] = React.useState(false);
   const router = useRouter();
   const { session } = useSession();
-
+  useEffect(() => {
+    console.log(props.parentComentId);
+  });
   useEffect(() => {}, [commentModify]);
   const openComment = () => {
     isCommentOpen ? setCommentOpen(false) : setCommentOpen(true);
@@ -85,27 +85,60 @@ const Comment = (props: any) => {
           border: 1,
         }}
       >
-        <Box
-          sx={{
-            width: "10%",
-            height: "auto",
-            border: 1,
-            color: "#D9D9D9",
-          }}
-        >
-          <AccountCircleIcon
+        {props.parentComent ? (
+          <Box
             sx={{
-              width: "100%",
-              height: "100%",
+              width: "10%",
+              height: "auto",
+              border: 1,
+              color: "#D9D9D9",
             }}
-          />
-        </Box>
+          >
+            <AccountCircleIcon
+              sx={{
+                width: "100%",
+                height: "100%",
+              }}
+            />
+          </Box>
+        ) : (
+          <>
+            <Box
+              sx={{
+                width: "5%",
+                height: "auto",
+                display: "flex",
+                justifyContent: "center",
+                fontSize: 25,
+                backgroundColor: "#F5F5F5",
+              }}
+            >
+              ㄴ
+            </Box>
+            <Box
+              sx={{
+                width: "10%",
+                height: "auto",
+                color: "#D9D9D9",
+                backgroundColor: "#F5F5F5",
+              }}
+            >
+              <AccountCircleIcon
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+            </Box>
+          </>
+        )}
+
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            width: "85%",
+            width: props.parentComent ? "85%" : "80%",
             border: 1,
           }}
         >
@@ -224,12 +257,13 @@ const Comment = (props: any) => {
       {isCommentOpen ? (
         <CommentWrtie
           postid={props.data.postid}
-          parentid={props.data.commentid}
+          commentid={
+            props.parentComent
+              ? props.data.commentid
+              : props.parentData.commentid
+          }
         />
       ) : null}
-      {props.data.child.map((object: [], index: number) => (
-        <CommentComment key={index} data={object} openComment={openComment} />
-      ))}
     </>
   );
 };

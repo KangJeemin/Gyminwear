@@ -38,7 +38,6 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
   const { session, isLoading, login } = useSession();
-  const router = useRouter();
   React.useEffect(() => {
     // 로그인이 되어 있을 경우 전 페이지로 이동
     if (session.isLoggedIn) {
@@ -52,10 +51,11 @@ export default function SignIn() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const { email, password } = Object.fromEntries(data.entries());
+    const { email, password, remember } = Object.fromEntries(data.entries());
     const loginInfo = {
       email,
       password,
+      remember,
     };
     // 이거 없어도 클라이언트에서 세션 받아지는데? login 함수는 무엇일까
     // login(email, {
@@ -70,6 +70,7 @@ export default function SignIn() {
     // });
 
     try {
+      console.log("checbox=", remember);
       const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/login`, {
         method: "POST",
         headers: {
@@ -83,7 +84,6 @@ export default function SignIn() {
         const responseData = await response.json();
         // 응답 결과가 true일 경우 회원가입 성공 했다는 알림과 함께 로그인 페이지로 이동.
         if (responseData.result) {
-          alert("로그인에 성공했습니다.");
           window.history.back();
         } else {
           alert("로그인에 실패했습니다.");
@@ -143,7 +143,7 @@ export default function SignIn() {
               autoComplete="current-password"
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+              control={<Checkbox name="remember" color="primary" />}
               label={
                 <Box sx={{ color: "black" }}>로그인 정보를 기억할까요?</Box>
               }

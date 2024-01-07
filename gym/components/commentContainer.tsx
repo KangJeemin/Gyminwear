@@ -37,8 +37,24 @@ export default function CommentContainer(props: any) {
   };
   return (
     <DoubleContainer>
-      {props.data.map((object: [], index: number) => (
-        <Comment key={index} data={object} postid={props.boardData[0].postid} />
+      {props.data.map((object: any, index: number) => (
+        <>
+          <Comment
+            key={index}
+            data={object}
+            postid={props.boardData[0].postid}
+            parentComent={true}
+          />
+          {object.child.map((innerObject: [], innerIndex: number) => (
+            <Comment
+              key={innerIndex}
+              data={innerObject}
+              postid={props.boardData[0].postid}
+              parentComent={false}
+              parentData={object}
+            />
+          ))}
+        </>
       ))}
 
       <Box

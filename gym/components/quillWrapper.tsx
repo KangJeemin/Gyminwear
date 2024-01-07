@@ -1,7 +1,9 @@
 import * as React from "react";
+import Skeleton from "@mui/material/Skeleton";
+import { Quill } from "react-quill";
 import dynamic from "next/dynamic";
-import ImageResize from "quill-image-resize-module-ts";
-import Quill from "quill";
+// import ImageCompress from "quill-image-compress";
+// Quill.register("modules/ImageCompress", ImageCompress);
 
 const formats = [
   "header",
@@ -19,62 +21,49 @@ const formats = [
   "image",
   "video",
 ];
-
-const QuillWrapper = dynamic(() => import("react-quill"), {
+const ReactQuill = dynamic(() => import("react-quill"), {
   ssr: false,
-  loading: () => <p>Loading ...</p>,
+  // quill이 로딩중일때 렌더링할 Skeleton
+  loading: () => (
+    <>
+      <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+      <Skeleton variant="circular" width={40} height={40} />
+      <Skeleton variant="rectangular" height={200} />
+    </>
+  ),
 });
-// Quill.register("modules/imageResize", ImageResize);
 
 export default function Quillwrapper(props: any) {
-  const [modules, setModules] = React.useState({
-    toolbar: [
-      ["image", "link", "video"],
-      [{ header: "1" }, { header: "2" }, { font: [] }],
-      [{ size: [] }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
-      ["clean"],
-    ],
-    // imageResize: {
-    //   parchment: Quill.import("parchment"),
-    //   modules: ["Resize", "DisplaySize"],
-    // },
-    clipboard: {
-      matchVisual: false,
-    },
-  });
-
-  React.useEffect(() => {
-    // 화면 너비를 기반으로 모바일 장치 여부 확인
-    const isMobile = window.innerWidth <= 768;
-    console.log("quill=", modules);
-
-    if (isMobile) {
-      // 모바일 버전에 대한 툴바 설정
-      setModules({
-        toolbar: [
-          ["image", "link", "video"],
-          [{ header: "1" }, { header: "2" }],
-          ["bold", "italic", "underline"],
-          ["list", "bullet"],
-          ["clean"],
+  const modules = React.useMemo(
+    () => ({
+      toolbar: [
+        ["image", "link", "video"],
+        [{ header: "1" }, { header: "2" }, { font: [] }],
+        [{ size: [] }],
+        ["bold", "italic", "underline", "strike", "blockquote"],
+        [
+          { list: "ordered" },
+          { list: "bullet" },
+          { indent: "-1" },
+          { indent: "+1" },
         ],
-        // imageResize: { modules: ["Resize"] },
-        clipboard: {
-          matchVisual: false,
-        },
-      });
-    }
-  }, []);
+        ["clean"],
+      ],
+      // ImageCompress: {
+      //   quality: 0.7,
+      //   maxWidth: 1000,
+      //   maxHeight: 1000,
+      //   imageType: "image/jpeg",
+      // },
+      clipboard: {
+        matchVisual: false,
+      },
+    }),
+    []
+  ); // Note the correct placement of parentheses
 
   return (
-    <QuillWrapper
+    <ReactQuill
       value={props.content}
       onChange={props.setContent}
       modules={modules}

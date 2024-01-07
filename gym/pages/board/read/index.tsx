@@ -39,6 +39,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         result.push(idMap.get(obj.commentid));
       }
     });
+    // 대댓글(child)에 들어갈 객체 정렬
+    result.forEach((parentObj: any) => {
+      parentObj.child.sort((a: any, b: any) => {
+        // commentid를 기준으로 오름차순 정렬
+        return a.commentid - b.commentid;
+      });
+    });
 
     return {
       props: {

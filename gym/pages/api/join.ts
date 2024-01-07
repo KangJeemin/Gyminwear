@@ -1,4 +1,3 @@
-import { ContactPageOutlined } from '@mui/icons-material';
 import type { NextApiRequest, NextApiResponse } from 'next';
 const db = require('@/lib/connectMysql');
 const crypto = require('crypto');

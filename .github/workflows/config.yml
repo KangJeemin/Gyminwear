@@ -9,7 +9,7 @@ on:
     AWS_REGION: ap-northeast-2
     ECR_REGISTRY: public.ecr.aws/v4p4c1q3/gyminwear
     ECR_REPOSITORY: gyminwear
-    EC2_IP_ADDRESS: 172.31.12.49
+    EC2_IP_ADDRESS: 3.38.251.131
 
   jobs:
     deploy:

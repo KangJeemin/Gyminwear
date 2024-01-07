@@ -135,7 +135,7 @@ export default function Read(props: any) {
       </Box>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <Container>
-          <h3>게시글을 삭제하시겠습니까?</h3>
+          <h3>게시글을 삭제하시겠습니까? git</h3>
           <h5></h5>
           <Box
             sx={{

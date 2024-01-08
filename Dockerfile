@@ -4,10 +4,11 @@ RUN mkdir -p /kang/vscode/app
 
 WORKDIR /kang/vscode/app
 
-COPY ./ ./
+COPY ./gym ./
 
 RUN npm install 
 
 EXPOSE 3000
 
 CMD ["npm","run","dev"]
+

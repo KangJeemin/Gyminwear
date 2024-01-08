@@ -5,12 +5,13 @@ on:
   pull_request:
     branches:
       - main
-  env:
-    AWS_REGION: ap-northeast-2
-    ECR_REGION: us-east-1
-    ECR_REGISTRY: public.ecr.aws/v4p4c1q3/gyminwear
-    ECR_REPOSITORY: gyminwear
-    EC2_IP_ADDRESS: 13.125.198.146
+
+env:
+  AWS_REGION: ap-northeast-2
+  ECR_REGION: us-east-1
+  ECR_REGISTRY: public.ecr.aws/v4p4c1q3/gyminwear
+  ECR_REPOSITORY: gyminwear
+  EC2_IP_ADDRESS: 13.125.198.146
 
 jobs:
   deploy:

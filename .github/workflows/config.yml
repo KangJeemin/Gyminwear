@@ -15,7 +15,7 @@ jobs:
     env:
       AWS_REGION: ap-northeast-2
       ECR_REGION: us-east-1
-      ECR_REPOSITORY: gyminwear
+
       EC2_IP_ADDRESS: 13.125.198.146
 
     steps:
@@ -31,19 +31,20 @@ jobs:
 
       - name: Login to Amazon ECR
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
+        uses: aws-actions/amazon-ecr-login@v2
+        with:
+          registry-type: public
 
-      - name: Build, tag, and push image to Amazon ECR
+      - name: Build, tag, and push image to Amazon ECR Puublic
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: gyminwear
+          IMAGE_TAG: ${{ github.sha }}
 
         run: |
-          echo "ECR_REGISTRY:$ECR_REGISTRY"
-          docker build -t $ECR_REPOSITORY .
-          docker tag $ECR_REPOSITORY:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
-          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:latest"
+          docker build -t $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG .
+          docker push $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG
 
       - name: Deploy on EC2 instance
         uses: appleboy/ssh-action@v0.1.6

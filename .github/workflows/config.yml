@@ -7,9 +7,10 @@ on:
       - main
   env:
     AWS_REGION: ap-northeast-2
+    ECR_REGION: us-east-1
     ECR_REGISTRY: public.ecr.aws/v4p4c1q3/gyminwear
     ECR_REPOSITORY: gyminwear
-    EC2_IP_ADDRESS: 3.38.251.131
+    EC2_IP_ADDRESS: 13.125.198.146
 
   jobs:
     deploy:
@@ -26,7 +27,7 @@ on:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
+        aws-region: ${{ env.ECR_REGION }}
 
     - name: Login to Amazon ECR
       id: login-ecr
@@ -49,11 +50,11 @@ on:
         username: ubuntu
         key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
         script: |
-          cd /home/ubuntu/Gyminwear/gym
+          cd /kang/vscode/app/gym
           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws configure set region ${{ env.AWS_REGION }}
-          ECR_REGISTRY_LOGIN=$(aws ecr get-login-password --region ${{ env.AWS_REGION }} | sudo docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }})
+          ECR_REGISTRY_LOGIN=$(aws ecr-public get-login-password --region ${{ env.AWS_REGION }} | sudo docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }})
           sudo docker stop ${{ env.ECR_REPOSITORY }} || true
           sudo docker rm ${{ env.ECR_REPOSITORY }} || true
           sudo docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest

@@ -12,50 +12,50 @@ on:
     ECR_REPOSITORY: gyminwear
     EC2_IP_ADDRESS: 13.125.198.146
 
-  jobs:
-    deploy:
-      name: Deploy
-      runs-on: ubuntu-latest
-      environment: production
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
 
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.ECR_REGION }}
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.ECR_REGION }}
 
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Build, tag, and push image to Amazon ECR
-      id: build-image
-      env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
 
-      run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
-        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:latest"
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:latest"
 
-    - name: Deploy on EC2 instance
-      uses: appleboy/ssh-action@v0.1.6
-      with:
-        host: ${{ env.EC2_IP_ADDRESS }}
-        username: ubuntu
-        key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
-        script: |
-          cd /kang/vscode/app/gym
-          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws configure set region ${{ env.AWS_REGION }}
-          ECR_REGISTRY_LOGIN=$(aws ecr-public get-login-password --region ${{ env.AWS_REGION }} | sudo docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }})
-          sudo docker stop ${{ env.ECR_REPOSITORY }} || true
-          sudo docker rm ${{ env.ECR_REPOSITORY }} || true
-          sudo docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest
-          sudo docker run -d -p 3000:3000 ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest
+      - name: Deploy on EC2 instance
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ env.EC2_IP_ADDRESS }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          script: |
+            cd /kang/vscode/app/gym
+            aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws configure set region ${{ env.AWS_REGION }}
+            ECR_REGISTRY_LOGIN=$(aws ecr-public get-login-password --region ${{ env.AWS_REGION }} | sudo docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }})
+            sudo docker stop ${{ env.ECR_REPOSITORY }} || true
+            sudo docker rm ${{ env.ECR_REPOSITORY }} || true
+            sudo docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest
+            sudo docker run -d -p 3000:3000 ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest

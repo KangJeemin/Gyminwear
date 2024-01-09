@@ -2,9 +2,6 @@ import { createPresignedPost } from '@aws-sdk/s3-presigned-post';
 import { S3Client ,GetObjectCommand} from '@aws-sdk/client-s3';
 import { v4 as uuidv4 } from 'uuid';
 import { NextApiRequest, NextApiResponse } from "next";
-import AWS from 'aws-sdk'
-import { RequestMapping } from '@nestjs/common';
-
 
 export default async function POST(request:NextApiRequest,response:NextApiResponse) {
   if(request.method==="POST"){

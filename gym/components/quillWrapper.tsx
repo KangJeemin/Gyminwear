@@ -1,9 +1,8 @@
 import * as React from "react";
 import Skeleton from "@mui/material/Skeleton";
-import { Quill } from "react-quill";
+import Quill from "quill";
 import dynamic from "next/dynamic";
-// import ImageCompress from "quill-image-compress";
-// Quill.register("modules/ImageCompress", ImageCompress);
+import ImageCompressor from "quill-image-compress";
 
 const formats = [
   "header",
@@ -21,19 +20,30 @@ const formats = [
   "image",
   "video",
 ];
-const ReactQuill = dynamic(() => import("react-quill"), {
-  ssr: false,
-  // quill이 로딩중일때 렌더링할 Skeleton
-  loading: () => (
-    <>
-      <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-      <Skeleton variant="circular" width={40} height={40} />
-      <Skeleton variant="rectangular" height={200} />
-    </>
-  ),
-});
 
 export default function Quillwrapper(props: any) {
+  const ReactQuill = dynamic(
+    () =>
+      import("react-quill").then(({ Quill }) => {
+        const ImageCompress = require("quill-image-compress");
+        Quill.register("modules/imageCompressor", ImageCompress);
+
+        // Continue with the rest of your dynamic import
+        return import("react-quill");
+      }),
+    {
+      ssr: false,
+      // quill이 로딩중일때 렌더링할 Skeleton
+      loading: () => (
+        <>
+          <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+          <Skeleton variant="circular" width={40} height={40} />
+          <Skeleton variant="rectangular" height={200} />
+        </>
+      ),
+    }
+  );
+  Quill.register("modules/ImageCompressor", ImageCompressor);
   const modules = React.useMemo(
     () => ({
       toolbar: [

@@ -49,6 +49,11 @@ jobs:
 
       - name: Deploy on EC2 instance
         uses: appleboy/ssh-action@v0.1.6
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REGISTRY_ALIAS: v4p4c1q3
+          ECR_REPOSITORY: gyminwear
+          IMAGE_TAG: ${{ github.sha }}
         with:
           host: ${{ env.EC2_IP_ADDRESS }}
           username: ubuntu

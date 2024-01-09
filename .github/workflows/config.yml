@@ -44,7 +44,7 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
 
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker build -t --platform linux/amd64 $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Deploy on EC2 instance
@@ -55,11 +55,5 @@ jobs:
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
           script: |
             cd ./Gyminwear/gym
-            aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            aws configure set region ${{ env.AWS_EC2_REGION }}
-            ECR_REGISTRY_LOGIN=$(aws ecr-public get-login-password --region ${{ env.AWS_REGION }} | sudo docker login --username AWS --password-stdin ${{ env.ECR_REGISTRY }})
-            sudo docker stop ${{ env.ECR_REPOSITORY }} || true
-            sudo docker rm ${{ env.ECR_REPOSITORY }} || true
-            sudo docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest
-            sudo docker run -d -p 3000:3000 ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:latest
+            sudo docker pull ${{ env.ECR_REGISTRY }}/${{ env.ECR_REGISTY_ALIAS }}/${{ env.ECR_REPOSITORY }}:latest
+            sudo docker run -d -p 3000:3000 ${{ env.ECR_REGISTRY }}/${{ env.ECR_REGISTY_ALIAS }}/${{ env.ECR_REPOSITORY }}:latest

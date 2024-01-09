@@ -60,5 +60,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
           script: |
             cd ./Gyminwear/gym
+            sudo docker rmi public.ecr.aws/v4p4c1q3/gyminwear:latest
             sudo docker pull public.ecr.aws/v4p4c1q3/gyminwear:latest
             sudo docker run -d -p 3000:3000 public.ecr.aws/v4p4c1q3/gyminwear:latest

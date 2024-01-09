@@ -9,7 +9,7 @@
     "lint": "next lint",
     "deploy:local": "next build && pm2 startOrRestart ecosystem.config.js --env local",
     "deploy:dev": "next build && pm2 startOrRestart ecosystem.config.js --env development",
-    "deploy:prod": "next build && pm2-runtime startOrRestart ecosystem.config.js --env production",
+    "deploy:prod": "next build && pm2-runtime start ecosystem.config.js --env production",
     "build": "next-sitemap"
   },
   "dependencies": {

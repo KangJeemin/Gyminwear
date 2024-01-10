@@ -13,12 +13,12 @@ export default function App({ Component, pageProps }: AppProps) {
         description="짐웨어 사이트들을 모아 놓았습니다. 짐인웨어에서 짐웨어 브랜들을 확인하고, 홈페이지로 이동하여 다양한 짐웨어를 확인해보세요!"
         canonical="https://gyminwear.com/"
         openGraph={{
-          url: "https://gyminwear.com",
+          url: "http://gyminwear.com",
           title: "짐인웨어",
           description: "짐웨어 사이트들을 모아 놓았습니다.",
           images: [
             {
-              url: "https://gyminwear.com/public/gyminwearLogo.jpg",
+              url: "http://gyminwear.com/public/gyminwearLogo.jpg",
               width: 400,
               height: 300,
               alt: "Og Image Alt",

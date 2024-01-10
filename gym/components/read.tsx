@@ -170,10 +170,9 @@ export default function Read(props: any) {
       {/* <QuillWrapper content={props.data[0].content} /> */}
       <Box
         sx={{
-          width: "100%",
+          width: { xs: "100%", xl: "60%" },
           height: "auto",
           marginTop: "30px",
-          overflowY: "scroll",
           color: "black",
         }}
       >

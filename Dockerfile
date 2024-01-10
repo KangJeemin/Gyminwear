@@ -6,12 +6,12 @@ WORKDIR /kang/vscode/app
 
 COPY ./gym ./
 
-CMD ["ls"]
-
 RUN npm install 
 
 RUN npm install --global pm2
-# EXPOSE 3000
-CMD ["ls"]
+
+EXPOSE 3000
+
+
 CMD ["pm2-runtime","start","npm","--","start"]
 

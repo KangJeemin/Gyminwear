@@ -1,8 +1,8 @@
 FROM node:18-alpine
 
-# RUN mkdir -p /kang/vscode/app
+RUN mkdir -p /kang/vscode/app
 
-WORKDIR /
+WORKDIR /kang/vscode/app
 
 COPY ./gym ./
 

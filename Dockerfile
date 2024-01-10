@@ -1,6 +1,6 @@
 FROM node:18-alpine
 
-RUN mkdir -p /kang/vscode/app
+RUN sudo mkdir -p /kang/vscode/app
 
 WORKDIR /kang/vscode/app
 

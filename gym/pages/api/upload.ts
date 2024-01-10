@@ -19,8 +19,8 @@ export default async function POST(request:NextApiRequest,response:NextApiRespon
       Bucket: process.env.AWS_BUCKET_NAME ? process.env.AWS_BUCKET_NAME : '' ,
       Key: uuidv4(),
       Conditions: [
-        ['content-length-range', 0, 10485760], // up to 10 MB
-        ['starts-with', '$Content-Type', contentType]
+        ['content-length-range', 0, 50*1000*1000], // up to 50 MB
+        ['starts-with', '$Content-Type', 'image/']
       ],
       Fields: {
         acl: 'public-read',

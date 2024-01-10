@@ -2,8 +2,6 @@ import * as React from "react";
 import Skeleton from "@mui/material/Skeleton";
 import { Quill } from "react-quill";
 import dynamic from "next/dynamic";
-// import ImageCompress from "quill-image-compress";
-// Quill.register("modules/ImageCompress", ImageCompress);
 
 const formats = [
   "header",

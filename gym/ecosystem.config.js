@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'NextAppName',
       exec_mode: 'cluster',  //fork, cluster 둘중 하나 선택.
-      instances: '2', // cluster 사용시 가동할 인스턴스 수
+      instances: 'max', // cluster 사용시 가동할 인스턴스 수
       script: 'node_modules/next/dist/bin/next',  // 앱 실행 스크립트
       args: 'start',
       autorestart: true, // 프로세스 실패 시 자동으로 재시작할지 선택

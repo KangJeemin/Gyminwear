@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import useSession from "@/lib/useSession";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 
 function Copyright(props: any) {
   return (
@@ -38,10 +38,11 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
   const { session, isLoading, login } = useSession();
+  const router = useRouter();
   React.useEffect(() => {
     // 로그인이 되어 있을 경우 전 페이지로 이동
     if (session.isLoggedIn) {
-      window.history.back();
+      router.push(`${process.env.NEXT_PUBLIC_IP}/`);
     }
   });
   if (isLoading) {

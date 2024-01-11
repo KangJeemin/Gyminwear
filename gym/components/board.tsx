@@ -96,7 +96,7 @@ export default function Board(props: any) {
                     >
                       <Image
                         src={extractFirstImageUrl2(object.content) || ""}
-                        alt="이미지를 표시할 수 없습니다"
+                        alt="유저가 올린 사진"
                         layout="fill"
                       />
                     </Box>

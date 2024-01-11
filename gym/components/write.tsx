@@ -73,6 +73,11 @@ export default function Write(props: any) {
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    if (!session.isLoggedIn) {
+      alert("로그인 후 게시물 작성이 가능합니다");
+      router.push(`${process.env.NEXT_PUBLIC_IP}/login`);
+      return;
+    }
     let method: string;
     if (props.data === null) {
       method = "POST";

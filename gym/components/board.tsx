@@ -13,7 +13,8 @@ import { useRouter } from "next/router";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
 import { extractFirstImageUrl2 } from "@/lib/extractFirstImageUrl";
 import useSession from "@/lib/useSession";
-import { collectAppConfig } from "next/dist/build/utils";
+import gyminwearImageLogo from "@/public/image/gyminwearLogo.png";
+
 type boardInfo = {
   postid: number;
   title: string;
@@ -24,9 +25,17 @@ type boardInfo = {
   commentcount: number;
   pagecount: number;
 };
+
 export default function Board(props: any) {
   const router = useRouter();
   const { session } = useSession();
+  const getImageUrl = (Imagedummy: string) => {
+    if (extractFirstImageUrl2(Imagedummy)) {
+      return extractFirstImageUrl2(Imagedummy);
+    } else {
+      return gyminwearImageLogo;
+    }
+  };
   const handlePageChange = (event: any, page: number) => {
     console.log("page=", page);
     router.push(`${process.env.NEXT_PUBLIC_IP}/board?page=${page}`);
@@ -92,10 +101,11 @@ export default function Board(props: any) {
                         height: { xs: "100%", xl: "200px" },
                         marginLeft: { xl: "22px" },
                         position: "relative",
+                        backgroundColor: "white",
                       }}
                     >
                       <Image
-                        src={extractFirstImageUrl2(object.content) || ""}
+                        src={getImageUrl(object.content) || ""}
                         alt="유저가 올린 사진"
                         layout="fill"
                       />

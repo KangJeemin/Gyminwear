@@ -127,7 +127,7 @@ export default function Board(props: any) {
                           display: "flex",
                         }}
                       >
-                        {object.title}
+                        <h4>{object.title}</h4>
                         <Box
                           sx={{
                             color: "red",
@@ -157,7 +157,7 @@ export default function Board(props: any) {
                             fontSize: 15,
                           }}
                         >
-                          조회:{object.viewcount}
+                          <h5>조회:{object.viewcount}</h5>
                         </Box>
                         <Box
                           sx={{

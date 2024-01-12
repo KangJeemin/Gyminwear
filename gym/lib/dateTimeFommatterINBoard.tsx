@@ -16,7 +16,7 @@ const DateTimeFormatterInBoard = ({ dateString }: any) => {
 
   return (
     <div>
-      <p>{formattedDateTime}</p>
+      <h5>날짜: {formattedDateTime}</h5>
     </div>
   );
 };

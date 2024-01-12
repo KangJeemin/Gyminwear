@@ -14,7 +14,7 @@ const defaultSeo:DefaultSeoProps = {
     site_name: "짐인웨어",
     images: [
       {
-        url: "http://gyminwear.com/public/image/gyminwearLogo.png",
+        url: "http://gyminwear.com/image/gyminwearLogo.png",
         width: 285,
         height: 167,
         alt: "이미지"

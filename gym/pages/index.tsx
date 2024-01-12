@@ -32,10 +32,7 @@ export default function Main(props: any) {
   return (
     <>
       <Head>
-        <meta
-          name="naver-site-verification"
-          content="ed45f0e362ab1bf63a17000be1426ad91060cd44"
-        />
+        <title>짐인웨어</title>
       </Head>
       <PageNavigate />
       <Pagedivide />

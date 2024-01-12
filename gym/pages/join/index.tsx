@@ -73,6 +73,9 @@ export default function SignUp() {
           alert("이 닉네임은 사용이 가능 합니다.");
           setCheckNickName(true);
         }
+      } else {
+        alert("닉네임 중복 검사 중 오류가 발생했습니다. 재시도 해주세요.");
+        return;
       }
     }
   };
@@ -80,37 +83,48 @@ export default function SignUp() {
     email: string,
     name: string,
     password: string,
+    password2nd: string,
     nickname: string
   ) => {
+    // 이메일 확인
     const validateEmail = () => {
       const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
       return emailRegex.test(email);
     };
-    if (!validateEmail()) {
-      alert("올바른 이메일 형식을 입력해주세요.😅");
-      return false;
-    }
     //이름 확인 (한글로만 3자)
     const validateName = () => {
       const nameRegex = /^[가-힣]+$/;
       return name.length === 3 && nameRegex.test(name);
     };
-    if (!validateName()) {
-      alert("성함을 재 입력해주세요(한글로 3자리 입력해주세요.😅");
-      return false;
-    }
     //바말번호 확인 (영대소문자, 특수문자 포함 12자 이상)
     const validatePassword = () => {
       const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).+$/;
       return password.length >= 8 && passwordRegex.test(password);
     };
+    // 비밀번호 확인
+    const passwordDoubleCheck = () => {
+      return password === password2nd;
+    };
+    if (!validateEmail()) {
+      alert("올바른 이메일 형식을 입력해주세요.😅");
+      return false;
+    }
+
+    if (!validateName()) {
+      alert("성함을 재 입력해주세요(한글로 3자리 입력해주세요.😅");
+      return false;
+    }
+
     if (!validatePassword()) {
       alert(
         "비밀번호는 8자리 이상, 영문, 숫자, 특수문자를 포함하여 입력해주세요.😭"
       );
       return false;
     }
-
+    if (!passwordDoubleCheck()) {
+      alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.😭");
+      return false;
+    }
     if (!checkNickName) {
       alert("닉네임 중복확인을 진행해주세요😭.");
       return false;
@@ -120,7 +134,7 @@ export default function SignUp() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const { email, name, password, nickname } = Object.fromEntries(
+    const { email, name, password, password2nd, nickname } = Object.fromEntries(
       data.entries()
     );
     const userInfo = {
@@ -134,6 +148,7 @@ export default function SignUp() {
       email.toString(),
       name.toString(),
       password.toString(),
+      password2nd.toString(),
       nickname.toString()
     );
     //회원가입 조건이 모두 만족할 때 서버에 회원가입 요청
@@ -218,6 +233,17 @@ export default function SignUp() {
                   label="비밀번호(8자리,특수문자,영소대문자포함)"
                   type="password"
                   id="password"
+                  autoComplete="new-password"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password2nd"
+                  label="비밀번호 확인 "
+                  type="password"
+                  id="password2nd"
                   autoComplete="new-password"
                 />
               </Grid>

@@ -9,10 +9,6 @@ import defaultSeoProps from "@/next-seo.config";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Head>
-        <meta />
-        <title>짐인웨어</title>
-      </Head>
       <DefaultSeo {...defaultSeoProps} />
       <ResponsiveAppBar />
       <Component {...pageProps} />

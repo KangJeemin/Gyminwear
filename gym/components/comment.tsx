@@ -83,6 +83,7 @@ const Comment = (props: any) => {
           marginBottom: "10px",
           fontFamily: "monospace",
           border: 1,
+          borderRadius: "20px",
         }}
       >
         {props.parentComent ? (
@@ -92,6 +93,7 @@ const Comment = (props: any) => {
               height: "auto",
               border: 1,
               color: "#D9D9D9",
+              borderRadius: "20px 0px 0px 20px",
             }}
           >
             <AccountCircleIcon
@@ -111,6 +113,7 @@ const Comment = (props: any) => {
                 justifyContent: "center",
                 fontSize: 25,
                 backgroundColor: "#F5F5F5",
+                borderRadius: "20px 0px 0px 20px",
               }}
             >
               ㄴ
@@ -139,7 +142,7 @@ const Comment = (props: any) => {
             flexDirection: "column",
             justifyContent: "space-between",
             width: props.parentComent ? "85%" : "80%",
-            border: 1,
+            borderLeft: 1,
           }}
         >
           <Box

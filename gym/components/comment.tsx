@@ -79,10 +79,8 @@ const Comment = (props: any) => {
           display: "flex",
           width: "100%",
           height: "auto",
-          borderBottom: 1,
           marginBottom: "10px",
           fontFamily: "monospace",
-          border: 1,
           borderRadius: "20px",
         }}
       >
@@ -112,18 +110,15 @@ const Comment = (props: any) => {
                 display: "flex",
                 justifyContent: "center",
                 fontSize: 25,
-                backgroundColor: "#F5F5F5",
-                borderRadius: "20px 0px 0px 20px",
               }}
-            >
-              ㄴ
-            </Box>
+            ></Box>
             <Box
               sx={{
                 width: "10%",
                 height: "auto",
                 color: "#D9D9D9",
                 backgroundColor: "#F5F5F5",
+                borderRadius: "20px 0px 0px 20px",
               }}
             >
               <AccountCircleIcon
@@ -135,14 +130,18 @@ const Comment = (props: any) => {
             </Box>
           </>
         )}
-
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
             width: props.parentComent ? "85%" : "80%",
-            borderLeft: 1,
+            color: "#D9D9D9",
+            borderTop: 1,
+            borderRight: 1,
+            borderBottom: 1,
+            borderRadius: "0px 20px 20px 0px",
+            backgroundColor: props.parentComent ? "" : "#F5F5F5",
           }}
         >
           <Box
@@ -154,6 +153,7 @@ const Comment = (props: any) => {
               sx={{
                 marginRight: "10px",
                 fontWeight: 700,
+                color: "black",
               }}
             >
               {props.data.nickname}

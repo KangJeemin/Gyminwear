@@ -19,18 +19,6 @@ export const getStaticProps = async () => {
 };
 
 export default function Main(props: any) {
-  function addProductJsonLd() {
-    return {
-      __html: `{
-        "@context" : "https://schema.org",
-        "@type" : "WebSite",
-        "name" : "Gyminwear",
-        "alternateName" : "짐인웨어",
-        "url" : "https://gyminwear.com/",
-      }
-  `,
-    };
-  }
   const { session, isLoading } = useSession();
   React.useEffect(() => {
     console.log(session);
@@ -43,14 +31,6 @@ export default function Main(props: any) {
 
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={addProductJsonLd()}
-          key="product-jsonld"
-        />
-        <link rel="icon" href="http://gyminwear.com/favicon.ico"></link>
-      </Head>
       <PageNavigate />
       <Pagedivide />
       <Board mapcount={4} data={props.data} />

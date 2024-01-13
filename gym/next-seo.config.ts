@@ -1,11 +1,11 @@
 import { DefaultSeoProps } from 'next-seo';
 
 const defaultSeo:DefaultSeoProps = {
-  title: "짐인웨어",
+  title: "국내 짐웨어 모음 사이트",
   description: "짐웨어 사이트들을 모아 놓았습니다. 짐인웨어에서 짐웨어 브랜들을 확인하고, 홈페이지로 이동하여 다양한 짐웨어를 확인해보세요!",
   canonical: "http://gyminwear.com",
   openGraph: {
-    title:"짐인웨어",
+    title:"국내 짐웨어 모음 사이트",
     description: "짐웨어 사이트들을 모아 놓았습니다.",
     type: "website",
     locale: "ko_KR",

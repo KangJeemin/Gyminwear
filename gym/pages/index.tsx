@@ -31,9 +31,6 @@ export default function Main(props: any) {
 
   return (
     <>
-      <Head>
-        <title>짐인웨어</title>
-      </Head>
       <PageNavigate />
       <Pagedivide />
       <Board mapcount={4} data={props.data} />

@@ -44,6 +44,7 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
 
         run: |
+          docker buildx create --name multi-arch-builder --driver docker-container --bootstrap --use
           docker buildx build --platform linux/arm64,linux/amd64 -t $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY --push .
 
       - name: Deploy on EC2 instance

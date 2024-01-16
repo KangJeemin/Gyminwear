@@ -8,6 +8,8 @@ import Pagedivide from "@/components/pagedivide";
 import Board from "@/components/board";
 import getMiniBoard from "@/pages/api/miniboard";
 
+export const dynamic = "force-dynamic";
+
 export const getStaticProps = async () => {
   const MiniBoard = await getMiniBoard();
   const data = JSON.parse(MiniBoard);

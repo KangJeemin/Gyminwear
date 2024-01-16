@@ -59,10 +59,7 @@ export default function SignUp() {
       return false;
     } else {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_IP}/api/join?nickname=${nickNameWord}`,
-        {
-          method: "GET",
-        }
+        `${process.env.NEXT_PUBLIC_IP}/api/join?nickname=${nickNameWord}`
       );
       if (response.ok) {
         const responseData = await response.json();

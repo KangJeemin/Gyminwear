@@ -152,7 +152,6 @@ const Comment = (props: any) => {
             <Box
               sx={{
                 marginRight: "10px",
-                fontWeight: 700,
                 color: "black",
               }}
             >
@@ -175,7 +174,8 @@ const Comment = (props: any) => {
               marginTop: "10px",
               width: "100%",
               whiteSpace: "normal", // 줄 바꿈 방지 스타일
-              fontSize: { xl: 20 },
+              fontSize: { xl: 20, xs: 14 },
+              fontWeight: 700,
               pointerEvents: commentModify ? "" : "none",
               border: "none",
               outline: "none",

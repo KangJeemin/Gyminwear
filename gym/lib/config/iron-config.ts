@@ -26,7 +26,7 @@ export const sessionOptions: SessionOptions = {
     // secure only works in `https` environments
     // if your localhost is not on `https`, then use: `secure: process.env.NODE_ENV === "production"`
     // Secure는 http 메서드가 https 일때만 전송(안전한 전송).
-    // secure: true,
+    secure: true,
   },
   
 };

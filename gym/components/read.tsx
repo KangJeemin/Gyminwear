@@ -112,6 +112,7 @@ export default function Read(props: any) {
           <Box
             sx={{
               width: { xs: "30%", xl: "200px" },
+              fontSize: { xl: 17, xs: 10 },
             }}
           >
             작성자:{props.data[0].nickname}
@@ -119,13 +120,15 @@ export default function Read(props: any) {
           <Box
             sx={{
               width: { xs: "30%", xl: "200px" },
+              fontSize: { xl: 17, xs: 10 },
             }}
           >
             조회수:{props.data[0].viewcount}
           </Box>
           <Box
             sx={{
-              width: { xs: "30%", xl: "200px" },
+              width: { xs: "40%", xl: "300px" },
+              fontSize: { xl: 17, xs: 10 },
               display: "flex",
             }}
           >

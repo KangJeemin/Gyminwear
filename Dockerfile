@@ -2,11 +2,12 @@ FROM node:18-alpine
 
 WORKDIR /
 
-COPY ./gym ./
+COPY ./gym/package*.json ./
 
-RUN npm install 
+COPY ./gym/ ./
 
-RUN npm install --global pm2
+RUN npm install && \ 
+    npm install --global pm2
 
 EXPOSE 3000
 

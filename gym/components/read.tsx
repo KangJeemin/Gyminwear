@@ -138,7 +138,7 @@ export default function Read(props: any) {
       </Box>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <Container>
-          <h3>게시글을 삭제하시겠습니까? git</h3>
+          <h3>게시글을 삭제하시겠습니까?</h3>
           <h5></h5>
           <Box
             sx={{
@@ -154,7 +154,7 @@ export default function Read(props: any) {
               size="small"
               onClick={() => {
                 handleSubmitDelete();
-                router.push(`${process.env.NEXT_PUBLIC_IP}/board`);
+                router.push(`${process.env.NEXT_PUBLIC_IP}/board?page=1`);
               }}
             >
               예

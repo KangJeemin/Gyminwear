@@ -134,8 +134,9 @@ const Comment = (props: any) => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
+            // justifyContent: "space-between",
             width: props.parentComent ? "85%" : "80%",
+            height: "auto",
             color: "#D9D9D9",
             borderTop: 1,
             borderRight: 1,
@@ -167,7 +168,6 @@ const Comment = (props: any) => {
               <DateTimeFormatter dateString={props.data.date} />
             </Box>
           </Box>
-
           <Input
             disableUnderline //MUI Input border-bottom 제거
             multiline
@@ -179,7 +179,6 @@ const Comment = (props: any) => {
               fontSize: { xl: 20, xs: 14 },
               fontWeight: 700,
               pointerEvents: commentModify ? "" : "none",
-              border: "none",
               outline: "none",
             }}
             placeholder="댓글은 300자까지 입력 가능합니다."
@@ -188,7 +187,6 @@ const Comment = (props: any) => {
             onChange={setComment}
             name="commentcontent"
           ></Input>
-
           <Box
             sx={{
               display: "flex",
@@ -212,7 +210,7 @@ const Comment = (props: any) => {
                   variant="outlined"
                   sx={{
                     minWidth: "10px",
-                    height: { xs: "50%", xl: "100%" },
+                    height: { xs: "40px", xl: "100%" },
                   }}
                   onClick={() => setCommentModify(true)}
                 >
@@ -223,7 +221,7 @@ const Comment = (props: any) => {
                   color="error"
                   sx={{
                     minWidth: "10px",
-                    height: { xs: "50%", xl: "100%" },
+                    height: { xs: "40px", xl: "100%" },
                   }}
                   onClick={handleDeleteClick}
                 >

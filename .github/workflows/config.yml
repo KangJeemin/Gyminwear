@@ -45,6 +45,7 @@ jobs:
 
         run: |
           docker buildx create --name multi-arch-builder --driver docker-container --bootstrap --use
+          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/v4p4c1q3
           docker buildx build --platform linux/arm64,linux/amd64 -t $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY --push .
 
       - name: Deploy on EC2 instance

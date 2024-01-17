@@ -28,7 +28,7 @@ const DateTimeFommaterINComment = ({ dateString }: any) => {
     } else {
       //일, 시간, 분을 비교
       if (currentDate.getHours() - inputDate.getHours() !== 0) {
-        return currentDate.getHours() - inputDate.getHours() + "일전";
+        return currentDate.getHours() - inputDate.getHours() + "시간전";
       } else if (currentDate.getMinutes() - inputDate.getMinutes() !== 0) {
         return currentDate.getMinutes() - inputDate.getMinutes() + "분전";
       } else {

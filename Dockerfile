@@ -6,8 +6,9 @@ COPY ./gym/package*.json ./
 
 COPY ./gym/ ./
 
-RUN npm install && \ 
-    npm install --global pm2
+RUN npm install 
+
+RUN npm install --global pm2
 
 EXPOSE 3000
 

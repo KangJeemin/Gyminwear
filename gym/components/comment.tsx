@@ -5,6 +5,7 @@ import CommentWrtie from "./commentWrite";
 import Input from "@mui/material/Input";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
+import DateTimeFommaterINComment from "@/lib/dateTimeFommaterINComment";
 import { useRouter } from "next/router";
 import useSession from "@/lib/useSession";
 
@@ -165,7 +166,7 @@ const Comment = (props: any) => {
                 color: "#D9D9D9",
               }}
             >
-              <DateTimeFormatter dateString={props.data.date} />
+              <DateTimeFommaterINComment dateString={props.data.date} />
             </Box>
           </Box>
           <Input

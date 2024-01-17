@@ -167,7 +167,9 @@ const Comment = (props: any) => {
               <DateTimeFormatter dateString={props.data.date} />
             </Box>
           </Box>
+
           <Input
+            disableUnderline //MUI Input border-bottom 제거
             multiline
             inputProps={{ maxLength: 300 }}
             sx={{
@@ -186,6 +188,7 @@ const Comment = (props: any) => {
             onChange={setComment}
             name="commentcontent"
           ></Input>
+
           <Box
             sx={{
               display: "flex",

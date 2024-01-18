@@ -2,7 +2,8 @@ import React from "react";
 import Head from "next/head";
 import Board from "@/components/board";
 import { GetServerSidePropsContext } from "next";
-import { boardProps } from "@/interface/board";
+import type { boardProps } from "@/interface/board";
+
 export default function board(props: boardProps) {
   return (
     <>

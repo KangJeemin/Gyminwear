@@ -11,8 +11,11 @@ import DateTimeFormatter from "@/lib/dateTimeFomatter";
 import { extractFirstImageUrl2 } from "@/lib/extractFirstImageUrl";
 import useSession from "@/lib/useSession";
 import gyminwearImageLogo from "@/public/image/gyminwearLogo.png";
-import type { boardInfo, boardComponentProps } from "@/interface/board";
+import type { boardInfo, boardProps } from "@/interface/board";
 
+interface boardComponentProps extends boardProps {
+  mapcount: number;
+}
 export default function Board(props: boardComponentProps) {
   const router = useRouter();
   const { session } = useSession();

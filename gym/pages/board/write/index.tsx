@@ -1,9 +1,10 @@
 import * as React from "react";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
-
 import Write from "@/components/write";
-export default function index(props: any) {
+import type { boardProps } from "@/interface/board";
+
+export default function index(props: boardProps) {
   return (
     <>
       <Head>

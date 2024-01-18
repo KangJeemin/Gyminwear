@@ -13,35 +13,10 @@ export type boardInfo = {
     pagecount: number;
   };
 
-export type boardProps = {
-    data:[
-        {
-    postid: number;
-    title: string;
-    nickname: string;
-    content: string;
-    viewcount: number;
-    date: string;
-    commentcount: number;
-    pagecount: number;
-        }
-    ]
-}
-export type boardComponentProps={
-    mapcount:number;
-    data:[
-        {
-            postid: number;
-    title: string;
-    nickname: string;
-    content: string;
-    viewcount: number;
-    date: string;
-    commentcount: number;
-    pagecount: number;
-        }
-    ]
-}
+  export type boardProps = {
+    data: Array<boardInfo>;
+  };
+
 export interface commentInfo {
   commentid: number;
   parentcommentid: string | null;
@@ -51,7 +26,8 @@ export interface commentInfo {
   date: string;
   modifydate: string | null;
 }
-export type readInfo = {
+
+export interface readInfo {
     postid: number
     title: string;
     nickname: string;

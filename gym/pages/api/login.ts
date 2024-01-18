@@ -6,15 +6,17 @@ import {
   sleep,
   SessionData,
 } from "@/lib/config/iron-config";
+import type { userInfo } from '@/interface/board';
 const db = require('@/lib/connectMysql');
 const crypto = require('crypto');
 
 
-type LoginInfo = {  
-    email:string,
-    password:string,
+interface LoginInfo extends userInfo {  
     remember:string,
+    salt:string
 }
+
+
 export default async function loginRoute(req: NextApiRequest, res: NextApiResponse) {
   const {email,password,remember}:LoginInfo = req.body;
   
@@ -39,7 +41,7 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
       try{
         db.query(
             `SELECT password,salt,nickname FROM users WHERE email='${email}'; `
-        ,async(error:any,result:any)=>{
+        ,async(error:Error,result:Array<LoginInfo>)=>{
             if(error){
                 console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")
                 res.status(200).json({ result:false }); 

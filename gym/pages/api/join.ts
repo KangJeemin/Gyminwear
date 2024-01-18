@@ -1,12 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import type { userInfo } from '@/interface/board';
 const db = require('@/lib/connectMysql');
 const crypto = require('crypto');
-type userInfo = {
-    email:string,
-    name:string,
-    password:string,
-    nickname:String
-}
 
 export default async function Join(req : NextApiRequest, res : NextApiResponse){
     if (req.method === 'GET'){

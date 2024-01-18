@@ -1,4 +1,10 @@
 
+export interface userInfo {
+  email:string,
+  name:string,
+  password:string,
+  nickname:string
+}
 export interface readInfo {
     postid: number;
     title: string;

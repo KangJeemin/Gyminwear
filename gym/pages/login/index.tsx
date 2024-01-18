@@ -72,7 +72,7 @@ export default function SignIn() {
     // });
 
     try {
-      console.log("checbox=", remember);
+      console.log("쿠키승인여부", remember);
       const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/login`, {
         method: "POST",
         headers: {

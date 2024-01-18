@@ -1,6 +1,3 @@
-export type witreInfo ={
-
-}
 
 export type boardInfo = {
     postid: number;

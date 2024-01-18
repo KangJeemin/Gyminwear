@@ -2,6 +2,10 @@ import * as React from "react";
 import Skeleton from "@mui/material/Skeleton";
 import { Quill } from "react-quill";
 import dynamic from "next/dynamic";
+interface ReactQuill {
+  content: string;
+  setContent: Function;
+}
 
 const formats = [
   "header",

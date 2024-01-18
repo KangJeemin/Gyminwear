@@ -33,3 +33,7 @@ export interface addChildComment extends commentInfo {
     child: Array<commentInfo>;
   }
 
+export interface commentWrite {
+    postid: number;
+    commentid?: number;
+  }

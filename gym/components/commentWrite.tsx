@@ -5,10 +5,7 @@ import TextField from "@mui/material/TextField";
 import Input from "@mui/material/Input";
 import useSession from "@/lib/useSession";
 import { useRouter } from "next/router";
-interface commentWrite {
-  postid: number;
-  commentid?: number;
-}
+import type { commentWrite } from "@/interface/board";
 
 export default function CommentWrtie(props: commentWrite) {
   const { session } = useSession();

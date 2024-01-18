@@ -1,22 +1,22 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import type { readInfo,commentWrite ,commentInfo} from '@/interface/board';
 const db = require('@/lib/connectMysql');
 
-type userInfo = {
-    email:string,
-    name:string,
-    password:string,
-    nickname:String
+interface commentWriteApi extends commentWrite{
+  parentid:number,
+  nickname:string,
+  content:string,
 }
 
 export default async function Comment(req : NextApiRequest, res : NextApiResponse){
-    const {parentid,postid,nickname,content,commentid} = req.body;
+    const {parentid,postid,nickname,content,commentid}:commentWriteApi = req.body;
     const {id,page} = req.query
     if (req.method === 'POST') {
       
           try{
             db.query(
                 `INSERT INTO comments (parentcommentid,postid,userid,content) VALUES (${parentid===undefined?null:parentid},'${postid}',(SELECT userid FROM users WHERE nickname ='${nickname}'),'${content}');`
-            ,(error:any,result:any)=>{
+            ,(error:Error)=>{
                 if(error){
                     console.error("댓글 저장 중 오류 발생")
                     return false
@@ -36,7 +36,7 @@ export default async function Comment(req : NextApiRequest, res : NextApiRespons
               `SELECT comments.commentid, comments.parentcommentid, comments.postid, users.nickname ,comments.content, comments.date, comments.modifydate 
               FROM comments 
               JOIN users ON comments.userid = users.userid WHERE postid='${id}';`
-          ,(error:any,result:any)=>{
+          ,(error:Error,result:Array<commentInfo>)=>{
               if(error){
                   console.error("댓글 조회 중 오류 발생")
                   return false
@@ -54,7 +54,7 @@ export default async function Comment(req : NextApiRequest, res : NextApiRespons
         try{
           db.query(
               `DELETE FROM comments WHERE commentid=${commentid};`
-          ,(error:any,result:any)=>{
+          ,(error:Error)=>{
               if(error){
                   console.error("게시물을 삭제하는 과정에서 오류 발생")
                   return false
@@ -73,7 +73,7 @@ export default async function Comment(req : NextApiRequest, res : NextApiRespons
         try{
           db.query(
             `UPDATE comments SET content='${content}', modifydate=NOW() WHERE commentid=${commentid};`
-          ,(error:any,result:any)=>{
+          ,(error:Error)=>{
               if(error){
                   console.error("댓글을 수정하는 과정에서 오류 발생")
                   console.log(error)

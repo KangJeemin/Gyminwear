@@ -7,21 +7,11 @@ import {
   SessionData,
 } from "@/lib/config/iron-config";
 import returnSqlLimit from '@/lib/returnSqlLimit';
+import type { readInfo,boardProps } from '@/interface/board';
 const db = require('@/lib/connectMysql');
 
-
-
-type writeInfo = {  
-    postid:number,
-    title:string,
-    nickname:string,
-    content:string,
-    viewcount:number,
-    date:string,
-    commentcount:number
-}
 export default async function board(req: NextApiRequest, res: NextApiResponse) {
-    const {postid,title,nickname,content}:writeInfo = req.body;
+    const {postid,title,nickname,content}:readInfo = req.body;
     const {id} = req.query
     const page:string= req.query.page as string
     
@@ -29,7 +19,7 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
         try{
             db.query(
                 `INSERT INTO posts (userid,title,content) VALUES ((SELECT userid FROM users WHERE nickname ='${nickname}'),'${title}','${content}');`
-            ,(error:any,result:any)=>{
+            ,(error:Error)=>{
                 if(error){
                     console.error("게시물을 작성하는 과정에서 오류 발생.")
                     return false
@@ -75,7 +65,7 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
                   LIMIT ${limit};
                   
                     `
-                ,(error:any,result:any)=>{
+                ,(error:Error,result:boardProps)=>{
                     if(error){
                         console.error("게시물을 조회하는 과정에서 오류 발생.")
                         return false
@@ -96,7 +86,7 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
                     FROM posts
                     JOIN users ON posts.userid = users.userid LEFT JOIN comments ON posts.postid = comments.postid WHERE posts.postid= ${id} GROUP BY posts.postid; 
                     `
-                ,(error:any,result:any)=>{
+                ,(error:Error,result:boardProps)=>{
                     if(error){
                         console.error("게시물을 조회하는 과정에서 오류 발생.")
                         return false
@@ -104,7 +94,11 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
                         res.status(200).json(result);  
                         db.query(
                             `UPDATE posts SET viewcount = viewcount + 1 WHERE postid = ${id};`
-                        ,(error:any,result1:any)=>{})
+                        ,(error:Error)=>{
+                            if(error){
+                                console.error("게시물 조회수를 추가하는 과정에서 오류 발생.")
+                            }
+                        })
                     }
                 })
               }
@@ -119,7 +113,7 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
         try{
             db.query(
                 `DELETE FROM posts WHERE postid=${postid};`
-            ,(error:any,result:any)=>{
+            ,(error:Error)=>{
                 if(error){
                     console.error("게시물을 삭제하는 과정에서 오류 발생")
                     return false
@@ -138,7 +132,7 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
         try{
             db.query(
                 `UPDATE posts SET title='${title}',content='${content}', modifydate=NOW() WHERE postid=${postid};`
-            ,(error:any,result:any)=>{
+            ,(error:Error,)=>{
                 if(error){
                     console.error("게시물을 업데이트 과정에서 오류 발생.")
                     return false

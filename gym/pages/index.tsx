@@ -7,7 +7,7 @@ import useSession from "@/lib/useSession";
 import Pagedivide from "@/components/pagedivide";
 import Board from "@/components/board";
 import getMiniBoard from "@/pages/api/miniboard";
-
+import type { boardProps } from "@/interface/board";
 export const dynamic = "force-dynamic";
 
 export const getStaticProps = async () => {
@@ -20,7 +20,7 @@ export const getStaticProps = async () => {
   };
 };
 
-export default function Main(props: any) {
+export default function Main(props: boardProps) {
   const { session, isLoading } = useSession();
   React.useEffect(() => {
     console.log(session);

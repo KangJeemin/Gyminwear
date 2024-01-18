@@ -4,8 +4,16 @@ import CommentContainer from "@/components/commentContainer";
 import useSession from "@/lib/useSession";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
+import type { readInfo, commentInfo } from "@/interface/board";
+interface addChildComment extends commentInfo {
+  child: Array<commentInfo>;
+}
+interface commentProps {
+  data: Array<readInfo>;
+  commentData: Array<addChildComment>;
+}
 
-export default function index(props: any) {
+export default function index(props: commentProps) {
   return (
     <>
       <Head>
@@ -31,16 +39,16 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
     const boardData = await boardRes.json();
     const allCommentData = await commentRes.json();
-    const result: any = [];
+    const result: Array<addChildComment> = [];
 
     // 객체를 id를 키로 하는 맵으로 변환
     const idMap = new Map();
-    allCommentData.forEach((obj: any) => {
+    allCommentData.forEach((obj: commentInfo) => {
       idMap.set(obj.commentid, { ...obj, child: [] });
     });
 
     // 부모-자식 관계 설정
-    allCommentData.forEach((obj: any) => {
+    allCommentData.forEach((obj: commentInfo) => {
       if (obj.parentcommentid !== null) {
         idMap.get(obj.parentcommentid).child.push(idMap.get(obj.commentid));
       } else {
@@ -48,13 +56,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       }
     });
     // 대댓글(child)에 들어갈 객체 정렬
-    result.forEach((parentObj: any) => {
-      parentObj.child.sort((a: any, b: any) => {
+    result.forEach((parentObj: addChildComment) => {
+      parentObj.child.sort((a: commentInfo, b: commentInfo) => {
         // commentid를 기준으로 오름차순 정렬
         return a.commentid - b.commentid;
       });
     });
-    console.log("result=", result);
     return {
       props: {
         data: boardData,

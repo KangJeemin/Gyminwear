@@ -16,7 +16,7 @@ export type boardInfo = {
 export type boardProps = {
     data:[
         {
-            postid: number;
+    postid: number;
     title: string;
     nickname: string;
     content: string;
@@ -42,7 +42,17 @@ export type boardComponentProps={
         }
     ]
 }
+export interface commentInfo {
+  commentid: number;
+  parentcommentid: string | null;
+  postid: number;
+  nickname: string;
+  content: string;
+  date: string;
+  modifydate: string | null;
+}
 export type readInfo = {
+    postid: number
     title: string;
     nickname: string;
     content: string;

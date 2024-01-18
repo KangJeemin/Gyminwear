@@ -12,23 +12,9 @@ import WestIcon from "@mui/icons-material/West";
 import useSession from "@/lib/useSession";
 import ReactQuill from "./quillWrapper";
 
-import Image from "next/image";
-const VisuallyHiddenInput = styled("input")({
-  clip: "rect(0 0 0 0)",
-  clipPath: "inset(50%)",
-  height: 1,
-  overflow: "hidden",
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  whiteSpace: "nowrap",
-  width: 1,
-});
 export default function Write(props: any) {
-  const [writePage, setWritePage] = React.useState<boolean>(true);
   const [content, setContent] = React.useState<string>("");
   const [isModalOpen, setModalOpen] = React.useState<boolean>(false);
-  const [file, setFile] = React.useState<File | null>(null);
   const { session } = useSession();
   const router = useRouter();
   const memoizationValue = React.useMemo(() => {

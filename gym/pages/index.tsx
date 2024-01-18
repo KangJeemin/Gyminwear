@@ -34,10 +34,9 @@ export default function Main(props: any) {
   return (
     <>
       <Head>
-        <title>짐웨어 모음 사이트</title>
         <meta
           name="description"
-          content="국내 짐웨어의 정보들을 확인해보세요!"
+          content="짐웨어 사이트들을 기억할 필요 없습니다. 짐인웨어에서 확인해보세요!"
         />
       </Head>
       <PageNavigate />

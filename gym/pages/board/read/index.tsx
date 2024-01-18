@@ -3,9 +3,17 @@ import Read from "@/components/read";
 import CommentContainer from "@/components/commentContainer";
 import useSession from "@/lib/useSession";
 import { GetServerSidePropsContext } from "next";
+import Head from "next/head";
+
 export default function index(props: any) {
   return (
     <>
+      <Head>
+        <meta
+          name="description"
+          content="짐인웨어 유저들이 올린 게시물을 보고 소통해보세요!"
+        />
+      </Head>
       <Read data={props.data}></Read>
       <CommentContainer data={props.commentData} boardData={props.data} />
     </>

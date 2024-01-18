@@ -1,8 +1,20 @@
 import * as React from "react";
 import { GetServerSidePropsContext } from "next";
+import Head from "next/head";
+
 import Write from "@/components/write";
 export default function index(props: any) {
-  return <Write data={props.data}></Write>;
+  return (
+    <>
+      <Head>
+        <meta
+          name="description"
+          content="짐인웨어에 글을 작성하여 나만의 짐웨어를 알려주세요!"
+        />
+      </Head>
+      <Write data={props.data}></Write>;
+    </>
+  );
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {

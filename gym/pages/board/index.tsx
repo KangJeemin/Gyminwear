@@ -1,13 +1,7 @@
 import React from "react";
 import Head from "next/head";
-import PageNavigate from "@/components/PageNavigate";
-import ResponsiveAppBar from "@/components/appbar";
 import Board from "@/components/board";
-import Miniboard from "@/components/miniboard";
-import useSession from "@/lib/useSession";
-import Pagedivide from "@/components/pagedivide";
 import { GetServerSidePropsContext } from "next";
-import { ConstructionOutlined } from "@mui/icons-material";
 
 type boardInfo = {
   brandname: string;
@@ -17,6 +11,12 @@ type boardInfo = {
 export default function board(props: any) {
   return (
     <>
+      <Head>
+        <meta
+          name="description"
+          content="짐인웨어 유저들이 올린 게시글들을 확인 해보세요!"
+        />
+      </Head>
       <Board mapcount={20} data={props.data} />
     </>
   );

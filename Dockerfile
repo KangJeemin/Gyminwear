@@ -1,16 +1,17 @@
 FROM node:18-alpine
 
-WORKDIR /
+RUN mkdir -p /app
+
+WORKDIR /app
 
 COPY ./gym/package*.json ./
-
-COPY ./gym/ ./
 
 RUN npm install 
 
 RUN npm install --global pm2
 
+COPY ./gym/ ./
+
 EXPOSE 3000
 
 CMD ["pm2-runtime","start","npm","--","start"]
-

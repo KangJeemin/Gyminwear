@@ -1,6 +1,9 @@
 
-import type { boardProps } from "@/interface/board";
+import type { boardInfo } from "@/interface/board";
 const db = require('@/lib/connectMysql');
+interface miniboard {
+  result: Array<boardInfo>
+}
 
 export default async function getMiniBoard(): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -31,7 +34,7 @@ export default async function getMiniBoard(): Promise<string> {
       LIMIT 0,4;
       
         `,
-      (err: Error, result:boardProps) => {
+      (err: Error, result:miniboard) => {
         if (err) {
           console.error(err);
           reject(err);

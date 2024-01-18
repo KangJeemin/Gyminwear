@@ -54,7 +54,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         return a.commentid - b.commentid;
       });
     });
-
+    console.log("result=", result);
     return {
       props: {
         data: boardData,

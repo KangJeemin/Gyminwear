@@ -23,7 +23,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     `${process.env.NEXT_PUBLIC_IP}/api/board?page=${page}`
   );
   const data = await res.json();
-  console.log("data=", data);
 
   return {
     props: {

@@ -8,17 +8,25 @@ import DateTimeFormatter from "@/lib/dateTimeFomatter";
 import DateTimeFommaterINComment from "@/lib/dateTimeFommaterINComment";
 import { useRouter } from "next/router";
 import useSession from "@/lib/useSession";
+import type { commentInfo, addChildComment } from "@/interface/board";
 
-const Comment = (props: any) => {
+interface commnetComponent {
+  data: commentInfo;
+  postid: number;
+  parentComent: boolean;
+  parentData?: addChildComment;
+}
+const Comment = (props: commnetComponent) => {
+  console.log("comment=", props);
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);
   const [comment, setComment] = React.useState(props.data.content);
   const [commentModify, setCommentModify] = React.useState(false);
   const router = useRouter();
   const { session } = useSession();
-  useEffect(() => {
-    console.log(props.parentComentId);
-  });
+  // useEffect(() => {
+  //   console.log(props.parentComentId);
+  // });
   useEffect(() => {}, [commentModify]);
   const openComment = () => {
     isCommentOpen ? setCommentOpen(false) : setCommentOpen(true);
@@ -186,7 +194,7 @@ const Comment = (props: any) => {
             placeholder="댓글은 300자까지 입력 가능합니다."
             defaultValue={props.data.content}
             value={commentModify ? null : props.data.content}
-            onChange={setComment}
+            onChange={(e) => setComment(e.target.value)}
             name="commentcontent"
           ></Input>
           <Box
@@ -266,7 +274,7 @@ const Comment = (props: any) => {
           commentid={
             props.parentComent
               ? props.data.commentid
-              : props.parentData.commentid
+              : props.parentData?.commentid
           }
         />
       ) : null}

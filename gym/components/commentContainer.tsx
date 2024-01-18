@@ -7,11 +7,15 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import useSession from "@/lib/useSession";
 import { useRouter } from "next/router";
+import type {
+  commentInfo,
+  commentProps,
+  addChildComment,
+} from "@/interface/board";
 
-export default function CommentContainer(props: any) {
+export default function CommentContainer(props: commentProps) {
   const { session } = useSession();
   const router = useRouter();
-
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -25,7 +29,7 @@ export default function CommentContainer(props: any) {
       },
 
       body: JSON.stringify({
-        postid: props.boardData[0].postid,
+        postid: props.data[0].postid,
         content: commentcontent,
         nickname: session.nickname,
       }),
@@ -37,19 +41,19 @@ export default function CommentContainer(props: any) {
   };
   return (
     <DoubleContainer>
-      {props.data.map((object: any, index: number) => (
+      {props.commentData.map((object: addChildComment, index: number) => (
         <>
           <Comment
             key={index}
             data={object}
-            postid={props.boardData[0].postid}
+            postid={props.data[0].postid}
             parentComent={true}
           />
-          {object.child.map((innerObject: [], innerIndex: number) => (
+          {object.child.map((innerObject: commentInfo, innerIndex: number) => (
             <Comment
               key={innerIndex}
               data={innerObject}
-              postid={props.boardData[0].postid}
+              postid={props.data[0].postid}
               parentComent={false}
               parentData={object}
             />

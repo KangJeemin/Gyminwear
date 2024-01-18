@@ -4,14 +4,11 @@ import CommentContainer from "@/components/commentContainer";
 import useSession from "@/lib/useSession";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
-import type { readInfo, commentInfo } from "@/interface/board";
-interface addChildComment extends commentInfo {
-  child: Array<commentInfo>;
-}
-interface commentProps {
-  data: Array<readInfo>;
-  commentData: Array<addChildComment>;
-}
+import type {
+  commentInfo,
+  commentProps,
+  addChildComment,
+} from "@/interface/board";
 
 export default function index(props: commentProps) {
   return (
@@ -23,7 +20,7 @@ export default function index(props: commentProps) {
         />
       </Head>
       <Read data={props.data}></Read>
-      <CommentContainer data={props.commentData} boardData={props.data} />
+      <CommentContainer data={props.data} commentData={props.commentData} />
     </>
   );
 }

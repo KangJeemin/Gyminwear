@@ -155,6 +155,7 @@ const Comment = (props: any) => {
               sx={{
                 marginRight: "10px",
                 color: "black",
+                fontWeight: 700,
               }}
             >
               {props.data.nickname}
@@ -178,7 +179,7 @@ const Comment = (props: any) => {
               width: "100%",
               whiteSpace: "normal", // 줄 바꿈 방지 스타일
               fontSize: { xl: 20, xs: 14 },
-              fontWeight: 700,
+
               pointerEvents: commentModify ? "" : "none",
               outline: "none",
             }}

@@ -11,8 +11,8 @@ import { useRouter } from "next/router";
 import WestIcon from "@mui/icons-material/West";
 import useSession from "@/lib/useSession";
 import ReactQuill from "./quillWrapper";
-
-export default function Write(props: any) {
+import type { boardProps } from "@/interface/board";
+export default function Write(props: boardProps) {
   const [content, setContent] = React.useState<string>("");
   const [isModalOpen, setModalOpen] = React.useState<boolean>(false);
   const { session } = useSession();

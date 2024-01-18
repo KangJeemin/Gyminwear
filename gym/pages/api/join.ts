@@ -13,7 +13,7 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
       try{
         db.query(
             `SELECT nickname FROM users WHERE nickname='${req.query.nickname}';`
-        ,(error:any,result:any)=>{
+        ,(error:any,result:Array<string>)=>{
             if(error){
                 console.error("닉네임 중복 체크중 오류 발생");
                 res.status(200).json(false);  
@@ -48,7 +48,7 @@ export default async function Join(req : NextApiRequest, res : NextApiResponse){
           try{
             db.query(
                 `INSERT INTO users (email,name,password,nickname,salt) VALUES ('${requestData.email}','${requestData.name}','${hashPassword}','${requestData.nickname}','${salt}');`
-            ,(error:any,result:any)=>{
+            ,(error:Error)=>{
                 if(error){
                     console.error("회원가입 중 유저 정보를 삽입 하는 과정에서 오류 발생")
                     return false

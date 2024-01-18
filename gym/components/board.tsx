@@ -2,10 +2,7 @@ import * as React from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
-import styles from "@/styles/styles.module.css";
 import Image from "next/image";
-import gyminwearLogo from "@/public/image/gyminwearLogo.png";
-import { border, borderColor, color } from "@mui/system";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -14,19 +11,9 @@ import DateTimeFormatter from "@/lib/dateTimeFomatter";
 import { extractFirstImageUrl2 } from "@/lib/extractFirstImageUrl";
 import useSession from "@/lib/useSession";
 import gyminwearImageLogo from "@/public/image/gyminwearLogo.png";
+import type { boardInfo, boardComponentProps } from "@/interface/board";
 
-type boardInfo = {
-  postid: number;
-  title: string;
-  nickname: string;
-  content: string;
-  viewcount: number;
-  date: string;
-  commentcount: number;
-  pagecount: number;
-};
-
-export default function Board(props: any) {
+export default function Board(props: boardComponentProps) {
   const router = useRouter();
   const { session } = useSession();
   const getImageUrl = (Imagedummy: string) => {
@@ -36,7 +23,7 @@ export default function Board(props: any) {
       return gyminwearImageLogo;
     }
   };
-  const handlePageChange = (event: any, page: number) => {
+  const handlePageChange = (page: number) => {
     console.log("page=", page);
     router.push(`${process.env.NEXT_PUBLIC_IP}/board?page=${page}`);
   };
@@ -214,7 +201,9 @@ export default function Board(props: any) {
             <Pagination
               count={Math.floor(props.data[0].pagecount / 20) + 1}
               shape="rounded"
-              onChange={handlePageChange}
+              onChange={(event, page) => {
+                handlePageChange(page);
+              }}
             />
           </Stack>
         </Box>

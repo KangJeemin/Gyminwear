@@ -2,13 +2,8 @@ import React from "react";
 import Head from "next/head";
 import Board from "@/components/board";
 import { GetServerSidePropsContext } from "next";
-
-type boardInfo = {
-  brandname: string;
-  gymitem: [];
-  countresult: number;
-};
-export default function board(props: any) {
+import { boardProps } from "@/interface/board";
+export default function board(props: boardProps) {
   return (
     <>
       <Head>
@@ -28,6 +23,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     `${process.env.NEXT_PUBLIC_IP}/api/board?page=${page}`
   );
   const data = await res.json();
+  console.log("data=", data);
 
   return {
     props: {

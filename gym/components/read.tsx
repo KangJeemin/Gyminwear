@@ -11,15 +11,8 @@ import parse from "html-react-parser";
 import useSession from "@/lib/useSession";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
 import DateTimeFormatterInBoard from "@/lib/dateTimeFommatterINBoard";
+import type { readInfo } from "@/interface/board";
 
-type readInfo = {
-  title: string;
-  nickname: string;
-  content: string;
-  viewcount: number;
-  date: string;
-  commentcount: number;
-};
 export default function Read(props: any) {
   const { session } = useSession();
   const [isModalOpen, setModalOpen] = React.useState(false);

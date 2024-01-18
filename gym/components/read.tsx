@@ -3,17 +3,18 @@ import DoubleContainer from "./doubleContainer";
 import Box from "@mui/material/Box";
 import { Container } from "@mui/system";
 import Button from "@mui/material/Button";
-import Comment from "./comment";
 import { useRouter } from "next/router";
 import Modal from "./modal";
 import WestIcon from "@mui/icons-material/West";
 import parse from "html-react-parser";
 import useSession from "@/lib/useSession";
-import DateTimeFormatter from "@/lib/dateTimeFomatter";
 import DateTimeFormatterInBoard from "@/lib/dateTimeFommatterINBoard";
 import type { readInfo } from "@/interface/board";
 
-export default function Read(props: any) {
+interface readProps {
+  data: Array<readInfo>;
+}
+export default function Read(props: readProps) {
   const { session } = useSession();
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [isCommentOpen, setCommentlOpen] = React.useState(false);

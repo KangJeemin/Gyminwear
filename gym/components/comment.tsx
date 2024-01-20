@@ -9,6 +9,8 @@ import DateTimeFommaterINComment from "@/lib/dateTimeFommaterINComment";
 import { useRouter } from "next/router";
 import useSession from "@/lib/useSession";
 import type { commentInfo, addChildComment } from "@/interface/board";
+import Modal from "./modal";
+import Container from "@mui/material/Container";
 
 interface commnetComponent {
   data: commentInfo;
@@ -22,6 +24,7 @@ const Comment = (props: commnetComponent) => {
   const [isCommentOpen, setCommentOpen] = React.useState(false);
   const [comment, setComment] = React.useState(props.data.content);
   const [commentModify, setCommentModify] = React.useState(false);
+  const [isModalOpen, setModalOpen] = React.useState<boolean>(false);
   const router = useRouter();
   const { session } = useSession();
   // useEffect(() => {
@@ -71,6 +74,13 @@ const Comment = (props: commnetComponent) => {
       router.reload();
     }
     setIsDeleted(true);
+  };
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
   };
 
   // 만약 삭제된 상태라면 null을 반환하여 렌더링하지 않음
@@ -233,13 +243,44 @@ const Comment = (props: commnetComponent) => {
                     minWidth: "10px",
                     height: { xs: "40px", xl: "100%" },
                   }}
-                  onClick={handleDeleteClick}
+                  onClick={openModal}
                 >
                   삭제
                 </Button>
               </>
             )}
-
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+              <Container>
+                <h3>댓글을 삭제하시겠습니까?</h3>
+                <Box
+                  sx={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-around",
+                    paddingTop: "20px",
+                  }}
+                >
+                  <Button
+                    component="label"
+                    variant="contained"
+                    size="small"
+                    onClick={() => {
+                      handleDeleteClick();
+                    }}
+                  >
+                    예
+                  </Button>
+                  <Button
+                    component="label"
+                    variant="contained"
+                    size="small"
+                    onClick={closeModal}
+                  >
+                    아니오
+                  </Button>
+                </Box>
+              </Container>
+            </Modal>
             {commentModify && (
               <>
                 <Button

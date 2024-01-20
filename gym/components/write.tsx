@@ -183,7 +183,12 @@ export default function Write(props: boardProps) {
       </Box>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <Container>
-          <h3>글 작성을 취소하시겠습니까?</h3>
+          {props.data === null ? (
+            <h3>글 작성을 취소하시겠습니까?</h3>
+          ) : (
+            <h3>글 수정을 취소하시겠습니까?</h3>
+          )}
+
           <h5>(취소하면 작성 중인 내용은 저장되지 않습니다.)</h5>
           <Box
             sx={{

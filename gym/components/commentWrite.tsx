@@ -6,6 +6,7 @@ import Input from "@mui/material/Input";
 import useSession from "@/lib/useSession";
 import { useRouter } from "next/router";
 import type { commentWrite } from "@/interface/board";
+import ClientAPIReq from "@/lib/ClientAPIReq";
 
 export default function CommentWrtie(props: commentWrite) {
   const { session } = useSession();
@@ -19,19 +20,18 @@ export default function CommentWrtie(props: commentWrite) {
       data.entries()
     );
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/comment`, {
+    const APIreq = {
+      url: `${process.env.NEXT_PUBLIC_IP}/api/comment`,
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+      BodyJSON: {
         postid: props.postid,
         parentid: props.commentid,
         // parentid: props.parentCommentId,
-        nickname: commentnickname,
-        content: commentcontent,
-      }),
-    });
+        nickname: commentnickname as string,
+        content: commentcontent as string,
+      },
+    };
+    const response = await ClientAPIReq(APIreq);
     if (response.ok) {
       alert("댓글이 작성되었습니다.");
       router.reload();

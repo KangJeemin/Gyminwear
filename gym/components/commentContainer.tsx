@@ -7,6 +7,8 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import useSession from "@/lib/useSession";
 import { useRouter } from "next/router";
+import ClientAPIReq from "@/lib/ClientAPIReq";
+
 import type {
   commentInfo,
   commentProps,
@@ -22,18 +24,16 @@ export default function CommentContainer(props: commentProps) {
     const data = new FormData(event.currentTarget);
     const { commentcontent } = Object.fromEntries(data.entries());
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/comment`, {
+    const APIreq = {
+      url: `${process.env.NEXT_PUBLIC_IP}/api/comment`,
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify({
+      BodyJSON: {
         postid: props.data[0].postid,
-        content: commentcontent,
+        content: commentcontent as string,
         nickname: session.nickname,
-      }),
-    });
+      },
+    };
+    const response = await ClientAPIReq(APIreq);
     if (response.ok) {
       alert("댓글이 작성되었습니다.");
       router.reload();

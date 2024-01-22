@@ -11,6 +11,7 @@ import useSession from "@/lib/useSession";
 import type { commentInfo, addChildComment } from "@/interface/board";
 import Modal from "./modal";
 import Container from "@mui/material/Container";
+import ClientAPIReq from "@/lib/ClientAPIReq";
 
 interface commnetComponent {
   data: commentInfo;
@@ -43,32 +44,29 @@ const Comment = (props: commnetComponent) => {
     const data = new FormData(event.currentTarget);
     const { commentcontent } = Object.fromEntries(data.entries());
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/comment`, {
+    const APIreq = {
+      url: `${process.env.NEXT_PUBLIC_IP}/api/comment`,
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+      BodyJSON: {
         commentid: props.data.commentid,
-        content: commentcontent,
-      }),
-    });
-
+        content: commentcontent as string,
+      },
+    };
+    const response = await ClientAPIReq(APIreq);
     if (response.ok) {
       alert("댓글이 수정되었습니다.");
       setCommentModify(false);
     }
   };
   const handleDeleteClick = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/comment`, {
+    const APIreq = {
+      url: `${process.env.NEXT_PUBLIC_IP}/api/comment`,
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+      BodyJSON: {
         commentid: props.data.commentid,
-      }),
-    });
+      },
+    };
+    const response = await ClientAPIReq(APIreq);
     if (response.ok) {
       alert("댓글이 삭제되었습니다.");
       router.reload();

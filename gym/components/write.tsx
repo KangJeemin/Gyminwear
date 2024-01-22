@@ -140,8 +140,8 @@ export default function Write(props: boardProps) {
       method: method,
       BodyJSON: {
         postid: method === "PUT" ? props.data[0].postid : null,
-        title: title,
-        nickname: nickname,
+        title: title as string,
+        nickname: nickname as string,
         content: changeMultipleImageSrc(content, newSrcarray, AWSurl),
       },
     };

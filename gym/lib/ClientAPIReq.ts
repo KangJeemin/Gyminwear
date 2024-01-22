@@ -5,7 +5,7 @@ interface UploadImage {
 }
 interface BodyJSON {
     postid?: number | null
-    title?: string;
+    title?: string,
     viewcount?: number;
     commentcount?: number;
     pagecount?: number;

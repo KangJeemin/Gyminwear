@@ -1,21 +1,21 @@
 
 export interface userInfo {
-  email:string,
-  name:string,
-  password:string,
-  nickname:string
+  email?:string,
+  name?:string,
+  password?:string,
+  nickname?:string
 }
 export interface readInfo {
-    postid: number;
-    title: string;
-    nickname: string;
-    content: string;
-    viewcount: number;
-    date: string;
-    commentcount: number;
+    postid?: number;
+    title?: string;
+    nickname?: string;
+    content?: string;
+    viewcount?: number;
+    date?: string;
+    commentcount?: number;
   };
 export interface boardInfo extends readInfo {
-    pagecount: number;
+    pagecount?: number;
   };
 
   export type boardProps = {
@@ -23,13 +23,13 @@ export interface boardInfo extends readInfo {
   };
 
 export interface commentInfo {
-  commentid: number;
-  parentcommentid: string | null;
-  postid: number;
-  nickname: string;
-  content: string;
-  date: string;
-  modifydate: string | null;
+  commentid?: number;
+  parentcommentid?: string | null;
+  postid?: number;
+  nickname?: string;
+  content?: string;
+  date?: string;
+  modifydate?: string | null;
 }
 export interface commentProps {
     data: Array<readInfo>;
@@ -40,6 +40,6 @@ export interface addChildComment extends commentInfo {
   }
 
 export interface commentWrite {
-    postid: number;
+    postid?: number;
     commentid?: number;
   }

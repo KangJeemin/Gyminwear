@@ -6,7 +6,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 export default async function POST(request:NextApiRequest,response:NextApiResponse) {
   if(request.method==="POST"){
     try {
-    const { filename, contentType } = await request.body
+    const { username } = await request.body
     const client = new S3Client({  
       credentials: {
         accessKeyId: process.env.AWS_ACCESS_KEY ? process.env.AWS_ACCESS_KEY : '' ,
@@ -17,7 +17,7 @@ export default async function POST(request:NextApiRequest,response:NextApiRespon
       })
     const { url, fields } = await createPresignedPost(client, {  
       Bucket: process.env.AWS_BUCKET_NAME ? process.env.AWS_BUCKET_NAME : '' ,
-      Key: uuidv4(),
+      Key: username+'/'+uuidv4(),
       Conditions: [
         ['content-length-range', 0, 50*1000*1000], // up to 50 MB
         ['starts-with', '$Content-Type', 'image/']

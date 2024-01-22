@@ -20,6 +20,7 @@ interface BodyJSON {
     nickname?:string
     filename?:string ,
     contentType?:string ,
+    username?:string,
 }
 
 interface Props {

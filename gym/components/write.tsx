@@ -99,15 +99,16 @@ export default function Write(props: boardProps) {
           url: `${process.env.NEXT_PUBLIC_IP}/api/upload`,
           method: "POST",
           BodyJSON: {
-            filename: blobData.name,
-            contentType: blobData.type,
+            username: session.nickname,
           },
         };
         const response = await ClientAPIReq(S3Fetch);
 
         if (response.ok) {
           const { url, fields } = await response.json();
+
           AWSurl = url;
+
           const formData = new FormData();
           Object.entries(fields).forEach(([key, value]) => {
             formData.append(key, value as string);

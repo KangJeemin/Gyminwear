@@ -10,6 +10,7 @@ import parse from "html-react-parser";
 import useSession from "@/lib/useSession";
 import DateTimeFormatterInBoard from "@/lib/dateTimeFommatterINBoard";
 import type { readInfo } from "@/interface/board";
+import ClientAPIReq from "@/lib/ClientAPIReq";
 
 interface readProps {
   data: Array<readInfo>;
@@ -21,15 +22,14 @@ export default function Read(props: readProps) {
   const router = useRouter();
 
   const handleSubmitDelete = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/board`, {
+    const APIReqObject = {
+      url: `${process.env.NEXT_PUBLIC_IP}/api/board`,
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+      BodyJSON: {
         postid: props.data[0].postid,
-      }),
-    });
+      },
+    };
+    const response = await ClientAPIReq(APIReqObject);
     if (response.ok) {
       alert("게시물이 삭제되었습니다.");
     }

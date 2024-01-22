@@ -1,27 +1,46 @@
 import type { userInfo,readInfo,boardInfo,commentInfo,commentWrite } from "@/interface/board"
-interface MethodType {
-    type: "GET" | "POST" | "PUT" | "DELETE" 
+interface UploadImage {
+    filename:string,
+    contentType:string,
 }
-interface BodyJSON extends userInfo,readInfo,boardInfo,commentInfo,commentWrite{}
+interface BodyJSON {
+    postid?: number | null
+    title?: string;
+    viewcount?: number;
+    commentcount?: number;
+    pagecount?: number;
+    commentid?: number;
+    parentcommentid?: string | null;
+    content?: string;
+    date?: string;
+    modifydate?: string | null;
+    email?:string,
+    name?:string,
+    password?:string,
+    nickname?:string
+    filename?:string ,
+    contentType?:string ,
+}
 
 interface Props {
     url:string,
-    method:MethodType,
+    // method:"GET" | "POST" | "PUT" | "DELETE",
+    method:string,
     BodyJSON:BodyJSON,
 }
-const ClientAPIReq = async (props:Props) =>{
-    if(props.method.type==="GET"){
-        const response = fetch(props.url)
+const ClientAPIReq = ({url,method,BodyJSON} : Props)  =>{
+    if(url==="GET"){
+        const response = fetch(url)
         return response
     }
     else{
-        const response = fetch(props.url,{
-            method:props.method.type,
+        const response = fetch(url,{
+            method:method,
             headers: {
                 "Content-Type": "application/json",
                 },
             body:JSON.stringify({
-                ...props.BodyJSON
+                ...BodyJSON
             })
         })
         return response;

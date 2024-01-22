@@ -12,6 +12,8 @@ import WestIcon from "@mui/icons-material/West";
 import useSession from "@/lib/useSession";
 import ReactQuill from "./quillWrapper";
 import type { boardProps } from "@/interface/board";
+import ClientAPIReq from "@/lib/ClientAPIReq";
+
 export default function Write(props: boardProps) {
   const [content, setContent] = React.useState<string>("");
   const [isModalOpen, setModalOpen] = React.useState<boolean>(false);
@@ -93,19 +95,15 @@ export default function Write(props: boardProps) {
       const blobData = await fetch(imageUrl).then((res) => res.blob());
       try {
         // AWS S3 bucket의 URL 주소 응답받기
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_IP}/api/upload`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              filename: blobData.name,
-              contentType: blobData.type,
-            }),
-          }
-        );
+        const S3Fetch = {
+          url: `${process.env.NEXT_PUBLIC_IP}/api/upload`,
+          method: "POST",
+          BodyJSON: {
+            filename: blobData.name,
+            contentType: blobData.type,
+          },
+        };
+        const response = await ClientAPIReq(S3Fetch);
 
         if (response.ok) {
           const { url, fields } = await response.json();
@@ -137,20 +135,18 @@ export default function Write(props: boardProps) {
       }
     }
     // 이미지를 버킷에 저장 후 데이터베이스에 작성 요청.
-    const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/board`, {
+    const APIreq = {
+      url: `${process.env.NEXT_PUBLIC_IP}/api/board`,
       method: method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // 게시물 작성일떄는 postid가 아직 없음.
+      BodyJSON: {
         postid: method === "PUT" ? props.data[0].postid : null,
         title: title,
         nickname: nickname,
         content: changeMultipleImageSrc(content, newSrcarray, AWSurl),
-      }),
-    });
-    if (response.ok) {
+      },
+    };
+    const responseAPI = await ClientAPIReq(APIreq);
+    if (responseAPI.ok) {
       alert("게시물이 작성되었습니다.");
       router.push(`${process.env.NEXT_PUBLIC_IP}/board?page=1`);
     }

@@ -41,7 +41,6 @@ jobs:
           platform: linux/amd64,linux/arm64
           push: true
           tags: public.ecr.aws/v4p4c1q3/buildx-test:latest
-        env:
           NEXT_PUBLIC_DATABASE_USERNAME: ${{ secrets.NEXT_PUBLIC_DATABASE_USERNAME }}
           NEXT_PUBLIC_DATABASE_PASSWAOD: ${{ secrets.NEXT_PUBLIC_DATABASE_PASSWAOD }}
           NEXT_PUBLIC_DATABASE_PORT: ${{ secrets.NEXT_PUBLIC_DATABASE_PASSWAOD }}"

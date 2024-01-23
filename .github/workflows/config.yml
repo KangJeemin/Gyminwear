@@ -68,7 +68,6 @@ jobs:
           script: |
 
             sudo docker stop public.ecr.aws/v4p4c1q3/buildx-test:latest
-            sudo docker rm public.ecr.aws/v4p4c1q3/buildx-test:latest
             sudo docker rmi public.ecr.aws/v4p4c1q3/buildx-test:latest
             sudo docker pull public.ecr.aws/v4p4c1q3/buildx-test:latest
-            sudo docker run -it --name public.ecr.aws/v4p4c1q3/buildx-test:latest -e TZ=Asia/Seoul --rm -p 3000:3000 public.ecr.aws/v4p4c1q3/buildx-test:latest
+            sudo docker run -d -e TZ=Asia/Seoul --rm -p 3000:3000 public.ecr.aws/v4p4c1q3/buildx-test:latest

@@ -15,7 +15,6 @@ jobs:
     env:
       AWS_EC2_REGION: ap-northeast-2
       ECR_REGION: us-east-1
-
       EC2_IP_ADDRESS: 13.209.12.181
 
     steps:
@@ -46,7 +45,7 @@ jobs:
         run: |
           aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/v4p4c1q3
           docker buildx create --name multi-arch-builder --driver docker-container --bootstrap --use
-          docker buildx build --platform linux/arm64,linux/amd64 -t $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY --push .
+          docker buildx build --build-arg NEXT_PUBLIC_DATABASE_USERNAME=${{ secrets.NEXT_PUBLIC_DATABASE_USERNAME }} NEXT_PUBLIC_DATABASE_PASSWAOD=${{ secrets.NEXT_PUBLIC_DATABASE_PASSWAOD }} NEXT_PUBLIC_DATABASE_PORT=${{ secrets.NEXT_PUBLIC_DATABASE_PASSWAOD }} NEXT_PUBLIC_DATABASE_HOST=${{ secrets.NEXT_PUBLIC_DATABASE_HOST }} NEXT_PUBLIC_DATABASE_DATABASE=${{ secrets.NEXT_PUBLIC_DATABASE_DATABASE }} NEXT_PUBLIC_IRON_SESSION_PASSWORD=${{ secrets.NEXT_PUBLIC_IRON_SESSION_PASSWORD }} NEXT_PUBLIC_IP=${{ secrets.NEXT_PUBLIC_IRON_SESSION_PASSWORD }} AWS_BUCKET_NAME=${{ secrets.AWS_BUCKET_NAME }} AWS_REGION=${{ secrets.AWS_REGION }} --platform linux/arm64,linux/amd64 -t $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY --push .
 
       - name: Deploy on EC2 instance
         uses: appleboy/ssh-action@v0.1.6
@@ -59,9 +58,11 @@ jobs:
           host: ${{ env.EC2_IP_ADDRESS }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+
           script: |
-            sudo docker stop $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:latest
-            sudo docker rm $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:latest
-            sudo docker rmi $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:latest
-            sudo docker pull $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:latest
-            sudo docker run -it --name $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:latest --rm -p 3000:3000 $ECR_REGISTRY/$ECR_REGISTRY_ALIAS/$ECR_REPOSITORY:latest
+
+            sudo docker stop public.ecr.aws/v4p4c1q3/buildx-test:latest
+            sudo docker rm public.ecr.aws/v4p4c1q3/buildx-test:latest
+            sudo docker rmi public.ecr.aws/v4p4c1q3/buildx-test:latest
+            sudo docker pull public.ecr.aws/v4p4c1q3/buildx-test:latest
+            sudo docker run -it --name public.ecr.aws/v4p4c1q3/buildx-test:latest --rm -p 3000:3000 public.ecr.aws/v4p4c1q3/buildx-test:latest

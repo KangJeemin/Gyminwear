@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY ./gym/package* .
 
-RUN npm install
+RUN npm install && npm install --global pm2
 
 COPY ./gym ./
 

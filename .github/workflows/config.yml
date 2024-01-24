@@ -51,6 +51,8 @@ jobs:
             IP: ${{ secrets.NEXT_PUBLIC_IP }}
             BUCKETNAME: ${{ secrets.AWS_BUCKET_NAME }}
             AWSREGION: ${{ secrets.AWS_REGION }}
+          script: |
+            echo env
         id: build-image
 
       - name: Deploy on EC2 instance

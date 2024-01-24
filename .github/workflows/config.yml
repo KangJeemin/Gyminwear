@@ -42,15 +42,15 @@ jobs:
           push: true
           tags: public.ecr.aws/v4p4c1q3/buildx-test:latest
           build-args: |
-            NEXT_PUBLIC_DATABASE_USERNAME: ${{ secrets.NEXT_PUBLIC_DATABASE_USERNAME }}
-            NEXT_PUBLIC_DATABASE_PASSWAOD: ${{ secrets.NEXT_PUBLIC_DATABASE_PASSWAOD }}
-            NEXT_PUBLIC_DATABASE_PORT: ${{ secrets.NEXT_PUBLIC_DATABASE_PASSWAOD }}
-            NEXT_PUBLIC_DATABASE_HOST: ${{ secrets.NEXT_PUBLIC_DATABASE_HOST }}
-            NEXT_PUBLIC_DATABASE_DATABASE: ${{ secrets.NEXT_PUBLIC_DATABASE_DATABASE }}
-            NEXT_PUBLIC_IRON_SESSION_PASSWORD: ${{ secrets.NEXT_PUBLIC_IRON_SESSION_PASSWORD }}
-            NEXT_PUBLIC_IP: ${{ secrets.NEXT_PUBLIC_IRON_SESSION_PASSWORD }}
-            AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
-            AWS_REGION: ${{ secrets.AWS_REGION }}
+            USERNAME: ${{ secrets.NEXT_PUBLIC_DATABASE_USERNAME }}
+            PASSWAOD: ${{ secrets.NEXT_PUBLIC_DATABASE_PASSWAOD }}
+            PORT: ${{ secrets.NEXT_PUBLIC_DATABASE_PASSWAOD }}
+            HOST: ${{ secrets.NEXT_PUBLIC_DATABASE_HOST }}
+            DATABASE: ${{ secrets.NEXT_PUBLIC_DATABASE_DATABASE }}
+            SESSION: ${{ secrets.NEXT_PUBLIC_IRON_SESSION_PASSWORD }}
+            IP: ${{ secrets.NEXT_PUBLIC_IRON_SESSION_PASSWORD }}
+            BUCKETNAME: ${{ secrets.AWS_BUCKET_NAME }}
+            AWSREGION: ${{ secrets.AWS_REGION }}
         id: build-image
 
       - name: Deploy on EC2 instance
@@ -71,3 +71,4 @@ jobs:
             sudo docker rmi public.ecr.aws/v4p4c1q3/buildx-test:latest
             sudo docker pull public.ecr.aws/v4p4c1q3/buildx-test:latest
             sudo docker run -d -e TZ=Asia/Seoul --rm -p 3000:3000 public.ecr.aws/v4p4c1q3/buildx-test:latest
+ㅋ

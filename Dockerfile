@@ -8,7 +8,7 @@ RUN npm install
 
 COPY ./gym ./
 
-ENV NEXT_PUBLIC_IP 강지민
+ARG NEXT_PUBLIC_IP=강지민
 
 # CMD ["pm2-runtime","start","npm","--","start"]
 CMD ["npm","run","start"]

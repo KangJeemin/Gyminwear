@@ -181,6 +181,7 @@ export default function SignUp() {
   return (
     <>
       <Head>
+        <title>헬스 짐웨어 | 운동복 모음 사이트</title>
         <meta
           name="description"
           content="짐인웨어에 회원가입하여 유저들과 소통해보세요!"

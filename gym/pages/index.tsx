@@ -2,17 +2,18 @@ import React from "react";
 import Head from "next/head";
 import PageNavigate from "@/components/PageNavigate";
 import ResponsiveAppBar from "@/components/appbar";
-import Miniboard from "@/components/miniboard";
 import useSession from "@/lib/useSession";
 import Pagedivide from "@/components/pagedivide";
 import Board from "@/components/board";
-import getMiniBoard from "@/pages/api/miniboard";
 import type { boardProps } from "@/interface/board";
-export const dynamic = "force-dynamic";
+import { GetServerSidePropsContext } from "next";
 
-export const getStaticProps = async () => {
-  const MiniBoard = await getMiniBoard();
-  const data = JSON.parse(MiniBoard);
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/miniboard`);
+  const data = await res.json();
+
   return {
     props: {
       data: data,
@@ -34,6 +35,7 @@ export default function Main(props: boardProps) {
   return (
     <>
       <Head>
+        <title>헬스 짐웨어 | 운동복 모음 사이트</title>
         <meta
           name="description"
           content="짐웨어 사이트들을 기억할 필요 없습니다. 짐인웨어에서 확인해보세요!"

@@ -7,12 +7,6 @@ import type { boardProps } from "@/interface/board";
 export default function index(props: boardProps) {
   return (
     <>
-      <Head>
-        <meta
-          name="description"
-          content="짐인웨어에 글을 작성하여 나만의 짐웨어를 알려주세요!"
-        />
-      </Head>
       <Write data={props.data}></Write>;
     </>
   );

@@ -14,6 +14,7 @@ export default function index(props: commentProps) {
   return (
     <>
       <Head>
+        <title>헬스 짐웨어 | 운동복 모음 사이트</title>
         <meta
           name="description"
           content="짐인웨어 유저들이 올린 게시물을 보고 소통해보세요!"

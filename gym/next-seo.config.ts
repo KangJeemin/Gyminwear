@@ -1,7 +1,6 @@
 import { DefaultSeoProps } from 'next-seo';
 
 const defaultSeo:DefaultSeoProps = {
-  title: "헬스 짐웨어 | 운동복 모음 사이트",
   canonical: "http://www.gyminwear.com",
   openGraph: {
     title:"헬스 짐웨어 | 운동복 모음 사이트",

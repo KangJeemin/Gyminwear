@@ -15,7 +15,7 @@ jobs:
     env:
       AWS_EC2_REGION: ap-northeast-2
       ECR_REGION: us-east-1
-      EC2_IP_ADDRESS: 52.78.188.39
+      EC2_IP_ADDRESS: 43.202.68.92
 
     steps:
       - name: Checkout
@@ -51,8 +51,6 @@ jobs:
             IP= ${{ secrets.NEXT_PUBLIC_IP }}
             BUCKETNAME= ${{ secrets.AWS_BUCKET_NAME }}
             AWSREGION= ${{ secrets.AWS_REGION }}
-          script: |
-            echo env
         id: build-image
 
       - name: Deploy on EC2 instance

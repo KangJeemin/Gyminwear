@@ -35,22 +35,42 @@ jobs:
           registry-type: public
 
       - name: Build, tag, and push image to Amazon ECR Puublic
+        env: |
+          USERNAME:${{ secrets.NEXT_PUBLIC_DATABASE_USERNAME }}
+          PASSWAOD:${{ secrets.NEXT_PUBLIC_DATABASE_PASSWAOD }}
+          PORT:${{ secrets.NEXT_PUBLIC_DATABASE_PORT }}
+          HOST:${{ secrets.NEXT_PUBLIC_DATABASE_HOST }}
+          DATABASE:${{ secrets.NEXT_PUBLIC_DATABASE_DATABASE }}
+          SESSION:${{ secrets.NEXT_PUBLIC_IRON_SESSION_PASSWORD }}
+          IP:${{ secrets.NEXT_PUBLIC_IP }}
+          BUCKETNAME:${{ secrets.AWS_BUCKET_NAME }}
+          AWSREGION:${{ secrets.AWS_REGION }}
         uses: docker/build-push-action@v5
+        run: |
+          echo "USERNAME=$USERNAME"
+          echo "PASSWAOD=$PASSWAOD"
+          echo "PORT=$PORT"
+          echo "HOST=$HOST"
+          echo "DATABASE=$DATABASE"
+          echo "SESSION=$SESSION"
+          echo "IP=$IP"
+          echo "BUCKETNAME=$BUCKETNAME"
+          echo "AWSREGION=$AWSREGION"
         with:
           context: .
           platform: linux/amd64,linux/arm64
           push: true
           tags: public.ecr.aws/v4p4c1q3/buildx-test:latest
           build-args: |
-            USERNAME= ${{ secrets.NEXT_PUBLIC_DATABASE_USERNAME }}
-            PASSWAOD= ${{ secrets.NEXT_PUBLIC_DATABASE_PASSWAOD }}
-            PORT= ${{ secrets.NEXT_PUBLIC_DATABASE_PORT }}
-            HOST= ${{ secrets.NEXT_PUBLIC_DATABASE_HOST }}
-            DATABASE= ${{ secrets.NEXT_PUBLIC_DATABASE_DATABASE }}
-            SESSION= ${{ secrets.NEXT_PUBLIC_IRON_SESSION_PASSWORD }}
-            IP= ${{ secrets.NEXT_PUBLIC_IP }}
-            BUCKETNAME= ${{ secrets.AWS_BUCKET_NAME }}
-            AWSREGION= ${{ secrets.AWS_REGION }}
+            USERNAME=$USERNAME
+            PASSWAOD=$PASSWAOD
+            PORT=$PORT 
+            HOST=$HOST 
+            DATABASE=$DATABASE 
+            SESSION=$SESSION 
+            IP=$IP 
+            BUCKETNAME=$BUCKETNAME 
+            AWSREGION=$AWSREGION
         id: build-image
 
       - name: Deploy on EC2 instance

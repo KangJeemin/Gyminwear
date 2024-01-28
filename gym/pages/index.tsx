@@ -40,6 +40,15 @@ export default function Main(props: boardProps) {
           name="description"
           content="짐인웨어에서 국내 짐웨어 브랜드들을 확인하고, 해당 짐웨어 판매 페이지로 이동하여 판매 상품들을 확안해 보세요. 국내의 많은 짐웨어 브랜드들을 제가 대신 기억해 드릴게요."
         />
+        <script type="application/ld+json">
+          {`
+            {
+          "@context" : "https://schema.org",
+          "@type" : "WebSite",
+          "name" : "짐인웨어",
+          "url" : "https://www.gyminwear.com/"
+            }`}
+        </script>
       </Head>
       <PageNavigate />
       <Pagedivide />

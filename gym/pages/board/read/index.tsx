@@ -4,13 +4,24 @@ import CommentContainer from "@/components/commentContainer";
 import useSession from "@/lib/useSession";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
-import type {
-  commentInfo,
-  commentProps,
-  addChildComment,
-} from "@/interface/board";
+import type { commentInfo, addChildComment } from "@/interface/board";
 
-export default function index(props: commentProps) {
+interface readInfo {
+  postid: number;
+  title: string;
+  nickname: string;
+  content: string;
+  viewcount: number;
+  date: string;
+  commentcount: number;
+}
+interface commentProps {
+  data: readInfo;
+  commentData: commentInfo;
+}
+
+function index({ data, commentData }: commentProps) {
+  const [commentRerender, setCommentRerender] = React.useState(0);
   return (
     <>
       <Head>
@@ -20,8 +31,12 @@ export default function index(props: commentProps) {
           content="짐인웨어 유저들이 올린 게시물을 보고 소통해보세요!"
         />
       </Head>
-      <Read data={props.data}></Read>
-      <CommentContainer data={props.data} commentData={props.commentData} />
+      <Read data={data}></Read>
+      <CommentContainer
+        data={data}
+        commentData={commentData}
+        setCommentRerender={setCommentRerender}
+      />
     </>
   );
 }
@@ -77,3 +92,4 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     };
   }
 }
+export default React.memo(index);

@@ -19,11 +19,15 @@ interface commnetComponent {
   parentComent: boolean;
   parentData?: addChildComment;
 }
-const Comment = (props: commnetComponent) => {
-  console.log("comment=", props);
+const Comment = ({
+  data,
+  postid,
+  parentComent,
+  parentData,
+}: commnetComponent) => {
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);
-  const [comment, setComment] = React.useState(props.data.content);
+  const [comment, setComment] = React.useState(data.content);
   const [commentModify, setCommentModify] = React.useState(false);
   const [isModalOpen, setModalOpen] = React.useState<boolean>(false);
   const router = useRouter();
@@ -41,14 +45,14 @@ const Comment = (props: commnetComponent) => {
       event.preventDefault();
     }
 
-    const data = new FormData(event.currentTarget);
-    const { commentcontent } = Object.fromEntries(data.entries());
+    const formData = new FormData(event.currentTarget);
+    const { commentcontent } = Object.fromEntries(formData.entries());
 
     const APIreq = {
       url: `${process.env.NEXT_PUBLIC_IP}/api/comment`,
       method: "PUT",
       BodyJSON: {
-        commentid: props.data.commentid,
+        commentid: data.commentid,
         content: commentcontent as string,
       },
     };
@@ -63,7 +67,7 @@ const Comment = (props: commnetComponent) => {
       url: `${process.env.NEXT_PUBLIC_IP}/api/comment`,
       method: "DELETE",
       BodyJSON: {
-        commentid: props.data.commentid,
+        commentid: data.commentid,
       },
     };
     const response = await ClientAPIReq(APIreq);
@@ -101,7 +105,7 @@ const Comment = (props: commnetComponent) => {
           borderRadius: "20px",
         }}
       >
-        {props.parentComent ? (
+        {parentComent ? (
           <Box
             sx={{
               width: "10%",
@@ -152,14 +156,14 @@ const Comment = (props: commnetComponent) => {
             display: "flex",
             flexDirection: "column",
             // justifyContent: "space-between",
-            width: props.parentComent ? "85%" : "80%",
+            width: parentComent ? "85%" : "80%",
             height: "auto",
             color: "#D9D9D9",
             borderTop: 1,
             borderRight: 1,
             borderBottom: 1,
             borderRadius: "0px 20px 20px 0px",
-            backgroundColor: props.parentComent ? "" : "#F5F5F5",
+            backgroundColor: parentComent ? "" : "#F5F5F5",
           }}
         >
           <Box
@@ -174,7 +178,7 @@ const Comment = (props: commnetComponent) => {
                 fontWeight: 700,
               }}
             >
-              {props.data.nickname}
+              {data.nickname}
             </Box>
 
             <Box
@@ -183,7 +187,7 @@ const Comment = (props: commnetComponent) => {
                 color: "#D9D9D9",
               }}
             >
-              <DateTimeFommaterINComment dateString={props.data.date} />
+              <DateTimeFommaterINComment dateString={data.date} />
             </Box>
           </Box>
           <Input
@@ -200,8 +204,8 @@ const Comment = (props: commnetComponent) => {
               outline: "none",
             }}
             placeholder="댓글은 300자까지 입력 가능합니다."
-            defaultValue={props.data.content}
-            value={commentModify ? null : props.data.content}
+            defaultValue={data.content}
+            value={commentModify ? null : data.content}
             onChange={(e) => setComment(e.target.value)}
             name="commentcontent"
           ></Input>
@@ -214,7 +218,7 @@ const Comment = (props: commnetComponent) => {
             <Box onClick={openComment}>답글쓰기</Box>
           </Box>
         </Box>
-        {session.nickname === props.data.nickname && (
+        {session.nickname === data.nickname && (
           <Box
             sx={{
               display: "flex",
@@ -309,12 +313,8 @@ const Comment = (props: commnetComponent) => {
       </Box>
       {isCommentOpen ? (
         <CommentWrtie
-          postid={props.data.postid}
-          commentid={
-            props.parentComent
-              ? props.data.commentid
-              : props.parentData?.commentid
-          }
+          postid={data.postid}
+          commentid={parentComent ? data.commentid : parentData?.commentid}
         />
       ) : null}
     </>

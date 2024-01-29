@@ -33,7 +33,7 @@ export interface commentInfo {
 }
 export interface commentProps {
     data: Array<readInfo>;
-    commentData: Array<addChildComment>;
+    // commentData: Array<addChildComment>;
   }
 export interface addChildComment extends commentInfo {
     child: Array<commentInfo>;

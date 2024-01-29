@@ -12,10 +12,15 @@ import DateTimeFormatterInBoard from "@/lib/dateTimeFommatterINBoard";
 import type { readInfo } from "@/interface/board";
 import ClientAPIReq from "@/lib/ClientAPIReq";
 
-interface readProps {
-  data: Array<readInfo>;
-}
-export default function Read(props: readProps) {
+export default function Read({
+  postid,
+  title,
+  nickname,
+  content,
+  viewcount,
+  date,
+  commentcount,
+}: readInfo) {
   const { session } = useSession();
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [isCommentOpen, setCommentlOpen] = React.useState(false);
@@ -26,7 +31,7 @@ export default function Read(props: readProps) {
       url: `${process.env.NEXT_PUBLIC_IP}/api/board`,
       method: "DELETE",
       BodyJSON: {
-        postid: props.data[0].postid,
+        postid: postid,
       },
     };
     const response = await ClientAPIReq(APIReqObject);
@@ -38,7 +43,7 @@ export default function Read(props: readProps) {
     // 데이터를 상태로 저장
     router.replace({
       pathname: "write",
-      query: { id: props.data[0].postid },
+      query: { id: postid },
     });
   };
   const openModal = () => {
@@ -88,7 +93,7 @@ export default function Read(props: readProps) {
           >
             <WestIcon />
           </Box>
-          {props.data[0].title}
+          {title}
         </Box>
 
         <Box
@@ -109,7 +114,7 @@ export default function Read(props: readProps) {
               fontSize: { xl: 17, xs: 10 },
             }}
           >
-            작성자:{props.data[0].nickname}
+            작성자:{nickname}
           </Box>
           <Box
             sx={{
@@ -117,7 +122,7 @@ export default function Read(props: readProps) {
               fontSize: { xl: 17, xs: 10 },
             }}
           >
-            조회수:{props.data[0].viewcount}
+            조회수:{viewcount}
           </Box>
           <Box
             sx={{
@@ -126,7 +131,7 @@ export default function Read(props: readProps) {
               display: "flex",
             }}
           >
-            <DateTimeFormatterInBoard dateString={props.data[0].date} />
+            <DateTimeFormatterInBoard dateString={date} />
           </Box>
         </Box>
       </Box>
@@ -173,9 +178,9 @@ export default function Read(props: readProps) {
           color: "black",
         }}
       >
-        {parse(props.data[0].content)}
+        {parse(content)}
       </Box>
-      {session.nickname === props.data[0].nickname ? (
+      {session.nickname === nickname ? (
         <>
           <Box sx={{ paddingTop: "10px", display: "flex" }}>
             <Box sx={{ width: { xl: "90%" } }}></Box>
@@ -201,7 +206,7 @@ export default function Read(props: readProps) {
           paddingBottom: "20px",
         }}
       >
-        댓글({props.data[0].commentcount})
+        댓글({commentcount})
       </Box>
     </DoubleContainer>
   );

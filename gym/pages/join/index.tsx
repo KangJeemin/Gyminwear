@@ -107,6 +107,8 @@ export default function SignUp() {
     nickname: string
   ) => {
     // 이메일 확인
+    console.log("checkemail=", checkemail);
+
     const validateEmail = async () => {
       //이메일 형식 판단
       const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -131,7 +133,7 @@ export default function SignUp() {
       return password === password2nd;
     };
     if (!checkemail) {
-      alert("중복된 닉네임이 존재합니다. 다른 닉네임으로 재설정해주세요.");
+      alert("중복된 이메일이 존재합니다. 다른 이메일으로 재설정해주세요.");
       return false;
     }
     if (!validateEmail()) {

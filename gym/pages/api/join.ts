@@ -3,34 +3,46 @@ import type { userInfo } from '@/interface/board';
 const db = require('@/lib/connectMysql');
 const crypto = require('crypto');
 
+
+
 export default async function Join(req : NextApiRequest, res : NextApiResponse){
-    if (req.method === 'GET'){
-      try{
-        db.query(
-            `SELECT nickname FROM users WHERE nickname='${req.query.nickname}';`
-        ,(error:any,result:Array<string>)=>{
-            if(error){
-                console.error("닉네임 중복 체크중 오류 발생");
-                res.status(200).json(false);  
-                return false
-                
-            } else{
-              if(result.length>0){
-                console.log("g");
-                res.status(200).json(false);  
-              }
-              else{
-                res.status(200).json(true);  
-              }
+  const {nickname,email} = req.query
+  
+
+  function queryInGetMethod(query:string|string[],table:string|string[],column:string|string[]) {
+    try{
+      db.query(
+          `SELECT ${column} FROM ${table} WHERE ${column}='${query}';`
+      ,(error:Error,result:Array<string>)=>{
+          if(error){
+              console.error("중복 체크중 오류 발생");
+              res.status(200).json(false);  
+              return false
               
+          } else{
+            if(result.length>0){
+              res.status(200).json(true);  
             }
-        })
-      }
-      catch (error) {
-        console.error("데이터 베이스에 유저 정보 저장 중 에러 발생")
-        res.status(500).json({ error: '서버 오류' });  
-      }
+            else{
+              res.status(200).json(false);  
+            }
+            
+          }
+      })
     }
+    catch (error) {
+      console.error("데이터 베이스에 유저 정보 저장 중 에러 발생")
+      res.status(500).json({ error: '서버 오류' });  
+    }
+  }
+  if (req.method === 'GET'){
+    if(nickname){
+      queryInGetMethod(nickname,'users','nickname')
+    }
+    else if(email){
+      queryInGetMethod(email,'users','email')
+    }
+  }
     
     else if (req.method === 'POST') {
         const requestData:userInfo = req.body;

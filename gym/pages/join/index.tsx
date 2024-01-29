@@ -50,22 +50,19 @@ export default function SignUp() {
     },
     []
   );
-  const checkemailF = async (
-    e: React.InputHTMLAttributes<HTMLAnchorElement>
-  ) => {
+  const checkemailF = async (e: React.FocusEvent<HTMLInputElement>) => {
     try {
-      // const response = await fetch(
-      //   `${process.env.NEXT_PUBLIC_IP}/api/join?email=${e.value}`
-      // );
-      // if (response.ok) {
-      //   const responseData = await response.json();
-      //   if (!responseData.result) {
-      //     setChackEmail(false);
-      //   } else {
-      //     setChackEmail(true);
-      //   }
-      // }
-      console.log(checkemail);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_IP}/api/join?email=${e.target.value}`
+      );
+      if (response.ok) {
+        const responseData = await response.json();
+        if (!responseData) {
+          setChackEmail(true);
+        } else {
+          setChackEmail(false);
+        }
+      }
     } catch {
       console.error("이메일 중복 판단 fecthing 실패.");
       setChackEmail(false);
@@ -88,10 +85,11 @@ export default function SignUp() {
       );
       if (response.ok) {
         const responseData = await response.json();
-        if (!responseData) {
+        if (responseData) {
           alert("중복된 닉네임이 존재합니다. 다른 닉네임으로 재설정해주세요.");
           setCheckNickName(false);
         } else {
+          alert("이 닉네임은 사용이 가능 합니다.");
           setCheckNickName(true);
         }
       } else {
@@ -134,6 +132,7 @@ export default function SignUp() {
     };
     if (!checkemail) {
       alert("중복된 닉네임이 존재합니다. 다른 닉네임으로 재설정해주세요.");
+      return false;
     }
     if (!validateEmail()) {
       return false;

@@ -41,6 +41,7 @@ export default function SignUp() {
   // const [userPassword, setUserPassword] = React.useState<string>("");
   const [checkNickName, setCheckNickName] = React.useState<boolean>(false);
   const [nickNameWord, setNickNameWord] = React.useState<string>("");
+  const [checkemail, setChackEmail] = React.useState<boolean>(false);
   const router = useRouter();
 
   const typingNickName = React.useCallback(
@@ -49,7 +50,28 @@ export default function SignUp() {
     },
     []
   );
-  const checkNickNameF = React.useCallback(async () => {
+  const checkemailF = async (
+    e: React.InputHTMLAttributes<HTMLAnchorElement>
+  ) => {
+    try {
+      // const response = await fetch(
+      //   `${process.env.NEXT_PUBLIC_IP}/api/join?email=${e.value}`
+      // );
+      // if (response.ok) {
+      //   const responseData = await response.json();
+      //   if (!responseData.result) {
+      //     setChackEmail(false);
+      //   } else {
+      //     setChackEmail(true);
+      //   }
+      // }
+      console.log(checkemail);
+    } catch {
+      console.error("이메일 중복 판단 fecthing 실패.");
+      setChackEmail(false);
+    }
+  };
+  const checkNickNameF = async () => {
     const regex = /^[a-zA-Z0-9가-힣]+$/;
     if (
       !(
@@ -70,7 +92,6 @@ export default function SignUp() {
           alert("중복된 닉네임이 존재합니다. 다른 닉네임으로 재설정해주세요.");
           setCheckNickName(false);
         } else {
-          alert("이 닉네임은 사용이 가능 합니다.");
           setCheckNickName(true);
         }
       } else {
@@ -78,7 +99,7 @@ export default function SignUp() {
         return;
       }
     }
-  }, [nickNameWord]);
+  };
 
   const checkJoin = (
     email: string,
@@ -88,29 +109,15 @@ export default function SignUp() {
     nickname: string
   ) => {
     // 이메일 확인
-    const validateEmail = React.useCallback(async () => {
+    const validateEmail = async () => {
       //이메일 형식 판단
       const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
       if (!emailRegex.test(email)) {
         alert("올바른 이메일 형식을 입력해주세요.");
         return false;
       }
-      try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/join`);
-        if (response.ok) {
-          const responseData = await response.json();
-          if (!responseData.result) {
-            alert(
-              "중복된 이메일이 존재합니다. 다른 이메일 주소를 입력해주세요."
-            );
-            return false;
-          }
-        }
-      } catch {
-        console.error("이메일 중복 판단 fecthing 실패.");
-        return false;
-      }
-    }, []);
+      //이메일 형식 중복 판단.
+    };
     //이름 확인 (한글로만 3자)
     const validateName = () => {
       const nameRegex = /^[가-힣]+$/;
@@ -125,8 +132,10 @@ export default function SignUp() {
     const passwordDoubleCheck = () => {
       return password === password2nd;
     };
+    if (!checkemail) {
+      alert("중복된 닉네임이 존재합니다. 다른 닉네임으로 재설정해주세요.");
+    }
     if (!validateEmail()) {
-      alert("올바른 이메일 형식을 입력해주세요.😅");
       return false;
     }
 
@@ -157,13 +166,6 @@ export default function SignUp() {
     const { email, name, password, password2nd, nickname } = Object.fromEntries(
       data.entries()
     );
-    //이거 왜 있어야하는거지?
-    // const userInfo = {
-    //   email,
-    //   name,
-    //   password,
-    //   nickname,
-    // };
     //회원가입 조건이 만족한다면 true 불만족 한다면 false
     const sendUserinfo = checkJoin(
       email.toString(),
@@ -248,6 +250,7 @@ export default function SignUp() {
                     label="이메일주소"
                     name="email"
                     autoComplete="email"
+                    onBlur={checkemailF}
                   />
                 </Grid>
                 <Grid item xs={12}>

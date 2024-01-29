@@ -37,17 +37,19 @@ function Copyright(props: any) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const [userInfo, setUserInfo] = React.useState<boolean>(false);
-  const [userPassword, setUserPassword] = React.useState<string>("");
+  // const [userInfo, setUserInfo] = React.useState<boolean>(false);
+  // const [userPassword, setUserPassword] = React.useState<string>("");
   const [checkNickName, setCheckNickName] = React.useState<boolean>(false);
   const [nickNameWord, setNickNameWord] = React.useState<string>("");
-
   const router = useRouter();
 
-  const typingNickName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNickNameWord(e.target.value);
-  };
-  const checkNickNameF = async () => {
+  const typingNickName = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setNickNameWord(e.target.value);
+    },
+    []
+  );
+  const checkNickNameF = React.useCallback(async () => {
     const regex = /^[a-zA-Z0-9가-힣]+$/;
     if (
       !(
@@ -76,7 +78,8 @@ export default function SignUp() {
         return;
       }
     }
-  };
+  }, [nickNameWord]);
+
   const checkJoin = (
     email: string,
     name: string,
@@ -85,10 +88,11 @@ export default function SignUp() {
     nickname: string
   ) => {
     // 이메일 확인
-    const validateEmail = () => {
+    const validateEmail = React.useCallback(() => {
+      //이메일 형식 판단
       const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
       return emailRegex.test(email);
-    };
+    }, []);
     //이름 확인 (한글로만 3자)
     const validateName = () => {
       const nameRegex = /^[가-힣]+$/;
@@ -135,12 +139,13 @@ export default function SignUp() {
     const { email, name, password, password2nd, nickname } = Object.fromEntries(
       data.entries()
     );
-    const userInfo = {
-      email,
-      name,
-      password,
-      nickname,
-    };
+    //이거 왜 있어야하는거지?
+    // const userInfo = {
+    //   email,
+    //   name,
+    //   password,
+    //   nickname,
+    // };
     //회원가입 조건이 만족한다면 true 불만족 한다면 false
     const sendUserinfo = checkJoin(
       email.toString(),
@@ -157,7 +162,13 @@ export default function SignUp() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(userInfo),
+          body: JSON.stringify({
+            email,
+            name,
+            password,
+            password2nd,
+            nickname,
+          }),
         });
         if (response.ok) {
           // 성공적인 응답 처리

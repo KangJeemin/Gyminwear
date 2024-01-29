@@ -88,10 +88,28 @@ export default function SignUp() {
     nickname: string
   ) => {
     // 이메일 확인
-    const validateEmail = React.useCallback(() => {
+    const validateEmail = React.useCallback(async () => {
       //이메일 형식 판단
       const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-      return emailRegex.test(email);
+      if (!emailRegex.test(email)) {
+        alert("올바른 이메일 형식을 입력해주세요.");
+        return false;
+      }
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_IP}/api/join`);
+        if (response.ok) {
+          const responseData = await response.json();
+          if (!responseData.result) {
+            alert(
+              "중복된 이메일이 존재합니다. 다른 이메일 주소를 입력해주세요."
+            );
+            return false;
+          }
+        }
+      } catch {
+        console.error("이메일 중복 판단 fecthing 실패.");
+        return false;
+      }
     }, []);
     //이름 확인 (한글로만 3자)
     const validateName = () => {

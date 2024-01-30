@@ -217,7 +217,7 @@ const Comment = ({
               marginTop: "10px",
             }}
           >
-            <Box onClick={openComment}>답글쓰기</Box>
+            {!commentModify && <Box onClick={openComment}>답글쓰기</Box>}
           </Box>
         </Box>
         {session.nickname === data.nickname && (
@@ -235,8 +235,11 @@ const Comment = ({
                   sx={{
                     minWidth: "10px",
                     height: { xs: "40px", xl: "100%" },
+                    fontSize: 10,
                   }}
-                  onClick={() => setCommentModify(true)}
+                  onClick={() => {
+                    setCommentModify(true);
+                  }}
                 >
                   수정
                 </Button>
@@ -246,14 +249,18 @@ const Comment = ({
                   sx={{
                     minWidth: "10px",
                     height: { xs: "40px", xl: "100%" },
+                    fontSize: 10,
                   }}
-                  onClick={openModal}
+                  onClick={() => setModalOpen((preState) => !preState)}
                 >
                   삭제
                 </Button>
               </>
             )}
-            <Modal isOpen={isModalOpen} onClose={closeModal}>
+            <Modal
+              isOpen={isModalOpen}
+              onClose={() => setModalOpen((preState) => !preState)}
+            >
               <Container>
                 <h3>댓글을 삭제하시겠습니까?</h3>
                 <Box

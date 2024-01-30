@@ -12,20 +12,17 @@ import DateTimeFormatterInBoard from "@/lib/dateTimeFommatterINBoard";
 import type { readInfo } from "@/interface/board";
 import ClientAPIReq from "@/lib/ClientAPIReq";
 
-export default function Read({
-  postid,
-  title,
-  nickname,
-  content,
-  viewcount,
-  date,
-  commentcount,
-}: readInfo) {
+interface readProps {
+  data: Array<readInfo>;
+}
+
+function Read({ data }: readProps) {
   const { session } = useSession();
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [isCommentOpen, setCommentlOpen] = React.useState(false);
   const router = useRouter();
-
+  const { postid, title, nickname, content, viewcount, date, commentcount } =
+    data[0];
   const handleSubmitDelete = async () => {
     const APIReqObject = {
       url: `${process.env.NEXT_PUBLIC_IP}/api/board`,
@@ -211,3 +208,4 @@ export default function Read({
     </DoubleContainer>
   );
 }
+export default React.memo(Read);

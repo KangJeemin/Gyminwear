@@ -8,14 +8,21 @@ import Box from "@mui/material/Box";
 import useSession from "@/lib/useSession";
 import { useRouter } from "next/router";
 import ClientAPIReq from "@/lib/ClientAPIReq";
+import type { commentInfo, addChildComment, readInfo } from "@/interface/board";
 
-import type {
-  commentInfo,
-  commentProps,
-  addChildComment,
-} from "@/interface/board";
+interface commentProps {
+  data: Array<readInfo>;
+  commentData: Array<addChildComment>;
+  setCommentRerender: Function;
+}
 
-export default function CommentContainer(props: commentProps) {
+export default function CommentContainer({
+  data,
+  commentData,
+  setCommentRerender,
+}: commentProps) {
+  const { postid, title, nickname, content, viewcount, date, commentcount } =
+    data[0];
   const { session } = useSession();
   const router = useRouter();
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -28,7 +35,7 @@ export default function CommentContainer(props: commentProps) {
       url: `${process.env.NEXT_PUBLIC_IP}/api/comment`,
       method: "POST",
       BodyJSON: {
-        postid: props.data[0].postid,
+        postid: postid,
         content: commentcontent as string,
         nickname: session.nickname,
       },
@@ -41,19 +48,19 @@ export default function CommentContainer(props: commentProps) {
   };
   return (
     <DoubleContainer>
-      {props.commentData.map((object: addChildComment, index: number) => (
+      {commentData.map((object: addChildComment, index: number) => (
         <>
           <Comment
             key={index}
             data={object}
-            postid={props.data[0].postid}
+            postid={postid}
             parentComent={true}
           />
           {object.child.map((innerObject: commentInfo, innerIndex: number) => (
             <Comment
               key={innerIndex}
               data={innerObject}
-              postid={props.data[0].postid}
+              postid={postid}
               parentComent={false}
               parentData={object}
             />

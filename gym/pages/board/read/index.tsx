@@ -4,23 +4,15 @@ import CommentContainer from "@/components/commentContainer";
 import useSession from "@/lib/useSession";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
-import type { commentInfo, addChildComment } from "@/interface/board";
+import type { readInfo, commentInfo, addChildComment } from "@/interface/board";
 
-interface readInfo {
-  postid: number;
-  title: string;
-  nickname: string;
-  content: string;
-  viewcount: number;
-  date: string;
-  commentcount: number;
-}
-interface commentProps {
-  data: readInfo;
-  commentData: commentInfo;
+interface readPageProps {
+  data: Array<readInfo>;
+  commentData: Array<addChildComment>;
 }
 
-function index({ data, commentData }: commentProps) {
+function index({ data, commentData }: readPageProps) {
+  React.useState(() => {});
   const [commentRerender, setCommentRerender] = React.useState(0);
   return (
     <>
@@ -42,7 +34,6 @@ function index({ data, commentData }: commentProps) {
 }
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { id } = context.query;
-
   try {
     // Parallel fetch using Promise.all
     const [boardRes, commentRes] = await Promise.all([

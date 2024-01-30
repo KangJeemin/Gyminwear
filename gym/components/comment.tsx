@@ -79,14 +79,6 @@ const Comment = ({
     }
     setIsDeleted(true);
   };
-  const openModal = () => {
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
   // 만약 삭제된 상태라면 null을 반환하여 렌더링하지 않음
   if (isDeleted) {
     return null;
@@ -285,7 +277,7 @@ const Comment = ({
                     component="label"
                     variant="contained"
                     size="small"
-                    onClick={closeModal}
+                    onClick={() => setModalOpen((preState) => !preState)}
                   >
                     아니오
                   </Button>

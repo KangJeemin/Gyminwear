@@ -65,17 +65,23 @@ export default function Quillwrapper(props: any) {
   ); // Note the correct placement of parentheses
 
   return (
-    <ReactQuill
-      value={props.content}
-      onChange={props.setContent}
-      modules={modules}
-      formats={formats}
-      theme="snow"
-      placeholder="내용을 입력하세요."
-      style={{
-        width: "100%",
-        height: "auto",
-      }}
-    />
+    <>
+      <meta
+        name="viewport"
+        content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
+      />
+      <ReactQuill
+        value={props.content}
+        onChange={props.setContent}
+        modules={modules}
+        formats={formats}
+        theme="snow"
+        placeholder="내용을 입력하세요."
+        style={{
+          width: "100%",
+          height: "auto",
+        }}
+      />
+    </>
   );
 }

@@ -88,7 +88,7 @@ export default function SignIn() {
         if (responseData.result) {
           router.push(`${process.env.NEXT_PUBLIC_IP}/`);
         } else {
-          alert("로그인에 실패했습니다.");
+          alert("로그인에 실패했습니다. 비밀번호를 다시 입력해 주세요.");
         }
       } else {
         // 오류 응답 처리

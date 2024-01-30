@@ -16,7 +16,7 @@ interface commentProps {
   setCommentRerender: Function;
 }
 
-export default function CommentContainer({
+function CommentContainer({
   data,
   commentData,
   setCommentRerender,
@@ -27,7 +27,6 @@ export default function CommentContainer({
   const router = useRouter();
   const handleSubmitWrite = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     const data = new FormData(event.currentTarget);
     const { commentcontent } = Object.fromEntries(data.entries());
 
@@ -55,6 +54,7 @@ export default function CommentContainer({
             data={object}
             postid={postid}
             parentComent={true}
+            setCommentRerender={setCommentRerender}
           />
           {object.child.map((innerObject: commentInfo, innerIndex: number) => (
             <Comment
@@ -63,6 +63,7 @@ export default function CommentContainer({
               postid={postid}
               parentComent={false}
               parentData={object}
+              setCommentRerender={setCommentRerender}
             />
           ))}
         </>
@@ -137,3 +138,4 @@ export default function CommentContainer({
     </DoubleContainer>
   );
 }
+export default React.memo(CommentContainer);

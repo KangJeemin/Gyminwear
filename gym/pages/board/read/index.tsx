@@ -12,8 +12,8 @@ interface readPageProps {
 }
 
 function index({ data, commentData }: readPageProps) {
-  React.useState(() => {});
   const [commentRerender, setCommentRerender] = React.useState(0);
+  React.useEffect(() => {});
   return (
     <>
       <Head>

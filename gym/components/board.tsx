@@ -12,6 +12,7 @@ import { extractFirstImageUrl2 } from "@/lib/extractFirstImageUrl";
 import useSession from "@/lib/useSession";
 import gyminwearImageLogo from "@/public/image/gyminwearLogo.png";
 import type { boardInfo, boardProps } from "@/interface/board";
+import board from "@/pages/board";
 
 interface boardComponentProps extends boardProps {
   mapcount: number;
@@ -27,7 +28,6 @@ export default function Board(props: boardComponentProps) {
     }
   };
   const handlePageChange = (page: number) => {
-    console.log("page=", page);
     router.push(`${process.env.NEXT_PUBLIC_IP}/board?page=${page}`);
   };
   return (
@@ -69,6 +69,9 @@ export default function Board(props: boardComponentProps) {
                   md={5}
                   key={index}
                   onClick={() => {
+                    fetch(
+                      `${process.env.NEXT_PUBLIC_IP}/api/boardCount?id=${object.postid}`
+                    );
                     router.push(
                       `${process.env.NEXT_PUBLIC_IP}/board/read?id=${object.postid}`
                     );

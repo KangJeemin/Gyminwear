@@ -296,6 +296,7 @@ const Comment = ({
                   sx={{
                     minWidth: "10px",
                     height: { xs: "50%", xl: "100%" },
+                    fontSize: 10,
                   }}
                 >
                   완료
@@ -306,6 +307,7 @@ const Comment = ({
                   sx={{
                     minWidth: "10px",
                     height: { xs: "50%", xl: "100%" },
+                    fontSize: 10,
                   }}
                   onClick={() => setCommentModify(false)}
                 >

@@ -29,15 +29,15 @@ const Comment = ({
 }: commnetComponent) => {
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);
-  const [comment, setComment] = React.useState(data.content);
+  const [comment, setComment] = React.useState(data);
   const [commentModify, setCommentModify] = React.useState(false);
   const [isModalOpen, setModalOpen] = React.useState<boolean>(false);
   const router = useRouter();
   const { session } = useSession();
-  // useEffect(() => {
-  //   console.log(props.parentComentId);
-  // });
-  useEffect(() => {}, [commentModify]);
+  useEffect(() => {
+    console.log("data=", comment);
+  });
+
   const openComment = () => {
     isCommentOpen ? setCommentOpen(false) : setCommentOpen(true);
   };
@@ -46,10 +46,9 @@ const Comment = ({
     if (commentModify) {
       event.preventDefault();
     }
-
     const formData = new FormData(event.currentTarget);
     const { commentcontent } = Object.fromEntries(formData.entries());
-
+    console.log("formData=", formData);
     const APIreq = {
       url: `${process.env.NEXT_PUBLIC_IP}/api/comment`,
       method: "PUT",
@@ -62,6 +61,10 @@ const Comment = ({
     if (response.ok) {
       alert("댓글이 수정되었습니다.");
       setCommentModify(false);
+      setComment({
+        ...comment,
+        // content: commentcontent
+      });
     }
   };
   const handleDeleteClick = async () => {
@@ -75,7 +78,7 @@ const Comment = ({
     const response = await ClientAPIReq(APIreq);
     if (response.ok) {
       alert("댓글이 삭제되었습니다.");
-      router.reload();
+      setCommentModify(false);
     }
     setIsDeleted(true);
   };

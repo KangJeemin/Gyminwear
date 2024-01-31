@@ -42,7 +42,7 @@ function CommentContainer({
     const response = await ClientAPIReq(APIreq);
     if (response.ok) {
       alert("댓글이 작성되었습니다.");
-      router.reload();
+      setCommentRerender((pre) => pre + 1);
     }
   };
   return (

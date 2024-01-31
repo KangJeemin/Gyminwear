@@ -42,7 +42,7 @@ function CommentContainer({
     const response = await ClientAPIReq(APIreq);
     if (response.ok) {
       alert("댓글이 작성되었습니다.");
-      setCommentRerender((pre) => pre + 1);
+      router.push(`${process.env.NEXT_PUBLIC_IP}/board/read?id=${postid}`);
     }
   };
   return (

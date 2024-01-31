@@ -29,14 +29,13 @@ const Comment = ({
 }: commnetComponent) => {
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);
-  const [comment, setComment] = React.useState(data);
+  const [commentInfo, setCommentInfo] = React.useState(data);
+  const [comment, setComment] = React.useState(data.content);
   const [commentModify, setCommentModify] = React.useState(false);
   const [isModalOpen, setModalOpen] = React.useState<boolean>(false);
   const router = useRouter();
   const { session } = useSession();
-  useEffect(() => {
-    console.log("data=", comment);
-  });
+  useEffect(() => {}, [commentInfo]);
 
   const openComment = () => {
     isCommentOpen ? setCommentOpen(false) : setCommentOpen(true);
@@ -48,12 +47,12 @@ const Comment = ({
     }
     const formData = new FormData(event.currentTarget);
     const { commentcontent } = Object.fromEntries(formData.entries());
-    console.log("formData=", formData);
+
     const APIreq = {
       url: `${process.env.NEXT_PUBLIC_IP}/api/comment`,
       method: "PUT",
       BodyJSON: {
-        commentid: data.commentid,
+        commentid: commentInfo.commentid,
         content: commentcontent as string,
       },
     };
@@ -61,10 +60,11 @@ const Comment = ({
     if (response.ok) {
       alert("댓글이 수정되었습니다.");
       setCommentModify(false);
-      setComment({
-        ...comment,
-        // content: commentcontent
+      setCommentInfo({
+        ...commentInfo,
+        content: commentcontent as string,
       });
+      console.log("commentInfo=", commentInfo);
     }
   };
   const handleDeleteClick = async () => {
@@ -72,13 +72,14 @@ const Comment = ({
       url: `${process.env.NEXT_PUBLIC_IP}/api/comment`,
       method: "DELETE",
       BodyJSON: {
-        commentid: data.commentid,
+        commentid: commentInfo.commentid,
       },
     };
     const response = await ClientAPIReq(APIreq);
     if (response.ok) {
       alert("댓글이 삭제되었습니다.");
       setCommentModify(false);
+      // 댓글 객체 삭제함
     }
     setIsDeleted(true);
   };
@@ -175,7 +176,7 @@ const Comment = ({
                 fontWeight: 700,
               }}
             >
-              {data.nickname}
+              {commentInfo.nickname}
             </Box>
 
             <Box
@@ -184,7 +185,7 @@ const Comment = ({
                 color: "#D9D9D9",
               }}
             >
-              <DateTimeFommaterINComment dateString={data.date} />
+              <DateTimeFommaterINComment dateString={commentInfo.date} />
             </Box>
           </Box>
           <Input
@@ -201,8 +202,8 @@ const Comment = ({
               outline: "none",
             }}
             placeholder="댓글은 300자까지 입력 가능합니다."
-            defaultValue={data.content}
-            value={commentModify ? null : data.content}
+            defaultValue={commentInfo.content}
+            value={commentModify ? null : commentInfo.content}
             onChange={(e) => setComment(e.target.value)}
             name="commentcontent"
           ></Input>
@@ -215,7 +216,7 @@ const Comment = ({
             {!commentModify && <Box onClick={openComment}>답글쓰기</Box>}
           </Box>
         </Box>
-        {session.nickname === data.nickname && (
+        {session.nickname === commentInfo.nickname && (
           <Box
             sx={{
               display: "flex",

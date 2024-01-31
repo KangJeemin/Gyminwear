@@ -43,7 +43,7 @@ export default function SignIn() {
   React.useEffect(() => {
     // 로그인이 되어 있을 경우 전 페이지로 이동
     if (session.isLoggedIn) {
-      router.push(`${process.env.NEXT_PUBLIC_IP}/`);
+      router.replace(`${process.env.NEXT_PUBLIC_IP}/`);
     }
   });
   if (isLoading) {
@@ -85,7 +85,7 @@ export default function SignIn() {
         const responseData = await response.json();
         // 응답 결과가 true일 경우 회원가입 성공 했다는 알림과 함께 로그인 페이지로 이동.
         if (responseData.result) {
-          router.push(`${process.env.NEXT_PUBLIC_IP}/`);
+          router.back();
         } else {
           alert("로그인에 실패했습니다. 비밀번호를 다시 입력해 주세요.");
         }
@@ -172,8 +172,13 @@ export default function SignIn() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/join" variant="body2">
-                    {"회원이 아니신가요?"}
+                  <Link
+                    variant="body2"
+                    onClick={() => {
+                      router.replace(`${process.env.NEXT_PUBLIC_IP}/join`);
+                    }}
+                  >
+                    {"회원가입"}
                   </Link>
                 </Grid>
               </Grid>

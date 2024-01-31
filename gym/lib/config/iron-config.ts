@@ -13,11 +13,11 @@ export interface SessionData {
 
 export const defaultSession: SessionData = {
   email:"",
-  // nickname: "",
-  // isLoggedIn: false,
+  nickname: "",
+  isLoggedIn: false,
   // 모바일 버전 테스트 하기 위한 세션 강제 설정
-  nickname: "강지민",
-  isLoggedIn: true,
+  // nickname: "강지민",
+  // isLoggedIn: true,
   remember:""
 };
 

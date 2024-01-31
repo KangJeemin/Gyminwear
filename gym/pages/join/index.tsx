@@ -196,7 +196,7 @@ export default function SignUp() {
           const responseData = await response.json();
           // 응답 결과가 true일 경우 회원가입 성공 했다는 알림과 함께 로그인 페이지로 이동.
           if (responseData.result) {
-            router.push(`${process.env.NEXT_PUBLIC_IP}/login`);
+            router.replace(`${process.env.NEXT_PUBLIC_IP}/login`);
             alert("회원가입에 성공했습니다.");
           }
         } else {

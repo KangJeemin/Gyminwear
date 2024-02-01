@@ -177,7 +177,7 @@ function Read({ data }: readProps) {
       >
         {parse(content)}
       </Box>
-      {session.nickname === nickname ? (
+      {session.nickname === nickname || session.auth === "y" ? (
         <>
           <Box sx={{ paddingTop: "10px", display: "flex" }}>
             <Box sx={{ width: { xl: "90%" } }}></Box>

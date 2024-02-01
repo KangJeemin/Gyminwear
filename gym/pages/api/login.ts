@@ -14,6 +14,7 @@ const crypto = require('crypto');
 interface LoginInfo extends userInfo {  
     remember:string,
     salt:string
+    auth:string
 }
 
 
@@ -40,7 +41,7 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
     // 현재 비밀번호와 데이터베이스에 저장되어 있는 salt 값으로 비밀번호 조회하기
       try{
         db.query(
-            `SELECT password,salt,nickname FROM users WHERE email='${email}'; `
+            `SELECT password,salt,nickname,auth FROM users WHERE email='${email}'; `
         ,async(error:Error,result:Array<LoginInfo>)=>{
             if(error){
                 console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")
@@ -57,12 +58,13 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
                   session.isLoggedIn = true;
                   session.nickname = result[0].nickname;
                   session.remember = remember;
-                  
+                  session.auth= result[0].auth
+
+              
                   await session.save();
                   // sleep으로 login 함수에 promise 던져주는듯
                   res.status(200).json({ result:true }); 
                   await sleep(250);
-                  
                   
                   hashPassword=''; 
                   console.log('서버session=',session);

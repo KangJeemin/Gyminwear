@@ -214,7 +214,8 @@ const Comment = ({
             {!commentModify && <Box onClick={openComment}>답글쓰기</Box>}
           </Box>
         </Box>
-        {session.nickname === commentInfo.nickname && (
+        {(session.nickname === commentInfo.nickname ||
+          session.auth === "y") && (
           <Box
             sx={{
               display: "flex",

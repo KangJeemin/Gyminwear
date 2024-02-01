@@ -52,7 +52,7 @@ export default function Board(props: boardComponentProps) {
             router.push(`${process.env.NEXT_PUBLIC_IP}/board?page=1`);
           }}
         >
-          게시판
+          <h2>게시판</h2>
         </Box>
         <Box sx={{ flexGrow: 1 }}>
           <Grid

@@ -1,14 +1,11 @@
 import { SessionOptions } from "iron-session";
 import useSession from "@/lib/useSession";
-
-
-
-
 export interface SessionData {
   email:string;
   nickname: string;
   isLoggedIn: boolean;
   remember:string;
+  auth:string;
 }
 
 export const defaultSession: SessionData = {
@@ -18,7 +15,8 @@ export const defaultSession: SessionData = {
   // 모바일 버전 테스트 하기 위한 세션 강제 설정
   // nickname: "강지민",
   // isLoggedIn: true,
-  remember:""
+  remember:"",
+  auth:'',
 };
 
 export const sessionOptions: SessionOptions = {

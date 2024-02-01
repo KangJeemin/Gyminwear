@@ -39,7 +39,6 @@ export default function AutoGrid() {
         <Box className={styles.Text1}>
           <h2>짐웨어 바로가기</h2>
         </Box>
-
         <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
           <Box gridColumn="span 4">
             <Item>
@@ -240,7 +239,7 @@ export default function AutoGrid() {
           <Box gridColumn="span 4">
             <Item>
               <Link href="https://brunk.kr/">
-                <p>VENAFIT</p>
+                <p>BRUNK</p>
               </Link>
             </Item>
           </Box>
@@ -248,6 +247,55 @@ export default function AutoGrid() {
             <Item>
               <Link href="https://smartstore.naver.com/addtobag">
                 <p>하드지머</p>
+              </Link>
+            </Item>
+          </Box>
+          <Box gridColumn="span 4">
+            <Item>
+              <Link href="https://go4itmall.com/">
+                <p>고포잇</p>
+              </Link>
+            </Item>
+          </Box>
+          <Box gridColumn="span 4">
+            <Item>
+              <Link href="https://developofficial.com/">
+                <p>develop</p>
+              </Link>
+            </Item>
+          </Box>
+          <Box gridColumn="span 4">
+            <Item>
+              <Link href="https://defeat.co.kr/">
+                <p>DEFEAT</p>
+              </Link>
+            </Item>
+          </Box>
+          <Box gridColumn="span 4">
+            <Item>
+              <Link href="https://hugvone.co.kr/">
+                <p>허그본</p>
+              </Link>
+            </Item>
+          </Box>
+          <Box gridColumn="span 4">
+            <Item>
+              <Link href="https://m.valiant.kr/">
+                <p>발리안트</p>
+              </Link>
+            </Item>
+          </Box>
+          <Box gridColumn="span 4">
+            <Item>
+              <Link href="https://smartstore.naver.com/beastmode/?nt_source=googlewebsitetraffic&nt_medium=social&gclid=Cj0KCQiAn-2tBhDVARIsAGmStVm9NyLf6H8aPYAXxMVS6L2Kbz84v3eoTMYMPXzW6XprVvX8FVA3TpwaAjSlEALw_wcB">
+                <p>BSMD</p>
+              </Link>
+            </Item>
+          </Box>
+          <Box gridColumn="span 4">
+            <Item>
+              <Link href="https://khakigrado.com/">
+                <p>카키그라도</p>
               </Link>
             </Item>
           </Box>

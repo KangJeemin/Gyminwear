@@ -16,11 +16,7 @@ function index({ data, commentData }: readPageProps) {
   const router = useRouter();
   const [commentRerender, setCommentRerender] = React.useState(0);
   const [readRerender, setReadRerender] = React.useState(0);
-  React.useEffect(() => {
-    router.push(
-      `${process.env.NEXT_PUBLIC_IP}/board/read?id=${data[0].postid}`
-    );
-  }, [commentRerender]);
+
   return (
     <>
       <Head>

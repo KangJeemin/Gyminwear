@@ -48,19 +48,15 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
                 res.status(200).json({ result:false }); 
                 return false
             } else{
-                let DbPassword= await result[0].password;
-                let salt= await result[0].salt;
-                let hashPassword = crypto.createHash("sha512").update(password + salt).digest("hex");     
+                let hashPassword = crypto.createHash("sha512").update(password + result[0].salt).digest("hex");     
                 
                 //데이터 베이스에 있던 해쉬암호와 새로 받은 해쉬 암호와 비교하여 똑같으면 프론트에 true를 줌 (로그인 성공)
-                if(DbPassword==hashPassword){
+                if(result[0].password==hashPassword){
                   session.email = email;
                   session.isLoggedIn = true;
                   session.nickname = result[0].nickname;
                   session.remember = remember;
                   session.auth= result[0].auth
-
-              
                   await session.save();
                   // sleep으로 login 함수에 promise 던져주는듯
                   res.status(200).json({ result:true }); 

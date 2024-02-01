@@ -13,14 +13,9 @@ import type { commentInfo, addChildComment, readInfo } from "@/interface/board";
 interface commentProps {
   data: Array<readInfo>;
   commentData: Array<addChildComment>;
-  setCommentRerender: Function;
 }
 
-function CommentContainer({
-  data,
-  commentData,
-  setCommentRerender,
-}: commentProps) {
+function CommentContainer({ data, commentData }: commentProps) {
   const { postid, title, nickname, content, viewcount, date, commentcount } =
     data[0];
   const { session } = useSession();
@@ -54,7 +49,6 @@ function CommentContainer({
             data={object}
             postid={postid}
             parentComent={true}
-            setCommentRerender={setCommentRerender}
           />
           {object.child.map((innerObject: commentInfo, innerIndex: number) => (
             <Comment
@@ -63,7 +57,6 @@ function CommentContainer({
               postid={postid}
               parentComent={false}
               parentData={object}
-              setCommentRerender={setCommentRerender}
             />
           ))}
         </>

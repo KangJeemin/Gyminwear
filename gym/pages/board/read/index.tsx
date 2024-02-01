@@ -5,7 +5,6 @@ import useSession from "@/lib/useSession";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import type { readInfo, commentInfo, addChildComment } from "@/interface/board";
-import { useRouter } from "next/router";
 
 interface readPageProps {
   data: Array<readInfo>;
@@ -13,10 +12,6 @@ interface readPageProps {
 }
 
 function index({ data, commentData }: readPageProps) {
-  const router = useRouter();
-  const [commentRerender, setCommentRerender] = React.useState(0);
-  const [readRerender, setReadRerender] = React.useState(0);
-
   return (
     <>
       <Head>
@@ -26,12 +21,8 @@ function index({ data, commentData }: readPageProps) {
           content="짐인웨어 유저들이 올린 게시물을 보고 소통해보세요!"
         />
       </Head>
-      <Read data={data} setReadRerender={setReadRerender}></Read>
-      <CommentContainer
-        data={data}
-        commentData={commentData}
-        setCommentRerender={setCommentRerender}
-      />
+      <Read data={data}></Read>
+      <CommentContainer data={data} commentData={commentData} />
     </>
   );
 }

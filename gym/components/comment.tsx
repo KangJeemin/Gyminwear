@@ -18,14 +18,12 @@ interface commnetComponent {
   postid: number;
   parentComent: boolean;
   parentData?: addChildComment;
-  setCommentRerender: Function;
 }
 const Comment = ({
   data,
   postid,
   parentComent,
   parentData,
-  setCommentRerender,
 }: commnetComponent) => {
   const [isDeleted, setIsDeleted] = React.useState(false);
   const [isCommentOpen, setCommentOpen] = React.useState(false);

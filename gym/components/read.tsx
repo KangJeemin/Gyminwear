@@ -14,10 +14,9 @@ import ClientAPIReq from "@/lib/ClientAPIReq";
 
 interface readProps {
   data: Array<readInfo>;
-  setReadRerender: Function;
 }
 
-function Read({ data, setReadRerender }: readProps) {
+function Read({ data }: readProps) {
   const { session } = useSession();
   const [isModalOpen, setModalOpen] = React.useState(false);
   const [isCommentOpen, setCommentlOpen] = React.useState(false);

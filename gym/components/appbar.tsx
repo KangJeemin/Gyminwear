@@ -57,13 +57,14 @@ function ResponsiveAppBar() {
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
-            variant="h6"
+            variant="h1"
             noWrap
             component="a"
             href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
+              fontSize: "1rem",
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
@@ -126,12 +127,13 @@ function ResponsiveAppBar() {
           </Box>
           {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
           <Typography
-            variant="h5"
+            variant="h1"
             noWrap
             component="a"
             href="/"
             sx={{
               mr: 2,
+              fontSize: "1rem",
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",

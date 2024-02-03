@@ -1,9 +1,9 @@
 import Grid from "@mui/material/Grid";
-import LoginContainer from "@/components/join/LoginContainer";
-import Normal from "@/components/join/Normal";
-import Google from "@/components/join/Google";
-import Kakao from "@/components/join/Kakao";
-import Naver from "@/components/join/Naver";
+import LoginContainer from "@/components/login/LoginContainer";
+import Normal from "@/components/login/Normal";
+import Google from "@/components/login/Google";
+import Kakao from "@/components/login/Kakao";
+import Naver from "@/components/login/Naver";
 const index = () => {
   return (
     <LoginContainer>

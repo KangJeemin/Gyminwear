@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from 'axios'
+import { useRouter } from "next/router";
 
 
 const GOOGLE_TOKEN_URL = 'https://oauth2.googleapis.com/token';
@@ -8,8 +9,8 @@ const GOOGLE_USERINFO_URL = 'https://www.googleapis.com/oauth2/v2/userinfo'
 const GOOGLE_SIGNUP_REDIRECT_URI = 'http://localhost:3000/api/oauth/google'
 const GOOGLE_SIGNUP_REDIRECT_URI2 = 'http://localhost:3000/login/oauth/google'
 
+
 export default async function google(request: NextApiRequest, response: NextApiResponse) {
-    
     const {code}=request.query;
     const res = await axios.post(GOOGLE_TOKEN_URL, {
         // x-www-form-urlencoded(body)
@@ -25,7 +26,7 @@ export default async function google(request: NextApiRequest, response: NextApiR
             Authorization:`Bearer ${res.data.access_token}`,
         },  
     })
-
-    return response.status(200).json({data:res2.data});
+    console.log("이제 라우트 해준다")
+    return response.redirect(307,'http://localhost:3000')
     
 }

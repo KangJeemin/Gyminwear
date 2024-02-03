@@ -20,6 +20,7 @@
     "@nestjs/common": "^10.0.5",
     "@nestjs/core": "^10.0.5",
     "@nestjs/platform-express": "^10.0.5",
+    "axios": "^1.6.7",
     "react-router-dom": "^6.14.1"
   }
 }

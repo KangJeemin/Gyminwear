@@ -1,4 +1,4 @@
-
+import { redirect } from 'next/navigation'
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from 'axios'
 
@@ -20,13 +20,12 @@ export default async function google(request: NextApiRequest, response: NextApiR
         grant_type: 'authorization_code',
     });
     
-    const res2 = await axios.post(GOOGLE_USERINFO_URL,{
+    const res2 = await axios.get(GOOGLE_USERINFO_URL,{
         headers:{
             Authorization:`Bearer ${res.data.access_token}`,
-        },
-        body:{
-            redirect_uri: GOOGLE_SIGNUP_REDIRECT_URI2,
-        }
+        },  
     })
-    console.log('res2=',res2.data)
+
+    return response.status(200).json({data:res2.data});
+    
 }

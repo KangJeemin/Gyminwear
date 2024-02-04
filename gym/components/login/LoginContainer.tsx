@@ -47,7 +47,7 @@ const LoginContainer: React.FC<{ children: React.ReactNode }> = ({
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              <span style={{ color: "black" }}>회원가입</span>
+              <span style={{ color: "black" }}>로그인 및 회원가입</span>
             </Typography>
             {children}
           </Box>

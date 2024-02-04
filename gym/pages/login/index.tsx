@@ -4,9 +4,20 @@ import LoginContainer from "@/components/login/LoginContainer";
 import Login from "@/components/login/Login";
 import Box from "@mui/material/Box";
 import { useRouter } from "next/router";
-import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
-import NaverIcon from "@/public/image/btnG_아이콘원형.png";
+import Image from "next/image";
+import Naver from "../../public/image/naver_login.png";
+import Kakao from "../../public/image/kakao_login.png";
+import Google from "../../public/image/google_login.png";
+import Paper from "@mui/material/Paper";
+import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  textAlign: "center",
+  height: 60,
+  lineHeight: "60px",
+}));
 
 export default function index() {
   const router = useRouter();
@@ -21,16 +32,11 @@ export default function index() {
       </Head>
       <LoginContainer>
         <Login />
-        <Box>소셜 네트워크로 회원가입 및 일반 회원가입</Box>
-        <Stack direction="row" spacing={6}>
-          <Avatar
-            alt="네이버 이미지"
-            src="@/public/image/btnG_아이콘원형.png"
-          />
-          <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-          <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-          <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-        </Stack>
+        {/* <Box>소셜 네트워크로 회원가입 및 일반 회원가입</Box> */}
+        {/*         
+          <Image src={Google} alt="소셜 회사별 이미지"></Image>
+          <Image src={Kakao} alt="소셜 회사별 이미지"></Image>
+          <Image src={Naver} alt="소셜 회사별 이미지"></Image> */}
       </LoginContainer>
     </>
   );

@@ -3,11 +3,13 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import useSession from "@/lib/useSession";
 import { Router, useRouter } from "next/router";
+import Image from "next/image";
+import Naver from "../../public/image/naver_login.png";
+import Kakao from "../../public/image/kakao_login.png";
+import Google from "../../public/image/google_login.png";
 
 export default function Login() {
   const { session, isLoading, login } = useSession();
@@ -105,6 +107,15 @@ export default function Login() {
           sx={{ mt: 3, mb: 2 }}
         >
           로그인
+        </Button>
+        <Button fullWidth sx={{ mt: 3, mb: 2 }}>
+          <Image src={Google} alt="소셜 회사별 이미지"></Image>
+        </Button>
+        <Button fullWidth sx={{ mt: 3, mb: 2 }}>
+          <Image src={Kakao} alt="소셜 회사별 이미지"></Image>
+        </Button>
+        <Button fullWidth sx={{ mt: 3, mb: 2 }}>
+          <Image src={Naver} alt="소셜 회사별 이미지"></Image>
         </Button>
       </Box>
     </>

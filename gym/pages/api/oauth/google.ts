@@ -1,16 +1,38 @@
-import { redirect } from 'next/navigation'
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from 'axios'
-import { useRouter } from "next/router";
-
+import { getIronSession } from "iron-session";
+import {
+  defaultSession,
+  sessionOptions,
+  sleep,
+  SessionData,
+} from "@/lib/config/iron-config";
+interface email {
+    email:string
+    nickname:string
+}
+import ModalContainer from "@/components/modal";
 
 const GOOGLE_TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const GOOGLE_USERINFO_URL = 'https://www.googleapis.com/oauth2/v2/userinfo'
 const GOOGLE_SIGNUP_REDIRECT_URI = 'http://localhost:3000/api/oauth/google'
-const GOOGLE_SIGNUP_REDIRECT_URI2 = 'http://localhost:3000/login/oauth/google'
+const db = require('@/lib/connectMysql');
 
 
 export default async function google(request: NextApiRequest, response: NextApiResponse) {
+    //소셜 로그인의 쿠키 주기는 어떻게 해야하지? 히루?
+    const modifiedSessionOptions = {
+        ...sessionOptions,
+        cookieOptions: {
+          ...sessionOptions.cookieOptions,
+          maxAge:60*60*24 ,
+        },
+      };
+    const session = await getIronSession<SessionData>(
+        request,
+        response,
+        modifiedSessionOptions,
+      );
     const {code}=request.query;
     const res = await axios.post(GOOGLE_TOKEN_URL, {
         // x-www-form-urlencoded(body)
@@ -26,7 +48,36 @@ export default async function google(request: NextApiRequest, response: NextApiR
             Authorization:`Bearer ${res.data.access_token}`,
         },  
     })
-    console.log("이제 라우트 해준다")
-    return response.redirect(307,'http://localhost:3000')
-    
+    //토큰으로부터 OAUTH 정보 받아왔을떄 실행.
+    if(res2.data.verified_email){
+        try{
+            db.query(
+                `SELECT nickname FROM users WHERE email='${res2.data.email}'; `
+            ,async(error:Error,result:Array<email>)=>{
+                if(error){
+                    console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")
+                    alert("사용자 정보 조회중 오류 발생, 관리자에게 문의 하세요")
+                    response.redirect(403,`${process.env.NEXT_PUBLIC_IP}`)
+                    return false
+                } else{
+                    if(result){
+                        console.log(result)
+                        session.email = res2.data.email;
+                        session.nickname = result[0].nickname;
+                        session.auth= "google"
+                        await session.save();
+                        await sleep(250);
+                        //Return 안 넣어주면 리다이렉트 안됨
+                        // 어디로 리다이렉트 해줘야하지?
+                        return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}`)
+                    }
+                }
+            })
+          }
+          catch (error) {
+            console.error("데이터 베이스에 유저 정보 저장 중 에러 발생")
+            alert("사용자 정보 조회중 오류 발생, 관리자에게 문의 하세요")
+            response.redirect(403,`${process.env.NEXT_PUBLIC_IP}`)
+          }
+    }
 }

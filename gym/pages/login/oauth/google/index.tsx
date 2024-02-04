@@ -13,13 +13,15 @@ function index(request: NextApiRequest, response: NextApiResponse) {
   const GoogleOauthClientId = process.env.NEXT_PUBLIC_Google_OAuth_Client_Id;
   const GoogleOauthPassword = process.env.GoogleOauthPassword;
   const GoogleOauthAPI = process.env.GoogleOauthAPI;
+  // const GoogleScope = "https://www.googleapis.com/auth/drive.metadata.readonly";
+  const GoogleScope = "email profile";
 
   return (
     <>
       <div
         onClick={() => {
           router.push(
-            `${googleAuthURL}?client_id=${GoogleOauthClientId}&redirect_uri=${redirect_uri}&response_type=code&scope=email profile`
+            `${googleAuthURL}?client_id=${GoogleOauthClientId}&redirect_uri=${redirect_uri}&response_type=code&scope=${GoogleScope}`
           );
         }}
       >

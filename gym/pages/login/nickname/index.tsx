@@ -1,6 +1,6 @@
 import * as React from "react";
-import SetNickName from "@/components/login/SetNickName";
+import Nickname from "@/components/login/Nickname";
 
 export default function index() {
-  return <SetNickName></SetNickName>;
+  return <Nickname></Nickname>;
 }

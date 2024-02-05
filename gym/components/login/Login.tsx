@@ -14,6 +14,10 @@ import Google from "../../public/image/google_login.png";
 export default function Login() {
   const { session, isLoading, login } = useSession();
   const router = useRouter();
+  const googleAuthURL = "https://accounts.google.com/o/oauth2/v2/auth";
+  const redirect_uri = "http://localhost:3000/api/oauth/google";
+  const GoogleOauthClientId = process.env.NEXT_PUBLIC_Google_OAuth_Client_Id;
+  const GoogleScope = "email profile";
   React.useEffect(() => {
     // 로그인이 되어 있을 경우 전 페이지로 이동
     if (session.isLoggedIn) {
@@ -108,7 +112,15 @@ export default function Login() {
         >
           로그인
         </Button>
-        <Button fullWidth sx={{ mt: 3, mb: 2 }}>
+        <Button
+          fullWidth
+          sx={{ mt: 3, mb: 2 }}
+          onClick={() => {
+            router.push(
+              `${googleAuthURL}?client_id=${GoogleOauthClientId}&redirect_uri=${redirect_uri}&response_type=code&scope=${GoogleScope}`
+            );
+          }}
+        >
           <Image src={Google} alt="소셜 회사별 이미지"></Image>
         </Button>
         <Button fullWidth sx={{ mt: 3, mb: 2 }}>

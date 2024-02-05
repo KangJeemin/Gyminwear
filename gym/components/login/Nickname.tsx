@@ -4,6 +4,8 @@ import Modal from "@/components/modal";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 
 type TextFieldColor =
   | "default"
@@ -17,16 +19,22 @@ type TextFieldColor =
 
 export default function SetNickName() {
   const [isModalOpen, setModalOpen] = React.useState(true);
+  const [joinCheck, setJoinCheck] = React.useState<boolean>(false);
   const [nickname, setNickName] = React.useState("");
+  const router = useRouter();
+  const params = useSearchParams();
+  const email = params.get("email");
   const [nicknameFiledColor, setNicknameFiledColor] =
     React.useState<TextFieldColor>(undefined);
   const closeModal = React.useCallback(() => {
     setModalOpen(false);
   }, []);
-  const initializeTextFiledColor = React.useCallback(
+
+  const initializeCheck = React.useCallback(
     (e: React.KeyboardEvent<HTMLDivElement>) => {
       if (e.key === "Backspace") {
         setNicknameFiledColor(undefined);
+        setJoinCheck(false);
       }
     },
     []
@@ -37,39 +45,66 @@ export default function SetNickName() {
     },
     []
   );
-  async function checkNickName() {
+  const checkNickName = React.useCallback(async () => {
     const regex = /^[a-zA-Z0-9가-힣]+$/;
     if (
       !(nickname.length >= 3 && nickname.length <= 12 && regex.test(nickname))
     ) {
-      alert("닉네임은 영어 또는 한글로 3~12자 이내로 입력해주세요.😭");
+      alert("닉네임은 영어 또는 한글로 3~12자 이내로 입력해주세요.");
       setNicknameFiledColor("warning");
       return false;
+      // 닉네임 검증 단계 마치면 중복 확인 시작
+    } else {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_IP}/api/join?nickname=${nickname}`
+      );
+      if (response.ok) {
+        const responseData = await response.json();
+        if (responseData) {
+          alert("중복된 닉네임이 존재합니다. 다른 닉네임으로 재설정해주세요.");
+          setNicknameFiledColor("warning");
+          return;
+        } else {
+          alert("이 닉네임은 사용이 가능 합니다.");
+          setJoinCheck(true);
+        }
+      } else {
+        alert("닉네임 중복 검사 중 오류가 발생했습니다. 재시도 해주세요.");
+        return;
+      }
     }
-  }
+  }, [nickname]);
 
-  async function handleSubmit() {
+  const handleSubmit = React.useCallback(async () => {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_IP}/api/join?nickname=${nickname}`
+      `${process.env.NEXT_PUBLIC_IP}/api/oauth/member`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          nickname: nickname,
+        }),
+      }
     );
+    console.log("respnse=", response);
+    //   회원정보 저장 후 어디로 redirect 시켜주지?
     if (response.ok) {
       const responseData = await response.json();
       if (responseData) {
-        alert("중복된 닉네임이 존재합니다. 다른 닉네임으로 재설정해주세요.");
-        setNicknameFiledColor("warning");
-      } else {
-        alert("이 닉네임은 사용이 가능 합니다.");
-        setNicknameFiledColor("success");
+        router.push(`${process.env.NEXT_PUBLIC_IP}`);
       }
-    } else {
-      alert("닉네임 중복 검사 중 오류가 발생했습니다. 재시도 해주세요.");
-      return;
     }
-  }
+  }, [email, nickname]);
 
   return (
     <Modal isOpen={isModalOpen} onClose={closeModal}>
       <Box
+        component="form"
+        noValidate
+        onSubmit={handleSubmit}
         sx={{
           width: { xs: "300x", md: "600px" },
           height: { xs: "400px", md: "600px" },
@@ -80,9 +115,6 @@ export default function SetNickName() {
         }}
       >
         <Box
-          component="form"
-          noValidate
-          onSubmit={handleSubmit}
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -105,16 +137,10 @@ export default function SetNickName() {
               id="outlined-multiline-flexible"
               label="닉네임(3~12자)"
               //State의 변수를 그대로 대입하려 했는데 타입 오류 발생
-              color={
-                nicknameFiledColor === "warning"
-                  ? "warning"
-                  : nicknameFiledColor === "success"
-                  ? "success"
-                  : undefined
-              }
+              color={nicknameFiledColor === "warning" ? "warning" : undefined}
               multiline
               fullWidth
-              onKeyDown={initializeTextFiledColor}
+              onKeyDown={initializeCheck}
               maxRows={1}
               name="nickname"
               value={nickname}
@@ -139,7 +165,11 @@ export default function SetNickName() {
             </Button>
           </Grid>
         </Grid>
-        <Button variant="contained" disabled={true}>
+        <Button
+          variant="contained"
+          type="submit"
+          disabled={joinCheck ? false : true}
+        >
           완료
         </Button>
       </Box>

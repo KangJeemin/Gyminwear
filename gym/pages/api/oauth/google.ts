@@ -11,7 +11,6 @@ interface email {
     email:string
     nickname:string
 }
-import ModalContainer from "@/components/modal";
 
 const GOOGLE_TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const GOOGLE_USERINFO_URL = 'https://www.googleapis.com/oauth2/v2/userinfo'
@@ -60,7 +59,7 @@ export default async function google(request: NextApiRequest, response: NextApiR
                     response.redirect(403,`${process.env.NEXT_PUBLIC_IP}`)
                     return false
                 } else{
-                    if(result){
+                    if(result[0]){
                         console.log(result)
                         session.email = res2.data.email;
                         session.nickname = result[0].nickname;
@@ -70,6 +69,10 @@ export default async function google(request: NextApiRequest, response: NextApiR
                         //Return 안 넣어주면 리다이렉트 안됨
                         // 어디로 리다이렉트 해줘야하지?
                         return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}`)
+                    }
+                    else{
+                        //회원정보 없으면 닉네임 설정 페이지로 이동 
+                        return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}/login/nickname?email=${res2.data.email}`)
                     }
                 }
             })

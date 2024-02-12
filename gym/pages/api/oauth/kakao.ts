@@ -14,7 +14,7 @@ interface email {
 }
 
 const Kakao_TOKEN_URL = 'https://kauth.kakao.com/oauth/token';
-const GOOGLE_USERINFO_URL = 'https://www.googleapis.com/oauth2/v2/userinfo'
+const KAKAO_USER_INFO = 'https://kapi.kakao.com/v2/user/me'
 const Kakao_SIGNUP_REDIRECT_URI = 'http://localhost:3000/api/oauth/kakao'
 const db = require('@/lib/connectMysql');
 
@@ -47,50 +47,47 @@ export default async function google(request: NextApiRequest, response: NextApiR
         },  
     });
     
-    if(res){
-        console.log('res=',res)
-    }
-    
-    const res2 = await axios.get(GOOGLE_USERINFO_URL,{
-        headers:{
-            Authorization:`Bearer ${res.data.access_token}`,
-        },  
+    const res2 = await axios.get(KAKAO_USER_INFO,{
+        headers: {
+            Authorization: 'Bearer ' + `${res.data.access_token}`,
+            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+          },
     })
     //토큰으로부터 OAUTH 정보 받아왔을떄 실행.
     if(res2){
-        // console.log('res2=',res2)
-        // try{
-        //     db.query(
-        //         `SELECT nickname FROM users WHERE email='${res2.data.email}'; `
-        //     ,async(error:Error,result:Array<email>)=>{
-        //         if(error){
-        //             console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")
-        //             alert("사용자 정보 조회중 오류 발생, 관리자에게 문의 하세요")
-        //             response.redirect(403,`${process.env.NEXT_PUBLIC_IP}`)
-        //             return false
-        //         } else{
-        //             if(result[0]){
-        //                 console.log(result)
-        //                 session.email = res2.data.email;
-        //                 session.nickname = result[0].nickname;
-        //                 session.auth= "google"
-        //                 await session.save();
-        //                 await sleep(250);
-        //                 //Return 안 넣어주면 리다이렉트 안됨
-        //                 // 어디로 리다이렉트 해줘야하지?
-        //                 return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}`)
-        //             }
-        //             else{
-        //                 //회원정보 없으면 닉네임 설정 페이지로 이동 
-        //                 return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}/login/nickname?email=${res2.data.email}`)
-        //             }
-        //         }
-        //     })
-        //   }
-        //   catch (error) {
-        //     console.error("데이터 베이스에 유저 정보 저장 중 에러 발생")
-        //     alert("사용자 정보 조회중 오류 발생, 관리자에게 문의 하세요")
-        //     response.redirect(403,`${process.env.NEXT_PUBLIC_IP}`)
-        //   }
+        console.log('res2=',res2)
+        try{
+            db.query(
+                `SELECT nickname FROM users WHERE email='${res2.data.kakao_account.email}'; `
+            ,async(error:Error,result:Array<email>)=>{
+                if(error){
+                    console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")
+                    alert("사용자 정보 조회중 오류 발생, 관리자에게 문의 하세요")
+                    response.redirect(403,`${process.env.NEXT_PUBLIC_IP}`)
+                    return false
+                } else{
+                    if(result[0]){
+                        console.log(result)
+                        session.email = res2.data.email;
+                        session.nickname = result[0].nickname;
+                        session.auth= "kakao"
+                        await session.save();
+                        await sleep(250);
+                        //Return 안 넣어주면 리다이렉트 안됨
+                        // 어디로 리다이렉트 해줘야하지?
+                        return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}`)
+                    }
+                    else{
+                        //회원정보 없으면 닉네임 설정 페이지로 이동 
+                        return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}/login/nickname?email=${res2.data.email}`)
+                    }
+                }
+            })
+          }
+          catch (error) {
+            console.error("데이터 베이스에 유저 정보 저장 중 에러 발생")
+            alert("사용자 정보 조회중 오류 발생, 관리자에게 문의 하세요")
+            response.redirect(403,`${process.env.NEXT_PUBLIC_IP}`)
+          }
     }
 }

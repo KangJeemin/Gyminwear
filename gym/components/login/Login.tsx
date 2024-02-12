@@ -14,10 +14,15 @@ import Google from "../../public/image/google_login.png";
 export default function Login() {
   const { session, isLoading, login } = useSession();
   const router = useRouter();
+  //google
   const googleAuthURL = "https://accounts.google.com/o/oauth2/v2/auth";
   const redirect_uri = "http://localhost:3000/api/oauth/google";
   const GoogleOauthClientId = process.env.NEXT_PUBLIC_Google_OAuth_Client_Id;
   const GoogleScope = "email profile";
+  //kakao
+  const REDIRECT_URI = "http://localhost:3000/api/oauth/kakao";
+  const REST_API_KEY = process.env.NEXT_PUBLIC_Kakao_OAuth_Client_Id;
+
   React.useEffect(() => {
     // 로그인이 되어 있을 경우 전 페이지로 이동
     if (session.isLoggedIn) {
@@ -123,7 +128,15 @@ export default function Login() {
         >
           <Image src={Google} alt="소셜 회사별 이미지"></Image>
         </Button>
-        <Button fullWidth sx={{ mt: 3, mb: 2 }}>
+        <Button
+          fullWidth
+          sx={{ mt: 3, mb: 2 }}
+          onClick={() => {
+            router.push(
+              `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`
+            );
+          }}
+        >
           <Image src={Kakao} alt="소셜 회사별 이미지"></Image>
         </Button>
         <Button fullWidth sx={{ mt: 3, mb: 2 }}>

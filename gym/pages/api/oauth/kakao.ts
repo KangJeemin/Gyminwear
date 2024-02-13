@@ -67,8 +67,7 @@ export default async function google(request: NextApiRequest, response: NextApiR
                     return false
                 } else{
                     if(result[0]){
-                        console.log(result)
-                        session.email = res2.data.email;
+                        session.email = res2.data.kakao_account.email;
                         session.nickname = result[0].nickname;
                         session.auth= "kakao"
                         await session.save();

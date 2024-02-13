@@ -59,9 +59,9 @@ export default async function google(request: NextApiRequest, response: NextApiR
                     response.redirect(403,`${process.env.NEXT_PUBLIC_IP}`)
                     return false
                 } else{
-                    if(result[0]){
-                        console.log(result)
+                    if(result){
                         session.email = res2.data.email;
+                        session.isLoggedIn = true;
                         session.nickname = result[0].nickname;
                         session.auth= "google"
                         await session.save();

@@ -109,10 +109,28 @@ export default function Login() {
           id="password"
           autoComplete="current-password"
         />
-        <FormControlLabel
-          control={<Checkbox name="remember" color="primary" />}
-          label={<Box sx={{ color: "black" }}>로그인 정보를 기억할까요?</Box>}
-        />
+        <Box
+          sx={{
+            color: "black",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <FormControlLabel
+            control={<Checkbox name="remember" color="primary" />}
+            label={<Box>로그인 정보를 기억할까요?</Box>}
+          />
+          <Button
+            sx={{ marginRight: 2 }}
+            onClick={() => {
+              router.push(`${process.env.NEXT_PUBLIC_IP}/join`);
+            }}
+          >
+            <h4>회원가입</h4>
+          </Button>
+        </Box>
+
         <Button
           type="submit"
           fullWidth
@@ -121,9 +139,19 @@ export default function Login() {
         >
           로그인
         </Button>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            color: "gray",
+            marginBottom: 1,
+          }}
+        >
+          <h5>-소셜로그인-</h5>
+        </Box>
         <Button
           fullWidth
-          sx={{ mt: 3, mb: 2 }}
+          sx={{ mt: 3, mb: 2, margin: 0 }}
           onClick={() => {
             router.push(
               `${googleAuthURL}?client_id=${process.env.NEXT_PUBLIC_Google_OAuth_Client_Id}&redirect_uri=${googleRedirectUri}&response_type=code&scope=${GoogleScope}`
@@ -134,7 +162,7 @@ export default function Login() {
         </Button>
         <Button
           fullWidth
-          sx={{ mt: 3, mb: 2 }}
+          sx={{ mt: 3, mb: 2, margin: 0 }}
           onClick={() => {
             router.push(
               `${kakaoAuthURL}?response_type=code&client_id=${process.env.NEXT_PUBLIC_Kakao_OAuth_Client_Id}&redirect_uri=${kakaoRedirectUrl}`
@@ -145,7 +173,7 @@ export default function Login() {
         </Button>
         <Button
           fullWidth
-          sx={{ mt: 3, mb: 2 }}
+          sx={{ mt: 3, mb: 2, margin: 0 }}
           onClick={() => {
             router.push(
               `${naverAuthURL}?response_type=code&client_id=${process.env.NEXT_PUBLIC_Naver_OAuth_Client_Id}&redirect_uri=${naverRedirectURL}&state=${naverState}`

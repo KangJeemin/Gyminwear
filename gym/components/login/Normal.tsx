@@ -79,7 +79,6 @@ export default function Normal() {
     nickname: string
   ) => {
     // 이메일 확인
-    console.log("checkemail=", checkemail);
 
     const validateEmail = async () => {
       //이메일 형식 판단
@@ -269,7 +268,7 @@ export default function Normal() {
         </Button>
         <Grid container justifyContent="flex-end">
           <Grid item>
-            <Link href="https://gyminwear/login" variant="body2">
+            <Link href="https://www.gyminwear/login" variant="body2">
               이미 짐인웨어 회원이신가요? 그럼 바로 로그인 하세요!
             </Link>
           </Grid>

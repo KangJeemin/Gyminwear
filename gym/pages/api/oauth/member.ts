@@ -7,7 +7,6 @@ import {
   sleep,
   SessionData,
 } from "@/lib/config/iron-config";
-import { Console } from "console";
 type email ={
     email:string
     nickname:string

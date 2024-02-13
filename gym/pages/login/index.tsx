@@ -32,11 +32,6 @@ export default function index() {
       </Head>
       <LoginContainer>
         <Login />
-        {/* <Box>소셜 네트워크로 회원가입 및 일반 회원가입</Box> */}
-        {/*         
-          <Image src={Google} alt="소셜 회사별 이미지"></Image>
-          <Image src={Kakao} alt="소셜 회사별 이미지"></Image>
-          <Image src={Naver} alt="소셜 회사별 이미지"></Image> */}
       </LoginContainer>
     </>
   );

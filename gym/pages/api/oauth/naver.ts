@@ -35,13 +35,13 @@ export default async function google(request: NextApiRequest, response: NextApiR
         modifiedSessionOptions,
       );
     const {code,state}=request.query;
-    const res = await axios.get(`${naver_TOKEN_URL}&grant_type=authorization_code&code=${code}&state=${state}&client_id=${process.env.NEXT_PUBLIC_Naver_OAuth_Client_Id}&client_secret=${process.env.NEXT_PUBLIC_Naver_OAuth_Client_Secret}&redirect_url=${naver_SIGNUP_REDIRECT_URI}`,{
+    const res = await axios.get(`${naver_TOKEN_URL}?grant_type=authorization_code&code=${code}&state=${state}&client_id=${process.env.NEXT_PUBLIC_Naver_OAuth_Client_Id}&client_secret=${process.env.NEXT_PUBLIC_Naver_OAuth_Client_Secret}&redirect_uri=${naver_SIGNUP_REDIRECT_URI}`,{
         headers:{
             'X-Naver-Client-Id':process.env.NEXT_PUBLIC_Naver_OAuth_Client_Id,
             'X-Naver-Client-Secret': process.env.NEXT_PUBLIC_Naver_OAuth_Client_Secret
         },  
     });
-    
+    console.log('res=',res)
     const res2 = await axios.get(naver_USER_INFO,{
         headers: {
             Authorization: 'Bearer ' + `${res.data.access_token}`,
@@ -52,7 +52,7 @@ export default async function google(request: NextApiRequest, response: NextApiR
         console.log('res2=',res2)
         try{
             db.query(
-                `SELECT nickname FROM users WHERE email='${res2.data.kakao_account.email}'; `
+                `SELECT nickname FROM users WHERE email='${res2.data.email}'; `
             ,async(error:Error,result:Array<email>)=>{
                 if(error){
                     console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")

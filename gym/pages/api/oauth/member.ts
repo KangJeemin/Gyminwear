@@ -53,11 +53,14 @@ export default async function member(request: NextApiRequest, response: NextApiR
                         session.auth= oauth
                         await session.save();
                         await sleep(250);
-                        return response.status(200).json(true);  
+                        return true
+                        
                     }
                     else{
-                        return response.status(200).json(false);  
-                        
+                      response.redirect(`${process.env.NEXT_PUBLIC_IP}/login`);  
+                      alert("회원가입중 에러가 발생했습니다. 다시 시도해주세요. (문제가 계속될 경우 관리자에게 문의하여 주십시오)")
+                      return false
+
                     }
                 }
             })

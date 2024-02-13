@@ -10,7 +10,13 @@ import Image from "next/image";
 import Naver from "../../public/image/naver_login.png";
 import Kakao from "../../public/image/kakao_login.png";
 import Google from "../../public/image/google_login.png";
-
+import { getIronSession } from "iron-session";
+import {
+  defaultSession,
+  sessionOptions,
+  sleep,
+  SessionData,
+} from "@/lib/config/iron-config";
 export default function Login() {
   const { session, isLoading, login } = useSession();
   const router = useRouter();

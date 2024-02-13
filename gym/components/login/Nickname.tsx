@@ -95,7 +95,8 @@ export default function SetNickName() {
     if (response.ok) {
       const responseData = await response.json();
       if (responseData) {
-        router.push(`${process.env.NEXT_PUBLIC_IP}`);
+        setModalOpen(false);
+        router.push(`${process.env.NEXT_PUBLIC_IP}/login`);
       }
     }
   }, [email, nickname]);

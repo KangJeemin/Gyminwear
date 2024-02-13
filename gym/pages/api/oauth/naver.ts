@@ -16,7 +16,6 @@ interface email {
 const naver_TOKEN_URL = 'https://nid.naver.com/oauth2.0/token';
 const naver_USER_INFO = 'https://openapi.naver.com/v1/nid/me'
 const naver_SIGNUP_REDIRECT_URI = 'http://localhost:3000/api/oauth/naver'
-
 const db = require('@/lib/connectMysql');
 
 
@@ -41,7 +40,6 @@ export default async function google(request: NextApiRequest, response: NextApiR
             'X-Naver-Client-Secret': process.env.NEXT_PUBLIC_Naver_OAuth_Client_Secret
         },  
     });
-    console.log('res=',res)
     const res2 = await axios.get(naver_USER_INFO,{
         headers: {
             Authorization: 'Bearer ' + `${res.data.access_token}`,
@@ -49,7 +47,6 @@ export default async function google(request: NextApiRequest, response: NextApiR
     })
     //토큰으로부터 OAUTH 정보 받아왔을떄 실행.
     if(res2){
-        console.log('res2=',res2)
         try{
             db.query(
                 `SELECT nickname FROM users WHERE email='${res2.data.email}'; `

@@ -45,7 +45,7 @@ export default async function member(request: NextApiRequest, response: NextApiR
                     if(result){
                         session.email = email as string;
                         session.nickname =nickname as string;
-                        session.auth= "google"
+                        session.auth= ""
                         await session.save();
                         await sleep(250);
                         return response.status(200).json(true);  

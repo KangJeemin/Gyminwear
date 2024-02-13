@@ -89,7 +89,6 @@ export default function SetNickName() {
         }),
       }
     );
-    console.log("respnse=", response);
     //   회원정보 저장 후 어디로 redirect 시켜주지?
     if (response.ok) {
       const responseData = await response.json();

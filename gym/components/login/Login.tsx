@@ -25,7 +25,7 @@ export default function Login() {
   //naver
   const naverAuthURL = "https://nid.naver.com/oauth2.0/authorize";
   const naverRedirectURL = "http://localhost:3000/api/oauth/naver";
-  const naverState = "rkdwlals";
+  const naverState = Math.round(new Date().valueOf() * Math.random()) + "";
 
   React.useEffect(() => {
     // 로그인이 되어 있을 경우 전 페이지로 이동

@@ -7,11 +7,16 @@ import {
   sleep,
   SessionData,
 } from "@/lib/config/iron-config";
-type email ={
-    email:string
-    nickname:string
-}
 const db = require('@/lib/connectMysql');
+type result ={
+  fieldCount: number
+  affectedRows: number,
+  insertId: number,
+  info: string,
+  serverStatus: number,
+  warningStatus: number,
+  changedRows: number
+}
 
 
 export default async function member(request: NextApiRequest, response: NextApiResponse) {
@@ -34,16 +39,17 @@ export default async function member(request: NextApiRequest, response: NextApiR
         try{
             db.query(
                 `INSERT INTO users (email, nickname, auth) VALUES ('${email}','${nickname}','${oauth}');`
-            ,async(error:Error,result:Array<email>)=>{
+            ,async(error:Error,result:result)=>{
                 if(error){
                     console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")
                     alert("사용자 정보 조회중 오류 발생, 관리자에게 문의 하세요")
                     response.redirect(403,`${process.env.NEXT_PUBLIC_IP}`)
                     return false
                 } else{
-                    if(result){
+                    if(result.affectedRows>0){
                         session.email = email as string;
                         session.nickname =nickname as string;
+                        session.isLoggedIn = true;
                         session.auth= oauth
                         await session.save();
                         await sleep(250);

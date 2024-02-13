@@ -9,7 +9,6 @@ import {
 } from "@/lib/config/iron-config";
 
 interface email {
-    email:string
     nickname:string
 }
 
@@ -46,10 +45,10 @@ export default async function google(request: NextApiRequest, response: NextApiR
           },
     })
     //토큰으로부터 OAUTH 정보 받아왔을떄 실행.
-    if(res2){
+    if(res2.data.message==='success'){
         try{
             db.query(
-                `SELECT nickname FROM users WHERE email='${res2.data.email}'; `
+                `SELECT nickname FROM users WHERE email='${res2.data.response.email}'; `
             ,async(error:Error,result:Array<email>)=>{
                 if(error){
                     console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")
@@ -57,9 +56,11 @@ export default async function google(request: NextApiRequest, response: NextApiR
                     response.redirect(403,`${process.env.NEXT_PUBLIC_IP}`)
                     return false
                 } else{
-                    if(result){
+                    if(result[0]){
+                        console.log('result=',result)
                         session.email = res2.data.email;
                         session.nickname = result[0].nickname;
+                        session.isLoggedIn = true;
                         session.auth= "naver"
                         await session.save();
                         await sleep(250);
@@ -69,7 +70,7 @@ export default async function google(request: NextApiRequest, response: NextApiR
                     }
                     else{
                         //회원정보 없으면 닉네임 설정 페이지로 이동 
-                        return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}/login/nickname?email=${res2.data.email}&oauth=naver`)
+                        return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}/login/nickname?email=${res2.data.response.email}&oauth=naver`)
                     }
                 }
             })

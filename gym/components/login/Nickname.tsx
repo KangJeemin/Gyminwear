@@ -24,6 +24,7 @@ export default function SetNickName() {
   const router = useRouter();
   const params = useSearchParams();
   const email = params.get("email");
+  const oauth = params.get("oauth");
   const [nicknameFiledColor, setNicknameFiledColor] =
     React.useState<TextFieldColor>(undefined);
   const closeModal = React.useCallback(() => {
@@ -86,6 +87,7 @@ export default function SetNickName() {
         body: JSON.stringify({
           email: email,
           nickname: nickname,
+          oauth: oauth,
         }),
       }
     );

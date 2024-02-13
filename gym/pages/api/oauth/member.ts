@@ -16,7 +16,7 @@ const db = require('@/lib/connectMysql');
 
 
 export default async function member(request: NextApiRequest, response: NextApiResponse) {
-    const {email,nickname} = request.body
+    const {email,nickname,oauth} = request.body
     //소셜 로그인의 쿠키 주기는 어떻게 해야하지? 히루?
     const modifiedSessionOptions = {
         ...sessionOptions,
@@ -34,7 +34,7 @@ export default async function member(request: NextApiRequest, response: NextApiR
     //토큰으로부터 OAUTH 정보 받아왔을떄 실행.
         try{
             db.query(
-                `INSERT INTO users (email, nickname) VALUES ('${email}','${nickname}');`
+                `INSERT INTO users (email, nickname, auth) VALUES ('${email}','${nickname}','${oauth}');`
             ,async(error:Error,result:Array<email>)=>{
                 if(error){
                     console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")
@@ -45,15 +45,13 @@ export default async function member(request: NextApiRequest, response: NextApiR
                     if(result){
                         session.email = email as string;
                         session.nickname =nickname as string;
-                        session.auth= ""
+                        session.auth= oauth
                         await session.save();
                         await sleep(250);
                         return response.status(200).json(true);  
-                        
                     }
                     else{
                         return response.status(200).json(false);  
-                        
                         
                     }
                 }

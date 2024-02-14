@@ -54,8 +54,7 @@ export default async function member(request: NextApiRequest, response: NextApiR
                     session.auth= oauth
                     await session.save();
                     await sleep(250);
-                    return response.status(200).json(true); 
-                    
+                    return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}`)
                 }
                 else{
                   response.redirect(`${process.env.NEXT_PUBLIC_IP}/login`);  

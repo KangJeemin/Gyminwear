@@ -91,13 +91,12 @@ export default function SetNickName() {
         }),
       }
     );
-    console.log("responese=", response);
     //   회원정보 저장 후 어디로 redirect 시켜주지?
     if (response.ok) {
       const responseData = await response.json();
       if (responseData) {
         setModalOpen(false);
-        router.push(`${process.env.NEXT_PUBLIC_IP}/login`);
+        router.push(`${process.env.NEXT_PUBLIC_IP}`);
       }
     }
   }, [email, nickname]);

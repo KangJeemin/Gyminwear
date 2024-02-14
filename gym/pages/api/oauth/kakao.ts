@@ -55,7 +55,6 @@ export default async function google(request: NextApiRequest, response: NextApiR
     })
     //토큰으로부터 OAUTH 정보 받아왔을떄 실행.
     if(res2){
-        console.log('res2=',res2)
         try{
             db.query(
                 `SELECT nickname FROM users WHERE email='${res2.data.kakao_account.email}' AND auth='kakao'; `
@@ -79,7 +78,7 @@ export default async function google(request: NextApiRequest, response: NextApiR
                     }
                     else{
                         //회원정보 없으면 닉네임 설정 페이지로 이동 
-                        return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}/login/nickname?email=${res2.data.kakao_account.email}&oauth=kako`)
+                        return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}/login/nickname?email=${res2.data.kakao_account.email}&oauth=kakao`)
                     }
                 }
             })

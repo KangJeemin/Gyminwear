@@ -48,7 +48,7 @@ export default async function google(request: NextApiRequest, response: NextApiR
     if(res2.data.message==='success'){
         try{
             db.query(
-                `SELECT nickname FROM users WHERE email='${res2.data.response.email}'; `
+                `SELECT nickname FROM users WHERE email='${res2.data.response.email}' AND auth='naver'; `
             ,async(error:Error,result:Array<email>)=>{
                 if(error){
                     console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")
@@ -57,7 +57,6 @@ export default async function google(request: NextApiRequest, response: NextApiR
                     return false
                 } else{
                     if(result[0]){
-                        console.log('result=',result)
                         session.email = res2.data.email;
                         session.nickname = result[0].nickname;
                         session.isLoggedIn = true;

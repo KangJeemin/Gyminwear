@@ -51,7 +51,7 @@ export default async function google(request: NextApiRequest, response: NextApiR
     if(res2.data.verified_email){
         try{
             db.query(
-                `SELECT nickname FROM users WHERE email='${res2.data.email}'; `
+                `SELECT nickname FROM users WHERE email='${res2.data.email}' AND auth='google'; `
             ,async(error:Error,result:Array<email>)=>{
                 if(error){
                     console.error("로그인하기위한 데이터베이스에 정보 조회중 오류 발생")

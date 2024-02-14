@@ -92,6 +92,7 @@ export default function SetNickName() {
       }
     );
     //   회원정보 저장 후 어디로 redirect 시켜주지?
+    console.log("response=", response);
     if (response.ok) {
       const responseData = await response.json();
       if (responseData) {

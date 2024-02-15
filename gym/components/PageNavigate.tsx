@@ -25,8 +25,8 @@ const brandArray = [
     barndUrl: "https://dumbstruck.kr/",
   },
   {
-    brandname: "덤브스트럭",
-    barndUrl: "https://dumbstruck.kr/",
+    brandname: "피지컬크라운",
+    barndUrl: "https://smartstore.naver.com/physicalcrown/",
   },
   {
     brandname: "프리덤에슬레틱",

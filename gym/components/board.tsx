@@ -12,7 +12,6 @@ import { extractFirstImageUrl2 } from "@/lib/extractFirstImageUrl";
 import useSession from "@/lib/useSession";
 import gyminwearImageLogo from "@/public/image/gyminwearLogo.png";
 import type { boardInfo, boardProps } from "@/interface/board";
-import board from "@/pages/board";
 
 interface boardComponentProps extends boardProps {
   mapcount: number;

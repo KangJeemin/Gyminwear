@@ -10,7 +10,8 @@
     "deploy:local": "next build && pm2 startOrRestart ecosystem.config.js --env local",
     "deploy:dev": "next build && pm2 startOrRestart ecosystem.config.js --env production",
     "deploy:prod": "next build && pm2-runtime startOrRestart ecosystem.config.js --env production",
-    "build": "next-sitemap"
+    "build": "next-sitemap",
+    "test":"jest"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.473.0",

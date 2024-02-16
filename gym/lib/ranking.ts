@@ -1,7 +1,12 @@
 
 type CalulateRankingArray = number
 type RankingArray = number | string
-export default function ranking (yesterdayArray:[],todayArray:[]) {
+/** 브랜드의 어제 대비 오늘 등수를 계산해주는 함수
+ * @param {Array} yesterdayArray 전날의 브랜드 순위가 담겨져 있는 배열(10개)
+ * @param {Array} todayArray 오늘의 브랜드 순위가 담겨져 있는 배열(10개)  
+ * @returns {Array} rankArray 전날 대비 오늘의 브랜드 등수가 담겨있는 배열
+ */
+export default function ranking (yesterdayArray:CalulateRankingArray[],todayArray:CalulateRankingArray[]) {
     
     // 랭킹 등수 변화를 배열에 담아 반환
     const rankArray:RankingArray[]=[]
@@ -15,14 +20,24 @@ export default function ranking (yesterdayArray:[],todayArray:[]) {
 
     for (let i=0;i<todayArray.length;i++){
         for(let j=0;j<yesterdayArray.length;j++){
+            let count=0
             //todayArray 배열의 값이 yesterdayArray도 있을 경우 j(몇번쨰 있는지)를 담고 반복문을 종료 그렇지 않을 경우 "new를 담는다"
             if(todayArray[i]===yesterdayArray[j]){
                 yesterdayBrandRankArray.push(j+1)
+                count=0
                 break;   
             }
             else{
-                yesterdayBrandRankArray.push(100)
-                break;
+                count++
+                if(count===10){
+                    yesterdayBrandRankArray.push(100)   
+                    count=0
+                    break;
+                }
+                else{
+                    continue      
+                }
+                
             }
         }
     }

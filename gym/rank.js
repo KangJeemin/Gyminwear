@@ -13,27 +13,21 @@ function ranking (yesterdayArray,todayArray) {
 
     for (let i=0;i<todayArray.length;i++){
         for(let j=0;j<yesterdayArray.length;j++){
-            let count=0
+            
             //todayArray 배열의 값이 yesterdayArray도 있을 경우 j(몇번쨰 있는지)를 담고 반복문을 종료 그렇지 않을 경우 "new를 담는다"
             if(todayArray[i]===yesterdayArray[j]){
                 yesterdayBrandRankArray.push(j+1)
-                count=0
                 break;   
             }
             else{
-                count++
-                if(count===10){
-                    yesterdayBrandRankArray.push(100)   
-                    count=0
-                    break;
+                if(j===9){
+                yesterdayBrandRankArray.push(100)
                 }
-                else{
-                    continue      
-                }
-                
+                continue      
             }
         }
     }
+    console.log('yesterdayBrandRankArray=',yesterdayBrandRankArray)
 
     //todayArray에 있는 배열 요소가 yesterdayArray에는 존재하지 않을 경우, new를 배열에 담음
     for(let i=0;i<todayBrandRankArray.length;i++){
@@ -50,7 +44,7 @@ return rankArray;
 }
 
 
-const arrayA = [1,2,3,4,5,6,7,8,9,10]
-const arrayB = [2,3,4,5,6,7,8,9,10,11]
+const arrayA = [3,1,2,4,5,7,11,23,35,13]
+const arrayB = [1,4,2,6,5,8,13,24,3,14,23]
 
 console.log(ranking(arrayA,arrayB))

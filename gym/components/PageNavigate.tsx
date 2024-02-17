@@ -176,7 +176,13 @@ export default function AutoGrid() {
         <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
           {brandArray.map((object, index: number) => (
             <Box gridColumn="span 4">
-              <Item>
+              <Item
+                onClick={() => {
+                  fetch(
+                    `${process.env.NEXT_PUBLIC_IP}/api/brand/click?id=${index}`
+                  );
+                }}
+              >
                 <Link href={object.barndUrl}>
                   <p>{object.brandname}</p>
                 </Link>

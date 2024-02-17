@@ -20,24 +20,17 @@ export default function ranking (yesterdayArray:CalulateRankingArray[],todayArra
 
     for (let i=0;i<todayArray.length;i++){
         for(let j=0;j<yesterdayArray.length;j++){
-            let count=0
             //todayArray 배열의 값이 yesterdayArray도 있을 경우 j(몇번쨰 있는지)를 담고 반복문을 종료 그렇지 않을 경우 "new를 담는다"
             if(todayArray[i]===yesterdayArray[j]){
                 yesterdayBrandRankArray.push(j+1)
-                count=0
                 break;   
             }
             else{
-                count++
-                if(count===10){
+                if(j===9){
                     yesterdayBrandRankArray.push(100)   
-                    count=0
                     break;
                 }
-                else{
-                    continue      
-                }
-                
+                continue      
             }
         }
     }

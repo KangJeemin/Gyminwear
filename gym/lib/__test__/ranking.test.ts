@@ -1,9 +1,9 @@
 import {describe, expect, test} from '@jest/globals';
 import ranking from '../ranking'
 
-const arrayA = [1,2,3,4,5,6,7,8,9,10]
-const arrayB = [2,3,4,5,6,7,8,9,10,11]
-const expactResultArray=[1,1,1,1,1,1,1,1,1,"new"]
+const arrayA = [3,1,2,4,5,7,11,23,35,13]
+const arrayB = [1,4,2,6,5,8,13,24,3,14,23]
+const expactResultArray=[1,2,0,"new",0,"new",3,"new",-8,"new"]
 describe('ranking module',()=>{
     test('전날 등수와 오늘 등수의 차이를 반환 ',()=>{
         expect(ranking(arrayA,arrayB)).toEqual(expactResultArray);

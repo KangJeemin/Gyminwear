@@ -1,11 +1,27 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 const db = require('@/lib/connectMysql');
 
+type brandRankColumns ={
+    rankid:number
+    A:number
+    B:number
+    C:number
+    D:number
+    E:number
+    F:number
+    G:number
+    H:number
+    I:number
+    J:number
+    date:Date
+}
+// 브랜드의 클릭 순위를 조회 할 수 있는 API
+
 export default function rank (req : NextApiRequest, res : NextApiResponse){
 
     if(req.method==="GET"){
         try{
-            db.query(`SELECT * FROM brand_rank ORDER BY date DESC LIMIT 0,2;`,(error:Error,result:any)=>{
+            db.query(`SELECT * FROM brand_rank ORDER BY date DESC LIMIT 0,2;`,(error:Error,result:brandRankColumns)=>{
                 if(error){
                     console.error("브랜드 랭킹 정보를 조회하는 과정에서 오류 발생")
                     return false

@@ -30,7 +30,7 @@ export default function Board(props: boardComponentProps) {
     router.push(`${process.env.NEXT_PUBLIC_IP}/board?page=${page}`);
   };
   return (
-    <Container>
+    <>
       <Container
         sx={{
           color: "black",
@@ -213,6 +213,6 @@ export default function Board(props: boardComponentProps) {
           </Stack>
         </Box>
       )}
-    </Container>
+    </>
   );
 }

@@ -52,6 +52,7 @@
     "react-quill": "^2.0.0",
     "react-slick": "^0.30.2",
     "react-use-scroll-position": "^2.0.0",
+    "slick-carousel": "^1.8.1",
     "swr": "^2.2.4",
     "typescript": "5.1.6",
     "uuid": "^9.0.1"

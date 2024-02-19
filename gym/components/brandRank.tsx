@@ -1,9 +1,5 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Unstable_Grid2";
-import styles from "@/styles/styles.module.css";
 import Container from "@mui/material/Container";
 import Link from "next/link";
 import Skeleton from "@mui/material/Skeleton";
@@ -28,6 +24,7 @@ function brandRank({ rank, brand }: any) {
           fontWeight: "bold",
           justifyContent: "flex-end",
           fontSize: 14,
+          height: 25,
         }}
       >
         {/* <h2 style={{ fontSize: 15, color: "gray", marginRight: 10 }}>

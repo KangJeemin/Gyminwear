@@ -27,16 +27,17 @@ function brandRank({ rank, brand }: any) {
           color: "black",
           fontWeight: "bold",
           justifyContent: "flex-end",
+          fontSize: 14,
         }}
       >
-        <h2 style={{ fontSize: 15, color: "gray", marginRight: 10 }}>
+        {/* <h2 style={{ fontSize: 15, color: "gray", marginRight: 10 }}>
           오늘의 브랜드 클릭 순위
-        </h2>
+        </h2> */}
         <span>
           <p style={{ fontWeight: "bold" }}>1등 :</p>
         </span>
-        <span style={{ marginRight: 20 }}>본투윈</span>
-        <span style={{ color: "red" }}> &#9650;</span>
+        <Box sx={{ width: { xs: "30%", md: "10%" } }}>프리덤애슬레틱</Box>
+        <span style={{ color: "red" }}>&#9650;</span>
         <span>3</span>
         {/* <span style={{ color: "blue" }}>&#9660;</span> */}
       </Box>

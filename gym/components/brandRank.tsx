@@ -58,6 +58,7 @@ function brandRank() {
       setOnslide(false);
       setTimeout(() => {
         setOnslide(true);
+        setAnimatetime(0.5);
       }, 3000);
     }
 
@@ -69,7 +70,7 @@ function brandRank() {
   }
   React.useEffect(() => {
     slideroolpe();
-  }, []);
+  });
   if (!rank) {
     return (
       <Box sx={{ width: 300 }}>
@@ -80,7 +81,7 @@ function brandRank() {
     );
   } else {
     return (
-      <Container sx={{ height: 15 }}>
+      <Container sx={{ height: 15, marginTop: 1 }}>
         <Box
           sx={{
             width: "100%",

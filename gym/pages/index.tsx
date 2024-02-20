@@ -7,6 +7,7 @@ import type { boardProps } from "@/interface/board";
 import { GetServerSidePropsContext } from "next";
 import BrandRank from "@/components/brandRank";
 import Container from "@mui/material/Container";
+import BrandRankContainer from "@/container/brandRankContainer";
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
@@ -32,7 +33,7 @@ export default function Main(props: boardProps) {
         />
       </Head>
       <Container>
-        <BrandRank />
+        <BrandRankContainer />
         <PageNavigate />
         <Pagedivide />
         <Board mapcount={4} data={props.data} />

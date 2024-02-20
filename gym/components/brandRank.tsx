@@ -1,13 +1,11 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Link from "next/link";
 import Skeleton from "@mui/material/Skeleton";
 import { motion } from "framer-motion";
 
 function brandRank() {
   const [slideState, setSlideState] = React.useState(0);
-  const [onSlide, setOnslide] = React.useState(true);
   const [animateime, setAnimatetime] = React.useState(0.5);
   const rank = [
     {
@@ -51,26 +49,22 @@ function brandRank() {
       rank: +4,
     },
   ];
-  function slideroolpe() {
-    if (slideState === -150) {
-      setAnimatetime(0);
-      setSlideState(0);
-      setOnslide(false);
-      setTimeout(() => {
-        setOnslide(true);
-        setAnimatetime(0.5);
-      }, 3000);
-    }
-
-    if (onSlide)
-      setTimeout(() => {
-        setSlideState((state) => state - 15);
-        console.log(slideState);
-      }, 3000);
-  }
+  function slideroolpe(slideState: any) {}
   React.useEffect(() => {
-    slideroolpe();
-  });
+    setInterval(() => {
+      if (slideState === -75) {
+        setAnimatetime(0.5);
+
+        setTimeout(() => {
+          setSlideState(0);
+          setAnimatetime(0.5);
+        }, 2500);
+      } else {
+        setSlideState((state) => state - 7.5);
+        console.log(slideState);
+      }
+    }, 3000);
+  }, []);
   if (!rank) {
     return (
       <Box sx={{ width: 300 }}>
@@ -86,8 +80,8 @@ function brandRank() {
           sx={{
             width: "100%",
             color: "black",
+            height: "auto",
             fontWeight: "bold",
-            overflowY: "hidden",
             fontSize: 14,
           }}
         >
@@ -134,7 +128,9 @@ function brandRank() {
                   </>
                 ) : (
                   <>
-                    <span>"new"</span>
+                    <span style={{ fontStyle: "italic", color: "#00D1FF" }}>
+                      new
+                    </span>
                   </>
                 )}
               </motion.div>

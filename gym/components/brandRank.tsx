@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 function brandRank() {
   const [slideState, setSlideState] = React.useState(0);
-  const [animateime, setAnimatetime] = React.useState(0.5);
+  const [animateime, setAnimateTime] = React.useState(0.5);
   const rank = [
     {
       brandname: "본투윈",
@@ -49,22 +49,22 @@ function brandRank() {
       rank: +4,
     },
   ];
-  function slideroolpe(slideState: any) {}
-  React.useEffect(() => {
-    setInterval(() => {
-      if (slideState === -75) {
-        setAnimatetime(0.5);
 
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      if (slideState === -135) {
+        setAnimateTime(0);
+        setSlideState(0);
         setTimeout(() => {
-          setSlideState(0);
-          setAnimatetime(0.5);
-        }, 2500);
+          setAnimateTime(0.5);
+        }, 100);
       } else {
-        setSlideState((state) => state - 7.5);
-        console.log(slideState);
+        setSlideState((state) => state - 15);
       }
     }, 3000);
-  }, []);
+
+    return () => clearInterval(interval);
+  }, [slideState]);
   if (!rank) {
     return (
       <Box sx={{ width: 300 }}>
@@ -89,6 +89,7 @@ function brandRank() {
             style={{
               width: "100%",
               height: 15,
+              overflowY: "hidden",
             }}
           >
             {rank.map((object, index) => (
@@ -120,7 +121,11 @@ function brandRank() {
                 ) : object.rank < 0 ? (
                   <>
                     <span style={{ color: "blue" }}>&#9660;</span>
-                    <span>{Math.abs(object.rank)}</span>
+                    <span>
+                      {typeof object.rank === "number"
+                        ? object.rank
+                        : Math.abs(Number(object.rank))}
+                    </span>
                   </>
                 ) : object.rank === 0 ? (
                   <>

@@ -28,23 +28,29 @@ export default function ranking(yesterdayArray: CalulateRankingArray[], todayArr
                     trueArray[i].push(false)
                     break;
                 }
+                else{
+                    continue
+                }
             }
         }
     }
+    console.log('trueArray=',trueArray)
 
     for(let i=0;i<10;i++){
         if(trueArray[i][1]){
-            if(trueArray[i][0]===yesterdayArray[i]){
-                returnArray.push(i+1);
-                break;
+            for(let j=0;j<10;j++){
+                if(trueArray[i][0]===yesterdayArray[j]){
+                    returnArray.push(j+1);
+                    break;
+                }
             }
-                
         }
         else{
             returnArray.push(100)
         }
+        
     }
-    console.log('returnArray=',returnArray)
+    // console.log('returnArray=',returnArray)
     for(let i=0;i<10;i++){
 
         if(returnArray[i]===100){

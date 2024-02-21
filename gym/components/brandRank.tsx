@@ -147,4 +147,4 @@ function brandRank() {
   }
 }
 
-export default brandRank;
+export default React.memo(brandRank);

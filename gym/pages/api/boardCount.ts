@@ -12,6 +12,7 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
                 console.log(error)
             }
             else{
+                res.setHeader('Link', `<http://${process.env.NEXT_PUBLIC_IP}/pages/api/Docs.md>; rel="help"`);
                 res.status(200).json(true);  
             }
         })

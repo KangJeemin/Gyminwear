@@ -41,6 +41,7 @@ export default async function Comment(req : NextApiRequest, res : NextApiRespons
                   console.error("댓글 조회 중 오류 발생")
                   return false
               } else{
+                  res.setHeader('Link', `<http://${process.env.NEXT_PUBLIC_IP}/pages/api/Docs.md>; rel="help"`);
                   res.status(200).json(result);  
               }
           })
@@ -60,6 +61,7 @@ export default async function Comment(req : NextApiRequest, res : NextApiRespons
                   return false
               } else{
                   console.log('게시물 삭제 성공');
+
                   res.status(200).json({ result: true });  
               }
           })

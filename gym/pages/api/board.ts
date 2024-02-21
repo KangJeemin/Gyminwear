@@ -24,7 +24,6 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
                     console.error("게시물을 작성하는 과정에서 오류 발생.")
                     return false
                 } else{
-                    console.log('게시물 작성 성공')
                     res.status(200).json({ result: true });  
                 }
             })
@@ -70,6 +69,7 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
                         console.error("게시물을 조회하는 과정에서 오류 발생.")
                         return false
                     } else{
+                        res.setHeader('Link', `<http://${process.env.NEXT_PUBLIC_IP}/pages/api/Docs.md>; rel="help"`);
                         res.status(200).json(result);  
                     }
                 })
@@ -91,6 +91,8 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
                         console.error("게시물을 조회하는 과정에서 오류 발생.")
                         return false
                     } else{
+                    res.setHeader('Link', `<http://${process.env.NEXT_PUBLIC_IP}/pages/api/Docs.md>; rel="help"`);
+
                         res.status(200).json(result);  
                     }
                 })
@@ -111,7 +113,6 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
                     console.error("게시물을 삭제하는 과정에서 오류 발생")
                     return false
                 } else{
-                    console.log('게시물 삭제 성공');
                     res.status(200).json({ result: true });  
                 }
             })
@@ -130,7 +131,6 @@ export default async function board(req: NextApiRequest, res: NextApiResponse) {
                     console.error("게시물을 업데이트 과정에서 오류 발생.")
                     return false
                 } else{
-                    console.log('게시물 업데이트 성공')
                     res.status(200).json({ result: true });  
                 }
             })

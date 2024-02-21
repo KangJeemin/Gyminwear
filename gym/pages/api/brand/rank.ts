@@ -26,6 +26,7 @@ export default function rank (req : NextApiRequest, res : NextApiResponse){
                     console.error("브랜드 랭킹 정보를 조회하는 과정에서 오류 발생")
                     return false
                 } else{
+                    res.setHeader('Link', `<http://${process.env.NEXT_PUBLIC_IP}/pages/api/brand/Docs.md>; rel="help"`);
                     res.status(200).json(result);  
                 }
             })

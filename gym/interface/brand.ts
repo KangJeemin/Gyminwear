@@ -12,3 +12,7 @@ export type brandRank = {
     J:string
     data:Date   
 }
+
+export type brandRankProp = {
+    props: []
+}

@@ -3,8 +3,9 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Skeleton from "@mui/material/Skeleton";
 import { motion } from "framer-motion";
+import type { brandRankProp } from "@/interface/brand";
 
-function brandRank({ props }: any) {
+function brandRank({ props }: brandRankProp) {
   const [slideState, setSlideState] = React.useState(0);
   const [animateime, setAnimateTime] = React.useState(0.5);
 

@@ -15,7 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const brandArray = [
+export const brandArray = [
   {
     brandname: "본투윈",
     barndUrl: "https://borntowin.kr/",

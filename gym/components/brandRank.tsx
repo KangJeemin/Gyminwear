@@ -4,51 +4,9 @@ import Container from "@mui/material/Container";
 import Skeleton from "@mui/material/Skeleton";
 import { motion } from "framer-motion";
 
-function brandRank() {
+function brandRank({ props }: any) {
   const [slideState, setSlideState] = React.useState(0);
   const [animateime, setAnimateTime] = React.useState(0.5);
-  const rank = [
-    {
-      brandname: "본투윈",
-      rank: +3,
-    },
-    {
-      brandname: "프리덤",
-      rank: 0,
-    },
-    {
-      brandname: "UNF",
-      rank: -1,
-    },
-    {
-      brandname: "피지컬크라운",
-      rank: "new",
-    },
-    {
-      brandname: "키카그리도",
-      rank: +2,
-    },
-    {
-      brandname: "덤브스트럭",
-      rank: 0,
-    },
-    {
-      brandname: "허그본",
-      rank: +1,
-    },
-    {
-      brandname: "피지코어패럴",
-      rank: -1,
-    },
-    {
-      brandname: "머슬암드",
-      rank: -1,
-    },
-    {
-      brandname: "골드앤머신",
-      rank: +4,
-    },
-  ];
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -65,7 +23,7 @@ function brandRank() {
 
     return () => clearInterval(interval);
   }, [slideState]);
-  if (!rank) {
+  if (!props) {
     return (
       <Box sx={{ width: 300 }}>
         <Skeleton />
@@ -92,7 +50,7 @@ function brandRank() {
               overflowY: "hidden",
             }}
           >
-            {rank.map((object, index) => (
+            {props.map((object: any, index: number) => (
               <motion.div
                 style={{
                   height: 15,

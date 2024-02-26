@@ -1,9 +1,9 @@
-import { off } from "process";
+
 
 type CalulateRankingArray = number
 type RankingArray = number | string
 
-export default function ranking(yesterdayArray: CalulateRankingArray[], todayArray: any[]) {
+export default function ranking2(yesterdayArray: CalulateRankingArray[], todayArray: any[]) {
 
     const sortYesterdayArray = [...yesterdayArray].sort((a, b) => a - b);
     const sortTodayArray = [...todayArray].sort((a, b) => a - b);

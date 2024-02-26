@@ -4,7 +4,9 @@ const db = require('@/lib/connectMysql');
 // 브랜드를 클릭 했을때 클릭수가 증가하는 API
 
 export default function Click(req : NextApiRequest, res : NextApiResponse){
+
     const {id} = req.query;
+
     if(req.method==="GET"){
         try{
             db.query(`UPDATE brand_click SET click= click + 1 WHERE brandid =${id};`,(error:Error)=>{
@@ -21,6 +23,7 @@ export default function Click(req : NextApiRequest, res : NextApiResponse){
             res.status(500).json(false);  
         }
     } else {
+        
         res.status(405).json({ error: '허용되지 않는 메서드' });
     }  
 }

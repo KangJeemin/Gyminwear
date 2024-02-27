@@ -3,9 +3,10 @@ import BrandRank from "@/components/brandRank";
 import axios from "axios";
 import ranking2 from "../lib/ranking2";
 import { brandArray } from "@/components/PageNavigate";
+import type { brandRankProps } from "@/interface/brand";
 
 const BrandRankContainer = () => {
-  const [props, setProps] = React.useState(Array<object>);
+  const [props, setProps] = React.useState(Array<brandRankProps>);
   React.useEffect(() => {
     makeArrayInProps();
   }, []);
@@ -22,7 +23,7 @@ const BrandRankContainer = () => {
           response.data[1]
         ).map((value) => (value as number) - 1);
         const brandRankingResult = ranking2(todayArray, yesterDayArray);
-        const resultArray = [];
+        const resultArray: Array<brandRankProps> = [];
         for (let i = 0; i < 10; i++) {
           resultArray.push({
             brandname: brandArray[todayArray[i]].brandname,

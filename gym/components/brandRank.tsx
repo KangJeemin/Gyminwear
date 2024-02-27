@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Skeleton from "@mui/material/Skeleton";
 import { motion } from "framer-motion";
-import type { brandRankProp } from "@/interface/brand";
+import type { brandRankProp, brandRankProps } from "@/interface/brand";
 import { useRouter } from "next/router";
 
 function brandRank({ props }: brandRankProp) {
@@ -53,7 +53,7 @@ function brandRank({ props }: brandRankProp) {
               overflowY: "hidden",
             }}
           >
-            {props.map((object: any, index: number) => (
+            {props.map((object: brandRankProps, index: number) => (
               <motion.div
                 style={{
                   height: 15,

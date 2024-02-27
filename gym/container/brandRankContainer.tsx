@@ -27,6 +27,7 @@ const BrandRankContainer = () => {
           resultArray.push({
             brandname: brandArray[todayArray[i]].brandname,
             rank: brandRankingResult[i],
+            brandUrl: brandArray[todayArray[i]].brandUrl,
           });
         }
         setProps(resultArray);
@@ -36,4 +37,4 @@ const BrandRankContainer = () => {
   return <BrandRank props={props}></BrandRank>;
 };
 
-export default BrandRankContainer;
+export default React.memo(BrandRankContainer);

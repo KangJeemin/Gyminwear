@@ -4,8 +4,10 @@ import Container from "@mui/material/Container";
 import Skeleton from "@mui/material/Skeleton";
 import { motion } from "framer-motion";
 import type { brandRankProp } from "@/interface/brand";
+import { useRouter } from "next/router";
 
 function brandRank({ props }: brandRankProp) {
+  const router = useRouter();
   const [slideState, setSlideState] = React.useState(0);
   const [animateime, setAnimateTime] = React.useState(0.5);
 
@@ -65,6 +67,7 @@ function brandRank({ props }: brandRankProp) {
                   duration: animateime,
                   ease: "linear",
                 }}
+                onClick={() => router.push(object.brandUrl)}
               >
                 <span>
                   <p style={{ fontWeight: "bold" }}>{index + 1}등 :</p>

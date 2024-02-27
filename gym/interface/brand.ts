@@ -14,5 +14,5 @@ export type brandRank = {
 }
 
 export type brandRankProp = {
-    props: []
+    props: Array<object>
 }

@@ -11,7 +11,7 @@ const BrandRankContainer = () => {
     makeArrayInProps();
   }, []);
 
-  const makeArrayInProps = () => {
+  const makeArrayInProps = React.useCallback(() => {
     axios
       .get(`${process.env.NEXT_PUBLIC_IP}/api/brand/rank`)
       .then((response) => {
@@ -33,7 +33,7 @@ const BrandRankContainer = () => {
         }
         setProps(resultArray);
       });
-  };
+  }, []);
 
   return <BrandRank props={props}></BrandRank>;
 };

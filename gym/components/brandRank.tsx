@@ -61,6 +61,7 @@ function brandRank({ props }: brandRankProp) {
                   justifyContent: "flex-end",
                   position: "relative",
                   top: 0,
+                  cursor: "pointer",
                 }}
                 animate={{ top: slideState }}
                 transition={{

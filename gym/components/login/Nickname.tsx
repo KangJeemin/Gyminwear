@@ -79,26 +79,30 @@ export default function SetNickName() {
   }, [nickname]);
 
   const handleSubmit = async () => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_IP}/api/oauth/member`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          nickname: nickname,
-          oauth: oauth,
-        }),
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_IP}/api/oauth/member`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            nickname: nickname,
+            oauth: oauth,
+          }),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      } else {
+        setModalOpen(false);
+        router.push(`${process.env.NEXT_PUBLIC_IP}`);
       }
-    );
-    //   회원정보 저장 후 어디로 redirect 시켜주지?
-
-    if (response.ok) {
-      alert("ok응답 왔음");
-      setModalOpen(false);
-      router.push(`${process.env.NEXT_PUBLIC_IP}`);
+      //   회원정보 저장 후 어디로 redirect 시켜주지?
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
   };
 
@@ -170,7 +174,7 @@ export default function SetNickName() {
         </Grid>
         <Button
           variant="contained"
-          type="submit"
+          onClick={handleSubmit}
           disabled={joinCheck ? false : true}
         >
           완료

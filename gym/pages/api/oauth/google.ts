@@ -59,7 +59,9 @@ export default async function google(request: NextApiRequest, response: NextApiR
                     response.redirect(403,`${process.env.NEXT_PUBLIC_IP}`)
                     return false
                 } else{
-                    if(result){
+                    // 데이스 접근은 되지만 조회 결과가 없는 경우. 즉 일치하는 회원정보가 있으면 실행
+                    if(result.length!==0){
+                        console.log('result=',result)
                         session.email = res2.data.email;
                         session.isLoggedIn = true;
                         session.nickname = result[0].nickname;

@@ -46,25 +46,25 @@ export default async function member(request: NextApiRequest, response: NextApiR
                 alert("사용자 정보 조회중 오류 발생, 관리자에게 문의 하세요")
                 response.redirect(403,`${process.env.NEXT_PUBLIC_IP}`)
                 return false
-            } else{
-                if(result.affectedRows>0){
-                    session.email = email as string;
-                    session.nickname =nickname as string;
-                    session.isLoggedIn = true;
-                    session.auth= oauth
-                    await session.save();
-                    await sleep(250);
-                    // 여기서 redirect 안됨
-                    response.status(200).json(true)
-                    return 
-                }
-                else{
+            } 
+              if(result){
+                  console.log('result ',result)
+                  session.email = email as string;
+                  session.nickname =nickname as string;
+                  session.isLoggedIn = true;
+                  session.auth= oauth
+                  await session.save();
+                  await sleep(250);
+                  // 여기서 redirect 안됨
+                  response.status(200).json(true)
+                  return 
+              }
+              else{
                   response.redirect(`${process.env.NEXT_PUBLIC_IP}/login`);  
                   alert("회원가입중 에러가 발생했습니다. 다시 시도해주세요. (문제가 계속될 경우 관리자에게 문의하여 주십시오)")
                   return response.status(500).json(false);
 
-                }
-            }
+              }
         })
       }
       catch (error) {

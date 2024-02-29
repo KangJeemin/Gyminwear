@@ -51,7 +51,9 @@ export default function SetNickName() {
     if (
       !(nickname.length >= 3 && nickname.length <= 12 && regex.test(nickname))
     ) {
-      alert("닉네임은 영어 또는 한글로 3~12자 이내로 입력해주세요.");
+      alert(
+        "닉네임은 영어,숫자,한글을 조합하여 3~12자 이내로 입력해주세요.(특수문자 불포함)"
+      );
       setNicknameFiledColor("warning");
       return false;
       // 닉네임 검증 단계 마치면 중복 확인 시작
@@ -76,7 +78,7 @@ export default function SetNickName() {
     }
   }, [nickname]);
 
-  const handleSubmit = React.useCallback(async () => {
+  const handleSubmit = async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_IP}/api/oauth/member`,
       {
@@ -92,15 +94,13 @@ export default function SetNickName() {
       }
     );
     //   회원정보 저장 후 어디로 redirect 시켜주지?
-    console.log("response=", response);
+
     if (response.ok) {
-      const responseData = await response.json();
-      if (responseData) {
-        setModalOpen(false);
-        router.push(`${process.env.NEXT_PUBLIC_IP}`);
-      }
+      alert("ok응답 왔음");
+      setModalOpen(false);
+      router.push(`${process.env.NEXT_PUBLIC_IP}`);
     }
-  }, [email, nickname]);
+  };
 
   return (
     <Modal isOpen={isModalOpen} onClose={closeModal}>
@@ -131,7 +131,7 @@ export default function SetNickName() {
               color: "gray",
             }}
           >
-            (닉네임은 영어 또는 한글로 3~12자 이내로 입력해주세요.)
+            (영어,숫자,한글을조합하여 3~12자 이내로 입력해주세요.)
           </h5>
         </Box>
         <Grid container spacing={1}>

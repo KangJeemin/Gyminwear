@@ -43,3 +43,13 @@ export interface commentWrite {
     postid?: number;
     commentid?: number;
   }
+
+export type TextFieldColor =
+  | "default"
+  | "primary"
+  | "secondary"
+  | "error"
+  | "warning"
+  | "success"
+  | "info"
+  | undefined;

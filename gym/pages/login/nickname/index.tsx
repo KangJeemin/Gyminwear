@@ -1,6 +1,6 @@
 import * as React from "react";
-import Nickname from "@/components/login/Nickname";
+import NicknameContainer from "@/container/nicknameContainer";
 
 export default function index() {
-  return <Nickname></Nickname>;
+  return <NicknameContainer />;
 }

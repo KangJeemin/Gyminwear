@@ -78,9 +78,11 @@ export default async function google(request: NextApiRequest, response: NextApiR
                     }
                     else{
                         //회원정보 없으면 닉네임 설정 페이지로 이동 
-                        cookies().set('urlToken', urlToken, { maxAge: 10 })
-                        response.setHeader('Set-Cookie',urlToken)
+                        
+                        response.setHeader('Set-Cookie', 'isLoggedIn=true; Path=/;');
                         return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}/login/nickname?email=${res2.data.email}&oauth=google`,)
+                        
+                        //  return cookies().set('urlToken', urlToken, { maxAge: 3600})
                     }
                 }
             })

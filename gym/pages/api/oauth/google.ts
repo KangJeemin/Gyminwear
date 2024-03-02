@@ -7,6 +7,7 @@ import {
   sleep,
   SessionData,
 } from "@/lib/config/iron-config";
+import {accessToken} from "@/lib/useJwt";
 interface email {
     email:string
     nickname:string
@@ -26,12 +27,13 @@ export default async function google(request: NextApiRequest, response: NextApiR
           ...sessionOptions.cookieOptions,
           maxAge:60*60*24 ,
         },
-      };
+      }; 
     const session = await getIronSession<SessionData>(
         request,
         response,
         modifiedSessionOptions,
       );
+    const urlToken = accessToken()
     const {code}=request.query;
     const res = await axios.post(GOOGLE_TOKEN_URL, {
         // x-www-form-urlencoded(body)
@@ -47,6 +49,7 @@ export default async function google(request: NextApiRequest, response: NextApiR
             Authorization:`Bearer ${res.data.access_token}`,
         },  
     })
+    
     //토큰으로부터 OAUTH 정보 받아왔을떄 실행.
     if(res2.data.verified_email){
         try{
@@ -74,7 +77,8 @@ export default async function google(request: NextApiRequest, response: NextApiR
                     }
                     else{
                         //회원정보 없으면 닉네임 설정 페이지로 이동 
-                        return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}/login/nickname?email=${res2.data.email}&oauth=google`)
+                        response.setHeader("Authorization", `Bearer ${urlToken}`);
+                        return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}/login/nickname?email=${res2.data.email}&oauth=google`,)
                     }
                 }
             })

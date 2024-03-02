@@ -8,6 +8,7 @@ import {
   SessionData,
 } from "@/lib/config/iron-config";
 import {accessToken} from "@/lib/useJwt";
+import { cookies } from 'next/headers'
 interface email {
     email:string
     nickname:string
@@ -77,7 +78,8 @@ export default async function google(request: NextApiRequest, response: NextApiR
                     }
                     else{
                         //회원정보 없으면 닉네임 설정 페이지로 이동 
-                        response.setHeader("Authorization", `Bearer ${urlToken}`);
+                        cookies().set('urlToken', urlToken, { maxAge: 10 })
+                        response.setHeader('Set-Cookie',urlToken)
                         return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}/login/nickname?email=${res2.data.email}&oauth=google`,)
                     }
                 }

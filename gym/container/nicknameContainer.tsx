@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NickName from "@/components/login/Nickname";
 import useSession from "@/lib/useSession";
 import { Router, useRouter } from "next/router";
 import Modal from "@/components/modal";
 import { useSearchParams } from "next/navigation";
 import type { TextFieldColor } from "@/interface/board";
+import { decodeToken } from "@/lib/useJwt";
 
 const NicknameContainer = () => {
   const [isModalOpen, setModalOpen] = React.useState(true);

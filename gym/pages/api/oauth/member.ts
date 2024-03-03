@@ -1,12 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from 'axios'
 import { getIronSession } from "iron-session";
+import {getCookieValue,decodeToken} from '@/lib/useJwt'
 import {
   defaultSession,
   sessionOptions,
   sleep,
   SessionData,
 } from "@/lib/config/iron-config";
+
 const db = require('@/lib/connectMysql');
 type result ={
   fieldCount: number
@@ -20,6 +22,22 @@ type result ={
 
 
 export default async function member(request: NextApiRequest, response: NextApiResponse) {
+  const cookies = request.headers.cookie;
+  
+  if(cookies){
+    const token:string[] = cookies.split('=');
+    const { url } = await decodeToken(token[1])
+    if(!url){
+      return alert("올바른 경로로 접근해주세요")
+    }
+
+  }
+  else{
+    return alert("올바른 경로로 접근해주세요")
+  }
+    
+  
+
     const {email,nickname,oauth} = request.body
     //소셜 로그인의 쿠키 주기는 어떻게 해야하지? 히루?
     const modifiedSessionOptions = {

@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import type { TextFieldColor } from "@/interface/board";
 import { decodeToken } from "@/lib/useJwt";
 
-const NicknameContainer = () => {
+const NicknameContainer = ({ urlToken }: any) => {
   const [isModalOpen, setModalOpen] = React.useState(true);
   const params = useSearchParams();
   const email = params.get("email");

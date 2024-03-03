@@ -145,7 +145,7 @@ export default function Login() {
         >
           로그인
         </Button>
-        <Box
+        {/* <Box
           sx={{
             display: "flex",
             justifyContent: "center",
@@ -187,7 +187,7 @@ export default function Login() {
           }}
         >
           <Image src={Naver} alt="소셜 회사별 이미지"></Image>
-        </Button>
+        </Button> */}
       </Box>
     </>
   );

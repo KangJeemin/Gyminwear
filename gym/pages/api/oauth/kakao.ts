@@ -7,6 +7,8 @@ import {
   sleep,
   SessionData,
 } from "@/lib/config/iron-config";
+import {accessToken} from "@/lib/useJwt";
+
 
 interface email {
     email:string
@@ -78,6 +80,11 @@ export default async function google(request: NextApiRequest, response: NextApiR
                     }
                     else{
                         //회원정보 없으면 닉네임 설정 페이지로 이동 
+                        const urlToken = accessToken()
+                        // 쿠키 삭제하는 코드
+                        // response.setHeader('Set-Cookie', `urlToken=${urlToken}; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT;`);
+                        response.setHeader('Set-Cookie', `urlToken=${urlToken}; Path=/;`);
+                        
                         return response.redirect(307,`${process.env.NEXT_PUBLIC_IP}/login/nickname?email=${res2.data.kakao_account.email}&oauth=kakao`)
                     }
                 }

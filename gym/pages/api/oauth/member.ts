@@ -66,7 +66,6 @@ export default async function member(request: NextApiRequest, response: NextApiR
                 return false
             } 
               if(result){
-                  console.log('result ',result)
                   session.email = email as string;
                   session.nickname =nickname as string;
                   session.isLoggedIn = true;

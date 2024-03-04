@@ -174,7 +174,7 @@ export default function PageNavigate() {
       </Box>
       <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
         {brandArray.map((object, index: number) => (
-          <Box gridColumn="span 4">
+          <Box gridColumn="span 4" key={index}>
             <Item
               onClick={() => {
                 fetch(

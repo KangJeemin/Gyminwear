@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import type { brandRankProp, brandRankProps } from "@/interface/brand";
 import { useRouter } from "next/router";
 
-function brandRank({ props }: brandRankProp) {
+function BrandRank({ props }: brandRankProp) {
   const router = useRouter();
   const [slideState, setSlideState] = React.useState(0);
   const [animateime, setAnimateTime] = React.useState(0.5);
@@ -55,6 +55,7 @@ function brandRank({ props }: brandRankProp) {
           >
             {props.map((object: brandRankProps, index: number) => (
               <motion.div
+                key={index}
                 style={{
                   height: 15,
                   display: "flex",
@@ -110,4 +111,4 @@ function brandRank({ props }: brandRankProp) {
   }
 }
 
-export default React.memo(brandRank);
+export default React.memo(BrandRank);

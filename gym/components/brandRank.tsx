@@ -77,30 +77,22 @@ function BrandRank({ props }: brandRankProp) {
                 <Box sx={{ width: { xs: "30%", md: "10%" } }}>
                   {object.brandname}
                 </Box>
-                {object.rank > 0 ? (
+                {typeof object.rank === "number" && object.rank > 0 ? (
                   <>
                     <span style={{ color: "red" }}>&#9650;</span>
                     <span>{object.rank}</span>
                   </>
-                ) : object.rank < 0 ? (
+                ) : typeof object.rank === "number" && object.rank < 0 ? (
                   <>
                     <span style={{ color: "blue" }}>&#9660;</span>
-                    <span>
-                      {typeof object.rank === "number"
-                        ? object.rank
-                        : Math.abs(Number(object.rank))}
-                    </span>
+                    <span>Math.abs(Number(object.rank))</span>
                   </>
-                ) : object.rank === 0 ? (
-                  <>
-                    <span>&#10134;</span>
-                  </>
+                ) : typeof object.rank === "number" && object.rank === 0 ? (
+                  <span>&#10134;</span>
                 ) : (
-                  <>
-                    <span style={{ fontStyle: "italic", color: "#00D1FF" }}>
-                      new
-                    </span>
-                  </>
+                  <span style={{ fontStyle: "italic", color: "#00D1FF" }}>
+                    new
+                  </span>
                 )}
               </motion.div>
             ))}

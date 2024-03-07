@@ -8,12 +8,14 @@ import {
 } from "@/lib/config/iron-config";
 import returnSqlLimit from '@/lib/returnSqlLimit';
 import type { readInfo,boardProps } from '@/interface/board';
+
 const db = require('@/lib/connectMysql');
 
 export default async function board(req: NextApiRequest, res: NextApiResponse) {
     const {postid,title,nickname,content}:readInfo = req.body;
     const {id} = req.query
     const page:string= req.query.page as string
+      
     
     if(req.method==="POST"){
         try{

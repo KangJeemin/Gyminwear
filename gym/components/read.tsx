@@ -169,7 +169,7 @@ function Read({ data }: readProps) {
       {/* <QuillWrapper content={props.data[0].content} /> */}
       <Box
         sx={{
-          width: { xs: "100%", xl: "60%" },
+          width: { xs: "320px", xl: "320px" },
           height: "auto",
           marginTop: "30px",
           color: "black",

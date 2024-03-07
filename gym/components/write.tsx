@@ -13,6 +13,7 @@ import useSession from "@/lib/useSession";
 import ReactQuill from "./quillWrapper";
 import type { boardProps } from "@/interface/board";
 import ClientAPIReq from "@/lib/ClientAPIReq";
+import sharp from "sharp";
 
 export default function Write(props: boardProps) {
   const [content, setContent] = React.useState<string>("");
@@ -91,6 +92,13 @@ export default function Write(props: boardProps) {
     //이미지의 개수만큼 반복
     for (let i = 0; i < imageUrls.length; i++) {
       const imageUrl = imageUrls[i];
+      const resizeBlob = await sharp(imageUrls[i])
+        .resize(320)
+        .toBuffer()
+        .then((data) => {
+          const blob = new Blob([data]);
+          return blob;
+        });
       //base64 형태를 blob으로 변환
       const blobData = await fetch(imageUrl).then((res) => res.blob());
       try {

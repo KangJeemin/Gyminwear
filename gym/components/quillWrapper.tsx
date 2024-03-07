@@ -51,6 +51,7 @@ export default function Quillwrapper(props: any) {
         ],
         ["clean"],
       ],
+
       // ImageCompress: {
       //   quality: 0.7,
       //   maxWidth: 1000,

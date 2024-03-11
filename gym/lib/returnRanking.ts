@@ -18,7 +18,7 @@ function calculateRankDifference(trueArray: (number | boolean)[][],yesterdayArra
     });
 }
 
-export default function ranking2(yesterdayArray: number[], todayArray: number[]): (number | string)[] {
+export default function returnRanking(yesterdayArray: number[], todayArray: number[]): (number | string)[] {
     const trueArray = generateTrueArray(todayArray, yesterdayArray);
     const rankDifference = calculateRankDifference(trueArray,yesterdayArray);
     return rankDifference;

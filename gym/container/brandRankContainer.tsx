@@ -22,15 +22,15 @@ const BrandRankContainer = () => {
         const yesterDayArray: Array<number> = Object.values(
           response.data[1]
         ).map((value) => (value as number) - 1);
+
         const brandRankingResult = returnRanking(todayArray, yesterDayArray);
-        const resultArray: Array<brandRankProps> = [];
-        for (let i = 0; i < 10; i++) {
-          resultArray.push({
-            brandname: brandArray[todayArray[i]].brandname,
-            rank: brandRankingResult[i],
-            brandUrl: brandArray[todayArray[i]].brandUrl,
-          });
-        }
+        const resultArray: Array<brandRankProps> = todayArray
+          .slice(0, 10)
+          .map((index: number) => ({
+            brandname: brandArray[index].brandname,
+            rank: brandRankingResult[index],
+            brandUrl: brandArray[index].brandUrl,
+          }));
         setProps(resultArray);
       });
   }, []);

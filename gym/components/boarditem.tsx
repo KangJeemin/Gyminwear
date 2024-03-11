@@ -13,7 +13,7 @@ const getImageUrl = (Imagedummy: string) => {
     return gyminwearImageLogo;
   }
 };
-export default function BoardItem(props: any) {
+export default function BoardItem(object: any) {
   return (
     <Grid
       xs={4}
@@ -49,7 +49,7 @@ export default function BoardItem(props: any) {
           }}
         >
           <Image
-            src={getImageUrl(props.content) || ""}
+            src={getImageUrl(object.content) || ""}
             alt="유저가 올린 사진"
             layout="fill"
           />
@@ -71,13 +71,13 @@ export default function BoardItem(props: any) {
               display: "flex",
             }}
           >
-            <h4>{props.title}</h4>
+            <h4>{object.title}</h4>
             <Box
               sx={{
                 color: "red",
               }}
             >
-              [{props.commentcount}]
+              [{object.commentcount}]
             </Box>
           </Box>
           <Box
@@ -87,7 +87,7 @@ export default function BoardItem(props: any) {
               color: "#8E8E8E",
             }}
           >
-            {props.nickname}
+            {object.nickname}
           </Box>
           <Box
             sx={{
@@ -101,7 +101,7 @@ export default function BoardItem(props: any) {
                 fontSize: 15,
               }}
             >
-              <h5>조회:{props.viewcount}</h5>
+              <h5>조회:{object.viewcount}</h5>
             </Box>
             <Box
               sx={{
@@ -113,7 +113,7 @@ export default function BoardItem(props: any) {
                 marginRight: { xs: "10px" },
               }}
             >
-              <DateTimeFormatter dateString={props.date} />
+              <DateTimeFormatter dateString={object.date} />
             </Box>
           </Box>
         </Box>

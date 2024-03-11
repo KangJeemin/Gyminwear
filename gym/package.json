@@ -54,6 +54,7 @@
     "react-quill": "^2.0.0",
     "react-slick": "^0.30.2",
     "react-use-scroll-position": "^2.0.0",
+    "redux-thunk": "^3.1.0",
     "sharp": "^0.33.2",
     "slick-carousel": "^1.8.1",
     "swr": "^2.2.4",

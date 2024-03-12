@@ -5,7 +5,7 @@ import DateTimeFormatter from "@/lib/dateTimeFomatter";
 
 type boardItemProps = {
   object: any;
-  getImageUrl: (contentdummy: string) => string | null;
+  getImageUrl: (contentdummy: string) => string | null | StaticImageData;
   handleBoardClick: () => void;
 };
 export default function BoardItem({

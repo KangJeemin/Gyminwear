@@ -8,7 +8,7 @@ import gyminwearImageLogo from "@/public/image/gyminwearLogo.png";
 import type { boardInfo, boardProps, readInfo } from "@/interface/board";
 import axios from "axios";
 import Link from "next/link";
-// import BoardItem from "@/components/boarditem";
+import BoardItem from "@/components/boarditem";
 import RightButton from "@/components/RightButton";
 import { useRecoilState } from "recoil";
 import { writeClick } from "@/modules/board";
@@ -16,9 +16,9 @@ import PageNation from "@/components/PageNation";
 import { useCallback, useEffect } from "react";
 import { StaticImageData } from "next/image";
 import dynamic from "next/dynamic";
-const BoardItem = dynamic(() => import("@/components/boarditem"), {
-  loading: () => <p>Loading...</p>,
-});
+// const BoardItem = dynamic(() => import("@/components/boarditem"), {
+//   loading: () => <p>Loading...</p>,
+// });
 
 interface boardComponentProps extends boardProps {
   mapcount: number;

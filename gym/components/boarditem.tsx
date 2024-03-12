@@ -48,6 +48,7 @@ export default function BoardItem({
             src={getImageUrl(object.content) || ""}
             alt="유저가 올린 사진"
             layout="fill"
+            loading="lazy"
           />
         </Box>
         <Box

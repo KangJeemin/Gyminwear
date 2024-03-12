@@ -1,33 +1,20 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import Image from "next/image";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
-import { extractFirstImageUrl2 } from "@/lib/extractFirstImageUrl";
-import gyminwearImageLogo from "@/public/image/gyminwearLogo.png";
 
-const getImageUrl = (Imagedummy: string) => {
-  if (extractFirstImageUrl2(Imagedummy)) {
-    return extractFirstImageUrl2(Imagedummy);
-  } else {
-    return gyminwearImageLogo;
-  }
+type boardItemProps = {
+  object: any;
+  getImageUrl: (contentdummy: string) => string | null;
+  handleBoardClick: () => void;
 };
-export default function BoardItem(object: any) {
+export default function BoardItem({
+  object,
+  getImageUrl,
+  handleBoardClick,
+}: boardItemProps) {
   return (
-    <Grid
-      xs={4}
-      sm={4}
-      md={5}
-      //   onClick={() => {
-      //     fetch(
-      //       `${process.env.NEXT_PUBLIC_IP}/api/boardCount?id=${object.postid}`
-      //     );
-      //     router.push(
-      //       `${process.env.NEXT_PUBLIC_IP}/board/read?id=${object.postid}`
-      //     );
-      //   }}
-    >
+    <Grid xs={4} sm={4} md={5} onClick={handleBoardClick}>
       <Box
         sx={{
           display: "flex",

@@ -14,7 +14,7 @@ export const extractFirstImageUrl2 =(html:string) => {
 
   // 추출된 URL 출력
   if (matches) {
-    let urls = matches.map(function(match) {
+    let urls = matches.map(function(match) :string | null{
       let srcMatch = /src="([^"]*)"/.exec(match);
       return srcMatch ? srcMatch[1] : null;
     });

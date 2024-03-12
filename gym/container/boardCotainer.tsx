@@ -16,6 +16,8 @@ import axios from "axios";
 import Link from "next/link";
 import BoardItem from "@/components/boarditem";
 import RightButton from "@/components/RightButton";
+import { useRecoilState } from "recoil";
+import { writeClick } from "@/modules/board";
 
 interface boardComponentProps extends boardProps {
   mapcount: number;
@@ -24,7 +26,7 @@ export default function Board(props: boardComponentProps) {
   const router = useRouter();
   const { session } = useSession();
   const [clickButton, setClickButton] = React.useState(false);
-
+  const [witreClick, setWriteClick] = useRecoilState(writeClick);
   React.useEffect(() => {
     // 글쓰기 눌렀을때 로그인 여부 확인.
     if (session.isLoggedIn) {
@@ -85,7 +87,7 @@ export default function Board(props: boardComponentProps) {
             ))}
           </Grid>
         </Box>
-        <RightButton props={setClickButton} />
+        <RightButton setWriteClick={setWriteClick} />
       </Container>
       {props.mapcount < 5 ? null : (
         <Box

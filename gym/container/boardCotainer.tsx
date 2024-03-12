@@ -14,15 +14,16 @@ import { useRecoilState } from "recoil";
 import { writeClick } from "@/modules/board";
 import PageNation from "@/components/PageNation";
 import { useCallback, useEffect } from "react";
+import { StaticImageData } from "next/image";
 
 interface boardComponentProps extends boardProps {
   mapcount: number;
 }
-export default function Board(props: boardComponentProps) {
+export default function BoardContainer(props: boardComponentProps) {
   const router = useRouter();
   const { session } = useSession();
-  const [witreClick, setWriteClick] = useRecoilState(writeClick);
-  useEffect(() => {
+
+  const handleWriteClick = useCallback(() => {
     // 글쓰기 눌렀을때 로그인 여부 확인.
     if (session.isLoggedIn) {
       router.push(`${process.env.NEXT_PUBLIC_IP}/board/write`);
@@ -30,17 +31,20 @@ export default function Board(props: boardComponentProps) {
       alert("로그인 후 이용해주세요.");
       router.push(`${process.env.NEXT_PUBLIC_IP}/login`);
     }
-  }, [witreClick]);
-
-  const getImageUrl = useCallback((Imagedummy: string) => {
-    if (extractFirstImageUrl2(Imagedummy)) {
-      return extractFirstImageUrl2(Imagedummy);
-    } else {
-      return gyminwearImageLogo;
-    }
   }, []);
 
-  const handleBoardClick = (props: readInfo) => {
+  const getImageUrl = useCallback(
+    (Imagedummy: string): string | null | StaticImageData => {
+      if (extractFirstImageUrl2(Imagedummy)) {
+        return extractFirstImageUrl2(Imagedummy);
+      } else {
+        return gyminwearImageLogo;
+      }
+    },
+    []
+  );
+
+  const handleBoardClick = (props: boardInfo) => {
     axios.get(
       `${process.env.NEXT_PUBLIC_IP}/api/boardCount?id=${props.postid}`
     );
@@ -84,12 +88,12 @@ export default function Board(props: boardComponentProps) {
               <BoardItem
                 object={object}
                 getImageUrl={getImageUrl}
-                boardClick={handleBoardClick}
+                handleBoardClick={handleBoardClick}
               />
             ))}
           </Grid>
         </Box>
-        <RightButton setWriteClick={setWriteClick} />
+        <RightButton handleWriteClick={handleWriteClick} />
       </Container>
       {props.mapcount < 5 ? null : (
         <PageNation

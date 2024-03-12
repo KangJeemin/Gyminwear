@@ -2,12 +2,12 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { SetterOrUpdater } from "recoil";
 
-type SetWriteClickType = SetterOrUpdater<boolean>;
+type HandleBoardClick = () => void;
 
 export default function RightButton({
-  setWriteClick,
+  handleWriteClick,
 }: {
-  setWriteClick: SetWriteClickType;
+  handleWriteClick: HandleBoardClick;
 }) {
   return (
     <Box
@@ -21,7 +21,7 @@ export default function RightButton({
       <Button
         variant="outlined"
         onClick={() => {
-          setWriteClick((preState) => !preState);
+          handleWriteClick();
         }}
       >
         글쓰기

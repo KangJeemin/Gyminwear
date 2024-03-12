@@ -2,11 +2,13 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Unstable_Grid2";
 import Image from "next/image";
 import DateTimeFormatter from "@/lib/dateTimeFomatter";
+import { StaticImageData } from "next/image";
+import type { boardInfo } from "@/interface/board";
 
 type boardItemProps = {
   object: any;
   getImageUrl: (contentdummy: string) => string | null | StaticImageData;
-  handleBoardClick: () => void;
+  handleBoardClick: (props: boardInfo) => void;
 };
 export default function BoardItem({
   object,
@@ -14,7 +16,14 @@ export default function BoardItem({
   handleBoardClick,
 }: boardItemProps) {
   return (
-    <Grid xs={4} sm={4} md={5} onClick={handleBoardClick}>
+    <Grid
+      xs={4}
+      sm={4}
+      md={5}
+      onClick={() => {
+        handleBoardClick(object);
+      }}
+    >
       <Box
         sx={{
           display: "flex",

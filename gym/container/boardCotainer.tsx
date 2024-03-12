@@ -18,6 +18,7 @@ import BoardItem from "@/components/boarditem";
 import RightButton from "@/components/RightButton";
 import { useRecoilState } from "recoil";
 import { writeClick } from "@/modules/board";
+import PageNation from "@/components/PageNation";
 
 interface boardComponentProps extends boardProps {
   mapcount: number;
@@ -25,7 +26,6 @@ interface boardComponentProps extends boardProps {
 export default function Board(props: boardComponentProps) {
   const router = useRouter();
   const { session } = useSession();
-  const [clickButton, setClickButton] = React.useState(false);
   const [witreClick, setWriteClick] = useRecoilState(writeClick);
   React.useEffect(() => {
     // 글쓰기 눌렀을때 로그인 여부 확인.
@@ -35,7 +35,7 @@ export default function Board(props: boardComponentProps) {
       alert("로그인 후 이용해주세요.");
       router.push(`${process.env.NEXT_PUBLIC_IP}/login`);
     }
-  }, [clickButton]);
+  }, [witreClick]);
 
   const getImageUrl = (Imagedummy: string) => {
     if (extractFirstImageUrl2(Imagedummy)) {
@@ -90,23 +90,10 @@ export default function Board(props: boardComponentProps) {
         <RightButton setWriteClick={setWriteClick} />
       </Container>
       {props.mapcount < 5 ? null : (
-        <Box
-          sx={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "cetner",
-          }}
-        >
-          <Stack spacing={10} sx={{ margin: "auto" }}>
-            <Pagination
-              count={Math.floor(props.data[0].pagecount / 20) + 1}
-              shape="rounded"
-              onChange={(event, page) => {
-                handlePageChange(page);
-              }}
-            />
-          </Stack>
-        </Box>
+        <PageNation
+          pagecount={props.data[0].pagecount}
+          handlePageChange={handlePageChange}
+        />
       )}
     </>
   );

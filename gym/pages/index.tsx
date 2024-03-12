@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import PageNavigate from "@/components/PageNavigate";
+import PageNavigate from "@/components/BrandNavigate";
 import Pagedivide from "@/components/pagedivide";
 import Board from "@/components/board";
 import type { boardProps } from "@/interface/board";

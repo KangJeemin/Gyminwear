@@ -1,7 +1,7 @@
 import * as React from "react";
 import BrandRank from "@/components/brandRank";
 import axios from "axios";
-import { brandArray } from "@/components/PageNavigate";
+import { brandArray } from "@/components/BrandNavigate";
 import type { brandRankProps } from "@/interface/brand";
 import returnRanking from "@/lib/returnRanking";
 

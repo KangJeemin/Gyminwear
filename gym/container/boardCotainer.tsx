@@ -8,13 +8,17 @@ import gyminwearImageLogo from "@/public/image/gyminwearLogo.png";
 import type { boardInfo, boardProps, readInfo } from "@/interface/board";
 import axios from "axios";
 import Link from "next/link";
-import BoardItem from "@/components/boarditem";
+// import BoardItem from "@/components/boarditem";
 import RightButton from "@/components/RightButton";
 import { useRecoilState } from "recoil";
 import { writeClick } from "@/modules/board";
 import PageNation from "@/components/PageNation";
 import { useCallback, useEffect } from "react";
 import { StaticImageData } from "next/image";
+import dynamic from "next/dynamic";
+const BoardItem = dynamic(() => import("@/components/boarditem"), {
+  loading: () => <p>Loading...</p>,
+});
 
 interface boardComponentProps extends boardProps {
   mapcount: number;
@@ -23,8 +27,8 @@ export default function BoardContainer(props: boardComponentProps) {
   const router = useRouter();
   const { session } = useSession();
 
+  // 글쓰기 눌렀을때 로그인 여부 확인.
   const handleWriteClick = useCallback(() => {
-    // 글쓰기 눌렀을때 로그인 여부 확인.
     if (session.isLoggedIn) {
       router.push(`${process.env.NEXT_PUBLIC_IP}/board/write`);
     } else {

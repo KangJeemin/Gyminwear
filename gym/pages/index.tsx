@@ -2,12 +2,12 @@ import React from "react";
 import Head from "next/head";
 import PageNavigate from "@/components/BrandNavigate";
 import Pagedivide from "@/components/pagedivide";
-import Board from "@/components/board";
 import type { boardProps } from "@/interface/board";
 import { GetServerSidePropsContext } from "next";
 import BrandRank from "@/components/brandRank";
 import Container from "@mui/material/Container";
 import BrandRankContainer from "@/container/brandRankContainer";
+import BoardContainer from "@/container/boardCotainer";
 
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
@@ -36,7 +36,7 @@ export default function Main(props: boardProps) {
         <BrandRankContainer />
         <PageNavigate />
         <Pagedivide />
-        <Board mapcount={4} data={props.data} />
+        <BoardContainer mapcount={4} data={props.data} />
       </Container>
     </>
   );
